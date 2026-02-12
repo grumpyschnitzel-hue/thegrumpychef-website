@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsletter Writing Guide — The Grumpy Chef</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   CSS CUSTOM PROPERTIES
+   ═══════════════════════════════════════════ */
+:root {
+    --midnight: #0A1628;
+    --midnight-light: #0F1D32;
+    --midnight-lighter: #162440;
+    --gold: #D4AF37;
+    --gold-dim: rgba(212, 175, 55, 0.15);
+    --gold-glow: rgba(212, 175, 55, 0.3);
+    --aurora: #00A6D6;
+    --aurora-dim: rgba(0, 166, 214, 0.15);
+    --white: #E8E6E1;
+    --white-soft: rgba(232, 230, 225, 0.7);
+    --white-muted: rgba(232, 230, 225, 0.4);
+    --surface: rgba(255, 255, 255, 0.04);
+    --surface-hover: rgba(255, 255, 255, 0.08);
+    --surface-active: rgba(212, 175, 55, 0.1);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-gold: rgba(212, 175, 55, 0.3);
+    --danger: #E74C3C;
+    --success: #2ECC71;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --transition: 0.25s ease;
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--midnight);
+    color: var(--white);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════════ */
+.app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    padding-bottom: 100px;
+}
+
+.header {
+    text-align: center;
+    padding: 40px 0 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+}
+
+.header__title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+}
+
+.header__subtitle {
+    font-size: 0.85rem;
+    color: var(--white-muted);
+}
+
+/* ═══════════════════════════════════════════
+   PROGRESS BAR
+   ═══════════════════════════════════════════ */
+.progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 20px 0 32px;
+    position: sticky;
+    top: 0;
+    background: var(--midnight);
+    z-index: 100;
+}
+
+.progress__step {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.progress__dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--white-muted);
+    transition: all var(--transition);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.progress__dot--active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--midnight);
+    box-shadow: 0 0 16px var(--gold-glow);
+}
+
+.progress__dot--complete {
+    background: var(--gold-dim);
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.progress__line {
+    width: 40px;
+    height: 2px;
+    background: var(--border);
+    transition: background var(--transition);
+    flex-shrink: 0;
+}
+
+.progress__line--active {
+    background: var(--gold);
+}
+
+.progress__label {
+    display: none;
+}
+
+/* ═══════════════════════════════════════════
+   STEP PANELS
+   ═══════════════════════════════════════════ */
+.step {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.step--active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step__title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--white);
+}
+
+.step__description {
+    font-size: 0.9rem;
+    color: var(--white-soft);
+    margin-bottom: 28px;
+    line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════
+   FORM ELEMENTS
+   ═══════════════════════════════════════════ */
+.field {
+    margin-bottom: 24px;
+}
+
+.field__label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.field__input,
+.field__textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 14px 16px;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+}
+
+.field__input:focus,
+.field__textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-dim);
+}
+
+.field__input::placeholder,
+.field__textarea::placeholder {
+    color: var(--white-muted);
+}
+
+.field__textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+.field__textarea--large {
+    min-height: 180px;
+}
+
+.field__meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-size: 0.75rem;
+    color: var(--white-muted);
+}
+
+/* ═══════════════════════════════════════════
+   CARDS (Framework & Hook Selection)
+   ═══════════════════════════════════════════ */
+.card-grid {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.card-grid--frameworks {
+    grid-template-columns: 1fr;
+}
+
+.card-grid--hooks {
+    grid-template-columns: 1fr 1fr;
+}
+
+.card {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    cursor: pointer;
+    transition: all var(--transition);
+    position: relative;
+}
+
+.card:hover {
+    background: var(--surface-hover);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.card--selected {
+    background: var(--surface-active);
+    border-color: var(--gold);
+    box-shadow: 0 0 20px var(--gold-dim);
+}
+
+.card__name {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--white);
+}
+
+.card--selected .card__name {
+    color: var(--gold);
+}
+
+.card__desc {
+    font-size: 0.85rem;
+    color: var(--white-soft);
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.card__tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--aurora);
+    background: var(--aurora-dim);
+    padding: 3px 10px;
+    border-radius: 100px;
+}
+
+.card__check {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--midnight);
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.card--selected .card__check {
+    display: flex;
+}
+
+/* Hook cards are smaller */
+.card--hook {
+    padding: 14px 16px;
+}
+
+.card--hook .card__name {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.card--hook .card__desc {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+/* ═══════════════════════════════════════════
+   HOOK EXAMPLE
+   ═══════════════════════════════════════════ */
+.hook-example {
+    background: var(--midnight-lighter);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.hook-example--visible {
+    display: block;
+    animation: fadeIn 0.2s ease;
+}
+
+.hook-example__label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+    margin-bottom: 6px;
+}
+
+.hook-example__text {
+    font-size: 0.9rem;
+    color: var(--white-soft);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════
+   WRITING SECTION (Step 4)
+   ═══════════════════════════════════════════ */
+.element {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.element__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.element__number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.element__label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.element__prompt {
+    font-size: 0.85rem;
+    color: var(--white-soft);
+    margin-bottom: 12px;
+    line-height: 1.6;
+    padding-left: 40px;
+}
+
+.element__tip {
+    font-size: 0.8rem;
+    color: var(--aurora);
+    background: var(--aurora-dim);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    margin-left: 40px;
+    line-height: 1.5;
+}
+
+.element__tip::before {
+    content: 'TIP: ';
+    font-weight: 700;
+}
+
+.element textarea {
+    width: 100%;
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 14px 16px;
+    min-height: 100px;
+    resize: vertical;
+    outline: none;
+    line-height: 1.7;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.element textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-dim);
+}
+
+.element textarea::placeholder {
+    color: var(--white-muted);
+}
+
+.element__wordcount {
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--white-muted);
+    margin-top: 6px;
+}
+
+/* ═══════════════════════════════════════════
+   REVIEW / EXPORT (Step 5)
+   ═══════════════════════════════════════════ */
+.review__draft {
+    background: var(--midnight-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 24px;
+    white-space: pre-wrap;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--white);
+    min-height: 300px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.review__stats {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.review__stat {
+    text-align: center;
+}
+
+.review__stat-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--gold);
+}
+
+.review__stat-label {
+    font-size: 0.75rem;
+    color: var(--white-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.review__actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-decoration: none;
+}
+
+.btn--primary {
+    background: var(--gold);
+    color: var(--midnight);
+}
+
+.btn--primary:hover {
+    background: #E0BE4A;
+    box-shadow: 0 4px 16px var(--gold-glow);
+}
+
+.btn--secondary {
+    background: var(--surface);
+    color: var(--white);
+    border: 1px solid var(--border);
+}
+
+.btn--secondary:hover {
+    background: var(--surface-hover);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn--ghost {
+    background: transparent;
+    color: var(--white-muted);
+    padding: 14px 20px;
+}
+
+.btn--ghost:hover {
+    color: var(--white);
+}
+
+.btn--danger {
+    background: rgba(231, 76, 60, 0.15);
+    color: var(--danger);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.btn--danger:hover {
+    background: rgba(231, 76, 60, 0.25);
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION (Fixed Bottom)
+   ═══════════════════════════════════════════ */
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--midnight-light);
+    border-top: 1px solid var(--border);
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 200;
+}
+
+.nav__left,
+.nav__right {
+    display: flex;
+    gap: 8px;
+}
+
+/* ═══════════════════════════════════════════
+   TOAST NOTIFICATION
+   ═══════════════════════════════════════════ */
+.toast {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--success);
+    color: var(--midnight);
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 300;
+    pointer-events: none;
+}
+
+.toast--visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ═══════════════════════════════════════════
+   SAVED INDICATOR
+   ═══════════════════════════════════════════ */
+.autosave {
+    font-size: 0.7rem;
+    color: var(--white-muted);
+    text-align: center;
+    padding: 4px 0;
+}
+
+/* ═══════════════════════════════════════════
+   THOUGHT LEADERSHIP SIDEBAR TIPS
+   ═══════════════════════════════════════════ */
+.principles {
+    background: var(--midnight-lighter);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 28px;
+}
+
+.principles__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    width: 100%;
+    padding: 0;
+}
+
+.principles__toggle-arrow {
+    transition: transform var(--transition);
+    color: var(--gold);
+}
+
+.principles__toggle-arrow--open {
+    transform: rotate(180deg);
+}
+
+.principles__content {
+    display: none;
+    margin-top: 16px;
+}
+
+.principles__content--open {
+    display: block;
+}
+
+.principles__item {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--white-soft);
+    line-height: 1.5;
+}
+
+.principles__item:last-child {
+    border-bottom: none;
+}
+
+.principles__item strong {
+    color: var(--gold);
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 600px) {
+    .app { padding: 0 16px; padding-bottom: 100px; }
+    .header { padding: 24px 0 16px; }
+    .header__title { font-size: 1.2rem; }
+    .progress { padding: 16px 0 24px; }
+    .progress__dot { width: 28px; height: 28px; font-size: 0.7rem; }
+    .progress__line { width: 24px; }
+    .card-grid--hooks { grid-template-columns: 1fr; }
+    .step__title { font-size: 1.15rem; }
+    .element { padding: 18px; }
+    .element__prompt { padding-left: 0; }
+    .element__tip { margin-left: 0; }
+    .review__draft { padding: 20px; }
+    .review__actions { flex-direction: column; }
+    .review__actions .btn { width: 100%; }
+    .nav { padding: 12px 16px; }
+}
+
+/* ═══════════════════════════════════════════
+   PRINT
+   ═══════════════════════════════════════════ */
+@media print {
+    body { background: #fff; color: #000; }
+    .progress, .nav, .toast, .autosave { display: none !important; }
+    .review__draft { border: 1px solid #ccc; color: #000; background: #fff; max-height: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+    <!-- ═══ HEADER ═══ -->
+    <header class="header">
+        <h1 class="header__title">Newsletter Writing Guide</h1>
+        <p class="header__subtitle">From blank page to compelling draft. Guided by frameworks.</p>
+    </header>
+
+    <!-- ═══ PROGRESS ═══ -->
+    <div class="progress" id="progress">
+        <div class="progress__step">
+            <div class="progress__dot progress__dot--active" data-step="0" onclick="goToStep(0)">1</div>
+        </div>
+        <div class="progress__line" id="line-0"></div>
+        <div class="progress__step">
+            <div class="progress__dot" data-step="1" onclick="goToStep(1)">2</div>
+        </div>
+        <div class="progress__line" id="line-1"></div>
+        <div class="progress__step">
+            <div class="progress__dot" data-step="2" onclick="goToStep(2)">3</div>
+        </div>
+        <div class="progress__line" id="line-2"></div>
+        <div class="progress__step">
+            <div class="progress__dot" data-step="3" onclick="goToStep(3)">4</div>
+        </div>
+        <div class="progress__line" id="line-3"></div>
+        <div class="progress__step">
+            <div class="progress__dot" data-step="4" onclick="goToStep(4)">5</div>
+        </div>
+    </div>
+
+    <div class="autosave" id="autosave"></div>
+
+    <!-- ═══════════════════════════════════════
+         STEP 0: TOPIC & AUDIENCE
+         ═══════════════════════════════════════ -->
+    <div class="step step--active" id="step-0">
+        <h2 class="step__title">What are you writing about?</h2>
+        <p class="step__description">Define your topic and who you're writing for. Clarity here makes everything else easier.</p>
+
+        <div class="field">
+            <label class="field__label" for="topic">Newsletter Topic</label>
+            <input class="field__input" type="text" id="topic" placeholder="e.g., Why most restaurant owners calculate food cost wrong" oninput="autoSave()">
+        </div>
+
+        <div class="field">
+            <label class="field__label" for="audience">Who's Reading This?</label>
+            <textarea class="field__textarea" id="audience" placeholder="e.g., Independent restaurant owners doing $500K-$2M revenue who are working 70+ hours and still not profitable" oninput="autoSave()"></textarea>
+            <div class="field__meta">
+                <span>Be specific. One person, not "everyone."</span>
+                <span id="audience-wc">0 words</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="field__label" for="key-takeaway">One Key Takeaway</label>
+            <input class="field__input" type="text" id="key-takeaway" placeholder="e.g., Food cost is a system problem, not a math problem" oninput="autoSave()">
+            <div class="field__meta">
+                <span>If the reader remembers one thing, what is it?</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         STEP 1: CHOOSE FRAMEWORK
+         ═══════════════════════════════════════ -->
+    <div class="step" id="step-1">
+        <h2 class="step__title">Pick Your Framework</h2>
+        <p class="step__description">Choose the storytelling structure that fits your newsletter. Each framework shapes how your content flows.</p>
+
+        <div class="card-grid card-grid--frameworks" id="framework-grid">
+            <!-- Rendered by JS -->
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         STEP 2: CHOOSE HOOK
+         ═══════════════════════════════════════ -->
+    <div class="step" id="step-2">
+        <h2 class="step__title">Choose Your Hook</h2>
+        <p class="step__description">The hook determines if readers continue or scroll past. Pick a type, then write your opening.</p>
+
+        <div class="card-grid card-grid--hooks" id="hook-grid">
+            <!-- Rendered by JS -->
+        </div>
+
+        <div class="hook-example" id="hook-example">
+            <div class="hook-example__label">Example</div>
+            <div class="hook-example__text" id="hook-example-text"></div>
+        </div>
+
+        <div class="field">
+            <label class="field__label" for="hook-text">Write Your Hook</label>
+            <textarea class="field__textarea" id="hook-text" placeholder="Write your opening line or paragraph here..." oninput="autoSave(); updateWordCount('hook-text', 'hook-wc')"></textarea>
+            <div class="field__meta">
+                <span>2 seconds to stop the scroll. Make it count.</span>
+                <span id="hook-wc">0 words</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         STEP 3: GUIDED WRITING
+         ═══════════════════════════════════════ -->
+    <div class="step" id="step-3">
+        <h2 class="step__title">Build Your Content</h2>
+        <p class="step__description" id="step3-desc">Fill in each element. The framework does the structural thinking so you can focus on the writing.</p>
+
+        <!-- Thought Leadership Principles (collapsible) -->
+        <div class="principles">
+            <button class="principles__toggle" onclick="togglePrinciples()">
+                <span>Writing Principles — Keep These in Mind</span>
+                <span class="principles__toggle-arrow" id="principles-arrow">&#9660;</span>
+            </button>
+            <div class="principles__content" id="principles-content">
+                <div class="principles__item">
+                    <strong>Original Point of View</strong>
+                    Don't echo others. Bring your unique perspective. 64% of decision-makers expect thought leadership to challenge their thinking.
+                </div>
+                <div class="principles__item">
+                    <strong>Experience-Based Authority</strong>
+                    Share your "earned secrets" — lessons from doing, not reading. Your transformation story IS your intellectual property.
+                </div>
+                <div class="principles__item">
+                    <strong>Solve Real Problems</strong>
+                    Provide genuine value. Don't just present problems — show solutions. Never write a disguised sales pitch.
+                </div>
+                <div class="principles__item">
+                    <strong>Deep Not Wide</strong>
+                    Go deep into one topic rather than skimming many. The narrower your focus, the more credible you appear.
+                </div>
+                <div class="principles__item">
+                    <strong>Consistency Over Perfection</strong>
+                    Done is better than perfect. Show up regularly with valuable ideas.
+                </div>
+            </div>
+        </div>
+
+        <div id="elements-container">
+            <!-- Rendered by JS based on selected framework -->
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         STEP 4: REVIEW & EXPORT
+         ═══════════════════════════════════════ -->
+    <div class="step" id="step-4">
+        <h2 class="step__title">Your Draft</h2>
+        <p class="step__description">Here's your assembled newsletter. Review it, then copy or download.</p>
+
+        <div class="review__stats" id="review-stats">
+            <div class="review__stat">
+                <div class="review__stat-value" id="stat-words">0</div>
+                <div class="review__stat-label">Words</div>
+            </div>
+            <div class="review__stat">
+                <div class="review__stat-value" id="stat-reading">0 min</div>
+                <div class="review__stat-label">Read Time</div>
+            </div>
+            <div class="review__stat">
+                <div class="review__stat-value" id="stat-framework">—</div>
+                <div class="review__stat-label">Framework</div>
+            </div>
+            <div class="review__stat">
+                <div class="review__stat-value" id="stat-hook">—</div>
+                <div class="review__stat-label">Hook Type</div>
+            </div>
+        </div>
+
+        <div class="review__draft" id="review-draft">
+            <!-- Assembled draft rendered here -->
+        </div>
+
+        <div class="review__actions">
+            <button class="btn btn--primary" onclick="copyDraft()">Copy to Clipboard</button>
+            <button class="btn btn--secondary" onclick="downloadDraft()">Download .md</button>
+            <button class="btn btn--danger" onclick="startOver()">Start Over</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- ═══ NAVIGATION ═══ -->
+<div class="nav">
+    <div class="nav__left">
+        <button class="btn btn--ghost" id="btn-back" onclick="prevStep()" style="display:none">Back</button>
+    </div>
+    <div class="nav__right">
+        <button class="btn btn--primary" id="btn-next" onclick="nextStep()">Next</button>
+    </div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════════
+   DATA — FRAMEWORKS
+   ═══════════════════════════════════════════ */
+const FRAMEWORKS = {
+    storybrand: {
+        name: 'StoryBrand (SB7)',
+        description: 'Position your reader as the hero and yourself as the guide. The gold standard for business storytelling.',
+        bestFor: 'Long-form newsletters, brand narratives, sales pages',
+        elements: [
+            { id: 'character', label: 'The Hero (Your Reader)', prompt: 'Who is your reader? What do they want? Be specific about the person and their desire.', tip: 'The hero is never you — it\'s your reader. Define what they want clearly.', placeholder: 'e.g., A restaurant owner doing $800K/year who wants to stop working 80-hour weeks and actually be profitable...' },
+            { id: 'problem_ext', label: 'External Problem', prompt: 'What tangible, visible problem are they facing?', tip: 'This is the surface-level problem everyone can see.', placeholder: 'e.g., Their food cost is 38% when it should be 28-32%...' },
+            { id: 'problem_int', label: 'Internal Problem', prompt: 'How does this problem make them feel? What\'s the emotional weight?', tip: 'The internal problem is why they actually engage. Frustration, shame, exhaustion.', placeholder: 'e.g., They feel like they\'re failing even though they work harder than anyone they know...' },
+            { id: 'problem_phil', label: 'Philosophical Problem', prompt: 'Why is this situation just wrong? Why should it be different?', tip: '"Operators who work this hard deserve to be profitable."', placeholder: 'e.g., It shouldn\'t be this hard to run a profitable restaurant...' },
+            { id: 'guide', label: 'The Guide (You)', prompt: 'Show empathy (you understand their pain) and authority (you have the solution).', tip: 'Empathy first, then authority. "I\'ve been there" + "Here\'s what I learned."', placeholder: 'e.g., I ran a restaurant at -40C in the Yukon. Lost $180K. Rebuilt with systems. 1,200+ days later, both still working...' },
+            { id: 'plan', label: 'The Plan', prompt: 'What are 3-4 clear steps they can follow? Make the path obvious.', tip: 'Confusion kills action. Number the steps. Keep each one simple.', placeholder: 'e.g., Step 1: Audit your actual food cost (not what you think it is).\nStep 2: Find your #1 leak category.\nStep 3: Install one system to fix it.\nStep 4: Measure for 30 days.' },
+            { id: 'cta', label: 'Call to Action', prompt: 'What do you want them to do? Be direct.', tip: 'One clear CTA. Not three. "Reply to this email" or "Take the free assessment."', placeholder: 'e.g., Take the free 72-Hour Profit Discovery Calculator. 5 minutes. You\'ll see exactly where you\'re leaking money.' },
+            { id: 'failure', label: 'What\'s at Stake', prompt: 'What happens if they don\'t act? Paint the cost of inaction.', tip: 'Not fear-mongering — honest reality.', placeholder: 'e.g., Another year of 80-hour weeks. Another year of wondering why the bank account doesn\'t match the effort...' },
+            { id: 'success', label: 'The Transformation', prompt: 'What does their life look like after?', tip: 'Be specific. Not "success" but a vivid picture of the changed reality.', placeholder: 'e.g., Leaving the restaurant at 6pm. Checking the numbers and seeing 32% food cost. Knowing the systems handle it whether you\'re there or not.' }
+        ]
+    },
+    pas: {
+        name: 'Problem-Agitate-Solve',
+        description: 'Identify the pain, amplify it, then present your solution. Simple, powerful, direct.',
+        bestFor: 'Short newsletters, email sequences, social posts, blog intros',
+        elements: [
+            { id: 'problem', label: 'Problem', prompt: 'What specific pain point are you addressing? Be concrete and name it in their language.', tip: 'Don\'t use industry jargon. Use the words they use when complaining to a friend.', placeholder: 'e.g., You\'re working 80 hours a week and your restaurant is still barely breaking even...' },
+            { id: 'agitate', label: 'Agitate', prompt: 'Why is this problem worse than they think? What\'s the hidden cost? How does it compound over time?', tip: 'Dig into the emotional impact. Make them feel the weight of inaction. Use specific numbers.', placeholder: 'e.g., Here\'s what most owners don\'t realize: a 5% food cost overrun on $50K/month in revenue is $30,000 a year. That\'s not a rounding error — that\'s your salary...' },
+            { id: 'solve', label: 'Solve', prompt: 'Present your solution clearly and simply. Show the path forward without overselling.', tip: 'The solution should feel inevitable after the agitation. Direct, not salesy.', placeholder: 'e.g., The fix isn\'t working harder. It\'s seeing clearly. One audit. One system. 72 hours. That\'s it...' }
+        ]
+    },
+    hso: {
+        name: 'Hook-Story-Offer',
+        description: 'Grab attention, illustrate through story, then present your offer. Fast and engaging.',
+        bestFor: 'Social content, landing pages, short newsletters, video scripts',
+        elements: [
+            { id: 'hook_el', label: 'Hook', prompt: 'Grab their attention. Bold statement, surprising fact, or relatable frustration.', tip: 'Your hook from Step 3 goes here. Refine it or write a new one.', placeholder: 'e.g., I lost my restaurant. Not because I didn\'t work hard enough. Because I didn\'t have systems.' },
+            { id: 'story', label: 'Story', prompt: 'Tell the story. What happened? Illustrate the problem and the journey toward a solution.', tip: 'Specific details make stories real. Dates, numbers, places, names.', placeholder: 'e.g., In 2021, I was running a restaurant in Dawson City, Yukon. Population 1,300. I was doing everything myself — cooking, ordering, managing, closing...' },
+            { id: 'offer', label: 'Offer / CTA', prompt: 'What should they do next? One clear call-to-action.', tip: 'One CTA. Not three options. One thing you want them to do right now.', placeholder: 'e.g., I built a free calculator that finds your #1 profit leak in 5 minutes. Link in the comments.' }
+        ]
+    },
+    pixar: {
+        name: 'Pixar Story Framework',
+        description: 'The classic narrative arc. Introduce, establish, disrupt, consequence, resolve, transform.',
+        bestFor: 'Founder stories, case studies, transformation content, blog posts',
+        elements: [
+            { id: 'once', label: 'Once upon a time...', prompt: 'Introduce the character and their world. Set the scene.', tip: 'Keep it brief. Ground the reader in a specific time and place.', placeholder: 'e.g., Three years ago, I was running a restaurant in the Canadian Yukon — one of the most remote kitchens in North America...' },
+            { id: 'everyday', label: 'Every day...', prompt: 'What was the routine? The normal that everyone accepted?', tip: 'This establishes the "before." The status quo that felt permanent.', placeholder: 'e.g., Every day I opened at 6am and closed at midnight. I did the ordering, the cooking, the cleaning. I thought that was just what it took...' },
+            { id: 'untiloneday', label: 'Until one day...', prompt: 'What changed? The inciting incident that disrupted everything.', tip: 'This is the turning point. Make it specific and concrete.', placeholder: 'e.g., Until I looked at my books and realized I was $180,000 in debt. Working harder wasn\'t working. Something had to break...' },
+            { id: 'becauseofthat', label: 'Because of that...', prompt: 'What consequences unfolded? What happened as a result?', tip: 'Show cause and effect. One thing led to another.', placeholder: 'e.g., I hit rock bottom. Got sober. And in recovery, I learned a framework that changed everything: systems beat motivation...' },
+            { id: 'untilfinally', label: 'Until finally...', prompt: 'The climax. The moment of resolution or breakthrough.', tip: 'The breakthrough that changed the trajectory.', placeholder: 'e.g., I applied recovery principles to my restaurant. Pre-decided systems. No exceptions. Behavior leads belief. Within 90 days, my food cost dropped 8 points...' },
+            { id: 'eversince', label: 'And ever since then...', prompt: 'The new normal. What\'s different now?', tip: 'Your transformation proof. The "after" that validates the story.', placeholder: 'e.g., Same restaurant. Same town of 1,300 people. Different operating system. 1,200+ days sober. Profitable. Systems handle it...' }
+        ]
+    },
+    bab: {
+        name: 'Before-After-Bridge',
+        description: 'Show the contrast between before and after, then reveal the bridge that connects them.',
+        bestFor: 'Case studies, testimonials, results content, transformation stories',
+        elements: [
+            { id: 'before', label: 'Before', prompt: 'Paint the painful picture. What was life like? Be vivid and specific.', tip: 'Sensory details. "Checking the bank account at 3am. Another 14-hour shift. Still red."', placeholder: 'e.g., Before: Working 80+ hours. Food cost at 38%. Staff turnover every 3 months. Checking the bank account at 3am wondering how this is possible...' },
+            { id: 'after', label: 'After', prompt: 'Show the transformed state. Same level of vivid detail.', tip: 'Make the contrast sharp. Same setting, different reality.', placeholder: 'e.g., After: Same restaurant. Food cost at 30%. Leaving at 6pm. Staff trained on systems, not dependent on me. Bank account growing...' },
+            { id: 'bridge', label: 'Bridge', prompt: 'How do you get from Before to After? What\'s the method, system, or insight?', tip: 'This is where your framework, product, or key insight lives.', placeholder: 'e.g., The bridge wasn\'t working harder. It was three things: one audit to see the truth, one system to fix the biggest leak, and 30 days of no exceptions...' }
+        ]
+    },
+    hormozi: {
+        name: 'Hormozi Business Shape',
+        description: 'Diagnose the business shape, identify its constraint, then show the productization path. Based on Hormozi\'s 4 Business Shapes framework.',
+        bestFor: 'Strategy content, business model breakdowns, productization stories, "which path" content',
+        elements: [
+            { id: 'shape', label: 'The Business Shape', prompt: 'Which of the 4 shapes are you writing about? Service, Education, E-Commerce, or Software? Why does your reader\'s business fit this shape?', tip: 'Most restaurant operators are in Service. Education is the scale layer. Name the shape and why it matters.', placeholder: 'e.g., Your restaurant is a Service business. You trade hours for dollars. The constraint isn\'t demand — it\'s that everything depends on YOU being there...' },
+            { id: 'hairy_problem', label: 'The Hairy Problem', prompt: 'What is the unique constraint of this business shape? Service = talent bottleneck. Education = stickiness. E-commerce = cash flow. Software = long runway.', tip: 'Every shape has one problem that kills most people in it. Name it clearly.', placeholder: 'e.g., The hairy problem in a service business is the talent bottleneck. You can\'t clone yourself. And hiring "good people" without systems just creates expensive chaos...' },
+            { id: 'productize', label: 'The Productization Path', prompt: 'How do you standardize what\'s currently bespoke? Select avatar, limit deliverables to 1-3, systematize the delivery.', tip: 'Hormozi says: narrow the customer, limit the output, build training infrastructure. Apply this to YOUR specific situation.', placeholder: 'e.g., Step 1: Stop cooking for everyone. Pick one avatar (exhausted operators, $500K-$5M). Step 2: Offer three things, not thirty. Step 3: Build the system so it runs without your genius...' },
+            { id: 'teaching', label: 'The Teaching Business', prompt: 'How do you turn your expertise into a training system? You\'re not a doer anymore — you\'re the architect of the system others execute.', tip: '"How can I productize my own knowledge?" is the key question. Document, systematize, train.', placeholder: 'e.g., I stopped being the best chef in the kitchen and started being the best teacher of kitchen systems. My 21-Day Protocol IS the productized knowledge...' },
+            { id: 'pricing', label: 'The Pricing Power Move', prompt: 'How does demand exceeding supply let you raise prices? What\'s the premium brand advantage?', tip: 'Hormozi\'s North Star for service businesses: pricing power. Supply constrained = raise prices. Brand = charge more for the same work.', placeholder: 'e.g., When 10 operators want your help and you can only take 3, you don\'t discount — you double. Premium pricing + limited supply = high margins without more hours...' },
+            { id: 'cta_hormozi', label: 'Your CTA', prompt: 'What should the reader do? Take an assessment, book a call, start productizing their own business?', tip: 'One clear action. Connect it to their specific business shape.', placeholder: 'e.g., Start here: Take the free Profit Leak Calculator. Find your #1 constraint in 5 minutes. Then decide if you want to keep doing everything yourself, or build a system...' }
+        ]
+    },
+    ainative: {
+        name: 'AI-Native Workflow',
+        description: 'Show where the reader sits on the AI adoption curve, reveal what separates levels, and give them the 3 habits to level up. Based on the 3 Levels of AI Adoption framework.',
+        bestFor: 'AI productivity content, workflow transformation stories, "how I work" posts, tech adoption narratives',
+        elements: [
+            { id: 'current_level', label: 'Where They Are Now', prompt: 'Which level is your reader at? AI Curious (free tools, use when stuck), AI Literate (paid tools, prompt database), or AI Native (workflow redesigned around AI)?', tip: 'Most of your audience is AI Curious or early AI Literate. Meet them where they are. No judgment — just clarity.', placeholder: 'e.g., You\'ve tried ChatGPT a few times. Maybe asked it to write an email or brainstorm a menu idea. But it still feels like a novelty, not a workflow...' },
+            { id: 'gap', label: 'The Gap (What They\'re Missing)', prompt: 'What\'s the cost of staying at their current level? What are they leaving on the table by treating AI as a toy instead of a collaborator?', tip: 'Make the gap tangible. Hours lost, money left on the table, decisions made slower than they need to be.', placeholder: 'e.g., Every time you start a new AI chat from scratch, you\'re rebuilding context that should already exist. That\'s not using AI — that\'s babysitting it...' },
+            { id: 'habit_breadcrumbs', label: 'Habit 1: Leave Breadcrumbs', prompt: 'Explain the practice of anchoring AI conversations to your actual work. Hyperlink chats to documents. Organize by where you\'ll USE it, not where you found it.', tip: 'The rule: if an AI conversation took more than 10 minutes, anchor it to your workspace immediately. Context organized by use case, not by date.', placeholder: 'e.g., I stopped losing AI conversations by linking every useful chat directly into the project it belongs to. My knowledge base IS the breadcrumb trail. Every session builds on the last...' },
+            { id: 'habit_swipefile', label: 'Habit 2: Build a Swipe File', prompt: 'Explain curating a library of excellent examples organized by use case. The "analyze then apply" pattern: show AI what good looks like, then have it apply those patterns.', tip: 'Don\'t organize by source or date. Organize by the JOB: "Newsletters," "Proposals," "Menus." Start with 2-3 use cases you repeat weekly.', placeholder: 'e.g., I keep a folder of the best restaurant operations content I\'ve ever seen. When I need to write something new, I don\'t start from zero — I show the AI what excellent looks like and say "match this standard"...' },
+            { id: 'habit_taskplan', label: 'Habit 3: AI-First Task Planning', prompt: 'Explain mapping AI tools to specific microtasks BEFORE starting work. The mise en place of digital work. 5-10 minutes of planning saves hours of execution.', tip: 'The chef analogy: mise en place. Everything prepped before you cook. AI-first planning = deciding which tool handles which step before you start.', placeholder: 'e.g., Before I build anything, I spend 10 minutes mapping every step: What does AI handle? What do I do manually? Which tool is best for which piece? That 10 minutes saves 3 hours of fumbling...' },
+            { id: 'transformation', label: 'The Level Up', prompt: 'Paint the picture of what changes when they adopt these 3 habits. What does their workflow look like as AI Native vs AI Curious?', tip: 'Before/after contrast. Same person, different operating system. Sound familiar?', placeholder: 'e.g., Same operator. Same restaurant. But now every system was built in hours, not weeks. Every framework is documented. Every session builds on the last. That\'s not "using AI." That\'s being AI Native...' },
+            { id: 'cta_ainative', label: 'Your CTA', prompt: 'What\'s one thing they can do TODAY to start leveling up? Keep it small and actionable.', tip: 'One habit. Not three. Pick the easiest entry point for your audience.', placeholder: 'e.g., Start here: Next time you have a good AI conversation, don\'t close the tab. Link it to the project it belongs to. One breadcrumb. That\'s the first step from Curious to Native...' }
+        ]
+    },
+    gametheory: {
+        name: 'Game Theory (Players-Rules-Incentives)',
+        description: 'Analyze any situation through Players, Rules, and Incentives. Reveal the real game being played, identify hidden players, and show how to change the incentive structure. Based on Professor Jiang Xueqin\'s framework.',
+        bestFor: 'Strategy content, "why you\'re stuck" diagnostics, business model analysis, mindset shifts, contrarian takes',
+        elements: [
+            { id: 'the_game', label: 'Name the Game', prompt: 'What game is your reader currently playing? What do they THINK they\'re optimizing for vs. what they\'re ACTUALLY optimizing for? Name both the stated goal and the real incentive.', tip: 'Stated goal: "grow my restaurant." Real incentive: "prove I\'m not a failure" or "stop being exhausted." The gap between stated and real is where the insight lives.', placeholder: 'e.g., You say you want to grow your restaurant. But every decision you make is about survival, not growth. You\'re playing a different game than you think...' },
+            { id: 'players', label: 'The Players (Who Has Agency?)', prompt: 'Who are the real decision-makers in this situation? Look beyond the obvious. Who\'s pulling strings behind the scenes? Who benefits from the status quo?', tip: 'Hidden players: the landlord, the spouse, the bank, the ego, the addiction, the industry "rules" nobody questions. Ask: "Who benefits from this staying the same?"', placeholder: 'e.g., You think you\'re the only player in your restaurant. But your landlord controls 15% of your revenue. Your bank controls your cash flow. Your staff controls execution. And your ego? It\'s the hidden player that won\'t let you ask for help...' },
+            { id: 'rules', label: 'The Rules (Constraints)', prompt: 'What constraints define what\'s possible? Include formal rules (laws, leases, codes) AND invisible rules (cultural norms, industry beliefs, self-imposed limits).', tip: 'The most powerful rules are the ones nobody questions. "Chefs work 80 hours." "You have to do everything yourself." "Asking for help is weakness." These are RULES, not truths.', placeholder: 'e.g., Here are the rules you\'re playing by: "Good chefs work 80-hour weeks." "You can\'t trust staff to do it right." "Asking for help means you failed." None of these are laws of physics. They\'re rules of a game you didn\'t choose...' },
+            { id: 'incentives', label: 'The Incentives (How Do You Win?)', prompt: 'What does winning ACTUALLY look like in this game? Distinguish between status incentives (zero-sum, if I win you lose) and capability incentives (positive-sum, we all win).', tip: 'Status game: more followers, bigger kitchen, fancier menu, working longer than anyone. Capability game: profitable systems, freedom, time back, operators who don\'t need you there.', placeholder: 'e.g., In the status game, winning means being the hardest worker in the room. The one who never leaves. The martyr. In the capability game, winning means the restaurant runs without you. Same revenue. Half the hours. Which game do you want to win?...' },
+            { id: 'superstructure', label: 'The Superstructure Shift', prompt: 'Show how changing the structure changes the behavior. Don\'t just tell them to "try harder" — show them how to change the game itself. New rules, new incentives, new outcome.', tip: 'Recovery IS a superstructure shift — same person, different game. The 21-Day Protocol changes the rules AND the incentives simultaneously. That\'s why it works when motivation doesn\'t.', placeholder: 'e.g., You don\'t need more motivation. You need a different game. When I got sober, I didn\'t become a better person — I changed the rules I was playing by. No exceptions. Pre-decide everything. Behavior leads belief. Same principle applies to your restaurant...' },
+            { id: 'new_game', label: 'The New Game', prompt: 'Paint the picture of what it looks like when they\'re playing the RIGHT game. New players, new rules, new incentives, new outcome.', tip: 'Before/after through the game theory lens. Same operator, different game = different life.', placeholder: 'e.g., New game: You\'re the architect, not the laborer. Your systems are the players. Your pre-decided rules eliminate daily negotiations. Your incentive is freedom, not martyrdom. Same kitchen. Different game entirely...' },
+            { id: 'cta_gametheory', label: 'Your CTA', prompt: 'What\'s one action they can take to start analyzing their own game? An audit, a question to ask themselves, a framework to apply.', tip: 'The simplest entry point: "Ask yourself: What am I actually optimizing for?" That one question changes everything.', placeholder: 'e.g., Start here: Write down what you think you\'re optimizing for. Then look at how you spent last week. Those two answers won\'t match. That gap? That\'s the game you didn\'t know you were playing...' }
+        ]
+    }
+};
+
+/* ═══════════════════════════════════════════
+   DATA — HOOKS
+   ═══════════════════════════════════════════ */
+const HOOKS = [
+    { id: 'credibility', name: 'Credibility', description: 'Establish why they should listen', example: 'After running restaurants for 20 years across 5 countries and rebuilding from $180K in debt...' },
+    { id: 'statistic', name: 'Surprising Stat', description: 'Data that challenges assumptions', example: '60% of restaurants fail in the first year. But the #1 reason isn\'t what you think.' },
+    { id: 'contrarian', name: 'Contrarian', description: 'Challenge conventional wisdom', example: 'Everything you know about controlling food cost is wrong.' },
+    { id: 'curiosity', name: 'Curiosity Gap', description: 'Create a question that demands an answer', example: 'There\'s one thing every profitable restaurant does that most owners refuse to try.' },
+    { id: 'personal', name: 'Personal Story', description: 'Vulnerability creates connection', example: 'Three years ago I was $180,000 in debt and couldn\'t pay my staff.' },
+    { id: 'provocative', name: 'Provocative Question', description: 'Force the brain to engage', example: 'What if everything you\'re doing to save your restaurant is actually killing it?' },
+    { id: 'confession', name: 'Confession', description: 'Admitting mistakes builds trust', example: 'I used to think working harder was the answer. I was dead wrong.' },
+    { id: 'promise', name: 'Promise', description: 'Clear value upfront', example: 'In the next 3 minutes, I\'ll show you the exact system that cut my food cost by 8 points.' },
+    { id: 'interrupt', name: 'Pattern Interrupt', description: 'Something unexpected', example: '-40°C. Population 1,300. The most remote kitchen in North America. That\'s where I learned everything.' },
+    { id: 'you', name: '"You" Statement', description: 'Make it about the reader instantly', example: 'You\'re working 80 hours a week and your restaurant still isn\'t profitable.' }
+];
+
+/* ═══════════════════════════════════════════
+   STATE
+   ═══════════════════════════════════════════ */
+const STORAGE_KEY = 'grumpychef_newsletter_guide';
+
+let state = {
+    currentStep: 0,
+    maxStepReached: 0,
+    topic: '',
+    audience: '',
+    keyTakeaway: '',
+    framework: null,
+    hookType: null,
+    hookText: '',
+    elements: {}
+};
+
+/* ═══════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════ */
+function init() {
+    loadState();
+    renderFrameworkCards();
+    renderHookCards();
+    restoreInputs();
+    updateProgress();
+    updateNav();
+    showStep(state.currentStep);
+}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════ */
+function showStep(n) {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('step--active'));
+    const step = document.getElementById('step-' + n);
+    if (step) step.classList.add('step--active');
+
+    if (n === 3 && state.framework) renderElements();
+    if (n === 4) assembleDraft();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function nextStep() {
+    if (state.currentStep === 0) {
+        state.topic = document.getElementById('topic').value.trim();
+        state.audience = document.getElementById('audience').value.trim();
+        state.keyTakeaway = document.getElementById('key-takeaway').value.trim();
+    }
+
+    if (state.currentStep === 1 && !state.framework) {
+        showToast('Pick a framework to continue');
+        return;
+    }
+
+    if (state.currentStep < 4) {
+        state.currentStep++;
+        if (state.currentStep > state.maxStepReached) state.maxStepReached = state.currentStep;
+        showStep(state.currentStep);
+        updateProgress();
+        updateNav();
+        autoSave();
+    }
+}
+
+function prevStep() {
+    if (state.currentStep > 0) {
+        state.currentStep--;
+        showStep(state.currentStep);
+        updateProgress();
+        updateNav();
+    }
+}
+
+function goToStep(n) {
+    if (n <= state.maxStepReached) {
+        if (n === 1 && state.currentStep === 0) {
+            state.topic = document.getElementById('topic').value.trim();
+            state.audience = document.getElementById('audience').value.trim();
+            state.keyTakeaway = document.getElementById('key-takeaway').value.trim();
+        }
+        state.currentStep = n;
+        showStep(n);
+        updateProgress();
+        updateNav();
+    }
+}
+
+function updateProgress() {
+    document.querySelectorAll('.progress__dot').forEach((dot, i) => {
+        dot.classList.remove('progress__dot--active', 'progress__dot--complete');
+        if (i === state.currentStep) dot.classList.add('progress__dot--active');
+        else if (i < state.currentStep) dot.classList.add('progress__dot--complete');
+    });
+
+    for (let i = 0; i < 4; i++) {
+        const line = document.getElementById('line-' + i);
+        if (line) {
+            line.classList.toggle('progress__line--active', i < state.currentStep);
+        }
+    }
+}
+
+function updateNav() {
+    document.getElementById('btn-back').style.display = state.currentStep > 0 ? 'inline-flex' : 'none';
+
+    const nextBtn = document.getElementById('btn-next');
+    if (state.currentStep === 4) {
+        nextBtn.style.display = 'none';
+    } else {
+        nextBtn.style.display = 'inline-flex';
+        nextBtn.textContent = state.currentStep === 3 ? 'Review Draft' : 'Next';
+    }
+}
+
+/* ═══════════════════════════════════════════
+   RENDER — FRAMEWORK CARDS
+   ═══════════════════════════════════════════ */
+function renderFrameworkCards() {
+    const grid = document.getElementById('framework-grid');
+    grid.innerHTML = '';
+
+    Object.entries(FRAMEWORKS).forEach(([key, fw]) => {
+        const card = document.createElement('div');
+        card.className = 'card' + (state.framework === key ? ' card--selected' : '');
+        card.onclick = () => selectFramework(key);
+        card.innerHTML = `
+            <div class="card__check">&#10003;</div>
+            <div class="card__name">${fw.name}</div>
+            <div class="card__desc">${fw.description}</div>
+            <span class="card__tag">${fw.bestFor}</span>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function selectFramework(key) {
+    state.framework = key;
+    state.elements = {};
+    renderFrameworkCards();
+    autoSave();
+}
+
+/* ═══════════════════════════════════════════
+   RENDER — HOOK CARDS
+   ═══════════════════════════════════════════ */
+function renderHookCards() {
+    const grid = document.getElementById('hook-grid');
+    grid.innerHTML = '';
+
+    HOOKS.forEach(hook => {
+        const card = document.createElement('div');
+        card.className = 'card card--hook' + (state.hookType === hook.id ? ' card--selected' : '');
+        card.onclick = () => selectHook(hook.id);
+        card.innerHTML = `
+            <div class="card__check">&#10003;</div>
+            <div class="card__name">${hook.name}</div>
+            <div class="card__desc">${hook.description}</div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function selectHook(id) {
+    state.hookType = id;
+    renderHookCards();
+
+    const hook = HOOKS.find(h => h.id === id);
+    const exDiv = document.getElementById('hook-example');
+    const exText = document.getElementById('hook-example-text');
+
+    if (hook) {
+        exText.textContent = '"' + hook.example + '"';
+        exDiv.classList.add('hook-example--visible');
+    }
+
+    autoSave();
+}
+
+/* ═══════════════════════════════════════════
+   RENDER — FRAMEWORK ELEMENTS (Step 3)
+   ═══════════════════════════════════════════ */
+function renderElements() {
+    const container = document.getElementById('elements-container');
+    if (!state.framework) return;
+
+    const fw = FRAMEWORKS[state.framework];
+    document.getElementById('step3-desc').textContent =
+        `Using the ${fw.name} framework. Fill in each element — the structure does the thinking.`;
+
+    container.innerHTML = '';
+
+    fw.elements.forEach((el, i) => {
+        const saved = state.elements[el.id] || '';
+        const div = document.createElement('div');
+        div.className = 'element';
+        div.innerHTML = `
+            <div class="element__header">
+                <div class="element__number">${i + 1}</div>
+                <div class="element__label">${el.label}</div>
+            </div>
+            <div class="element__prompt">${el.prompt}</div>
+            <div class="element__tip">${el.tip}</div>
+            <textarea
+                id="el-${el.id}"
+                placeholder="${el.placeholder || ''}"
+                oninput="saveElement('${el.id}', this.value); updateWordCount('el-${el.id}', 'wc-${el.id}')"
+            >${saved}</textarea>
+            <div class="element__wordcount" id="wc-${el.id}">${wordCount(saved)} words</div>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function saveElement(id, value) {
+    state.elements[id] = value;
+    autoSave();
+}
+
+/* ═══════════════════════════════════════════
+   ASSEMBLE DRAFT (Step 4)
+   ═══════════════════════════════════════════ */
+function assembleDraft() {
+    if (!state.framework) return;
+
+    const fw = FRAMEWORKS[state.framework];
+    let parts = [];
+
+    // Hook first
+    if (state.hookText) {
+        parts.push(state.hookText);
+    }
+
+    // Framework elements
+    fw.elements.forEach(el => {
+        const text = (state.elements[el.id] || '').trim();
+        if (text) {
+            parts.push(text);
+        }
+    });
+
+    const draft = parts.join('\n\n');
+
+    document.getElementById('review-draft').textContent = draft || 'No content yet. Go back and fill in the framework elements.';
+
+    // Stats
+    const wc = wordCount(draft);
+    const readTime = Math.max(1, Math.ceil(wc / 200));
+    document.getElementById('stat-words').textContent = wc;
+    document.getElementById('stat-reading').textContent = readTime + ' min';
+    document.getElementById('stat-framework').textContent = fw.name.split(' (')[0];
+
+    const hookObj = HOOKS.find(h => h.id === state.hookType);
+    document.getElementById('stat-hook').textContent = hookObj ? hookObj.name : '—';
+}
+
+/* ═══════════════════════════════════════════
+   EXPORT
+   ═══════════════════════════════════════════ */
+function copyDraft() {
+    const draft = document.getElementById('review-draft').textContent;
+    navigator.clipboard.writeText(draft).then(() => {
+        showToast('Copied to clipboard');
+    }).catch(() => {
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = draft;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('Copied to clipboard');
+    });
+}
+
+function downloadDraft() {
+    const draft = document.getElementById('review-draft').textContent;
+    const fw = FRAMEWORKS[state.framework];
+    const filename = (state.topic || 'newsletter').toLowerCase().replace(/[^a-z0-9]+/g, '-').substring(0, 50) + '.md';
+
+    let content = '# ' + (state.topic || 'Newsletter Draft') + '\n\n';
+    content += '> Framework: ' + (fw ? fw.name : 'None') + '\n\n';
+    content += '---\n\n';
+    content += draft;
+
+    const blob = new Blob([content], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Downloaded ' + filename);
+}
+
+function startOver() {
+    if (!confirm('Start fresh? This will clear all your current work.')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    state = {
+        currentStep: 0,
+        maxStepReached: 0,
+        topic: '',
+        audience: '',
+        keyTakeaway: '',
+        framework: null,
+        hookType: null,
+        hookText: '',
+        elements: {}
+    };
+    document.getElementById('topic').value = '';
+    document.getElementById('audience').value = '';
+    document.getElementById('key-takeaway').value = '';
+    document.getElementById('hook-text').value = '';
+    document.getElementById('hook-example').classList.remove('hook-example--visible');
+    renderFrameworkCards();
+    renderHookCards();
+    goToStep(0);
+    showToast('Fresh start');
+}
+
+/* ═══════════════════════════════════════════
+   THOUGHT LEADERSHIP TOGGLE
+   ═══════════════════════════════════════════ */
+function togglePrinciples() {
+    const content = document.getElementById('principles-content');
+    const arrow = document.getElementById('principles-arrow');
+    content.classList.toggle('principles__content--open');
+    arrow.classList.toggle('principles__toggle-arrow--open');
+}
+
+/* ═══════════════════════════════════════════
+   UTILITIES
+   ═══════════════════════════════════════════ */
+function wordCount(text) {
+    if (!text || !text.trim()) return 0;
+    return text.trim().split(/\s+/).length;
+}
+
+function updateWordCount(inputId, wcId) {
+    const el = document.getElementById(inputId);
+    const wc = document.getElementById(wcId);
+    if (el && wc) {
+        wc.textContent = wordCount(el.value) + ' words';
+    }
+}
+
+function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('toast--visible');
+    setTimeout(() => toast.classList.remove('toast--visible'), 2500);
+}
+
+/* ═══════════════════════════════════════════
+   AUTO-SAVE (localStorage)
+   ═══════════════════════════════════════════ */
+let saveTimeout;
+
+function autoSave() {
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(() => {
+        // Capture current input values
+        const topicEl = document.getElementById('topic');
+        const audEl = document.getElementById('audience');
+        const takeawayEl = document.getElementById('key-takeaway');
+        const hookEl = document.getElementById('hook-text');
+
+        if (topicEl) state.topic = topicEl.value;
+        if (audEl) state.audience = audEl.value;
+        if (takeawayEl) state.keyTakeaway = takeawayEl.value;
+        if (hookEl) state.hookText = hookEl.value;
+
+        const data = {
+            ...state,
+            savedAt: new Date().toISOString()
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+        const indicator = document.getElementById('autosave');
+        indicator.textContent = 'Auto-saved ' + new Date().toLocaleTimeString();
+        setTimeout(() => { indicator.textContent = ''; }, 3000);
+    }, 1500);
+}
+
+function loadState() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+        try {
+            const data = JSON.parse(saved);
+            state = { ...state, ...data };
+        } catch (e) {
+            // Corrupted save, start fresh
+        }
+    }
+}
+
+function restoreInputs() {
+    document.getElementById('topic').value = state.topic || '';
+    document.getElementById('audience').value = state.audience || '';
+    document.getElementById('key-takeaway').value = state.keyTakeaway || '';
+    document.getElementById('hook-text').value = state.hookText || '';
+
+    updateWordCount('audience', 'audience-wc');
+    updateWordCount('hook-text', 'hook-wc');
+
+    if (state.hookType) {
+        const hook = HOOKS.find(h => h.id === state.hookType);
+        if (hook) {
+            document.getElementById('hook-example-text').textContent = '"' + hook.example + '"';
+            document.getElementById('hook-example').classList.add('hook-example--visible');
+        }
+    }
+}
+
+/* ═══════════════════════════════════════════
+   BOOT
+   ═══════════════════════════════════════════ */
+init();
+</script>
+
+</body>
+</html>

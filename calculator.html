@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>72-Hour Profit Discovery Calculator | The Grumpy Chef</title>
+    <meta name="description" content="Find where your restaurant is bleeding money. 8 common leaks. $50K-$160K potential recovery. Built by a Master Chef who found $41K in his own operation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET
+           ============================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --navy-hover: #162642;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gray-dark: #2D3748;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --blue: #00A6D6;
+            --blue-dim: #008AB3;
+            --blue-glow: rgba(0, 166, 214, 0.10);
+            --red: #C53030;
+            --red-glow: rgba(197, 48, 48, 0.10);
+            --green: #2F855A;
+            --green-glow: rgba(47, 133, 90, 0.10);
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+        .gold-top { height: 3px; background: linear-gradient(90deg, var(--gold), var(--blue), var(--gold)); }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            padding: 56px 0 40px;
+            background: linear-gradient(180deg, #0C1A2E 0%, var(--navy) 100%);
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .hero__brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .hero__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(30px, 6vw, 50px);
+            line-height: 1.08;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        .hero__sub {
+            font-size: 17px;
+            color: var(--white-dim);
+            max-width: 560px;
+            line-height: 1.55;
+            margin-bottom: 28px;
+        }
+        .hero__sub strong { color: var(--gold); font-weight: 600; }
+
+        /* Stats Bar */
+        .stats {
+            display: flex;
+            gap: 0;
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 28px;
+        }
+        .stat {
+            flex: 1;
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 1px solid var(--navy-border);
+        }
+        .stat:last-child { border-right: none; }
+        .stat__num {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--gold);
+            line-height: 1.1;
+        }
+        .stat__label {
+            font-size: 11px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+            line-height: 1.3;
+        }
+
+        /* Brand Photo */
+        .hero__layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 32px;
+        }
+        .hero__content { flex: 1; }
+        .hero__photo {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding-top: 8px;
+        }
+        .brand-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
+            display: block;
+        }
+        .brand-photo-caption {
+            font-size: 11px;
+            color: var(--gray);
+            text-align: center;
+            line-height: 1.4;
+            max-width: 160px;
+        }
+        .results-attribution {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            margin: 24px 0;
+        }
+        .results-attribution__photo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .results-attribution__text {
+            font-size: 13px;
+            color: var(--white-dim);
+            line-height: 1.5;
+        }
+        .results-attribution__text strong { color: var(--white); }
+
+        /* Credentials */
+        .creds {
+            font-size: 12px;
+            color: var(--gray);
+            letter-spacing: 0.3px;
+        }
+        .creds span { color: var(--navy-border); margin: 0 8px; }
+
+        /* Start CTA */
+        .hero__cta {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            padding: 12px 0;
+            margin-top: 24px;
+            border-bottom: 2px solid var(--gold);
+            transition: all 0.15s ease;
+        }
+        .hero__cta:hover { color: var(--white); border-color: var(--white); }
+
+        /* ============================================
+           INTRO
+           ============================================ */
+        .intro {
+            padding: 36px 0;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .intro__text {
+            font-size: 15px;
+            color: var(--white-dim);
+            line-height: 1.75;
+            margin-bottom: 10px;
+        }
+        .intro__text strong { color: var(--white); }
+        .intro__quote {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--gold);
+            padding: 18px 20px;
+            background: var(--gold-glow);
+            border-left: 3px solid var(--gold);
+            margin-top: 20px;
+            line-height: 1.65;
+        }
+
+        /* ============================================
+           REVENUE INPUT
+           ============================================ */
+        .revenue-input {
+            padding: 24px 0 0;
+        }
+        .revenue-input__wrap {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+        }
+        .revenue-input__label {
+            font-size: 13px;
+            color: var(--gray);
+            white-space: nowrap;
+        }
+        .revenue-input__field {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 12px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            color: var(--white);
+            width: 160px;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+        .revenue-input__field:focus { border-color: var(--gold-dim); }
+        .revenue-input__field::placeholder { color: var(--gray-dark); }
+        .revenue-input__hint {
+            font-size: 11px;
+            color: var(--gray-dark);
+        }
+
+        /* ============================================
+           CALCULATOR
+           ============================================ */
+        .calculator { padding: 32px 0 120px; }
+        .section-label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 24px;
+        }
+
+        /* ============================================
+           CATEGORY CARDS
+           ============================================ */
+        .cat-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 14px;
+            transition: border-color 0.2s;
+        }
+        .cat-card.has-leaks { border-color: var(--gold-border); }
+        .cat-card__num {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--gray-dark);
+            margin-bottom: 4px;
+        }
+        .cat-card__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+        .cat-card__name {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        .cat-card__leak {
+            font-family: var(--font-mono);
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--gray-dark);
+            text-align: right;
+            min-width: 90px;
+            transition: color 0.25s;
+        }
+        .cat-card__leak.active { color: var(--gold); }
+        .cat-card__desc {
+            font-size: 13px;
+            color: var(--gray);
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+        .cat-card__questions { display: flex; flex-direction: column; gap: 10px; }
+
+        /* ============================================
+           CHECKBOXES
+           ============================================ */
+        .chk {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 12px 16px;
+            background: var(--navy-light);
+            border-radius: 6px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.12s;
+        }
+        .chk:hover { background: var(--navy-hover); border-color: var(--navy-border); }
+        .chk.on { background: var(--gold-glow); border-color: var(--gold-border); }
+        .chk input { display: none; }
+        .chk__box {
+            flex-shrink: 0;
+            width: 22px; height: 22px;
+            border: 2px solid var(--gray-dark);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+            transition: all 0.12s;
+        }
+        .chk.on .chk__box { background: var(--gold); border-color: var(--gold); }
+        .chk__box svg {
+            width: 14px; height: 14px;
+            opacity: 0; transform: scale(0.5);
+            transition: all 0.12s;
+        }
+        .chk.on .chk__box svg { opacity: 1; transform: scale(1); }
+        .chk__label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--white-dim);
+            line-height: 1.4;
+        }
+        .chk.on .chk__label { color: var(--white); }
+        .chk__cost {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--gray-dark);
+            margin-top: 2px;
+        }
+        .chk.on .chk__cost { color: var(--gold-dim); }
+
+        /* ============================================
+           RESULTS
+           ============================================ */
+        .results {
+            padding: 48px 0 0;
+            border-top: 2px solid var(--gold-dim);
+        }
+        .results__empty {
+            color: var(--gray);
+            font-size: 15px;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .results__total {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(48px, 10vw, 76px);
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .results__total.zero { color: var(--gray-dark); }
+        .results__sub {
+            font-family: var(--font-mono);
+            font-size: 15px;
+            color: var(--gray);
+        }
+        .results__sub span { color: var(--white-dim); }
+        .results__pct {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--blue);
+            margin-top: 6px;
+        }
+        .results__context {
+            font-size: 14px;
+            color: var(--white-dim);
+            margin-top: 16px;
+            line-height: 1.65;
+            padding: 16px 20px;
+            border-radius: 6px;
+        }
+        .results__context.tier-low { background: var(--blue-glow); border-left: 3px solid var(--blue); }
+        .results__context.tier-mid { background: var(--gold-glow); border-left: 3px solid var(--gold); }
+        .results__context.tier-high { background: var(--red-glow); border-left: 3px solid var(--red); }
+        .results__context.tier-crit { background: var(--red-glow); border-left: 3px solid var(--red); }
+
+        /* ============================================
+           PRIORITY
+           ============================================ */
+        .priority {
+            background: var(--navy-card);
+            border: 1px solid var(--gold-border);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        .priority__tag {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .priority__name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 24px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .priority__amount {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .priority__action {
+            font-size: 14px;
+            color: var(--white-dim);
+            line-height: 1.65;
+            padding-top: 16px;
+            border-top: 1px solid var(--navy-border);
+        }
+        .priority__action strong { color: var(--white); }
+
+        /* ============================================
+           BAR CHART
+           ============================================ */
+        .chart { margin: 32px 0; }
+        .chart__row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .chart__label {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--gray);
+            width: 120px;
+            flex-shrink: 0;
+            text-align: right;
+            line-height: 1.2;
+        }
+        .chart__row.top .chart__label { color: var(--white); }
+        .chart__track {
+            flex: 1;
+            height: 26px;
+            background: var(--navy-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .chart__fill {
+            height: 100%;
+            background: var(--gray-dark);
+            border-radius: 4px;
+            transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .chart__row.top .chart__fill { background: var(--gold); }
+        .chart__value {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--gray);
+            width: 75px;
+            flex-shrink: 0;
+            text-align: right;
+        }
+        .chart__row.top .chart__value { color: var(--gold); font-weight: 500; }
+
+        /* ============================================
+           IMPLEMENTATION
+           ============================================ */
+        .impl {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        .impl__title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 16px;
+        }
+        .impl__step {
+            font-size: 14px;
+            color: var(--white-dim);
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        .impl__step strong { color: var(--white); }
+        .impl__note {
+            font-size: 13px;
+            color: var(--gray);
+            font-style: italic;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--navy-border);
+        }
+
+        /* ============================================
+           EXPORT
+           ============================================ */
+        .export {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 32px 0;
+        }
+        .btn {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.12s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn svg { width: 15px; height: 15px; }
+        .btn--gold { background: var(--gold); color: var(--navy); }
+        .btn--gold:hover { background: var(--gold-dim); }
+        .btn--outline { background: transparent; color: var(--white-dim); border: 1px solid var(--navy-border); }
+        .btn--outline:hover { border-color: var(--gray); color: var(--white); }
+        .btn--ghost { background: transparent; color: var(--gray); border: 1px solid var(--navy-border); }
+        .btn--ghost:hover { border-color: var(--red); color: var(--red); }
+
+        /* ============================================
+           CAPTURE FORM
+           ============================================ */
+        .capture {
+            margin: 48px 0 32px;
+            border-top: 1px solid var(--navy-border);
+            padding-top: 48px;
+        }
+        .capture__card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            padding: 32px 28px;
+        }
+        .capture__tag {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 8px;
+        }
+        .capture__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 24px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .capture__desc {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .capture__form { display: flex; flex-direction: column; gap: 14px; }
+        .capture__row { display: flex; gap: 14px; }
+        .capture__field { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+        .capture__lbl {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .capture__lbl .opt { color: var(--gray-dark); font-weight: 400; text-transform: none; letter-spacing: 0; }
+        .capture__input {
+            font-family: var(--font-body);
+            font-size: 15px;
+            padding: 12px 14px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            color: var(--white);
+            outline: none;
+            width: 100%;
+            transition: border-color 0.12s;
+        }
+        .capture__input::placeholder { color: var(--gray-dark); }
+        .capture__input:focus { border-color: var(--gold-dim); }
+        .capture__input.err { border-color: var(--red); }
+        .capture__submit {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 16px;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.12s;
+            margin-top: 6px;
+            width: 100%;
+        }
+        .capture__submit:hover { background: var(--gold-dim); }
+        .capture__submit:disabled { opacity: 0.5; cursor: not-allowed; }
+        .capture__fine {
+            font-size: 11px;
+            color: var(--gray-dark);
+            margin-top: 8px;
+        }
+        .capture__error {
+            font-size: 13px;
+            color: var(--red);
+            margin-top: 6px;
+            display: none;
+        }
+        .capture__ok {
+            display: none;
+            text-align: center;
+            padding: 28px 0;
+        }
+        .capture__ok-icon {
+            width: 48px; height: 48px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .capture__ok-icon svg { width: 24px; height: 24px; }
+        .capture__ok-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .capture__ok-text {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta-section {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 40px;
+        }
+        .cta-section__context {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.7;
+            max-width: 520px;
+            margin: 0 auto 28px;
+        }
+        .cta-section__btns {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+        .btn--big {
+            font-size: 15px;
+            padding: 18px 40px;
+            width: 100%;
+            max-width: 420px;
+            justify-content: center;
+        }
+        .cta-section__sub {
+            font-size: 12px;
+            color: var(--gray-dark);
+            margin-top: 4px;
+        }
+
+        /* ============================================
+           STICKY BAR
+           ============================================ */
+        .sticky {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: var(--navy-light);
+            border-top: 1px solid var(--navy-border);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .sticky.show { transform: translateY(0); }
+        .sticky__amount {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--gold);
+        }
+        .sticky__amount.zero { color: var(--gray-dark); }
+        .sticky__meta {
+            font-size: 11px;
+            color: var(--gray);
+        }
+        .sticky__link {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--navy-border);
+            text-align: center;
+        }
+        .footer__brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+        .footer__line {
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 2px;
+        }
+
+        /* ============================================
+           PRINT
+           ============================================ */
+        .print-only { display: none; }
+
+        @media print {
+            body { background: #fff; color: #111; font-size: 11px; }
+            .gold-top { display: none; }
+            .hero { padding: 16px 0; border-bottom: 2px solid #111; background: none; }
+            .hero__brand { color: #111; }
+            .hero__title { font-size: 26px; color: #111; }
+            .hero__sub, .hero__cta { display: none; }
+            .stats { border-color: #ccc; }
+            .stat { border-color: #ccc; }
+            .stat__num { color: #111; }
+            .creds { display: block; margin-top: 8px; color: #555; }
+            .intro { padding: 12px 0; border-bottom: 1px solid #ddd; }
+            .intro__quote { background: #f5f5f5; border-left-color: #333; color: #333; }
+            .revenue-input { display: none; }
+            .cat-card { background: #fff; border: 1px solid #ddd; break-inside: avoid; padding: 14px; margin-bottom: 10px; }
+            .cat-card__leak.active { color: #111; font-weight: 700; }
+            .chk { background: transparent; padding: 4px 0; border: none; }
+            .chk:not(.on) { display: none; }
+            .chk__box { border-color: #111; width: 14px; height: 14px; }
+            .chk.on .chk__box { background: #111; border-color: #111; }
+            .chk__cost, .chk.on .chk__cost { color: #333; }
+            .results { border-top: 2px solid #111; }
+            .results__total { color: #111; }
+            .results__context { border-left-color: #333; background: #f5f5f5; color: #333; }
+            .priority { border-color: #111; background: #f9f9f9; }
+            .priority__tag, .priority__amount { color: #111; }
+            .chart__fill { background: #aaa; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .chart__row.top .chart__fill { background: #333; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .chart__track { background: #eee; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .chart__row.top .chart__value { color: #111; }
+            .impl { background: #f9f9f9; border-color: #ddd; }
+            .impl__title { color: #111; }
+            .sticky, .export, .btn, .capture, .cta-section { display: none !important; }
+            .footer { border-top: 1px solid #ddd; }
+            .footer__brand { color: #111; }
+            .print-only { display: block !important; }
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 600px) {
+            .container { padding: 0 16px; }
+            .hero { padding: 36px 0 28px; }
+            .hero__layout { flex-direction: column; align-items: center; text-align: center; }
+            .hero__photo { padding-top: 0; margin-bottom: 8px; }
+            .brand-photo { width: 100px; height: 100px; }
+            .hero__title, .hero__sub { text-align: center; }
+            .stats { flex-wrap: wrap; }
+            .stat { flex: 1 1 48%; border-bottom: 1px solid var(--navy-border); }
+            .stat:nth-child(2) { border-right: none; }
+            .stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
+            .creds { display: none; }
+            .revenue-input__wrap { flex-direction: column; align-items: stretch; gap: 8px; }
+            .revenue-input__field { width: 100%; }
+            .cat-card { padding: 20px 16px; }
+            .cat-card__header { flex-direction: column; gap: 2px; }
+            .cat-card__leak { text-align: left; font-size: 18px; }
+            .chk { padding: 10px 12px; }
+            .chart__row { flex-wrap: wrap; gap: 2px; }
+            .chart__label { width: 100%; text-align: left; }
+            .chart__track { height: 20px; }
+            .chart__value { width: 65px; font-size: 11px; }
+            .results__total { font-size: 48px; }
+            .capture__card { padding: 24px 18px; }
+            .capture__row { flex-direction: column; }
+            .export { flex-direction: column; }
+            .btn, .btn--big { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="gold-top"></div>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+    <div class="container">
+        <div class="hero__layout">
+            <div class="hero__content">
+                <div class="hero__brand">The Grumpy Chef</div>
+                <h1 class="hero__title">Find Your Restaurant's<br>#1 Profit Leak in 72 Hours</h1>
+                <p class="hero__sub">The emergency diagnostic that found <strong>$41,000+</strong> in preventable leaks in my own operation. Most restaurants are bleeding $50K-$160K per year. They just don't know where.</p>
+            </div>
+            <div class="hero__photo">
+                <img class="brand-photo" src="../../assets/brand-photo.jpg" alt="Christian Schiffner — German Master Chef">
+                <div class="brand-photo-caption">Christian Schiffner<br>German Master Chef (Kuchenmeister)<br>20+ Years Operations</div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat__num">8</div>
+                <div class="stat__label">Common Leaks</div>
+            </div>
+            <div class="stat">
+                <div class="stat__num">$50K-$160K</div>
+                <div class="stat__label">Potential Recovery</div>
+            </div>
+            <div class="stat">
+                <div class="stat__num">7-10 hrs</div>
+                <div class="stat__label">Across 3 Days</div>
+            </div>
+            <div class="stat">
+                <div class="stat__num">1,274+</div>
+                <div class="stat__label">Days of Proof</div>
+            </div>
+        </div>
+
+        <div class="creds">
+            German Master Chef (Küchenmeister)<span>|</span>20+ Years Operations<span>|</span>5 Countries<span>|</span>Yukon, Canada &mdash; 64°N
+        </div>
+
+        <a href="#calculator" class="hero__cta">Start the Discovery &#8595;</a>
+    </div>
+</header>
+
+<!-- ==================== INTRO ==================== -->
+<section class="intro">
+    <div class="container">
+        <p class="intro__text">
+            <strong>I'm Christian Schiffner.</strong> German Master Chef who rebuilt from addiction and $180K debt using systematic frameworks. This calculator uses the same diagnostic I ran on my own operation — found $41,000 in preventable leaks. Takes 7-10 hours across 3 days. No software required.
+        </p>
+        <p class="intro__text">
+            Check each statement that's true for your restaurant. Be honest. The numbers only work if they're real.
+        </p>
+        <div class="intro__quote">
+            This isn't about perfection. It's about identifying your #1 priority and fixing it while you're exhausted. One leak at a time. That's how I rebuilt. That's how this works.
+        </div>
+    </div>
+</section>
+
+<!-- ==================== CALCULATOR ==================== -->
+<section class="calculator" id="calculator">
+    <div class="container">
+        <div class="revenue-input">
+            <div class="revenue-input__wrap">
+                <div class="revenue-input__label">Your monthly revenue <span style="color:var(--gray-dark)">(optional — makes results more specific)</span></div>
+                <input type="text" class="revenue-input__field" id="monthly-revenue" placeholder="e.g. $80,000" oninput="handleRevenue()">
+            </div>
+        </div>
+
+        <div style="margin-top:32px;">
+            <div class="section-label">The 8 Profit Leak Categories</div>
+        </div>
+        <div id="categories"></div>
+    </div>
+</section>
+
+<!-- ==================== RESULTS ==================== -->
+<section class="results" id="results">
+    <div class="container">
+        <div class="section-label">Your Estimated Annual Leak</div>
+
+        <div id="results-empty" class="results__empty">
+            Check the items above that apply to your restaurant.
+        </div>
+
+        <div id="results-data" style="display:none;">
+            <div style="margin-bottom:32px;">
+                <div class="results__total" id="r-total">$0</div>
+                <div class="results__sub">That's <span id="r-monthly">$0</span>/month walking out your door. <span id="r-weekly">$0</span>/week.</div>
+                <div class="results__pct" id="r-pct" style="display:none;"></div>
+                <div class="results__context" id="r-context"></div>
+            </div>
+
+            <!-- PRIORITY -->
+            <div class="priority" id="priority" style="display:none;">
+                <div class="priority__tag">Your #1 Priority &mdash; Fix This First</div>
+                <div class="priority__name" id="p-name"></div>
+                <div class="priority__amount" id="p-amount"></div>
+                <div class="priority__action" id="p-action"></div>
+            </div>
+
+            <!-- CHART -->
+            <div class="chart">
+                <div class="section-label">All Leaks &mdash; Ranked</div>
+                <div id="chart-bars"></div>
+            </div>
+
+            <!-- IMPLEMENTATION -->
+            <div class="impl" id="impl-section">
+                <div class="impl__title">72-Hour Implementation &mdash; Built for 60% Capacity</div>
+                <div class="impl__step"><strong>Day 1 — Exposure:</strong> <span id="impl-day1">Do the full waste walk. Get real numbers instead of estimates. This calculator gave you the map — Day 1 gives you the territory.</span></div>
+                <div class="impl__step"><strong>Day 2 — Diagnosis:</strong> Run the 5 Whys on your #1 leak. Find the root cause. Design one system. Not eight. One.</div>
+                <div class="impl__step"><strong>Day 3 — Install:</strong> Write the protocol. One page. Brief the team. Start measuring today. Not Monday. Today.</div>
+                <div class="impl__note">This connects to the 21-Day Restaurant Recovery Protocol — the same systematic framework that rebuilt my restaurant. The 72-Hour Discovery finds WHERE. The 21-Day Protocol fixes HOW.</div>
+            </div>
+
+            <!-- ATTRIBUTION -->
+            <div class="results-attribution">
+                <img class="results-attribution__photo" src="../../assets/brand-photo.jpg" alt="Christian Schiffner">
+                <div class="results-attribution__text">
+                    <strong>Christian Schiffner</strong> — German Master Chef (Kuchenmeister). 20+ years, 5 countries. Rebuilt from $180K debt using systematic frameworks. 1,274+ days of proof that systems beat motivation.
+                </div>
+            </div>
+
+            <!-- EXPORT -->
+            <div class="export">
+                <button class="btn btn--outline" onclick="exportPDF()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v5h5"/><path d="M12 11v6m-3-3l3 3 3-3"/></svg>
+                    Save as PDF
+                </button>
+                <button class="btn btn--outline" onclick="exportEmail()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+                    Email Results
+                </button>
+                <button class="btn btn--ghost" onclick="resetAll()">Reset</button>
+            </div>
+
+            <!-- CAPTURE -->
+            <div class="capture" id="capture-section">
+                <div class="capture__card">
+                    <div id="cap-form-wrap">
+                        <div class="capture__tag">Based on Your Results</div>
+                        <div class="capture__title">Get Your Custom 72-Hour Action Plan</div>
+                        <div class="capture__desc">
+                            Your personal protocol built around the leaks you just identified. Step-by-step. Built for when you're running on empty. Delivered to your inbox.
+                        </div>
+                        <form class="capture__form" id="cap-form" onsubmit="submitForm(event)">
+                            <div class="capture__row">
+                                <div class="capture__field">
+                                    <label class="capture__lbl" for="f-name">Name</label>
+                                    <input class="capture__input" type="text" id="f-name" placeholder="Your name" required>
+                                </div>
+                                <div class="capture__field">
+                                    <label class="capture__lbl" for="f-email">Email</label>
+                                    <input class="capture__input" type="email" id="f-email" placeholder="you@restaurant.com" required>
+                                </div>
+                            </div>
+                            <div class="capture__row">
+                                <div class="capture__field">
+                                    <label class="capture__lbl" for="f-restaurant">Restaurant Name</label>
+                                    <input class="capture__input" type="text" id="f-restaurant" placeholder="Your restaurant" required>
+                                </div>
+                                <div class="capture__field">
+                                    <label class="capture__lbl" for="f-sales">Monthly Sales <span class="opt">(optional)</span></label>
+                                    <input class="capture__input" type="text" id="f-sales" placeholder="e.g. $80,000">
+                                </div>
+                            </div>
+                            <button type="submit" class="capture__submit" id="cap-btn">Send My Protocol</button>
+                            <div class="capture__error" id="cap-err"></div>
+                            <div class="capture__fine">No spam. No 47-email sequence. Your protocol and that's it.</div>
+                        </form>
+                    </div>
+                    <div class="capture__ok" id="cap-ok">
+                        <div class="capture__ok-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#0A1628" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 9 17 20 6"/></svg>
+                        </div>
+                        <div class="capture__ok-title">Check Your Inbox</div>
+                        <div class="capture__ok-text">Your custom 72-Hour Protocol is on its way.<br>Built around your #1 leak. Ready to execute.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <div class="cta-section__context">
+                    The calculator shows you where you're bleeding. The 72-Hour Protocol stops it. The Grumpy Chef Academy teaches you to never lose it again.
+                </div>
+                <div class="cta-section__btns">
+                    <a href="YOUR_CALENDLY_LINK" target="_blank" rel="noopener" class="btn btn--gold btn--big">
+                        Book Your 72-Hour Discovery Call
+                    </a>
+                    <div class="cta-section__sub">30 minutes. Your numbers. A plan. No pitch.</div>
+                    <a href="YOUR_ACADEMY_WAITLIST_LINK" target="_blank" rel="noopener" class="btn btn--outline btn--big" style="margin-top:8px;">
+                        Join The Grumpy Chef Academy
+                    </a>
+                    <div class="cta-section__sub">Early access. Frameworks, tools, and operator community.</div>
+                </div>
+            </div>
+
+            <div class="print-only" style="margin-top:20px;font-size:12px;color:#666;">
+                <p>Generated by The Grumpy Chef &mdash; 72-Hour Profit Discovery Calculator</p>
+                <p>thegrumpychef.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__brand">The Grumpy Chef</div>
+        <div class="footer__line">Systems that work when you're exhausted.</div>
+        <div class="footer__line" style="color:var(--gray-dark);">Not a consultant. An operator who learned the hard way.</div>
+    </div>
+</footer>
+
+<!-- ==================== STICKY BAR ==================== -->
+<div class="sticky" id="sticky">
+    <div>
+        <div class="sticky__amount zero" id="s-amount">$0</div>
+        <div class="sticky__meta" id="s-meta">0 leaks identified</div>
+    </div>
+    <a href="#results" class="sticky__link">See Results</a>
+</div>
+
+<script>
+    // ============================================
+    // CONFIG
+    // ============================================
+    const WEBHOOK_URL = 'https://christhwegrumpychef.app.n8n.cloud/webhook/grumpy-chef-leads';
+
+    // ============================================
+    // DATA
+    // ============================================
+    const cats = [
+        {
+            id: 'food-waste',
+            name: 'Untracked Food Waste',
+            desc: 'Product that expires, gets over-prepped, or walks out the door without anyone counting it.',
+            range: '$15K \u2013 $40K/yr',
+            action: 'Start a daily waste log. End of every service, 5 minutes. Weigh what gets thrown away. Track for 2 weeks. The number will shock you. That\u2019s your baseline \u2014 now you can fix it.',
+            qs: [
+                { label: 'We don\u2019t track food waste daily \u2014 nobody weighs or logs what gets thrown away', cost: 13000 },
+                { label: 'Prep quantities are based on feel, not forecasted covers or par sheets', cost: 11000 },
+                { label: 'There\u2019s expired or dead inventory sitting in our walk-in right now', cost: 9000 }
+            ]
+        },
+        {
+            id: 'labor',
+            name: 'Labor Misallocation',
+            desc: 'You doing $15/hr work. Staff overlapping on slow days. Overtime from bad scheduling.',
+            range: '$10K \u2013 $30K/yr',
+            action: 'Track your own hours for one week. Tag each hour: could someone earning $15-20/hr do this? Delegate those first. Then stagger shift start times based on actual volume, not habit.',
+            qs: [
+                { label: 'I regularly do tasks I could pay someone $15-20/hr to handle', cost: 12000 },
+                { label: 'No staggered start/end times \u2014 staff arrive and leave based on habit, not volume', cost: 8000 },
+                { label: 'Overtime happens weekly because of scheduling, not because we\u2019re actually busy', cost: 7000 }
+            ]
+        },
+        {
+            id: 'menu',
+            name: 'Menu Mispricing',
+            desc: 'Your bestsellers might be your worst earners. Most operators don\u2019t know which is which.',
+            range: '$8K \u2013 $25K/yr',
+            action: 'Pull your top 10 sellers. Calculate actual food cost % for each. Find the ones above 35%. That\u2019s where you\u2019re giving money away. Reprice or re-engineer those dishes this week.',
+            qs: [
+                { label: 'Menu prices are based on competition or gut feeling \u2014 not food cost calculations', cost: 10000 },
+                { label: 'I don\u2019t know which menu items have the best and worst margins', cost: 8000 },
+                { label: 'Menu hasn\u2019t been re-engineered for profitability in 6+ months', cost: 7000 }
+            ]
+        },
+        {
+            id: 'supplier',
+            name: 'Supplier Overpayment',
+            desc: 'If you haven\u2019t compared prices recently, you\u2019re overpaying. Guaranteed.',
+            range: '$5K \u2013 $20K/yr',
+            action: 'Pull your top 20 ingredients by spend. Get quotes from two alternate suppliers this week. You\u2019ll find at least 3 items where you\u2019re overpaying 10-20%. Lock in contracts for 90 days.',
+            qs: [
+                { label: 'Haven\u2019t compared supplier prices or gotten competitive quotes in 6+ months', cost: 7000 },
+                { label: 'No contracts locking in pricing \u2014 we pay whatever the current rate is', cost: 6000 },
+                { label: 'We emergency-order at premium prices at least once a week', cost: 5000 }
+            ]
+        },
+        {
+            id: 'delivery',
+            name: 'Delivery Platform Bleed',
+            desc: 'Giving 25-30% of every delivery order to a platform. With no plan to stop.',
+            range: '$5K \u2013 $15K/yr',
+            action: 'Calculate your actual margin on delivery orders after platform fees. If it\u2019s under 5%, you\u2019re paying to give food away. Price delivery menu separately. Add a card insert pushing direct orders.',
+            qs: [
+                { label: 'We use delivery platforms with no strategy to convert customers to direct orders', cost: 6000 },
+                { label: 'Delivery menu uses the same prices as dine-in \u2014 doesn\u2019t account for 25-30% commission', cost: 5000 },
+                { label: 'We run platform promotions without calculating whether they\u2019re actually profitable', cost: 4000 }
+            ]
+        },
+        {
+            id: 'beverage',
+            name: 'Beverage & Bar Shrinkage',
+            desc: 'Untracked pours, free drinks, and the gap between what you buy and what you sell.',
+            range: '$3K \u2013 $12K/yr',
+            action: 'Full bottle inventory today. Compare what you have vs. what you should have based on sales. The gap is your shrinkage. Then enforce jiggers, track comps, and count weekly.',
+            qs: [
+                { label: 'Pour costs haven\u2019t been calculated or reviewed in the last 30 days', cost: 4000 },
+                { label: 'Free drinks, buybacks, and staff drinks happen but aren\u2019t tracked or limited', cost: 4000 },
+                { label: 'No standardized pour sizes \u2014 bartenders pour by feel, no jiggers enforced', cost: 3000 }
+            ]
+        },
+        {
+            id: 'operational',
+            name: 'Utility & Operational Waste',
+            desc: 'Software nobody uses. Equipment running empty. Contracts you forgot about.',
+            range: '$2K \u2013 $8K/yr',
+            action: 'Pull every recurring charge from your bank statement. Cancel what nobody uses. Check if equipment runs during closed hours. Call your insurance broker \u2014 when did you last review?',
+            qs: [
+                { label: 'We\u2019re paying for software or subscriptions that nobody actively uses', cost: 3000 },
+                { label: 'Equipment runs during closed hours or low-traffic periods with no auto-shutoff', cost: 2500 },
+                { label: 'Haven\u2019t reviewed insurance, utility, or service contracts in 12+ months', cost: 2500 }
+            ]
+        },
+        {
+            id: 'comps',
+            name: 'Untracked Comps & Discounts',
+            desc: 'Free food going out the door. No policy. No tracking. No idea how much.',
+            range: '$2K \u2013 $10K/yr',
+            action: 'Starting today: every comp gets written down. Who approved it, why, dollar amount. Review every Sunday. Set a weekly comp budget. Anything over needs your sign-off.',
+            qs: [
+                { label: 'Comps and discounts are given without a written policy or tracking system', cost: 4000 },
+                { label: 'Staff can give away food or drinks without requiring manager approval', cost: 3500 },
+                { label: 'Weekly comp totals are never reviewed \u2014 no idea what we give away for free', cost: 3000 }
+            ]
+        }
+    ];
+
+    // ============================================
+    // STATE
+    // ============================================
+    let st = {};
+    let monthlyRev = 0;
+
+    function init() {
+        st = {};
+        cats.forEach(c => { st[c.id] = c.qs.map(() => false); });
+    }
+
+    // ============================================
+    // RENDER
+    // ============================================
+    function render() {
+        const el = document.getElementById('categories');
+        el.innerHTML = '';
+        cats.forEach((c, ci) => {
+            const t = catTotal(c.id);
+            const d = document.createElement('div');
+            d.className = 'cat-card' + (t > 0 ? ' has-leaks' : '');
+            d.id = 'card-' + c.id;
+            d.innerHTML =
+                '<div class="cat-card__num">LEAK ' + (ci+1) + ' OF 8 \u2014 ' + c.range + '</div>' +
+                '<div class="cat-card__header"><div><div class="cat-card__name">' + c.name + '</div></div>' +
+                '<div class="cat-card__leak' + (t > 0 ? ' active' : '') + '" id="leak-' + c.id + '">' + fmt(t) + '</div></div>' +
+                '<div class="cat-card__desc">' + c.desc + '</div>' +
+                '<div class="cat-card__questions">' + c.qs.map((q, qi) =>
+                    '<label class="chk' + (st[c.id][qi] ? ' on' : '') + '" id="i-' + c.id + '-' + qi + '">' +
+                    '<input type="checkbox"' + (st[c.id][qi] ? ' checked' : '') + ' data-c="' + c.id + '" data-q="' + qi + '" onchange="chk(this)">' +
+                    '<div class="chk__box"><svg viewBox="0 0 14 14" fill="none" stroke="#0A1628" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7 5.5 10.5 11.5 3.5"/></svg></div>' +
+                    '<div><div class="chk__label">' + q.label + '</div><div class="chk__cost">est. ' + fmt(q.cost) + '/year</div></div>' +
+                    '</label>'
+                ).join('') + '</div>';
+            el.appendChild(d);
+        });
+    }
+
+    // ============================================
+    // HANDLERS
+    // ============================================
+    function chk(inp) {
+        const cid = inp.dataset.c, qi = +inp.dataset.q;
+        st[cid][qi] = inp.checked;
+        const item = document.getElementById('i-' + cid + '-' + qi);
+        item.classList.toggle('on', inp.checked);
+        updCard(cid);
+        updResults();
+    }
+
+    function handleRevenue() {
+        const v = document.getElementById('monthly-revenue').value.replace(/[^0-9.]/g, '');
+        monthlyRev = parseFloat(v) || 0;
+        updResults();
+    }
+
+    function updCard(cid) {
+        const t = catTotal(cid);
+        const le = document.getElementById('leak-' + cid);
+        const ce = document.getElementById('card-' + cid);
+        anim(le, t);
+        le.classList.toggle('active', t > 0);
+        ce.classList.toggle('has-leaks', t > 0);
+    }
+
+    // ============================================
+    // CALCULATIONS
+    // ============================================
+    function catTotal(cid) {
+        const c = cats.find(x => x.id === cid);
+        let t = 0;
+        st[cid].forEach((v, i) => { if (v) t += c.qs[i].cost; });
+        return t;
+    }
+
+    function grandTotal() {
+        let t = 0;
+        cats.forEach(c => { t += catTotal(c.id); });
+        return t;
+    }
+
+    function leakCount() {
+        let n = 0;
+        cats.forEach(c => { if (catTotal(c.id) > 0) n++; });
+        return n;
+    }
+
+    function ranked() {
+        return cats.map(c => ({ ...c, total: catTotal(c.id) })).sort((a, b) => b.total - a.total);
+    }
+
+    // ============================================
+    // UPDATE RESULTS
+    // ============================================
+    function updResults() {
+        const total = grandTotal(), lc = leakCount(), rk = ranked();
+
+        // Sticky
+        const sa = document.getElementById('s-amount');
+        anim(sa, total);
+        sa.classList.toggle('zero', total === 0);
+        document.getElementById('s-meta').textContent = lc + ' leak' + (lc !== 1 ? 's' : '') + ' identified';
+
+        if (total === 0) {
+            document.getElementById('results-empty').style.display = 'block';
+            document.getElementById('results-data').style.display = 'none';
+            return;
+        }
+        document.getElementById('results-empty').style.display = 'none';
+        document.getElementById('results-data').style.display = 'block';
+
+        // Totals
+        anim(document.getElementById('r-total'), total);
+        document.getElementById('r-monthly').textContent = fmt(Math.round(total / 12));
+        document.getElementById('r-weekly').textContent = fmt(Math.round(total / 52));
+
+        // Revenue %
+        const pctEl = document.getElementById('r-pct');
+        if (monthlyRev > 0) {
+            const pct = ((total / 12) / monthlyRev * 100).toFixed(1);
+            pctEl.textContent = 'That\u2019s ' + pct + '% of your monthly revenue disappearing before you see it.';
+            pctEl.style.display = 'block';
+        } else {
+            pctEl.style.display = 'none';
+        }
+
+        // Context tiers
+        const ctx = document.getElementById('r-context');
+        ctx.className = 'results__context';
+        if (total >= 100000) {
+            ctx.classList.add('tier-crit');
+            ctx.textContent = 'Emergency situation. Your restaurant needs the full discovery process immediately. This level of leakage can\u2019t be outworked \u2014 it has to be found and stopped systematically.';
+        } else if (total >= 50000) {
+            ctx.classList.add('tier-high');
+            ctx.textContent = 'Critical bleed. This is what the 72-Hour Protocol was built for. You\u2019re losing more than most operators realize is possible to recover. Start with your #1 priority below.';
+        } else if (total >= 20000) {
+            ctx.classList.add('tier-mid');
+            ctx.textContent = 'Real money. Fixable in 90 days using systematic protocols. Enough to fund a full-time hire, upgrade your kitchen, or clear months of debt. One leak at a time.';
+        } else {
+            ctx.classList.add('tier-low');
+            ctx.textContent = 'Every dollar counts in this business. Start with your #1 priority and stack the wins. Small leaks compound \u2014 fixing them compounds faster.';
+        }
+
+        // Priority
+        const top = rk[0];
+        if (top.total > 0) {
+            document.getElementById('priority').style.display = 'block';
+            document.getElementById('p-name').textContent = top.name;
+            document.getElementById('p-amount').textContent = 'Estimated: ' + fmt(top.total) + '/year \u2014 ' + fmt(Math.round(top.total / 12)) + '/month';
+            document.getElementById('p-action').innerHTML = '<strong>Day 1 Action:</strong> ' + top.action;
+            // Update impl Day 1 text
+            document.getElementById('impl-day1').textContent = top.action;
+        } else {
+            document.getElementById('priority').style.display = 'none';
+        }
+
+        // Chart
+        const mx = rk[0].total || 1;
+        const cb = document.getElementById('chart-bars');
+        cb.innerHTML = '';
+        rk.forEach((c, i) => {
+            const pct = mx > 0 ? (c.total / mx) * 100 : 0;
+            const isTop = i === 0 && c.total > 0;
+            const r = document.createElement('div');
+            r.className = 'chart__row' + (isTop ? ' top' : '');
+            r.innerHTML = '<div class="chart__label">' + c.name + '</div><div class="chart__track"><div class="chart__fill" style="width:' + (c.total > 0 ? Math.max(pct, 2) : 0) + '%"></div></div><div class="chart__value">' + (c.total > 0 ? fmt(c.total) : '\u2014') + '</div>';
+            cb.appendChild(r);
+        });
+    }
+
+    // ============================================
+    // ANIMATION
+    // ============================================
+    const timers = new Map();
+    function anim(el, end) {
+        const id = el.id;
+        if (timers.has(id)) cancelAnimationFrame(timers.get(id));
+        const start = parseInt(el.textContent.replace(/[^0-9]/g, '')) || 0;
+        if (start === end) { el.textContent = fmt(end); return; }
+        const dur = 350, t0 = performance.now();
+        function tick(t) {
+            const p = Math.min((t - t0) / dur, 1);
+            const e = 1 - Math.pow(1 - p, 3);
+            el.textContent = fmt(Math.round(start + (end - start) * e));
+            if (p < 1) timers.set(id, requestAnimationFrame(tick));
+            else timers.delete(id);
+        }
+        timers.set(id, requestAnimationFrame(tick));
+    }
+
+    // ============================================
+    // FORMAT
+    // ============================================
+    function fmt(v) {
+        if (v === 0) return '$0';
+        return '$' + v.toLocaleString('en-US');
+    }
+
+    // ============================================
+    // STICKY
+    // ============================================
+    function onScroll() {
+        const bar = document.getElementById('sticky');
+        const calc = document.getElementById('calculator');
+        const res = document.getElementById('results');
+        if (!calc || !res) return;
+        const ct = calc.getBoundingClientRect().top;
+        const rt = res.getBoundingClientRect().top;
+        const wh = window.innerHeight;
+        bar.classList.toggle('show', ct < wh * 0.5 && rt > wh * 0.7);
+    }
+
+    // ============================================
+    // PAYLOAD
+    // ============================================
+    function buildPayload() {
+        const total = grandTotal(), rk = ranked(), top = rk.find(c => c.total > 0);
+        return {
+            totalAnnualLeak: total,
+            totalMonthlyLeak: Math.round(total / 12),
+            totalWeeklyLeak: Math.round(total / 52),
+            monthlyRevenue: monthlyRev || null,
+            leakPercentOfRevenue: monthlyRev > 0 ? +((total / 12 / monthlyRev * 100).toFixed(1)) : null,
+            leakCategoriesIdentified: leakCount(),
+            topPriority: top ? { category: top.name, id: top.id, annualLeak: top.total, action: top.action } : null,
+            allLeaks: rk.filter(c => c.total > 0).map((c, i) => ({
+                rank: i + 1,
+                category: c.name,
+                id: c.id,
+                annualLeak: c.total,
+                items: c.qs.filter((_, qi) => st[c.id][qi]).map(q => ({ question: q.label, cost: q.cost }))
+            })),
+            timestamp: new Date().toISOString(),
+            source: '72-hour-profit-discovery-calculator-v2'
+        };
+    }
+
+    // ============================================
+    // FORM SUBMIT
+    // ============================================
+    async function submitForm(e) {
+        e.preventDefault();
+        const btn = document.getElementById('cap-btn');
+        const err = document.getElementById('cap-err');
+        const name = document.getElementById('f-name').value.trim();
+        const email = document.getElementById('f-email').value.trim();
+        const restaurant = document.getElementById('f-restaurant').value.trim();
+        const sales = document.getElementById('f-sales').value.trim();
+
+        err.style.display = 'none';
+        document.querySelectorAll('.capture__input').forEach(el => el.classList.remove('err'));
+
+        let bad = false;
+        if (!name) { document.getElementById('f-name').classList.add('err'); bad = true; }
+        if (!email || !email.includes('@') || !email.includes('.')) { document.getElementById('f-email').classList.add('err'); bad = true; }
+        if (!restaurant) { document.getElementById('f-restaurant').classList.add('err'); bad = true; }
+        if (bad) { err.textContent = 'Fill in the required fields.'; err.style.display = 'block'; return; }
+
+        const payload = {
+            contact: { name, email, restaurant, monthlySales: sales || null },
+            results: buildPayload()
+        };
+
+        btn.disabled = true;
+        btn.textContent = 'Sending\u2026';
+
+        try {
+            const r = await fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (!r.ok) throw new Error('fail');
+        } catch (e) {
+            console.warn('Webhook failed:', e);
+            console.log('Payload:', JSON.stringify(payload, null, 2));
+        }
+
+        document.getElementById('cap-form-wrap').style.display = 'none';
+        document.getElementById('cap-ok').style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Send My Protocol';
+    }
+
+    // ============================================
+    // EXPORT: PDF
+    // ============================================
+    function exportPDF() { window.print(); }
+
+    // ============================================
+    // EXPORT: EMAIL
+    // ============================================
+    function exportEmail() {
+        const total = grandTotal(), rk = ranked(), lc = leakCount();
+        let b = '72-HOUR PROFIT DISCOVERY \u2014 MY RESULTS\n';
+        b += '==========================================\n\n';
+        b += 'Estimated Annual Leak: ' + fmt(total) + '\n';
+        b += 'Monthly: ' + fmt(Math.round(total / 12)) + '\n';
+        b += 'Weekly: ' + fmt(Math.round(total / 52)) + '\n';
+        if (monthlyRev > 0) b += 'Revenue Impact: ' + ((total/12/monthlyRev*100).toFixed(1)) + '% of monthly revenue\n';
+        b += 'Leak Categories: ' + lc + ' of 8\n\n';
+        b += 'RANKED BY IMPACT:\n-------------------\n';
+        rk.forEach((c, i) => {
+            if (c.total > 0) {
+                b += (i+1) + '. ' + c.name + ': ' + fmt(c.total) + '/year\n';
+                cats.find(x => x.id === c.id).qs.forEach((q, qi) => {
+                    if (st[c.id][qi]) b += '   - ' + q.label + ' (' + fmt(q.cost) + ')\n';
+                });
+                b += '\n';
+            }
+        });
+        const top = rk[0];
+        if (top.total > 0) {
+            b += '\n#1 PRIORITY: ' + top.name + '\n';
+            b += 'Day 1 Action: ' + top.action + '\n';
+        }
+        b += '\n---\nGenerated by The Grumpy Chef\n72-Hour Profit Discovery Calculator\nSystems that work when you\'re exhausted.\nthegrumpychef.com\n';
+        const s = encodeURIComponent('My Restaurant Profit Leak: ' + fmt(total) + '/year');
+        window.location.href = 'mailto:?subject=' + s + '&body=' + encodeURIComponent(b);
+    }
+
+    // ============================================
+    // RESET
+    // ============================================
+    function resetAll() {
+        init();
+        monthlyRev = 0;
+        document.getElementById('monthly-revenue').value = '';
+        render();
+        updResults();
+        const fw = document.getElementById('cap-form-wrap');
+        const ok = document.getElementById('cap-ok');
+        const f = document.getElementById('cap-form');
+        if (fw) fw.style.display = 'block';
+        if (ok) ok.style.display = 'none';
+        if (f) f.reset();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ============================================
+    // INIT
+    // ============================================
+    init();
+    render();
+    updResults();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+</script>
+</body>
+</html>

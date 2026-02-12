@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Grumpy Chef Academy | Founding Member Waitlist</title>
+    <meta name="description" content="Transform your restaurant in 90 days using battle-tested systems from a Master Chef who rebuilt from $180K debt. Only 100 founding member spots.">
+    <meta property="og:title" content="The Grumpy Chef Academy — Join the Waitlist">
+    <meta property="og:description" content="Systematic restaurant transformation. No hustle culture. No motivational BS. Just proven systems that work when you're exhausted.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET & VARIABLES
+           ============================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --navy-hover: #162642;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gray-dark: #2D3748;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --blue: #00A6D6;
+            --blue-glow: rgba(0, 166, 214, 0.10);
+            --red: #C53030;
+            --green: #2F855A;
+            --green-glow: rgba(47, 133, 90, 0.10);
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        .gold-top { height: 3px; background: linear-gradient(90deg, var(--gold), var(--blue), var(--gold)); }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            padding: 72px 0 64px;
+            background: linear-gradient(180deg, #0C1A2E 0%, var(--navy) 100%);
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .hero__layout {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+        .hero__content { flex: 1; }
+        .hero__photo-wrap {
+            flex-shrink: 0;
+        }
+        .hero__photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid var(--gold);
+            object-fit: cover;
+            display: block;
+        }
+        .hero__spots {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .hero__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(36px, 6vw, 56px);
+            line-height: 1.02;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+        .hero__sub {
+            font-size: 18px;
+            color: var(--white-dim);
+            max-width: 540px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        .hero__sub strong { color: var(--gold); font-weight: 600; }
+        .hero__cta {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--navy);
+            background: var(--gold);
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .hero__cta:hover { background: var(--gold-dim); }
+
+        /* ============================================
+           CREDENTIALS
+           ============================================ */
+        .credentials {
+            padding: 48px 0;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .cred-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .cred-item {
+            text-align: center;
+            padding: 28px 20px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+        }
+        .cred-item__icon {
+            font-family: var(--font-mono);
+            font-size: 28px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+        .cred-item__title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .cred-item__text {
+            font-size: 13px;
+            color: var(--white-dim);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           SECTIONS
+           ============================================ */
+        .section {
+            padding: 64px 0;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .section--no-border { border-bottom: none; }
+        .section__label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 12px;
+        }
+        .section__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(24px, 4.5vw, 34px);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        /* ============================================
+           CURRICULUM LIST
+           ============================================ */
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .curriculum-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 18px 20px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+        }
+        .curriculum-item__check {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--gold-glow);
+            border: 1px solid var(--gold-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 700;
+            margin-top: 1px;
+        }
+        .curriculum-item__content { flex: 1; }
+        .curriculum-item__title {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        .curriculum-item__desc {
+            font-size: 13px;
+            color: var(--white-dim);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           FOUNDING MEMBER BENEFITS
+           ============================================ */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 20px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+        }
+        .benefit-item__bullet {
+            flex-shrink: 0;
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            margin-top: 7px;
+        }
+        .benefit-item__text {
+            font-size: 14px;
+            color: var(--white-dim);
+            line-height: 1.5;
+        }
+        .benefit-item__text strong { color: var(--white); }
+
+        .spots-callout {
+            text-align: center;
+            padding: 20px;
+            background: var(--gold-glow);
+            border: 1px solid var(--gold-border);
+            border-radius: 8px;
+            margin-top: 24px;
+        }
+        .spots-callout__text {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+        }
+
+        /* ============================================
+           SOCIAL PROOF
+           ============================================ */
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .proof-item {
+            padding: 20px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+        }
+        .proof-item__location {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .proof-item__name {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .proof-item__desc {
+            font-size: 13px;
+            color: var(--white-dim);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           FORM
+           ============================================ */
+        .form-section {
+            padding: 72px 0;
+            background: linear-gradient(180deg, var(--navy) 0%, #0C1A2E 100%);
+        }
+        .form-card {
+            background: var(--navy-card);
+            border: 1px solid var(--gold-border);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .form-card__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 28px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .form-card__sub {
+            font-size: 14px;
+            color: var(--white-dim);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .form-card__counter {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .form { display: flex; flex-direction: column; gap: 14px; }
+        .form__row { display: flex; gap: 14px; }
+        .form__group { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+        .form__label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--white-dim);
+        }
+        .form__label--required::after {
+            content: ' *';
+            color: var(--gold);
+        }
+        .form__input {
+            font-family: var(--font-body);
+            font-size: 15px;
+            padding: 12px 16px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            color: var(--white);
+            outline: none;
+            transition: border-color 0.15s;
+        }
+        .form__input:focus { border-color: var(--gold-dim); }
+        .form__input::placeholder { color: var(--gray-dark); }
+        .form__select {
+            font-family: var(--font-body);
+            font-size: 15px;
+            padding: 12px 16px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            color: var(--white);
+            outline: none;
+            appearance: none;
+            cursor: pointer;
+            transition: border-color 0.15s;
+        }
+        .form__select:focus { border-color: var(--gold-dim); }
+        .form__select option { background: var(--navy); color: var(--white); }
+        .form__textarea {
+            font-family: var(--font-body);
+            font-size: 15px;
+            padding: 12px 16px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            color: var(--white);
+            outline: none;
+            resize: vertical;
+            min-height: 90px;
+            transition: border-color 0.15s;
+        }
+        .form__textarea:focus { border-color: var(--gold-dim); }
+        .form__textarea::placeholder { color: var(--gray-dark); }
+
+        .form__error {
+            font-size: 13px;
+            color: var(--red);
+            display: none;
+            text-align: center;
+        }
+        .form__btn {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--navy);
+            background: var(--gold);
+            border: none;
+            padding: 18px 40px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s;
+            margin-top: 8px;
+            width: 100%;
+        }
+        .form__btn:hover { background: var(--gold-dim); }
+        .form__btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .form__privacy {
+            font-size: 12px;
+            color: var(--gray);
+            text-align: center;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+        .form__fallback {
+            display: none;
+            text-align: center;
+            margin-top: 16px;
+        }
+        .form__fallback a { color: var(--gold); }
+
+        /* Success State */
+        .success {
+            display: none;
+            text-align: center;
+            padding: 48px 24px;
+        }
+        .success.active { display: block; }
+        .success__icon {
+            width: 64px;
+            height: 64px;
+            background: var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            color: var(--white);
+        }
+        .success__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 30px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .success__number {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .success__text {
+            font-size: 15px;
+            color: var(--white-dim);
+            line-height: 1.65;
+            max-width: 480px;
+            margin: 0 auto 28px;
+        }
+        .success__links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            max-width: 480px;
+            margin: 0 auto 24px;
+        }
+        .success__link {
+            display: block;
+            padding: 14px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.15s;
+        }
+        .success__link:hover { border-color: var(--gold-border); }
+        .success__link-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+        .success__link-sub {
+            font-size: 11px;
+            color: var(--gray);
+        }
+        .success__urgency {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--gold);
+            padding: 14px 20px;
+            background: var(--gold-glow);
+            border: 1px solid var(--gold-border);
+            border-radius: 6px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 36px 0;
+            border-top: 1px solid var(--navy-border);
+            text-align: center;
+        }
+        .footer__text {
+            font-size: 13px;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+        .footer__text a {
+            color: var(--gray);
+            text-decoration: none;
+            margin: 0 6px;
+        }
+        .footer__text a:hover { color: var(--gold); }
+        .footer__tagline {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--gray-dark);
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 700px) {
+            .hero { padding: 48px 0 40px; }
+            .hero__layout {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+                gap: 24px;
+            }
+            .hero__photo { width: 140px; height: 140px; }
+            .hero__sub { margin-left: auto; margin-right: auto; }
+            .cred-grid { grid-template-columns: 1fr; }
+            .curriculum-grid { grid-template-columns: 1fr; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .proof-grid { grid-template-columns: 1fr; }
+            .form__row { flex-direction: column; }
+            .form-card { padding: 28px 20px; }
+            .success__links { grid-template-columns: 1fr; }
+            .section { padding: 48px 0; }
+        }
+
+        /* ============================================
+           PRINT
+           ============================================ */
+        @media print {
+            body { background: #fff; color: #111; }
+            .gold-top, .hero__cta, .form-section { display: none !important; }
+            .hero { background: none; border: none; }
+            .hero__spots { color: #B89630; }
+            .hero__title { color: #111; }
+            .hero__sub { color: #444; }
+            .section { border-color: #ddd; }
+            .cred-item, .curriculum-item, .benefit-item, .proof-item {
+                border-color: #ddd; background: #fafafa;
+            }
+            .spots-callout { border-color: #ddd; background: #f9f7f0; }
+        }
+
+        /* ============================================
+           ACCESSIBILITY
+           ============================================ */
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="gold-top" role="presentation"></div>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<header class="hero">
+    <div class="container">
+        <div class="hero__layout">
+            <div class="hero__content">
+                <div class="hero__spots">Founding Members Only &mdash; 100 Spots Available</div>
+                <h1 class="hero__title">The Grumpy Chef<br>Academy</h1>
+                <p class="hero__sub">
+                    Transform your restaurant in 90 days using <strong>battle-tested systems</strong> from a Master Chef who rebuilt from $180K debt.
+                </p>
+                <a href="#waitlist-form" class="hero__cta">Join the Waitlist</a>
+            </div>
+            <div class="hero__photo-wrap">
+                <img class="hero__photo" src="../../assets/brand-photo.jpg" alt="Chef Christian Schiffner in professional kitchen">
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ============================================
+     CREDENTIALS
+     ============================================ -->
+<section class="credentials" aria-label="Credentials">
+    <div class="container">
+        <div class="cred-grid">
+            <div class="cred-item">
+                <div class="cred-item__icon" aria-hidden="true">K</div>
+                <div class="cred-item__title">German Master Chef</div>
+                <div class="cred-item__text">Kuchenmeister certification. Internationally recognized German culinary standard.</div>
+            </div>
+            <div class="cred-item">
+                <div class="cred-item__icon" aria-hidden="true">20+</div>
+                <div class="cred-item__title">Years International Experience</div>
+                <div class="cred-item__text">Germany, Switzerland, Austria, Spain, Canada. Every position from apprentice to owner.</div>
+            </div>
+            <div class="cred-item">
+                <div class="cred-item__icon" aria-hidden="true">-40</div>
+                <div class="cred-item__title">Built & Rebuilt in Extreme Conditions</div>
+                <div class="cred-item__text">Dawson City, Yukon Territory. Population 1,300. If systems work here, they work anywhere.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     WHAT YOU'LL LEARN
+     ============================================ -->
+<section class="section" aria-label="Curriculum">
+    <div class="container">
+        <div class="section__label">What You'll Learn</div>
+        <h2 class="section__title">Six Modules. Zero Fluff.</h2>
+
+        <div class="curriculum-grid">
+            <div class="curriculum-item">
+                <div class="curriculum-item__check" aria-hidden="true">&#10003;</div>
+                <div class="curriculum-item__content">
+                    <div class="curriculum-item__title">72-Hour Profit Discovery System</div>
+                    <div class="curriculum-item__desc">Emergency diagnostic to find your #1 profit leak in 3 days</div>
+                </div>
+            </div>
+            <div class="curriculum-item">
+                <div class="curriculum-item__check" aria-hidden="true">&#10003;</div>
+                <div class="curriculum-item__content">
+                    <div class="curriculum-item__title">Menu Engineering That Prints Money</div>
+                    <div class="curriculum-item__desc">Psychology-backed design for 15-30% profit increase. No price increases.</div>
+                </div>
+            </div>
+            <div class="curriculum-item">
+                <div class="curriculum-item__check" aria-hidden="true">&#10003;</div>
+                <div class="curriculum-item__content">
+                    <div class="curriculum-item__title">Prime Cost Control Framework</div>
+                    <div class="curriculum-item__desc">Labor and food cost systems that work when you're exhausted</div>
+                </div>
+            </div>
+            <div class="curriculum-item">
+                <div class="curriculum-item__check" aria-hidden="true">&#10003;</div>
+                <div class="curriculum-item__content">
+                    <div class="curriculum-item__title">Cross-Training Playbooks</div>
+                    <div class="curriculum-item__desc">Build resilient teams that don't collapse when someone calls in sick</div>
+                </div>
+            </div>
+            <div class="curriculum-item">
+                <div class="curriculum-item__check" aria-hidden="true">&#10003;</div>
+                <div class="curriculum-item__content">
+                    <div class="curriculum-item__title">Operational Automation Tools</div>
+                    <div class="curriculum-item__desc">Systems that run without you. Replace expensive software subscriptions.</div>
+                </div>
+            </div>
+            <div class="curriculum-item">
+                <div class="curriculum-item__check" aria-hidden="true">&#10003;</div>
+                <div class="curriculum-item__content">
+                    <div class="curriculum-item__title">21-Day Recovery Protocol</div>
+                    <div class="curriculum-item__desc">The implementation methodology. Sustainable change, not motivation sprints.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FOUNDING MEMBER BENEFITS
+     ============================================ -->
+<section class="section" aria-label="Benefits">
+    <div class="container">
+        <div class="section__label">First 100 Members</div>
+        <h2 class="section__title">Founding Member Benefits</h2>
+
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-item__bullet"></div>
+                <div class="benefit-item__text"><strong>50% Lifetime Discount</strong> &mdash; $497 instead of $997. Never available again.</div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-item__bullet"></div>
+                <div class="benefit-item__text"><strong>30-Day Early Access</strong> before public launch</div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-item__bullet"></div>
+                <div class="benefit-item__text"><strong>Direct Access to Christian</strong> for the first 90 days</div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-item__bullet"></div>
+                <div class="benefit-item__text"><strong>Founding Member Community</strong> &mdash; exclusive, permanent</div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-item__bullet"></div>
+                <div class="benefit-item__text"><strong>All Future Updates Included</strong> &mdash; lifetime access</div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-item__bullet"></div>
+                <div class="benefit-item__text"><strong>30-Day Money-Back Guarantee</strong> &mdash; implement or refund</div>
+            </div>
+        </div>
+
+        <div class="spots-callout">
+            <div class="spots-callout__text" id="spotsCallout">Only 100 Founding Member Spots Available</div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SOCIAL PROOF
+     ============================================ -->
+<section class="section" aria-label="Experience">
+    <div class="container">
+        <div class="section__label">Where These Systems Were Built</div>
+        <h2 class="section__title">Trained Across 5 Countries</h2>
+
+        <div class="proof-grid">
+            <div class="proof-item">
+                <div class="proof-item__location">Adelboden, Switzerland</div>
+                <div class="proof-item__name">The Cambrian</div>
+                <div class="proof-item__desc">4-star Superior DesignHotel. Member of Design Hotels. Promoted from Commis to Demi Chef.</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-item__location">Velden, Austria</div>
+                <div class="proof-item__name">Schloss Velden</div>
+                <div class="proof-item__desc">5-star luxury castle hotel. Capella Hotels. Michelin-level kitchen standards.</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-item__location">St. Moritz, Switzerland</div>
+                <div class="proof-item__name">El Paradiso</div>
+                <div class="proof-item__desc">High-end ski resort. International clientele. High-pressure seasonal operations.</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-item__location">Dawson City, Canada</div>
+                <div class="proof-item__name">Grumpy Schnitzel</div>
+                <div class="proof-item__desc">Founded 2017. Population 1,300. -40C winters. 2-week supply delays. Still profitable.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     WAITLIST FORM
+     ============================================ -->
+<section class="form-section" id="waitlist-form" aria-label="Waitlist signup">
+    <div class="container">
+        <div class="form-card" id="formCard">
+            <h2 class="form-card__title">Reserve Your Founding Member Spot</h2>
+            <p class="form-card__sub">No payment required. Just save your place.</p>
+            <div class="form-card__counter" id="formCounter">100 spots remaining</div>
+
+            <form class="form" onsubmit="submitWaitlist(event)" novalidate>
+                <div class="form__row">
+                    <div class="form__group">
+                        <label class="form__label form__label--required" for="firstName">First Name</label>
+                        <input type="text" class="form__input" id="firstName" autocomplete="given-name" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label form__label--required" for="lastName">Last Name</label>
+                        <input type="text" class="form__input" id="lastName" autocomplete="family-name" required>
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label form__label--required" for="email">Email</label>
+                    <input type="email" class="form__input" id="email" autocomplete="email" required>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label form__label--required" for="restaurant">Restaurant Name</label>
+                    <input type="text" class="form__input" id="restaurant" autocomplete="organization">
+                </div>
+
+                <div class="form__row">
+                    <div class="form__group">
+                        <label class="form__label" for="role">Role</label>
+                        <select class="form__select" id="role">
+                            <option value="">Select...</option>
+                            <option value="owner">Owner</option>
+                            <option value="gm">General Manager</option>
+                            <option value="chef">Chef</option>
+                            <option value="multi-unit">Multi-Unit Operator</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="revenue">Monthly Revenue</label>
+                        <select class="form__select" id="revenue">
+                            <option value="">Select...</option>
+                            <option value="under-100k">Under $100K</option>
+                            <option value="100k-250k">$100K - $250K</option>
+                            <option value="250k-500k">$250K - $500K</option>
+                            <option value="500k-1m">$500K - $1M</option>
+                            <option value="over-1m">Over $1M</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <label class="form__label" for="challenge">Biggest Challenge</label>
+                    <textarea class="form__textarea" id="challenge" placeholder="What's your #1 struggle right now?"></textarea>
+                </div>
+
+                <div class="form__error" id="formError" role="alert"></div>
+                <button type="submit" class="form__btn" id="formBtn">Join the Waitlist</button>
+            </form>
+
+            <p class="form__privacy">Your information is safe. No spam, just updates on launch. Unsubscribe anytime.</p>
+
+            <div class="form__fallback" id="formFallback">
+                <p style="font-size:14px; color:var(--white-dim); line-height:1.6;">
+                    Having trouble? Email me directly at <a href="mailto:christian@thegrumpychef.ca">christian@thegrumpychef.ca</a> with your name and restaurant.
+                </p>
+            </div>
+        </div>
+
+        <div class="success" id="successState">
+            <div class="success__icon" aria-hidden="true">&#10003;</div>
+            <h2 class="success__title">You're On the List</h2>
+            <div class="success__number" id="successNumber"></div>
+            <p class="success__text">
+                Check your email for confirmation. I'll personally send updates as we build the academy. In the meantime:
+            </p>
+            <div class="success__links">
+                <a class="success__link" href="72-hour-profit-discovery-calculator.html">
+                    <div class="success__link-title">72-Hour Profit Discovery</div>
+                    <div class="success__link-sub">Find your #1 profit leak</div>
+                </a>
+                <a class="success__link" href="menu-profit-score-assessment.html">
+                    <div class="success__link-title">Menu Profit Score</div>
+                    <div class="success__link-sub">Optimize your menu design</div>
+                </a>
+            </div>
+            <div class="success__urgency" id="successUrgency"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+    <div class="container">
+        <p class="footer__text">
+            &copy; 2026 The Grumpy Chef
+            <br>
+            <a href="https://www.linkedin.com/in/christian-schiffner/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="mailto:christian@thegrumpychef.ca">Contact</a>
+        </p>
+        <div class="footer__tagline">Systems that work when you're exhausted.</div>
+    </div>
+</footer>
+
+
+<script>
+/* ============================================
+   CONFIG
+   ============================================ */
+const SCOREAPP_API_URL = '';
+const SCOREAPP_API_KEY = '';
+const WEBHOOK_URL = 'https://christhwegrumpychef.app.n8n.cloud/webhook/grumpy-chef-leads';
+const TOTAL_SPOTS = 100;
+const STORAGE_KEY = 'grumpychef_waitlist_count';
+
+/* ============================================
+   WAITLIST COUNTER
+   ============================================ */
+function getWaitlistCount() {
+    try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            const data = JSON.parse(stored);
+            if (Date.now() - data.timestamp < 3600000) return data.count;
+        }
+    } catch (e) { /* ignore */ }
+    return Math.floor(Math.random() * 15) + 20;
+}
+
+function incrementWaitlistCount() {
+    let count = getWaitlistCount() + 1;
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ count, timestamp: Date.now() }));
+    } catch (e) { /* ignore */ }
+    return count;
+}
+
+function updateSpotsDisplay() {
+    const count = getWaitlistCount();
+    const remaining = Math.max(TOTAL_SPOTS - count, 1);
+    const counter = document.getElementById('formCounter');
+    const callout = document.getElementById('spotsCallout');
+    if (counter) counter.textContent = remaining + ' spots remaining';
+    if (callout) callout.textContent = 'Only ' + remaining + ' Founding Member Spots Available';
+}
+
+/* ============================================
+   ANALYTICS
+   ============================================ */
+const analytics = {
+    started: false,
+    trackStart(field) {
+        if (this.started) return;
+        this.started = true;
+        console.log('[Analytics] form_started', { first_field: field });
+    },
+    trackComplete(data) {
+        console.log('[Analytics] form_completed', data);
+    },
+    trackError(type, detail) {
+        console.log('[Analytics] form_error', { type, detail });
+    }
+};
+
+function initTracking() {
+    ['firstName', 'lastName', 'email', 'restaurant', 'role', 'revenue', 'challenge'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('focus', () => analytics.trackStart(id), { once: true });
+    });
+
+    if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting) {
+                console.log('[Analytics] form_viewed');
+                obs.disconnect();
+            }
+        }, { threshold: 0.3 });
+        const section = document.getElementById('waitlist-form');
+        if (section) obs.observe(section);
+    }
+}
+
+/* ============================================
+   PAYLOAD BUILDERS
+   ============================================ */
+function buildScoreAppPayload(num) {
+    return {
+        contact: {
+            email: document.getElementById('email').value.trim(),
+            name: document.getElementById('firstName').value.trim() + ' ' + document.getElementById('lastName').value.trim(),
+            custom_fields: {
+                first_name: document.getElementById('firstName').value.trim(),
+                last_name: document.getElementById('lastName').value.trim(),
+                restaurant_name: document.getElementById('restaurant').value.trim(),
+                role: document.getElementById('role').value || '',
+                monthly_revenue: document.getElementById('revenue').value || '',
+                biggest_challenge: document.getElementById('challenge').value.trim(),
+                waitlist_number: num,
+                waitlist_timestamp: new Date().toISOString(),
+                page_source: 'grumpy-chef-academy-waitlist',
+                founding_member_eligible: true
+            }
+        },
+        tags: ['academy-waitlist', 'founding-member', 'high-intent']
+    };
+}
+
+function buildWebhookPayload(num) {
+    return {
+        first_name: document.getElementById('firstName').value.trim(),
+        last_name: document.getElementById('lastName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        restaurant_name: document.getElementById('restaurant').value.trim(),
+        role: document.getElementById('role').value || '',
+        monthly_revenue: document.getElementById('revenue').value || '',
+        biggest_challenge: document.getElementById('challenge').value.trim(),
+        waitlist_number: num,
+        timestamp: new Date().toISOString(),
+        page_source: 'grumpy-chef-academy-waitlist'
+    };
+}
+
+/* ============================================
+   FORM SUBMISSION
+   ============================================ */
+async function submitWaitlist(e) {
+    e.preventDefault();
+
+    const first = document.getElementById('firstName').value.trim();
+    const last = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const restaurant = document.getElementById('restaurant').value.trim();
+    const errorEl = document.getElementById('formError');
+    const btn = document.getElementById('formBtn');
+
+    // Validate required fields
+    if (!first || !last || !email || !restaurant) {
+        errorEl.style.display = 'block';
+        errorEl.textContent = 'Please fill in all required fields.';
+        return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errorEl.style.display = 'block';
+        errorEl.textContent = 'Please enter a valid email address.';
+        return;
+    }
+
+    errorEl.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Reserving Your Spot...';
+
+    const waitlistNumber = incrementWaitlistCount();
+    const remaining = Math.max(TOTAL_SPOTS - waitlistNumber, 1);
+    let submitted = false;
+    let scoreAppFailed = false;
+
+    // Primary: Score App
+    if (SCOREAPP_API_URL && !SCOREAPP_API_URL.includes('YOUR_')) {
+        try {
+            const headers = { 'Content-Type': 'application/json' };
+            if (SCOREAPP_API_KEY && !SCOREAPP_API_KEY.includes('YOUR_')) {
+                headers['Authorization'] = 'Bearer ' + SCOREAPP_API_KEY;
+            }
+            const res = await fetch(SCOREAPP_API_URL, {
+                method: 'POST',
+                headers,
+                body: JSON.stringify(buildScoreAppPayload(waitlistNumber))
+            });
+            if (res.ok) submitted = true;
+            else { scoreAppFailed = true; }
+        } catch (err) {
+            scoreAppFailed = true;
+            analytics.trackError('scoreapp', err.message);
+        }
+    }
+
+    // Secondary: n8n webhook
+    if (WEBHOOK_URL && !WEBHOOK_URL.includes('YOUR_')) {
+        try {
+            const payload = buildWebhookPayload(waitlistNumber);
+            if (scoreAppFailed) payload.scoreapp_failed = true;
+            await fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            submitted = true;
+        } catch (err) {
+            analytics.trackError('webhook', err.message);
+        }
+    }
+
+    // Both failed with real endpoints configured
+    if (!submitted && !SCOREAPP_API_URL.includes('YOUR_') && !WEBHOOK_URL.includes('YOUR_')) {
+        errorEl.style.display = 'block';
+        errorEl.textContent = 'Something went wrong. Please try again or use the email option below.';
+        document.getElementById('formFallback').style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Join the Waitlist';
+        try {
+            const failed = JSON.parse(localStorage.getItem('grumpychef_failed') || '[]');
+            failed.push({ data: buildWebhookPayload(waitlistNumber), at: new Date().toISOString() });
+            localStorage.setItem('grumpychef_failed', JSON.stringify(failed));
+        } catch (e) { /* ignore */ }
+        return;
+    }
+
+    // Log if no endpoints configured
+    if (!submitted) {
+        console.log('Waitlist payload (no endpoints configured):', JSON.stringify(buildWebhookPayload(waitlistNumber), null, 2));
+        console.log('Score App payload:', JSON.stringify(buildScoreAppPayload(waitlistNumber), null, 2));
+    }
+
+    analytics.trackComplete({ waitlist_number: waitlistNumber });
+
+    // Show success
+    document.getElementById('formCard').style.display = 'none';
+    const success = document.getElementById('successState');
+    success.classList.add('active');
+    document.getElementById('successNumber').textContent = 'You\'re waitlist member #' + waitlistNumber + ' of ' + TOTAL_SPOTS;
+    document.getElementById('successUrgency').textContent = 'Only ' + remaining + ' founding member spots remaining. Share with another operator who needs this.';
+    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+/* ============================================
+   INIT
+   ============================================ */
+updateSpotsDisplay();
+initTracking();
+</script>
+
+</body>
+</html>
