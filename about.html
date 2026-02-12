@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Story | The Grumpy Chef — Not a Consultant. An Operator.</title>
+    <title>My Story | The Grumpy Chef — I Lost $180,000 Before I Found the System That Worked</title>
     <meta name="description" content="German Master Chef who lost a restaurant, $180K, and himself. Rebuilt with recovery frameworks. 1,200+ days proof that the same systems work for sobriety and business.">
-    <meta property="og:title" content="My Story | The Grumpy Chef — Not a Consultant. An Operator.">
+    <meta property="og:title" content="My Story | The Grumpy Chef — I Lost $180,000 Before I Found the System That Worked">
     <meta property="og:description" content="20+ years. 5 countries. Lost everything. Rebuilt with systems. The full story of The Grumpy Chef.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -53,85 +53,63 @@
         .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
 
         /* HERO */
-        .hero { padding: 140px 24px 100px; text-align: center; background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%); position: relative; overflow: hidden; }
+        .hero { padding: 140px 24px 80px; background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%); position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at center top, rgba(212,175,55,0.05) 0%, transparent 60%); }
-        .hero-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; display: flex; align-items: flex-start; gap: 48px; }
+        .hero-text { flex: 1; }
         .hero-badge { display: inline-block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); border: 1px solid var(--gold-border); padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; letter-spacing: 1px; text-transform: uppercase; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 24px; text-transform: uppercase; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 24px; text-transform: uppercase; }
         .hero h1 span { color: var(--gold); }
-        .hero-sub { font-size: 1.15rem; color: var(--white-dim); max-width: 600px; margin: 0 auto 40px; line-height: 1.7; }
+        .hero-sub { font-size: 1.1rem; color: var(--white-dim); line-height: 1.7; }
+        .hero-photo { flex-shrink: 0; }
+
+        /* BRAND PHOTO */
+        .brand-photo-circle { border-radius: 50%; border: 3px solid #D4AF37; object-fit: cover; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); }
+        .brand-photo-circle--cta { width: 100px; height: 100px; }
+        .brand-photo-circle--footer { width: 80px; height: 80px; }
+        .brand-photo-rect { border-radius: 8px; border: 3px solid #D4AF37; max-width: 400px; width: 100%; object-fit: cover; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); }
+        .brand-photo-caption { color: #6B7280; font-size: 0.75rem; text-align: center; margin-top: 0.5rem; }
+
+        /* STORY BODY */
+        .story-section { padding: 80px 24px; }
+        .story-inner { max-width: 720px; margin: 0 auto; }
+        .story-inner p { font-size: 1.05rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 24px; }
+        .story-inner p strong { color: var(--white); }
+        .story-inner p:last-child { margin-bottom: 0; }
+
+        /* WHAT I DO NOW */
+        .what-section { padding: 80px 24px; background: var(--navy-light); border-top: 1px solid var(--navy-border); border-bottom: 1px solid var(--navy-border); }
+        .what-inner { max-width: 720px; margin: 0 auto; }
+        .what-inner p { font-size: 1.05rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 24px; }
+        .what-inner p strong { color: var(--white); }
+        .offerings { list-style: none; margin: 32px 0; }
+        .offerings li { padding: 16px 0; border-bottom: 1px solid var(--navy-border); font-size: 1rem; color: var(--white-dim); line-height: 1.6; }
+        .offerings li:last-child { border-bottom: none; }
+        .offerings li strong { color: var(--gold); }
+
+        /* CREDIBILITY BAR */
+        .credibility-bar { background: #1B2A4A; padding: 40px 24px; }
+        .credibility-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; overflow-x: auto; }
+        .cred-item { text-align: center; flex-shrink: 0; }
+        .cred-number { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--gold); }
+        .cred-label { font-size: 0.75rem; color: #F5F5F5; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+        /* CTA SECTION */
+        .cta-section { padding: 100px 24px; text-align: center; background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%); }
+        .cta-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; text-transform: uppercase; margin-bottom: 20px; line-height: 1.15; }
+        .cta-title span { color: var(--gold); }
+        .cta-text { font-size: 1.1rem; color: var(--white-dim); max-width: 550px; margin: 0 auto 32px; line-height: 1.7; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         .btn-primary { display: inline-block; background: var(--gold); color: var(--navy); padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s; border: 2px solid var(--gold); }
         .btn-primary:hover { background: transparent; color: var(--gold); }
         .btn-secondary { display: inline-block; background: transparent; color: var(--white); padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; border: 2px solid var(--navy-border); transition: all 0.2s; }
         .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
 
-        /* PROOF BAR */
-        .proof-bar { background: var(--navy-light); border-top: 1px solid var(--navy-border); border-bottom: 1px solid var(--navy-border); padding: 32px 24px; }
-        .proof-bar-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
-        .proof-item { text-align: center; }
-        .proof-number { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--gold); }
-        .proof-label { font-size: 0.75rem; color: var(--white-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-
-        /* SECTIONS */
-        .section { padding: 100px 24px; }
-        .section-inner { max-width: 1000px; margin: 0 auto; }
-        .section-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
-        .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; text-transform: uppercase; margin-bottom: 20px; line-height: 1.15; }
-        .section-title span { color: var(--gold); }
-        .section-text { font-size: 1.05rem; color: var(--white-dim); max-width: 700px; line-height: 1.7; }
-        .section-alt { background: var(--navy-light); }
-
-        /* QUOTE */
-        .quote-section { padding: 80px 24px; text-align: center; background: var(--navy-light); border-top: 1px solid var(--navy-border); border-bottom: 1px solid var(--navy-border); }
-        .quote-text { font-family: var(--font-mono); font-size: clamp(1rem, 2.5vw, 1.3rem); color: var(--white-dim); max-width: 700px; margin: 0 auto; line-height: 1.8; font-style: italic; }
-        .quote-text span { color: var(--gold); font-style: normal; }
-        .quote-attr { margin-top: 20px; font-size: 0.85rem; color: var(--gold); }
-
-        /* TIMELINE */
-        .timeline { position: relative; margin-top: 48px; padding-left: 40px; }
-        .timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 14px; width: 2px; background: var(--navy-border); }
-        .timeline-item { position: relative; margin-bottom: 40px; }
-        .timeline-item:last-child { margin-bottom: 0; }
-        .timeline-dot { position: absolute; left: -40px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 2px solid var(--navy); box-shadow: 0 0 0 3px var(--gold-border); z-index: 1; }
-        .timeline-dot.dot-red { background: var(--red); box-shadow: 0 0 0 3px rgba(197, 48, 48, 0.25); }
-        .timeline-dot.dot-blue { background: var(--blue); box-shadow: 0 0 0 3px rgba(0, 166, 214, 0.25); }
-        .timeline-year { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-        .timeline-year.year-red { color: var(--red); }
-        .timeline-year.year-blue { color: var(--blue); }
-        .timeline-heading { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
-        .timeline-desc { font-size: 0.95rem; color: var(--white-dim); line-height: 1.7; }
-        .timeline-properties { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-        .timeline-tag { font-family: var(--font-mono); font-size: 0.7rem; color: var(--white-dim); background: var(--navy-card); border: 1px solid var(--navy-border); padding: 4px 12px; border-radius: 4px; letter-spacing: 0.5px; }
-
-        /* STORY GRID (BEFORE/AFTER) */
-        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px; align-items: start; }
-        .story-before, .story-after { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 12px; padding: 32px; }
-        .story-before { border-top: 3px solid var(--red); }
-        .story-after { border-top: 3px solid var(--gold); }
-        .story-heading { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 16px; }
-        .story-before .story-heading { color: var(--red); }
-        .story-after .story-heading { color: var(--gold); }
-        .story-list { list-style: none; }
-        .story-list li { padding: 8px 0; font-size: 0.95rem; color: var(--white-dim); border-bottom: 1px solid var(--navy-border); }
-        .story-list li:last-child { border-bottom: none; }
-
-        /* MISSION CARDS */
-        .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
-        .mission-card { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 12px; padding: 28px; }
-        .mission-card-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-        .mission-card-text { font-size: 0.95rem; color: var(--white-dim); line-height: 1.6; font-style: italic; }
-
-        /* CTA SECTION */
-        .cta-section { padding: 100px 24px; text-align: center; background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%); }
-        .cta-section .section-title { margin-bottom: 16px; }
-        .cta-text { font-size: 1.1rem; color: var(--white-dim); max-width: 500px; margin: 0 auto 32px; }
-        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-
         /* FOOTER */
         .footer { background: var(--navy-light); border-top: 1px solid var(--navy-border); padding: 60px 24px 32px; }
         .footer-inner { max-width: 1000px; margin: 0 auto; }
         .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
-        .footer-brand { max-width: 360px; }
+        .footer-brand { max-width: 360px; display: flex; gap: 16px; align-items: flex-start; }
         .footer-brand-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
         .footer-brand-name span { color: var(--gold); }
         .footer-brand p { font-size: 0.85rem; color: var(--white-dim); line-height: 1.6; }
@@ -147,15 +125,16 @@
             .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy-light); flex-direction: column; padding: 20px 24px; gap: 16px; border-bottom: 1px solid var(--navy-border); }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
-            .hero { padding: 120px 20px 70px; }
-            .section { padding: 60px 20px; }
-            .proof-bar-inner { gap: 24px; }
-            .proof-item { flex: 1 1 40%; }
-            .story-grid { grid-template-columns: 1fr; }
+            .hero { padding: 120px 20px 60px; }
+            .hero-content { flex-direction: column; text-align: center; }
+            .hero-photo { order: -1; }
+            .hero-sub { margin: 0 auto; }
+            .story-section { padding: 60px 20px; }
+            .what-section { padding: 60px 20px; }
+            .credibility-inner { gap: 24px; }
+            .cred-item { flex: 1 1 40%; }
+            .cta-buttons { flex-direction: column; align-items: center; }
             .footer-top { flex-direction: column; }
-            .timeline { padding-left: 32px; }
-            .timeline::before { left: 10px; }
-            .timeline-dot { left: -32px; }
         }
     </style>
 </head>
@@ -178,248 +157,92 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">The Full Story</div>
-            <h1>Not a Consultant.<br>An Operator Who Learned<br>the <span>Hard Way.</span></h1>
-            <p class="hero-sub">German Master Chef. 20+ years. 5 countries. Lost a restaurant and $180K. Got sober. Rebuilt with systems. 1,200+ days proof that the same frameworks work for recovery and restaurants.</p>
+            <div class="hero-text">
+                <div class="hero-badge">My Story</div>
+                <h1>I Lost $180,000 Before I Found the System That <span>Worked</span></h1>
+                <p class="hero-sub">The story behind The Grumpy Chef — and why I build systems for operators who are done white-knuckling it.</p>
+            </div>
+            <div class="hero-photo">
+                <img src="/images/Kitchen1.jpg" alt="Chef Christian Schiffner — The Grumpy Chef" class="brand-photo-rect">
+                <p class="brand-photo-caption">Christian Schiffner | Küchemeister | 20+ Years, 5 Countries</p>
+            </div>
         </div>
     </section>
 
-    <!-- PROOF BAR -->
-    <div class="proof-bar">
-        <div class="proof-bar-inner">
-            <div class="proof-item">
-                <div class="proof-number">20+</div>
-                <div class="proof-label">Years in Kitchens</div>
+    <!-- THE STORY -->
+    <section class="story-section">
+        <div class="story-inner">
+            <p>In April 2022, I was $180,000 in debt, burned out, and staring at the ceiling of a cabin in Dawson City, Yukon — population 1,300.</p>
+
+            <p>I'd spent 20 years in professional kitchens across Germany, Switzerland, Austria, Spain, and Canada. Earned my Küchemeister (German Master Chef certification). Ran kitchens. Built Grumpy Schnitzel in one of the most remote towns in North America.</p>
+
+            <p>And I still almost lost everything.</p>
+
+            <p>Not because I couldn't cook. Because I was running a restaurant the way most operators do — working harder instead of working smarter. Throwing myself at every problem. White-knuckling through 14-hour days and hoping the numbers would fix themselves.</p>
+
+            <p>They didn't.</p>
+
+            <p>What saved me wasn't a consultant with a slide deck. It was the same systematic frameworks I'd learned in recovery — one day at a time, behavior before belief, no exceptions. I applied those principles to my restaurant operations.</p>
+
+            <p>The bleeding stopped.</p>
+
+            <p>Then I rebuilt. Systematically. Day by day. 1,200+ days and counting.</p>
+
+            <p>Here's what I learned: The restaurants that survive aren't run by the hardest workers. They're run by operators who have <strong>systems</strong>. And most independent operators are sitting on $2K–$10K per month in hidden profit leaks they can't see because they're too exhausted to look.</p>
+
+            <p>That's what I fix.</p>
+        </div>
+    </section>
+
+    <!-- WHAT I DO NOW -->
+    <section class="what-section">
+        <div class="what-inner">
+            <p>I take 20+ years of kitchen operations across 5 countries and turn it into working systems restaurant owners can implement in 72 hours. Not a 40-page PDF. Not a "strategy session" with someone who's never worked a Friday rush. Working tools. Real numbers. Specific actions.</p>
+
+            <p><strong>Three things I do for operators:</strong></p>
+
+            <ul class="offerings">
+                <li><strong>Find your #1 profit leak in 72 hours</strong> — the 72-Hour Profit Discovery</li>
+                <li><strong>Engineer your menu so every item earns its place</strong> — the Menu Profit Optimizer</li>
+                <li><strong>Build operational systems that work when you're at 60% capacity</strong> — because that's where you live</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CREDIBILITY BAR -->
+    <div class="credibility-bar">
+        <div class="credibility-inner">
+            <div class="cred-item">
+                <div class="cred-number">20+</div>
+                <div class="cred-label">Years</div>
             </div>
-            <div class="proof-item">
-                <div class="proof-number">5</div>
-                <div class="proof-label">Countries</div>
+            <div class="cred-item">
+                <div class="cred-number">5</div>
+                <div class="cred-label">Countries</div>
             </div>
-            <div class="proof-item">
-                <div class="proof-number">$180K</div>
-                <div class="proof-label">Debt Rebuilt From</div>
+            <div class="cred-item">
+                <div class="cred-number">Küchemeister</div>
+                <div class="cred-label">Certified</div>
             </div>
-            <div class="proof-item">
-                <div class="proof-number">1,200+</div>
-                <div class="proof-label">Days Proof</div>
+            <div class="cred-item">
+                <div class="cred-number">1,200+</div>
+                <div class="cred-label">Days Rebuilt</div>
             </div>
-            <div class="proof-item">
-                <div class="proof-number">$41K</div>
-                <div class="proof-label">Waste Found Year 1</div>
+            <div class="cred-item">
+                <div class="cred-number">$180K</div>
+                <div class="cred-label">→ Profitable</div>
             </div>
         </div>
     </div>
-
-    <!-- SECTION 2: THE CLIMB -->
-    <section class="section">
-        <div class="section-inner">
-            <div class="section-label">2004 &mdash; 2019</div>
-            <h2 class="section-title">The Climb.<br><span>15 Years of Kitchen Grind.</span></h2>
-            <p class="section-text">Started with nothing. Black Forest kid who wanted to cook. Worked every station. Every country that would take me. Every position from the bottom up. No shortcuts. No connections. Just showed up and outworked the room.</p>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-year">2004 &mdash; 2007</div>
-                    <div class="timeline-heading">The Foundation</div>
-                    <div class="timeline-desc">Apprentice in the Black Forest, Germany. Hotelfachschule Villingen. Steigenberger Academy. Learned the German way: discipline first, creativity later. No excuses accepted. Standards beaten into muscle memory.</div>
-                    <div class="timeline-properties">
-                        <span class="timeline-tag">Schwarzwaldhotel Rothaus</span>
-                        <span class="timeline-tag">Steigenberger Academy</span>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-year">2007 &mdash; 2014</div>
-                    <div class="timeline-heading">Working Through Europe</div>
-                    <div class="timeline-desc">Germany. Switzerland. Austria. Spain. Every kitchen taught something different. Alpine precision. Mediterranean chaos. High-volume banquet operations. Boutique fine dining. Moved through Commis, Demi Chef, Chef Tournant, Sous Chef. Learned to run any kitchen you put me in.</div>
-                    <div class="timeline-properties">
-                        <span class="timeline-tag">Restaurant Wildstrubel, Switzerland</span>
-                        <span class="timeline-tag">Hotel Tres Playa, Mallorca</span>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-year">2014 &mdash; 2017</div>
-                    <div class="timeline-heading">Canada &mdash; The Yukon</div>
-                    <div class="timeline-desc">Landed in Dawson City, Yukon. Population 1,300. End of the road. Literally. Ran the kitchen at Aurora Inn. Supply chain meant weekly trucks on a dirt highway. Staff meant whoever showed up. Extreme conditions. Zero margin for error.</div>
-                    <div class="timeline-properties">
-                        <span class="timeline-tag">Aurora Inn, Dawson City</span>
-                        <span class="timeline-tag">Yukon, Canada</span>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-year">2017</div>
-                    <div class="timeline-heading">Grumpy Schnitzel</div>
-                    <div class="timeline-desc">Founded my own restaurant in Dawson City. Built it from nothing. German-inspired comfort food at the edge of the world. One small room, one German chef, one shot. It worked. For a while.</div>
-                    <div class="timeline-properties">
-                        <span class="timeline-tag">Grumpy Schnitzel, Dawson City</span>
-                        <span class="timeline-tag">Owner / Operator</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- QUOTE 1 -->
-    <div class="quote-section">
-        <p class="quote-text">"I thought if I just worked harder, everything would hold together. <span>That's what they tell you in this industry. Work harder. Push through. Sleep later.</span> Nobody tells you that's the road to losing everything."</p>
-        <p class="quote-attr">-- Christian Schiffner</p>
-    </div>
-
-    <!-- SECTION 3: THE FALL -->
-    <section class="section section-alt">
-        <div class="section-inner">
-            <div class="section-label">2019 &mdash; 2022</div>
-            <h2 class="section-title">The Fall.<br><span>$180K and Everything Else.</span></h2>
-            <p class="section-text">This is the part most people skip. The part where it all came apart. I'm leading with it because it's the only part that matters.</p>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot dot-red"></div>
-                    <div class="timeline-year year-red">2019</div>
-                    <div class="timeline-heading">The "Growth" Trap</div>
-                    <div class="timeline-desc">Bought a second restaurant. Because that's what you do when things are working, right? Scale. Grow. More revenue. More seats. More staff. More problems I couldn't see coming because I was too tired to look.</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot dot-red"></div>
-                    <div class="timeline-year year-red">2019 &mdash; 2021</div>
-                    <div class="timeline-heading">The Death Spiral</div>
-                    <div class="timeline-desc">80-100 hour weeks. Every week. Food cost? Untracked. Systems? Nonexistent. Staff retention? A joke. My answer to every problem: work harder. Stay later. Sleep less. I'll figure it out tomorrow. Tomorrow never came.</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot dot-red"></div>
-                    <div class="timeline-year year-red">2021 &mdash; 2022</div>
-                    <div class="timeline-heading">$180K in Debt</div>
-                    <div class="timeline-desc">The money was gone. Not slowly. All at once, it felt like. But it had been bleeding out for years. I just couldn't see it because I was too busy running between two kitchens, putting out fires with no water left.</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot dot-red"></div>
-                    <div class="timeline-year year-red">April 2022</div>
-                    <div class="timeline-heading">Rock Bottom</div>
-                    <div class="timeline-desc">Lost the restaurant. Lost the money. Lost myself. That's not a metaphor. When you work 100 hours a week for three years and watch it all disappear, you don't just lose a business. You lose the story you told yourself about who you are.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 4: THE TURNING POINT -->
-    <section class="section">
-        <div class="section-inner">
-            <div class="section-label">The Turning Point</div>
-            <h2 class="section-title">You Can't Hustle Your Way<br>to <span>Profitability.</span></h2>
-            <p class="section-text" style="margin-bottom: 32px;">Recovery taught me something the restaurant industry never did.</p>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot dot-blue"></div>
-                    <div class="timeline-year year-blue">The Revelation</div>
-                    <div class="timeline-heading">Same Problem, Different Arena</div>
-                    <div class="timeline-desc">You can't motivation your way through addiction. You need systems. Frameworks. Pre-decided responses that hold when your willpower is gone. And then it hit me: that's exactly what my restaurant needed. Not more hustle. Not more hours. Systems that work when I'm exhausted. Because I'm always exhausted in this business.</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot dot-blue"></div>
-                    <div class="timeline-year year-blue">The Core Framework</div>
-                    <div class="timeline-heading">Behavior Leads Belief</div>
-                    <div class="timeline-desc">Not the other way around. You don't wait until you "feel motivated" to track food cost. You build the system. You follow the system. The results change the belief. Recovery works this way. Business works this way. Everything works this way. The industry just hasn't figured it out yet.</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot dot-blue"></div>
-                    <div class="timeline-year year-blue">The Decision</div>
-                    <div class="timeline-heading">Same Frameworks. Different Problem.</div>
-                    <div class="timeline-desc">If recovery frameworks can keep someone sober through the worst days of their life, they can keep a restaurant profitable through a Tuesday night with two no-shows and a broken dishwasher. I was going to prove it.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- QUOTE 2 -->
-    <div class="quote-section">
-        <p class="quote-text">"You can't motivation your way through addiction. You can't hustle your way to profitability. <span>You need systems that hold when you're at 60% capacity. Because that's where you live most days.</span>"</p>
-        <p class="quote-attr">-- Christian Schiffner, 1,200+ days later</p>
-    </div>
-
-    <!-- SECTION 5: THE REBUILD -->
-    <section class="section section-alt">
-        <div class="section-inner">
-            <div class="section-label">2022 &mdash; Present</div>
-            <h2 class="section-title">Same Person. Same Kitchen.<br><span>Different Operating System.</span></h2>
-            <p class="section-text">Applied recovery frameworks to every part of the operation. Created the 21-Day Restaurant Recovery Protocol. The results speak for themselves.</p>
-
-            <div class="story-grid">
-                <div class="story-before">
-                    <div class="story-heading">Before (2019-2022)</div>
-                    <ul class="story-list">
-                        <li>2 restaurants, both bleeding money</li>
-                        <li>80-100 hour weeks, every week</li>
-                        <li>Food cost untracked and out of control</li>
-                        <li>Staff turnover on repeat</li>
-                        <li>$180K in debt</li>
-                        <li>No systems. Just willpower.</li>
-                        <li>Collapse.</li>
-                    </ul>
-                </div>
-                <div class="story-after">
-                    <div class="story-heading">After (2022-Present)</div>
-                    <ul class="story-list">
-                        <li>1 restaurant, actually profitable</li>
-                        <li>60 hours/week, with days off</li>
-                        <li>Food cost tracked and controlled</li>
-                        <li>Small team, clear systems</li>
-                        <li>$41K waste found in year 1</li>
-                        <li>Pre-decided protocols for everything</li>
-                        <li>1,200+ days and counting.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 6: THE MISSION -->
-    <section class="section">
-        <div class="section-inner">
-            <div class="section-label">The Mission</div>
-            <h2 class="section-title">Teaching Exhausted Operators<br>the Systems <span>That Actually Work.</span></h2>
-            <p class="section-text" style="margin-bottom: 40px;">I've been every version of the struggling operator. I know what it looks like from every angle. And I know what works.</p>
-
-            <div class="mission-grid">
-                <div class="mission-card">
-                    <div class="mission-card-label">I've Been</div>
-                    <div class="mission-card-text">"The exhausted sous chef pulling doubles because someone didn't show up. Again."</div>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-card-label">I've Been</div>
-                    <div class="mission-card-text">"The owner who couldn't see the profit leaks because I was too deep in the weeds to look up."</div>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-card-label">I've Been</div>
-                    <div class="mission-card-text">"The operator who lost it all and had to decide: give up, or rebuild with a completely different system."</div>
-                </div>
-            </div>
-
-            <p class="section-text" style="margin-top: 40px;">I chose rebuild. Not with more hustle. With systems. Frameworks that hold when you're running on four hours of sleep and the walk-in compressor just died.</p>
-            <p class="section-text" style="margin-top: 16px;">That's what I teach now. Not motivation. Not inspiration. Operating systems for restaurants that work when the operator is exhausted.</p>
-            <p class="section-text" style="margin-top: 16px;">Because the operator is always exhausted.</p>
-        </div>
-    </section>
 
     <!-- CTA -->
     <section class="cta-section">
-        <div class="section-label">Start Here</div>
-        <h2 class="section-title">Done Reading?<br><span>Start Doing.</span></h2>
-        <p class="cta-text">Find your restaurant's #1 profit leak in 5 minutes. Or read the protocol that rebuilt everything.</p>
+        <h2 class="cta-title">Done <span>White-Knuckling It?</span></h2>
+        <p class="cta-text">I'm not a consultant. I'm an operator who lost everything, rebuilt with systems, and now packages 20 years of that hard-won knowledge into frameworks that actually work.</p>
+        <img src="/images/Kitchen1.jpg" alt="Chef Christian Schiffner — The Grumpy Chef" class="brand-photo-circle brand-photo-circle--cta" style="display: block; margin: 0 auto 24px;">
         <div class="cta-buttons">
-            <a href="/calculator.html" class="btn-primary">Find Your #1 Profit Leak</a>
-            <a href="/framework.html" class="btn-secondary">Read the 21-Day Protocol</a>
+            <a href="/calculator.html" class="btn-primary">Start With the Free Calculator</a>
+            <a href="/services.html" class="btn-secondary">Work With Me</a>
         </div>
     </section>
 
@@ -428,8 +251,11 @@
         <div class="footer-inner">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
-                    <p>Built by an operator who lost everything and rebuilt with recovery frameworks. Not theory. Proof.</p>
+                    <img src="/images/Kitchen1.jpg" alt="Chef Christian Schiffner — The Grumpy Chef" class="brand-photo-circle brand-photo-circle--footer">
+                    <div>
+                        <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
+                        <p>Built from 20 years of Master Chef kitchen operations across 5 countries.</p>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h4>Navigate</h4>

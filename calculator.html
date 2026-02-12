@@ -1067,14 +1067,32 @@
                     The calculator shows you where you're bleeding. The 72-Hour Protocol stops it. The Grumpy Chef Academy teaches you to never lose it again.
                 </div>
                 <div class="cta-section__btns">
-                    <a href="YOUR_CALENDLY_LINK" target="_blank" rel="noopener" class="btn btn--gold btn--big">
-                        Book Your 72-Hour Discovery Call
+                    <div id="discovery-form-container">
+                        <form id="discovery-form" style="max-width: 400px; margin: 0 auto;">
+                            <div style="margin-bottom: 12px;">
+                                <input type="email" id="discovery-email" placeholder="Your email address" required
+                                    style="width: 100%; padding: 12px 16px; background: #111E35; border: 1px solid #1A2D4D; border-radius: 8px; color: #F8F9FA; font-size: 0.95rem; outline: none;"
+                                    onfocus="this.style.borderColor='#D4AF37'" onblur="this.style.borderColor='#1A2D4D'">
+                            </div>
+                            <div style="margin-bottom: 16px;">
+                                <input type="text" id="discovery-name" placeholder="First name (optional)"
+                                    style="width: 100%; padding: 12px 16px; background: #111E35; border: 1px solid #1A2D4D; border-radius: 8px; color: #F8F9FA; font-size: 0.95rem; outline: none;"
+                                    onfocus="this.style.borderColor='#D4AF37'" onblur="this.style.borderColor='#1A2D4D'">
+                            </div>
+                            <button type="submit" class="btn btn--gold btn--big" style="width: 100%; cursor: pointer; border: none;">
+                                Request a Discovery Call
+                            </button>
+                        </form>
+                        <div class="cta-section__sub">30 minutes. Your numbers. A plan. No pitch.</div>
+                    </div>
+                    <div id="discovery-success" style="display: none; padding: 24px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 8px; max-width: 400px; margin: 0 auto;">
+                        <p style="font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; color: #D4AF37; margin-bottom: 8px;">Got it.</p>
+                        <p style="color: #B8BEC8; font-size: 0.95rem;">I'll be in touch within 24 hours.</p>
+                    </div>
+                    <a href="/academy.html" class="btn btn--outline btn--big" style="margin-top:16px;">
+                        Join the Waitlist
                     </a>
-                    <div class="cta-section__sub">30 minutes. Your numbers. A plan. No pitch.</div>
-                    <a href="YOUR_ACADEMY_WAITLIST_LINK" target="_blank" rel="noopener" class="btn btn--outline btn--big" style="margin-top:8px;">
-                        Join The Grumpy Chef Academy
-                    </a>
-                    <div class="cta-section__sub">Early access. Frameworks, tools, and operator community.</div>
+                    <div class="cta-section__sub">Be first in line. Founding member pricing when we launch.</div>
                 </div>
             </div>
 
@@ -1559,6 +1577,40 @@
     updResults();
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+</script>
+<script>
+document.getElementById('discovery-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('discovery-email').value;
+    var name = document.getElementById('discovery-name').value;
+
+    // Send to webhook
+    var payload = {
+        email: email,
+        first_name: name || '',
+        source: 'discovery-call-request',
+        tags: ['discovery-call-request'],
+        timestamp: new Date().toISOString()
+    };
+
+    // Try webhook
+    fetch('https://hook.us1.make.com/placeholder-discovery', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    }).catch(function() {});
+
+    // Also try mailto fallback
+    var subject = encodeURIComponent('Discovery Call Request — ' + (name || 'New Lead'));
+    var body = encodeURIComponent('Email: ' + email + '\nName: ' + (name || 'Not provided') + '\nSource: Calculator page\nTime: ' + new Date().toISOString());
+
+    // Show success
+    document.getElementById('discovery-form-container').style.display = 'none';
+    document.getElementById('discovery-success').style.display = 'block';
+
+    // Log for debugging
+    console.log('Discovery call request:', payload);
+});
 </script>
 </body>
 </html>
