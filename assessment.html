@@ -953,7 +953,7 @@
                 </p>
             </div>
             <div class="hero__photo">
-                <img class="brand-photo" src="../../assets/brand-photo.jpg" alt="Christian Schiffner — German Master Chef">
+                <img class="brand-photo" src="/images/Kitchen1.jpg" alt="Christian Schiffner — German Master Chef">
                 <div class="brand-photo-caption">Christian Schiffner<br>German Master Chef (Kuchenmeister)<br>20+ Years Operations</div>
             </div>
         </div>
@@ -1087,7 +1087,7 @@
 
         <!-- ATTRIBUTION -->
         <div class="results-attribution">
-            <img class="results-attribution__photo" src="../../assets/brand-photo.jpg" alt="Christian Schiffner">
+            <img class="results-attribution__photo" src="/images/Kitchen1.jpg" alt="Christian Schiffner">
             <div class="results-attribution__text">
                 <strong>Christian Schiffner</strong> — German Master Chef (Kuchenmeister). 20+ years engineering menus from Zurich to the Yukon. These principles are from real kitchens, not textbooks.
             </div>
@@ -1142,19 +1142,40 @@
      ============================================ -->
 <section class="cta-section" id="ctaSection">
     <div class="container">
-        <a class="cta-primary" href="YOUR_CALENDLY_LINK" target="_blank" rel="noopener">
+        <div class="cta-primary" style="cursor: default;">
             <div class="cta-primary__title">Book Your Menu Engineering Discovery Call</div>
             <div class="cta-primary__sub">30 minutes. Your menu. Specific changes. Real numbers.</div>
-        </a>
+            <div id="assessment-discovery-form-container" style="margin-top: 16px;">
+                <form id="assessment-discovery-form" style="max-width: 400px; margin: 0 auto;">
+                    <div style="margin-bottom: 12px;">
+                        <input type="email" id="assessment-discovery-email" placeholder="Your email address" required
+                            style="width: 100%; padding: 12px 16px; background: #111E35; border: 1px solid #1A2D4D; border-radius: 8px; color: #F8F9FA; font-size: 0.95rem; outline: none;"
+                            onfocus="this.style.borderColor='#D4AF37'" onblur="this.style.borderColor='#1A2D4D'">
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <input type="text" id="assessment-discovery-name" placeholder="First name (optional)"
+                            style="width: 100%; padding: 12px 16px; background: #111E35; border: 1px solid #1A2D4D; border-radius: 8px; color: #F8F9FA; font-size: 0.95rem; outline: none;"
+                            onfocus="this.style.borderColor='#D4AF37'" onblur="this.style.borderColor='#1A2D4D'">
+                    </div>
+                    <button type="submit" style="width: 100%; padding: 14px 24px; background: #D4AF37; color: #0A1628; font-family: var(--font-display); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; border: none; border-radius: 8px; cursor: pointer;">
+                        Request a Discovery Call
+                    </button>
+                </form>
+            </div>
+            <div id="assessment-discovery-success" style="display: none; padding: 24px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 8px; max-width: 400px; margin: 16px auto 0;">
+                <p style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; color: #D4AF37; margin-bottom: 8px;">Got it.</p>
+                <p style="color: #B8BEC8; font-size: 0.95rem;">I'll be in touch within 24 hours.</p>
+            </div>
+        </div>
 
         <div class="cta-row">
-            <a class="cta-secondary" href="YOUR_CHEATSHEET_LINK" target="_blank" rel="noopener">
-                <div class="cta-secondary__title">Menu Engineering Cheat Sheet</div>
-                <div class="cta-secondary__sub">Free PDF download</div>
-            </a>
-            <a class="cta-secondary" href="72-hour-profit-discovery-calculator.html">
+            <a class="cta-secondary" href="/calculator.html">
                 <div class="cta-secondary__title">72-Hour Profit Discovery</div>
                 <div class="cta-secondary__sub">Find all 8 operational leaks</div>
+            </a>
+            <a class="cta-secondary" href="/academy.html">
+                <div class="cta-secondary__title">The Grumpy Chef Academy</div>
+                <div class="cta-secondary__sub">Join the founding member waitlist</div>
             </a>
         </div>
 
@@ -1800,6 +1821,34 @@ function printResults() {
    INIT
    ============================================ */
 renderQuiz();
+</script>
+
+<script>
+document.getElementById('assessment-discovery-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('assessment-discovery-email').value;
+    var name = document.getElementById('assessment-discovery-name').value;
+
+    var payload = {
+        email: email,
+        first_name: name || '',
+        source: 'discovery-call-request',
+        tags: ['discovery-call-request'],
+        page_source: 'menu-profit-score-assessment',
+        timestamp: new Date().toISOString()
+    };
+
+    fetch('https://hook.us1.make.com/placeholder-discovery', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    }).catch(function() {});
+
+    document.getElementById('assessment-discovery-form-container').style.display = 'none';
+    document.getElementById('assessment-discovery-success').style.display = 'block';
+
+    console.log('Discovery call request (assessment):', payload);
+});
 </script>
 
 </body>
