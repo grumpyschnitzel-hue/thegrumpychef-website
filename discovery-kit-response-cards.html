@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Decided Response Cards | The Grumpy Chef</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --navy: #0A1628;
+  --navy-light: #0E1B30;
+  --navy-card: #111E35;
+  --navy-border: #1A2D4D;
+  --white: #F8F9FA;
+  --white-dim: #B8BEC8;
+  --gold: #D4AF37;
+  --gold-border: rgba(212, 175, 55, 0.25);
+  --blue: #00A6D6;
+  --red: #C53030;
+  --green: #2F855A;
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+  background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
+  border-bottom: 1px solid var(--navy-border);
+}
+
+.hero-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--white-dim);
+  max-width: 640px;
+  margin: 0 auto 1.5rem;
+  font-style: italic;
+}
+
+.hero-context {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--white-dim);
+  max-width: 680px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+.btn-print-all {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--gold);
+  border: none;
+  padding: 0.85rem 2.5rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-bottom: 1rem;
+}
+
+.btn-print-all:hover {
+  background: #e0be4a;
+  transform: translateY(-1px);
+}
+
+.btn-print-all:active {
+  transform: translateY(0);
+}
+
+.hero-print-note {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--white-dim);
+  opacity: 0.7;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ===== COLLAPSIBLE SECTIONS ===== */
+.collapsible {
+  background: var(--navy-light);
+  border: 1px solid var(--navy-border);
+  margin: 2rem 0;
+}
+
+.collapsible-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.collapsible-header:hover {
+  background: var(--navy-card);
+}
+
+.collapsible-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+}
+
+.collapsible-toggle {
+  font-size: 1.25rem;
+  color: var(--gold);
+  transition: transform 0.3s;
+  line-height: 1;
+}
+
+.collapsible.open .collapsible-toggle {
+  transform: rotate(180deg);
+}
+
+.collapsible-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.collapsible.open .collapsible-body {
+  max-height: 800px;
+}
+
+.collapsible-content {
+  padding: 0 1.5rem 1.5rem;
+}
+
+/* ===== DISCIPLINE REFERENCE ===== */
+.discipline-list {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.discipline-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--navy-border);
+  font-size: 0.92rem;
+  color: var(--white-dim);
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.discipline-list li:last-child {
+  border-bottom: none;
+}
+
+.discipline-badge {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.6rem;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.discipline-badge.step-1 {
+  color: var(--gold);
+  border: 1px solid var(--gold-border);
+}
+
+.discipline-badge.step-2 {
+  color: var(--blue);
+  border: 1px solid rgba(0, 166, 214, 0.3);
+}
+
+.discipline-badge.step-3 {
+  color: var(--red);
+  border: 1px solid rgba(197, 48, 48, 0.3);
+}
+
+.discipline-note {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* ===== CARDS GRID ===== */
+.cards-section-header {
+  text-align: center;
+  margin: 3rem 0 2rem;
+}
+
+.cards-section-header h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--white);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 860px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== INDIVIDUAL CARD ===== */
+.response-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-left: 5px solid var(--navy-border);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.response-card:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.response-card.border-red    { border-left-color: var(--red); }
+.response-card.border-blue   { border-left-color: var(--blue); }
+.response-card.border-gold   { border-left-color: var(--gold); }
+.response-card.border-green  { border-left-color: var(--green); }
+
+/* Card Header */
+.card-header {
+  padding: 1.25rem 1.25rem 0.75rem;
+  border-bottom: 1px solid var(--navy-border);
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.card-number {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--white-dim);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  line-height: 1.25;
+}
+
+/* Card Body */
+.card-body {
+  padding: 1rem 1.25rem 1.25rem;
+  flex: 1;
+}
+
+/* Typical Cost */
+.card-cost {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(197, 48, 48, 0.08);
+  border: 1px solid rgba(197, 48, 48, 0.15);
+}
+
+.card-cost-label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+}
+
+.card-cost-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--red);
+}
+
+/* Sections within Card */
+.card-section {
+  margin-bottom: 0.9rem;
+}
+
+.card-section:last-child {
+  margin-bottom: 0;
+}
+
+.card-section-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.card-section-text {
+  font-size: 0.85rem;
+  color: var(--white-dim);
+  line-height: 1.55;
+}
+
+/* Watch For */
+.watch-list {
+  list-style: none;
+}
+
+.watch-list li {
+  font-size: 0.83rem;
+  color: var(--white-dim);
+  padding: 0.2rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.watch-list li::before {
+  content: "\25B8";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.7rem;
+}
+
+/* Excuse/Response Pairs */
+.excuse-response-list {
+  list-style: none;
+}
+
+.excuse-response-item {
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(26, 45, 77, 0.5);
+}
+
+.excuse-response-item:last-child {
+  border-bottom: none;
+}
+
+.excuse-text {
+  font-size: 0.83rem;
+  color: var(--white-dim);
+  font-style: italic;
+  margin-bottom: 0.25rem;
+}
+
+.response-text {
+  font-size: 0.83rem;
+  color: var(--white);
+  font-weight: 600;
+  line-height: 1.5;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--gold);
+}
+
+/* Required Action, Evidence, Discipline */
+.card-action-box {
+  background: rgba(47, 133, 90, 0.08);
+  border: 1px solid rgba(47, 133, 90, 0.2);
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.card-action-box .card-section-label {
+  color: var(--green);
+}
+
+.card-action-box .card-section-text {
+  font-size: 0.82rem;
+}
+
+.card-evidence-box {
+  background: rgba(0, 166, 214, 0.06);
+  border: 1px solid rgba(0, 166, 214, 0.15);
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.card-evidence-box .card-section-label {
+  color: var(--blue);
+}
+
+.card-evidence-box .card-section-text {
+  font-size: 0.82rem;
+}
+
+/* Discipline + Post At (inline row) */
+.card-meta-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.card-meta-item {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.5rem 0.75rem;
+  background: var(--navy-light);
+  border: 1px solid var(--navy-border);
+}
+
+.card-meta-item .card-section-label {
+  font-size: 0.65rem;
+  margin-bottom: 0.2rem;
+}
+
+.card-meta-item .card-section-text {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--white-dim);
+}
+
+/* Print This Card Button */
+.btn-print-card {
+  display: block;
+  width: 100%;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  background: var(--navy-light);
+  border: none;
+  border-top: 1px solid var(--navy-border);
+  padding: 0.65rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-print-card:hover {
+  background: var(--navy-border);
+  color: var(--white);
+}
+
+/* ===== BLANK TEMPLATE CARD ===== */
+.blank-card-section {
+  margin: 2rem 0 3rem;
+}
+
+.blank-card-section h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.blank-card {
+  background: var(--navy-card);
+  border: 2px dashed var(--navy-border);
+  border-left: 5px solid var(--green);
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.blank-card .blank-field {
+  margin-bottom: 1rem;
+}
+
+.blank-card .blank-field:last-child {
+  margin-bottom: 0;
+}
+
+.blank-field-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.blank-field-line {
+  border-bottom: 1px solid var(--navy-border);
+  height: 1.5rem;
+}
+
+.blank-field-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.blank-field-lines .blank-field-line {
+  height: 1.2rem;
+}
+
+/* ===== MANAGER PLAYBOOK ===== */
+.playbook-list {
+  list-style: none;
+}
+
+.playbook-list li {
+  padding: 0.6rem 0;
+  padding-left: 1.25rem;
+  border-bottom: 1px solid var(--navy-border);
+  font-size: 0.9rem;
+  color: var(--white-dim);
+  position: relative;
+  line-height: 1.55;
+}
+
+.playbook-list li:last-child {
+  border-bottom: none;
+}
+
+.playbook-list li::before {
+  content: "\25A0";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.55rem;
+  top: 0.85rem;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid var(--navy-border);
+  margin-top: 2rem;
+}
+
+.footer-author {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--white-dim);
+  margin-bottom: 0.35rem;
+}
+
+.footer-suite {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  @page {
+    size: auto;
+    margin: 12mm 14mm;
+  }
+
+  html {
+    font-size: 11pt;
+  }
+
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide screen-only elements */
+  .hero,
+  .collapsible,
+  .cards-section-header,
+  .blank-card-section,
+  .site-footer,
+  .btn-print-card,
+  .btn-print-all,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Grid becomes single column for print */
+  .cards-grid {
+    display: block !important;
+  }
+
+  /* Each card on its own page */
+  .response-card {
+    background: #fff !important;
+    border: 2px solid #333 !important;
+    border-left: 6px solid #333 !important;
+    page-break-after: always;
+    break-after: page;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .response-card:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  /* Preserve left border colors in print */
+  .response-card.border-red {
+    border-left-color: #C53030 !important;
+  }
+
+  .response-card.border-blue {
+    border-left-color: #00A6D6 !important;
+  }
+
+  .response-card.border-gold {
+    border-left-color: #D4AF37 !important;
+  }
+
+  /* Card header */
+  .card-header {
+    border-bottom: 2px solid #ddd !important;
+    padding: 0.75rem 1rem 0.5rem !important;
+  }
+
+  .card-number {
+    color: #666 !important;
+  }
+
+  .card-title {
+    color: #111 !important;
+    font-size: 1.3rem !important;
+  }
+
+  /* Card body */
+  .card-body {
+    padding: 0.75rem 1rem 0.5rem !important;
+  }
+
+  /* Cost */
+  .card-cost {
+    background: #fef2f2 !important;
+    border-color: #e2a5a5 !important;
+  }
+
+  .card-cost-label,
+  .card-cost-value {
+    color: #C53030 !important;
+  }
+
+  /* Section labels */
+  .card-section-label {
+    color: #8B6D00 !important;
+    font-size: 0.68rem !important;
+  }
+
+  /* Text colors */
+  .card-section-text,
+  .watch-list li,
+  .excuse-text {
+    color: #333 !important;
+  }
+
+  .response-text {
+    color: #111 !important;
+    border-left-color: #8B6D00 !important;
+  }
+
+  .watch-list li::before {
+    color: #8B6D00 !important;
+  }
+
+  /* Action box */
+  .card-action-box {
+    background: #f0fdf4 !important;
+    border-color: #86c7a3 !important;
+  }
+
+  .card-action-box .card-section-label {
+    color: #2F855A !important;
+  }
+
+  .card-action-box .card-section-text {
+    color: #333 !important;
+  }
+
+  /* Evidence box */
+  .card-evidence-box {
+    background: #f0f9ff !important;
+    border-color: #7ec8e3 !important;
+  }
+
+  .card-evidence-box .card-section-label {
+    color: #0077a8 !important;
+  }
+
+  .card-evidence-box .card-section-text {
+    color: #333 !important;
+  }
+
+  /* Meta row */
+  .card-meta-item {
+    background: #f5f5f5 !important;
+    border-color: #ddd !important;
+  }
+
+  .card-meta-item .card-section-label {
+    color: #8B6D00 !important;
+  }
+
+  .card-meta-item .card-section-text {
+    color: #333 !important;
+  }
+
+  /* Excuse/response borders */
+  .excuse-response-item {
+    border-bottom-color: #eee !important;
+  }
+
+  /* Print footer on each card */
+  .response-card::after {
+    content: "The Grumpy Chef  |  72-Hour Profit Discovery Kit";
+    display: block;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    color: #999;
+    padding: 0.5rem 1rem;
+    border-top: 1px solid #ddd;
+    margin-top: auto;
+  }
+
+  /* Hide individual-print-only cards not targeted */
+  .response-card.print-hide {
+    display: none !important;
+  }
+}
+
+/* Single card print mode */
+body.print-single .response-card {
+  display: none !important;
+}
+
+body.print-single .response-card.print-target {
+  display: flex !important;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero no-print">
+  <div class="hero-brand">THE GRUMPY CHEF</div>
+  <h1 class="hero-title">Pre-Decided Response Cards</h1>
+  <p class="hero-subtitle">"No negotiation. No exceptions. The system holds or it doesn't."</p>
+  <p class="hero-context">
+    Print these. Laminate them. Post each card at the station where the behavior happens.
+    Train your managers to use the scripted responses &mdash; no improvising.
+  </p>
+  <button class="btn-print-all" onclick="printAllCards()">Print All Cards</button>
+  <div class="hero-print-note">Click "Print This Card" on any card to print it individually</div>
+</section>
+
+<!-- ===== PROGRESSIVE DISCIPLINE REFERENCE ===== -->
+<div class="container">
+  <div class="collapsible no-print" id="discipline-ref">
+    <div class="collapsible-header" onclick="toggleCollapsible('discipline-ref')">
+      <span class="collapsible-title">Progressive Discipline Reference</span>
+      <span class="collapsible-toggle">&#9662;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="collapsible-content">
+        <ul class="discipline-list">
+          <li>
+            <span class="discipline-badge step-1">1st</span>
+            Coaching conversation (verbal, documented)
+          </li>
+          <li>
+            <span class="discipline-badge step-2">2nd</span>
+            Written warning
+          </li>
+          <li>
+            <span class="discipline-badge step-3">3rd</span>
+            Final warning / formal action
+          </li>
+        </ul>
+        <p class="discipline-note">"Consequences are communicated from Day 1. No surprises."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CARDS SECTION ===== -->
+  <div class="cards-section-header no-print">
+    <h2>The 8 Response Cards</h2>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- ========== CARD 1: FOOD WASTE ========== -->
+    <div class="response-card border-red" data-card="1">
+      <div class="card-header">
+        <span class="card-number">#01</span>
+        <h3 class="card-title">Food Waste / Unlogged Waste</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-cost">
+          <span class="card-cost-label">Typical Cost:</span>
+          <span class="card-cost-value">$15,000 &ndash; $40,000/year</span>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">What to Watch For</div>
+          <ul class="watch-list">
+            <li>High waste log entries with no corrective action taken</li>
+            <li>Frequent end-of-night discards without documentation</li>
+            <li>No waste log being used at all</li>
+          </ul>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">Common Excuses &amp; Pre-Decided Responses</div>
+          <ul class="excuse-response-list">
+            <li class="excuse-response-item">
+              <div class="excuse-text">"We were too busy"</div>
+              <div class="response-text">The waste log takes 5 minutes. If you had time to cook, you had time to log. Re-do it now.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"I forgot"</div>
+              <div class="response-text">The log is posted at your station. Check it before you clock out. Sign-off is mandatory.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"It was only a small amount"</div>
+              <div class="response-text">Small amounts are the problem. $20/day = $7,300/year. Log everything.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"Nobody else does it"</div>
+              <div class="response-text">Everyone does it starting today. No exceptions.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-action-box">
+          <div class="card-section-label">Required Action</div>
+          <div class="card-section-text">Complete the waste log for this shift immediately. Weigh and record all discarded items.</div>
+        </div>
+
+        <div class="card-evidence-box">
+          <div class="card-section-label">Evidence Needed</div>
+          <div class="card-section-text">Completed waste log with items, weights, and estimated costs. Manager sign-off.</div>
+        </div>
+
+        <div class="card-meta-row">
+          <div class="card-meta-item">
+            <div class="card-section-label">Discipline Level</div>
+            <div class="card-section-text">First = coaching | Second = written | Third = formal</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-section-label">Post At</div>
+            <div class="card-section-text">Dish pit / waste station</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-print-card" onclick="printSingleCard(1)">Print This Card</button>
+    </div>
+
+    <!-- ========== CARD 2: OVER-PORTIONING ========== -->
+    <div class="response-card border-red" data-card="2">
+      <div class="card-header">
+        <span class="card-number">#02</span>
+        <h3 class="card-title">Over-Portioning</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-cost">
+          <span class="card-cost-label">Typical Cost:</span>
+          <span class="card-cost-value">$10,000 &ndash; $50,000/year</span>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">What to Watch For</div>
+          <ul class="watch-list">
+            <li>Actual food cost consistently above theoretical</li>
+            <li>Plates looking different sizes across the same dish</li>
+          </ul>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">Common Excuses &amp; Pre-Decided Responses</div>
+          <ul class="excuse-response-list">
+            <li class="excuse-response-item">
+              <div class="excuse-text">"I eyeballed it &mdash; it looked right"</div>
+              <div class="response-text">The scale is right there. Use it. Every plate, every time.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"Guests expect generous portions"</div>
+              <div class="response-text">Guests expect consistency. A 200g portion is the standard. Hit it.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"It slows me down during rush"</div>
+              <div class="response-text">Portioning takes 3 seconds. Losing $50K/year is what actually slows you down.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"The recipe cards are wrong"</div>
+              <div class="response-text">If the spec is wrong, tell me with data. Until then, follow the spec.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-action-box">
+          <div class="card-section-label">Required Action</div>
+          <div class="card-section-text">Re-portion current prep using scale. Verify next 5 plates against recipe spec.</div>
+        </div>
+
+        <div class="card-evidence-box">
+          <div class="card-section-label">Evidence Needed</div>
+          <div class="card-section-text">5 consecutive plates within &plusmn;10% of spec weight. Spot-check by manager.</div>
+        </div>
+
+        <div class="card-meta-row">
+          <div class="card-meta-item">
+            <div class="card-section-label">Discipline Level</div>
+            <div class="card-section-text">First = coaching | Second = written | Third = formal</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-section-label">Post At</div>
+            <div class="card-section-text">Grill station / plating area</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-print-card" onclick="printSingleCard(2)">Print This Card</button>
+    </div>
+
+    <!-- ========== CARD 3: LABOR RULE VIOLATIONS ========== -->
+    <div class="response-card border-blue" data-card="3">
+      <div class="card-header">
+        <span class="card-number">#03</span>
+        <h3 class="card-title">Labor Rule Violations</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-cost">
+          <span class="card-cost-label">Typical Cost:</span>
+          <span class="card-cost-value">$15,000 &ndash; $40,000/year</span>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">What to Watch For</div>
+          <ul class="watch-list">
+            <li>Chronic lateness without documentation</li>
+            <li>Unapproved overtime showing up on payroll</li>
+            <li>Schedule swaps happening without manager approval</li>
+          </ul>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">Common Excuses &amp; Pre-Decided Responses</div>
+          <ul class="excuse-response-list">
+            <li class="excuse-response-item">
+              <div class="excuse-text">"Traffic / car trouble / alarm didn't go off"</div>
+              <div class="response-text">Understood. Log the late arrival. Third occurrence triggers a written warning.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"I stayed late because we were busy"</div>
+              <div class="response-text">Overtime requires pre-approval. Next time, check with manager before staying.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"I swapped with [name]"</div>
+              <div class="response-text">All swaps require manager approval 24 hours in advance. This is documented.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"Nobody told me the schedule changed"</div>
+              <div class="response-text">Schedule is posted every Thursday. Check it at shift start. No exceptions.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-action-box">
+          <div class="card-section-label">Required Action</div>
+          <div class="card-section-text">Document the occurrence. Communicate expectations clearly. File in employee record.</div>
+        </div>
+
+        <div class="card-evidence-box">
+          <div class="card-section-label">Evidence Needed</div>
+          <div class="card-section-text">Written documentation with date, time, nature of violation, employee acknowledgment.</div>
+        </div>
+
+        <div class="card-meta-row">
+          <div class="card-meta-item">
+            <div class="card-section-label">Discipline Level</div>
+            <div class="card-section-text">First = coaching | Second = written | Third = formal</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-section-label">Post At</div>
+            <div class="card-section-text">Manager's office / break room</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-print-card" onclick="printSingleCard(3)">Print This Card</button>
+    </div>
+
+    <!-- ========== CARD 4: RECEIVING ERRORS ========== -->
+    <div class="response-card border-blue" data-card="4">
+      <div class="card-header">
+        <span class="card-number">#04</span>
+        <h3 class="card-title">Receiving Errors</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-cost">
+          <span class="card-cost-label">Typical Cost:</span>
+          <span class="card-cost-value">$3,000 &ndash; $15,000/year</span>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">What to Watch For</div>
+          <ul class="watch-list">
+            <li>Invoices signed without physical inspection</li>
+            <li>Weight discrepancies between invoice and actual product</li>
+            <li>Missing items discovered after delivery driver leaves</li>
+          </ul>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">Common Excuses &amp; Pre-Decided Responses</div>
+          <ul class="excuse-response-list">
+            <li class="excuse-response-item">
+              <div class="excuse-text">"The truck came during rush &mdash; no time to check"</div>
+              <div class="response-text">Deliveries are scheduled for 9:30am. If timing shifts, hold the invoice. Never sign without checking.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"I trust the supplier"</div>
+              <div class="response-text">Trust doesn't replace verification. Weigh the proteins. Count the cases. Every delivery.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"It looked right"</div>
+              <div class="response-text">"Looked right" is not a process. Use the receiving checklist. Every item, every time.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-action-box">
+          <div class="card-section-label">Required Action</div>
+          <div class="card-section-text">Re-count and weigh current delivery against invoice. Report any discrepancies immediately.</div>
+        </div>
+
+        <div class="card-evidence-box">
+          <div class="card-section-label">Evidence Needed</div>
+          <div class="card-section-text">Completed receiving checklist with signatures, weights verified, discrepancies noted.</div>
+        </div>
+
+        <div class="card-meta-row">
+          <div class="card-meta-item">
+            <div class="card-section-label">Discipline Level</div>
+            <div class="card-section-text">First = coaching | Second = written | Third = formal</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-section-label">Post At</div>
+            <div class="card-section-text">Receiving dock / back door</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-print-card" onclick="printSingleCard(4)">Print This Card</button>
+    </div>
+
+    <!-- ========== CARD 5: MENU / PRICING NOT FOLLOWED ========== -->
+    <div class="response-card border-gold" data-card="5">
+      <div class="card-header">
+        <span class="card-number">#05</span>
+        <h3 class="card-title">Menu / Pricing Not Followed</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-cost">
+          <span class="card-cost-label">Typical Cost:</span>
+          <span class="card-cost-value">$5,000 &ndash; $30,000/year</span>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">What to Watch For</div>
+          <ul class="watch-list">
+            <li>Unauthorized specials running without costed recipes</li>
+            <li>Unapproved modifications driving up food cost</li>
+            <li>Comps not logged in POS</li>
+          </ul>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">Common Excuses &amp; Pre-Decided Responses</div>
+          <ul class="excuse-response-list">
+            <li class="excuse-response-item">
+              <div class="excuse-text">"The guest asked for extra [ingredient]"</div>
+              <div class="response-text">Modifications follow the mod pricing sheet. Charge for extras. No freebies.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"I ran a special to move product"</div>
+              <div class="response-text">Specials require chef/manager approval with costed recipe. No improvised specials.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"I comped it to keep the guest happy"</div>
+              <div class="response-text">Comps follow the comp policy: log it in POS, manager approval, document reason.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-action-box">
+          <div class="card-section-label">Required Action</div>
+          <div class="card-section-text">Review POS for unauthorized comps/mods. Ensure all future modifications follow pricing sheet.</div>
+        </div>
+
+        <div class="card-evidence-box">
+          <div class="card-section-label">Evidence Needed</div>
+          <div class="card-section-text">POS comp/void report with reasons documented. Manager sign-off.</div>
+        </div>
+
+        <div class="card-meta-row">
+          <div class="card-meta-item">
+            <div class="card-section-label">Discipline Level</div>
+            <div class="card-section-text">First = coaching | Second = written | Third = formal</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-section-label">Post At</div>
+            <div class="card-section-text">Expo / POS station</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-print-card" onclick="printSingleCard(5)">Print This Card</button>
+    </div>
+
+    <!-- ========== CARD 6: TEMPERATURE / FOOD SAFETY ========== -->
+    <div class="response-card border-red" data-card="6">
+      <div class="card-header">
+        <span class="card-number">#06</span>
+        <h3 class="card-title">Temperature / Food Safety Checks Skipped</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-cost">
+          <span class="card-cost-label">Typical Cost:</span>
+          <span class="card-cost-value">$2,000 &ndash; $20,000/year (one incident can close you)</span>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">What to Watch For</div>
+          <ul class="watch-list">
+            <li>Blank temperature logs or missing entries</li>
+            <li>Logs filled in all at once at end of shift</li>
+            <li>Holding times exceeded without corrective action</li>
+          </ul>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">Common Excuses &amp; Pre-Decided Responses</div>
+          <ul class="excuse-response-list">
+            <li class="excuse-response-item">
+              <div class="excuse-text">"We were slammed"</div>
+              <div class="response-text">Food safety doesn't pause for busy service. This is non-negotiable. Do it now.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"The thermometer was missing"</div>
+              <div class="response-text">Report missing equipment immediately. Never skip the check &mdash; find another thermometer.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"Everything was fine"</div>
+              <div class="response-text">"Fine" doesn't protect us from a health violation. Log the actual temperature. Every 2 hours.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"I did it in my head"</div>
+              <div class="response-text">If it's not written down, it didn't happen. That's the law and our policy.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-action-box">
+          <div class="card-section-label">Required Action</div>
+          <div class="card-section-text">Complete all outstanding temperature checks immediately. Report any out-of-range readings.</div>
+        </div>
+
+        <div class="card-evidence-box">
+          <div class="card-section-label">Evidence Needed</div>
+          <div class="card-section-text">Completed temp log with actual readings, times, and initials. No batch-filled entries.</div>
+        </div>
+
+        <div class="card-meta-row">
+          <div class="card-meta-item">
+            <div class="card-section-label">Discipline Level</div>
+            <div class="card-section-text">First = coaching | Second = written | Third = formal</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-section-label">Post At</div>
+            <div class="card-section-text">Walk-in cooler / hot holding area</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-print-card" onclick="printSingleCard(6)">Print This Card</button>
+    </div>
+
+    <!-- ========== CARD 7: INCOMPLETE CLOSING / CLEANING ========== -->
+    <div class="response-card border-blue" data-card="7">
+      <div class="card-header">
+        <span class="card-number">#07</span>
+        <h3 class="card-title">Incomplete Closing / Cleaning Tasks</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-cost">
+          <span class="card-cost-label">Typical Cost:</span>
+          <span class="card-cost-value">$2,000 &ndash; $8,000/year</span>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">What to Watch For</div>
+          <ul class="watch-list">
+            <li>Morning crew re-doing closing tasks</li>
+            <li>Equipment not properly cleaned or sanitized</li>
+            <li>Restocking incomplete &mdash; morning scramble</li>
+          </ul>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">Common Excuses &amp; Pre-Decided Responses</div>
+          <ul class="excuse-response-list">
+            <li class="excuse-response-item">
+              <div class="excuse-text">"We left late already"</div>
+              <div class="response-text">Closing tasks are part of the shift, not extra. If they take too long, we adjust the timeline &mdash; not skip tasks.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"I checked the box"</div>
+              <div class="response-text">Checking the box without doing the task is dishonesty. Photo verification is now required.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"The new person was supposed to do it"</div>
+              <div class="response-text">The closing lead is accountable. Verify before you leave.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"It wasn't that dirty"</div>
+              <div class="response-text">The standard is the standard. Clean means clean. Re-do it.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-action-box">
+          <div class="card-section-label">Required Action</div>
+          <div class="card-section-text">Complete all missed closing tasks before clocking out. Opening manager will verify and report.</div>
+        </div>
+
+        <div class="card-evidence-box">
+          <div class="card-section-label">Evidence Needed</div>
+          <div class="card-section-text">Photo proof of completed tasks. Opening manager sign-off confirming standards met.</div>
+        </div>
+
+        <div class="card-meta-row">
+          <div class="card-meta-item">
+            <div class="card-section-label">Discipline Level</div>
+            <div class="card-section-text">First = coaching | Second = written | Third = formal</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-section-label">Post At</div>
+            <div class="card-section-text">Kitchen exit / closing checklist station</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-print-card" onclick="printSingleCard(7)">Print This Card</button>
+    </div>
+
+    <!-- ========== CARD 8: INVENTORY / ORDERING FAILURES ========== -->
+    <div class="response-card border-gold" data-card="8">
+      <div class="card-header">
+        <span class="card-number">#08</span>
+        <h3 class="card-title">Inventory / Ordering Failures</h3>
+      </div>
+      <div class="card-body">
+        <div class="card-cost">
+          <span class="card-cost-label">Typical Cost:</span>
+          <span class="card-cost-value">$5,000 &ndash; $15,000/year</span>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">What to Watch For</div>
+          <ul class="watch-list">
+            <li>Frequent 86'd items during service</li>
+            <li>Emergency supplier runs at premium pricing</li>
+            <li>Inconsistent par levels not matching sales data</li>
+          </ul>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-label">Common Excuses &amp; Pre-Decided Responses</div>
+          <ul class="excuse-response-list">
+            <li class="excuse-response-item">
+              <div class="excuse-text">"We ran out unexpectedly"</div>
+              <div class="response-text">Par levels exist to prevent this. Were they followed? If yes, pars need updating. If no, follow them.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"I ordered what we usually get"</div>
+              <div class="response-text">"Usually" is not a system. Check last week's sales, compare to par sheet, and order based on data.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"The supplier didn't have it"</div>
+              <div class="response-text">Backup suppliers are on the list. Use them. No 86'ing without exhausting all options.</div>
+            </li>
+            <li class="excuse-response-item">
+              <div class="excuse-text">"I didn't know we were low"</div>
+              <div class="response-text">Check inventory before ordering day. That's the process. No guessing.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-action-box">
+          <div class="card-section-label">Required Action</div>
+          <div class="card-section-text">Update par sheet based on last 4 weeks of sales data. Verify backup suppliers are current.</div>
+        </div>
+
+        <div class="card-evidence-box">
+          <div class="card-section-label">Evidence Needed</div>
+          <div class="card-section-text">Updated par sheet with sales-based calculations. Backup supplier contact verified.</div>
+        </div>
+
+        <div class="card-meta-row">
+          <div class="card-meta-item">
+            <div class="card-section-label">Discipline Level</div>
+            <div class="card-section-text">First = coaching | Second = written | Third = formal</div>
+          </div>
+          <div class="card-meta-item">
+            <div class="card-section-label">Post At</div>
+            <div class="card-section-text">Office / ordering station</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-print-card" onclick="printSingleCard(8)">Print This Card</button>
+    </div>
+
+  </div><!-- end .cards-grid -->
+
+  <!-- ===== BLANK TEMPLATE CARD ===== -->
+  <div class="blank-card-section no-print">
+    <h2>Build Your Own Response Card</h2>
+    <div class="blank-card">
+      <div class="blank-field">
+        <div class="blank-field-label">Leak Name</div>
+        <div class="blank-field-line"></div>
+      </div>
+      <div class="blank-field">
+        <div class="blank-field-label">Typical Cost</div>
+        <div class="blank-field-line"></div>
+      </div>
+      <div class="blank-field">
+        <div class="blank-field-label">What to Watch For</div>
+        <div class="blank-field-lines">
+          <div class="blank-field-line"></div>
+          <div class="blank-field-line"></div>
+          <div class="blank-field-line"></div>
+        </div>
+      </div>
+      <div class="blank-field">
+        <div class="blank-field-label">Common Excuse #1</div>
+        <div class="blank-field-line"></div>
+        <div class="blank-field-label" style="margin-top:0.4rem;">Pre-Decided Response</div>
+        <div class="blank-field-lines">
+          <div class="blank-field-line"></div>
+          <div class="blank-field-line"></div>
+        </div>
+      </div>
+      <div class="blank-field">
+        <div class="blank-field-label">Common Excuse #2</div>
+        <div class="blank-field-line"></div>
+        <div class="blank-field-label" style="margin-top:0.4rem;">Pre-Decided Response</div>
+        <div class="blank-field-lines">
+          <div class="blank-field-line"></div>
+          <div class="blank-field-line"></div>
+        </div>
+      </div>
+      <div class="blank-field">
+        <div class="blank-field-label">Common Excuse #3</div>
+        <div class="blank-field-line"></div>
+        <div class="blank-field-label" style="margin-top:0.4rem;">Pre-Decided Response</div>
+        <div class="blank-field-lines">
+          <div class="blank-field-line"></div>
+          <div class="blank-field-line"></div>
+        </div>
+      </div>
+      <div class="blank-field">
+        <div class="blank-field-label">Required Action</div>
+        <div class="blank-field-lines">
+          <div class="blank-field-line"></div>
+          <div class="blank-field-line"></div>
+        </div>
+      </div>
+      <div class="blank-field">
+        <div class="blank-field-label">Evidence Needed</div>
+        <div class="blank-field-lines">
+          <div class="blank-field-line"></div>
+          <div class="blank-field-line"></div>
+        </div>
+      </div>
+      <div class="blank-field">
+        <div class="blank-field-label">Discipline Level</div>
+        <div class="blank-field-line"></div>
+      </div>
+      <div class="blank-field">
+        <div class="blank-field-label">Post At</div>
+        <div class="blank-field-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MANAGER PLAYBOOK ===== -->
+  <div class="collapsible no-print" id="manager-playbook">
+    <div class="collapsible-header" onclick="toggleCollapsible('manager-playbook')">
+      <span class="collapsible-title">Manager Playbook &mdash; How to Use These Cards</span>
+      <span class="collapsible-toggle">&#9662;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="collapsible-content">
+        <ul class="playbook-list">
+          <li>Read from the card. Don't improvise.</li>
+          <li>Stay calm. The card does the work.</li>
+          <li>It's not "I'm mad at you." It's "The system requires this."</li>
+          <li>Document every occurrence. Date, issue, card used, level, next step.</li>
+          <li>Train on the cards before rolling them out. Role-play each excuse.</li>
+          <li>Consistency is everything. If you let it slide once, you've reset the standard.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .container -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer no-print">
+  <p class="footer-author">Built by Christian Schiffner | German Master Chef | 20+ Years Operations</p>
+  <p class="footer-suite">Part of the 72-Hour Profit Discovery Kit</p>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+/* Collapsible toggle */
+function toggleCollapsible(id) {
+  var el = document.getElementById(id);
+  if (el) {
+    el.classList.toggle('open');
+  }
+}
+
+/* Print all cards */
+function printAllCards() {
+  /* Remove any single-card print state */
+  document.body.classList.remove('print-single');
+  var cards = document.querySelectorAll('.response-card');
+  cards.forEach(function(card) {
+    card.classList.remove('print-hide');
+    card.classList.remove('print-target');
+  });
+  window.print();
+}
+
+/* Print a single card by number */
+function printSingleCard(num) {
+  document.body.classList.add('print-single');
+  var cards = document.querySelectorAll('.response-card');
+  cards.forEach(function(card) {
+    card.classList.remove('print-target');
+    if (parseInt(card.getAttribute('data-card')) === num) {
+      card.classList.add('print-target');
+    }
+  });
+  window.print();
+
+  /* Clean up after print dialog closes */
+  setTimeout(function() {
+    document.body.classList.remove('print-single');
+    cards.forEach(function(card) {
+      card.classList.remove('print-target');
+    });
+  }, 1000);
+}
+</script>
+
+</body>
+</html>

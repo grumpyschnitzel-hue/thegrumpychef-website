@@ -1,0 +1,3107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Measurement Tracker | The Grumpy Chef</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+  --navy: #0A1628;
+  --navy-light: #0E1B30;
+  --navy-card: #111E35;
+  --navy-border: #1A2D4D;
+  --white: #F8F9FA;
+  --white-dim: #B8BEC8;
+  --gold: #D4AF37;
+  --gold-border: rgba(212, 175, 55, 0.25);
+  --blue: #00A6D6;
+  --red: #C53030;
+  --green: #2F855A;
+  --amber: #D69E2E;
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  padding: 3rem 1.5rem 2rem;
+  border-bottom: 1px solid var(--navy-border);
+  background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
+}
+
+.hero-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  line-height: 1.15;
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--white);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.hero-context {
+  font-size: 0.875rem;
+  color: var(--white-dim);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ===== TOOLBAR ===== */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--navy-border);
+  background: var(--navy-light);
+}
+
+.toolbar button {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--navy-border);
+  border-radius: 6px;
+  background: var(--navy-card);
+  color: var(--white-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toolbar button:hover {
+  border-color: var(--gold-border);
+  color: var(--white);
+}
+
+.toolbar button.danger {
+  border-color: rgba(197, 48, 48, 0.3);
+}
+
+.toolbar button.danger:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.toolbar .export-group,
+.toolbar .import-group {
+  position: relative;
+  display: inline-block;
+}
+
+.toolbar .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 4px;
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: 6px;
+  min-width: 160px;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+.toolbar .dropdown-menu.open {
+  display: block;
+}
+
+.toolbar .dropdown-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--navy-border);
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+}
+
+.toolbar .dropdown-menu button:last-child {
+  border-bottom: none;
+}
+
+.toolbar .dropdown-menu .fmt-label {
+  color: var(--gold);
+  font-weight: 700;
+  margin-right: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.toolbar .dropdown-menu .fmt-desc {
+  color: var(--white-dim);
+  font-size: 0.7rem;
+}
+
+/* ===== TABS ===== */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  padding: 0 1.5rem;
+  background: var(--navy-light);
+  border-bottom: 2px solid var(--navy-border);
+}
+
+.tab-btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  border: none;
+  background: transparent;
+  color: var(--white-dim);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.tab-btn:hover {
+  color: var(--white);
+}
+
+.tab-btn.active {
+  color: var(--gold);
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold);
+}
+
+.tab-panel {
+  display: none;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* ===== WEEK NAVIGATOR ===== */
+.week-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.week-nav button {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--navy-border);
+  border-radius: 6px;
+  background: var(--navy-card);
+  color: var(--white-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.week-nav button:hover {
+  border-color: var(--gold-border);
+  color: var(--gold);
+}
+
+.week-nav span {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  min-width: 200px;
+  text-align: center;
+}
+
+/* ===== TABLE STYLES ===== */
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--navy-border);
+  border-radius: 8px;
+  background: var(--navy-card);
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+thead th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.75rem 0.6rem;
+  text-align: center;
+  border-bottom: 2px solid var(--gold-border);
+  background: var(--navy-light);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+thead th:first-child {
+  text-align: left;
+  min-width: 180px;
+  position: sticky;
+  left: 0;
+  z-index: 3;
+}
+
+tbody td {
+  padding: 0.4rem 0.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--navy-border);
+  vertical-align: middle;
+}
+
+tbody td:first-child {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--white-dim);
+  background: var(--navy-card);
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  white-space: nowrap;
+  padding-left: 1rem;
+}
+
+tbody tr:hover td {
+  background: rgba(212, 175, 55, 0.03);
+}
+
+tbody tr:hover td:first-child {
+  background: var(--navy-card);
+}
+
+/* Section header rows */
+tbody tr.section-header td {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--navy-light);
+  border-bottom: 1px solid var(--gold-border);
+  border-top: 1px solid var(--gold-border);
+  padding: 0.6rem 1rem;
+  text-align: left;
+}
+
+tbody tr.section-header:hover td {
+  background: var(--navy-light);
+}
+
+/* Totals row */
+tbody tr.row-totals td {
+  border-top: 2px solid var(--gold-border);
+  font-weight: 700;
+  color: var(--gold);
+  background: var(--navy-light);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+tbody tr.row-totals td:first-child {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--navy-light);
+}
+
+/* ===== INPUTS ===== */
+table input[type="number"],
+table input[type="text"],
+table input[type="date"] {
+  width: 100%;
+  min-width: 80px;
+  padding: 0.4rem 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--white);
+  background: var(--navy);
+  border: 1px solid var(--navy-border);
+  border-radius: 4px;
+  text-align: center;
+  transition: border-color 0.2s;
+  -moz-appearance: textfield;
+}
+
+table input[type="number"]::-webkit-inner-spin-button,
+table input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+table input[type="text"] {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  min-width: 110px;
+  text-align: left;
+  padding-left: 0.5rem;
+}
+
+table input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+}
+
+table input::placeholder {
+  color: rgba(184, 190, 200, 0.3);
+}
+
+/* Calculated cells */
+.calc-cell {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--white);
+}
+
+.calc-cell.positive { color: var(--red); }
+.calc-cell.negative { color: var(--green); }
+.calc-cell.zero { color: var(--white-dim); }
+.calc-cell.healthy { color: var(--green); }
+.calc-cell.watch { color: var(--amber); }
+.calc-cell.danger { color: var(--red); }
+
+/* ===== TREND ARROWS ===== */
+.trend-up-good { color: var(--green); }
+.trend-down-good { color: var(--green); }
+.trend-up-bad { color: var(--red); }
+.trend-down-bad { color: var(--red); }
+.trend-stable { color: var(--white-dim); }
+
+.trend-arrow {
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
+  font-weight: 700;
+}
+
+/* ===== AUTO-FILL BUTTON ===== */
+.autofill-btn {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--gold-border);
+  border-radius: 4px;
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--gold);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: block;
+  margin: 0.25rem auto 0;
+  white-space: nowrap;
+}
+
+.autofill-btn:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--gold);
+}
+
+/* ===== 30-DAY SUMMARY CARDS ===== */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.metric-card.health-score-card {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2rem;
+}
+
+.metric-card.health-score-card .card-value {
+  font-size: 3.5rem;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.metric-card.border-green::before { background: var(--green); }
+.metric-card.border-green { border-color: rgba(47, 133, 90, 0.3); }
+.metric-card.border-amber::before { background: var(--amber); }
+.metric-card.border-amber { border-color: rgba(214, 158, 46, 0.3); }
+.metric-card.border-red::before { background: var(--red); }
+.metric-card.border-red { border-color: rgba(197, 48, 48, 0.3); }
+
+.card-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  margin-bottom: 0.5rem;
+}
+
+.card-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+
+.card-trend {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-benchmark {
+  font-size: 0.75rem;
+  color: var(--white-dim);
+  margin-bottom: 0.25rem;
+}
+
+.card-benchmark span {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.card-streak {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--green);
+  margin-top: 0.25rem;
+}
+
+.card-streak.none {
+  color: var(--white-dim);
+}
+
+/* ===== VERDICT ===== */
+.verdict-section {
+  background: var(--navy-card);
+  border: 2px solid var(--navy-border);
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.verdict-question {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.verdict-answer {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.verdict-answer.improving { color: var(--green); }
+.verdict-answer.flat { color: var(--amber); }
+.verdict-answer.worsening { color: var(--red); }
+
+.verdict-health {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 1rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--navy-border);
+  color: var(--white-dim);
+}
+
+/* ===== COLLAPSIBLE SECTIONS ===== */
+.collapsible {
+  max-width: 1400px;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem;
+}
+
+.collapsible-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.collapsible-toggle:hover {
+  border-color: var(--gold-border);
+}
+
+.collapsible-toggle .chevron {
+  transition: transform 0.3s;
+  font-size: 0.75rem;
+}
+
+.collapsible-toggle.open .chevron {
+  transform: rotate(180deg);
+}
+
+.collapsible-toggle.open {
+  border-radius: 8px 8px 0 0;
+}
+
+.collapsible-content {
+  display: none;
+  padding: 1.25rem;
+  background: var(--navy-light);
+  border: 1px solid var(--navy-border);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+
+.collapsible-content.open {
+  display: block;
+}
+
+.formula-list {
+  list-style: none;
+}
+
+.formula-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--navy-border);
+  font-size: 0.85rem;
+  color: var(--white-dim);
+}
+
+.formula-list li:last-child {
+  border-bottom: none;
+}
+
+.formula-list code {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--gold);
+  background: rgba(212, 175, 55, 0.08);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+/* Benchmark table */
+.benchmark-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.benchmark-table th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.6rem;
+  text-align: center;
+  border-bottom: 1px solid var(--navy-border);
+}
+
+.benchmark-table th:first-child {
+  text-align: left;
+}
+
+.benchmark-table td {
+  padding: 0.5rem 0.6rem;
+  text-align: center;
+  border-bottom: 1px solid var(--navy-border);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.benchmark-table td:first-child {
+  text-align: left;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--white-dim);
+}
+
+.benchmark-table .bm-healthy { color: var(--green); }
+.benchmark-table .bm-watch { color: var(--amber); }
+.benchmark-table .bm-danger { color: var(--red); }
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid var(--navy-border);
+  margin-top: 2rem;
+}
+
+.footer-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--white-dim);
+  margin-bottom: 0.25rem;
+}
+
+.footer-tagline {
+  font-size: 0.75rem;
+  color: var(--white-dim);
+  opacity: 0.6;
+}
+
+.footer-kit {
+  font-size: 0.75rem;
+  color: var(--gold);
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .hero { padding: 1rem 0; border-bottom: 2px solid #111; }
+  .hero-brand { color: #333; }
+  .hero-title { color: #111; font-size: 24pt; }
+  .hero-subtitle, .hero-context { color: #444; }
+
+  .tabs, .toolbar, .week-nav button, .autofill-btn { display: none !important; }
+  .week-nav span { color: #111; }
+  .tab-panel { display: block !important; padding: 0.5rem 0; page-break-inside: avoid; }
+
+  .table-wrapper {
+    border: 1px solid #ccc;
+    background: #fff;
+    overflow: visible;
+  }
+
+  table { font-size: 9pt; }
+  thead th {
+    background: #f5f5f5;
+    color: #333;
+    border-bottom: 2px solid #333;
+    position: static;
+  }
+  tbody td { border-bottom: 1px solid #ddd; }
+  tbody td:first-child { background: #fff; position: static; }
+  tbody tr.row-totals td { background: #f5f5f5; border-top: 2px solid #333; color: #111; }
+  tbody tr.section-header td { background: #f0f0f0; color: #333; border-color: #999; }
+
+  table input {
+    border: none !important;
+    background: transparent !important;
+    color: #111 !important;
+    font-size: 9pt;
+    padding: 0;
+  }
+
+  .metric-card {
+    border: 1px solid #ccc;
+    background: #fff;
+    break-inside: avoid;
+  }
+  .metric-card::before { display: none; }
+  .card-label, .card-benchmark { color: #666; }
+  .card-value { color: #111; }
+
+  .verdict-section { border: 2px solid #333; background: #f9f9f9; }
+  .verdict-question { color: #333; }
+
+  .collapsible-content { display: block !important; border: 1px solid #ccc; background: #f9f9f9; }
+  .collapsible-toggle .chevron { display: none; }
+
+  .footer { border-top: 1px solid #ccc; }
+  .footer-name, .footer-tagline { color: #555; }
+  .footer-kit { color: #333; }
+
+  .calc-cell.healthy, .trend-up-good, .trend-down-good { color: #1a7a3a !important; }
+  .calc-cell.watch { color: #b8860b !important; }
+  .calc-cell.danger, .calc-cell.positive, .trend-up-bad, .trend-down-bad { color: #c00 !important; }
+  .card-streak { color: #1a7a3a !important; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero { padding: 2rem 1rem 1.5rem; }
+  .hero-title { font-size: 1.75rem; }
+  .hero-subtitle { font-size: 1rem; }
+
+  .tabs { gap: 0; }
+  .tab-btn { padding: 0.75rem 0.75rem; font-size: 0.8rem; letter-spacing: 0.04em; }
+
+  .tab-panel { padding: 1rem 0.5rem; }
+
+  table { font-size: 0.75rem; }
+  thead th { font-size: 0.7rem; padding: 0.5rem 0.35rem; }
+  tbody td { padding: 0.3rem 0.3rem; }
+
+  table input[type="number"],
+  table input[type="text"],
+  table input[type="date"] {
+    min-width: 70px;
+    font-size: 0.7rem;
+    padding: 0.35rem 0.3rem;
+  }
+
+  table input[type="text"] {
+    min-width: 90px;
+  }
+
+  .summary-grid { grid-template-columns: 1fr; }
+  .metric-card.health-score-card { grid-column: 1; }
+
+  .week-nav span { font-size: 0.9rem; min-width: auto; }
+  .week-nav { gap: 0.5rem; }
+
+  .toolbar { padding: 0.75rem 1rem; }
+  .toolbar button { font-size: 0.7rem; padding: 0.4rem 0.75rem; }
+
+  tbody tr.section-header td { font-size: 0.65rem; padding: 0.5rem 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-brand">THE GRUMPY CHEF</div>
+  <h1 class="hero-title">THE MEASUREMENT TRACKER</h1>
+  <p class="hero-subtitle">Enter numbers. See trends. Know if the leak is shrinking.</p>
+  <p class="hero-context">Track at the same time each day. Consistency matters more than precision. Look at trends, not single data points.</p>
+</header>
+
+<!-- ===== TOOLBAR ===== -->
+<div class="toolbar">
+  <button onclick="handlePrint()">Print / PDF</button>
+  <div class="export-group">
+    <button onclick="toggleDropdown('exportMenu')">Export &#9662;</button>
+    <div id="exportMenu" class="dropdown-menu">
+      <button onclick="exportExcel()"><span class="fmt-label">XLSX</span> <span class="fmt-desc">Excel Workbook</span></button>
+      <button onclick="exportCSV()"><span class="fmt-label">CSV</span> <span class="fmt-desc">Raw Data</span></button>
+      <button onclick="exportPDF()"><span class="fmt-label">PDF</span> <span class="fmt-desc">Formatted Report</span></button>
+      <button onclick="exportJSON()"><span class="fmt-label">JSON</span> <span class="fmt-desc">Backup / Transfer</span></button>
+    </div>
+  </div>
+  <div class="import-group">
+    <button onclick="toggleDropdown('importMenu')">Import &#9662;</button>
+    <div id="importMenu" class="dropdown-menu">
+      <button onclick="handleImportExcel()"><span class="fmt-label">XLSX</span> <span class="fmt-desc">From POS / Excel</span></button>
+      <button onclick="handleImportCSV()"><span class="fmt-label">CSV</span> <span class="fmt-desc">From POS / Export</span></button>
+      <button onclick="handleImportJSON()"><span class="fmt-label">JSON</span> <span class="fmt-desc">Restore Backup</span></button>
+    </div>
+  </div>
+  <button class="danger" onclick="handleClearWeek()">Clear Week</button>
+  <button class="danger" onclick="handleClearAll()">Clear All</button>
+  <input type="file" id="importFileJSON" accept=".json" style="display:none" onchange="processImportJSON(event)">
+  <input type="file" id="importFileCSV" accept=".csv,.txt" style="display:none" onchange="processImportCSV(event)">
+  <input type="file" id="importFileExcel" accept=".xlsx,.xls" style="display:none" onchange="processImportExcel(event)">
+</div>
+
+<!-- ===== TABS ===== -->
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="daily" onclick="switchTab('daily')">Daily</button>
+  <button class="tab-btn" data-tab="weekly" onclick="switchTab('weekly')">Weekly</button>
+  <button class="tab-btn" data-tab="summary" onclick="switchTab('summary')">30-Day Summary</button>
+</nav>
+
+<!-- ===== DAILY TAB ===== -->
+<section id="tab-daily" class="tab-panel active">
+  <div class="week-nav">
+    <button onclick="changeWeekOffset(-1)">&larr; Previous Week</button>
+    <span id="weekLabel"></span>
+    <button onclick="changeWeekOffset(1)">Next Week &rarr;</button>
+  </div>
+  <div class="table-wrapper">
+    <table id="dailyTable">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+          <th>Sun</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="dailyBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== WEEKLY TAB ===== -->
+<section id="tab-weekly" class="tab-panel">
+  <div class="table-wrapper">
+    <table id="weeklyTable">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th id="wkHead0">Week 1</th>
+          <th id="wkHead1">Week 2</th>
+          <th id="wkHead2">Week 3</th>
+          <th id="wkHead3">Week 4</th>
+        </tr>
+      </thead>
+      <tbody id="weeklyBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== 30-DAY SUMMARY TAB ===== -->
+<section id="tab-summary" class="tab-panel">
+  <div class="summary-grid" id="summaryCards"></div>
+  <div class="verdict-section" id="verdictSection">
+    <div class="verdict-question">Is your #1 leak shrinking?</div>
+    <div class="verdict-answer" id="verdictAnswer"></div>
+    <div class="verdict-health" id="verdictHealth"></div>
+  </div>
+</section>
+
+<!-- ===== KEY FORMULAS ===== -->
+<div class="collapsible">
+  <button class="collapsible-toggle" onclick="toggleCollapsible(this)">
+    Key Formulas Reference <span class="chevron">&#9660;</span>
+  </button>
+  <div class="collapsible-content">
+    <ul class="formula-list">
+      <li><strong>Food Cost %</strong> = <code>(Food Purchases &div; Food Sales) &times; 100</code></li>
+      <li><strong>Labor Cost %</strong> = <code>(Total Labor Cost &div; Total Revenue) &times; 100</code></li>
+      <li><strong>Prime Cost %</strong> = <code>(COGS + Total Labor) &div; Total Revenue &times; 100</code></li>
+      <li><strong>AvT Variance</strong> = <code>Actual Food Cost % &minus; Theoretical Food Cost %</code></li>
+      <li><strong>SPLH</strong> = <code>Total Sales &div; Actual Labor Hours</code></li>
+      <li><strong>Waste %</strong> = <code>(Total Waste &div; Food Purchases) &times; 100</code></li>
+      <li><strong>Health Score</strong> = <code>Weighted sum of 6 KPIs (see breakdown)</code></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== BENCHMARKS ===== -->
+<div class="collapsible">
+  <button class="collapsible-toggle" onclick="toggleCollapsible(this)">
+    Target Benchmarks <span class="chevron">&#9660;</span>
+  </button>
+  <div class="collapsible-content">
+    <table class="benchmark-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Healthy</th>
+          <th>Watch</th>
+          <th>Danger</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Food Cost %</td>
+          <td class="bm-healthy">25 &ndash; 32%</td>
+          <td class="bm-watch">32 &ndash; 38%</td>
+          <td class="bm-danger">&gt; 38%</td>
+        </tr>
+        <tr>
+          <td>Labor Cost %</td>
+          <td class="bm-healthy">25 &ndash; 30%</td>
+          <td class="bm-watch">30 &ndash; 35%</td>
+          <td class="bm-danger">&gt; 35%</td>
+        </tr>
+        <tr>
+          <td>Prime Cost %</td>
+          <td class="bm-healthy">55 &ndash; 60%</td>
+          <td class="bm-watch">60 &ndash; 65%</td>
+          <td class="bm-danger">&gt; 65%</td>
+        </tr>
+        <tr>
+          <td>Waste %</td>
+          <td class="bm-healthy">2 &ndash; 4%</td>
+          <td class="bm-watch">4 &ndash; 5%</td>
+          <td class="bm-danger">&gt; 5%</td>
+        </tr>
+        <tr>
+          <td>AvT Variance</td>
+          <td class="bm-healthy">0 &ndash; 2 pts</td>
+          <td class="bm-watch">2 &ndash; 3 pts</td>
+          <td class="bm-danger">&gt; 3 pts</td>
+        </tr>
+        <tr>
+          <td>Health Score</td>
+          <td class="bm-healthy">80 &ndash; 100</td>
+          <td class="bm-watch">60 &ndash; 79</td>
+          <td class="bm-danger">&lt; 60</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-name">Built by Christian Schiffner | German Master Chef | 20+ Years Operations</div>
+  <div class="footer-kit">Part of the 72-Hour Profit Discovery Kit</div>
+</footer>
+
+<script>
+/* ============================================================
+   STATE & STORAGE
+   ============================================================ */
+const STORAGE_KEY = 'grumpy_measurement_tracker_v2';
+
+let weekOffset = 0;
+
+function loadData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch { return {}; }
+}
+
+function saveData(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function getWeekKey(offset) {
+  const d = getMondayOfWeek(offset);
+  return 'week_' + d.toISOString().slice(0, 10);
+}
+
+function getMondayOfWeek(offset) {
+  const now = new Date();
+  const day = now.getDay();
+  const diff = (day === 0 ? -6 : 1 - day) + (offset * 7);
+  const mon = new Date(now);
+  mon.setDate(now.getDate() + diff);
+  mon.setHours(0, 0, 0, 0);
+  return mon;
+}
+
+function formatDate(d) {
+  return d.toISOString().slice(0, 10);
+}
+
+function getWeekDates(offset) {
+  const mon = getMondayOfWeek(offset);
+  const dates = [];
+  for (let i = 0; i < 7; i++) {
+    const dt = new Date(mon);
+    dt.setDate(mon.getDate() + i);
+    dates.push(formatDate(dt));
+  }
+  return dates;
+}
+
+function escapeAttr(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/* ============================================================
+   RATING & TREND HELPERS
+   ============================================================ */
+function ratingClass(val, thresholds, lowerBetter) {
+  if (val === null || val === undefined || isNaN(val)) return '';
+  if (lowerBetter) {
+    if (val <= thresholds[0]) return 'healthy';
+    if (val <= thresholds[1]) return 'watch';
+    return 'danger';
+  } else {
+    if (val >= thresholds[1]) return 'healthy';
+    if (val >= thresholds[0]) return 'watch';
+    return 'danger';
+  }
+}
+
+function ratingBorder(cls) {
+  if (cls === 'healthy') return 'border-green';
+  if (cls === 'watch') return 'border-amber';
+  if (cls === 'danger') return 'border-red';
+  return '';
+}
+
+function trendArrow(current, previous, lowerBetter) {
+  if (!previous || previous === 0 || current === null || previous === null) return '';
+  var diff = current - previous;
+  var pctDiff = Math.abs(diff / previous * 100);
+  if (pctDiff < 0.5) return '<span class="trend-arrow trend-stable"> \u2192</span>';
+  if (lowerBetter) {
+    return diff < 0
+      ? '<span class="trend-arrow trend-down-good"> \u2193</span>'
+      : '<span class="trend-arrow trend-up-bad"> \u2191</span>';
+  } else {
+    return diff > 0
+      ? '<span class="trend-arrow trend-up-good"> \u2191</span>'
+      : '<span class="trend-arrow trend-down-bad"> \u2193</span>';
+  }
+}
+
+function trendDirection(current, previous, lowerBetter) {
+  if (!previous || previous === 0 || current === null || previous === null) return 'stable';
+  var diff = current - previous;
+  var pctDiff = Math.abs(diff / previous * 100);
+  if (pctDiff < 0.5) return 'stable';
+  if (lowerBetter) {
+    return diff < 0 ? 'improving' : 'worsening';
+  } else {
+    return diff > 0 ? 'improving' : 'worsening';
+  }
+}
+
+function trendDisplayHTML(trend) {
+  if (trend === 'improving') return '<span class="trend-up-good" style="font-size:1.1rem;">\u2191 Improving</span>';
+  if (trend === 'worsening') return '<span class="trend-down-bad" style="font-size:1.1rem;">\u2193 Worsening</span>';
+  return '<span class="trend-stable" style="font-size:1.1rem;">\u2192 Stable</span>';
+}
+
+/* ============================================================
+   DAILY TAB - ROW DEFINITIONS
+   ============================================================ */
+var dailyRows = [
+  { section: 'REVENUE' },
+  { key: 'date',         label: 'Date',                    type: 'date' },
+  { key: 'totalSales',   label: 'Total Sales ($)',          type: 'number', prefix: '$' },
+  { key: 'foodSales',    label: 'Food Sales ($)',           type: 'number', prefix: '$' },
+  { key: 'bevSales',     label: 'Beverage Sales ($)',       type: 'number', prefix: '$' },
+  { key: 'covers',       label: 'Total Covers',            type: 'number' },
+  { key: 'avgCheck',     label: 'Average Check',           type: 'calc' },
+  { section: 'COSTS' },
+  { key: 'foodPurch',    label: 'Food Purchases ($)',       type: 'number', prefix: '$' },
+  { key: 'foodCostPct',  label: 'Food Cost %',             type: 'calc' },
+  { key: 'laborCost',    label: 'Total Labor Cost ($)',     type: 'number', prefix: '$' },
+  { key: 'laborCostPct', label: 'Labor Cost %',            type: 'calc' },
+  { key: 'primeCostPct', label: 'Prime Cost %',            type: 'calc' },
+  { section: 'LABOR' },
+  { key: 'laborSched',   label: 'Labor Hours (Scheduled)', type: 'number' },
+  { key: 'laborActual',  label: 'Labor Hours (Actual)',    type: 'number' },
+  { key: 'laborVar',     label: 'Labor Variance',          type: 'calc' },
+  { key: 'splh',         label: 'SPLH',                    type: 'calc' },
+  { section: 'WASTE & COMPS' },
+  { key: 'waste',        label: 'Waste Log Total ($)',      type: 'number', prefix: '$' },
+  { key: 'comps',        label: 'Comps ($)',                type: 'number', prefix: '$' },
+  { key: 'voids',        label: 'Voids ($)',                type: 'number', prefix: '$' },
+  { section: 'ACTION LOG' },
+  { key: 'issueFlagged', label: 'Issue Flagged',           type: 'text' },
+  { key: 'actionTaken',  label: 'Action Taken',            type: 'text' }
+];
+
+var summableDaily = ['totalSales', 'foodSales', 'bevSales', 'covers', 'foodPurch', 'laborCost', 'laborSched', 'laborActual', 'waste', 'comps', 'voids'];
+
+function buildDailyTable() {
+  var data = loadData();
+  var wk = getWeekKey(weekOffset);
+  var weekData = data[wk] || {};
+  var dates = getWeekDates(weekOffset);
+  var colCount = 9;
+
+  // Week label
+  var mon = getMondayOfWeek(weekOffset);
+  var sun = new Date(mon);
+  sun.setDate(mon.getDate() + 6);
+  document.getElementById('weekLabel').textContent =
+    mon.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' \u2013 ' +
+    sun.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+  var html = '';
+  dailyRows.forEach(function(row) {
+    // Section header
+    if (row.section) {
+      html += '<tr class="section-header"><td colspan="' + colCount + '">' + row.section + '</td></tr>';
+      return;
+    }
+
+    html += '<tr>';
+    html += '<td>' + row.label + '</td>';
+
+    for (var d = 0; d < 7; d++) {
+      var dayKey = 'day' + d;
+      var val = (weekData[dayKey] && weekData[dayKey][row.key]) || '';
+
+      if (row.type === 'date') {
+        html += '<td><input type="date" value="' + (val || dates[d]) + '" data-day="' + d + '" data-field="' + row.key + '" onchange="onDailyInput(this)"></td>';
+      } else if (row.type === 'number') {
+        html += '<td><input type="number" step="any" value="' + val + '" placeholder="0" data-day="' + d + '" data-field="' + row.key + '" oninput="onDailyInput(this)"></td>';
+      } else if (row.type === 'text') {
+        html += '<td><input type="text" value="' + escapeAttr(val) + '" placeholder="..." data-day="' + d + '" data-field="' + row.key + '" oninput="onDailyInput(this)"></td>';
+      } else if (row.type === 'calc') {
+        html += '<td class="calc-cell" id="calc_' + row.key + '_' + d + '">--</td>';
+      }
+    }
+
+    // Totals column
+    if (row.type === 'calc') {
+      html += '<td class="calc-cell" id="calc_' + row.key + '_total">--</td>';
+    } else if (row.type === 'text' || row.type === 'date') {
+      html += '<td></td>';
+    } else {
+      html += '<td class="calc-cell" id="total_' + row.key + '">--</td>';
+    }
+
+    html += '</tr>';
+  });
+
+  document.getElementById('dailyBody').innerHTML = html;
+  recalcDaily();
+}
+
+function onDailyInput(el) {
+  var data = loadData();
+  var wk = getWeekKey(weekOffset);
+  if (!data[wk]) data[wk] = {};
+  var dayKey = 'day' + el.dataset.day;
+  if (!data[wk][dayKey]) data[wk][dayKey] = {};
+  data[wk][dayKey][el.dataset.field] = el.value;
+  saveData(data);
+  recalcDaily();
+}
+
+function getDayVal(data, wk, day, field) {
+  if (!data[wk]) return 0;
+  var dk = 'day' + day;
+  if (!data[wk][dk]) return 0;
+  return parseFloat(data[wk][dk][field]) || 0;
+}
+
+function recalcDaily() {
+  var data = loadData();
+  var wk = getWeekKey(weekOffset);
+  var totals = {};
+  summableDaily.forEach(function(k) { totals[k] = 0; });
+
+  for (var d = 0; d < 7; d++) {
+    var ts = getDayVal(data, wk, d, 'totalSales');
+    var cov = getDayVal(data, wk, d, 'covers');
+    var fs = getDayVal(data, wk, d, 'foodSales');
+    var fp = getDayVal(data, wk, d, 'foodPurch');
+    var lc = getDayVal(data, wk, d, 'laborCost');
+    var sched = getDayVal(data, wk, d, 'laborSched');
+    var actual = getDayVal(data, wk, d, 'laborActual');
+
+    // Average Check
+    var acEl = document.getElementById('calc_avgCheck_' + d);
+    if (acEl) {
+      if (cov > 0 && ts > 0) {
+        acEl.textContent = '$' + (ts / cov).toFixed(2);
+        acEl.className = 'calc-cell';
+      } else {
+        acEl.textContent = '--';
+        acEl.className = 'calc-cell zero';
+      }
+    }
+
+    // Food Cost %
+    var fcEl = document.getElementById('calc_foodCostPct_' + d);
+    if (fcEl) {
+      if (fs > 0 && fp > 0) {
+        var fcPct = (fp / fs) * 100;
+        fcEl.textContent = fcPct.toFixed(1) + '%';
+        fcEl.className = 'calc-cell ' + ratingClass(fcPct, [32, 38], true);
+      } else {
+        fcEl.textContent = '--';
+        fcEl.className = 'calc-cell zero';
+      }
+    }
+
+    // Labor Cost %
+    var lcEl = document.getElementById('calc_laborCostPct_' + d);
+    if (lcEl) {
+      if (ts > 0 && lc > 0) {
+        var lcPct = (lc / ts) * 100;
+        lcEl.textContent = lcPct.toFixed(1) + '%';
+        lcEl.className = 'calc-cell ' + ratingClass(lcPct, [30, 35], true);
+      } else {
+        lcEl.textContent = '--';
+        lcEl.className = 'calc-cell zero';
+      }
+    }
+
+    // Prime Cost %
+    var pcEl = document.getElementById('calc_primeCostPct_' + d);
+    if (pcEl) {
+      if (ts > 0 && (fp > 0 || lc > 0)) {
+        var pcPct = ((fp + lc) / ts) * 100;
+        pcEl.textContent = pcPct.toFixed(1) + '%';
+        pcEl.className = 'calc-cell ' + ratingClass(pcPct, [60, 65], true);
+      } else {
+        pcEl.textContent = '--';
+        pcEl.className = 'calc-cell zero';
+      }
+    }
+
+    // Labor Variance
+    var lvEl = document.getElementById('calc_laborVar_' + d);
+    if (lvEl) {
+      if (sched > 0 || actual > 0) {
+        var v = actual - sched;
+        lvEl.textContent = (v > 0 ? '+' : '') + v.toFixed(1) + 'h';
+        lvEl.className = 'calc-cell ' + (v > 0 ? 'positive' : v < 0 ? 'negative' : 'zero');
+      } else {
+        lvEl.textContent = '--';
+        lvEl.className = 'calc-cell zero';
+      }
+    }
+
+    // SPLH
+    var splhEl = document.getElementById('calc_splh_' + d);
+    if (splhEl) {
+      if (actual > 0 && ts > 0) {
+        splhEl.textContent = '$' + (ts / actual).toFixed(2);
+        splhEl.className = 'calc-cell';
+      } else {
+        splhEl.textContent = '--';
+        splhEl.className = 'calc-cell zero';
+      }
+    }
+
+    summableDaily.forEach(function(k) {
+      totals[k] += getDayVal(data, wk, d, k);
+    });
+  }
+
+  // Fill totals column
+  summableDaily.forEach(function(k) {
+    var el = document.getElementById('total_' + k);
+    if (el) {
+      var isDollar = (k === 'totalSales' || k === 'foodSales' || k === 'bevSales' || k === 'foodPurch' || k === 'laborCost' || k === 'waste' || k === 'comps' || k === 'voids');
+      var prefix = isDollar ? '$' : '';
+      if (totals[k] > 0) {
+        el.textContent = prefix + totals[k].toLocaleString('en-US', { minimumFractionDigits: isDollar ? 2 : 0, maximumFractionDigits: 2 });
+      } else {
+        el.textContent = '--';
+      }
+    }
+  });
+
+  // Total Avg Check
+  var tacEl = document.getElementById('calc_avgCheck_total');
+  if (tacEl) {
+    if (totals.covers > 0 && totals.totalSales > 0) {
+      tacEl.textContent = '$' + (totals.totalSales / totals.covers).toFixed(2);
+      tacEl.className = 'calc-cell';
+    } else {
+      tacEl.textContent = '--';
+      tacEl.className = 'calc-cell zero';
+    }
+  }
+
+  // Total Food Cost %
+  var tfcEl = document.getElementById('calc_foodCostPct_total');
+  if (tfcEl) {
+    if (totals.foodSales > 0 && totals.foodPurch > 0) {
+      var tfcPct = (totals.foodPurch / totals.foodSales) * 100;
+      tfcEl.textContent = tfcPct.toFixed(1) + '%';
+      tfcEl.className = 'calc-cell ' + ratingClass(tfcPct, [32, 38], true);
+    } else {
+      tfcEl.textContent = '--';
+      tfcEl.className = 'calc-cell zero';
+    }
+  }
+
+  // Total Labor Cost %
+  var tlcEl = document.getElementById('calc_laborCostPct_total');
+  if (tlcEl) {
+    if (totals.totalSales > 0 && totals.laborCost > 0) {
+      var tlcPct = (totals.laborCost / totals.totalSales) * 100;
+      tlcEl.textContent = tlcPct.toFixed(1) + '%';
+      tlcEl.className = 'calc-cell ' + ratingClass(tlcPct, [30, 35], true);
+    } else {
+      tlcEl.textContent = '--';
+      tlcEl.className = 'calc-cell zero';
+    }
+  }
+
+  // Total Prime Cost %
+  var tpcEl = document.getElementById('calc_primeCostPct_total');
+  if (tpcEl) {
+    if (totals.totalSales > 0 && (totals.foodPurch > 0 || totals.laborCost > 0)) {
+      var tpcPct = ((totals.foodPurch + totals.laborCost) / totals.totalSales) * 100;
+      tpcEl.textContent = tpcPct.toFixed(1) + '%';
+      tpcEl.className = 'calc-cell ' + ratingClass(tpcPct, [60, 65], true);
+    } else {
+      tpcEl.textContent = '--';
+      tpcEl.className = 'calc-cell zero';
+    }
+  }
+
+  // Total Labor Variance
+  var tlvEl = document.getElementById('calc_laborVar_total');
+  if (tlvEl) {
+    if (totals.laborSched > 0 || totals.laborActual > 0) {
+      var v = totals.laborActual - totals.laborSched;
+      tlvEl.textContent = (v > 0 ? '+' : '') + v.toFixed(1) + 'h';
+      tlvEl.className = 'calc-cell ' + (v > 0 ? 'positive' : v < 0 ? 'negative' : 'zero');
+    } else {
+      tlvEl.textContent = '--';
+      tlvEl.className = 'calc-cell zero';
+    }
+  }
+
+  // Total SPLH
+  var tsplhEl = document.getElementById('calc_splh_total');
+  if (tsplhEl) {
+    if (totals.laborActual > 0 && totals.totalSales > 0) {
+      tsplhEl.textContent = '$' + (totals.totalSales / totals.laborActual).toFixed(2);
+      tsplhEl.className = 'calc-cell';
+    } else {
+      tsplhEl.textContent = '--';
+      tsplhEl.className = 'calc-cell zero';
+    }
+  }
+}
+
+function changeWeekOffset(delta) {
+  weekOffset += delta;
+  buildDailyTable();
+}
+
+/* ============================================================
+   WEEKLY TAB
+   ============================================================ */
+var weeklyInputRows = [
+  { key: 'wRevenue',       label: 'Total Revenue ($)',          type: 'number', prefix: '$' },
+  { key: 'wFoodSales',     label: 'Food Sales ($)',             type: 'number', prefix: '$' },
+  { key: 'wFoodPurch',     label: 'Food Purchases ($)',         type: 'number', prefix: '$' },
+  { key: 'wLaborCost',     label: 'Total Labor Cost ($)',       type: 'number', prefix: '$' },
+  { key: 'wWaste',         label: 'Total Waste ($)',            type: 'number', prefix: '$' },
+  { key: 'wTheoFoodCost',  label: 'Theoretical Food Cost %',   type: 'number', suffix: '%' },
+  { key: 'wCovers',        label: 'Covers',                    type: 'number' },
+  { key: 'wLaborHours',    label: 'Total Labor Hours',         type: 'number' }
+];
+
+var weeklyCalcRows = [
+  { key: 'wFoodCostPct',   label: 'Food Cost %',               thresholds: [32, 38], lowerBetter: true, suffix: '%' },
+  { key: 'wLaborPct',      label: 'Labor Cost %',              thresholds: [30, 35], lowerBetter: true, suffix: '%' },
+  { key: 'wPrimePct',      label: 'Prime Cost %',              thresholds: [60, 65], lowerBetter: true, suffix: '%' },
+  { key: 'wPrimeCost',     label: 'Prime Cost ($)',             thresholds: null, lowerBetter: true, prefix: '$' },
+  { key: 'wWastePct',      label: 'Waste %',                   thresholds: [4, 5], lowerBetter: true, suffix: '%' },
+  { key: 'wAvtVar',        label: 'AvT Variance',              thresholds: [2, 3], lowerBetter: true, suffix: ' pts' },
+  { key: 'wAvgCheck',      label: 'Average Check',             thresholds: null, lowerBetter: false, prefix: '$' },
+  { key: 'wSPLH',          label: 'SPLH',                      thresholds: null, lowerBetter: false, prefix: '$' },
+  { key: 'wHealthScore',   label: 'Weekly Health Score',        thresholds: [60, 80], lowerBetter: false, suffix: '/100' }
+];
+
+function getWeeklyStorageKey(weekIdx) {
+  return 'weekly_w' + weekIdx;
+}
+
+function buildWeeklyTable() {
+  var data = loadData();
+  var html = '';
+
+  // Auto-fill button row
+  html += '<tr class="section-header"><td>AUTO-FILL</td>';
+  for (var w = 0; w < 4; w++) {
+    html += '<td style="text-align:center;"><button class="autofill-btn" onclick="autoFillWeek(' + w + ')">Auto-Fill from Daily</button></td>';
+  }
+  html += '</tr>';
+
+  // Input rows
+  html += '<tr class="section-header"><td colspan="5">INPUT DATA</td></tr>';
+  weeklyInputRows.forEach(function(row) {
+    html += '<tr>';
+    html += '<td>' + row.label + '</td>';
+    for (var w = 0; w < 4; w++) {
+      var wKey = getWeeklyStorageKey(w);
+      var wData = data[wKey] || {};
+      var val = wData[row.key] || '';
+      html += '<td><input type="number" step="any" value="' + val + '" placeholder="0" data-week="' + w + '" data-field="' + row.key + '" oninput="onWeeklyInput(this)"></td>';
+    }
+    html += '</tr>';
+  });
+
+  // Calculated rows
+  html += '<tr class="section-header"><td colspan="5">CALCULATED METRICS</td></tr>';
+  weeklyCalcRows.forEach(function(row) {
+    html += '<tr>';
+    html += '<td>' + row.label + '</td>';
+    for (var w = 0; w < 4; w++) {
+      html += '<td class="calc-cell" id="wcalc_' + row.key + '_' + w + '">--</td>';
+    }
+    html += '</tr>';
+  });
+
+  document.getElementById('weeklyBody').innerHTML = html;
+  recalcWeekly();
+}
+
+function onWeeklyInput(el) {
+  var data = loadData();
+  var wKey = getWeeklyStorageKey(el.dataset.week);
+  if (!data[wKey]) data[wKey] = {};
+  data[wKey][el.dataset.field] = el.value;
+  saveData(data);
+  recalcWeekly();
+}
+
+function getWeeklyVal(data, weekIdx, field) {
+  var wKey = getWeeklyStorageKey(weekIdx);
+  if (!data[wKey]) return 0;
+  return parseFloat(data[wKey][field]) || 0;
+}
+
+function recalcWeekly() {
+  var data = loadData();
+  var weekVals = {};
+
+  for (var w = 0; w < 4; w++) {
+    var rev = getWeeklyVal(data, w, 'wRevenue');
+    var fs = getWeeklyVal(data, w, 'wFoodSales');
+    var fp = getWeeklyVal(data, w, 'wFoodPurch');
+    var lc = getWeeklyVal(data, w, 'wLaborCost');
+    var waste = getWeeklyVal(data, w, 'wWaste');
+    var covers = getWeeklyVal(data, w, 'wCovers');
+    var theoFC = getWeeklyVal(data, w, 'wTheoFoodCost');
+    var laborHrs = getWeeklyVal(data, w, 'wLaborHours');
+
+    var foodCostPct = fs > 0 ? (fp / fs * 100) : null;
+    var laborPct = rev > 0 ? (lc / rev * 100) : null;
+    var primeCost = (fp > 0 || lc > 0) ? fp + lc : null;
+    var primePct = rev > 0 ? ((fp + lc) / rev * 100) : null;
+    var wastePct = fp > 0 ? (waste / fp * 100) : null;
+    var avtVar = (foodCostPct !== null && theoFC > 0) ? (foodCostPct - theoFC) : null;
+    var avgCheck = covers > 0 ? (rev / covers) : null;
+    var splh = laborHrs > 0 ? (rev / laborHrs) : null;
+
+    // Health Score calculation
+    var healthScore = null;
+    var hasData = rev > 0 || fs > 0 || fp > 0;
+    if (hasData) {
+      var score = 0;
+
+      // Prime Cost %: 25 pts
+      if (primePct !== null) {
+        var pcClass = ratingClass(primePct, [60, 65], true);
+        score += pcClass === 'healthy' ? 25 : pcClass === 'watch' ? 15 : 5;
+      }
+
+      // AvT Variance: 20 pts
+      if (avtVar !== null) {
+        var avtClass = ratingClass(Math.abs(avtVar), [2, 3], true);
+        score += avtClass === 'healthy' ? 20 : avtClass === 'watch' ? 12 : 4;
+      } else {
+        score += 12; // neutral if no data
+      }
+
+      // Labor Cost %: 20 pts
+      if (laborPct !== null) {
+        var lcClass = ratingClass(laborPct, [30, 35], true);
+        score += lcClass === 'healthy' ? 20 : lcClass === 'watch' ? 12 : 4;
+      }
+
+      // Waste %: 15 pts
+      if (wastePct !== null) {
+        var wasteClass = ratingClass(wastePct, [4, 5], true);
+        score += wasteClass === 'healthy' ? 15 : wasteClass === 'watch' ? 9 : 3;
+      } else {
+        score += 9; // neutral if no data
+      }
+
+      // SPLH trend: 10 pts
+      if (w > 0 && weekVals[w - 1] && weekVals[w - 1].splh !== null && splh !== null) {
+        var splhDir = trendDirection(splh, weekVals[w - 1].splh, false);
+        score += splhDir === 'improving' ? 10 : splhDir === 'stable' ? 6 : 2;
+      } else {
+        score += 6; // neutral for week 1 or missing data
+      }
+
+      // Comp/Void trend: 10 pts (using weekly waste/comps as proxy)
+      // We'll use waste trend since comps/voids are daily only
+      if (w > 0 && weekVals[w - 1] && weekVals[w - 1].wastePct !== null && wastePct !== null) {
+        var wasteDir = trendDirection(wastePct, weekVals[w - 1].wastePct, true);
+        score += wasteDir === 'improving' ? 10 : wasteDir === 'stable' ? 6 : 2;
+      } else {
+        score += 6; // neutral
+      }
+
+      healthScore = score;
+    }
+
+    weekVals[w] = { foodCostPct: foodCostPct, laborPct: laborPct, primeCost: primeCost, primePct: primePct, wastePct: wastePct, avtVar: avtVar, avgCheck: avgCheck, splh: splh, healthScore: healthScore };
+
+    // Food Cost %
+    setWeeklyCalcCell('wFoodCostPct', w, foodCostPct, '%', [32, 38], true, weekVals, 'foodCostPct');
+
+    // Labor Cost %
+    setWeeklyCalcCell('wLaborPct', w, laborPct, '%', [30, 35], true, weekVals, 'laborPct');
+
+    // Prime Cost %
+    setWeeklyCalcCell('wPrimePct', w, primePct, '%', [60, 65], true, weekVals, 'primePct');
+
+    // Prime Cost $
+    var pcDolEl = document.getElementById('wcalc_wPrimeCost_' + w);
+    if (pcDolEl) {
+      if (primeCost !== null && primeCost > 0) {
+        pcDolEl.textContent = '$' + primeCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        pcDolEl.className = 'calc-cell';
+      } else {
+        pcDolEl.textContent = '--';
+        pcDolEl.className = 'calc-cell zero';
+      }
+    }
+
+    // Waste %
+    setWeeklyCalcCell('wWastePct', w, wastePct, '%', [4, 5], true, weekVals, 'wastePct');
+
+    // AvT Variance
+    var avtEl = document.getElementById('wcalc_wAvtVar_' + w);
+    if (avtEl) {
+      if (avtVar !== null) {
+        var absAvt = Math.abs(avtVar);
+        var avtCls = ratingClass(absAvt, [2, 3], true);
+        var avtArrow = '';
+        if (w > 0 && weekVals[w - 1] && weekVals[w - 1].avtVar !== null) {
+          avtArrow = trendArrow(Math.abs(avtVar), Math.abs(weekVals[w - 1].avtVar), true);
+        }
+        avtEl.innerHTML = avtVar.toFixed(1) + ' pts' + avtArrow;
+        avtEl.className = 'calc-cell ' + avtCls;
+      } else {
+        avtEl.textContent = '--';
+        avtEl.className = 'calc-cell zero';
+      }
+    }
+
+    // Average Check
+    var acEl = document.getElementById('wcalc_wAvgCheck_' + w);
+    if (acEl) {
+      if (avgCheck !== null) {
+        var acArrow = '';
+        if (w > 0 && weekVals[w - 1] && weekVals[w - 1].avgCheck !== null) {
+          acArrow = trendArrow(avgCheck, weekVals[w - 1].avgCheck, false);
+        }
+        acEl.innerHTML = '$' + avgCheck.toFixed(2) + acArrow;
+        acEl.className = 'calc-cell';
+      } else {
+        acEl.textContent = '--';
+        acEl.className = 'calc-cell zero';
+      }
+    }
+
+    // SPLH
+    var splhEl = document.getElementById('wcalc_wSPLH_' + w);
+    if (splhEl) {
+      if (splh !== null) {
+        var splhArrow = '';
+        if (w > 0 && weekVals[w - 1] && weekVals[w - 1].splh !== null) {
+          splhArrow = trendArrow(splh, weekVals[w - 1].splh, false);
+        }
+        splhEl.innerHTML = '$' + splh.toFixed(2) + splhArrow;
+        splhEl.className = 'calc-cell';
+      } else {
+        splhEl.textContent = '--';
+        splhEl.className = 'calc-cell zero';
+      }
+    }
+
+    // Health Score
+    var hsEl = document.getElementById('wcalc_wHealthScore_' + w);
+    if (hsEl) {
+      if (healthScore !== null) {
+        var hsCls = ratingClass(healthScore, [60, 80], false);
+        var hsArrow = '';
+        if (w > 0 && weekVals[w - 1] && weekVals[w - 1].healthScore !== null) {
+          hsArrow = trendArrow(healthScore, weekVals[w - 1].healthScore, false);
+        }
+        hsEl.innerHTML = healthScore + '/100' + hsArrow;
+        hsEl.className = 'calc-cell ' + hsCls;
+      } else {
+        hsEl.textContent = '--';
+        hsEl.className = 'calc-cell zero';
+      }
+    }
+  }
+}
+
+function setWeeklyCalcCell(key, w, val, suffix, thresholds, lowerBetter, weekVals, valMapKey) {
+  var el = document.getElementById('wcalc_' + key + '_' + w);
+  if (!el) return;
+  if (val !== null && !isNaN(val)) {
+    var cls = ratingClass(val, thresholds, lowerBetter);
+    var arrow = '';
+    if (w > 0 && weekVals[w - 1] && weekVals[w - 1][valMapKey] !== null) {
+      arrow = trendArrow(val, weekVals[w - 1][valMapKey], lowerBetter);
+    }
+    el.innerHTML = val.toFixed(1) + suffix + arrow;
+    el.className = 'calc-cell ' + cls;
+  } else {
+    el.textContent = '--';
+    el.className = 'calc-cell zero';
+  }
+}
+
+/* ============================================================
+   AUTO-FILL FROM DAILY
+   ============================================================ */
+function autoFillWeek(weekIdx) {
+  if (!confirm('Fill Week ' + (weekIdx + 1) + ' from daily data? This will overwrite current weekly values.')) return;
+
+  var data = loadData();
+
+  // Determine which daily week offset corresponds to this weekly index.
+  // Week 1 = weekOffset 0 (current week), Week 2 = weekOffset -1, etc.
+  // But the user might be tracking any 4 weeks. We'll use a simple mapping:
+  // We look at the 4 most recent complete weeks from the current date going backward.
+  // Week 4 = current week offset 0, Week 3 = offset -1, Week 2 = offset -2, Week 1 = offset -3
+  // Actually, let's make it more intuitive:
+  // Week 1 = oldest (3 weeks ago), Week 4 = most recent (current week)
+  var offsets = [-3, -2, -1, 0];
+  var offset = offsets[weekIdx];
+  var wk = getWeekKey(offset);
+  var weekData = data[wk];
+
+  if (!weekData) {
+    alert('No daily data found for Week ' + (weekIdx + 1) + '. Make sure you have entered daily data for that week.');
+    return;
+  }
+
+  var totalRevenue = 0;
+  var totalFoodSales = 0;
+  var totalFoodPurch = 0;
+  var totalLaborCost = 0;
+  var totalWaste = 0;
+  var totalCovers = 0;
+  var totalLaborHours = 0;
+  var hasAnyData = false;
+
+  for (var d = 0; d < 7; d++) {
+    var dk = 'day' + d;
+    if (weekData[dk]) {
+      hasAnyData = true;
+      totalRevenue += parseFloat(weekData[dk].totalSales) || 0;
+      totalFoodSales += parseFloat(weekData[dk].foodSales) || 0;
+      totalFoodPurch += parseFloat(weekData[dk].foodPurch) || 0;
+      totalLaborCost += parseFloat(weekData[dk].laborCost) || 0;
+      totalWaste += parseFloat(weekData[dk].waste) || 0;
+      totalCovers += parseFloat(weekData[dk].covers) || 0;
+      totalLaborHours += parseFloat(weekData[dk].laborActual) || 0;
+    }
+  }
+
+  if (!hasAnyData) {
+    alert('No daily data found for Week ' + (weekIdx + 1) + '.');
+    return;
+  }
+
+  var wKey = getWeeklyStorageKey(weekIdx);
+  if (!data[wKey]) data[wKey] = {};
+
+  data[wKey].wRevenue = totalRevenue > 0 ? totalRevenue.toFixed(2) : '';
+  data[wKey].wFoodSales = totalFoodSales > 0 ? totalFoodSales.toFixed(2) : '';
+  data[wKey].wFoodPurch = totalFoodPurch > 0 ? totalFoodPurch.toFixed(2) : '';
+  data[wKey].wLaborCost = totalLaborCost > 0 ? totalLaborCost.toFixed(2) : '';
+  data[wKey].wWaste = totalWaste > 0 ? totalWaste.toFixed(2) : '';
+  data[wKey].wCovers = totalCovers > 0 ? totalCovers.toString() : '';
+  data[wKey].wLaborHours = totalLaborHours > 0 ? totalLaborHours.toFixed(1) : '';
+  // Don't overwrite theoretical food cost - that's a manual entry
+  // data[wKey].wTheoFoodCost stays as is
+
+  saveData(data);
+  buildWeeklyTable();
+}
+
+/* ============================================================
+   30-DAY SUMMARY
+   ============================================================ */
+function buildSummary() {
+  var data = loadData();
+  var weeks = [];
+
+  for (var w = 0; w < 4; w++) {
+    var rev = getWeeklyVal(data, w, 'wRevenue');
+    var fs = getWeeklyVal(data, w, 'wFoodSales');
+    var fp = getWeeklyVal(data, w, 'wFoodPurch');
+    var lc = getWeeklyVal(data, w, 'wLaborCost');
+    var waste = getWeeklyVal(data, w, 'wWaste');
+    var covers = getWeeklyVal(data, w, 'wCovers');
+    var theoFC = getWeeklyVal(data, w, 'wTheoFoodCost');
+    var laborHrs = getWeeklyVal(data, w, 'wLaborHours');
+
+    var foodCostPct = fs > 0 ? (fp / fs * 100) : null;
+    var laborPct = rev > 0 ? (lc / rev * 100) : null;
+    var primePct = rev > 0 ? ((fp + lc) / rev * 100) : null;
+    var wastePct = fp > 0 ? (waste / fp * 100) : null;
+    var avtVar = (foodCostPct !== null && theoFC > 0) ? Math.abs(foodCostPct - theoFC) : null;
+    var avgCheck = covers > 0 ? (rev / covers) : null;
+    var splh = laborHrs > 0 ? (rev / laborHrs) : null;
+
+    // Health Score (same logic as weekly)
+    var healthScore = null;
+    var hasData = rev > 0 || fs > 0 || fp > 0;
+    if (hasData) {
+      var score = 0;
+      if (primePct !== null) {
+        var pcClass = ratingClass(primePct, [60, 65], true);
+        score += pcClass === 'healthy' ? 25 : pcClass === 'watch' ? 15 : 5;
+      }
+      if (avtVar !== null) {
+        var avtClass = ratingClass(avtVar, [2, 3], true);
+        score += avtClass === 'healthy' ? 20 : avtClass === 'watch' ? 12 : 4;
+      } else { score += 12; }
+      if (laborPct !== null) {
+        var lcClass = ratingClass(laborPct, [30, 35], true);
+        score += lcClass === 'healthy' ? 20 : lcClass === 'watch' ? 12 : 4;
+      }
+      if (wastePct !== null) {
+        var wasteClass = ratingClass(wastePct, [4, 5], true);
+        score += wasteClass === 'healthy' ? 15 : wasteClass === 'watch' ? 9 : 3;
+      } else { score += 9; }
+      if (w > 0 && weeks[w - 1] && weeks[w - 1].splh !== null && splh !== null) {
+        var splhDir = trendDirection(splh, weeks[w - 1].splh, false);
+        score += splhDir === 'improving' ? 10 : splhDir === 'stable' ? 6 : 2;
+      } else { score += 6; }
+      if (w > 0 && weeks[w - 1] && weeks[w - 1].wastePct !== null && wastePct !== null) {
+        var wasteDir = trendDirection(wastePct, weeks[w - 1].wastePct, true);
+        score += wasteDir === 'improving' ? 10 : wasteDir === 'stable' ? 6 : 2;
+      } else { score += 6; }
+      healthScore = score;
+    }
+
+    weeks.push({
+      foodCostPct: foodCostPct,
+      laborPct: laborPct,
+      primePct: primePct,
+      wastePct: wastePct,
+      avtVar: avtVar,
+      avgCheck: avgCheck,
+      splh: splh,
+      healthScore: healthScore
+    });
+  }
+
+  function avg(key) {
+    var vals = weeks.map(function(w) { return w[key]; }).filter(function(v) { return v !== null && !isNaN(v); });
+    return vals.length > 0 ? vals.reduce(function(a, b) { return a + b; }, 0) / vals.length : null;
+  }
+
+  function overallTrend(key, lowerBetter) {
+    var vals = weeks.map(function(w) { return w[key]; }).filter(function(v) { return v !== null && !isNaN(v); });
+    if (vals.length < 2) return 'stable';
+    var first = vals[0];
+    var last = vals[vals.length - 1];
+    var diff = last - first;
+    var pctDiff = first !== 0 ? Math.abs(diff / first * 100) : Math.abs(diff);
+    if (pctDiff < 0.5) return 'stable';
+    if (lowerBetter) return diff < 0 ? 'improving' : 'worsening';
+    return diff > 0 ? 'improving' : 'worsening';
+  }
+
+  function greenStreak(key, thresholds, lowerBetter) {
+    var count = 0;
+    for (var i = weeks.length - 1; i >= 0; i--) {
+      var val = weeks[i][key];
+      if (val !== null && ratingClass(val, thresholds, lowerBetter) === 'healthy') {
+        count++;
+      } else {
+        break;
+      }
+    }
+    return count;
+  }
+
+  var html = '';
+
+  // Health Score - big card
+  var hsAvg = avg('healthScore');
+  var hsTrend = overallTrend('healthScore', false);
+  var hsCls = hsAvg !== null ? ratingClass(hsAvg, [60, 80], false) : '';
+  var hsBorder = ratingBorder(hsCls);
+
+  // Consecutive weeks >= 80
+  var hsStreak = 0;
+  for (var i = weeks.length - 1; i >= 0; i--) {
+    if (weeks[i].healthScore !== null && weeks[i].healthScore >= 80) {
+      hsStreak++;
+    } else {
+      break;
+    }
+  }
+
+  html += '<div class="metric-card health-score-card ' + hsBorder + '">';
+  html += '<div class="card-label">Restaurant Health Score</div>';
+  html += '<div class="card-value">' + (hsAvg !== null ? Math.round(hsAvg) + '/100' : '--') + '</div>';
+  html += '<div class="card-trend">' + trendDisplayHTML(hsTrend) + '</div>';
+  html += '<div class="card-benchmark">Target: <span>80+</span></div>';
+  if (hsStreak > 0) {
+    html += '<div class="card-streak">' + hsStreak + ' consecutive week' + (hsStreak > 1 ? 's' : '') + ' at 80+</div>';
+  } else {
+    html += '<div class="card-streak none">No consecutive weeks at 80+ yet</div>';
+  }
+  html += '</div>';
+
+  // Regular metric cards
+  var cards = [
+    { label: 'Prime Cost %',  key: 'primePct',   suffix: '%',  benchmark: '55-60%',      thresholds: [60, 65], lowerBetter: true },
+    { label: 'Food Cost %',   key: 'foodCostPct', suffix: '%', benchmark: '25-32%',      thresholds: [32, 38], lowerBetter: true },
+    { label: 'Labor Cost %',  key: 'laborPct',    suffix: '%', benchmark: '25-30%',      thresholds: [30, 35], lowerBetter: true },
+    { label: 'AvT Variance',  key: 'avtVar',      suffix: ' pts', benchmark: '1-2 pts',  thresholds: [2, 3],   lowerBetter: true },
+    { label: 'Waste %',       key: 'wastePct',    suffix: '%', benchmark: '2-4%',        thresholds: [4, 5],   lowerBetter: true },
+    { label: 'SPLH',          key: 'splh',        prefix: '$', suffix: '', benchmark: 'Track trend', thresholds: null, lowerBetter: false },
+    { label: 'Average Check', key: 'avgCheck',    prefix: '$', suffix: '', benchmark: 'Track trend', thresholds: null, lowerBetter: false }
+  ];
+
+  cards.forEach(function(c) {
+    var val = avg(c.key);
+    var trend = overallTrend(c.key, c.lowerBetter);
+    var border = '';
+    var cls = '';
+    if (val !== null && c.thresholds) {
+      cls = ratingClass(val, c.thresholds, c.lowerBetter);
+      border = ratingBorder(cls);
+    }
+
+    var display = '--';
+    if (val !== null) {
+      if (c.prefix === '$') {
+        display = '$' + val.toFixed(2);
+      } else {
+        display = val.toFixed(1) + (c.suffix || '');
+      }
+    }
+
+    var streak = 0;
+    if (c.thresholds) {
+      streak = greenStreak(c.key, c.thresholds, c.lowerBetter);
+    }
+
+    html += '<div class="metric-card ' + border + '">';
+    html += '<div class="card-label">' + c.label + '</div>';
+    html += '<div class="card-value">' + display + '</div>';
+    html += '<div class="card-trend">' + trendDisplayHTML(trend) + '</div>';
+    html += '<div class="card-benchmark">Benchmark: <span>' + c.benchmark + '</span></div>';
+    if (c.thresholds) {
+      if (streak > 0) {
+        html += '<div class="card-streak">' + streak + ' consecutive green week' + (streak > 1 ? 's' : '') + '</div>';
+      } else {
+        html += '<div class="card-streak none">No consecutive green weeks yet</div>';
+      }
+    }
+    html += '</div>';
+  });
+
+  document.getElementById('summaryCards').innerHTML = html;
+
+  // Verdict
+  var allTrends = [
+    overallTrend('primePct', true),
+    overallTrend('foodCostPct', true),
+    overallTrend('laborPct', true),
+    overallTrend('wastePct', true)
+  ];
+
+  var verdict;
+  if (allTrends.includes('worsening')) {
+    verdict = 'worsening';
+  } else if (allTrends.some(function(t) { return t === 'improving'; })) {
+    verdict = 'improving';
+  } else {
+    verdict = 'flat';
+  }
+
+  var verdictEl = document.getElementById('verdictAnswer');
+  if (verdict === 'improving') {
+    verdictEl.className = 'verdict-answer improving';
+    verdictEl.textContent = 'The system is working. Continue for another 30 days, then move to leak #2.';
+  } else if (verdict === 'flat') {
+    verdictEl.className = 'verdict-answer flat';
+    verdictEl.textContent = 'The system needs adjustment. Review your protocol \u2014 is it being followed? Check your Response Cards.';
+  } else {
+    verdictEl.className = 'verdict-answer worsening';
+    verdictEl.textContent = 'Stop. Something is wrong. Re-run the Diagnosis Workbook on this specific leak.';
+  }
+
+  // Health Score verdict
+  var healthEl = document.getElementById('verdictHealth');
+  if (hsAvg !== null) {
+    var rounded = Math.round(hsAvg);
+    var hsMessage = '';
+    if (rounded >= 80) {
+      hsMessage = 'Your restaurant health score is ' + rounded + '/100. Your operation is in good shape. Stay disciplined and keep tracking.';
+      healthEl.style.color = 'var(--green)';
+    } else if (rounded >= 60) {
+      hsMessage = 'Your restaurant health score is ' + rounded + '/100. Room for improvement. Focus on your weakest metric and apply the protocol consistently.';
+      healthEl.style.color = 'var(--amber)';
+    } else {
+      hsMessage = 'Your restaurant health score is ' + rounded + '/100. Critical attention needed. Multiple systems are underperforming. Prioritize the biggest leak and take immediate action.';
+      healthEl.style.color = 'var(--red)';
+    }
+    healthEl.textContent = hsMessage;
+  } else {
+    healthEl.textContent = 'Enter weekly data to see your Health Score verdict.';
+    healthEl.style.color = 'var(--white-dim)';
+  }
+}
+
+/* ============================================================
+   TAB SWITCHING
+   ============================================================ */
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.tab === tab);
+  });
+  document.querySelectorAll('.tab-panel').forEach(function(p) {
+    p.classList.toggle('active', p.id === 'tab-' + tab);
+  });
+
+  if (tab === 'daily') buildDailyTable();
+  if (tab === 'weekly') buildWeeklyTable();
+  if (tab === 'summary') buildSummary();
+}
+
+/* ============================================================
+   COLLAPSIBLE
+   ============================================================ */
+function toggleCollapsible(btn) {
+  btn.classList.toggle('open');
+  var content = btn.nextElementSibling;
+  content.classList.toggle('open');
+}
+
+/* ============================================================
+   TOOLBAR ACTIONS
+   ============================================================ */
+
+/* --- Dropdown toggle --- */
+function toggleDropdown(id) {
+  var menu = document.getElementById(id);
+  var wasOpen = menu.classList.contains('open');
+  // Close all dropdowns first
+  document.querySelectorAll('.dropdown-menu').forEach(function(m) { m.classList.remove('open'); });
+  if (!wasOpen) menu.classList.add('open');
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.export-group') && !e.target.closest('.import-group')) {
+    document.querySelectorAll('.dropdown-menu').forEach(function(m) { m.classList.remove('open'); });
+  }
+});
+
+/* --- Print / PDF --- */
+function handlePrint() {
+  window.print();
+}
+
+/* --- SheetJS loader (for Excel import/export) --- */
+function loadSheetJS(callback) {
+  if (typeof XLSX !== 'undefined') { callback(); return; }
+  var script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+  script.onload = callback;
+  script.onerror = function() { alert('Could not load Excel library. Check your internet connection and try again.'); };
+  document.head.appendChild(script);
+}
+
+/* --- Export: Excel (.xlsx) --- */
+function exportExcel() {
+  closeDropdowns();
+  loadSheetJS(function() { buildExcelWorkbook(); });
+}
+
+function buildExcelWorkbook() {
+  var data = loadData();
+  var wb = XLSX.utils.book_new();
+
+  // === SHEET 1: DAILY DATA ===
+  var dailyInputKeys = dailyRows.filter(function(r) { return r.type !== 'section'; });
+  var headers = ['Week', 'Day'].concat(dailyInputKeys.map(function(r) { return r.label; }));
+  var rows = [headers];
+
+  var weekKeys = Object.keys(data).filter(function(k) { return k.indexOf('week_') === 0; }).sort();
+  weekKeys.forEach(function(wk) {
+    var weekData = data[wk];
+    for (var d = 0; d < 7; d++) {
+      var dk = 'day' + d;
+      var dayData = weekData[dk] || {};
+      var dayName = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][d];
+      var row = [wk.replace('week_', ''), dayName];
+
+      dailyInputKeys.forEach(function(r) {
+        if (r.type === 'calc') {
+          var v = calcDailyValue(r.key, dayData);
+          row.push(v !== null ? v : '');
+        } else {
+          var val = dayData[r.key] || '';
+          row.push(r.type === 'number' ? (parseFloat(val) || '') : val);
+        }
+      });
+      rows.push(row);
+    }
+  });
+
+  var wsDaily = XLSX.utils.aoa_to_sheet(rows);
+  // Set column widths
+  wsDaily['!cols'] = [{ wch: 12 }, { wch: 5 }].concat(dailyInputKeys.map(function(r) {
+    return { wch: Math.max(r.label.length + 2, 14) };
+  }));
+  XLSX.utils.book_append_sheet(wb, wsDaily, 'Daily');
+
+  // === SHEET 2: WEEKLY DATA ===
+  var allWeekly = weeklyInputRows.concat(weeklyCalcRows);
+  var wHeaders = ['Metric', 'Week 1', 'Week 2', 'Week 3', 'Week 4'];
+  var wRows = [wHeaders];
+
+  allWeekly.forEach(function(r) {
+    var row = [r.label];
+    for (var w = 0; w < 4; w++) {
+      var wKey = getWeeklyStorageKey(w);
+      var wData = data[wKey] || {};
+      if (r.type === 'number') {
+        row.push(parseFloat(wData[r.key]) || '');
+      } else {
+        var vals = calcWeeklyValues(data, w);
+        var mappings = {
+          'wFoodCostPct': 'foodCostPct', 'wLaborPct': 'laborPct', 'wPrimePct': 'primePct',
+          'wPrimeCost': 'primeCost', 'wWastePct': 'wastePct', 'wAvtVar': 'avtVar',
+          'wAvgCheck': 'avgCheck', 'wSPLH': 'splh', 'wHealthScore': 'healthScore'
+        };
+        var vKey = mappings[r.key];
+        var v = vKey && vals[vKey] !== undefined ? vals[vKey] : null;
+        row.push(v !== null && !isNaN(v) ? Math.round(v * 100) / 100 : '');
+      }
+    }
+    wRows.push(row);
+  });
+
+  var wsWeekly = XLSX.utils.aoa_to_sheet(wRows);
+  wsWeekly['!cols'] = [{ wch: 24 }, { wch: 14 }, { wch: 14 }, { wch: 14 }, { wch: 14 }];
+  XLSX.utils.book_append_sheet(wb, wsWeekly, 'Weekly');
+
+  // === SHEET 3: BENCHMARKS ===
+  var bmRows = [
+    ['Metric', 'Healthy', 'Watch', 'Danger'],
+    ['Food Cost %', '25-32%', '32-38%', '>38%'],
+    ['Labor Cost %', '25-30%', '30-35%', '>35%'],
+    ['Prime Cost %', '55-60%', '60-65%', '>65%'],
+    ['Waste %', '2-4%', '4-5%', '>5%'],
+    ['AvT Variance', '0-2 pts', '2-3 pts', '>3 pts'],
+    ['Health Score', '80-100', '60-79', '<60']
+  ];
+  var wsBM = XLSX.utils.aoa_to_sheet(bmRows);
+  wsBM['!cols'] = [{ wch: 18 }, { wch: 12 }, { wch: 12 }, { wch: 12 }];
+  XLSX.utils.book_append_sheet(wb, wsBM, 'Benchmarks');
+
+  // Download
+  XLSX.writeFile(wb, 'measurement-tracker-' + dateStamp() + '.xlsx');
+}
+
+/* --- Export: JSON --- */
+function exportJSON() {
+  closeDropdowns();
+  var data = loadData();
+  var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  downloadBlob(blob, 'measurement-tracker-' + dateStamp() + '.json');
+}
+
+/* --- Export: CSV --- */
+function exportCSV() {
+  closeDropdowns();
+  var data = loadData();
+  var lines = [];
+
+  // DAILY DATA - one row per day
+  lines.push('');
+  lines.push('=== DAILY TRACKING DATA ===');
+  lines.push('');
+
+  var dailyInputKeys = dailyRows.filter(function(r) { return r.type !== 'calc' && r.type !== 'section'; });
+  var dailyCalcKeys = dailyRows.filter(function(r) { return r.type === 'calc'; });
+  var allDailyKeys = dailyRows.filter(function(r) { return r.type !== 'section'; });
+
+  // Header row
+  var header = ['Week', 'Day'].concat(allDailyKeys.map(function(r) { return r.label; }));
+  lines.push(csvRow(header));
+
+  // Iterate all stored weeks
+  var weekKeys = Object.keys(data).filter(function(k) { return k.indexOf('week_') === 0; }).sort();
+  weekKeys.forEach(function(wk) {
+    var weekData = data[wk];
+    for (var d = 0; d < 7; d++) {
+      var dk = 'day' + d;
+      var dayData = weekData[dk] || {};
+      var dayName = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][d];
+      var row = [wk.replace('week_', ''), dayName];
+
+      allDailyKeys.forEach(function(r) {
+        if (r.type === 'calc') {
+          // Calculate the value
+          var val = calcDailyValue(r.key, dayData);
+          row.push(val !== null ? val : '');
+        } else {
+          row.push(dayData[r.key] || '');
+        }
+      });
+      lines.push(csvRow(row));
+    }
+  });
+
+  // WEEKLY DATA
+  lines.push('');
+  lines.push('=== WEEKLY TRACKING DATA ===');
+  lines.push('');
+
+  var weeklyInputs = weeklyInputRows;
+  var weeklyCalcs = weeklyCalcRows;
+  var allWeekly = weeklyInputs.concat(weeklyCalcs);
+
+  var wHeader = ['Metric', 'Week 1', 'Week 2', 'Week 3', 'Week 4'];
+  lines.push(csvRow(wHeader));
+
+  allWeekly.forEach(function(r) {
+    var row = [r.label];
+    for (var w = 0; w < 4; w++) {
+      var wKey = getWeeklyStorageKey(w);
+      var wData = data[wKey] || {};
+      if (r.type === 'number') {
+        row.push(wData[r.key] || '');
+      } else {
+        // Calc value
+        var vals = calcWeeklyValues(data, w);
+        var mappings = {
+          'wFoodCostPct': 'foodCostPct', 'wLaborPct': 'laborPct', 'wPrimePct': 'primePct',
+          'wPrimeCost': 'primeCost', 'wWastePct': 'wastePct', 'wAvtVar': 'avtVar',
+          'wAvgCheck': 'avgCheck', 'wSPLH': 'splh', 'wHealthScore': 'healthScore'
+        };
+        var vKey = mappings[r.key];
+        var v = vKey && vals[vKey] !== undefined ? vals[vKey] : null;
+        row.push(v !== null && !isNaN(v) ? v.toFixed(2) : '');
+      }
+    }
+    lines.push(csvRow(row));
+  });
+
+  var csv = lines.join('\n');
+  var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  downloadBlob(blob, 'measurement-tracker-' + dateStamp() + '.csv');
+}
+
+function calcDailyValue(key, dayData) {
+  var ts = parseFloat(dayData.totalSales) || 0;
+  var fs = parseFloat(dayData.foodSales) || 0;
+  var fp = parseFloat(dayData.foodPurch) || 0;
+  var lc = parseFloat(dayData.laborCost) || 0;
+  var cov = parseFloat(dayData.covers) || 0;
+  var sched = parseFloat(dayData.laborSched) || 0;
+  var actual = parseFloat(dayData.laborActual) || 0;
+
+  switch (key) {
+    case 'avgCheck': return cov > 0 ? Math.round((ts / cov) * 100) / 100 : null;
+    case 'foodCostPct': return fs > 0 ? Math.round((fp / fs * 100) * 10) / 10 : null;
+    case 'laborCostPct': return ts > 0 ? Math.round((lc / ts * 100) * 10) / 10 : null;
+    case 'primeCostPct': return ts > 0 ? Math.round(((fp + lc) / ts * 100) * 10) / 10 : null;
+    case 'laborVar': return (sched > 0 || actual > 0) ? Math.round((actual - sched) * 10) / 10 : null;
+    case 'splh': return actual > 0 ? Math.round((ts / actual) * 100) / 100 : null;
+    default: return null;
+  }
+}
+
+function calcWeeklyValues(data, w) {
+  var rev = getWeeklyVal(data, w, 'wRevenue');
+  var fs = getWeeklyVal(data, w, 'wFoodSales');
+  var fp = getWeeklyVal(data, w, 'wFoodPurch');
+  var lc = getWeeklyVal(data, w, 'wLaborCost');
+  var waste = getWeeklyVal(data, w, 'wWaste');
+  var theo = getWeeklyVal(data, w, 'wTheoFoodCost');
+  var covers = getWeeklyVal(data, w, 'wCovers');
+  var lh = getWeeklyVal(data, w, 'wLaborHours');
+
+  var foodCostPct = fs > 0 ? (fp / fs * 100) : null;
+  var laborPct = rev > 0 ? (lc / rev * 100) : null;
+  var primeCost = fp + lc;
+  var primePct = rev > 0 ? (primeCost / rev * 100) : null;
+  var wastePct = fp > 0 ? (waste / fp * 100) : null;
+  var avtVar = (foodCostPct !== null && theo > 0) ? (foodCostPct - theo) : null;
+  var avgCheck = covers > 0 ? (rev / covers) : null;
+  var splh = lh > 0 ? (rev / lh) : null;
+
+  // Health score
+  var healthScore = 0;
+  if (primePct !== null) healthScore += (primePct <= 60 ? 25 : primePct <= 65 ? 15 : 5);
+  if (avtVar !== null) healthScore += (avtVar <= 2 ? 20 : avtVar <= 3 ? 12 : 4);
+  if (laborPct !== null) healthScore += (laborPct <= 30 ? 20 : laborPct <= 35 ? 12 : 4);
+  if (wastePct !== null) healthScore += (wastePct <= 4 ? 15 : wastePct <= 5 ? 9 : 3);
+  healthScore += 6; // default stable for SPLH trend
+  healthScore += 6; // default stable for comp trend
+
+  return {
+    foodCostPct: foodCostPct, laborPct: laborPct, primeCost: primeCost,
+    primePct: primePct, wastePct: wastePct, avtVar: avtVar,
+    avgCheck: avgCheck, splh: splh, healthScore: healthScore
+  };
+}
+
+/* --- Export: PDF (formatted report) --- */
+function exportPDF() {
+  closeDropdowns();
+  // Build a clean report window and trigger print-to-PDF
+  var data = loadData();
+  var win = window.open('', '_blank');
+  if (!win) { alert('Please allow popups to export PDF.'); return; }
+
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8">';
+  html += '<title>Measurement Tracker Report - ' + dateStamp() + '</title>';
+  html += '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">';
+  html += '<style>';
+  html += 'body { font-family: Inter, sans-serif; color: #111; padding: 2rem; max-width: 1100px; margin: 0 auto; }';
+  html += '.report-header { text-align: center; border-bottom: 3px solid #D4AF37; padding-bottom: 1rem; margin-bottom: 2rem; }';
+  html += '.report-header h1 { font-family: Oswald, sans-serif; font-size: 28px; margin: 0; }';
+  html += '.report-header .brand { color: #D4AF37; font-family: Oswald, sans-serif; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; }';
+  html += '.report-header .date { color: #666; font-size: 14px; margin-top: 4px; }';
+  html += 'h2 { font-family: Oswald, sans-serif; font-size: 18px; color: #1B2A4A; border-bottom: 1px solid #ddd; padding-bottom: 4px; margin: 2rem 0 1rem; }';
+  html += 'table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 1.5rem; }';
+  html += 'th { background: #f5f5f5; font-family: Oswald, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; padding: 6px 8px; text-align: center; border: 1px solid #ddd; }';
+  html += 'th:first-child { text-align: left; }';
+  html += 'td { padding: 5px 8px; text-align: center; border: 1px solid #ddd; font-family: "JetBrains Mono", monospace; font-size: 11px; }';
+  html += 'td:first-child { text-align: left; font-family: Inter, sans-serif; font-weight: 600; }';
+  html += '.section-row td { background: #f0f0f0; font-family: Oswald, sans-serif; font-weight: 700; color: #1B2A4A; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; text-align: left; }';
+  html += '.healthy { color: #2F855A; } .watch { color: #D69E2E; } .danger { color: #C53030; }';
+  html += '.summary-card { display: inline-block; width: 30%; border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin: 0.5% 1%; vertical-align: top; text-align: center; }';
+  html += '.summary-card .label { font-family: Oswald, sans-serif; font-size: 11px; text-transform: uppercase; color: #666; }';
+  html += '.summary-card .value { font-family: "JetBrains Mono", monospace; font-size: 28px; font-weight: 700; margin: 4px 0; }';
+  html += '.summary-card .benchmark { font-size: 11px; color: #999; }';
+  html += '.footer { text-align: center; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; font-size: 11px; color: #999; }';
+  html += '@media print { body { padding: 0.5rem; } }';
+  html += '</style></head><body>';
+
+  // Header
+  html += '<div class="report-header">';
+  html += '<div class="brand">The Grumpy Chef</div>';
+  html += '<h1>Measurement Tracker Report</h1>';
+  html += '<div class="date">Generated: ' + new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + '</div>';
+  html += '</div>';
+
+  // Daily data for current week
+  var dates = getWeekDates(weekOffset);
+  var mon = getMondayOfWeek(weekOffset);
+  var sun = new Date(mon); sun.setDate(mon.getDate() + 6);
+  var weekLabel = mon.toLocaleDateString('en-US', {month:'short', day:'numeric'}) + ' \u2013 ' + sun.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+
+  html += '<h2>Daily Tracking \u2014 ' + weekLabel + '</h2>';
+  html += '<table><thead><tr><th>Metric</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th><th>Total</th></tr></thead><tbody>';
+
+  var wk = getWeekKey(weekOffset);
+  var weekData = data[wk] || {};
+
+  dailyRows.forEach(function(row) {
+    if (row.type === 'section') {
+      html += '<tr class="section-row"><td colspan="9">' + row.label + '</td></tr>';
+      return;
+    }
+    html += '<tr><td>' + row.label + '</td>';
+    var sum = 0;
+    var count = 0;
+    for (var d = 0; d < 7; d++) {
+      var dayData = weekData['day' + d] || {};
+      if (row.type === 'calc') {
+        var v = calcDailyValue(row.key, dayData);
+        var cls = '';
+        if (v !== null && row.key === 'foodCostPct') cls = v <= 32 ? 'healthy' : v <= 38 ? 'watch' : 'danger';
+        if (v !== null && row.key === 'laborCostPct') cls = v <= 30 ? 'healthy' : v <= 35 ? 'watch' : 'danger';
+        if (v !== null && row.key === 'primeCostPct') cls = v <= 60 ? 'healthy' : v <= 65 ? 'watch' : 'danger';
+        var prefix = (row.key === 'avgCheck' || row.key === 'splh') ? '$' : '';
+        var suffix = (row.key === 'foodCostPct' || row.key === 'laborCostPct' || row.key === 'primeCostPct') ? '%' : '';
+        if (row.key === 'laborVar' && v !== null) {
+          html += '<td class="' + (v > 0 ? 'danger' : v < 0 ? 'healthy' : '') + '">' + (v > 0 ? '+' : '') + v.toFixed(1) + 'h</td>';
+        } else {
+          html += '<td class="' + cls + '">' + (v !== null ? prefix + v.toFixed(row.key === 'avgCheck' || row.key === 'splh' ? 2 : 1) + suffix : '--') + '</td>';
+        }
+        if (v !== null) { sum += v; count++; }
+      } else if (row.type === 'text' || row.type === 'date') {
+        html += '<td style="font-family:Inter,sans-serif;font-size:10px;">' + escapeHTML(dayData[row.key] || '') + '</td>';
+      } else {
+        var val = parseFloat(dayData[row.key]) || 0;
+        html += '<td>' + (val > 0 ? (row.prefix || '') + val.toLocaleString('en-US', {minimumFractionDigits: row.prefix ? 2 : 0, maximumFractionDigits: 2}) : '--') + '</td>';
+        sum += val;
+      }
+    }
+    // Total column
+    if (row.type === 'calc' || row.type === 'text' || row.type === 'date') {
+      if (row.key === 'avgCheck' || row.key === 'foodCostPct' || row.key === 'laborCostPct' || row.key === 'primeCostPct' || row.key === 'splh') {
+        html += '<td>' + (count > 0 ? (row.key === 'avgCheck' || row.key === 'splh' ? '$' : '') + (sum / count).toFixed(row.key === 'avgCheck' || row.key === 'splh' ? 2 : 1) + (row.key !== 'avgCheck' && row.key !== 'splh' ? '%' : '') : '--') + '</td>';
+      } else if (row.key === 'laborVar') {
+        html += '<td>' + (count > 0 ? (sum > 0 ? '+' : '') + sum.toFixed(1) + 'h' : '--') + '</td>';
+      } else {
+        html += '<td></td>';
+      }
+    } else {
+      html += '<td>' + (sum > 0 ? (row.prefix || '') + sum.toLocaleString('en-US', {minimumFractionDigits: row.prefix ? 2 : 0, maximumFractionDigits: 2}) : '--') + '</td>';
+    }
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+
+  // Weekly summary cards
+  html += '<h2>Weekly Summary</h2>';
+  html += '<div style="text-align:center;">';
+  for (var w = 0; w < 4; w++) {
+    var vals = calcWeeklyValues(data, w);
+    if (vals.primePct === null) continue;
+    var cls = vals.primePct <= 60 ? 'healthy' : vals.primePct <= 65 ? 'watch' : 'danger';
+    html += '<div class="summary-card">';
+    html += '<div class="label">Week ' + (w + 1) + ' \u2014 Prime Cost</div>';
+    html += '<div class="value ' + cls + '">' + vals.primePct.toFixed(1) + '%</div>';
+    html += '<div class="benchmark">Health Score: ' + vals.healthScore + '/100</div>';
+    html += '</div>';
+  }
+  html += '</div>';
+
+  // Footer
+  html += '<div class="footer">Built by Christian Schiffner | German Master Chef | 20+ Years Operations<br>Part of the 72-Hour Profit Discovery Kit</div>';
+
+  html += '</body></html>';
+
+  win.document.write(html);
+  win.document.close();
+  // Auto-trigger print dialog for PDF saving
+  setTimeout(function() { win.print(); }, 500);
+}
+
+/* --- Import: JSON --- */
+function handleImportJSON() {
+  closeDropdowns();
+  document.getElementById('importFileJSON').click();
+}
+
+function processImportJSON(event) {
+  var file = event.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      var imported = JSON.parse(e.target.result);
+      if (typeof imported !== 'object') throw new Error('Invalid format');
+      if (!confirm('Import JSON data? This will merge with existing data (overwriting conflicts).')) return;
+      var existing = loadData();
+      var merged = Object.assign({}, existing, imported);
+      saveData(merged);
+      buildDailyTable();
+      buildWeeklyTable();
+      buildSummary();
+      alert('JSON data imported successfully.');
+    } catch (err) {
+      alert('Error importing data: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+/* --- Import: CSV --- */
+function handleImportCSV() {
+  closeDropdowns();
+  document.getElementById('importFileCSV').click();
+}
+
+function processImportCSV(event) {
+  var file = event.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      var text = e.target.result.trim();
+      var lines = text.split('\n').map(function(l) { return l.trim(); }).filter(function(l) { return l.length > 0; });
+
+      if (lines.length < 2) {
+        alert('CSV file appears empty.');
+        return;
+      }
+
+      // DETECT FORMAT: POS-transposed (dates across columns) vs. standard (dates down rows)
+      // POS format: Row 1 has dates across columns (e.g., "Sales,08/01/2025,08/02/2025,...")
+      // Standard format: Column headers include "Date", "Total Sales", etc.
+
+      var firstRow = parseCSVLine(lines[0]);
+      var datesInFirstRow = 0;
+      var firstRowDates = [];
+
+      for (var c = 1; c < firstRow.length; c++) {
+        var d = parseFlexibleDate(firstRow[c]);
+        if (d) { datesInFirstRow++; firstRowDates.push({ col: c, date: d }); }
+      }
+
+      if (datesInFirstRow >= 3) {
+        // POS TRANSPOSED FORMAT — dates across columns, metrics down rows
+        importTransposedCSV(lines, firstRowDates);
+      } else {
+        // STANDARD FORMAT — dates down rows, metrics across columns
+        importStandardCSV(lines);
+      }
+
+    } catch (err) {
+      alert('Error importing CSV: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+/* --- POS Transposed Format Import ---
+   Format: Row 1 = header/dates, subsequent rows = metric name + daily values
+   Example from Square/Lightspeed/generic POS:
+     Sales,08/01/2025,08/02/2025,...
+     Gross Sales,$1740.32,$2516.53,...
+     Net Sales,$1740.32,$2516.53,...
+     Discounts & Comps,$0.00,-$17.05,...
+     Tax,$86.97,$125.80,...
+     Tip,$185.60,$246.44,...
+*/
+function importTransposedCSV(lines, dateColumns) {
+  var data = loadData();
+  var importCount = 0;
+
+  // Build a lookup of row labels -> parsed row data
+  var rowMap = {};
+  lines.forEach(function(line) {
+    var cols = parseCSVLine(line);
+    if (cols.length < 2) return;
+    var label = cols[0].toLowerCase().replace(/[^a-z0-9&]/g, '');
+    rowMap[label] = cols;
+  });
+
+  // Map POS row labels to tracker fields
+  var posRowMappings = {
+    // Total Sales — prefer Net Sales (after discounts), fall back to Gross Sales
+    totalSales: findPosRow(rowMap, ['netsales', 'net sales', 'totalsales', 'total sales']),
+    totalSalesGross: findPosRow(rowMap, ['grosssales', 'gross sales', 'items']),
+    // Comps
+    comps: findPosRow(rowMap, ['discountscomps', 'discounts&comps', 'discounts', 'comps', 'complimentary']),
+    // Voids / Returns
+    voids: findPosRow(rowMap, ['returns', 'refunds', 'refundsamount', 'refundsbyamount', 'voids']),
+    // Tips (informational)
+    tips: findPosRow(rowMap, ['tip', 'tips', 'gratuity']),
+    // Tax
+    tax: findPosRow(rowMap, ['tax', 'salestax', 'gst', 'hst']),
+    // Fees
+    fees: findPosRow(rowMap, ['fees', 'processingfees', 'cardfees']),
+  };
+
+  // Use Net Sales if available, otherwise Gross Sales
+  var salesRow = posRowMappings.totalSales || posRowMappings.totalSalesGross;
+
+  if (!salesRow) {
+    alert('Could not find a sales row (Net Sales or Gross Sales) in the CSV. Check the file format.');
+    return;
+  }
+
+  // Import each date column
+  dateColumns.forEach(function(dc) {
+    var parsedDate = dc.date;
+    var colIdx = dc.col;
+
+    // Find week and day index
+    var dayOfWeek = parsedDate.getDay();
+    var dayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+    var monday = new Date(parsedDate);
+    monday.setDate(parsedDate.getDate() - dayIdx);
+    var wk = 'week_' + monday.toISOString().slice(0, 10);
+
+    if (!data[wk]) data[wk] = {};
+    var dk = 'day' + dayIdx;
+    if (!data[wk][dk]) data[wk][dk] = {};
+
+    data[wk][dk].date = parsedDate.toISOString().slice(0, 10);
+
+    // Total Sales
+    if (salesRow && salesRow[colIdx]) {
+      data[wk][dk].totalSales = cleanNumber(salesRow[colIdx]);
+    }
+
+    // Comps (make positive)
+    if (posRowMappings.comps && posRowMappings.comps[colIdx]) {
+      var compVal = cleanNumber(posRowMappings.comps[colIdx]);
+      data[wk][dk].comps = String(Math.abs(parseFloat(compVal) || 0));
+    }
+
+    // Voids/Returns (make positive)
+    if (posRowMappings.voids && posRowMappings.voids[colIdx]) {
+      var voidVal = cleanNumber(posRowMappings.voids[colIdx]);
+      data[wk][dk].voids = String(Math.abs(parseFloat(voidVal) || 0));
+    }
+
+    importCount++;
+  });
+
+  if (importCount === 0) {
+    alert('No valid daily data found in the CSV.');
+    return;
+  }
+
+  // Build summary of what was found
+  var foundFields = ['Total Sales'];
+  if (posRowMappings.comps) foundFields.push('Comps');
+  if (posRowMappings.voids) foundFields.push('Voids/Returns');
+
+  var missingFields = [];
+  if (!posRowMappings.comps) missingFields.push('Comps');
+  missingFields.push('Food Sales', 'Beverage Sales', 'Covers', 'Food Purchases', 'Labor Cost', 'Labor Hours', 'Waste');
+
+  var msg = 'POS sales data detected.\n\n';
+  msg += 'Found ' + importCount + ' days of data.\n';
+  msg += 'Importing: ' + foundFields.join(', ') + '\n\n';
+  msg += 'Not in POS export (enter manually): ' + missingFields.join(', ') + '\n\n';
+  msg += 'Import this data?';
+
+  if (!confirm(msg)) return;
+
+  saveData(data);
+  buildDailyTable();
+  buildWeeklyTable();
+  buildSummary();
+  alert('Imported ' + importCount + ' days of POS sales data.\n\nFood/Bev split, Covers, Labor, and Waste need to be entered manually — your POS doesn\'t export those.');
+}
+
+function findPosRow(rowMap, candidates) {
+  for (var i = 0; i < candidates.length; i++) {
+    var key = candidates[i].replace(/[^a-z0-9&]/g, '');
+    if (rowMap[key]) return rowMap[key];
+  }
+  return null;
+}
+
+/* --- Standard Format Import (dates down rows, metrics across columns) --- */
+function importStandardCSV(lines) {
+  // Find header row
+  var headerIdx = -1;
+  for (var i = 0; i < Math.min(lines.length, 10); i++) {
+    var lower = lines[i].toLowerCase();
+    if (lower.indexOf('total sales') !== -1 || lower.indexOf('food sales') !== -1 ||
+        lower.indexOf('revenue') !== -1 || lower.indexOf('date') !== -1 ||
+        lower.indexOf('net sales') !== -1 || lower.indexOf('gross sales') !== -1) {
+      headerIdx = i;
+      break;
+    }
+  }
+
+  if (headerIdx === -1) {
+    alert('Could not detect CSV format.\n\nExpected either:\n• Dates across columns (POS export)\n• A header row with "Date", "Total Sales", etc.');
+    return;
+  }
+
+  var headers = parseCSVLine(lines[headerIdx]);
+  var colMap = mapCSVColumns(headers);
+
+  if (Object.keys(colMap).length === 0) {
+    alert('No recognized columns found.\n\nExpected: Date, Total Sales, Food Sales, Beverage Sales, Covers, Food Purchases, Labor Cost, Labor Hours, Waste, Comps, Voids');
+    return;
+  }
+
+  var dataRows = lines.slice(headerIdx + 1);
+  var importCount = 0;
+  var data = loadData();
+
+  dataRows.forEach(function(line) {
+    if (line.indexOf('===') !== -1 || line.indexOf('---') !== -1) return;
+    var cols = parseCSVLine(line);
+    if (cols.length < 2) return;
+
+    var dateStr = colMap.date !== undefined ? cols[colMap.date] : null;
+    if (!dateStr) return;
+
+    var parsedDate = parseFlexibleDate(dateStr);
+    if (!parsedDate) return;
+
+    var dayOfWeek = parsedDate.getDay();
+    var dayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+    var monday = new Date(parsedDate);
+    monday.setDate(parsedDate.getDate() - dayIdx);
+    var wk = 'week_' + monday.toISOString().slice(0, 10);
+
+    if (!data[wk]) data[wk] = {};
+    var dk = 'day' + dayIdx;
+    if (!data[wk][dk]) data[wk][dk] = {};
+
+    data[wk][dk].date = parsedDate.toISOString().slice(0, 10);
+    if (colMap.totalSales !== undefined) data[wk][dk].totalSales = cleanNumber(cols[colMap.totalSales]);
+    if (colMap.foodSales !== undefined) data[wk][dk].foodSales = cleanNumber(cols[colMap.foodSales]);
+    if (colMap.bevSales !== undefined) data[wk][dk].bevSales = cleanNumber(cols[colMap.bevSales]);
+    if (colMap.covers !== undefined) data[wk][dk].covers = cleanNumber(cols[colMap.covers]);
+    if (colMap.foodPurch !== undefined) data[wk][dk].foodPurch = cleanNumber(cols[colMap.foodPurch]);
+    if (colMap.laborCost !== undefined) data[wk][dk].laborCost = cleanNumber(cols[colMap.laborCost]);
+    if (colMap.laborSched !== undefined) data[wk][dk].laborSched = cleanNumber(cols[colMap.laborSched]);
+    if (colMap.laborActual !== undefined) data[wk][dk].laborActual = cleanNumber(cols[colMap.laborActual]);
+    if (colMap.waste !== undefined) data[wk][dk].waste = cleanNumber(cols[colMap.waste]);
+    if (colMap.comps !== undefined) data[wk][dk].comps = cleanNumber(cols[colMap.comps]);
+    if (colMap.voids !== undefined) data[wk][dk].voids = cleanNumber(cols[colMap.voids]);
+
+    importCount++;
+  });
+
+  if (importCount === 0) {
+    alert('No valid data rows found. Check that your CSV has dates and numeric values.');
+    return;
+  }
+
+  if (!confirm('Found ' + importCount + ' days of data. Import and merge with existing data?')) return;
+
+  saveData(data);
+  buildDailyTable();
+  buildWeeklyTable();
+  buildSummary();
+  alert('Imported ' + importCount + ' days of data successfully.');
+}
+
+function mapCSVColumns(headers) {
+  var map = {};
+  headers.forEach(function(h, i) {
+    var lower = h.toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (lower === 'date' || lower === 'day' || lower === 'businessdate') map.date = i;
+    else if (lower === 'totalsales' || lower === 'netsales' || lower === 'sales' || lower === 'totalrevenue' || lower === 'revenue' || lower === 'grosssales') map.totalSales = i;
+    else if (lower === 'foodsales' || lower === 'foodrevenue') map.foodSales = i;
+    else if (lower === 'beveragesales' || lower === 'bevsales' || lower === 'bevrevenue' || lower === 'drinkssales' || lower === 'barsales') map.bevSales = i;
+    else if (lower === 'covers' || lower === 'totalcovers' || lower === 'guests' || lower === 'guestcount' || lower === 'customercount' || lower === 'transactions') map.covers = i;
+    else if (lower === 'foodpurchases' || lower === 'foodcost' || lower === 'cogs' || lower === 'foodpurch' || lower === 'costofgoodssold') map.foodPurch = i;
+    else if (lower === 'laborcost' || lower === 'laborcoststotal' || lower === 'totallaborcost' || lower === 'totallabor' || lower === 'payroll') map.laborCost = i;
+    else if (lower === 'laborhoursscheduled' || lower === 'scheduledhours' || lower === 'laborsched') map.laborSched = i;
+    else if (lower === 'laborhoursactual' || lower === 'actualhours' || lower === 'laboractual' || lower === 'laborhours' || lower === 'hoursworked') map.laborActual = i;
+    else if (lower === 'waste' || lower === 'totalwaste' || lower === 'wastelogtotal' || lower === 'foodwaste') map.waste = i;
+    else if (lower === 'comps' || lower === 'complimentary' || lower === 'compstotal') map.comps = i;
+    else if (lower === 'voids' || lower === 'voidstotal' || lower === 'cancelled') map.voids = i;
+  });
+  return map;
+}
+
+function parseCSVLine(line) {
+  var result = [];
+  var current = '';
+  var inQuotes = false;
+  for (var i = 0; i < line.length; i++) {
+    var ch = line[i];
+    if (ch === '"') {
+      inQuotes = !inQuotes;
+    } else if (ch === ',' && !inQuotes) {
+      result.push(current.trim());
+      current = '';
+    } else {
+      current += ch;
+    }
+  }
+  result.push(current.trim());
+  return result;
+}
+
+function parseFlexibleDate(str) {
+  if (!str) return null;
+  str = str.trim().replace(/['"]/g, '');
+
+  // Try ISO: 2026-02-20
+  var isoMatch = str.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
+  if (isoMatch) return new Date(parseInt(isoMatch[1]), parseInt(isoMatch[2]) - 1, parseInt(isoMatch[3]));
+
+  // Try US: MM/DD/YYYY or M/D/YYYY
+  var usMatch = str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);
+  if (usMatch) {
+    var yr = parseInt(usMatch[3]);
+    if (yr < 100) yr += 2000;
+    return new Date(yr, parseInt(usMatch[1]) - 1, parseInt(usMatch[2]));
+  }
+
+  // Try EU: DD.MM.YYYY
+  var euMatch = str.match(/^(\d{1,2})\.(\d{1,2})\.(\d{2,4})/);
+  if (euMatch) {
+    var yr2 = parseInt(euMatch[3]);
+    if (yr2 < 100) yr2 += 2000;
+    return new Date(yr2, parseInt(euMatch[2]) - 1, parseInt(euMatch[1]));
+  }
+
+  // Fallback: try native Date parsing
+  var d = new Date(str);
+  return isNaN(d.getTime()) ? null : d;
+}
+
+function cleanNumber(str) {
+  if (!str) return '';
+  return String(str).replace(/[$,\s%]/g, '');
+}
+
+/* --- Import: Excel (.xlsx) --- */
+function handleImportExcel() {
+  closeDropdowns();
+  document.getElementById('importFileExcel').click();
+}
+
+function processImportExcel(event) {
+  var file = event.target.files[0];
+  if (!file) return;
+
+  loadSheetJS(function() {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        var workbook = XLSX.read(e.target.result, { type: 'array', cellDates: true });
+        var sheet = workbook.Sheets[workbook.SheetNames[0]];
+        var jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
+
+        if (jsonData.length < 2) {
+          alert('No data found in the Excel file.');
+          return;
+        }
+
+        // Detect format: check if first row has dates across columns (POS transposed)
+        var firstRow = jsonData[0];
+        var datesInFirstRow = 0;
+        var firstRowDates = [];
+        for (var c = 1; c < firstRow.length; c++) {
+          var cellVal = firstRow[c];
+          var d = null;
+          if (cellVal instanceof Date) {
+            d = cellVal;
+          } else if (cellVal) {
+            d = parseFlexibleDate(String(cellVal));
+          }
+          if (d) { datesInFirstRow++; firstRowDates.push({ col: c, date: d }); }
+        }
+
+        if (datesInFirstRow >= 3) {
+          // POS TRANSPOSED FORMAT
+          var lines = jsonData.map(function(row) {
+            return row.map(function(cell) {
+              if (cell instanceof Date) {
+                return (cell.getMonth()+1) + '/' + cell.getDate() + '/' + cell.getFullYear();
+              }
+              return String(cell);
+            }).join(',');
+          });
+          // Re-parse dates from converted strings
+          var reparsedDates = [];
+          for (var rc = 1; rc < jsonData[0].length; rc++) {
+            var cv = jsonData[0][rc];
+            var rd = cv instanceof Date ? cv : parseFlexibleDate(String(cv));
+            if (rd) reparsedDates.push({ col: rc, date: rd });
+          }
+          importTransposedExcel(jsonData, reparsedDates);
+          return;
+        }
+
+        // STANDARD FORMAT — find header row
+        var headerIdx = -1;
+        for (var i = 0; i < Math.min(jsonData.length, 10); i++) {
+          var rowStr = jsonData[i].join(' ').toLowerCase();
+          if (rowStr.indexOf('total sales') !== -1 || rowStr.indexOf('food sales') !== -1 ||
+              rowStr.indexOf('revenue') !== -1 || rowStr.indexOf('net sales') !== -1 ||
+              rowStr.indexOf('gross sales') !== -1 || rowStr.indexOf('date') !== -1) {
+            headerIdx = i;
+            break;
+          }
+        }
+
+        if (headerIdx === -1) {
+          alert('Could not detect format.\n\nExpected either:\n• Dates across columns (POS export)\n• A header row with "Date", "Total Sales", etc.');
+          return;
+        }
+
+        var headers = jsonData[headerIdx].map(function(h) { return String(h); });
+        var colMap = mapCSVColumns(headers);
+
+        if (Object.keys(colMap).length === 0) {
+          alert('No recognized columns found.\n\nExpected: Date, Total Sales, Food Sales, Covers, etc.');
+          return;
+        }
+
+        var data = loadData();
+        var importCount = 0;
+
+        for (var r = headerIdx + 1; r < jsonData.length; r++) {
+          var cols = jsonData[r];
+          if (!cols || cols.length < 2) continue;
+
+          var dateVal = colMap.date !== undefined ? cols[colMap.date] : null;
+          if (!dateVal) continue;
+
+          var parsedDate;
+          if (dateVal instanceof Date) {
+            parsedDate = dateVal;
+          } else {
+            parsedDate = parseFlexibleDate(String(dateVal));
+          }
+          if (!parsedDate || isNaN(parsedDate.getTime())) continue;
+
+          var dayOfWeek = parsedDate.getDay();
+          var dayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+          var monday = new Date(parsedDate);
+          monday.setDate(parsedDate.getDate() - dayIdx);
+          var wk = 'week_' + monday.toISOString().slice(0, 10);
+
+          if (!data[wk]) data[wk] = {};
+          var dk = 'day' + dayIdx;
+          if (!data[wk][dk]) data[wk][dk] = {};
+
+          data[wk][dk].date = parsedDate.toISOString().slice(0, 10);
+          if (colMap.totalSales !== undefined) data[wk][dk].totalSales = cleanNumber(String(cols[colMap.totalSales]));
+          if (colMap.foodSales !== undefined) data[wk][dk].foodSales = cleanNumber(String(cols[colMap.foodSales]));
+          if (colMap.bevSales !== undefined) data[wk][dk].bevSales = cleanNumber(String(cols[colMap.bevSales]));
+          if (colMap.covers !== undefined) data[wk][dk].covers = cleanNumber(String(cols[colMap.covers]));
+          if (colMap.foodPurch !== undefined) data[wk][dk].foodPurch = cleanNumber(String(cols[colMap.foodPurch]));
+          if (colMap.laborCost !== undefined) data[wk][dk].laborCost = cleanNumber(String(cols[colMap.laborCost]));
+          if (colMap.laborSched !== undefined) data[wk][dk].laborSched = cleanNumber(String(cols[colMap.laborSched]));
+          if (colMap.laborActual !== undefined) data[wk][dk].laborActual = cleanNumber(String(cols[colMap.laborActual]));
+          if (colMap.waste !== undefined) data[wk][dk].waste = cleanNumber(String(cols[colMap.waste]));
+          if (colMap.comps !== undefined) data[wk][dk].comps = cleanNumber(String(cols[colMap.comps]));
+          if (colMap.voids !== undefined) data[wk][dk].voids = cleanNumber(String(cols[colMap.voids]));
+
+          importCount++;
+        }
+
+        if (importCount === 0) {
+          alert('No valid data rows found. Check that your file has dates and numeric values.');
+          return;
+        }
+
+        if (!confirm('Found ' + importCount + ' days of data from Excel. Import and merge with existing data?')) return;
+
+        saveData(data);
+        buildDailyTable();
+        buildWeeklyTable();
+        buildSummary();
+        alert('Imported ' + importCount + ' days of data from Excel successfully.');
+
+      } catch (err) {
+        alert('Error importing Excel file: ' + err.message);
+      }
+    };
+    reader.readAsArrayBuffer(file);
+  });
+
+  event.target.value = '';
+}
+
+function importTransposedExcel(jsonData, dateColumns) {
+  var data = loadData();
+  var importCount = 0;
+
+  // Build row lookup from Excel data
+  var rowMap = {};
+  jsonData.forEach(function(row) {
+    if (!row || row.length < 2) return;
+    var label = String(row[0]).toLowerCase().replace(/[^a-z0-9&]/g, '');
+    rowMap[label] = row;
+  });
+
+  // Map POS row labels
+  var salesRow = findPosRowExcel(rowMap, ['netsales', 'grosssales', 'items']);
+  var compsRow = findPosRowExcel(rowMap, ['discountscomps', 'discounts&comps', 'discounts', 'comps']);
+  var voidsRow = findPosRowExcel(rowMap, ['returns', 'refunds', 'refundsbyamount', 'voids']);
+
+  if (!salesRow) {
+    alert('Could not find a sales row (Net Sales or Gross Sales) in the Excel file.');
+    return;
+  }
+
+  dateColumns.forEach(function(dc) {
+    var parsedDate = dc.date;
+    var colIdx = dc.col;
+
+    var dayOfWeek = parsedDate.getDay();
+    var dayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+    var monday = new Date(parsedDate);
+    monday.setDate(parsedDate.getDate() - dayIdx);
+    var wk = 'week_' + monday.toISOString().slice(0, 10);
+
+    if (!data[wk]) data[wk] = {};
+    var dk = 'day' + dayIdx;
+    if (!data[wk][dk]) data[wk][dk] = {};
+
+    data[wk][dk].date = parsedDate.toISOString().slice(0, 10);
+
+    if (salesRow && salesRow[colIdx] !== undefined) {
+      data[wk][dk].totalSales = cleanNumber(String(salesRow[colIdx]));
+    }
+    if (compsRow && compsRow[colIdx] !== undefined) {
+      data[wk][dk].comps = String(Math.abs(parseFloat(cleanNumber(String(compsRow[colIdx]))) || 0));
+    }
+    if (voidsRow && voidsRow[colIdx] !== undefined) {
+      data[wk][dk].voids = String(Math.abs(parseFloat(cleanNumber(String(voidsRow[colIdx]))) || 0));
+    }
+
+    importCount++;
+  });
+
+  if (importCount === 0) {
+    alert('No valid daily data found.');
+    return;
+  }
+
+  var foundFields = ['Total Sales'];
+  if (compsRow) foundFields.push('Comps');
+  if (voidsRow) foundFields.push('Voids/Returns');
+
+  var msg = 'POS sales data detected in Excel.\n\n';
+  msg += 'Found ' + importCount + ' days of data.\n';
+  msg += 'Importing: ' + foundFields.join(', ') + '\n\n';
+  msg += 'Not in POS export (enter manually): Food Sales, Bev Sales, Covers, Food Purchases, Labor, Waste\n\n';
+  msg += 'Import this data?';
+
+  if (!confirm(msg)) return;
+
+  saveData(data);
+  buildDailyTable();
+  buildWeeklyTable();
+  buildSummary();
+  alert('Imported ' + importCount + ' days of POS sales data from Excel.\n\nFood/Bev split, Covers, Labor, and Waste need manual entry.');
+}
+
+function findPosRowExcel(rowMap, candidates) {
+  for (var i = 0; i < candidates.length; i++) {
+    var key = candidates[i].replace(/[^a-z0-9&]/g, '');
+    if (rowMap[key]) return rowMap[key];
+  }
+  return null;
+}
+
+/* --- Clear actions --- */
+function handleClearWeek() {
+  if (!confirm('Clear all data for the currently viewed week? This cannot be undone.')) return;
+  var data = loadData();
+  var wk = getWeekKey(weekOffset);
+  delete data[wk];
+  saveData(data);
+  buildDailyTable();
+}
+
+function handleClearAll() {
+  if (!confirm('Clear ALL tracker data? This cannot be undone.')) return;
+  if (!confirm('Are you sure? This will delete all daily and weekly data permanently.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  buildDailyTable();
+  buildWeeklyTable();
+  buildSummary();
+}
+
+/* --- Helpers --- */
+function closeDropdowns() {
+  document.querySelectorAll('.dropdown-menu').forEach(function(m) { m.classList.remove('open'); });
+}
+
+function dateStamp() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function downloadBlob(blob, filename) {
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function csvRow(arr) {
+  return arr.map(function(v) {
+    var s = String(v == null ? '' : v);
+    if (s.indexOf(',') !== -1 || s.indexOf('"') !== -1 || s.indexOf('\n') !== -1) {
+      return '"' + s.replace(/"/g, '""') + '"';
+    }
+    return s;
+  }).join(',');
+}
+
+function escapeHTML(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', function() {
+  buildDailyTable();
+});
+</script>
+</body>
+</html>

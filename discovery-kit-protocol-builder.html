@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Protocol Builder | The Grumpy Chef</title>
+    <meta name="description" content="Build one-page SOPs that actually get followed. Fill in 6 elements, print it, laminate it, post it at the station. From a German Master Chef with 20+ years operations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET & VARIABLES
+           ============================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --navy-hover: #162642;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gray-dark: #2D3748;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --red: #C53030;
+            --red-glow: rgba(197, 48, 48, 0.10);
+            --green: #2F855A;
+            --green-glow: rgba(47, 133, 90, 0.10);
+            --blue: #00A6D6;
+            --blue-dim: #008AB3;
+            --blue-glow: rgba(0, 166, 214, 0.10);
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+        .gold-top { height: 3px; background: linear-gradient(90deg, var(--gold), var(--blue), var(--gold)); }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            padding: 56px 0 40px;
+            background: linear-gradient(180deg, #0C1A2E 0%, var(--navy) 100%);
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .hero__brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .hero__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(28px, 5.5vw, 46px);
+            line-height: 1.08;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        .hero__sub {
+            font-size: 17px;
+            color: var(--white-dim);
+            max-width: 560px;
+            line-height: 1.55;
+            margin-bottom: 12px;
+        }
+        .hero__sub strong { color: var(--gold); font-weight: 600; }
+        .hero__context {
+            font-size: 14px;
+            color: var(--white-dim);
+            max-width: 600px;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* ============================================
+           SAVE INDICATOR
+           ============================================ */
+        .save-indicator {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            color: var(--white-dim);
+            z-index: 100;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+        .save-indicator.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .save-indicator.saved {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        /* ============================================
+           SECTION HEADERS
+           ============================================ */
+        .section {
+            padding: 40px 0;
+        }
+        .section + .section {
+            border-top: 1px solid var(--navy-border);
+        }
+        .section__label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .section__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(20px, 3.5vw, 28px);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .section__desc {
+            font-size: 14px;
+            color: var(--white-dim);
+            max-width: 560px;
+            line-height: 1.55;
+            margin-bottom: 24px;
+        }
+
+        /* ============================================
+           CARDS
+           ============================================ */
+        .card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 10px;
+            padding: 28px;
+            margin-bottom: 20px;
+            transition: border-color 0.2s ease;
+        }
+        .card:focus-within {
+            border-color: var(--gold-border);
+        }
+        .card__number {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 6px;
+        }
+        .card__label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .card__prompt {
+            font-size: 14px;
+            color: var(--white-dim);
+            line-height: 1.55;
+            margin-bottom: 16px;
+        }
+        .card__helper {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--gold-dim);
+            line-height: 1.5;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--navy-border);
+        }
+
+        /* ============================================
+           FORM INPUTS
+           ============================================ */
+        .form-row {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .form-row--2 { grid-template-columns: 1fr 1fr; }
+        .form-row--3 { grid-template-columns: 1fr 1fr 1fr; }
+        .form-row--4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+        @media (max-width: 600px) {
+            .form-row--2, .form-row--3, .form-row--4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-size: 11px;
+            font-family: var(--font-mono);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--white-dim);
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        textarea,
+        select {
+            font-family: var(--font-body);
+            font-size: 14px;
+            background: var(--navy-light);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            color: var(--white);
+            padding: 10px 14px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+        }
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px var(--gold-glow);
+        }
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--gray);
+            font-style: italic;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+            line-height: 1.55;
+        }
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23B8BEC8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 32px;
+        }
+        select option {
+            background: var(--navy-card);
+            color: var(--white);
+        }
+
+        /* ============================================
+           STEPS LIST
+           ============================================ */
+        .steps-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        .steps-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            counter-increment: step-counter;
+        }
+        .step-number {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--blue);
+            min-width: 24px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .steps-list li input {
+            flex: 1;
+        }
+        .step-remove {
+            background: none;
+            border: none;
+            color: var(--red);
+            cursor: pointer;
+            font-size: 18px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.15s ease;
+            flex-shrink: 0;
+            opacity: 0.5;
+        }
+        .step-remove:hover {
+            background: var(--red-glow);
+            opacity: 1;
+        }
+        .add-step-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--blue);
+            background: var(--blue-glow);
+            border: 1px solid rgba(0, 166, 214, 0.25);
+            border-radius: 6px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 8px;
+        }
+        .add-step-btn:hover {
+            background: rgba(0, 166, 214, 0.18);
+            border-color: var(--blue);
+        }
+        .add-step-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+        .step-rule {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--gold-dim);
+            line-height: 1.5;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid var(--navy-border);
+        }
+
+        /* ============================================
+           METRIC INPUTS
+           ============================================ */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        @media (max-width: 600px) {
+            .metric-grid { grid-template-columns: 1fr; }
+        }
+        .metric-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .metric-arrow__from, .metric-arrow__to {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-align: center;
+            min-width: 100px;
+        }
+        .metric-arrow__from {
+            background: var(--red-glow);
+            border: 1px solid rgba(197, 48, 48, 0.25);
+            color: var(--red);
+        }
+        .metric-arrow__to {
+            background: var(--green-glow);
+            border: 1px solid rgba(47, 133, 90, 0.25);
+            color: var(--green);
+        }
+        .metric-arrow__icon {
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        /* ============================================
+           ESCAPE ROUTES
+           ============================================ */
+        .escape-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding: 16px;
+            background: var(--navy-light);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+        }
+        @media (max-width: 600px) {
+            .escape-row { grid-template-columns: 1fr; }
+        }
+        .escape-row .form-group label {
+            font-size: 10px;
+        }
+        .escape-label--excuse { color: var(--red); }
+        .escape-label--response { color: var(--green); }
+
+        /* ============================================
+           ACTION BUTTONS
+           ============================================ */
+        .actions {
+            padding: 40px 0 60px;
+            border-top: 1px solid var(--navy-border);
+        }
+        .actions__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 500px) {
+            .actions__grid { grid-template-columns: 1fr; }
+        }
+
+        .btn {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        .btn--gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+            color: var(--navy);
+        }
+        .btn--gold:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--gold-glow);
+        }
+        .btn--blue {
+            background: var(--blue-glow);
+            border: 1px solid rgba(0, 166, 214, 0.3);
+            color: var(--blue);
+        }
+        .btn--blue:hover {
+            background: rgba(0, 166, 214, 0.18);
+            border-color: var(--blue);
+        }
+        .btn--red {
+            background: var(--red-glow);
+            border: 1px solid rgba(197, 48, 48, 0.25);
+            color: var(--red);
+        }
+        .btn--red:hover {
+            background: rgba(197, 48, 48, 0.18);
+            border-color: var(--red);
+        }
+        .btn--outline {
+            background: transparent;
+            border: 1px solid var(--navy-border);
+            color: var(--white-dim);
+        }
+        .btn--outline:hover {
+            border-color: var(--gold-border);
+            color: var(--white);
+        }
+        .actions__note {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--white-dim);
+            text-align: center;
+            margin-top: 8px;
+            opacity: 0.7;
+        }
+
+        /* ============================================
+           PREVIEW MODAL
+           ============================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 22, 40, 0.92);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+        .modal-overlay.active { display: block; }
+        .modal {
+            max-width: 750px;
+            margin: 0 auto;
+            background: #fff;
+            color: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .modal__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: var(--navy);
+            border-bottom: 3px solid var(--gold);
+        }
+        .modal__header-title {
+            font-family: var(--font-display);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .modal__close {
+            background: none;
+            border: none;
+            color: var(--white-dim);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 4px 8px;
+            line-height: 1;
+        }
+        .modal__close:hover { color: var(--white); }
+
+        .preview {
+            padding: 36px 40px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        @media (max-width: 600px) {
+            .preview { padding: 24px 20px; }
+        }
+
+        .preview__brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #B89630;
+            margin-bottom: 4px;
+        }
+        .preview__title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 26px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #D4AF37;
+            line-height: 1.15;
+        }
+        .preview__meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-size: 11px;
+        }
+        .preview__meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .preview__meta-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 2px;
+        }
+        .preview__meta-value {
+            font-weight: 600;
+            color: #222;
+        }
+
+        .preview__element {
+            margin-bottom: 16px;
+            page-break-inside: avoid;
+        }
+        .preview__element-label {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #0A1628;
+            margin-bottom: 4px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #ddd;
+        }
+        .preview__element-label span {
+            color: #00A6D6;
+            margin-right: 6px;
+        }
+        .preview__element-content {
+            font-size: 12.5px;
+            color: #333;
+            line-height: 1.45;
+        }
+        .preview__steps {
+            list-style: none;
+            counter-reset: preview-step;
+            padding: 0;
+        }
+        .preview__steps li {
+            counter-increment: preview-step;
+            padding: 2px 0;
+            font-size: 12.5px;
+        }
+        .preview__steps li::before {
+            content: counter(preview-step) ".";
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: #00A6D6;
+            margin-right: 8px;
+            display: inline-block;
+            min-width: 22px;
+        }
+        .preview__metric-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+        }
+        .preview__metric-from {
+            color: #C53030;
+            font-weight: 600;
+        }
+        .preview__metric-to {
+            color: #2F855A;
+            font-weight: 600;
+        }
+
+        .preview__escape {
+            margin-bottom: 16px;
+        }
+        .preview__escape-title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #0A1628;
+            margin-bottom: 8px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #ddd;
+        }
+        .preview__escape-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 16px;
+            margin-bottom: 6px;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        .preview__escape-excuse {
+            color: #C53030;
+        }
+        .preview__escape-excuse::before {
+            content: '"';
+        }
+        .preview__escape-excuse::after {
+            content: '"';
+        }
+        .preview__escape-response {
+            color: #2F855A;
+        }
+
+        .preview__footer {
+            margin-top: 20px;
+            padding-top: 12px;
+            border-top: 2px solid #D4AF37;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            color: #888;
+        }
+        .preview__footer-brand {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #B89630;
+        }
+
+        /* ============================================
+           PRINT STYLES
+           ============================================ */
+        @media print {
+            @page {
+                size: letter;
+                margin: 0.4in 0.5in;
+            }
+
+            body {
+                background: #fff !important;
+                color: #111 !important;
+                font-size: 11px !important;
+                line-height: 1.35 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .gold-top,
+            .hero,
+            .section,
+            .actions,
+            .save-indicator,
+            .modal__header {
+                display: none !important;
+            }
+
+            .modal-overlay {
+                display: block !important;
+                position: static !important;
+                background: none !important;
+                padding: 0 !important;
+                overflow: visible !important;
+            }
+            .modal {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                max-width: 100% !important;
+            }
+
+            .preview {
+                padding: 0 !important;
+                font-size: 11px !important;
+            }
+            .preview__title {
+                font-size: 22px !important;
+                margin-bottom: 10px !important;
+                padding-bottom: 8px !important;
+            }
+            .preview__meta {
+                margin-bottom: 14px !important;
+            }
+            .preview__element {
+                margin-bottom: 10px !important;
+                page-break-inside: avoid;
+            }
+            .preview__element-label {
+                font-size: 10.5px !important;
+                margin-bottom: 2px !important;
+            }
+            .preview__element-content {
+                font-size: 11px !important;
+            }
+            .preview__steps li {
+                font-size: 11px !important;
+                padding: 1px 0 !important;
+            }
+            .preview__escape-row {
+                font-size: 10px !important;
+                margin-bottom: 4px !important;
+            }
+            .preview__footer {
+                margin-top: 14px !important;
+                padding-top: 8px !important;
+            }
+
+            .modal__close { display: none !important; }
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 24px 0;
+            border-top: 1px solid var(--navy-border);
+            text-align: center;
+        }
+        .footer__brand {
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            margin-bottom: 4px;
+        }
+        .footer__text {
+            font-size: 12px;
+            color: var(--gray);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Save indicator -->
+<div class="save-indicator" id="saveIndicator">Saved</div>
+
+<!-- Gold top bar -->
+<div class="gold-top"></div>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero">
+    <div class="container">
+        <div class="hero__brand">The Grumpy Chef</div>
+        <h1 class="hero__title">The Protocol Builder</h1>
+        <p class="hero__sub"><strong>One page. One system. Print it. Post it. Done.</strong></p>
+        <p class="hero__context">You've found the leak and the root cause. Now build the system that stops it. One page maximum &mdash; if it's longer, it won't get used.</p>
+    </div>
+</section>
+
+<!-- ============================================
+     PROTOCOL HEADER
+     ============================================ -->
+<section class="section" id="protocolHeader">
+    <div class="container">
+        <div class="section__label">Protocol Details</div>
+        <h2 class="section__title">Protocol Header</h2>
+        <div class="card">
+            <div class="form-row form-row--2">
+                <div class="form-group">
+                    <label for="protocolName">Protocol Name</label>
+                    <input type="text" id="protocolName" placeholder="e.g., Daily Waste Tracking Protocol" data-save="protocolName">
+                </div>
+                <div class="form-group">
+                    <label for="createdBy">Created By</label>
+                    <input type="text" id="createdBy" placeholder="e.g., Chef Mike" data-save="createdBy">
+                </div>
+            </div>
+            <div class="form-row form-row--3">
+                <div class="form-group">
+                    <label for="protocolDate">Date</label>
+                    <input type="date" id="protocolDate" data-save="protocolDate">
+                </div>
+                <div class="form-group">
+                    <label for="stationLocation">Station / Location</label>
+                    <input type="text" id="stationLocation" placeholder="e.g., Dish Pit" data-save="stationLocation">
+                </div>
+                <div class="form-group">
+                    <label for="version">Version</label>
+                    <input type="text" id="version" value="1.0" data-save="version">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     ELEMENT 1: TRIGGER
+     ============================================ -->
+<section class="section">
+    <div class="container">
+        <div class="section__label">The 6 Elements</div>
+        <h2 class="section__title">Build Your Protocol</h2>
+        <p class="section__desc">Fill in each element. Be specific. Be brief. If someone at 60% capacity can't follow it at 11pm, simplify.</p>
+
+        <div class="card">
+            <div class="card__number">Element 1</div>
+            <div class="card__label">Trigger</div>
+            <p class="card__prompt">What specific event, condition, or time triggers this system?</p>
+            <div class="form-group">
+                <label for="trigger">When does this protocol activate?</label>
+                <textarea id="trigger" rows="3" placeholder='e.g., "End of every service (lunch + dinner)" or "When food cost exceeds 32% for two consecutive weeks" or "When staff calls in sick"' data-save="trigger"></textarea>
+            </div>
+            <div class="card__helper">Be specific. "When things go wrong" is not a trigger. "When waste log shows >$100/day for 3 consecutive days" is.</div>
+        </div>
+
+        <!-- ============================================
+             ELEMENT 2: PRE-DECIDED RESPONSE
+             ============================================ -->
+        <div class="card">
+            <div class="card__number">Element 2</div>
+            <div class="card__label">Pre-Decided Response</div>
+            <p class="card__prompt">Write the exact actions. Use verbs: Count, Audit, Check, Weigh, Record, Escalate. No thinking required &mdash; just execute.</p>
+            <div class="form-group" style="margin-bottom: 8px;">
+                <label>What exactly happens? (Step by step)</label>
+            </div>
+            <ol class="steps-list" id="stepsList">
+                <li>
+                    <span class="step-number">1.</span>
+                    <input type="text" placeholder="Walk the line. Check each station." data-save="step_0">
+                    <button type="button" class="step-remove" onclick="removeStep(this)" title="Remove step" aria-label="Remove step">&times;</button>
+                </li>
+                <li>
+                    <span class="step-number">2.</span>
+                    <input type="text" placeholder="Weigh discarded prep in waste bin (use scale by dish pit)." data-save="step_1">
+                    <button type="button" class="step-remove" onclick="removeStep(this)" title="Remove step" aria-label="Remove step">&times;</button>
+                </li>
+                <li>
+                    <span class="step-number">3.</span>
+                    <input type="text" placeholder="Write on waste sheet: Item | Weight | Estimated Cost" data-save="step_2">
+                    <button type="button" class="step-remove" onclick="removeStep(this)" title="Remove step" aria-label="Remove step">&times;</button>
+                </li>
+                <li>
+                    <span class="step-number">4.</span>
+                    <input type="text" placeholder="Put waste sheet in office clip." data-save="step_3">
+                    <button type="button" class="step-remove" onclick="removeStep(this)" title="Remove step" aria-label="Remove step">&times;</button>
+                </li>
+                <li>
+                    <span class="step-number">5.</span>
+                    <input type="text" placeholder="Done." data-save="step_4">
+                    <button type="button" class="step-remove" onclick="removeStep(this)" title="Remove step" aria-label="Remove step">&times;</button>
+                </li>
+            </ol>
+            <button type="button" class="add-step-btn" id="addStepBtn" onclick="addStep()">+ Add Step</button>
+            <div class="step-rule">If someone at 60% capacity can't follow these steps at 11pm, simplify.</div>
+        </div>
+
+        <!-- ============================================
+             ELEMENT 3: WHO EXECUTES
+             ============================================ -->
+        <div class="card">
+            <div class="card__number">Element 3</div>
+            <div class="card__label">Who Executes</div>
+            <p class="card__prompt">Specific role or name. Not "everyone." Not "the team." One person owns this.</p>
+            <div class="form-group">
+                <label for="whoExecutes">Who is responsible?</label>
+                <input type="text" id="whoExecutes" placeholder="e.g., Closing KM (Kitchen Manager)" data-save="whoExecutes">
+            </div>
+            <div class="card__helper">If nobody owns it, nobody does it.</div>
+        </div>
+
+        <!-- ============================================
+             ELEMENT 4: HOW YOU MEASURE
+             ============================================ -->
+        <div class="card">
+            <div class="card__number">Element 4</div>
+            <div class="card__label">How You Measure</div>
+            <p class="card__prompt">One specific number, tracked at a specific frequency.</p>
+            <div class="metric-grid">
+                <div class="form-group">
+                    <label for="metric">Metric</label>
+                    <input type="text" id="metric" placeholder="e.g., Weekly waste in dollars" data-save="metric">
+                </div>
+                <div class="form-group">
+                    <label for="frequency">Frequency</label>
+                    <select id="frequency" data-save="frequency">
+                        <option value="">Select frequency...</option>
+                        <option value="Daily">Daily</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Monthly">Monthly</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="currentValue">Current Value</label>
+                    <input type="text" id="currentValue" placeholder="e.g., $800/week" data-save="currentValue">
+                </div>
+                <div class="form-group">
+                    <label for="targetValue">Target Value</label>
+                    <input type="text" id="targetValue" placeholder="e.g., $400/week" data-save="targetValue">
+                </div>
+            </div>
+            <div class="card__helper">If you can't measure it, you can't manage it. Pick one number.</div>
+        </div>
+
+        <!-- ============================================
+             ELEMENT 5: WHAT SUCCESS LOOKS LIKE
+             ============================================ -->
+        <div class="card">
+            <div class="card__number">Element 5</div>
+            <div class="card__label">What Success Looks Like</div>
+            <p class="card__prompt">Describe the measurable outcome in 30 days.</p>
+            <div class="form-group">
+                <label for="successLooks">What does "fixed" look like in 30 days?</label>
+                <textarea id="successLooks" rows="3" placeholder="e.g., Waste drops from $800/week to under $400/week within 30 days." data-save="successLooks"></textarea>
+            </div>
+        </div>
+
+        <!-- ============================================
+             ELEMENT 6: POSTED LOCATION
+             ============================================ -->
+        <div class="card">
+            <div class="card__number">Element 6</div>
+            <div class="card__label">Posted Location</div>
+            <p class="card__prompt">Where will it be printed and posted?</p>
+            <div class="form-group">
+                <label for="postedLocation">Where does this protocol live physically?</label>
+                <input type="text" id="postedLocation" placeholder="e.g., Laminated at dish pit station + copy in manager's office" data-save="postedLocation">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     ESCAPE ROUTE BLOCKER
+     ============================================ -->
+<section class="section">
+    <div class="container">
+        <div class="section__label">Pre-Decide</div>
+        <h2 class="section__title">Close the Escape Routes</h2>
+        <p class="section__desc">What excuses will you hear? Pre-decide your response now.</p>
+
+        <div id="escapeRoutes">
+            <div class="escape-row">
+                <div class="form-group">
+                    <label class="escape-label--excuse">When someone says:</label>
+                    <input type="text" value="We were too busy" data-save="excuse_0">
+                </div>
+                <div class="form-group">
+                    <label class="escape-label--response">You respond:</label>
+                    <input type="text" value="The protocol takes 5 minutes. Too busy for 5 minutes means the system needs redesign, not skipping." data-save="response_0">
+                </div>
+            </div>
+            <div class="escape-row">
+                <div class="form-group">
+                    <label class="escape-label--excuse">When someone says:</label>
+                    <input type="text" value="I forgot" data-save="excuse_1">
+                </div>
+                <div class="form-group">
+                    <label class="escape-label--response">You respond:</label>
+                    <input type="text" value="Tomorrow it's taped to the station. No forgetting possible." data-save="response_1">
+                </div>
+            </div>
+            <div class="escape-row">
+                <div class="form-group">
+                    <label class="escape-label--excuse">When someone says:</label>
+                    <input type="text" value="It doesn't work" data-save="excuse_2">
+                </div>
+                <div class="form-group">
+                    <label class="escape-label--response">You respond:</label>
+                    <input type="text" value="We measure for 30 days before evaluating. No early exits." data-save="response_2">
+                </div>
+            </div>
+            <div class="escape-row">
+                <div class="form-group">
+                    <label class="escape-label--excuse">When someone says:</label>
+                    <input type="text" value="Can we do it differently?" data-save="excuse_3">
+                </div>
+                <div class="form-group">
+                    <label class="escape-label--response">You respond:</label>
+                    <input type="text" value="After 30 days, bring me data and a proposal. Until then, execute as written." data-save="response_3">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     ACTIONS
+     ============================================ -->
+<section class="actions">
+    <div class="container">
+        <div class="actions__grid">
+            <button class="btn btn--gold" onclick="showPreview()">Preview Protocol</button>
+            <button class="btn btn--blue" onclick="printProtocol()">Print Protocol</button>
+            <button class="btn btn--outline" onclick="newProtocol()">New Protocol</button>
+            <button class="btn btn--red" id="clearBtn" onclick="clearAll()">Clear Everything</button>
+        </div>
+        <p class="actions__note">Download as PDF: Use your browser's Print &rarr; Save as PDF &nbsp;|&nbsp; All progress auto-saves to your browser</p>
+    </div>
+</section>
+
+<!-- ============================================
+     PREVIEW MODAL
+     ============================================ -->
+<div class="modal-overlay" id="previewModal">
+    <div class="modal">
+        <div class="modal__header">
+            <span class="modal__header-title">Print Preview</span>
+            <button class="modal__close" onclick="closePreview()" aria-label="Close preview">&times;</button>
+        </div>
+        <div class="preview" id="previewContent">
+            <!-- Generated dynamically -->
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__brand">The Grumpy Chef</div>
+        <div class="footer__text">72-Hour Profit Discovery Kit</div>
+    </div>
+</footer>
+
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
+<script>
+(function() {
+    'use strict';
+
+    const STORAGE_KEY = 'grumpychef_protocol_builder';
+    let saveTimeout = null;
+
+    // ============================================
+    // INITIALIZATION
+    // ============================================
+    function init() {
+        setTodayDate();
+        loadFromStorage();
+        attachSaveListeners();
+        updateStepNumbers();
+        updateAddStepButton();
+    }
+
+    function setTodayDate() {
+        const dateInput = document.getElementById('protocolDate');
+        if (dateInput && !dateInput.value) {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            dateInput.value = `${yyyy}-${mm}-${dd}`;
+        }
+    }
+
+    // ============================================
+    // LOCAL STORAGE
+    // ============================================
+    function saveToStorage() {
+        const data = {};
+        document.querySelectorAll('[data-save]').forEach(function(el) {
+            data[el.getAttribute('data-save')] = el.value;
+        });
+        // Save step count
+        data._stepCount = document.querySelectorAll('#stepsList li').length;
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            showSaveIndicator();
+        } catch(e) {
+            // Storage full or unavailable
+        }
+    }
+
+    function loadFromStorage() {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return;
+            const data = JSON.parse(raw);
+
+            // Restore step count first
+            const savedStepCount = data._stepCount || 5;
+            const currentStepCount = document.querySelectorAll('#stepsList li').length;
+
+            if (savedStepCount > currentStepCount) {
+                for (let i = currentStepCount; i < savedStepCount; i++) {
+                    addStepSilent();
+                }
+            } else if (savedStepCount < currentStepCount) {
+                const items = document.querySelectorAll('#stepsList li');
+                for (let i = currentStepCount - 1; i >= savedStepCount; i--) {
+                    items[i].remove();
+                }
+            }
+
+            // Now restore values
+            document.querySelectorAll('[data-save]').forEach(function(el) {
+                const key = el.getAttribute('data-save');
+                if (data[key] !== undefined && data[key] !== '') {
+                    el.value = data[key];
+                }
+            });
+
+            updateStepNumbers();
+            updateAddStepButton();
+        } catch(e) {
+            // Corrupted storage
+        }
+    }
+
+    function showSaveIndicator() {
+        const indicator = document.getElementById('saveIndicator');
+        indicator.textContent = 'Saved';
+        indicator.classList.add('show', 'saved');
+        clearTimeout(window._hideIndicator);
+        window._hideIndicator = setTimeout(function() {
+            indicator.classList.remove('show');
+        }, 1500);
+    }
+
+    function attachSaveListeners() {
+        document.querySelectorAll('input, textarea, select').forEach(function(el) {
+            el.addEventListener('input', debouncedSave);
+            el.addEventListener('change', debouncedSave);
+        });
+    }
+
+    function debouncedSave() {
+        clearTimeout(saveTimeout);
+        saveTimeout = setTimeout(saveToStorage, 400);
+    }
+
+    // ============================================
+    // STEPS MANAGEMENT
+    // ============================================
+    window.addStep = function() {
+        const list = document.getElementById('stepsList');
+        const count = list.querySelectorAll('li').length;
+        if (count >= 8) return;
+
+        addStepSilent();
+        updateStepNumbers();
+        updateAddStepButton();
+
+        // Focus the new input
+        const newInput = list.lastElementChild.querySelector('input');
+        if (newInput) newInput.focus();
+
+        // Attach save listener to new input
+        newInput.addEventListener('input', debouncedSave);
+        newInput.addEventListener('change', debouncedSave);
+
+        debouncedSave();
+    };
+
+    function addStepSilent() {
+        const list = document.getElementById('stepsList');
+        const count = list.querySelectorAll('li').length;
+        const li = document.createElement('li');
+        li.innerHTML = '<span class="step-number">' + (count + 1) + '.</span>' +
+            '<input type="text" placeholder="Next step..." data-save="step_' + count + '">' +
+            '<button type="button" class="step-remove" onclick="removeStep(this)" title="Remove step" aria-label="Remove step">&times;</button>';
+        list.appendChild(li);
+    }
+
+    window.removeStep = function(btn) {
+        const list = document.getElementById('stepsList');
+        const items = list.querySelectorAll('li');
+        if (items.length <= 1) return; // Keep at least one step
+        btn.closest('li').remove();
+        updateStepNumbers();
+        updateDataSaveAttributes();
+        updateAddStepButton();
+        debouncedSave();
+    };
+
+    function updateStepNumbers() {
+        const items = document.querySelectorAll('#stepsList li');
+        items.forEach(function(li, i) {
+            li.querySelector('.step-number').textContent = (i + 1) + '.';
+        });
+    }
+
+    function updateDataSaveAttributes() {
+        const items = document.querySelectorAll('#stepsList li');
+        items.forEach(function(li, i) {
+            li.querySelector('input').setAttribute('data-save', 'step_' + i);
+        });
+    }
+
+    function updateAddStepButton() {
+        const btn = document.getElementById('addStepBtn');
+        const count = document.querySelectorAll('#stepsList li').length;
+        btn.disabled = count >= 8;
+        btn.textContent = count >= 8 ? 'Maximum 8 Steps' : '+ Add Step';
+    }
+
+    // ============================================
+    // PREVIEW
+    // ============================================
+    window.showPreview = function() {
+        const preview = document.getElementById('previewContent');
+        preview.innerHTML = generatePreviewHTML();
+        document.getElementById('previewModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closePreview = function() {
+        document.getElementById('previewModal').classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    // Close modal on overlay click
+    document.getElementById('previewModal').addEventListener('click', function(e) {
+        if (e.target === this) closePreview();
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closePreview();
+    });
+
+    function val(id) {
+        var el = document.getElementById(id);
+        return el ? (el.value || '').trim() : '';
+    }
+
+    function esc(str) {
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    function formatDate(dateStr) {
+        if (!dateStr) return '';
+        var parts = dateStr.split('-');
+        if (parts.length !== 3) return dateStr;
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return months[parseInt(parts[1], 10) - 1] + ' ' + parseInt(parts[2], 10) + ', ' + parts[0];
+    }
+
+    function generatePreviewHTML() {
+        var protocolName = val('protocolName') || 'Untitled Protocol';
+        var createdBy = val('createdBy') || '---';
+        var protocolDate = formatDate(val('protocolDate')) || '---';
+        var stationLocation = val('stationLocation') || '---';
+        var version = val('version') || '1.0';
+        var trigger = val('trigger') || '---';
+        var whoExecutes = val('whoExecutes') || '---';
+        var metric = val('metric') || '---';
+        var frequency = document.getElementById('frequency').value || '---';
+        var currentValue = val('currentValue') || '---';
+        var targetValue = val('targetValue') || '---';
+        var successLooks = val('successLooks') || '---';
+        var postedLocation = val('postedLocation') || '---';
+
+        // Gather steps
+        var steps = [];
+        document.querySelectorAll('#stepsList li input').forEach(function(input) {
+            var v = (input.value || '').trim();
+            if (v) steps.push(v);
+        });
+
+        var stepsHTML = '';
+        if (steps.length > 0) {
+            stepsHTML = '<ol class="preview__steps">';
+            steps.forEach(function(s) {
+                stepsHTML += '<li>' + esc(s) + '</li>';
+            });
+            stepsHTML += '</ol>';
+        } else {
+            stepsHTML = '<p style="color:#888;font-style:italic;">No steps defined.</p>';
+        }
+
+        // Gather escape routes
+        var escapeHTML = '';
+        for (var i = 0; i < 4; i++) {
+            var excuseEl = document.querySelector('[data-save="excuse_' + i + '"]');
+            var responseEl = document.querySelector('[data-save="response_' + i + '"]');
+            var excuse = excuseEl ? (excuseEl.value || '').trim() : '';
+            var response = responseEl ? (responseEl.value || '').trim() : '';
+            if (excuse || response) {
+                escapeHTML += '<div class="preview__escape-row">' +
+                    '<div class="preview__escape-excuse">' + esc(excuse || '---') + '</div>' +
+                    '<div class="preview__escape-response">' + esc(response || '---') + '</div>' +
+                    '</div>';
+            }
+        }
+
+        return '<div class="preview__brand">The Grumpy Chef</div>' +
+            '<div class="preview__title">' + esc(protocolName) + '</div>' +
+
+            '<div class="preview__meta">' +
+                '<div class="preview__meta-item"><span class="preview__meta-label">Created By</span><span class="preview__meta-value">' + esc(createdBy) + '</span></div>' +
+                '<div class="preview__meta-item"><span class="preview__meta-label">Date</span><span class="preview__meta-value">' + esc(protocolDate) + '</span></div>' +
+                '<div class="preview__meta-item"><span class="preview__meta-label">Station</span><span class="preview__meta-value">' + esc(stationLocation) + '</span></div>' +
+                '<div class="preview__meta-item"><span class="preview__meta-label">Version</span><span class="preview__meta-value">' + esc(version) + '</span></div>' +
+                '<div class="preview__meta-item"><span class="preview__meta-label">Posted At</span><span class="preview__meta-value">' + esc(postedLocation) + '</span></div>' +
+                '<div class="preview__meta-item"><span class="preview__meta-label">Frequency</span><span class="preview__meta-value">' + esc(frequency) + '</span></div>' +
+            '</div>' +
+
+            '<div class="preview__element">' +
+                '<div class="preview__element-label"><span>1</span> Trigger</div>' +
+                '<div class="preview__element-content">' + esc(trigger) + '</div>' +
+            '</div>' +
+
+            '<div class="preview__element">' +
+                '<div class="preview__element-label"><span>2</span> Pre-Decided Response</div>' +
+                '<div class="preview__element-content">' + stepsHTML + '</div>' +
+            '</div>' +
+
+            '<div class="preview__element">' +
+                '<div class="preview__element-label"><span>3</span> Who Executes</div>' +
+                '<div class="preview__element-content">' + esc(whoExecutes) + '</div>' +
+            '</div>' +
+
+            '<div class="preview__element">' +
+                '<div class="preview__element-label"><span>4</span> How You Measure</div>' +
+                '<div class="preview__element-content">' +
+                    '<div>' + esc(metric) + ' (' + esc(frequency) + ')</div>' +
+                    '<div class="preview__metric-bar">' +
+                        '<span class="preview__metric-from">' + esc(currentValue) + '</span>' +
+                        ' &rarr; ' +
+                        '<span class="preview__metric-to">' + esc(targetValue) + '</span>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+
+            '<div class="preview__element">' +
+                '<div class="preview__element-label"><span>5</span> Success in 30 Days</div>' +
+                '<div class="preview__element-content">' + esc(successLooks) + '</div>' +
+            '</div>' +
+
+            (escapeHTML ? '<div class="preview__escape">' +
+                '<div class="preview__escape-title">Escape Route Blockers</div>' +
+                escapeHTML +
+            '</div>' : '') +
+
+            '<div class="preview__footer">' +
+                '<span class="preview__footer-brand">The Grumpy Chef</span>' +
+                '<span>72-Hour Profit Discovery Kit</span>' +
+            '</div>';
+    }
+
+    // ============================================
+    // PRINT
+    // ============================================
+    window.printProtocol = function() {
+        showPreview();
+        // Small delay to let modal render, then print
+        setTimeout(function() {
+            window.print();
+        }, 300);
+    };
+
+    // ============================================
+    // NEW PROTOCOL / CLEAR
+    // ============================================
+    window.newProtocol = function() {
+        if (!confirm('Start a new protocol? Your current progress is saved in the browser. This will clear the form for a new protocol.')) return;
+        clearForm();
+    };
+
+    window.clearAll = function() {
+        if (!confirm('Clear everything and remove saved data? This cannot be undone.')) return;
+        try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+        clearForm();
+    };
+
+    function clearForm() {
+        // Reset simple inputs
+        document.querySelectorAll('input[type="text"], textarea').forEach(function(el) {
+            // For escape routes, clear to empty (not reset to defaults)
+            el.value = '';
+        });
+
+        // Reset select
+        document.getElementById('frequency').value = '';
+
+        // Reset version
+        document.getElementById('version').value = '1.0';
+
+        // Reset date to today
+        setTodayDate();
+
+        // Reset steps to 5
+        var list = document.getElementById('stepsList');
+        list.innerHTML = '';
+        for (var i = 0; i < 5; i++) {
+            var li = document.createElement('li');
+            li.innerHTML = '<span class="step-number">' + (i + 1) + '.</span>' +
+                '<input type="text" placeholder="Step ' + (i + 1) + '..." data-save="step_' + i + '">' +
+                '<button type="button" class="step-remove" onclick="removeStep(this)" title="Remove step" aria-label="Remove step">&times;</button>';
+            list.appendChild(li);
+        }
+
+        updateStepNumbers();
+        updateAddStepButton();
+
+        // Re-attach listeners
+        attachSaveListeners();
+
+        // Save the cleared state
+        saveToStorage();
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ============================================
+    // BOOT
+    // ============================================
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})();
+</script>
+</body>
+</html>

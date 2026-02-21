@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your 72-Hour Profit Discovery Kit | The Grumpy Chef</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --green: #2F855A;
+            --green-bg: rgba(47, 133, 90, 0.12);
+            --green-border: rgba(47, 133, 90, 0.3);
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .gold-top { height: 3px; background: linear-gradient(90deg, var(--gold), #00A6D6, var(--gold)); }
+
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+        /* HERO */
+        .hero {
+            padding: 64px 24px 48px;
+            text-align: center;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .hero__check {
+            width: 64px;
+            height: 64px;
+            background: var(--green-bg);
+            border: 2px solid var(--green-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--green);
+            margin: 0 auto 24px;
+        }
+        .hero__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+        .hero__title span { color: var(--gold); }
+        .hero__sub {
+            font-size: 1.05rem;
+            color: var(--white-dim);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+
+        /* QUICK START */
+        .quickstart {
+            padding: 48px 24px;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .quickstart__label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .quickstart__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .quickstart__steps {
+            list-style: none;
+        }
+        .quickstart__step {
+            display: flex;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(26, 45, 77, 0.5);
+            align-items: flex-start;
+        }
+        .quickstart__step:last-child { border-bottom: none; }
+        .quickstart__num {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--gold-glow);
+            border: 1px solid var(--gold-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .quickstart__text {
+            font-size: 0.95rem;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+        .quickstart__text strong { color: var(--white); font-weight: 600; }
+
+        /* TOOLS GRID */
+        .tools {
+            padding: 56px 24px;
+        }
+        .tools__label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .tools__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+        .tool-cards {
+            display: grid;
+            gap: 20px;
+        }
+        .tool-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 28px 24px;
+            transition: border-color 0.2s;
+        }
+        .tool-card:hover {
+            border-color: var(--gold-border);
+        }
+        .tool-card__day {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .tool-card__name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .tool-card__desc {
+            font-size: 0.9rem;
+            color: var(--white-dim);
+            line-height: 1.65;
+            margin-bottom: 16px;
+        }
+        .tool-card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--gold-border);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .tool-card__link:hover {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+        .tool-card__link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* VIDEOS */
+        .videos {
+            padding: 56px 24px;
+            background: var(--navy-light);
+            border-top: 1px solid var(--navy-border);
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .videos__label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .videos__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .videos__note {
+            font-size: 0.9rem;
+            color: var(--white-dim);
+            margin-bottom: 28px;
+        }
+        .video-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .video-card__icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            background: var(--gold-glow);
+            border: 1px solid var(--gold-border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--gold);
+        }
+        .video-card__day {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--gold);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .video-card__title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 4px 0 2px;
+        }
+        .video-card__time {
+            font-size: 0.8rem;
+            color: var(--white-dim);
+        }
+        .video-card__link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        .video-card__link:hover { text-decoration: underline; }
+        .video-placeholder {
+            background: rgba(212, 175, 55, 0.06);
+            border: 1px dashed var(--gold-border);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            color: var(--white-dim);
+            font-size: 0.9rem;
+        }
+
+        /* SUPPORT */
+        .support {
+            padding: 48px 24px;
+            text-align: center;
+        }
+        .support__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .support__text {
+            font-size: 0.95rem;
+            color: var(--white-dim);
+            max-width: 500px;
+            margin: 0 auto 8px;
+            line-height: 1.6;
+        }
+        .support__email {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .support__email:hover { text-decoration: underline; }
+
+        /* FOOTER */
+        .footer {
+            padding: 32px 24px;
+            text-align: center;
+            border-top: 1px solid var(--navy-border);
+        }
+        .footer__name {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .footer__title {
+            font-size: 0.75rem;
+            color: var(--white-dim);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 767px) {
+            .hero { padding: 48px 20px 36px; }
+            .tool-card { padding: 22px 18px; }
+            .video-card { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="gold-top"></div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero__check">&#10003;</div>
+    <h1 class="hero__title">You're In. <span>Let's Find Your #1 Leak.</span></h1>
+    <p class="hero__sub">
+        Your 72-Hour Profit Discovery Kit is ready. Everything below is yours — lifetime access, no expiration. Start whenever you're ready.
+    </p>
+</section>
+
+<!-- QUICK START -->
+<section class="quickstart">
+    <div class="container">
+        <div class="quickstart__label">How This Works</div>
+        <h2 class="quickstart__title">3 Days. 7-10 Hours. One Leak Fixed.</h2>
+        <ol class="quickstart__steps">
+            <li class="quickstart__step">
+                <div class="quickstart__num">1</div>
+                <div class="quickstart__text"><strong>Watch the Day 1 video</strong> (30 min). Then open the Exposure Sheet and pull your real numbers. Allow 3-4 hours for Day 1.</div>
+            </li>
+            <li class="quickstart__step">
+                <div class="quickstart__num">2</div>
+                <div class="quickstart__text"><strong>Watch the Day 2 video.</strong> Open the Diagnosis Workbook. Rank every leak by dollar amount. Find your #1. Run the 5 Whys. Allow 2-3 hours.</div>
+            </li>
+            <li class="quickstart__step">
+                <div class="quickstart__num">3</div>
+                <div class="quickstart__text"><strong>Watch the Day 3 video.</strong> Open the Protocol Builder. Design your one-page fix. Print it. Brief your team. Start measuring with the Tracker. Allow 2-3 hours.</div>
+            </li>
+            <li class="quickstart__step">
+                <div class="quickstart__num">&#10003;</div>
+                <div class="quickstart__text"><strong>Use the Response Cards</strong> when resistance shows up. Pre-decided responses for the 8 most common excuses. Laminate them. Post them.</div>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<!-- WALKTHROUGH VIDEOS -->
+<section class="videos">
+    <div class="container">
+        <div class="videos__label">Walkthrough Videos</div>
+        <h2 class="videos__title">Day-by-Day Guidance</h2>
+        <p class="videos__note">Watch each video before starting that day's work. I walk you through every step with examples from real restaurants.</p>
+
+        <!-- REPLACE THESE PLACEHOLDERS WITH REAL VIDEO LINKS -->
+        <div class="video-card">
+            <div class="video-card__icon">&#9654;</div>
+            <div>
+                <div class="video-card__day">Day 1</div>
+                <div class="video-card__title">Exposure — See Where the Money Goes</div>
+                <div class="video-card__time">~30 minutes</div>
+                <!-- REPLACE href WITH ACTUAL VIDEO URL (Loom, Vimeo, or unlisted YouTube) -->
+                <a href="#video-day1" class="video-card__link">Watch Video &rarr;</a>
+            </div>
+        </div>
+        <div class="video-card">
+            <div class="video-card__icon">&#9654;</div>
+            <div>
+                <div class="video-card__day">Day 2</div>
+                <div class="video-card__title">Diagnosis — Find Your #1 Leak</div>
+                <div class="video-card__time">~30 minutes</div>
+                <!-- REPLACE href WITH ACTUAL VIDEO URL -->
+                <a href="#video-day2" class="video-card__link">Watch Video &rarr;</a>
+            </div>
+        </div>
+        <div class="video-card">
+            <div class="video-card__icon">&#9654;</div>
+            <div>
+                <div class="video-card__day">Day 3</div>
+                <div class="video-card__title">Install — Build the Fix</div>
+                <div class="video-card__time">~30 minutes</div>
+                <!-- REPLACE href WITH ACTUAL VIDEO URL -->
+                <a href="#video-day3" class="video-card__link">Watch Video &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools">
+    <div class="container">
+        <div class="tools__label">Your Tools</div>
+        <h2 class="tools__title">Interactive Workbooks</h2>
+
+        <div class="tool-cards">
+            <div class="tool-card">
+                <div class="tool-card__day">Day 1 Tool</div>
+                <div class="tool-card__name">The Exposure Sheet</div>
+                <p class="tool-card__desc">Pull your actual numbers into one document. Revenue, costs, ratios, waste inventory. The template tells you exactly what to pull and where to find it.</p>
+                <!-- REPLACE href WITH DEPLOYED TOOL URL -->
+                <a href="discovery-kit-exposure-sheet.html" class="tool-card__link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    Open Exposure Sheet
+                </a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-card__day">Day 2 Tool</div>
+                <div class="tool-card__name">The Diagnosis Workbook</div>
+                <p class="tool-card__desc">Rank every leak by dollar amount. Run the 5 Whys to find root causes. Identify your #1 leak — the one costing the most that you can fix this week.</p>
+                <a href="discovery-kit-diagnosis-workbook.html" class="tool-card__link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    Open Diagnosis Workbook
+                </a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-card__day">Day 3 Tool</div>
+                <div class="tool-card__name">The Protocol Builder</div>
+                <p class="tool-card__desc">Design your one-page fix. Trigger, pre-decided response, who executes, how you measure, what success looks like. Print it. Post it. Done.</p>
+                <a href="discovery-kit-protocol-builder.html" class="tool-card__link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    Open Protocol Builder
+                </a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-card__day">Ongoing</div>
+                <div class="tool-card__name">Measurement Tracker</div>
+                <p class="tool-card__desc">Daily, weekly, and 30-day tracking. Enter numbers. See trends. Know if the leak is shrinking. No complicated software.</p>
+                <a href="discovery-kit-measurement-tracker.html" class="tool-card__link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    Open Tracker
+                </a>
+            </div>
+
+            <div class="tool-card">
+                <div class="tool-card__day">Reference</div>
+                <div class="tool-card__name">Pre-Decided Response Cards</div>
+                <p class="tool-card__desc">Laminate-ready cards for every common excuse: "We were too busy." "I forgot." Pre-decided responses so you never negotiate with the system.</p>
+                <a href="discovery-kit-response-cards.html" class="tool-card__link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    Open Response Cards
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="support">
+    <div class="container">
+        <h2 class="support__title">Questions? I'm Here.</h2>
+        <p class="support__text">
+            If you get stuck on any part of the Discovery, email me directly. I read every message.
+        </p>
+        <a href="mailto:christian@thegrumpychef.ca" class="support__email">christian@thegrumpychef.ca</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="gold-top" style="margin-bottom: 24px;"></div>
+    <div class="footer__name">Christian Schiffner</div>
+    <div class="footer__title">German Master Chef (Kuchenmeister) &bull; 20+ Years Operations &bull; 5 Countries</div>
+</div>
+
+</body>
+</html>

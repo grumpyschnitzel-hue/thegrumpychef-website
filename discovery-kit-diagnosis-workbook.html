@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Diagnosis Workbook | The Grumpy Chef</title>
+    <meta name="description" content="Find the #1 profit leak. Run root cause analysis. Fix it this week. An interactive diagnosis workbook for restaurant operators. Built by a German Master Chef with 20+ years operations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET & VARIABLES
+           ============================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --navy-hover: #162642;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gray-dark: #2D3748;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --red: #C53030;
+            --red-glow: rgba(197, 48, 48, 0.10);
+            --green: #2F855A;
+            --green-glow: rgba(47, 133, 90, 0.10);
+            --blue: #00A6D6;
+            --blue-dim: #008AB3;
+            --blue-glow: rgba(0, 166, 214, 0.10);
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        .gold-top { height: 3px; background: linear-gradient(90deg, var(--gold), var(--blue), var(--gold)); }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            padding: 56px 0 40px;
+            background: linear-gradient(180deg, #0C1A2E 0%, var(--navy) 100%);
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .hero__brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .hero__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(28px, 5.5vw, 46px);
+            line-height: 1.08;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        .hero__sub {
+            font-size: 17px;
+            color: var(--white-dim);
+            max-width: 620px;
+            line-height: 1.55;
+            margin-bottom: 12px;
+        }
+        .hero__sub strong { color: var(--gold); font-weight: 600; }
+        .hero__context {
+            font-size: 14px;
+            color: var(--gray);
+            max-width: 620px;
+            line-height: 1.6;
+            margin-bottom: 28px;
+            border-left: 3px solid var(--navy-border);
+            padding-left: 16px;
+        }
+
+        /* ============================================
+           SECTION HEADERS
+           ============================================ */
+        .section {
+            padding: 48px 0;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .section:last-of-type { border-bottom: none; }
+        .section__step {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .section__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(22px, 4vw, 30px);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .section__desc {
+            font-size: 15px;
+            color: var(--white-dim);
+            max-width: 620px;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .btn--gold {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .btn--gold:hover {
+            background: var(--gold-dim);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+        .btn--outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--navy-border);
+        }
+        .btn--outline:hover {
+            border-color: var(--gold-border);
+            background: var(--gold-glow);
+            color: var(--gold);
+        }
+        .btn--red {
+            background: transparent;
+            color: var(--red);
+            border: 1px solid rgba(197, 48, 48, 0.3);
+        }
+        .btn--red:hover {
+            background: var(--red-glow);
+            border-color: var(--red);
+        }
+        .btn--small {
+            font-size: 12px;
+            padding: 8px 18px;
+            letter-spacing: 1px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* ============================================
+           LEAK TABLE
+           ============================================ */
+        .table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .leak-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .leak-table thead {
+            background: var(--navy-light);
+        }
+        .leak-table th {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--white-dim);
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--navy-border);
+            white-space: nowrap;
+        }
+        .leak-table th:first-child { padding-left: 16px; }
+        .leak-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--navy-border);
+            vertical-align: top;
+            color: var(--white);
+        }
+        .leak-table td:first-child { padding-left: 16px; }
+        .leak-table tbody tr {
+            background: var(--navy-card);
+            transition: background 0.15s ease;
+        }
+        .leak-table tbody tr:hover {
+            background: var(--navy-hover);
+        }
+        .leak-table tbody tr.top-leak {
+            background: rgba(212, 175, 55, 0.06);
+            border-left: 3px solid var(--gold);
+        }
+        .leak-table tbody tr.top-leak td:first-child {
+            padding-left: 13px;
+        }
+        .leak-table .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--navy);
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 11px;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .leak-table .leak-name-cell {
+            display: flex;
+            align-items: center;
+            min-width: 180px;
+        }
+        .leak-table input[type="text"],
+        .leak-table input[type="number"] {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 13px;
+            padding: 6px 8px;
+            border-radius: 4px;
+            width: 100%;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+        .leak-table input:focus {
+            outline: none;
+            border-color: var(--gold-border);
+            background: var(--navy-light);
+        }
+        .leak-table input::placeholder {
+            color: var(--gray);
+        }
+        .leak-table select {
+            background: var(--navy-light);
+            border: 1px solid transparent;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 13px;
+            padding: 6px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+        }
+        .leak-table select:focus {
+            outline: none;
+            border-color: var(--gold-border);
+        }
+        .leak-table .impact-input {
+            font-family: var(--font-mono);
+            font-weight: 500;
+            color: var(--gold);
+            width: 120px;
+        }
+        .leak-table .delete-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+        .leak-table .delete-btn:hover {
+            color: var(--red);
+            background: var(--red-glow);
+        }
+
+        /* Table total row */
+        .table-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .table-total__label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--white-dim);
+        }
+        .table-total__value {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--gold);
+        }
+        .table-total__note {
+            font-size: 12px;
+            color: var(--gray);
+            margin-left: 12px;
+        }
+
+        /* Pareto indicator */
+        .pareto-bar {
+            margin-bottom: 24px;
+        }
+        .pareto-bar__label {
+            font-size: 12px;
+            color: var(--white-dim);
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .pareto-bar__track {
+            height: 8px;
+            background: var(--navy-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .pareto-bar__fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-dim));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* ============================================
+           #1 LEAK CARD
+           ============================================ */
+        .leak-card {
+            background: var(--navy-card);
+            border: 2px solid var(--gold-border);
+            border-radius: 10px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+        .leak-card__label {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--gold);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .leak-card__name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(22px, 4vw, 32px);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            min-height: 40px;
+        }
+        .leak-card__cost {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--red);
+            margin-bottom: 20px;
+        }
+        .leak-card__prompt {
+            font-size: 14px;
+            color: var(--white-dim);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+            border-left: 3px solid var(--gold-border);
+            padding-left: 16px;
+        }
+        .fixable-toggle {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            background: var(--navy-light);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+        }
+        .fixable-toggle__label {
+            font-weight: 500;
+            font-size: 14px;
+            flex: 1;
+        }
+        .fixable-toggle__options {
+            display: flex;
+            gap: 8px;
+        }
+        .fixable-toggle__btn {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 6px;
+            border: 1px solid var(--navy-border);
+            background: transparent;
+            color: var(--white-dim);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .fixable-toggle__btn:hover {
+            border-color: var(--gold-border);
+        }
+        .fixable-toggle__btn.active-yes {
+            background: var(--green);
+            color: var(--white);
+            border-color: var(--green);
+        }
+        .fixable-toggle__btn.active-no {
+            background: var(--red);
+            color: var(--white);
+            border-color: var(--red);
+        }
+        .next-leak-prompt {
+            margin-top: 16px;
+            padding: 16px 20px;
+            background: var(--red-glow);
+            border: 1px solid rgba(197, 48, 48, 0.3);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--white-dim);
+            display: none;
+        }
+        .next-leak-prompt.visible { display: block; }
+
+        /* ============================================
+           5 WHYS
+           ============================================ */
+        .whys-chain {
+            position: relative;
+        }
+        .why-step {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 4px;
+        }
+        .why-step::before {
+            content: '';
+            position: absolute;
+            left: 18px;
+            top: 42px;
+            bottom: -4px;
+            width: 2px;
+            background: var(--navy-border);
+        }
+        .why-step:last-child::before { display: none; }
+        .why-step__number {
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--navy-card);
+            border: 2px solid var(--navy-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--gold);
+            z-index: 1;
+        }
+        .why-step__card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+        }
+        .why-step__question {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--white-dim);
+            margin-bottom: 10px;
+        }
+        .why-step__input {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .why-step__prefix {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--gold);
+            padding-top: 10px;
+            white-space: nowrap;
+        }
+        .why-step__input textarea {
+            flex: 1;
+            background: var(--navy-light);
+            border: 1px solid var(--navy-border);
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 14px;
+            line-height: 1.5;
+            padding: 10px 14px;
+            border-radius: 6px;
+            resize: vertical;
+            min-height: 48px;
+            transition: border-color 0.2s ease;
+        }
+        .why-step__input textarea:focus {
+            outline: none;
+            border-color: var(--gold-border);
+        }
+        .why-step__input textarea::placeholder {
+            color: var(--gray);
+        }
+
+        /* Arrow connector between why steps */
+        .why-arrow {
+            padding-left: 48px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .why-arrow svg {
+            color: var(--gold);
+            opacity: 0.5;
+        }
+        .why-arrow__text {
+            font-size: 11px;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        /* Root cause box */
+        .root-cause {
+            margin-top: 24px;
+            padding: 24px;
+            background: var(--navy-card);
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.08);
+        }
+        .root-cause__label {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .root-cause textarea {
+            width: 100%;
+            background: var(--navy-light);
+            border: 1px solid var(--gold-border);
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.5;
+            padding: 14px 16px;
+            border-radius: 6px;
+            resize: vertical;
+            min-height: 60px;
+        }
+        .root-cause textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        .root-cause textarea::placeholder {
+            color: var(--gray);
+        }
+
+        /* Systemic vs Individual */
+        .cause-type {
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .cause-type__btn {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 13px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid var(--navy-border);
+            background: var(--navy-light);
+            color: var(--white-dim);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .cause-type__btn:hover {
+            border-color: var(--gold-border);
+        }
+        .cause-type__btn.active {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .quality-check {
+            margin-top: 20px;
+            padding: 16px 20px;
+            background: var(--blue-glow);
+            border: 1px solid rgba(0, 166, 214, 0.25);
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+        .quality-check strong {
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        /* Worked example toggle */
+        .example-toggle {
+            margin-bottom: 28px;
+        }
+        .example-toggle__btn {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 13px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid var(--navy-border);
+            background: var(--navy-card);
+            color: var(--white-dim);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .example-toggle__btn:hover {
+            border-color: var(--gold-border);
+            color: var(--gold);
+        }
+        .example-toggle__btn .chevron {
+            transition: transform 0.3s ease;
+            font-size: 10px;
+        }
+        .example-toggle__btn.open .chevron {
+            transform: rotate(90deg);
+        }
+        .example-box {
+            display: none;
+            margin-top: 12px;
+            padding: 24px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+        }
+        .example-box.visible { display: block; }
+        .example-box__title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .example-item {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--navy-border);
+            display: flex;
+            gap: 12px;
+            font-size: 13px;
+        }
+        .example-item:last-child { border-bottom: none; }
+        .example-item__label {
+            font-family: var(--font-mono);
+            font-weight: 500;
+            font-size: 11px;
+            color: var(--gold);
+            white-space: nowrap;
+            padding-top: 1px;
+            min-width: 56px;
+        }
+        .example-item__text {
+            color: var(--white-dim);
+            line-height: 1.5;
+        }
+        .example-root {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: var(--gold-glow);
+            border: 1px solid var(--gold-border);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gold);
+        }
+
+        /* ============================================
+           FIX FORM
+           ============================================ */
+        .fix-form {
+            display: grid;
+            gap: 20px;
+        }
+        .fix-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .fix-field__label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--white-dim);
+        }
+        .fix-field input,
+        .fix-field textarea {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 14px;
+            line-height: 1.5;
+            padding: 12px 16px;
+            border-radius: 6px;
+            transition: border-color 0.2s ease;
+        }
+        .fix-field input:focus,
+        .fix-field textarea:focus {
+            outline: none;
+            border-color: var(--gold-border);
+        }
+        .fix-field input::placeholder,
+        .fix-field textarea::placeholder {
+            color: var(--gray);
+        }
+        .fix-field textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+        .fix-field input[type="date"] {
+            color-scheme: dark;
+        }
+        .fix-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* ============================================
+           NEXT STEPS
+           ============================================ */
+        .next-steps-list {
+            list-style: none;
+            padding: 0;
+        }
+        .next-steps-list li {
+            padding: 16px 20px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--white-dim);
+            line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .next-steps-list li .step-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin-top: 1px;
+        }
+        .next-steps-list li .step-icon.check { background: var(--green-glow); color: var(--green); }
+        .next-steps-list li .step-icon.arrow { background: var(--blue-glow); color: var(--blue); }
+        .next-steps-list li .step-icon.warn { background: rgba(212, 175, 55, 0.10); color: var(--gold); }
+        .next-steps-list li strong { color: var(--white); font-weight: 600; }
+        .callout-gold {
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: var(--gold-glow);
+            border: 1px solid var(--gold-border);
+            border-radius: 10px;
+        }
+        .callout-gold__text {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--gold);
+            line-height: 1.4;
+        }
+        .callout-gold__sub {
+            font-size: 14px;
+            color: var(--white-dim);
+            margin-top: 8px;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--navy-border);
+        }
+        .footer__name {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: var(--white-dim);
+            margin-bottom: 4px;
+        }
+        .footer__title {
+            font-size: 12px;
+            color: var(--gray);
+        }
+        .footer__kit {
+            margin-top: 12px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        /* ============================================
+           TOOLBAR (FLOATING)
+           ============================================ */
+        .toolbar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 100;
+        }
+        .toolbar__btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid var(--navy-border);
+            background: var(--navy-card);
+            color: var(--white-dim);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+        .toolbar__btn:hover {
+            border-color: var(--gold-border);
+            color: var(--gold);
+            background: var(--navy-light);
+        }
+        .toolbar__btn[title]::after {
+            content: attr(title);
+            position: absolute;
+            right: 56px;
+            font-family: var(--font-body);
+            font-size: 12px;
+            white-space: nowrap;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            padding: 6px 12px;
+            border-radius: 6px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        .toolbar__btn:hover[title]::after {
+            opacity: 1;
+        }
+
+        /* ============================================
+           PROBLEM STATEMENT
+           ============================================ */
+        .problem-statement {
+            margin-bottom: 24px;
+            padding: 20px 24px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+        }
+        .problem-statement__label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .problem-statement textarea {
+            width: 100%;
+            background: var(--navy-light);
+            border: 1px solid var(--navy-border);
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.5;
+            padding: 12px 16px;
+            border-radius: 6px;
+            resize: vertical;
+            min-height: 52px;
+        }
+        .problem-statement textarea:focus {
+            outline: none;
+            border-color: var(--gold-border);
+        }
+        .problem-statement textarea::placeholder {
+            color: var(--gray);
+        }
+
+        /* ============================================
+           PRINT STYLES
+           ============================================ */
+        @media print {
+            body { background: #fff; color: #111; }
+            .gold-top, .toolbar { display: none !important; }
+            .container { max-width: 100%; padding: 0 20px; }
+            .hero { background: none; border-bottom: 2px solid #D4AF37; padding: 24px 0; }
+            .hero__brand { color: #D4AF37; }
+            .hero__title { color: #111; font-size: 28px; }
+            .hero__sub, .hero__context { color: #555; }
+            .section { border-bottom: 1px solid #ddd; padding: 24px 0; page-break-inside: avoid; }
+            .section__step { color: #D4AF37; }
+            .section__title { color: #111; font-size: 22px; }
+            .section__desc { color: #555; }
+            .leak-table { font-size: 11px; }
+            .leak-table th { background: #f5f5f5; color: #333; border-bottom: 2px solid #ddd; }
+            .leak-table td { border-bottom: 1px solid #ddd; color: #111; }
+            .leak-table tbody tr { background: #fff; }
+            .leak-table tbody tr.top-leak { background: rgba(212, 175, 55, 0.08); border-left: 3px solid #D4AF37; }
+            .leak-table input, .leak-table select { border: 1px solid #ccc; color: #111; background: #fff; padding: 4px 6px; }
+            .table-total { background: #f5f5f5; border: 1px solid #ddd; }
+            .table-total__label { color: #333; }
+            .table-total__value { color: #D4AF37; }
+            .leak-card { border-color: #D4AF37; background: #fafaf5; }
+            .leak-card__name, .leak-card__label { color: #111; }
+            .leak-card__cost { color: #C53030; }
+            .why-step__card { background: #f9f9f9; border-color: #ddd; }
+            .why-step__number { background: #f5f5f5; border-color: #D4AF37; color: #D4AF37; }
+            .why-step::before { background: #ddd; }
+            .why-step__input textarea { background: #fff; border-color: #ccc; color: #111; }
+            .root-cause { background: #fafaf5; border-color: #D4AF37; }
+            .root-cause textarea { background: #fff; border-color: #D4AF37; color: #111; }
+            .fix-field input, .fix-field textarea { background: #fff; border-color: #ccc; color: #111; }
+            .next-steps-list li { background: #f9f9f9; border-color: #ddd; color: #333; }
+            .callout-gold { background: rgba(212, 175, 55, 0.05); border-color: #D4AF37; }
+            .callout-gold__text { color: #B89630; }
+            .footer { border-top: 1px solid #ddd; }
+            .footer__name { color: #333; }
+            .footer__title { color: #666; }
+            .footer__kit { color: #D4AF37; }
+            .btn-group, .btn { display: none !important; }
+            .example-box { display: block !important; background: #f9f9f9; border-color: #ddd; }
+            .example-toggle__btn { display: none !important; }
+            a { color: inherit; text-decoration: none; }
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .hero { padding: 36px 0 28px; }
+            .hero__brand { font-size: 11px; letter-spacing: 3px; }
+            .section { padding: 32px 0; }
+            .leak-table th { font-size: 10px; padding: 10px 8px; }
+            .leak-table td { padding: 8px; font-size: 13px; }
+            .leak-table input[type="text"],
+            .leak-table input[type="number"],
+            .leak-table select { font-size: 12px; padding: 5px 6px; }
+            .fix-row { grid-template-columns: 1fr; }
+            .fixable-toggle { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .toolbar { bottom: 12px; right: 12px; }
+            .toolbar__btn { width: 42px; height: 42px; font-size: 16px; }
+            .cause-type { flex-direction: column; }
+            .btn-group { flex-direction: column; }
+            .btn-group .btn { width: 100%; justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero__title { font-size: 24px; }
+            .section__title { font-size: 20px; }
+            .leak-card { padding: 20px 16px; }
+            .why-step { padding-left: 40px; }
+            .why-step__number { width: 30px; height: 30px; font-size: 11px; }
+            .why-step::before { left: 14px; top: 36px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="gold-top"></div>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero">
+    <div class="container">
+        <div class="hero__brand">THE GRUMPY CHEF</div>
+        <h1 class="hero__title">THE DIAGNOSIS WORKBOOK</h1>
+        <p class="hero__sub">Find the <strong>#1 leak</strong>. Find the root cause. <strong>Fix it this week.</strong></p>
+        <p class="hero__context">You've pulled your numbers in the Exposure Sheet. Now rank the damage, find the root cause, and design one fix.</p>
+    </div>
+</section>
+
+<!-- ============================================
+     STEP 1: LEAK RANKING TABLE
+     ============================================ -->
+<section class="section" id="step-1">
+    <div class="container">
+        <div class="section__step">Step 01</div>
+        <h2 class="section__title">LEAK RANKING TABLE</h2>
+        <p class="section__desc">Rank every profit leak by estimated annual dollar impact. The biggest number gets fixed first. Not the most annoying. Not the easiest. The most expensive.</p>
+
+        <div class="table-wrap">
+            <table class="leak-table" id="leakTable">
+                <thead>
+                    <tr>
+                        <th style="width: 32px;">#</th>
+                        <th>Leak Name</th>
+                        <th style="width: 130px;">Category</th>
+                        <th style="width: 140px;">Est. Annual Impact</th>
+                        <th>Signs / Evidence</th>
+                        <th style="width: 40px;"></th>
+                    </tr>
+                </thead>
+                <tbody id="leakBody">
+                    <!-- Rows populated by JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pareto-bar" id="paretoBar">
+            <div class="pareto-bar__label">
+                <span>Top 3 leaks as % of total</span>
+                <span id="paretoPercent">0%</span>
+            </div>
+            <div class="pareto-bar__track">
+                <div class="pareto-bar__fill" id="paretoFill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <div class="table-total">
+            <div>
+                <span class="table-total__label">Total Estimated Annual Loss</span>
+                <span class="table-total__note" id="leakCount">0 leaks</span>
+            </div>
+            <span class="table-total__value" id="totalImpact">$0</span>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn--gold" onclick="sortLeaks()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M4 10l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                SORT BY IMPACT
+            </button>
+            <button class="btn btn--outline" onclick="addLeak()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                ADD LEAK
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     STEP 2: YOUR #1 LEAK
+     ============================================ -->
+<section class="section" id="step-2">
+    <div class="container">
+        <div class="section__step">Step 02</div>
+        <h2 class="section__title">YOUR #1 LEAK</h2>
+        <p class="section__desc">This is the one costing you the most money. Everything else waits.</p>
+
+        <div class="leak-card">
+            <div class="leak-card__label">Your Biggest Leak</div>
+            <div class="leak-card__name" id="biggestLeakName">Sort your leaks above to identify #1</div>
+            <div class="leak-card__cost" id="biggestLeakCost"></div>
+            <p class="leak-card__prompt">This is the one you fix first. Not the most annoying. Not the easiest. The one costing the most money.</p>
+
+            <div class="fixable-toggle">
+                <span class="fixable-toggle__label">Can you fix this within one week?</span>
+                <div class="fixable-toggle__options">
+                    <button class="fixable-toggle__btn" id="fixYes" onclick="setFixable(true)">YES</button>
+                    <button class="fixable-toggle__btn" id="fixNo" onclick="setFixable(false)">NO</button>
+                </div>
+            </div>
+
+            <div class="next-leak-prompt" id="nextLeakPrompt">
+                <strong>That's okay.</strong> If your #1 leak needs more than a week, move to <strong>#2 on your list</strong> and run the 5 Whys on that one instead. Fix what you can control right now. Come back to #1 when you have the resources.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     STEP 3: THE 5 WHYS
+     ============================================ -->
+<section class="section" id="step-3">
+    <div class="container">
+        <div class="section__step">Step 03</div>
+        <h2 class="section__title">THE 5 WHYS</h2>
+        <p class="section__desc">Root cause analysis. Each answer feeds the next question. Go deeper until you hit a systemic problem, not a symptom.</p>
+
+        <div class="example-toggle">
+            <button class="example-toggle__btn" id="exampleBtn" onclick="toggleExample()">
+                <span class="chevron">&#9654;</span>
+                Show worked example
+            </button>
+            <div class="example-box" id="exampleBox">
+                <div class="example-box__title">Worked Example</div>
+                <div class="example-item">
+                    <span class="example-item__label">Problem:</span>
+                    <span class="example-item__text">Food cost is 4% over target</span>
+                </div>
+                <div class="example-item">
+                    <span class="example-item__label">Why 1:</span>
+                    <span class="example-item__text">We wasted more protein than expected</span>
+                </div>
+                <div class="example-item">
+                    <span class="example-item__label">Why 2:</span>
+                    <span class="example-item__text">Portions on grill station were inconsistent</span>
+                </div>
+                <div class="example-item">
+                    <span class="example-item__label">Why 3:</span>
+                    <span class="example-item__text">New cook wasn't following recipe cards</span>
+                </div>
+                <div class="example-item">
+                    <span class="example-item__label">Why 4:</span>
+                    <span class="example-item__text">Recipe cards weren't posted at the station</span>
+                </div>
+                <div class="example-item">
+                    <span class="example-item__label">Why 5:</span>
+                    <span class="example-item__text">Nobody updated stations after the menu change</span>
+                </div>
+                <div class="example-root">Root cause: No system for updating recipe cards when the menu changes</div>
+            </div>
+        </div>
+
+        <div class="problem-statement">
+            <div class="problem-statement__label">Problem Statement</div>
+            <textarea id="problemStatement" placeholder="Your #1 leak will appear here after sorting, or type your own..." data-field="problemStatement"></textarea>
+        </div>
+
+        <div class="whys-chain" id="whysChain">
+            <div class="why-step">
+                <div class="why-step__number">1</div>
+                <div class="why-step__card">
+                    <div class="why-step__question">Why is this happening?</div>
+                    <div class="why-step__input">
+                        <span class="why-step__prefix">Because:</span>
+                        <textarea placeholder="The first reason..." data-field="why1"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-arrow">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M4 10l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="why-arrow__text">...which leads to the next question</span>
+            </div>
+
+            <div class="why-step">
+                <div class="why-step__number">2</div>
+                <div class="why-step__card">
+                    <div class="why-step__question">Why does that happen?</div>
+                    <div class="why-step__input">
+                        <span class="why-step__prefix">Because:</span>
+                        <textarea placeholder="Go deeper..." data-field="why2"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-arrow">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M4 10l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="why-arrow__text">...which leads to the next question</span>
+            </div>
+
+            <div class="why-step">
+                <div class="why-step__number">3</div>
+                <div class="why-step__card">
+                    <div class="why-step__question">Why does that happen?</div>
+                    <div class="why-step__input">
+                        <span class="why-step__prefix">Because:</span>
+                        <textarea placeholder="Keep digging..." data-field="why3"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-arrow">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M4 10l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="why-arrow__text">...which leads to the next question</span>
+            </div>
+
+            <div class="why-step">
+                <div class="why-step__number">4</div>
+                <div class="why-step__card">
+                    <div class="why-step__question">Why does that happen?</div>
+                    <div class="why-step__input">
+                        <span class="why-step__prefix">Because:</span>
+                        <textarea placeholder="Almost there..." data-field="why4"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-arrow">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M4 10l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="why-arrow__text">...which leads to the next question</span>
+            </div>
+
+            <div class="why-step">
+                <div class="why-step__number">5</div>
+                <div class="why-step__card">
+                    <div class="why-step__question">Why does that happen?</div>
+                    <div class="why-step__input">
+                        <span class="why-step__prefix">Because:</span>
+                        <textarea placeholder="The deepest layer..." data-field="why5"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="root-cause">
+            <div class="root-cause__label">Root Cause</div>
+            <textarea id="rootCause" placeholder="The root cause is..." data-field="rootCause"></textarea>
+            <div class="cause-type">
+                <button class="cause-type__btn" data-type="systemic" onclick="setCauseType('systemic')">Systemic (process/system missing)</button>
+                <button class="cause-type__btn" data-type="individual" onclick="setCauseType('individual')">Individual (person-specific)</button>
+            </div>
+        </div>
+
+        <div class="quality-check">
+            <strong>Quality check:</strong> Did you stop too early? Read your root cause. Ask yourself: "Is there a deeper 'why' beneath this?" If the answer is a specific person's name, you probably stopped too early. Look for the missing system that allowed it to happen.
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     STEP 4: ONE-WEEK FIX
+     ============================================ -->
+<section class="section" id="step-4">
+    <div class="container">
+        <div class="section__step">Step 04</div>
+        <h2 class="section__title">ONE-WEEK FIX</h2>
+        <p class="section__desc">Design one specific fix. One owner. One deadline. One way to know it worked.</p>
+
+        <div class="fix-form">
+            <div class="fix-field">
+                <label class="fix-field__label" for="fixDescription">The Fix</label>
+                <textarea id="fixDescription" placeholder="Describe the specific action or system change..." data-field="fixDescription" rows="3"></textarea>
+            </div>
+
+            <div class="fix-field">
+                <label class="fix-field__label" for="fixOwner">Who Owns This</label>
+                <input type="text" id="fixOwner" placeholder="Specific name and role (not 'everyone')" data-field="fixOwner">
+            </div>
+
+            <div class="fix-row">
+                <div class="fix-field">
+                    <label class="fix-field__label" for="fixStart">Start Date</label>
+                    <input type="date" id="fixStart" data-field="fixStart">
+                </div>
+                <div class="fix-field">
+                    <label class="fix-field__label" for="fixTarget">Target Resolution</label>
+                    <input type="date" id="fixTarget" data-field="fixTarget">
+                </div>
+            </div>
+
+            <div class="fix-field">
+                <label class="fix-field__label" for="fixProof">What Will Prove This Is Fixed</label>
+                <input type="text" id="fixProof" placeholder="Specific metric or observable outcome..." data-field="fixProof">
+            </div>
+
+            <div class="fix-field">
+                <label class="fix-field__label" for="fixSuccess">Success Looks Like (30 Days)</label>
+                <textarea id="fixSuccess" placeholder="Measurable outcome within 30 days..." data-field="fixSuccess" rows="2"></textarea>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     STEP 5: NEXT STEPS
+     ============================================ -->
+<section class="section" id="step-5">
+    <div class="container">
+        <div class="section__step">Step 05</div>
+        <h2 class="section__title">NEXT STEPS</h2>
+        <p class="section__desc">One leak per month. Stack the wins. Here's the playbook.</p>
+
+        <ul class="next-steps-list">
+            <li>
+                <span class="step-icon check">&#10003;</span>
+                <span>After 30 days, check your Measurement Tracker. <strong>Did the leak shrink?</strong></span>
+            </li>
+            <li>
+                <span class="step-icon arrow">&#8594;</span>
+                <span>If yes &mdash; <strong>Move to leak #2</strong> on your ranked list. Run another 72-Hour Discovery.</span>
+            </li>
+            <li>
+                <span class="step-icon warn">&#9888;</span>
+                <span>If no &mdash; The system needs adjustment. <strong>Simplify, don't add complexity.</strong></span>
+            </li>
+            <li>
+                <span class="step-icon arrow">&#8594;</span>
+                <span><strong>Stack these.</strong> One leak per month. 12 profit leaks closed per year.</span>
+            </li>
+        </ul>
+
+        <div class="callout-gold">
+            <div class="callout-gold__text">If your average leak is $3,000/month, that's $36,000 recovered annually.</div>
+            <div class="callout-gold__sub">One fix at a time. No heroics. Just systems.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__name">Built by Christian Schiffner | German Master Chef | 20+ Years Operations</div>
+        <div class="footer__title">Part of the 72-Hour Profit Discovery Kit</div>
+        <div class="footer__kit">THE GRUMPY CHEF</div>
+    </div>
+</footer>
+
+<!-- ============================================
+     FLOATING TOOLBAR
+     ============================================ -->
+<div class="toolbar">
+    <button class="toolbar__btn" onclick="printWorkbook()" title="Print">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7V2h10v5M5 15H3a1 1 0 01-1-1v-4a1 1 0 011-1h14a1 1 0 011 1v4a1 1 0 01-1 1h-2M5 11h10v7H5v-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="toolbar__btn" onclick="clearAll()" title="Clear All">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 6h14M8 6V4h4v2M5 6v10a2 2 0 002 2h6a2 2 0 002-2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+</div>
+
+<script>
+/* ============================================
+   DATA & STATE
+   ============================================ */
+const STORAGE_KEY = 'grumpy_diagnosis_workbook';
+const CATEGORIES = ['Food', 'Labor', 'Revenue', 'Operations', 'Beverage'];
+
+const DEFAULT_LEAKS = [
+    { name: 'Untracked Food Waste', category: 'Food', impact: '15000', signs: 'High waste log, end-of-night discards' },
+    { name: 'Over-portioning', category: 'Food', impact: '25000', signs: 'Actual food cost above theoretical' },
+    { name: 'Labor Misallocation', category: 'Labor', impact: '25000', signs: 'High overtime, low sales per labor hour' },
+    { name: 'Menu Mispricing', category: 'Revenue', impact: '15000', signs: 'High sellers with low contribution margin' },
+    { name: 'Supplier Overpayment', category: 'Food', impact: '12000', signs: 'No price comparison in 6+ months' },
+    { name: 'Receiving Errors', category: 'Food', impact: '8000', signs: 'Invoice discrepancies, weight shortages' },
+    { name: 'Theft / Shrinkage', category: 'Beverage', impact: '10000', signs: 'Inventory variance with no waste explanation' },
+    { name: 'Incomplete Closing Tasks', category: 'Operations', impact: '5000', signs: 'Morning re-setup delays, equipment issues' }
+];
+
+let state = {
+    leaks: [],
+    fixable: null,
+    causeType: null,
+    fields: {}
+};
+
+/* ============================================
+   INITIALIZATION
+   ============================================ */
+document.addEventListener('DOMContentLoaded', function() {
+    loadState();
+    renderTable();
+    restoreFields();
+    restoreFixable();
+    restoreCauseType();
+    setDefaultDates();
+    attachFieldListeners();
+});
+
+/* ============================================
+   STATE MANAGEMENT
+   ============================================ */
+function loadState() {
+    try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            const parsed = JSON.parse(saved);
+            state = { ...state, ...parsed };
+            if (!state.leaks || state.leaks.length === 0) {
+                state.leaks = JSON.parse(JSON.stringify(DEFAULT_LEAKS));
+            }
+        } else {
+            state.leaks = JSON.parse(JSON.stringify(DEFAULT_LEAKS));
+        }
+    } catch (e) {
+        state.leaks = JSON.parse(JSON.stringify(DEFAULT_LEAKS));
+    }
+}
+
+function saveState() {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) {
+        // localStorage full or unavailable — fail silently
+    }
+}
+
+function collectFieldValues() {
+    document.querySelectorAll('[data-field]').forEach(function(el) {
+        state.fields[el.dataset.field] = el.value;
+    });
+}
+
+function restoreFields() {
+    if (!state.fields) return;
+    document.querySelectorAll('[data-field]').forEach(function(el) {
+        if (state.fields[el.dataset.field] !== undefined) {
+            el.value = state.fields[el.dataset.field];
+        }
+    });
+}
+
+function restoreFixable() {
+    if (state.fixable === true) {
+        document.getElementById('fixYes').classList.add('active-yes');
+        document.getElementById('fixNo').classList.remove('active-no');
+    } else if (state.fixable === false) {
+        document.getElementById('fixNo').classList.add('active-no');
+        document.getElementById('fixYes').classList.remove('active-yes');
+        document.getElementById('nextLeakPrompt').classList.add('visible');
+    }
+}
+
+function restoreCauseType() {
+    if (state.causeType) {
+        document.querySelectorAll('.cause-type__btn').forEach(function(btn) {
+            btn.classList.toggle('active', btn.dataset.type === state.causeType);
+        });
+    }
+}
+
+function attachFieldListeners() {
+    document.querySelectorAll('[data-field]').forEach(function(el) {
+        el.addEventListener('input', function() {
+            collectFieldValues();
+            saveState();
+        });
+    });
+}
+
+function setDefaultDates() {
+    const startEl = document.getElementById('fixStart');
+    const targetEl = document.getElementById('fixTarget');
+
+    if (!startEl.value && !state.fields?.fixStart) {
+        const today = new Date();
+        startEl.value = formatDate(today);
+    }
+    if (!targetEl.value && !state.fields?.fixTarget) {
+        const nextWeek = new Date();
+        nextWeek.setDate(nextWeek.getDate() + 7);
+        targetEl.value = formatDate(nextWeek);
+    }
+}
+
+function formatDate(d) {
+    return d.getFullYear() + '-' +
+        String(d.getMonth() + 1).padStart(2, '0') + '-' +
+        String(d.getDate()).padStart(2, '0');
+}
+
+/* ============================================
+   TABLE RENDERING
+   ============================================ */
+function renderTable() {
+    const tbody = document.getElementById('leakBody');
+    tbody.innerHTML = '';
+
+    state.leaks.forEach(function(leak, i) {
+        const tr = document.createElement('tr');
+        const isTop = i < 3 && state.leaks.length > 3;
+        if (isTop) tr.classList.add('top-leak');
+
+        tr.innerHTML =
+            '<td>' +
+                '<div class="leak-name-cell">' +
+                    (isTop ? '<span class="rank-badge">' + (i + 1) + '</span>' : '<span style="width:32px;text-align:center;color:var(--gray);font-family:var(--font-mono);font-size:12px;">' + (i + 1) + '</span>') +
+                '</div>' +
+            '</td>' +
+            '<td><input type="text" value="' + escapeHtml(leak.name) + '" data-row="' + i + '" data-col="name" placeholder="Leak name..."></td>' +
+            '<td><select data-row="' + i + '" data-col="category">' +
+                CATEGORIES.map(function(c) { return '<option value="' + c + '"' + (c === leak.category ? ' selected' : '') + '>' + c + '</option>'; }).join('') +
+            '</select></td>' +
+            '<td><input type="number" class="impact-input" value="' + (leak.impact || '') + '" data-row="' + i + '" data-col="impact" placeholder="$0" min="0" step="500"></td>' +
+            '<td><input type="text" value="' + escapeHtml(leak.signs) + '" data-row="' + i + '" data-col="signs" placeholder="Observable signs..."></td>' +
+            '<td><button class="delete-btn" onclick="deleteLeak(' + i + ')" title="Remove">&times;</button></td>';
+
+        // Attach listeners
+        tbody.appendChild(tr);
+
+        tr.querySelectorAll('input, select').forEach(function(el) {
+            el.addEventListener('input', function() {
+                var row = parseInt(this.dataset.row);
+                var col = this.dataset.col;
+                state.leaks[row][col] = this.value;
+                saveState();
+                updateTotals();
+            });
+        });
+    });
+
+    updateTotals();
+}
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/* ============================================
+   TABLE OPERATIONS
+   ============================================ */
+function addLeak() {
+    state.leaks.push({ name: '', category: 'Food', impact: '', signs: '' });
+    saveState();
+    renderTable();
+    // Focus the new row's name input
+    var lastInput = document.querySelector('#leakBody tr:last-child input[data-col="name"]');
+    if (lastInput) lastInput.focus();
+}
+
+function deleteLeak(index) {
+    if (state.leaks.length <= 1) return;
+    state.leaks.splice(index, 1);
+    saveState();
+    renderTable();
+    updateBiggestLeak();
+}
+
+function sortLeaks() {
+    state.leaks.sort(function(a, b) {
+        var aVal = parseFloat(a.impact) || 0;
+        var bVal = parseFloat(b.impact) || 0;
+        return bVal - aVal;
+    });
+    saveState();
+    renderTable();
+    updateBiggestLeak();
+
+    // Smooth scroll to the table
+    document.getElementById('step-1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateTotals() {
+    var total = 0;
+    var values = [];
+    state.leaks.forEach(function(leak) {
+        var v = parseFloat(leak.impact) || 0;
+        total += v;
+        values.push(v);
+    });
+
+    document.getElementById('totalImpact').textContent = '$' + total.toLocaleString();
+    document.getElementById('leakCount').textContent = state.leaks.length + ' leak' + (state.leaks.length !== 1 ? 's' : '');
+
+    // Pareto bar: top 3 as % of total
+    var sorted = values.slice().sort(function(a, b) { return b - a; });
+    var top3 = sorted.slice(0, 3).reduce(function(s, v) { return s + v; }, 0);
+    var pct = total > 0 ? Math.round((top3 / total) * 100) : 0;
+    document.getElementById('paretoPercent').textContent = pct + '%';
+    document.getElementById('paretoFill').style.width = pct + '%';
+}
+
+function updateBiggestLeak() {
+    if (state.leaks.length === 0) return;
+
+    // Find the leak with highest impact (after sorting, it's index 0)
+    var biggest = state.leaks[0];
+    var name = biggest.name || 'Unnamed Leak';
+    var impact = parseFloat(biggest.impact) || 0;
+
+    document.getElementById('biggestLeakName').textContent = name;
+    document.getElementById('biggestLeakCost').textContent = impact > 0 ? '-$' + impact.toLocaleString() + '/year estimated' : '';
+
+    // Pre-fill problem statement if empty
+    var ps = document.getElementById('problemStatement');
+    if (!ps.value || ps.value === ps.dataset.lastAuto) {
+        var autoText = name + (impact > 0 ? ' is costing an estimated $' + impact.toLocaleString() + '/year' : '');
+        ps.value = autoText;
+        ps.dataset.lastAuto = autoText;
+        state.fields = state.fields || {};
+        state.fields.problemStatement = autoText;
+        saveState();
+    }
+}
+
+/* ============================================
+   FIXABLE TOGGLE
+   ============================================ */
+function setFixable(val) {
+    state.fixable = val;
+    var yesBtn = document.getElementById('fixYes');
+    var noBtn = document.getElementById('fixNo');
+    var prompt = document.getElementById('nextLeakPrompt');
+
+    yesBtn.classList.remove('active-yes');
+    noBtn.classList.remove('active-no');
+    prompt.classList.remove('visible');
+
+    if (val) {
+        yesBtn.classList.add('active-yes');
+    } else {
+        noBtn.classList.add('active-no');
+        prompt.classList.add('visible');
+    }
+
+    saveState();
+}
+
+/* ============================================
+   CAUSE TYPE
+   ============================================ */
+function setCauseType(type) {
+    state.causeType = type;
+    document.querySelectorAll('.cause-type__btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.type === type);
+    });
+    saveState();
+}
+
+/* ============================================
+   EXAMPLE TOGGLE
+   ============================================ */
+function toggleExample() {
+    var btn = document.getElementById('exampleBtn');
+    var box = document.getElementById('exampleBox');
+    btn.classList.toggle('open');
+    box.classList.toggle('visible');
+    btn.querySelector('.chevron').parentElement.childNodes[0]; // Force reflow for animation
+    var textNode = btn.childNodes[btn.childNodes.length - 1];
+    if (box.classList.contains('visible')) {
+        textNode.textContent = ' Hide worked example';
+    } else {
+        textNode.textContent = ' Show worked example';
+    }
+}
+
+/* ============================================
+   PRINT
+   ============================================ */
+function printWorkbook() {
+    window.print();
+}
+
+/* ============================================
+   CLEAR ALL
+   ============================================ */
+function clearAll() {
+    if (!confirm('Clear all data in this workbook? This cannot be undone.')) return;
+
+    localStorage.removeItem(STORAGE_KEY);
+    state = {
+        leaks: JSON.parse(JSON.stringify(DEFAULT_LEAKS)),
+        fixable: null,
+        causeType: null,
+        fields: {}
+    };
+
+    // Reset all data-field inputs
+    document.querySelectorAll('[data-field]').forEach(function(el) {
+        el.value = '';
+    });
+
+    // Reset toggles
+    document.getElementById('fixYes').classList.remove('active-yes');
+    document.getElementById('fixNo').classList.remove('active-no');
+    document.getElementById('nextLeakPrompt').classList.remove('visible');
+    document.querySelectorAll('.cause-type__btn').forEach(function(btn) {
+        btn.classList.remove('active');
+    });
+
+    // Reset biggest leak display
+    document.getElementById('biggestLeakName').textContent = 'Sort your leaks above to identify #1';
+    document.getElementById('biggestLeakCost').textContent = '';
+
+    renderTable();
+    setDefaultDates();
+    saveState();
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>

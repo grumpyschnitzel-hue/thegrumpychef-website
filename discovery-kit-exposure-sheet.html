@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Exposure Sheet | The Grumpy Chef</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0A1628;
+  --navy-light: #0E1B30;
+  --navy-card: #111E35;
+  --navy-border: #1A2D4D;
+  --white: #F8F9FA;
+  --white-dim: #B8BEC8;
+  --gold: #D4AF37;
+  --gold-border: rgba(212, 175, 55, 0.25);
+  --blue: #00A6D6;
+  --red: #C53030;
+  --green: #2F855A;
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ─── HERO ─────────────────────────────────────────── */
+.hero {
+  text-align: center;
+  padding: 60px 20px 48px;
+  border-bottom: 2px solid var(--gold-border);
+}
+
+.hero-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(36px, 7vw, 56px);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-size: clamp(16px, 3vw, 20px);
+  font-weight: 500;
+  color: var(--white);
+  max-width: 600px;
+  margin: 0 auto 24px;
+}
+
+.hero-instructions {
+  font-size: 14px;
+  color: var(--white-dim);
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  border: 1px solid var(--navy-border);
+  border-radius: 8px;
+  background: var(--navy-light);
+  line-height: 1.7;
+}
+
+/* ─── TOOLBAR ──────────────────────────────────────── */
+.toolbar {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 24px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  border-bottom: 1px solid var(--navy-border);
+}
+
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.btn-gold:hover {
+  background: #e0c04a;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white-dim);
+  border: 1px solid var(--navy-border);
+}
+
+.btn-outline:hover {
+  border-color: var(--white-dim);
+  color: var(--white);
+}
+
+.btn-red {
+  background: transparent;
+  color: var(--red);
+  border: 1px solid rgba(197, 48, 48, 0.3);
+}
+
+.btn-red:hover {
+  background: rgba(197, 48, 48, 0.1);
+  border-color: var(--red);
+}
+
+.autosave-indicator {
+  font-size: 12px;
+  color: var(--white-dim);
+  align-self: center;
+  font-style: italic;
+}
+
+/* ─── SECTIONS ─────────────────────────────────────── */
+.section {
+  margin: 32px auto;
+  max-width: 860px;
+  padding: 0 20px;
+}
+
+.section-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.section-card.border-green {
+  border-left: 3px solid var(--green);
+}
+
+.section-card.border-blue {
+  border-left: 3px solid var(--blue);
+}
+
+.section-card.border-red {
+  border-left: 3px solid var(--red);
+}
+
+.section-card.border-gold {
+  border-left: 3px solid var(--gold);
+}
+
+.section-header {
+  padding: 24px 28px 8px;
+}
+
+.section-number {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--white-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+}
+
+.section-body {
+  padding: 16px 28px 28px;
+}
+
+/* ─── FIELD GROUPS ─────────────────────────────────── */
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.field-label .auto-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--blue);
+  background: rgba(0, 166, 214, 0.1);
+  border: 1px solid rgba(0, 166, 214, 0.2);
+  padding: 1px 6px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.field-hint {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--white-dim);
+  margin-bottom: 8px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.field-input {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white);
+  background: var(--navy);
+  border: 1px solid var(--navy-border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  -moz-appearance: textfield;
+}
+
+.field-input::-webkit-outer-spin-button,
+.field-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.field-input[readonly] {
+  background: var(--navy-light);
+  border-style: dashed;
+  color: var(--gold);
+  cursor: default;
+}
+
+.field-input.status-green {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(47, 133, 90, 0.15);
+}
+
+.field-input.status-amber {
+  border-color: #D69E2E;
+  box-shadow: 0 0 0 2px rgba(214, 158, 46, 0.15);
+}
+
+.field-input.status-red {
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px rgba(197, 48, 48, 0.15);
+}
+
+.field-benchmark {
+  font-size: 11px;
+  color: var(--white-dim);
+  margin-top: 4px;
+  font-family: var(--font-mono);
+}
+
+/* ─── PRIME COST SPOTLIGHT ─────────────────────────── */
+.prime-spotlight {
+  margin: 40px auto;
+  max-width: 860px;
+  padding: 0 20px;
+}
+
+.prime-card {
+  background: var(--navy-card);
+  border: 2px solid var(--gold-border);
+  border-radius: 16px;
+  padding: 40px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.prime-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.prime-card.danger-flash {
+  border-color: var(--red);
+  animation: dangerPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes dangerPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(197, 48, 48, 0); }
+  50% { box-shadow: 0 0 30px 4px rgba(197, 48, 48, 0.25); }
+}
+
+.prime-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  margin-bottom: 8px;
+}
+
+.prime-sublabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--white-dim);
+  margin-bottom: 24px;
+}
+
+.prime-value-row {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.prime-dollar {
+  font-family: var(--font-mono);
+  font-size: clamp(28px, 5vw, 36px);
+  font-weight: 700;
+  color: var(--white);
+}
+
+.prime-percent {
+  font-family: var(--font-mono);
+  font-size: clamp(48px, 10vw, 72px);
+  font-weight: 700;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+.prime-percent-symbol {
+  font-size: 0.5em;
+  color: var(--white-dim);
+}
+
+.prime-benchmark-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.prime-benchmark-item {
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--navy-border);
+  color: var(--white-dim);
+}
+
+.prime-benchmark-item.active {
+  font-weight: 700;
+}
+
+.prime-benchmark-item.bm-green { border-color: var(--green); }
+.prime-benchmark-item.bm-green.active { background: rgba(47, 133, 90, 0.15); color: var(--green); }
+.prime-benchmark-item.bm-amber { border-color: #D69E2E; }
+.prime-benchmark-item.bm-amber.active { background: rgba(214, 158, 46, 0.15); color: #D69E2E; }
+.prime-benchmark-item.bm-warn { border-color: #DD6B20; }
+.prime-benchmark-item.bm-warn.active { background: rgba(221, 107, 32, 0.15); color: #DD6B20; }
+.prime-benchmark-item.bm-red { border-color: var(--red); }
+.prime-benchmark-item.bm-red.active { background: rgba(197, 48, 48, 0.15); color: var(--red); }
+
+.prime-warning {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white-dim);
+  max-width: 520px;
+  margin: 20px auto 0;
+  line-height: 1.6;
+  padding: 16px 20px;
+  border: 1px solid var(--navy-border);
+  border-radius: 8px;
+  background: var(--navy);
+}
+
+/* ─── KEY RATIOS DASHBOARD ─────────────────────────── */
+.ratios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.ratio-tile {
+  background: var(--navy);
+  border: 1px solid var(--navy-border);
+  border-radius: 10px;
+  padding: 20px 16px;
+  text-align: center;
+  position: relative;
+}
+
+.ratio-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--navy-border);
+}
+
+.ratio-dot.dot-green { background: var(--green); }
+.ratio-dot.dot-amber { background: #D69E2E; }
+.ratio-dot.dot-red { background: var(--red); }
+
+.ratio-value {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.ratio-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--white-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ─── HEALTH SIGNALS ───────────────────────────────── */
+.health-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+/* ─── CHECKLIST ────────────────────────────────────── */
+.checklist-section {
+  margin: 40px auto;
+  max-width: 860px;
+  padding: 0 20px;
+}
+
+.checklist-card {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.checklist-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(26, 45, 77, 0.5);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checklist-item:last-child {
+  border-bottom: none;
+}
+
+.checklist-item input[type="checkbox"] {
+  display: none;
+}
+
+.check-box {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--navy-border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin-top: 1px;
+}
+
+.checklist-item input:checked + .check-box {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.checklist-item input:checked + .check-box::after {
+  content: '';
+  width: 6px;
+  height: 10px;
+  border: solid var(--white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-top: -2px;
+}
+
+.check-text {
+  font-size: 14px;
+  color: var(--white-dim);
+  line-height: 1.5;
+  transition: color 0.2s ease;
+}
+
+.checklist-item input:checked ~ .check-text {
+  color: var(--green);
+  text-decoration: line-through;
+  text-decoration-color: rgba(47, 133, 90, 0.4);
+}
+
+/* ─── FOOTER ───────────────────────────────────────── */
+.footer {
+  margin-top: 48px;
+  border-top: 2px solid var(--gold-border);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.footer-bar-top {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  margin: 0 auto 24px;
+  border-radius: 2px;
+}
+
+.footer-author {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.footer-role {
+  font-size: 13px;
+  color: var(--white-dim);
+  margin-bottom: 16px;
+}
+
+.footer-kit {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.footer-bar-bottom {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  margin: 24px auto 0;
+  border-radius: 2px;
+}
+
+/* ─── RESPONSIVE ───────────────────────────────────── */
+@media (max-width: 640px) {
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ratios-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .prime-value-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-body {
+    padding: 16px 20px 24px;
+  }
+
+  .section-header {
+    padding: 20px 20px 8px;
+  }
+
+  .prime-card {
+    padding: 32px 20px;
+  }
+
+  .toolbar {
+    padding: 16px 12px;
+    gap: 8px;
+  }
+
+  .btn {
+    font-size: 11px;
+    padding: 8px 16px;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* ─── PRINT STYLES ─────────────────────────────────── */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .toolbar {
+    display: none !important;
+  }
+
+  .container, .section, .prime-spotlight, .checklist-section {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hero {
+    padding: 24px 0 16px;
+    border-bottom: 2px solid #D4AF37;
+  }
+
+  .hero-brand {
+    color: #111;
+    font-size: 11px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    color: #111;
+  }
+
+  .hero-subtitle {
+    color: #333;
+    font-size: 14px;
+  }
+
+  .hero-instructions {
+    background: #f5f5f5;
+    border-color: #ccc;
+    color: #333;
+    font-size: 11px;
+    padding: 10px 14px;
+  }
+
+  .section {
+    margin: 12px 0;
+    page-break-inside: avoid;
+  }
+
+  .section-card {
+    background: #fff !important;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .section-card.border-green { border-left: 3px solid #2F855A; }
+  .section-card.border-blue { border-left: 3px solid #00A6D6; }
+  .section-card.border-red { border-left: 3px solid #C53030; }
+  .section-card.border-gold { border-left: 3px solid #D4AF37; }
+
+  .section-header {
+    padding: 12px 16px 4px;
+  }
+
+  .section-title {
+    color: #111;
+    font-size: 16px;
+  }
+
+  .section-number {
+    color: #666;
+  }
+
+  .section-body {
+    padding: 8px 16px 16px;
+  }
+
+  .field-label {
+    color: #111;
+    font-size: 11px;
+  }
+
+  .field-hint {
+    color: #666;
+    font-size: 10px;
+  }
+
+  .field-input {
+    background: #f9f9f9 !important;
+    border: 1px solid #ccc;
+    color: #111;
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .field-input[readonly] {
+    background: #f0f0f0 !important;
+    color: #111;
+    font-weight: 700;
+  }
+
+  .field-benchmark {
+    color: #666;
+  }
+
+  .prime-card {
+    border: 2px solid #D4AF37;
+    padding: 24px 16px;
+    background: #fff !important;
+    page-break-inside: avoid;
+  }
+
+  .prime-card::before {
+    background: #D4AF37;
+  }
+
+  .prime-card.danger-flash {
+    animation: none;
+    border-color: #C53030;
+  }
+
+  .prime-label, .prime-sublabel {
+    color: #333;
+  }
+
+  .prime-dollar {
+    color: #111;
+  }
+
+  .prime-percent {
+    color: #111 !important;
+  }
+
+  .prime-warning {
+    color: #333;
+    background: #f5f5f5;
+    border-color: #ccc;
+  }
+
+  .ratio-tile {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+  }
+
+  .ratio-value {
+    color: #111;
+  }
+
+  .ratio-name {
+    color: #333;
+  }
+
+  .checklist-card {
+    background: #fff;
+    border: 1px solid #ccc;
+  }
+
+  .checklist-title {
+    color: #111;
+  }
+
+  .check-text {
+    color: #333;
+  }
+
+  .footer {
+    border-top: 2px solid #D4AF37;
+    padding: 16px 0;
+  }
+
+  .footer-author {
+    color: #111;
+  }
+
+  .footer-role {
+    color: #333;
+  }
+
+  .footer-kit {
+    color: #111;
+  }
+
+  .footer-bar-top, .footer-bar-bottom {
+    background: #D4AF37;
+  }
+
+  .prime-benchmark-bar {
+    gap: 8px;
+  }
+
+  .prime-benchmark-item {
+    border-color: #ccc;
+    color: #333;
+    font-size: 10px;
+  }
+
+  .field-grid {
+    gap: 12px;
+  }
+
+  .auto-tag {
+    color: #00A6D6 !important;
+    border-color: #00A6D6 !important;
+    background: transparent !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-brand">The Grumpy Chef</div>
+    <h1 class="hero-title">The Exposure Sheet</h1>
+    <p class="hero-subtitle">See where the money actually goes. Every dollar. No hiding.</p>
+    <div class="hero-instructions">
+      Pull your numbers from the last 4 weeks. Use actual invoices, POS data, and payroll reports. Don't estimate.
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════ TOOLBAR ═══════════════════ -->
+<div class="toolbar">
+  <button class="btn btn-gold" onclick="printSheet()">Print Exposure Sheet</button>
+  <button class="btn btn-outline" onclick="exportData()">Export Data</button>
+  <button class="btn btn-red" onclick="clearAll()">Clear All</button>
+  <span class="autosave-indicator" id="saveStatus">Auto-saving enabled</span>
+</div>
+
+<!-- ═══════════════════ SECTION 1: REVENUE ═══════════════════ -->
+<div class="section">
+  <div class="section-card border-green">
+    <div class="section-header">
+      <div class="section-number">Section 01</div>
+      <div class="section-title">Revenue</div>
+    </div>
+    <div class="section-body">
+      <div class="field-grid">
+
+        <div class="field-group">
+          <label class="field-label" for="totalSales">Total Sales (Last 30 Days)</label>
+          <div class="field-hint">POS daily sales report &rarr; Total Revenue</div>
+          <input type="number" class="field-input" id="totalSales" placeholder="$0.00" step="0.01" data-save="totalSales">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="foodSales">Food Sales</label>
+          <div class="field-hint">POS report filtered by food category</div>
+          <input type="number" class="field-input" id="foodSales" placeholder="$0.00" step="0.01" data-save="foodSales">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="bevSales">Beverage Sales</label>
+          <div class="field-hint">POS report filtered by beverage category</div>
+          <input type="number" class="field-input" id="bevSales" placeholder="$0.00" step="0.01" data-save="bevSales">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="otherIncome">Other Income</label>
+          <div class="field-hint">Catering, merchandise, delivery rebates</div>
+          <input type="number" class="field-input" id="otherIncome" placeholder="$0.00" step="0.01" data-save="otherIncome">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="coversServed">Total Covers Served</label>
+          <div class="field-hint">POS cover count or transaction count</div>
+          <input type="number" class="field-input" id="coversServed" placeholder="0" step="1" data-save="coversServed">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="avgCheck">Average Check Size <span class="auto-tag">Auto</span></label>
+          <div class="field-hint">Total Sales / Covers Served</div>
+          <input type="text" class="field-input" id="avgCheck" readonly placeholder="--" data-save="avgCheck">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 2: COGS ═══════════════════ -->
+<div class="section">
+  <div class="section-card border-blue">
+    <div class="section-header">
+      <div class="section-number">Section 02</div>
+      <div class="section-title">Cost of Goods Sold</div>
+    </div>
+    <div class="section-body">
+      <div class="field-grid">
+
+        <div class="field-group">
+          <label class="field-label" for="beginInv">Beginning Inventory ($)</label>
+          <div class="field-hint">Physical count at start of period</div>
+          <input type="number" class="field-input" id="beginInv" placeholder="$0.00" step="0.01" data-save="beginInv">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="purchases">Purchases ($)</label>
+          <div class="field-hint">Total vendor invoices for period</div>
+          <input type="number" class="field-input" id="purchases" placeholder="$0.00" step="0.01" data-save="purchases">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="endInv">Ending Inventory ($)</label>
+          <div class="field-hint">Physical count at end of period</div>
+          <input type="number" class="field-input" id="endInv" placeholder="$0.00" step="0.01" data-save="endInv">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="foodCostPct">Food Cost % <span class="auto-tag">Auto</span></label>
+          <div class="field-hint">(Begin + Purchases &minus; End) / Food Sales &times; 100</div>
+          <input type="text" class="field-input" id="foodCostPct" readonly placeholder="--" data-save="foodCostPct">
+          <div class="field-benchmark">25-35% healthy | 35-38% caution | &gt;38% danger</div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="bevCostPct">Beverage Cost %</label>
+          <div class="field-hint">Liquor ~15% | Beer ~22% | Wine ~30%</div>
+          <input type="number" class="field-input" id="bevCostPct" placeholder="0.0%" step="0.1" data-save="bevCostPct">
+          <div class="field-benchmark">Liquor 15% | Beer 22% | Wine 30%</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 3: LABOR COSTS ═══════════════════ -->
+<div class="section">
+  <div class="section-card border-blue">
+    <div class="section-header">
+      <div class="section-number">Section 03</div>
+      <div class="section-title">Labor Costs</div>
+    </div>
+    <div class="section-body">
+      <div class="field-grid">
+
+        <div class="field-group">
+          <label class="field-label" for="totalLabor">Total Labor Cost ($)</label>
+          <div class="field-hint">Payroll report: wages + taxes + benefits</div>
+          <input type="number" class="field-input" id="totalLabor" placeholder="$0.00" step="0.01" data-save="totalLabor">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="laborCostPct">Labor Cost % <span class="auto-tag">Auto</span></label>
+          <div class="field-hint">Total Labor / Total Sales &times; 100</div>
+          <input type="text" class="field-input" id="laborCostPct" readonly placeholder="--" data-save="laborCostPct">
+          <div class="field-benchmark">25-35% healthy | 35-38% caution | &gt;38% danger</div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="overtimeHrs">Overtime Hours</label>
+          <div class="field-hint">Payroll overtime report</div>
+          <input type="number" class="field-input" id="overtimeHrs" placeholder="0" step="0.5" data-save="overtimeHrs">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="laborPerCover">Labor Cost Per Cover <span class="auto-tag">Auto</span></label>
+          <div class="field-hint">Total Labor / Total Covers</div>
+          <input type="text" class="field-input" id="laborPerCover" readonly placeholder="--" data-save="laborPerCover">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="salesPerLaborHr">Sales Per Labor Hour</label>
+          <div class="field-hint">Total Sales / Total scheduled hours</div>
+          <input type="number" class="field-input" id="salesPerLaborHr" placeholder="$0.00" step="0.01" data-save="salesPerLaborHr">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 4: PRIME COST SPOTLIGHT ═══════════════════ -->
+<div class="prime-spotlight">
+  <div class="prime-card" id="primeCard">
+    <div class="section-number" style="text-align:center;">Section 04</div>
+    <div class="prime-label">Prime Cost Spotlight</div>
+    <div class="prime-sublabel">COGS + Total Labor = Your #1 Number</div>
+
+    <div class="prime-value-row">
+      <div class="prime-dollar" id="primeDollar">$--</div>
+      <div class="prime-percent" id="primePercent" style="color: var(--white-dim);">
+        --<span class="prime-percent-symbol">%</span>
+      </div>
+    </div>
+
+    <div class="prime-benchmark-bar">
+      <span class="prime-benchmark-item bm-green" id="bmGreen">&lt; 60%</span>
+      <span class="prime-benchmark-item bm-amber" id="bmAmber">60-65%</span>
+      <span class="prime-benchmark-item bm-warn" id="bmWarn">65-70%</span>
+      <span class="prime-benchmark-item bm-red" id="bmRed">&gt; 70%</span>
+    </div>
+
+    <div class="prime-warning">
+      If your prime cost is above 65%, you're losing money every day you're open. Doesn't matter how busy you are.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 5: WASTE INVENTORY ═══════════════════ -->
+<div class="section">
+  <div class="section-card border-red">
+    <div class="section-header">
+      <div class="section-number">Section 05</div>
+      <div class="section-title">Waste Inventory</div>
+    </div>
+    <div class="section-body">
+      <div class="field-grid">
+
+        <div class="field-group">
+          <label class="field-label" for="spoilage">Spoilage ($)</label>
+          <div class="field-hint">Walk-in audit: expired, damaged, dead stock</div>
+          <input type="number" class="field-input" id="spoilage" placeholder="$0.00" step="0.01" data-save="spoilage">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="prepWaste">Prep Waste ($)</label>
+          <div class="field-hint">End-of-service waste from prep stations</div>
+          <input type="number" class="field-input" id="prepWaste" placeholder="$0.00" step="0.01" data-save="prepWaste">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="plateWaste">Plate Waste ($)</label>
+          <div class="field-hint">Food returned or discarded from plates</div>
+          <input type="number" class="field-input" id="plateWaste" placeholder="$0.00" step="0.01" data-save="plateWaste">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="compsVoids">Comps &amp; Voids ($)</label>
+          <div class="field-hint">POS comp/void report</div>
+          <input type="number" class="field-input" id="compsVoids" placeholder="$0.00" step="0.01" data-save="compsVoids">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="totalWaste">Total Waste ($) <span class="auto-tag">Auto</span></label>
+          <div class="field-hint">Sum of all waste categories</div>
+          <input type="text" class="field-input" id="totalWaste" readonly placeholder="--" data-save="totalWaste">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="wastePct">Waste % of Purchases <span class="auto-tag">Auto</span></label>
+          <div class="field-hint">Total Waste / Purchases &times; 100</div>
+          <input type="text" class="field-input" id="wastePct" readonly placeholder="--" data-save="wastePct">
+          <div class="field-benchmark">2-4% healthy | 4-5% caution | &gt;5% danger</div>
+        </div>
+
+        <div class="field-group full-width" style="text-align:center; padding: 16px 0 0;">
+          <label class="field-label" style="justify-content:center; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--white-dim);">
+            Annualized Waste <span class="auto-tag">Auto</span>
+          </label>
+          <div style="font-family: var(--font-mono); font-size: 32px; font-weight: 700; color: var(--red); margin: 8px 0;" id="annualWaste">$--</div>
+          <div style="font-size: 13px; color: var(--white-dim); font-style: italic;">This is what walks out your back door every year.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 6: KEY RATIOS SUMMARY ═══════════════════ -->
+<div class="section">
+  <div class="section-card border-gold">
+    <div class="section-header">
+      <div class="section-number">Section 06</div>
+      <div class="section-title">Key Ratios Summary</div>
+    </div>
+    <div class="section-body">
+      <div class="ratios-grid">
+
+        <div class="ratio-tile">
+          <div class="ratio-dot" id="ratioFoodDot"></div>
+          <div class="ratio-value" id="ratioFoodVal">--%</div>
+          <div class="ratio-name">Food Cost</div>
+        </div>
+
+        <div class="ratio-tile">
+          <div class="ratio-dot" id="ratioLaborDot"></div>
+          <div class="ratio-value" id="ratioLaborVal">--%</div>
+          <div class="ratio-name">Labor Cost</div>
+        </div>
+
+        <div class="ratio-tile">
+          <div class="ratio-dot" id="ratioPrimeDot"></div>
+          <div class="ratio-value" id="ratioPrimeVal">--%</div>
+          <div class="ratio-name">Prime Cost</div>
+        </div>
+
+        <div class="ratio-tile">
+          <div class="ratio-dot" id="ratioWasteDot"></div>
+          <div class="ratio-value" id="ratioWasteVal">--%</div>
+          <div class="ratio-name">Waste</div>
+        </div>
+
+        <div class="ratio-tile">
+          <div class="ratio-dot" id="ratioGPDot"></div>
+          <div class="ratio-value" id="ratioGPVal">--%</div>
+          <div class="ratio-name">Gross Profit</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SECTION 7: HEALTH SIGNALS ═══════════════════ -->
+<div class="section">
+  <div class="section-card border-gold">
+    <div class="section-header">
+      <div class="section-number">Section 07</div>
+      <div class="section-title">Health Signals</div>
+    </div>
+    <div class="section-body">
+      <div class="health-grid">
+
+        <div class="field-group">
+          <label class="field-label" for="staffTurnover">Staff Turnover (90 Days)</label>
+          <div class="field-hint">Number of departures</div>
+          <input type="number" class="field-input" id="staffTurnover" placeholder="0" step="1" data-save="staffTurnover">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="avgReview">Avg. Review Score</label>
+          <div class="field-hint">Google / Yelp average</div>
+          <input type="number" class="field-input" id="avgReview" placeholder="0.0" step="0.1" min="0" max="5" data-save="avgReview">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="avtVariance">AvT Variance (%)</label>
+          <div class="field-hint">Actual vs Theoretical food cost gap</div>
+          <input type="number" class="field-input" id="avtVariance" placeholder="0.0%" step="0.1" data-save="avtVariance">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ COMPLETION CHECKLIST ═══════════════════ -->
+<div class="checklist-section">
+  <div class="checklist-card">
+    <div class="checklist-title">Completion Checklist</div>
+
+    <label class="checklist-item">
+      <input type="checkbox" data-save="chk1">
+      <span class="check-box"></span>
+      <span class="check-text">Revenue data pulled from POS (not memory)</span>
+    </label>
+
+    <label class="checklist-item">
+      <input type="checkbox" data-save="chk2">
+      <span class="check-box"></span>
+      <span class="check-text">All vendor invoices counted for period</span>
+    </label>
+
+    <label class="checklist-item">
+      <input type="checkbox" data-save="chk3">
+      <span class="check-box"></span>
+      <span class="check-text">Physical inventory counted (not estimated)</span>
+    </label>
+
+    <label class="checklist-item">
+      <input type="checkbox" data-save="chk4">
+      <span class="check-box"></span>
+      <span class="check-text">Payroll data pulled (including overtime)</span>
+    </label>
+
+    <label class="checklist-item">
+      <input type="checkbox" data-save="chk5">
+      <span class="check-box"></span>
+      <span class="check-text">Waste walk completed</span>
+    </label>
+
+    <label class="checklist-item">
+      <input type="checkbox" data-save="chk6">
+      <span class="check-box"></span>
+      <span class="check-text">All ratios calculated and compared to benchmarks</span>
+    </label>
+  </div>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer">
+  <div class="footer-bar-top"></div>
+  <div class="footer-author">Built by Christian Schiffner</div>
+  <div class="footer-role">German Master Chef | 20+ Years Operations</div>
+  <div class="footer-kit">Part of the 72-Hour Profit Discovery Kit</div>
+  <div class="footer-bar-bottom"></div>
+</footer>
+
+<!-- ═══════════════════ JAVASCRIPT ═══════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  const STORAGE_KEY = 'grumpy_chef_exposure_sheet';
+  let saveTimer = null;
+
+  // ─── DOM References ─────────────────────────────────
+  const $ = id => document.getElementById(id);
+
+  const fields = {
+    totalSales:    $('totalSales'),
+    foodSales:     $('foodSales'),
+    bevSales:      $('bevSales'),
+    otherIncome:   $('otherIncome'),
+    coversServed:  $('coversServed'),
+    avgCheck:      $('avgCheck'),
+    beginInv:      $('beginInv'),
+    purchases:     $('purchases'),
+    endInv:        $('endInv'),
+    foodCostPct:   $('foodCostPct'),
+    bevCostPct:    $('bevCostPct'),
+    totalLabor:    $('totalLabor'),
+    laborCostPct:  $('laborCostPct'),
+    overtimeHrs:   $('overtimeHrs'),
+    laborPerCover: $('laborPerCover'),
+    salesPerLaborHr: $('salesPerLaborHr'),
+    spoilage:      $('spoilage'),
+    prepWaste:     $('prepWaste'),
+    plateWaste:    $('plateWaste'),
+    compsVoids:    $('compsVoids'),
+    totalWaste:    $('totalWaste'),
+    wastePct:      $('wastePct'),
+    staffTurnover: $('staffTurnover'),
+    avgReview:     $('avgReview'),
+    avtVariance:   $('avtVariance')
+  };
+
+  // ─── Utility ────────────────────────────────────────
+  function num(el) {
+    if (!el) return 0;
+    const v = parseFloat(el.value);
+    return isNaN(v) ? 0 : v;
+  }
+
+  function fmt$(val) {
+    return '$' + val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function fmtPct(val) {
+    return val.toFixed(1) + '%';
+  }
+
+  function setStatus(el, val, greenMax, amberMax) {
+    el.classList.remove('status-green', 'status-amber', 'status-red');
+    if (val <= 0) return;
+    if (val <= greenMax) el.classList.add('status-green');
+    else if (val <= amberMax) el.classList.add('status-amber');
+    else el.classList.add('status-red');
+  }
+
+  function setDot(dotEl, val, greenMax, amberMax) {
+    dotEl.classList.remove('dot-green', 'dot-amber', 'dot-red');
+    if (val <= 0) return;
+    if (val <= greenMax) dotEl.classList.add('dot-green');
+    else if (val <= amberMax) dotEl.classList.add('dot-amber');
+    else dotEl.classList.add('dot-red');
+  }
+
+  // ─── Calculations ──────────────────────────────────
+  function recalc() {
+    const totalSales   = num(fields.totalSales);
+    const foodSales    = num(fields.foodSales);
+    const covers       = num(fields.coversServed);
+    const beginInv     = num(fields.beginInv);
+    const purchases    = num(fields.purchases);
+    const endInv       = num(fields.endInv);
+    const totalLabor   = num(fields.totalLabor);
+    const spoilage     = num(fields.spoilage);
+    const prepWaste    = num(fields.prepWaste);
+    const plateWaste   = num(fields.plateWaste);
+    const compsVoids   = num(fields.compsVoids);
+
+    // Average Check
+    if (totalSales > 0 && covers > 0) {
+      fields.avgCheck.value = fmt$(totalSales / covers);
+    } else {
+      fields.avgCheck.value = '--';
+    }
+
+    // COGS
+    const cogs = beginInv + purchases - endInv;
+
+    // Food Cost %
+    let foodCostPct = 0;
+    if (foodSales > 0) {
+      foodCostPct = (cogs / foodSales) * 100;
+      fields.foodCostPct.value = fmtPct(foodCostPct);
+      setStatus(fields.foodCostPct, foodCostPct, 35, 38);
+    } else {
+      fields.foodCostPct.value = '--';
+      fields.foodCostPct.classList.remove('status-green', 'status-amber', 'status-red');
+    }
+
+    // Labor Cost %
+    let laborCostPct = 0;
+    if (totalSales > 0 && totalLabor > 0) {
+      laborCostPct = (totalLabor / totalSales) * 100;
+      fields.laborCostPct.value = fmtPct(laborCostPct);
+      setStatus(fields.laborCostPct, laborCostPct, 35, 38);
+    } else {
+      fields.laborCostPct.value = '--';
+      fields.laborCostPct.classList.remove('status-green', 'status-amber', 'status-red');
+    }
+
+    // Labor Per Cover
+    if (totalLabor > 0 && covers > 0) {
+      fields.laborPerCover.value = fmt$(totalLabor / covers);
+    } else {
+      fields.laborPerCover.value = '--';
+    }
+
+    // Prime Cost
+    const primeCost = cogs + totalLabor;
+    let primePct = 0;
+    const primeCard = $('primeCard');
+    const primeDollarEl = $('primeDollar');
+    const primePercentEl = $('primePercent');
+
+    // Reset benchmark active states
+    $('bmGreen').classList.remove('active');
+    $('bmAmber').classList.remove('active');
+    $('bmWarn').classList.remove('active');
+    $('bmRed').classList.remove('active');
+    primeCard.classList.remove('danger-flash');
+
+    if (totalSales > 0 && primeCost > 0) {
+      primePct = (primeCost / totalSales) * 100;
+      primeDollarEl.textContent = fmt$(primeCost);
+      primePercentEl.innerHTML = primePct.toFixed(1) + '<span class="prime-percent-symbol">%</span>';
+
+      if (primePct < 60) {
+        primePercentEl.style.color = 'var(--green)';
+        $('bmGreen').classList.add('active');
+      } else if (primePct < 65) {
+        primePercentEl.style.color = '#D69E2E';
+        $('bmAmber').classList.add('active');
+      } else if (primePct < 70) {
+        primePercentEl.style.color = '#DD6B20';
+        $('bmWarn').classList.add('active');
+      } else {
+        primePercentEl.style.color = 'var(--red)';
+        $('bmRed').classList.add('active');
+        primeCard.classList.add('danger-flash');
+      }
+    } else {
+      primeDollarEl.textContent = '$--';
+      primePercentEl.innerHTML = '--<span class="prime-percent-symbol">%</span>';
+      primePercentEl.style.color = 'var(--white-dim)';
+    }
+
+    // Waste
+    const totalWasteVal = spoilage + prepWaste + plateWaste + compsVoids;
+    if (totalWasteVal > 0) {
+      fields.totalWaste.value = fmt$(totalWasteVal);
+    } else {
+      fields.totalWaste.value = '--';
+    }
+
+    // Waste % of Purchases
+    let wastePctVal = 0;
+    if (purchases > 0 && totalWasteVal > 0) {
+      wastePctVal = (totalWasteVal / purchases) * 100;
+      fields.wastePct.value = fmtPct(wastePctVal);
+      setStatus(fields.wastePct, wastePctVal, 4, 5);
+    } else {
+      fields.wastePct.value = '--';
+      fields.wastePct.classList.remove('status-green', 'status-amber', 'status-red');
+    }
+
+    // Annualized Waste (monthly x12)
+    const annualWasteEl = $('annualWaste');
+    if (totalWasteVal > 0) {
+      const annual = totalWasteVal * 12;
+      annualWasteEl.textContent = fmt$(annual);
+    } else {
+      annualWasteEl.textContent = '$--';
+    }
+
+    // ─── Key Ratios Dashboard ─────────────────────────
+    // Food Cost
+    const ratioFoodVal = $('ratioFoodVal');
+    const ratioFoodDot = $('ratioFoodDot');
+    if (foodCostPct > 0) {
+      ratioFoodVal.textContent = fmtPct(foodCostPct);
+      setDot(ratioFoodDot, foodCostPct, 35, 38);
+    } else {
+      ratioFoodVal.textContent = '--%';
+      ratioFoodDot.classList.remove('dot-green', 'dot-amber', 'dot-red');
+    }
+
+    // Labor Cost
+    const ratioLaborVal = $('ratioLaborVal');
+    const ratioLaborDot = $('ratioLaborDot');
+    if (laborCostPct > 0) {
+      ratioLaborVal.textContent = fmtPct(laborCostPct);
+      setDot(ratioLaborDot, laborCostPct, 35, 38);
+    } else {
+      ratioLaborVal.textContent = '--%';
+      ratioLaborDot.classList.remove('dot-green', 'dot-amber', 'dot-red');
+    }
+
+    // Prime Cost
+    const ratioPrimeVal = $('ratioPrimeVal');
+    const ratioPrimeDot = $('ratioPrimeDot');
+    if (primePct > 0) {
+      ratioPrimeVal.textContent = fmtPct(primePct);
+      setDot(ratioPrimeDot, primePct, 60, 65);
+    } else {
+      ratioPrimeVal.textContent = '--%';
+      ratioPrimeDot.classList.remove('dot-green', 'dot-amber', 'dot-red');
+    }
+
+    // Waste
+    const ratioWasteVal = $('ratioWasteVal');
+    const ratioWasteDot = $('ratioWasteDot');
+    if (wastePctVal > 0) {
+      ratioWasteVal.textContent = fmtPct(wastePctVal);
+      setDot(ratioWasteDot, wastePctVal, 4, 5);
+    } else {
+      ratioWasteVal.textContent = '--%';
+      ratioWasteDot.classList.remove('dot-green', 'dot-amber', 'dot-red');
+    }
+
+    // Gross Profit Margin
+    const ratioGPVal = $('ratioGPVal');
+    const ratioGPDot = $('ratioGPDot');
+    if (totalSales > 0 && cogs > 0) {
+      const gp = ((totalSales - cogs) / totalSales) * 100;
+      ratioGPVal.textContent = fmtPct(gp);
+      // GP: >65% green, 60-65% amber, <60% red (inverted)
+      if (gp >= 65) {
+        ratioGPDot.classList.remove('dot-amber', 'dot-red');
+        ratioGPDot.classList.add('dot-green');
+      } else if (gp >= 60) {
+        ratioGPDot.classList.remove('dot-green', 'dot-red');
+        ratioGPDot.classList.add('dot-amber');
+      } else {
+        ratioGPDot.classList.remove('dot-green', 'dot-amber');
+        ratioGPDot.classList.add('dot-red');
+      }
+    } else {
+      ratioGPVal.textContent = '--%';
+      ratioGPDot.classList.remove('dot-green', 'dot-amber', 'dot-red');
+    }
+
+    scheduleSave();
+  }
+
+  // ─── localStorage ──────────────────────────────────
+  function saveData() {
+    const data = {};
+    document.querySelectorAll('[data-save]').forEach(el => {
+      const key = el.getAttribute('data-save');
+      if (el.type === 'checkbox') {
+        data[key] = el.checked;
+      } else {
+        data[key] = el.value;
+      }
+    });
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      const indicator = $('saveStatus');
+      indicator.textContent = 'Saved';
+      setTimeout(() => { indicator.textContent = 'Auto-saving enabled'; }, 1500);
+    } catch(e) {
+      // storage full or unavailable
+    }
+  }
+
+  function loadData() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      document.querySelectorAll('[data-save]').forEach(el => {
+        const key = el.getAttribute('data-save');
+        if (key in data) {
+          if (el.type === 'checkbox') {
+            el.checked = data[key];
+          } else if (!el.readOnly) {
+            el.value = data[key];
+          }
+        }
+      });
+      recalc();
+    } catch(e) {
+      // corrupt data, ignore
+    }
+  }
+
+  function scheduleSave() {
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveData, 500);
+  }
+
+  // ─── Event Listeners ──────────────────────────────
+  document.querySelectorAll('.field-input:not([readonly])').forEach(input => {
+    input.addEventListener('input', recalc);
+  });
+
+  document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', scheduleSave);
+  });
+
+  // ─── Global actions ────────────────────────────────
+  window.printSheet = function() {
+    window.print();
+  };
+
+  window.clearAll = function() {
+    if (!confirm('Clear all data? This cannot be undone.')) return;
+    document.querySelectorAll('[data-save]').forEach(el => {
+      if (el.type === 'checkbox') {
+        el.checked = false;
+      } else if (el.readOnly) {
+        el.value = '--';
+        el.classList.remove('status-green', 'status-amber', 'status-red');
+      } else {
+        el.value = '';
+      }
+    });
+    // Reset prime cost display
+    $('primeDollar').textContent = '$--';
+    $('primePercent').innerHTML = '--<span class="prime-percent-symbol">%</span>';
+    $('primePercent').style.color = 'var(--white-dim)';
+    $('primeCard').classList.remove('danger-flash');
+    $('bmGreen').classList.remove('active');
+    $('bmAmber').classList.remove('active');
+    $('bmWarn').classList.remove('active');
+    $('bmRed').classList.remove('active');
+    // Reset annualized waste
+    $('annualWaste').textContent = '$--';
+    // Reset ratios
+    ['ratioFoodVal', 'ratioLaborVal', 'ratioPrimeVal', 'ratioWasteVal', 'ratioGPVal'].forEach(id => {
+      $(id).textContent = '--%';
+    });
+    ['ratioFoodDot', 'ratioLaborDot', 'ratioPrimeDot', 'ratioWasteDot', 'ratioGPDot'].forEach(id => {
+      $(id).classList.remove('dot-green', 'dot-amber', 'dot-red');
+    });
+    try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+    $('saveStatus').textContent = 'Data cleared';
+    setTimeout(() => { $('saveStatus').textContent = 'Auto-saving enabled'; }, 2000);
+  };
+
+  window.exportData = function() {
+    const data = {};
+    document.querySelectorAll('[data-save]').forEach(el => {
+      const key = el.getAttribute('data-save');
+      if (el.type === 'checkbox') {
+        data[key] = el.checked;
+      } else {
+        data[key] = el.value;
+      }
+    });
+
+    // Add computed values
+    data._computed = {
+      avgCheck: fields.avgCheck.value,
+      foodCostPct: fields.foodCostPct.value,
+      laborCostPct: fields.laborCostPct.value,
+      laborPerCover: fields.laborPerCover.value,
+      totalWaste: fields.totalWaste.value,
+      wastePct: fields.wastePct.value,
+      primeCost: $('primeDollar').textContent,
+      primeCostPct: $('primePercent').textContent,
+      annualWaste: $('annualWaste').textContent,
+      exportDate: new Date().toISOString()
+    };
+
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'exposure-sheet-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  // ─── Init ──────────────────────────────────────────
+  loadData();
+})();
+</script>
+</body>
+</html>
