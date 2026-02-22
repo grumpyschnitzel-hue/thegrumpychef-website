@@ -287,6 +287,7 @@
                         <li>Available on Stan Store</li>
                     </ul>
                     <div class="tier-note">"Same methodology. Your pace. Your schedule."</div>
+                    <a href="/academy.html" class="btn-secondary tier-cta">Join the Waitlist for Early Access</a>
                 </div>
 
                 <!-- TIER 3: DONE-WITH-YOU -->
@@ -302,9 +303,10 @@
                         <li>Custom analysis + tools built for your restaurant</li>
                         <li>Weekly check-ins throughout</li>
                         <li>For operators ready to stop white-knuckling it</li>
+                        <li>Priority goes to operators who've completed the free diagnostics</li>
                     </ul>
                     <div class="tier-note">"I've been on both sides. Chaos and systems. I'll build the systems with you."</div>
-                    <a href="mailto:christian@thegrumpychef.ca?subject=Discovery%20Call%20%E2%80%94%2090-Day%20Restaurant%20Transformation" class="btn-primary tier-cta">Book a Discovery Call</a>
+                    <a href="#discovery-call" class="btn-primary tier-cta">Book a Discovery Call</a>
                 </div>
 
             </div>
@@ -342,6 +344,92 @@
         </div>
     </section>
 
+    <!-- DISCOVERY CALL FORM -->
+    <section class="section section-alt" id="discovery-call">
+        <div class="section-inner" style="max-width: 640px;">
+            <div style="text-align: center; margin-bottom: 32px;">
+                <div class="section-label">Let's Talk</div>
+                <h2 class="section-title">Book a <span>Discovery Call</span></h2>
+                <p class="section-text" style="margin: 0 auto;">No pitch. No pressure. Tell me what's bleeding, I'll tell you if I can help. 30 minutes.</p>
+            </div>
+            <div id="discoveryFormCard" style="background: var(--navy-card); border: 1px solid var(--gold-border); border-radius: 12px; padding: 36px;">
+                <form id="discoveryForm" onsubmit="submitDiscovery(event)" novalidate style="display: flex; flex-direction: column; gap: 14px;">
+                    <div style="display: flex; gap: 14px;">
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+                            <label for="dc-name" style="font-size: 0.85rem; font-weight: 500; color: var(--white-dim);">Your Name <span style="color: var(--gold);">*</span></label>
+                            <input type="text" id="dc-name" required style="font-family: var(--font-body); font-size: 0.95rem; padding: 12px 16px; background: var(--navy); border: 1px solid var(--navy-border); border-radius: 6px; color: var(--white); outline: none;">
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+                            <label for="dc-email" style="font-size: 0.85rem; font-weight: 500; color: var(--white-dim);">Email <span style="color: var(--gold);">*</span></label>
+                            <input type="email" id="dc-email" required style="font-family: var(--font-body); font-size: 0.95rem; padding: 12px 16px; background: var(--navy); border: 1px solid var(--navy-border); border-radius: 6px; color: var(--white); outline: none;">
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label for="dc-restaurant" style="font-size: 0.85rem; font-weight: 500; color: var(--white-dim);">Restaurant Name</label>
+                        <input type="text" id="dc-restaurant" style="font-family: var(--font-body); font-size: 0.95rem; padding: 12px 16px; background: var(--navy); border: 1px solid var(--navy-border); border-radius: 6px; color: var(--white); outline: none;">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label for="dc-challenge" style="font-size: 0.85rem; font-weight: 500; color: var(--white-dim);">What's your #1 challenge right now? <span style="color: var(--gold);">*</span></label>
+                        <textarea id="dc-challenge" required placeholder="Be specific. The more I know, the more I can help in 30 minutes." style="font-family: var(--font-body); font-size: 0.95rem; padding: 12px 16px; background: var(--navy); border: 1px solid var(--navy-border); border-radius: 6px; color: var(--white); outline: none; resize: vertical; min-height: 100px;"></textarea>
+                    </div>
+                    <div id="dc-error" role="alert" style="font-size: 0.85rem; color: var(--red); display: none; text-align: center;"></div>
+                    <button type="submit" id="dc-btn" class="btn-primary" style="width: 100%; text-align: center; cursor: pointer; border: 2px solid var(--gold);">Request Discovery Call</button>
+                </form>
+                <p style="font-size: 0.75rem; color: var(--gray); text-align: center; margin-top: 12px;">No spam. I'll reply personally within 48 hours.</p>
+            </div>
+            <div id="discoverySuccess" style="display: none; text-align: center; padding: 48px 24px; background: var(--navy-card); border: 1px solid var(--gold-border); border-radius: 12px;">
+                <div style="font-size: 2.5rem; margin-bottom: 16px;">&#10003;</div>
+                <h3 style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Request Received</h3>
+                <p style="font-size: 1rem; color: var(--white-dim); max-width: 400px; margin: 0 auto;">I'll review your situation and reply personally within 48 hours. In the meantime, try the <a href="/calculator.html">free calculator</a> to find your #1 profit leak.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    async function submitDiscovery(e) {
+        e.preventDefault();
+        const name = document.getElementById('dc-name').value.trim();
+        const email = document.getElementById('dc-email').value.trim();
+        const restaurant = document.getElementById('dc-restaurant').value.trim();
+        const challenge = document.getElementById('dc-challenge').value.trim();
+        const errorEl = document.getElementById('dc-error');
+        const btn = document.getElementById('dc-btn');
+
+        if (!name || !email || !challenge) {
+            errorEl.style.display = 'block';
+            errorEl.textContent = 'Please fill in all required fields.';
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errorEl.style.display = 'block';
+            errorEl.textContent = 'Please enter a valid email address.';
+            return;
+        }
+
+        errorEl.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        const payload = {
+            name, email, restaurant_name: restaurant, biggest_challenge: challenge,
+            timestamp: new Date().toISOString(), page_source: 'discovery-call-services'
+        };
+
+        try {
+            await fetch('https://christhwegrumpychef.app.n8n.cloud/webhook/grumpy-chef-leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+        } catch (err) {
+            console.log('Webhook error:', err.message);
+        }
+
+        document.getElementById('discoveryFormCard').style.display = 'none';
+        document.getElementById('discoverySuccess').style.display = 'block';
+    }
+    </script>
+
     <!-- CTA -->
     <section class="cta-section">
         <div class="section-label">Not Sure Where to Start?</div>
@@ -354,9 +442,12 @@
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-top">
-                <div class="footer-brand">
-                    <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
-                    <p>Built by an operator who lost everything and rebuilt with recovery frameworks. Not theory. Proof.</p>
+                <div class="footer-brand" style="display: flex; gap: 16px; align-items: flex-start;">
+                    <img src="/images/Kitchen1.jpg" alt="Chef Christian Schiffner — The Grumpy Chef" style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid #D4AF37; object-fit: cover; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);">
+                    <div>
+                        <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
+                        <p>Built from 20 years of Master Chef kitchen operations across 5 countries.</p>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h4>Navigate</h4>
@@ -374,7 +465,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Christian Schiffner | The Grumpy Chef | German Master Chef (Kuchenmeister)</p>
+                <p>Christian Schiffner | The Grumpy Chef | German Master Chef (Kuechenmeister)</p>
                 <p>Dawson City, Yukon &bull; From the Black Forest, Germany</p>
             </div>
         </div>
