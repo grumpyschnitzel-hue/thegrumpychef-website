@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>72-Hour Profit Discovery Calculator | The Grumpy Chef</title>
-    <meta name="description" content="Find where your restaurant is bleeding money. 8 common leaks. $50K-$160K potential recovery. Built by a Master Chef who found $41K in his own operation.">
+    <meta name="description" content="Find where your restaurant is bleeding money. 9 common leaks. $60K-$220K potential recovery. Built by a Master Chef who found $41K in his own operation.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -888,7 +888,7 @@
             <div class="hero__content">
                 <div class="hero__brand">The Grumpy Chef</div>
                 <h1 class="hero__title">Find Your Restaurant's<br>#1 Profit Leak in 72 Hours</h1>
-                <p class="hero__sub">The emergency diagnostic that found <strong>$41,000+</strong> in preventable leaks in my own operation. Most restaurants are bleeding $50K-$160K per year. They just don't know where.</p>
+                <p class="hero__sub">The emergency diagnostic that found <strong>$41,000+</strong> in preventable leaks in my own operation. Most restaurants are bleeding $60K-$220K per year. They just don't know where.</p>
             </div>
             <div class="hero__photo">
                 <img class="brand-photo" src="/images/Kitchen1.jpg" alt="Christian Schiffner — German Master Chef">
@@ -898,11 +898,11 @@
 
         <div class="stats">
             <div class="stat">
-                <div class="stat__num">8</div>
+                <div class="stat__num">9</div>
                 <div class="stat__label">Common Leaks</div>
             </div>
             <div class="stat">
-                <div class="stat__num">$50K-$160K</div>
+                <div class="stat__num">$60K-$220K</div>
                 <div class="stat__label">Potential Recovery</div>
             </div>
             <div class="stat">
@@ -1157,6 +1157,18 @@
             ]
         },
         {
+            id: 'turnover',
+            name: 'Staff Turnover & Replacement',
+            desc: 'Every employee who walks out costs $5,864 to replace. Most operators never count this number.',
+            range: '$10K \u2013 $60K/yr',
+            action: 'Count how many staff left in the past 12 months. Multiply by $5,864 (Cornell\u2019s research-backed replacement cost per employee). That\u2019s your invisible bleed. Then start with the #1 fix: post your schedule 2 weeks in advance. Research shows predictable scheduling alone cuts turnover by 20%.',
+            qs: [
+                { label: 'We\u2019ve lost 3+ employees in the past year and don\u2019t track what each replacement costs us', cost: 18000 },
+                { label: 'No structured onboarding \u2014 new hires learn by watching, not from a written training system', cost: 12000 },
+                { label: 'Schedules posted less than a week in advance \u2014 staff can\u2019t plan around unpredictable hours', cost: 10000 }
+            ]
+        },
+        {
             id: 'menu',
             name: 'Menu Mispricing',
             desc: 'Your bestsellers might be your worst earners. Most operators don\u2019t know which is which.',
@@ -1253,7 +1265,7 @@
             d.className = 'cat-card' + (t > 0 ? ' has-leaks' : '');
             d.id = 'card-' + c.id;
             d.innerHTML =
-                '<div class="cat-card__num">LEAK ' + (ci+1) + ' OF 8 \u2014 ' + c.range + '</div>' +
+                '<div class="cat-card__num">LEAK ' + (ci+1) + ' OF 9 \u2014 ' + c.range + '</div>' +
                 '<div class="cat-card__header"><div><div class="cat-card__name">' + c.name + '</div></div>' +
                 '<div class="cat-card__leak' + (t > 0 ? ' active' : '') + '" id="leak-' + c.id + '">' + fmt(t) + '</div></div>' +
                 '<div class="cat-card__desc">' + c.desc + '</div>' +

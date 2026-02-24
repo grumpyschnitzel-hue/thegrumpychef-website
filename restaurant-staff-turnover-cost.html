@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Real Cost of Restaurant Staff Turnover ($5,864 Per Employee) | The Grumpy Chef</title>
+    <meta name="description" content="Restaurant staff turnover costs $5,864 per employee replaced. With 70-80% annual turnover, that's $58K-$117K/year most operators never see on their P&L. Here's the data and the fix.">
+    <meta property="og:title" content="The Real Cost of Restaurant Staff Turnover ($5,864 Per Employee)">
+    <meta property="og:description" content="70-80% annual turnover. $5,864 per replacement. $117K/year for a restaurant losing 20 staff. The numbers most operators never calculate — and the systems that fix it.">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://thegrumpychef.ca/restaurant-staff-turnover-cost.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --blue: #00A6D6;
+            --red: #C53030;
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background: var(--navy); color: var(--white); line-height: 1.6; }
+        a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--white); }
+        img { max-width: 100%; height: auto; }
+
+        /* NAV */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,22,40,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--navy-border); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--white); letter-spacing: 1px; text-transform: uppercase; }
+        .nav-logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a { color: var(--white-dim); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 8px 20px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .nav-cta:hover { background: var(--white); color: var(--navy) !important; }
+        .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+
+        /* HERO */
+        .hero { padding: 140px 24px 80px; text-align: center; background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at center top, rgba(212,175,55,0.05) 0%, transparent 60%); }
+        .hero-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-badge { display: inline-block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); border: 1px solid var(--gold-border); padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; letter-spacing: 1px; text-transform: uppercase; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 24px; text-transform: uppercase; }
+        .hero h1 span { color: var(--gold); }
+        .hero-sub { font-size: 1.15rem; color: var(--white-dim); max-width: 650px; margin: 0 auto; line-height: 1.7; }
+
+        /* ARTICLE */
+        .article { max-width: 740px; margin: 0 auto; padding: 80px 24px; }
+        .article h2 { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; text-transform: uppercase; margin: 56px 0 20px; line-height: 1.2; color: var(--white); }
+        .article h2 span { color: var(--gold); }
+        .article h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin: 40px 0 12px; color: var(--gold); }
+        .article p { font-size: 1.05rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 20px; }
+        .article p strong { color: var(--white); }
+        .article ul, .article ol { margin: 0 0 24px 20px; }
+        .article li { font-size: 1rem; color: var(--white-dim); line-height: 1.7; margin-bottom: 8px; }
+        .article li strong { color: var(--white); }
+
+        /* DATA TABLE */
+        .data-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; }
+        .data-table th { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--gold-border); }
+        .data-table td { font-size: 0.95rem; color: var(--white-dim); padding: 12px 16px; border-bottom: 1px solid var(--navy-border); }
+        .data-table td:last-child { font-family: var(--font-mono); color: var(--gold); font-weight: 600; text-align: right; }
+        .data-table th:last-child { text-align: right; }
+        .data-table tr:hover td { background: var(--navy-card); }
+
+        /* STAT CALLOUT */
+        .stat-callout { background: var(--navy-card); border: 1px solid var(--gold-border); border-radius: 12px; padding: 32px; margin: 40px 0; text-align: center; position: relative; overflow: hidden; }
+        .stat-callout::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold); }
+        .stat-callout-num { font-family: var(--font-display); font-size: 3rem; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+        .stat-callout-label { font-size: 1.1rem; color: var(--white); font-weight: 600; margin-bottom: 8px; }
+        .stat-callout-desc { font-size: 0.9rem; color: var(--white-dim); max-width: 500px; margin: 0 auto; }
+
+        /* PULL QUOTE */
+        .pull-quote { border-left: 3px solid var(--gold); padding: 20px 24px; margin: 40px 0; background: var(--navy-card); border-radius: 0 8px 8px 0; }
+        .pull-quote p { font-family: var(--font-mono); font-size: 1rem; color: var(--white-dim); line-height: 1.7; font-style: italic; margin-bottom: 0; }
+        .pull-quote p span { color: var(--gold); font-style: normal; font-weight: 600; }
+
+        /* MID-ARTICLE CTA */
+        .mid-cta { background: var(--navy-card); border: 2px solid var(--gold); border-radius: 12px; padding: 40px 32px; margin: 48px 0; text-align: center; }
+        .mid-cta h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; margin: 0 0 12px; color: var(--white); }
+        .mid-cta h3 span { color: var(--gold); }
+        .mid-cta p { font-size: 0.95rem; color: var(--white-dim); max-width: 480px; margin: 0 auto 20px; }
+        .btn-primary { display: inline-block; background: var(--gold); color: var(--navy); padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s; border: 2px solid var(--gold); }
+        .btn-primary:hover { background: transparent; color: var(--gold); }
+        .btn-secondary { display: inline-block; background: transparent; color: var(--white); padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; border: 2px solid var(--navy-border); transition: all 0.2s; }
+        .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* SOURCE NOTE */
+        .source-note { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray); margin-top: 4px; }
+
+        /* CTA SECTION */
+        .cta-section { padding: 100px 24px; text-align: center; background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%); }
+        .cta-section .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; text-transform: uppercase; margin-bottom: 16px; line-height: 1.15; }
+        .cta-section .section-title span { color: var(--gold); }
+        .cta-text { font-size: 1.1rem; color: var(--white-dim); max-width: 550px; margin: 0 auto 32px; line-height: 1.7; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* FOOTER */
+        .footer { background: var(--navy-light); border-top: 1px solid var(--navy-border); padding: 60px 24px 32px; }
+        .footer-inner { max-width: 1000px; margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+        .footer-brand { max-width: 360px; }
+        .footer-brand-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
+        .footer-brand-name span { color: var(--gold); }
+        .footer-brand p { font-size: 0.85rem; color: var(--white-dim); line-height: 1.6; }
+        .footer-links h4 { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 12px; }
+        .footer-links a { display: block; font-size: 0.85rem; color: var(--white-dim); margin-bottom: 8px; }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-bottom { border-top: 1px solid var(--navy-border); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .footer-bottom p { font-size: 0.75rem; color: var(--gray); }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy-light); flex-direction: column; padding: 20px 24px; gap: 16px; border-bottom: 1px solid var(--navy-border); }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .hero { padding: 120px 20px 60px; }
+            .article { padding: 48px 20px; }
+            .footer-top { flex-direction: column; }
+            .data-table { font-size: 0.85rem; }
+            .data-table th, .data-table td { padding: 10px 8px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+            <div class="nav-links">
+                <a href="/about.html">My Story</a>
+                <a href="/framework.html">The Protocol</a>
+                <a href="/services.html">Work With Me</a>
+                <a href="/calculator.html">Free Tools</a>
+                <a href="/calculator.html" class="nav-cta">Find Your Profit Leak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Restaurant Profit Recovery</div>
+            <h1>The Real Cost of Restaurant Staff Turnover: <span>$5,864 Per Employee</span></h1>
+            <p class="hero-sub">70-80% annual turnover. $117,000/year in invisible replacement costs. The biggest profit leak most operators never calculate.</p>
+        </div>
+    </section>
+
+    <!-- ARTICLE -->
+    <article class="article">
+
+        <p><strong>I lost 10 employees in one year.</strong> I didn't track what it cost me. I was too busy covering their shifts, training replacements who'd leave in 8 weeks, and convincing myself this was just "the restaurant business."</p>
+
+        <p>Then I did the math. And the number made me sick.</p>
+
+        <p>According to research from Cornell University's Center for Hospitality Research, replacing a single hospitality employee costs <strong>$5,864</strong>. That's not a manager. Not a sous chef. A line-level employee.</p>
+
+        <p>Ten employees. $58,640. Gone. And it never appeared on a single line of my P&L.</p>
+
+        <p>That was the moment I realized turnover isn't a "people problem." It's a profit leak. The most expensive one I had. And I wasn't tracking it because nobody told me to.</p>
+
+
+        <h2>The Numbers: How Bad Is <span>Restaurant Turnover?</span></h2>
+
+        <p>The U.S. Bureau of Labor Statistics reports that the leisure and hospitality sector has the highest employee turnover of any industry in America. <strong>70-80% annually.</strong> For every 10 employees you have today, seven to eight will be gone by this time next year.</p>
+
+        <p>The average across all industries is 20-25%. We're 3-4x worse than everyone else. And we've normalized it.</p>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Region / Industry</th>
+                    <th>Annual Turnover</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>U.S. Hospitality</td>
+                    <td>70-80%</td>
+                </tr>
+                <tr>
+                    <td>U.K. Hospitality</td>
+                    <td>~70%</td>
+                </tr>
+                <tr>
+                    <td>Australia Hospitality</td>
+                    <td>38.7%</td>
+                </tr>
+                <tr>
+                    <td>U.S. All Industries Average</td>
+                    <td>20-25%</td>
+                </tr>
+                <tr>
+                    <td>Costco (retail comparison)</td>
+                    <td>~8%</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="source-note">Sources: Bureau of Labor Statistics, YouGov, Hospitality &amp; Catering News, Mercer Survey</p>
+
+        <p>It's not an American problem. It's not a "post-COVID" problem. It's a <strong>systems problem</strong> that the industry has accepted as normal for decades.</p>
+
+
+        <h2>What Replacing One Employee <span>Actually Costs</span></h2>
+
+        <p>Cornell's study broke down the $5,864 replacement cost per employee. And the breakdown is what hurts:</p>
+
+        <div class="stat-callout">
+            <div class="stat-callout-num">$5,864</div>
+            <div class="stat-callout-label">Cost to Replace One Hospitality Employee</div>
+            <div class="stat-callout-desc">Over half the cost is lost productivity &mdash; the invisible bleed while your new hire gets up to speed.</div>
+        </div>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Cost Category</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Lost Productivity</strong> (new hire ramp-up)</td>
+                    <td>$3,049 (52%)</td>
+                </tr>
+                <tr>
+                    <td>Recruitment (ads, referrals, time)</td>
+                    <td>$1,173 (20%)</td>
+                </tr>
+                <tr>
+                    <td>Orientation &amp; Training</td>
+                    <td>$821 (14%)</td>
+                </tr>
+                <tr>
+                    <td>Selection (interviews, screening)</td>
+                    <td>$645 (11%)</td>
+                </tr>
+                <tr>
+                    <td>Pre-departure (disengaged period)</td>
+                    <td>$176 (3%)</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="source-note">Source: Cornell Center for Hospitality Research (J. Bruce Tracey &amp; Timothy R. Hinkin)</p>
+
+        <p>Look at that first line. <strong>52% is lost productivity.</strong> Not the job ad. Not the interview time. It's the weeks and months where your new hire can't plate to standard, doesn't know the menu, slows down the line, and makes the rest of your team pick up the slack.</p>
+
+        <p>And that "pick up the slack" part? It doesn't have a line item either. But it shows up when your best cook starts looking tired. Then resentful. Then gone.</p>
+
+        <p>That's when one replacement becomes two.</p>
+
+        <h3>Scale It to Your Restaurant</h3>
+
+        <p>A more recent analysis from 7shifts breaks it down by position:</p>
+
+        <ul>
+            <li><strong>Front-of-house replacement:</strong> $1,056 average</li>
+            <li><strong>Back-of-house replacement:</strong> $1,491 (41% more than FOH)</li>
+            <li><strong>Management replacement:</strong> $2,611 per position</li>
+        </ul>
+
+        <p>Now multiply by your actual numbers:</p>
+
+        <ul>
+            <li>Lose 10 employees/year &rarr; <strong>$58,640</strong></li>
+            <li>Lose 15 employees/year &rarr; <strong>$87,960</strong></li>
+            <li>Lose 20 employees/year &rarr; <strong>$117,280</strong></li>
+        </ul>
+
+        <p>Hotels with above-average turnover suffer up to <strong>12% lower customer satisfaction scores</strong>. Lower satisfaction means fewer repeat customers. Fewer repeat customers means higher marketing costs to replace them. The bleed compounds.</p>
+
+        <div class="pull-quote">
+            <p>"I used to think turnover was just the cost of doing business. Then I calculated the actual number. <span>$58,000 in one year.</span> That wasn't the cost of doing business. That was a profit leak I'd been ignoring because nobody told me to count it."</p>
+        </div>
+
+
+        <!-- MID-ARTICLE CTA -->
+        <div class="mid-cta">
+            <h3>Is Turnover Your <span>Biggest Leak?</span></h3>
+            <p>Staff turnover is one of 9 profit leak categories in the free calculator. Find out where YOUR restaurant is bleeding the most. Takes 5 minutes.</p>
+            <a href="/calculator.html" class="btn-primary">Find Your #1 Profit Leak</a>
+        </div>
+
+
+        <h2>Why Restaurant Employees <span>Actually Leave</span></h2>
+
+        <p>The industry loves to say "nobody wants to work anymore." The data says something different. Employees don't leave restaurants. They leave <strong>bad systems</strong>.</p>
+
+        <ul>
+            <li><strong>Low or inconsistent pay</strong> &mdash; Hospitality wages remain among the lowest of any sector. Tip-dependent income creates instability.</li>
+            <li><strong>Unpredictable scheduling</strong> &mdash; Staff who receive schedules only days in advance can't plan childcare, transportation, or second jobs. Predictable scheduling alone can cut turnover by up to 20%.</li>
+            <li><strong>Bad management</strong> &mdash; Job satisfaction is heavily linked to the direct supervisor relationship. Poor leadership is one of the strongest predictors of departure.</li>
+            <li><strong>No career path</strong> &mdash; Many hospitality workers see no clear route to promotion or skill development. No future means no loyalty.</li>
+            <li><strong>No onboarding</strong> &mdash; New hires get an apron and a "follow that guy." Undertrained employees make mistakes, feel stressed, and leave early.</li>
+            <li><strong>Burnout and overwork</strong> &mdash; 80-100 hour weeks. Highest substance abuse rates in any industry. Working harder isn't a retention strategy.</li>
+        </ul>
+
+        <p>Notice what's not on the list: "lazy workers," "this generation doesn't want to work," or "it's just how restaurants are."</p>
+
+        <p>Every item on that list is a system that either exists or doesn't. Scheduling system. Onboarding system. Pay structure. Career ladder. SOPs.</p>
+
+        <p><strong>The companies that fix these systems keep their people.</strong></p>
+
+
+        <h2>The Proof: Companies That <span>Solved Turnover</span></h2>
+
+        <p>This isn't theory. There are operators right now running 8% turnover in the same labor market where everyone else runs 70%.</p>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Costco</strong> &mdash; Above-market pay, benefits, promote from within</td>
+                    <td>~8% turnover</td>
+                </tr>
+                <tr>
+                    <td><strong>In-N-Out</strong> &mdash; $18-20/hr starting, internal-only management, simple menu</td>
+                    <td>Far below 150% QSR avg</td>
+                </tr>
+                <tr>
+                    <td><strong>Hilton</strong> &mdash; Structured training, wellness program, career development</td>
+                    <td>96% retained at 6 months</td>
+                </tr>
+                <tr>
+                    <td><strong>Shake Shack</strong> &mdash; 4-day work week pilot, stock options, values-based hiring</td>
+                    <td>Best staffing "in years"</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Hilton trained 15,000 employees through structured programs. <strong>96% were retained after six months. 40% were promoted.</strong></p>
+
+        <p>In-N-Out requires every store manager to start as an Associate. No outside hires for management. Some managers have been with the company for 10+ years. In fast food.</p>
+
+        <p>They didn't find "better people." They built better systems. Same labor market. Different operating system. Different results.</p>
+
+        <p>Sound familiar? <a href="/framework.html">That's the same principle behind the 21-Day Recovery Protocol</a>. Same person. Same kitchen. Different operating system.</p>
+
+
+        <h2>The Fix: Systems That <span>Reduce Turnover</span></h2>
+
+        <p>You don't need a Hilton-sized budget. You need systems that work when you're exhausted. Here's what the research says actually moves the needle, ranked by impact:</p>
+
+        <h3>1. Fix Your Pay Structure</h3>
+        <p>Competitive compensation is the single most impactful lever. Costco proves this at scale. But you don't have to match Costco. Even $1-2/hour above your local market yields significant retention savings versus the $5,864 cost of replacing each lost employee.</p>
+
+        <h3>2. Make Your Schedule Predictable</h3>
+        <p>Post schedules at least two weeks in advance. Use scheduling software so staff can input availability and swap shifts. <strong>Schedule predictability has a stronger effect on retention than flexibility alone.</strong> This costs you nothing except a decision to plan ahead.</p>
+
+        <h3>3. Build Real Onboarding</h3>
+        <p>Companies with structured onboarding programs retain <strong>82% more employees</strong> and see productivity gains exceeding 70%. Employees who go through real onboarding are 69% more likely to stay for at least three years. Stop handing new hires an apron and hoping for the best. Build a written 30-60-90 day plan with check-ins and skill milestones.</p>
+
+        <h3>4. Write Your SOPs</h3>
+        <p>Standard Operating Procedures reduce stress by giving employees clear expectations and consistent workflows. New hires get up to speed faster. Mistakes drop. Confidence rises. In-N-Out's simple, unchanging menu lets employees actually master their jobs. <strong>You can't master a system that doesn't exist on paper.</strong></p>
+
+        <h3>5. Create Career Paths</h3>
+        <p>Show employees what advancement looks like. Promote from within whenever possible. Publicize internal promotions. If the best-case scenario for your dishwasher is "still here next year," you'll lose them to anyone who offers a future.</p>
+
+        <h3>6. Track Your Data</h3>
+        <p>Monitor monthly quit rates. Track time-to-fill. Calculate your actual cost-per-replacement. Build a simple retention dashboard. You can't fix what you don't measure. And right now, most operators don't measure turnover cost at all.</p>
+
+        <div class="pull-quote">
+            <p>"Cutting turnover in half saves <span>$50,000-$60,000 per year.</span> That money goes directly back into your business. The question isn't whether you can afford to build systems. It's whether you can afford not to."</p>
+        </div>
+
+
+        <h2>The Math Is <span>Straightforward</span></h2>
+
+        <p>At $5,864 per lost employee, a restaurant that loses 20 workers a year spends over $117,000 on turnover. Cut that in half by investing in better pay, structured onboarding, predictable scheduling, and clear career paths. You save $50,000-$60,000 annually.</p>
+
+        <p>That's not a theory. That's money you can reinvest in equipment, renovations, marketing, or &mdash; for once &mdash; yourself.</p>
+
+        <p>Here's what I learned after losing my restaurant, rebuilding from $180K in debt, and running the same kitchen for 1,200+ days with systems instead of hustle:</p>
+
+        <p><strong>Turnover is a symptom. The disease is missing systems.</strong></p>
+
+        <p>Staff turnover. Food waste. Menu mispricing. Labor misallocation. They're all the same problem wearing different masks. And they all respond to the same treatment: <a href="/framework.html">systems that work when you're at 60% capacity</a>.</p>
+
+        <p>Because that's where you live most days. And your systems need to work there too.</p>
+
+    </article>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2 class="section-title">Where Is Your Restaurant<br><span>Bleeding Money?</span></h2>
+        <p class="cta-text">Staff turnover is one of 9 profit leak categories. Find your #1 leak in 5 minutes. Built by an operator who found $41,000 in waste he didn't know about.</p>
+        <div class="cta-buttons">
+            <a href="/calculator.html" class="btn-primary">Find Your #1 Profit Leak</a>
+            <a href="/services.html" class="btn-secondary">Work With Me</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
+                    <p>Built from 20 years of Master Chef kitchen operations across 5 countries.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigate</h4>
+                    <a href="/about.html">My Story</a>
+                    <a href="/framework.html">The 21-Day Protocol</a>
+                    <a href="/services.html">Work With Me</a>
+                    <a href="/calculator.html">Profit Leak Calculator</a>
+                    <a href="/assessment.html">Menu Profit Score</a>
+                    <a href="/restaurant-staff-turnover-cost.html">Staff Turnover Guide</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="https://www.linkedin.com/in/christian-schiffner/" target="_blank">LinkedIn</a>
+                    <a href="https://substack.com/@thegrumpychef" target="_blank">Newsletter</a>
+                    <a href="mailto:christian@thegrumpychef.ca">Email</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Christian Schiffner | The Grumpy Chef | German Master Chef (Kuechenmeister)</p>
+                <p>Dawson City, Yukon &bull; From the Black Forest, Germany</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
