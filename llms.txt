@@ -16,6 +16,9 @@
 - [Restaurant Profit Leak Scorecard](https://thegrumpychef.ca/scorecard.html): 12-question self-assessment that reveals where profit is leaking across food cost, labor, waste, and operations
 - [Academy Waitlist](https://thegrumpychef.ca/academy.html): Founding member access for the 90-day restaurant profit program
 
+## Digital Products
+- [The Grumpy Chef Toolkit](https://thegrumpychef.ca/toolkit): 8 Excel spreadsheet templates for restaurant profit recovery — recipe costing, weekly prime cost tracking, menu engineering matrix, par level ordering, waste tracking, delivery profitability, menu psychology audit, and vendor price comparison. $47 one-time purchase. Built by a Master Chef with 20+ years of operations experience. Each template includes pre-built formulas, instruction tabs, and sample data.
+
 ## Topics of Expertise
 - Restaurant food cost control and prime cost management
 - Kitchen labor optimization and scheduling

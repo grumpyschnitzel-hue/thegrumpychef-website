@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Grumpy Chef Toolkit — 8 Excel Templates for Restaurant Profit Recovery</title>
+    <meta name="description" content="8 Excel spreadsheet templates built by a Master Chef who lost $180K and rebuilt. Recipe costing, prime cost tracking, menu engineering, waste logs, and more. $47 one-time.">
+    <meta property="og:title" content="The Grumpy Chef Toolkit — 8 Templates to Stop Losing Money">
+    <meta property="og:description" content="The spreadsheets I built to save my own kitchen. 8 Excel templates for recipe costing, prime cost, menu engineering, waste tracking, and more. $47 instant download.">
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://thegrumpychef.ca/toolkit">
+    <link rel="canonical" href="https://thegrumpychef.ca/toolkit">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET
+           ============================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --navy-hover: #162642;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gray-dark: #2D3748;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --blue: #00A6D6;
+            --blue-dim: #008AB3;
+            --blue-glow: rgba(0, 166, 214, 0.10);
+            --red: #C53030;
+            --red-glow: rgba(197, 48, 48, 0.10);
+            --green: #2F855A;
+            --green-glow: rgba(47, 133, 90, 0.10);
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+        .gold-top { height: 3px; background: linear-gradient(90deg, var(--gold), var(--blue), var(--gold)); }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            padding: 56px 0 48px;
+            background: linear-gradient(180deg, #0C1A2E 0%, var(--navy) 100%);
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .hero__layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+        .hero__content { flex: 1; }
+        .hero__brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .hero__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(28px, 5.5vw, 46px);
+            line-height: 1.08;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .hero__sub {
+            font-size: 17px;
+            color: var(--white-dim);
+            line-height: 1.55;
+            margin-bottom: 28px;
+        }
+        .hero__sub strong { color: var(--gold); font-weight: 600; }
+        .hero__photo { flex-shrink: 0; text-align: center; }
+        .brand-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
+            display: block;
+        }
+        .brand-photo-caption {
+            font-size: 11px;
+            color: var(--gray);
+            text-align: center;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
+        /* Price badge */
+        .price-badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold);
+            background: var(--gold-glow);
+            border: 1px solid var(--gold-border);
+            border-radius: 6px;
+            padding: 8px 20px;
+            margin-bottom: 24px;
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.12s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn--gold {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .btn--gold:hover {
+            background: var(--gold-dim);
+        }
+        .btn--big {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        /* ============================================
+           SECTIONS
+           ============================================ */
+        .section {
+            padding: 56px 0;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .section--no-border { border-bottom: none; }
+        .section__label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 12px;
+        }
+        .section__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(24px, 5vw, 36px);
+            text-transform: uppercase;
+            line-height: 1.12;
+            margin-bottom: 20px;
+        }
+        .section__text {
+            font-size: 16px;
+            color: var(--white-dim);
+            line-height: 1.65;
+            margin-bottom: 16px;
+        }
+        .section__text strong { color: var(--white); font-weight: 600; }
+        .section__text em { color: var(--gold); font-style: normal; font-weight: 600; }
+        .text-center { text-align: center; }
+
+        /* ============================================
+           STAT CALLOUT
+           ============================================ */
+        .stat-callout {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-left: 3px solid var(--gold);
+            border-radius: 6px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            font-size: 15px;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+        .stat-callout strong { color: var(--gold); }
+
+        /* ============================================
+           TEMPLATE CARDS
+           ============================================ */
+        .template-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-top: 28px;
+        }
+        .template-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            padding: 24px;
+            transition: border-color 0.2s;
+        }
+        .template-card:hover {
+            border-color: var(--gold-border);
+        }
+        .template-card__header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+        .template-card__num {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy);
+            background: var(--gold);
+            border-radius: 4px;
+            width: 32px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .template-card__name {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--gold);
+            line-height: 1.2;
+        }
+        .template-card__desc {
+            font-size: 14px;
+            color: var(--white-dim);
+            line-height: 1.55;
+            margin-bottom: 8px;
+        }
+        .template-card__insight {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        /* ============================================
+           FEATURE LIST
+           ============================================ */
+        .feature-list {
+            list-style: none;
+            margin: 24px 0;
+        }
+        .feature-list li {
+            position: relative;
+            padding: 10px 0 10px 32px;
+            font-size: 15px;
+            color: var(--white-dim);
+            line-height: 1.55;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .feature-list li:last-child { border-bottom: none; }
+        .feature-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 16px;
+            height: 16px;
+            background: var(--gold);
+            border-radius: 50%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%230A1628' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 10px;
+        }
+        .feature-list li strong { color: var(--white); font-weight: 600; }
+
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta-section {
+            padding: 56px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .cta-section__price {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(20px, 4vw, 28px);
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+        .cta-section__sub {
+            font-size: 14px;
+            color: var(--gray);
+            margin-top: 16px;
+        }
+
+        /* ============================================
+           CREDIBILITY
+           ============================================ */
+        .cred {
+            display: flex;
+            align-items: flex-start;
+            gap: 28px;
+        }
+        .cred__photo {
+            flex-shrink: 0;
+        }
+        .cred__photo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
+        }
+        .cred__text {
+            flex: 1;
+        }
+        .cred__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .cred__detail {
+            font-size: 14px;
+            color: var(--white-dim);
+            line-height: 1.65;
+            margin-bottom: 10px;
+        }
+        .cred__detail strong { color: var(--gold); font-weight: 600; }
+        .cred__tags {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 16px;
+        }
+
+        /* ============================================
+           FAQ ACCORDION
+           ============================================ */
+        .faq-list { margin-top: 24px; }
+        .faq-item {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .faq-q {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--white);
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            padding: 18px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            transition: color 0.12s;
+        }
+        .faq-q:hover { color: var(--gold); }
+        .faq-q__icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            color: var(--gray);
+            transition: transform 0.2s;
+        }
+        .faq-item.open .faq-q__icon { transform: rotate(45deg); }
+        .faq-item.open .faq-q { color: var(--gold); }
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-a__inner {
+            padding: 0 24px 18px;
+            font-size: 14px;
+            color: var(--white-dim);
+            line-height: 1.65;
+        }
+
+        /* ============================================
+           GUARANTEE
+           ============================================ */
+        .guarantee {
+            background: var(--navy-card);
+            border: 2px solid var(--gold-border);
+            border-radius: 8px;
+            padding: 32px 28px;
+            text-align: center;
+        }
+        .guarantee__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 24px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .guarantee__text {
+            font-size: 15px;
+            color: var(--white-dim);
+            line-height: 1.65;
+        }
+        .guarantee__text a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .guarantee__text a:hover { text-decoration: underline; }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--navy-border);
+            text-align: center;
+        }
+        .footer__brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+        .footer__line {
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 2px;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 600px) {
+            .container { padding: 0 16px; }
+            .hero { padding: 36px 0 32px; }
+            .hero__layout { flex-direction: column; align-items: center; text-align: center; }
+            .hero__photo { order: -1; }
+            .brand-photo { width: 100px; height: 100px; }
+            .section { padding: 40px 0; }
+            .cta-section { padding: 40px 0; }
+            .btn { width: 100%; max-width: none; padding: 16px 24px; font-size: 14px; }
+            .cred { flex-direction: column; align-items: center; text-align: center; }
+            .cred__photo img { width: 80px; height: 80px; }
+            .faq-q { padding: 16px 18px; font-size: 14px; }
+            .faq-a__inner { padding: 0 18px 16px; }
+            .guarantee { padding: 24px 20px; }
+        }
+    </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "The Grumpy Chef Toolkit",
+        "description": "8 Excel spreadsheet templates for restaurant profit recovery — recipe costing, prime cost tracking, menu engineering, par levels, waste tracking, delivery profitability, menu psychology audit, and vendor comparison.",
+        "brand": {
+            "@type": "Brand",
+            "name": "The Grumpy Chef"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "47.00",
+            "priceCurrency": "CAD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://thegrumpychef.ca/toolkit"
+        },
+        "creator": {
+            "@type": "Person",
+            "name": "Christian Schiffner",
+            "jobTitle": "German Master Chef (Küchenmeister)",
+            "url": "https://thegrumpychef.ca/about.html"
+        }
+    }
+    </script>
+</head>
+<body>
+
+<!-- Gold Top Bar -->
+<div class="gold-top"></div>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<header class="hero">
+    <div class="container">
+        <div class="hero__layout">
+            <div class="hero__content">
+                <div class="hero__brand">The Grumpy Chef</div>
+                <h1 class="hero__title">The Spreadsheets I Built to Save My Own Kitchen</h1>
+                <p class="hero__sub">You're losing money every week and don't even know where. These <strong>8 Excel templates</strong> show you exactly where — and how to fix it.</p>
+                <div class="price-badge">$47 — Instant Download</div>
+                <br>
+                <button class="btn btn--gold btn--big" onclick="buyToolkit()">Get the Toolkit — $47</button>
+            </div>
+            <div class="hero__photo">
+                <img class="brand-photo" src="/images/Kitchen1.jpg" alt="Christian Schiffner — The Grumpy Chef">
+                <div class="brand-photo-caption">Christian Schiffner<br>German Master Chef (Küchenmeister)<br>20+ Years Operations</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ============================================
+     PROBLEM STATEMENT
+     ============================================ -->
+<section class="section">
+    <div class="container">
+        <div class="section__label">The Problem</div>
+        <h2 class="section__title">You're Running Blind — and It's Costing You Everything</h2>
+        <p class="section__text">
+            <strong>97% of restaurant operators</strong> cite rising food costs as their top challenge. <strong>38% generated zero profit last year.</strong> Not a loss. Zero. Nothing left after 70-hour weeks.
+        </p>
+        <p class="section__text">
+            Here's the pattern I see in every kitchen I walk into: the numbers get checked monthly. Maybe quarterly. By the time you see the damage, you've been bleeding for weeks.
+        </p>
+        <p class="section__text">
+            That's not diagnosis. That's an autopsy.
+        </p>
+        <div class="stat-callout">
+            <strong>You don't have a food cost problem.</strong> You have a visibility problem. You can't fix what you can't see — and right now, you can't see where the money is going.
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     WHAT'S INCLUDED — 8 TEMPLATES
+     ============================================ -->
+<section class="section">
+    <div class="container">
+        <div class="section__label">What's Inside</div>
+        <h2 class="section__title">8 Templates. Every Number You Need.</h2>
+        <p class="section__text">
+            Each template was built in a real kitchen, for real operations. Not theory. Not a textbook exercise. These are the exact spreadsheets I built when I was rebuilding my own restaurant.
+        </p>
+
+        <div class="template-grid">
+            <!-- Template 01 -->
+            <div class="template-card">
+                <div class="template-card__header">
+                    <div class="template-card__num">01</div>
+                    <div class="template-card__name">Recipe Costing / Plate Cost Calculator</div>
+                </div>
+                <div class="template-card__desc">Break down every dish to the penny. Input ingredient costs and quantities, see your true plate cost and target margin instantly.</div>
+                <div class="template-card__insight">Most operators guess plate costs within 15-20%. This template eliminates the guessing.</div>
+            </div>
+
+            <!-- Template 02 -->
+            <div class="template-card">
+                <div class="template-card__header">
+                    <div class="template-card__num">02</div>
+                    <div class="template-card__name">Weekly Prime Cost Tracker</div>
+                </div>
+                <div class="template-card__desc">Track food cost + labor cost as a percentage of revenue — the single most important number in your restaurant. Weekly, not monthly.</div>
+                <div class="template-card__insight">Prime cost over 65%? You're losing money every week. This tracker catches the trend before it kills you.</div>
+            </div>
+
+            <!-- Template 03 -->
+            <div class="template-card">
+                <div class="template-card__header">
+                    <div class="template-card__num">03</div>
+                    <div class="template-card__name">Menu Engineering Matrix</div>
+                </div>
+                <div class="template-card__desc">Classify every menu item as a Star, Plowhorse, Puzzle, or Dog. See which dishes make money and which ones just take up space.</div>
+                <div class="template-card__insight">The average restaurant has 20-30% dead weight on the menu. This matrix shows you exactly which items to cut, reprice, or promote.</div>
+            </div>
+
+            <!-- Template 04 -->
+            <div class="template-card">
+                <div class="template-card__header">
+                    <div class="template-card__num">04</div>
+                    <div class="template-card__name">Par Level Order Calculator</div>
+                </div>
+                <div class="template-card__desc">Set minimum and maximum stock levels for every item. Stop over-ordering. Stop running out mid-service.</div>
+                <div class="template-card__insight">Over-ordering is the invisible leak. This calculator keeps inventory tight without the 86'd panic.</div>
+            </div>
+
+            <!-- Template 05 -->
+            <div class="template-card">
+                <div class="template-card__header">
+                    <div class="template-card__num">05</div>
+                    <div class="template-card__name">Waste Tracking Log</div>
+                </div>
+                <div class="template-card__desc">Log every waste event by category, cost, and cause. See patterns over time — spoilage, overproduction, plate waste, prep errors.</div>
+                <div class="template-card__insight">The average restaurant wastes 4-10% of food purchased. Tracking it is the first step to halving it.</div>
+            </div>
+
+            <!-- Template 06 -->
+            <div class="template-card">
+                <div class="template-card__header">
+                    <div class="template-card__num">06</div>
+                    <div class="template-card__name">Delivery Profitability Calculator</div>
+                </div>
+                <div class="template-card__desc">See your real margin on delivery orders after platform fees, packaging, and food cost. Not the vanity revenue number — the actual profit.</div>
+                <div class="template-card__insight">Many operators lose money on delivery and don't know it. Platform fees of 15-30% eat margins fast.</div>
+            </div>
+
+            <!-- Template 07 -->
+            <div class="template-card">
+                <div class="template-card__header">
+                    <div class="template-card__num">07</div>
+                    <div class="template-card__name">Menu Psychology Audit Checklist</div>
+                </div>
+                <div class="template-card__desc">Score your menu design against 20+ psychology principles — anchoring, decoy pricing, golden triangle placement, description quality.</div>
+                <div class="template-card__insight">Menu engineering research shows a well-designed menu can increase average check by 8-15% with zero additional food cost.</div>
+            </div>
+
+            <!-- Template 08 -->
+            <div class="template-card">
+                <div class="template-card__header">
+                    <div class="template-card__num">08</div>
+                    <div class="template-card__name">Vendor Price Comparison Tracker</div>
+                </div>
+                <div class="template-card__desc">Compare pricing across vendors for your top items. Track price changes over time. Know exactly when a supplier is creeping prices.</div>
+                <div class="template-card__insight">Most operators use one supplier out of habit. A 5-minute comparison on your top 20 items can save thousands per year.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     WHAT EVERY TEMPLATE INCLUDES
+     ============================================ -->
+<section class="section">
+    <div class="container">
+        <div class="section__label">Built for Operators</div>
+        <h2 class="section__title">What Every Template Includes</h2>
+        <ul class="feature-list">
+            <li><strong>Pre-built formulas</strong> — just enter your numbers</li>
+            <li><strong>Instructions tab</strong> with step-by-step setup guide</li>
+            <li><strong>Sample data</strong> so you can see how it works immediately</li>
+            <li><strong>Professional formatting</strong> with conditional highlighting (green/yellow/red)</li>
+            <li><strong>Works in Excel AND Google Sheets</strong> — no special software needed</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ============================================
+     MID-PAGE CTA
+     ============================================ -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-section__price">$47 — One Payment. All 8 Templates. Yours Forever.</div>
+        <button class="btn btn--gold btn--big" onclick="buyToolkit()">Get the Toolkit — $47</button>
+        <div class="cta-section__sub">Instant download. No subscription. No recurring fees.</div>
+    </div>
+</section>
+
+<!-- ============================================
+     CREDIBILITY / ABOUT THE CHEF
+     ============================================ -->
+<section class="section">
+    <div class="container">
+        <div class="section__label">Who Built This</div>
+        <h2 class="section__title">Built by a Chef. For Chefs.</h2>
+        <div class="cred">
+            <div class="cred__photo">
+                <img src="/images/Kitchen1.jpg" alt="Christian Schiffner">
+            </div>
+            <div class="cred__text">
+                <div class="cred__tags">German Master Chef (Küchenmeister) · 20+ Years · Germany, Switzerland, Austria, Spain, Canada</div>
+                <p class="cred__detail">
+                    I lost $180K and rebuilt. These are the exact tools I built for my own kitchen first — when I had no budget for software and no time for consultants.
+                </p>
+                <p class="cred__detail">
+                    <strong>This isn't a consultant pitch.</strong> These are an operator's tools. Built from scars, not textbooks. Every formula in these spreadsheets exists because I needed it at 11pm after a double, not because some MBA thought it looked good in a slide deck.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FAQ
+     ============================================ -->
+<section class="section">
+    <div class="container">
+        <div class="section__label">Questions</div>
+        <h2 class="section__title">Frequently Asked</h2>
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    What format are the templates?
+                    <svg class="faq-q__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a__inner">
+                    Excel (.xlsx) files. They also work perfectly in Google Sheets — just upload to Google Drive and open with Google Sheets.
+                </div></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Do I need any special software?
+                    <svg class="faq-q__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a__inner">
+                    Excel or Google Sheets. That's it. No apps to install, no accounts to create, no subscriptions.
+                </div></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    What if I'm not tech-savvy?
+                    <svg class="faq-q__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a__inner">
+                    Every template uses the same simple system: yellow cells are where you type your numbers. Gray cells calculate automatically. Each file has an Instructions tab that walks you through setup step by step. If you can type a number into a cell, you can use these.
+                </div></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Is this for my type of restaurant?
+                    <svg class="faq-q__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a__inner">
+                    If you have a menu and buy food, these templates work. Fine dining, casual, fast-casual, food truck, catering — the math is the same. Recipe costing, prime cost, waste, and vendor tracking apply to every food service operation.
+                </div></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    What's the refund policy?
+                    <svg class="faq-q__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a__inner">
+                    30-day money-back guarantee. No questions asked. If these templates don't help you find money you're currently losing, email <a href="mailto:chris@thegrumpychef.ca" style="color:var(--gold);">chris@thegrumpychef.ca</a> and I'll refund you within 48 hours.
+                </div></div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Do I get updates?
+                    <svg class="faq-q__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><div class="faq-a__inner">
+                    Yes. Any future updates to the templates are included. When I improve a formula or add a feature, you'll get the updated files.
+                </div></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     GUARANTEE
+     ============================================ -->
+<section class="section">
+    <div class="container">
+        <div class="guarantee">
+            <div class="guarantee__title">30-Day Money-Back Guarantee</div>
+            <p class="guarantee__text">
+                If these templates don't help you find money you're currently losing, email <a href="mailto:chris@thegrumpychef.ca">chris@thegrumpychef.ca</a> and I'll refund you within 48 hours. No questions asked.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FINAL CTA
+     ============================================ -->
+<section class="cta-section" style="border-bottom:none;">
+    <div class="container">
+        <h2 class="section__title" style="margin-bottom:8px;">Still Losing Money You Can't See?</h2>
+        <p class="section__text text-center" style="margin-bottom:28px;">Stop guessing. Start knowing.</p>
+        <button class="btn btn--gold btn--big" onclick="buyToolkit()">Get the Toolkit — $47</button>
+        <div class="cta-section__sub">Join operators who stopped guessing and started knowing.</div>
+    </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__brand">The Grumpy Chef</div>
+        <div class="footer__line">Systems that work when you're exhausted.</div>
+        <div class="footer__line" style="color:var(--gray-dark);">Not a consultant. An operator who learned the hard way.</div>
+    </div>
+</footer>
+
+<!-- ============================================
+     STRIPE CHECKOUT
+     ============================================ -->
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    // ============================================
+    // STRIPE CONFIGURATION
+    // ============================================
+    // TODO: Replace with your real Stripe Publishable Key
+    // Test mode key starts with pk_test_
+    // Live mode key starts with pk_live_
+    var STRIPE_PUBLISHABLE_KEY = 'pk_test_XXXX';
+
+    // TODO: Replace with your real Stripe Price ID
+    // Created in Stripe Dashboard → Products → The Grumpy Chef Toolkit → $47
+    // Price ID starts with price_
+    var STRIPE_PRICE_ID = 'PRICE_ID_HERE';
+
+    var stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+
+    function buyToolkit() {
+        stripe.redirectToCheckout({
+            lineItems: [{ price: STRIPE_PRICE_ID, quantity: 1 }],
+            mode: 'payment',
+            successUrl: window.location.origin + '/toolkit/thank-you',
+            cancelUrl: window.location.origin + '/toolkit'
+        }).then(function(result) {
+            if (result.error) {
+                alert(result.error.message);
+            }
+        });
+    }
+
+    // ============================================
+    // FAQ ACCORDION
+    // ============================================
+    function toggleFaq(btn) {
+        var item = btn.parentElement;
+        var answer = item.querySelector('.faq-a');
+        var isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(function(el) {
+            el.classList.remove('open');
+            el.querySelector('.faq-a').style.maxHeight = null;
+        });
+
+        // Open clicked (if it was closed)
+        if (!isOpen) {
+            item.classList.add('open');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+    }
+</script>
+
+</body>
+</html>
