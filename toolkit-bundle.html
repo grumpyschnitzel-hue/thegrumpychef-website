@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Operator's Toolkit — 8 Spreadsheets + Dashboard | The Grumpy Chef</title>
+    <meta name="description" content="8 Excel templates + 1 operations dashboard. Recipe costing, prime cost tracking, menu engineering, waste logs, vendor comparison, and more. $47 one-time. Built by a German Master Chef who found $41,000 in hidden waste.">
+    <meta property="og:title" content="Restaurant Operator's Toolkit — 8 Spreadsheets + Dashboard for $47">
+    <meta property="og:description" content="Stop guessing. Start tracking. 8 Excel templates + 1 operations dashboard that ties them together. Built by a German Master Chef with 20+ years in the kitchen.">
+    <meta property="og:type" content="product">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET & TOKENS
+           ============================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --navy-hover: #162642;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gray-dark: #2D3748;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --blue: #00A6D6;
+            --red: #C53030;
+            --red-soft: #E53E3E;
+            --green: #2F855A;
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           GLOBAL
+           ============================================ */
+        .gold-top { height: 3px; background: linear-gradient(90deg, var(--gold), var(--blue), var(--gold)); }
+        .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+        .container--wide { max-width: 900px; }
+        strong { color: var(--gold); font-weight: 600; }
+        .text-dim { color: var(--white-dim); }
+        .text-gold { color: var(--gold); }
+        .text-center { text-align: center; }
+
+        /* ============================================
+           CTA BUTTON
+           ============================================ */
+        .cta-btn {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 18px 40px;
+            border-radius: 8px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border: 2px solid var(--gold);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .cta-btn:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+        .cta-sub {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--white-dim);
+            margin-top: 10px;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            padding: 72px 24px 64px;
+            background: linear-gradient(180deg, #0C1A2E 0%, var(--navy) 100%);
+            border-bottom: 1px solid var(--navy-border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center top, rgba(212,175,55,0.04) 0%, transparent 60%);
+        }
+        .hero-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero__badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--gold);
+            border: 1px solid var(--gold-border);
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+        .hero__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(2.2rem, 6vw, 3.6rem);
+            line-height: 1.08;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+        .hero__title span { color: var(--gold); }
+        .hero__sub {
+            font-size: 1.1rem;
+            color: var(--white-dim);
+            max-width: 600px;
+            line-height: 1.65;
+            margin-bottom: 36px;
+        }
+        .hero__proof {
+            display: flex;
+            gap: 32px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .hero__proof-item {
+            text-align: center;
+        }
+        .hero__proof-num {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .hero__proof-label {
+            font-size: 0.7rem;
+            color: var(--white-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* ============================================
+           HERO AUTHOR
+           ============================================ */
+        .hero__author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+        .hero__author-photo {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .hero__author-info {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            line-height: 1.5;
+        }
+        .hero__author-name {
+            font-weight: 700;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           SECTIONS
+           ============================================ */
+        .section {
+            padding: 80px 24px;
+        }
+        .section--alt {
+            background: var(--navy-light);
+            border-top: 1px solid var(--navy-border);
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .section__label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .section__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            line-height: 1.15;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .section__text {
+            font-size: 1.05rem;
+            color: var(--white-dim);
+            line-height: 1.75;
+            margin-bottom: 20px;
+        }
+        .section__text strong {
+            color: var(--white);
+        }
+
+        /* ============================================
+           TEMPLATE CARDS
+           ============================================ */
+        .template-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 36px 0;
+        }
+        .template-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        .template-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gold);
+        }
+        .template-card__number {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .template-card__title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .template-card__desc {
+            font-size: 0.95rem;
+            color: var(--white-dim);
+            line-height: 1.7;
+        }
+
+        /* Dashboard card — special highlight */
+        .template-card--dashboard {
+            border: 2px solid var(--gold-border);
+            background: linear-gradient(135deg, var(--navy-card) 0%, rgba(212, 175, 55, 0.04) 100%);
+        }
+        .template-card--dashboard::before {
+            width: 4px;
+            background: linear-gradient(180deg, var(--gold), var(--blue));
+        }
+
+        /* ============================================
+           MATH / ROI CARDS
+           ============================================ */
+        .math-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 32px 0;
+        }
+        .math-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 10px;
+            padding: 24px;
+            text-align: center;
+        }
+        .math-card__scenario {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .math-card__amount {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--green);
+        }
+        .math-card__amount span {
+            color: var(--white-dim);
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 400;
+        }
+        .math-card--highlight {
+            border-color: var(--gold-border);
+            background: linear-gradient(135deg, var(--navy-card) 0%, rgba(212, 175, 55, 0.06) 100%);
+        }
+        .math-card--highlight .math-card__amount {
+            color: var(--gold);
+        }
+
+        /* ============================================
+           PRICE SECTION
+           ============================================ */
+        .price-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+        .price-anchor {
+            font-size: 1rem;
+            color: var(--white-dim);
+            margin-bottom: 8px;
+        }
+        .price-anchor s {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        .price-main {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+        .price-note {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--gold-dim);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        /* ============================================
+           GUARANTEE
+           ============================================ */
+        .guarantee {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 32px;
+            margin: 40px 0;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .guarantee__icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: rgba(47, 133, 90, 0.15);
+            border: 1px solid rgba(47, 133, 90, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+        .guarantee__title {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .guarantee__text {
+            font-size: 0.95rem;
+            color: var(--white-dim);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           FAQ
+           ============================================ */
+        .faq-item {
+            border-bottom: 1px solid var(--navy-border);
+            padding: 24px 0;
+        }
+        .faq-item:first-child { padding-top: 0; }
+        .faq-q {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-q::after {
+            content: '+';
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-left: 16px;
+            transition: transform 0.2s;
+        }
+        .faq-item.open .faq-q::after {
+            content: '-';
+        }
+        .faq-a {
+            font-size: 0.95rem;
+            color: var(--white-dim);
+            line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-item.open .faq-a {
+            max-height: 300px;
+        }
+
+        /* ============================================
+           CREDIBILITY FOOTER
+           ============================================ */
+        .cred-footer {
+            padding: 48px 24px;
+            text-align: center;
+            border-top: 1px solid var(--navy-border);
+        }
+        .cred-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
+            margin: 0 auto 16px;
+            display: block;
+        }
+        .cred-name {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .cred-title {
+            font-size: 0.8rem;
+            color: var(--white-dim);
+            margin-bottom: 4px;
+        }
+        .cred-quote {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--gold-dim);
+            margin-top: 12px;
+        }
+
+        /* ============================================
+           STICKY MOBILE CTA
+           ============================================ */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 22, 40, 0.96);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--gold-border);
+            padding: 12px 24px;
+            z-index: 100;
+            text-align: center;
+        }
+        .sticky-cta .cta-btn {
+            width: 100%;
+            padding: 16px 24px;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           SEPARATOR
+           ============================================ */
+        .sep {
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 0 auto 40px;
+            border-radius: 2px;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 767px) {
+            .hero { padding: 56px 20px 48px; }
+            .hero__title { font-size: 2rem; }
+            .hero__proof { gap: 20px; }
+            .section { padding: 56px 20px; }
+            .math-grid { grid-template-columns: 1fr; }
+            .guarantee { flex-direction: column; }
+            .price-main { font-size: 3rem; }
+            .sticky-cta { display: block; }
+            body { padding-bottom: 80px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Gold accent bar -->
+<div class="gold-top"></div>
+
+<!-- ============================================
+     HERO SECTION
+     ============================================ -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero__badge">Entry-Level Pricing &mdash; Built for Operators on a Budget</div>
+        <h1 class="hero__title">
+            The 8 Spreadsheets Every Restaurant Needs &mdash; Plus the <span>Dashboard</span> That Ties Them Together
+        </h1>
+        <p class="hero__sub">
+            Stop guessing. Start tracking. One bundle. Every operational number in one place. Built by a German Master Chef who found <strong>$41,000 in hidden waste</strong>.
+        </p>
+        <div class="hero__author">
+            <img class="hero__author-photo" src="/images/Kitchen1.jpg" alt="Christian Schiffner — German Master Chef">
+            <div class="hero__author-info">
+                <div class="hero__author-name">Christian Schiffner</div>
+                German Master Chef (Kuchenmeister) &bull; 20+ Years &bull; 5 Countries
+            </div>
+        </div>
+        <a href="https://buy.stripe.com/bJefZi3LgcRcaNpbJvfAc02" class="cta-btn">
+            Get the Operator's Toolkit &mdash; $47
+        </a>
+        <div class="hero__proof">
+            <div class="hero__proof-item">
+                <div class="hero__proof-num">$41K</div>
+                <div class="hero__proof-label">Found in Hidden Waste</div>
+            </div>
+            <div class="hero__proof-item">
+                <div class="hero__proof-num">8</div>
+                <div class="hero__proof-label">Excel Templates</div>
+            </div>
+            <div class="hero__proof-item">
+                <div class="hero__proof-num">20+</div>
+                <div class="hero__proof-label">Years Kitchen Ops</div>
+            </div>
+            <div class="hero__proof-item">
+                <div class="hero__proof-num">5</div>
+                <div class="hero__proof-label">Countries</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     PROBLEM SECTION
+     ============================================ -->
+<section class="section">
+    <div class="container">
+        <div class="section__label">The Problem</div>
+        <h2 class="section__title">You Track Revenue. You Don't Track Where It Disappears.</h2>
+
+        <p class="section__text">
+            You know your sales number. You might even know your food cost percentage &mdash; roughly. But do you know your exact plate cost on your top 10 items? Do you know your prime cost this week &mdash; not this month, this <em>week</em>?
+        </p>
+        <p class="section__text">
+            Do you know which menu items actually make money and which ones just look busy? Do you know if delivery is profitable or if you're paying to give food away?
+        </p>
+        <p class="section__text">
+            Most operators don't. Not because they're careless. Because they don't have the systems. <strong style="color: var(--white);">They use gut feelings. And gut feelings don't stop profit leaks.</strong>
+        </p>
+        <p class="section__text">
+            No food cost tracker. No waste log. No vendor comparison. No labor-to-revenue ratio tracked weekly. No menu engineering matrix. No delivery profitability math. No system. Just hustle and hope.
+        </p>
+        <p class="section__text">
+            <strong>Hope is not an operating system.</strong>
+        </p>
+    </div>
+</section>
+
+<!-- ============================================
+     WHAT'S INSIDE — 8 TEMPLATES + DASHBOARD
+     ============================================ -->
+<section class="section section--alt">
+    <div class="container">
+        <div class="section__label">What's Inside</div>
+        <h2 class="section__title">8 Templates. 1 Dashboard. A Complete Operational Tracking System.</h2>
+
+        <p class="section__text">
+            Every spreadsheet is pre-built with formulas, auto-calculations, and clear instructions. No blank worksheets. No figuring it out yourself. Open it, enter your numbers, see the truth.
+        </p>
+
+        <div class="template-grid">
+            <div class="template-card">
+                <div class="template-card__number">Template 01</div>
+                <div class="template-card__title">Recipe Costing & Plate Cost Calculator</div>
+                <p class="template-card__desc">Know your exact cost per plate. Not "about $4." The actual number. With labor factored in. Every ingredient, every portion, every dollar accounted for.</p>
+            </div>
+
+            <div class="template-card">
+                <div class="template-card__number">Template 02</div>
+                <div class="template-card__title">Weekly Prime Cost Tracker</div>
+                <p class="template-card__desc">Food + labor as a percentage of revenue. Tracked weekly, not monthly. Weekly catches leaks. Monthly hides them. The single most important number in your restaurant.</p>
+            </div>
+
+            <div class="template-card">
+                <div class="template-card__number">Template 03</div>
+                <div class="template-card__title">Menu Engineering Matrix</div>
+                <p class="template-card__desc">Stars, Plowhorses, Puzzles, Dogs. Know which items make money and which ones cost you. Contribution margin and popularity plotted so you can see the truth in one view.</p>
+            </div>
+
+            <div class="template-card">
+                <div class="template-card__number">Template 04</div>
+                <div class="template-card__title">Par Level & Order Calculator</div>
+                <p class="template-card__desc">Never overstock. Never run out. One formula. Stops the $200 emergency runs to Costco. Par levels based on your actual usage, not guesswork.</p>
+            </div>
+
+            <div class="template-card">
+                <div class="template-card__number">Template 05</div>
+                <div class="template-card__title">Waste Tracking Log</div>
+                <p class="template-card__desc">Weigh it. Log it. Fix it. Target: 4% or less. Most kitchens run 8&ndash;12% because nobody looks. This log makes waste visible &mdash; and visible waste gets fixed.</p>
+            </div>
+
+            <div class="template-card">
+                <div class="template-card__number">Template 06</div>
+                <div class="template-card__title">Delivery Profitability Calculator</div>
+                <p class="template-card__desc">Are you making money on delivery &mdash; or paying to give food away? Commission fees, packaging costs, labor, and order volume. The math most operators never run.</p>
+            </div>
+
+            <div class="template-card">
+                <div class="template-card__number">Template 07</div>
+                <div class="template-card__title">Menu Psychology Audit Checklist</div>
+                <p class="template-card__desc">30+ research-backed checks. Pricing placement, descriptions, category size, anchoring, decoy positioning, and visual hierarchy. Score your menu against what actually works.</p>
+            </div>
+
+            <div class="template-card">
+                <div class="template-card__number">Template 08</div>
+                <div class="template-card__title">Vendor Price Comparison Tracker</div>
+                <p class="template-card__desc">Cross-shop everything. Loyalty doesn't pay your rent. See which vendor wins on every item, track price changes over time, and negotiate from data instead of memory.</p>
+            </div>
+
+            <!-- Dashboard — highlighted card -->
+            <div class="template-card template-card--dashboard">
+                <div class="template-card__number">+ The Operations Dashboard</div>
+                <div class="template-card__title">The Connective Tissue</div>
+                <p class="template-card__desc">One workbook. One view. Prime cost, waste percentage, menu health, delivery profitability, vendor savings, inventory compliance, and a weekly health score. This is the difference between 8 spreadsheets and a <strong style="color: var(--gold);">system</strong>. Every template feeds into this dashboard so you see your entire operation at a glance.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     THE MATH — ROI SECTION
+     ============================================ -->
+<section class="section">
+    <div class="container">
+        <div class="section__label">The Math</div>
+        <h2 class="section__title">$47 Pays for Itself the First Week You Use It</h2>
+
+        <p class="section__text">
+            The average restaurant leaks $50,000&ndash;$160,000 per year across 8 categories. You don't need to fix all of them. You need to track them. Tracking creates visibility. Visibility creates action.
+        </p>
+
+        <div class="math-grid">
+            <div class="math-card">
+                <div class="math-card__scenario">2% food cost improvement on $800K revenue</div>
+                <div class="math-card__amount">$16,000 <span>/year saved</span></div>
+            </div>
+            <div class="math-card">
+                <div class="math-card__scenario">Cutting waste from 8% to 4%</div>
+                <div class="math-card__amount">$8K&ndash;$20K <span>/year saved</span></div>
+            </div>
+            <div class="math-card">
+                <div class="math-card__scenario">Catching one vendor overcharge per week</div>
+                <div class="math-card__amount">$2,600 <span>/year saved</span></div>
+            </div>
+            <div class="math-card math-card--highlight">
+                <div class="math-card__scenario">Your investment today</div>
+                <div class="math-card__amount">$47 <span>one-time</span></div>
+            </div>
+        </div>
+
+        <p class="section__text" style="text-align: center;">
+            <strong style="color: var(--white);">You don't need a $300/month software subscription to track your numbers.</strong><br>
+            <span class="text-dim">You need 8 spreadsheets, one dashboard, and the discipline to enter the numbers weekly.</span>
+        </p>
+    </div>
+</section>
+
+<!-- ============================================
+     MID-PAGE CTA
+     ============================================ -->
+<section class="section" style="padding: 56px 24px; text-align: center;">
+    <div class="container">
+        <a href="https://buy.stripe.com/bJefZi3LgcRcaNpbJvfAc02" class="cta-btn">
+            Get the Operator's Toolkit &mdash; $47
+        </a>
+        <p class="cta-sub">One-time payment. Lifetime access. All updates included.</p>
+    </div>
+</section>
+
+<!-- ============================================
+     PRICING + GUARANTEE
+     ============================================ -->
+<section class="section section--alt" id="get-the-toolkit">
+    <div class="container">
+        <div class="price-section">
+            <p class="price-anchor">
+                Individual consulting setup: <s>$2,000+</s>
+            </p>
+            <div class="price-main">$47</div>
+            <div class="price-note">One-Time Payment &mdash; Lifetime Access &mdash; All Updates Included</div>
+
+            <a href="https://buy.stripe.com/bJefZi3LgcRcaNpbJvfAc02" class="cta-btn">
+                Get the Operator's Toolkit &mdash; $47
+            </a>
+            <p class="cta-sub">8 Excel templates + Operations Dashboard. Instant download.</p>
+        </div>
+
+        <div class="guarantee">
+            <div class="guarantee__icon">&#9745;</div>
+            <div>
+                <div class="guarantee__title">The $47 Guarantee</div>
+                <p class="guarantee__text">
+                    Use any single template for one week. If it doesn't save you more than $47 in that week, email me. Full refund. No questions. No hoops. In 20 years of restaurant operations across 5 countries, I've never seen a kitchen that couldn't save $47 in a week just by tracking the right number.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FAQ / OBJECTION HANDLING
+     ============================================ -->
+<section class="section">
+    <div class="container">
+        <div class="section__label">Common Questions</div>
+        <h2 class="section__title">Before You Decide</h2>
+
+        <div class="faq-item open">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                "I already track my numbers."
+            </div>
+            <div class="faq-a">
+                <p>Do you? Weekly? With formulas that auto-calculate prime cost, waste percentage, and menu profitability? Or are you eyeballing it monthly and hoping the bank account looks okay? This toolkit forces specificity. If you're already tracking everything weekly with formulas &mdash; you don't need this. But if "tracking" means a vague sense that food cost is "around 30%" &mdash; you do.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                "Can't I build these myself?"
+            </div>
+            <div class="faq-a">
+                <p>You can. You've had that option for years. The reason you haven't is you're running a restaurant 70 hours a week. You don't have 40 spare hours to research formulas, build templates, test calculations, and design a dashboard that ties them together. $47 buys you 40+ hours of spreadsheet work &mdash; done, tested, and ready to use today.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                "Do I need all 8?"
+            </div>
+            <div class="faq-a">
+                <p>No. Start with the Prime Cost Tracker and the Waste Log. Those two alone will pay for the bundle in the first week. Add the Vendor Price Comparison when you're ready to negotiate. Add the Menu Engineering Matrix when you want to know which items to push and which to cut. The rest is there when you need it. The dashboard ties whatever you're using into one view.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                "How is this different from the $197 Kit?"
+            </div>
+            <div class="faq-a">
+                <p>The $197 Kit is a guided 3-day diagnostic with videos, workbooks, and a full profit leak analysis. It walks you through finding your #1 leak and building a protocol to fix it. This $47 bundle gives you the tracking tools to use permanently &mdash; the spreadsheets that keep your numbers visible week after week. Many operators get both. The Kit finds the leak. The templates track the fix.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FINAL CTA
+     ============================================ -->
+<section class="section section--alt">
+    <div class="container" style="text-align: center;">
+        <div class="sep"></div>
+        <h2 class="section__title" style="max-width: 600px; margin: 0 auto 24px;">Stop Guessing. Start Tracking. $47.</h2>
+
+        <p class="section__text" style="text-align: center; max-width: 540px; margin: 0 auto 12px;">
+            8 spreadsheets. 1 dashboard. Every operational number in one place.
+        </p>
+        <p class="section__text" style="text-align: center; max-width: 540px; margin: 0 auto 32px;">
+            <strong style="color: var(--white);">The difference between operators who guess and operators who know is one thing: a system for tracking the numbers that matter.</strong>
+        </p>
+
+        <a href="https://buy.stripe.com/bJefZi3LgcRcaNpbJvfAc02" class="cta-btn">
+            Get the Operator's Toolkit &mdash; $47
+        </a>
+        <p class="cta-sub">One-time payment. Lifetime access. $47 guarantee.</p>
+    </div>
+</section>
+
+<!-- ============================================
+     CREDIBILITY FOOTER
+     ============================================ -->
+<div class="cred-footer">
+    <img class="cred-photo" src="/images/Kitchen1.jpg" alt="Christian Schiffner — German Master Chef">
+    <div class="cred-name">Christian Schiffner</div>
+    <div class="cred-title">German Master Chef (Kuchenmeister) &bull; 20+ Years Operations &bull; 5 Countries</div>
+    <div class="cred-title">1,200+ Days Recovery &bull; Dawson City, Yukon</div>
+    <p class="cred-quote">"Same restaurant. Same me. Different operating system."</p>
+</div>
+
+<div class="gold-top"></div>
+
+<!-- ============================================
+     STICKY MOBILE CTA
+     ============================================ -->
+<div class="sticky-cta" id="stickyCta">
+    <a href="https://buy.stripe.com/bJefZi3LgcRcaNpbJvfAc02" class="cta-btn">Get the Toolkit &mdash; $47</a>
+</div>
+
+<script>
+    // Show sticky CTA after scrolling past hero
+    const stickyCta = document.getElementById('stickyCta');
+    const hero = document.querySelector('.hero');
+    if (stickyCta && hero) {
+        const observer = new IntersectionObserver(([entry]) => {
+            if (window.innerWidth <= 767) {
+                stickyCta.style.display = entry.isIntersecting ? 'none' : 'block';
+            }
+        }, { threshold: 0 });
+        observer.observe(hero);
+    }
+
+    // FAQ accordion — close others when opening one
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            const parent = q.parentElement;
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== parent) item.classList.remove('open');
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
