@@ -827,34 +827,14 @@
 <!-- ============================================
      STRIPE CHECKOUT
      ============================================ -->
-<script src="https://js.stripe.com/v3/"></script>
 <script>
     // ============================================
-    // STRIPE CONFIGURATION
+    // STRIPE PAYMENT LINK
     // ============================================
-    // TODO: Replace with your real Stripe Publishable Key
-    // Test mode key starts with pk_test_
-    // Live mode key starts with pk_live_
-    var STRIPE_PUBLISHABLE_KEY = 'pk_test_XXXX';
-
-    // TODO: Replace with your real Stripe Price ID
-    // Created in Stripe Dashboard → Products → The Grumpy Chef Toolkit → $47
-    // Price ID starts with price_
-    var STRIPE_PRICE_ID = 'PRICE_ID_HERE';
-
-    var stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+    var STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/bJefZi3LgcRcaNpbJvfAc02';
 
     function buyToolkit() {
-        stripe.redirectToCheckout({
-            lineItems: [{ price: STRIPE_PRICE_ID, quantity: 1 }],
-            mode: 'payment',
-            successUrl: window.location.origin + '/toolkit/thank-you',
-            cancelUrl: window.location.origin + '/toolkit'
-        }).then(function(result) {
-            if (result.error) {
-                alert(result.error.message);
-            }
-        });
+        window.location.href = STRIPE_PAYMENT_LINK;
     }
 
     // ============================================
