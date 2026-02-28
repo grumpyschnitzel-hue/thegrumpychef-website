@@ -1205,7 +1205,7 @@
 /* ============================================
    CONFIG
    ============================================ */
-const WEBHOOK_URL = 'https://christhwegrumpychef.app.n8n.cloud/webhook/grumpy-chef-leads';
+const WEBHOOK_URL = 'https://christhwegrumpychef.app.n8n.cloud/webhook/calculator-email-agent';
 const SCOREAPP_API_URL = '';
 
 /* ============================================
@@ -1784,7 +1784,7 @@ async function submitCapture(e) {
     }
 
     // Fallback or parallel: n8n Webhook
-    if (WEBHOOK_URL && WEBHOOK_URL !== 'https://christhwegrumpychef.app.n8n.cloud/webhook/grumpy-chef-leads') {
+    if (WEBHOOK_URL) {
         try {
             const webhookPayload = buildWebhookPayload();
             await fetch(WEBHOOK_URL, {
