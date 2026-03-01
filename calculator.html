@@ -876,6 +876,7 @@
             .btn, .btn--big { width: 100%; justify-content: center; }
         }
     </style>
+    <script src="/js/analytics.js"></script>
 </head>
 <body>
 
@@ -1126,7 +1127,7 @@
     // ============================================
     // CONFIG
     // ============================================
-    const WEBHOOK_URL = 'https://christhwegrumpychef.app.n8n.cloud/webhook/calculator-email-agent';
+    const WEBHOOK_URL = 'https://christhegrumpychef.app.n8n.cloud/webhook/calculator-email-agent';
 
     // ============================================
     // DATA
@@ -1502,7 +1503,8 @@
 
         const payload = {
             contact: { name, email, restaurant, monthlySales: sales || null },
-            results: buildPayload()
+            results: buildPayload(),
+            utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
         };
 
         btn.disabled = true;
@@ -1518,6 +1520,12 @@
         } catch (e) {
             console.warn('Webhook failed:', e);
             console.log('Payload:', JSON.stringify(payload, null, 2));
+        }
+
+        // Redirect to thank-you page if inside LP iframe
+        if (window.parent !== window) {
+            window.parent.postMessage({ type: 'redirect', url: '/lp/thank-you-calculator.html' }, '*');
+            return;
         }
 
         document.getElementById('cap-form-wrap').style.display = 'none';
@@ -1602,7 +1610,8 @@ document.getElementById('discovery-form').addEventListener('submit', function(e)
         first_name: name || '',
         source: 'discovery-call-request',
         tags: ['discovery-call-request'],
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
     };
 
     // Try webhook
@@ -1623,6 +1632,18 @@ document.getElementById('discovery-form').addEventListener('submit', function(e)
     // Log for debugging
     console.log('Discovery call request:', payload);
 });
+</script>
+<script>
+// Iframe height reporter — sends height to parent when embedded in landing page
+if (window.parent !== window) {
+    function reportHeight() {
+        var h = document.documentElement.scrollHeight;
+        window.parent.postMessage({ type: 'resize', height: h }, '*');
+    }
+    reportHeight();
+    new MutationObserver(reportHeight).observe(document.body, { childList: true, subtree: true, attributes: true });
+    window.addEventListener('resize', reportHeight);
+}
 </script>
 </body>
 </html>

@@ -615,6 +615,7 @@
             border: 0;
         }
     </style>
+    <script src="/js/analytics.js"></script>
 </head>
 <body>
 
@@ -914,7 +915,7 @@
    ============================================ */
 const SCOREAPP_API_URL = '';
 const SCOREAPP_API_KEY = '';
-const WEBHOOK_URL = 'https://christhwegrumpychef.app.n8n.cloud/webhook/calculator-email-agent';
+const WEBHOOK_URL = 'https://christhegrumpychef.app.n8n.cloud/webhook/calculator-email-agent';
 const TOTAL_SPOTS = 100;
 const STORAGE_KEY = 'grumpychef_waitlist_count';
 
@@ -1021,7 +1022,8 @@ function buildWebhookPayload(num) {
         biggest_challenge: document.getElementById('challenge').value.trim(),
         waitlist_number: num,
         timestamp: new Date().toISOString(),
-        page_source: 'grumpy-chef-academy-waitlist'
+        page_source: 'grumpy-chef-academy-waitlist',
+        utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
     };
 }
 
@@ -1118,6 +1120,12 @@ async function submitWaitlist(e) {
 
     analytics.trackComplete({ waitlist_number: waitlistNumber });
 
+    // Redirect to thank-you page if inside LP iframe
+    if (window.parent !== window) {
+        window.parent.postMessage({ type: 'redirect', url: '/lp/thank-you-academy.html' }, '*');
+        return;
+    }
+
     // Show success
     document.getElementById('formCard').style.display = 'none';
     const success = document.getElementById('successState');
@@ -1132,6 +1140,17 @@ async function submitWaitlist(e) {
    ============================================ */
 updateSpotsDisplay();
 initTracking();
+</script>
+<script>
+if (window.parent !== window) {
+    function reportHeight() {
+        var h = document.documentElement.scrollHeight;
+        window.parent.postMessage({ type: 'resize', height: h }, '*');
+    }
+    reportHeight();
+    new MutationObserver(reportHeight).observe(document.body, { childList: true, subtree: true, attributes: true });
+    window.addEventListener('resize', reportHeight);
+}
 </script>
 
 </body>

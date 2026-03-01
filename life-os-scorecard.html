@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Life OS Scorecard | The Grumpy Chef</title>
+    <meta name="description" content="Score yourself across 5 personal life systems in 5 minutes. Find where the chaos lives. Built for restaurant operators at 60% capacity. From a German Master Chef with 1,200+ days recovery proof.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET & VARIABLES
+           ============================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --navy-hover: #162642;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gray-dark: #2D3748;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --red: #C53030;
+            --red-glow: rgba(197, 48, 48, 0.10);
+            --green: #2F855A;
+            --green-glow: rgba(47, 133, 90, 0.10);
+            --blue: #00A6D6;
+            --blue-dim: #008AB3;
+            --blue-glow: rgba(0, 166, 214, 0.10);
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+        .gold-top { height: 3px; background: linear-gradient(90deg, var(--gold), var(--blue), var(--gold)); }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            padding: 56px 0 40px;
+            background: linear-gradient(180deg, #0C1A2E 0%, var(--navy) 100%);
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .hero__brand {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .hero__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(28px, 5.5vw, 46px);
+            line-height: 1.08;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        .hero__sub {
+            font-size: 17px;
+            color: var(--white-dim);
+            max-width: 560px;
+            line-height: 1.55;
+            margin-bottom: 28px;
+        }
+        .hero__sub strong { color: var(--gold); font-weight: 600; }
+
+        /* Stats Bar */
+        .stats {
+            display: flex;
+            gap: 0;
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 28px;
+        }
+        .stat {
+            flex: 1;
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 1px solid var(--navy-border);
+        }
+        .stat:last-child { border-right: none; }
+        .stat__num {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--gold);
+            line-height: 1.1;
+        }
+        .stat__label {
+            font-size: 11px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+            line-height: 1.3;
+        }
+
+        /* CTA Button */
+        .btn {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .btn--gold {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .btn--gold:hover {
+            background: var(--gold-dim);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+        .btn--outline {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+        .btn--outline:hover {
+            background: var(--gold-glow);
+            transform: translateY(-1px);
+        }
+        .btn--sm {
+            font-size: 13px;
+            padding: 12px 28px;
+            letter-spacing: 1.5px;
+        }
+        .hero__cta { margin-bottom: 20px; }
+        .hero__credentials {
+            font-size: 12px;
+            color: var(--gray);
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================
+           SECTION BASE
+           ============================================ */
+        .section {
+            padding: 48px 0;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .section--hidden { display: none; }
+        .section__label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .section__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(22px, 4vw, 32px);
+            text-transform: uppercase;
+            line-height: 1.12;
+            margin-bottom: 16px;
+        }
+
+        /* ============================================
+           INTRO
+           ============================================ */
+        .intro__text {
+            font-size: 16px;
+            color: var(--white-dim);
+            line-height: 1.7;
+            margin-bottom: 28px;
+            max-width: 640px;
+        }
+        .intro__quote {
+            border: 1px solid var(--gold-border);
+            border-left: 3px solid var(--gold);
+            background: var(--gold-glow);
+            padding: 20px 24px;
+            border-radius: 0 8px 8px 0;
+            font-size: 17px;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1.5;
+        }
+        .intro__quote strong { color: var(--gold); }
+
+        /* ============================================
+           PROGRESS BAR
+           ============================================ */
+        .progress-section {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--navy-border);
+            position: sticky;
+            top: 0;
+            background: var(--navy);
+            z-index: 100;
+        }
+        .progress-section.section--hidden { display: none; }
+        .progress__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .progress__label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .progress__count {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--white-dim);
+        }
+        .progress__bar {
+            width: 100%;
+            height: 4px;
+            background: var(--navy-border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress__fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--blue));
+            border-radius: 2px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        /* ============================================
+           QUIZ
+           ============================================ */
+        .quiz-section { padding: 48px 0 56px; }
+        .quiz-section.section--hidden { display: none; }
+
+        /* System Header */
+        .system-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .system-header__icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .system-header__text { flex: 1; }
+        .system-header__name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+        .system-header__principle {
+            font-size: 13px;
+            color: var(--gold-dim);
+            margin-top: 2px;
+            font-style: italic;
+        }
+
+        /* Question Card */
+        .question-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 32px;
+            animation: fadeSlideIn 0.35s ease;
+        }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .question-card__number {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+        .question-card__text {
+            font-size: 19px;
+            font-weight: 500;
+            line-height: 1.45;
+            margin-bottom: 28px;
+        }
+        .question-card__options { display: flex; flex-direction: column; gap: 12px; }
+
+        .option-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            background: var(--navy-light);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        .option-btn:hover {
+            background: var(--navy-hover);
+            border-color: var(--gold-border);
+        }
+        .option-btn--selected {
+            background: var(--gold-glow);
+            border-color: var(--gold);
+        }
+        .option-btn__indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--navy-border);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .option-btn--selected .option-btn__indicator {
+            border-color: var(--gold);
+            background: var(--gold);
+        }
+        .option-btn--selected .option-btn__indicator::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--navy);
+        }
+
+        /* Nav Buttons */
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 28px;
+            gap: 16px;
+        }
+        .quiz-nav__back {
+            background: transparent;
+            border: 1px solid var(--navy-border);
+            color: var(--white-dim);
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quiz-nav__back:hover {
+            border-color: var(--gold-border);
+            color: var(--white);
+        }
+        .quiz-nav__back:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .quiz-nav__next {
+            background: var(--gold);
+            color: var(--navy);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 12px 32px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .quiz-nav__next:hover {
+            background: var(--gold-dim);
+            transform: translateY(-1px);
+        }
+        .quiz-nav__next:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ============================================
+           RESULTS
+           ============================================ */
+        .results-section { padding: 56px 0; }
+        .results-section.section--hidden { display: none; }
+
+        /* Score Gauge */
+        .gauge-wrap {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .gauge-svg {
+            width: 280px;
+            max-width: 100%;
+            height: auto;
+        }
+        .gauge__score-display {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 56px;
+            line-height: 1;
+            margin-top: 8px;
+        }
+        .gauge__max {
+            font-family: var(--font-mono);
+            font-size: 18px;
+            color: var(--gray);
+        }
+        .gauge__zone {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+        .gauge__desc {
+            font-size: 15px;
+            color: var(--white-dim);
+            max-width: 480px;
+            margin: 10px auto 0;
+            line-height: 1.55;
+        }
+
+        /* Radar Chart */
+        .radar-wrap {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .radar-wrap h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .radar-svg {
+            width: 340px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* System Breakdown Cards */
+        .breakdown { margin-bottom: 40px; }
+        .breakdown__title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .breakdown__cards { display: flex; flex-direction: column; gap: 16px; }
+
+        .sys-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 10px;
+            padding: 24px;
+        }
+        .sys-card__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .sys-card__name {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .sys-card__score {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .sys-card__bar {
+            width: 100%;
+            height: 6px;
+            background: var(--navy-border);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+        .sys-card__fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.8s ease;
+        }
+        .sys-card__missing {
+            font-size: 13px;
+            color: var(--white-dim);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .sys-card__missing strong {
+            color: var(--white);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .sys-card__fix {
+            background: var(--gold-glow);
+            border: 1px solid var(--gold-border);
+            border-radius: 6px;
+            padding: 14px 16px;
+        }
+        .sys-card__fix-label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+        .sys-card__fix-text {
+            font-size: 14px;
+            color: var(--white);
+            line-height: 1.5;
+        }
+
+        /* Priority Card */
+        .priority-card {
+            background: var(--navy-card);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+        .priority-card__label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .priority-card__system {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 24px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .priority-card__text {
+            font-size: 15px;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+
+        /* Recovery Quote */
+        .recovery-quote {
+            border-left: 3px solid var(--gold);
+            padding: 20px 24px;
+            background: var(--gold-glow);
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 32px;
+        }
+        .recovery-quote__text {
+            font-size: 16px;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--white);
+        }
+
+        /* Attribution */
+        .attribution {
+            font-size: 13px;
+            color: var(--gray);
+            text-align: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--navy-border);
+        }
+
+        /* ============================================
+           EMAIL CAPTURE
+           ============================================ */
+        .email-section { padding: 48px 0; }
+        .email-section.section--hidden { display: none; }
+
+        .email-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 36px;
+        }
+        .email-card__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .email-card__sub {
+            font-size: 15px;
+            color: var(--white-dim);
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group--full { grid-column: 1 / -1; }
+        .form-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--white-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .form-label .required {
+            color: var(--gold);
+        }
+        .form-input {
+            background: var(--navy-light);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            padding: 12px 14px;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        .form-input:focus {
+            border-color: var(--gold);
+        }
+        .form-input::placeholder {
+            color: var(--gray);
+        }
+        .form-error {
+            font-size: 12px;
+            color: var(--red);
+            min-height: 16px;
+        }
+        .email-card__submit {
+            width: 100%;
+            margin-bottom: 12px;
+        }
+        .email-card__privacy {
+            font-size: 12px;
+            color: var(--gray);
+            text-align: center;
+        }
+
+        /* Success State */
+        .email-success { display: none; text-align: center; }
+        .email-success--visible { display: block; }
+        .email-success__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 12px;
+        }
+        .email-success__text {
+            font-size: 15px;
+            color: var(--white-dim);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta-section { padding: 48px 0; }
+        .cta-section.section--hidden { display: none; }
+        .cta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .cta-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 10px;
+            padding: 28px;
+            text-align: center;
+            transition: border-color 0.2s ease;
+        }
+        .cta-card:hover {
+            border-color: var(--gold-border);
+        }
+        .cta-card__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .cta-card__text {
+            font-size: 14px;
+            color: var(--white-dim);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 36px 0;
+            text-align: center;
+            border-top: 1px solid var(--navy-border);
+        }
+        .footer__tagline {
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .footer__brand {
+            font-size: 13px;
+            color: var(--gray-dark);
+        }
+        .footer__brand a {
+            color: var(--gray);
+            text-decoration: none;
+        }
+        .footer__brand a:hover { color: var(--gold); }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 640px) {
+            .stats { flex-direction: column; }
+            .stat { border-right: none; border-bottom: 1px solid var(--navy-border); padding: 12px; }
+            .stat:last-child { border-bottom: none; }
+            .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+            .stat { border-right: 1px solid var(--navy-border); border-bottom: none; }
+            .stat:last-child { border-right: none; }
+
+            .form-grid { grid-template-columns: 1fr; }
+            .cta-grid { grid-template-columns: 1fr; }
+
+            .question-card { padding: 24px 20px; }
+            .question-card__text { font-size: 17px; }
+
+            .email-card { padding: 28px 20px; }
+
+            .hero { padding: 40px 0 32px; }
+            .section { padding: 36px 0; }
+
+            .radar-svg { width: 280px; }
+        }
+
+        @media (max-width: 420px) {
+            .stats { grid-template-columns: 1fr; }
+            .stat { border-right: none; border-bottom: 1px solid var(--navy-border); }
+            .stat:last-child { border-bottom: none; }
+            .quiz-nav { flex-direction: column-reverse; }
+            .quiz-nav__next { width: 100%; text-align: center; }
+            .quiz-nav__back { width: 100%; text-align: center; }
+        }
+
+        /* ============================================
+           PRINT
+           ============================================ */
+        @media print {
+            body { background: #fff; color: #111; }
+            .gold-top,
+            .hero,
+            .intro-section,
+            .progress-section,
+            .quiz-section,
+            .email-section,
+            .cta-section,
+            .footer { display: none !important; }
+
+            .results-section {
+                display: block !important;
+                padding: 20px 0;
+            }
+            .results-section .container { max-width: 100%; padding: 0; }
+
+            .sys-card, .priority-card, .recovery-quote {
+                break-inside: avoid;
+                border-color: #ccc;
+                background: #fafafa;
+            }
+            .sys-card__fill { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            .gauge__score-display { color: #111; }
+            .gauge__desc, .sys-card__missing, .priority-card__text, .recovery-quote__text {
+                color: #333;
+            }
+            .attribution { color: #666; border-color: #ccc; }
+
+            @page { margin: 1in 0.75in; }
+
+            /* Print header */
+            .results-section::before {
+                content: 'OPERATOR LIFE OS SCORECARD — The Grumpy Chef';
+                display: block;
+                font-family: 'Oswald', sans-serif;
+                font-weight: 700;
+                font-size: 20px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin-bottom: 24px;
+                padding-bottom: 12px;
+                border-bottom: 2px solid #D4AF37;
+            }
+        }
+
+        /* ============================================
+           UTILITIES
+           ============================================ */
+        /* ============================================
+           PROGRESSION BANNER
+           ============================================ */
+        .gc-banner {
+            display: none;
+            background: var(--navy-card);
+            border: 1px solid var(--gold-border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 20px auto;
+            max-width: 780px;
+        }
+        .gc-banner.show { display: block; }
+        .gc-banner__text {
+            font-size: 14px;
+            color: var(--white-dim);
+            margin-bottom: 10px;
+        }
+        .gc-banner__text strong { color: var(--white); }
+        .gc-banner__dots {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .gc-banner__dot {
+            width: 28px;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--navy-border);
+        }
+        .gc-banner__dot.filled { background: var(--gold); }
+        .gc-banner__label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--gray);
+            margin-left: 8px;
+        }
+
+        /* ============================================
+           POWER USER PANEL
+           ============================================ */
+        .power-user-panel { text-align: center; padding: 32px 0; }
+        .power-user-panel__badge {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .power-user-panel__text {
+            font-size: 15px;
+            color: var(--white-dim);
+            line-height: 1.65;
+            max-width: 520px;
+            margin: 0 auto 24px;
+        }
+        .power-user-panel__perks {
+            list-style: none;
+            margin: 0 auto 28px;
+            max-width: 420px;
+            text-align: left;
+        }
+        .power-user-panel__perks li {
+            font-size: 14px;
+            color: var(--white);
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .power-user-panel__perks li:last-child { border-bottom: none; }
+        .power-user-panel__perks li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            background: var(--gold);
+        }
+        .power-user-panel__btns {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* NEXT STEP PANEL */
+        .next-step-panel { text-align: center; padding: 28px 0; }
+        .next-step-panel__text {
+            font-size: 15px;
+            color: var(--white-dim);
+            line-height: 1.65;
+            max-width: 520px;
+            margin: 0 auto 20px;
+        }
+        .next-step-panel__text strong { color: var(--white); }
+
+        .text-gold { color: var(--gold); }
+        .text-red { color: var(--red); }
+        .text-green { color: var(--green); }
+        .text-blue { color: var(--blue); }
+        .mt-8 { margin-top: 8px; }
+        .mt-16 { margin-top: 16px; }
+        .mt-24 { margin-top: 24px; }
+        .mb-0 { margin-bottom: 0; }
+    </style>
+    <script src="/js/analytics.js"></script>
+</head>
+<body>
+
+<!-- Gold Top Bar -->
+<div class="gold-top"></div>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero" id="hero">
+    <div class="container">
+        <div class="hero__brand">THE GRUMPY CHEF</div>
+        <h1 class="hero__title">YOUR RESTAURANT CAN'T OUTPERFORM YOUR PERSONAL OPERATING SYSTEM</h1>
+        <p class="hero__sub">Score yourself across <strong>5 life systems</strong> in 5 minutes. Find where the chaos lives. Built for operators at 60% capacity.</p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat__num">20+</div>
+                <div class="stat__label">Years Kitchen Ops</div>
+            </div>
+            <div class="stat">
+                <div class="stat__num">5</div>
+                <div class="stat__label">Countries</div>
+            </div>
+            <div class="stat">
+                <div class="stat__num">1,200+</div>
+                <div class="stat__label">Days Recovery Proof</div>
+            </div>
+        </div>
+
+        <div class="hero__cta">
+            <button class="btn btn--gold" onclick="startAssessment()">START YOUR ASSESSMENT</button>
+        </div>
+        <div class="hero__credentials">German Master Chef (Kuechenmeister) | Recovery-Based Systems</div>
+    </div>
+</section>
+
+<!-- ==================== PROGRESSION BANNER ==================== -->
+<div class="gc-banner" id="gc-progression-banner">
+    <div class="container">
+        <div class="gc-banner__text" id="gc-banner-text"></div>
+        <div class="gc-banner__dots">
+            <div class="gc-banner__dot" id="gc-dot-calculator"></div>
+            <div class="gc-banner__dot" id="gc-dot-assessment"></div>
+            <div class="gc-banner__dot" id="gc-dot-lifeos"></div>
+            <span class="gc-banner__label" id="gc-banner-count"></span>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     INTRO
+     ============================================ -->
+<section class="section intro-section" id="intro">
+    <div class="container">
+        <p class="intro__text">
+            You work 80-100 hours a week. You're fixing the restaurant. But who's fixing you?
+        </p>
+        <p class="intro__text">
+            This scorecard measures 5 personal systems that determine whether your restaurant thrives or barely survives. Same recovery principles that kept me sober 1,200+ days &mdash; applied to your personal operating system.
+        </p>
+        <div class="intro__quote">
+            <strong>Behavior leads belief.</strong> Install the systems. The restaurant follows.
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     PROGRESS BAR
+     ============================================ -->
+<section class="progress-section section--hidden" id="progress">
+    <div class="container">
+        <div class="progress__header">
+            <span class="progress__label">OPERATOR LIFE OS</span>
+            <span class="progress__count" id="progressCount">Question 1 of 25</span>
+        </div>
+        <div class="progress__bar">
+            <div class="progress__fill" id="progressFill"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     QUIZ
+     ============================================ -->
+<section class="quiz-section section--hidden" id="quiz">
+    <div class="container">
+        <div id="systemHeader"></div>
+        <div id="questionCard"></div>
+        <div class="quiz-nav">
+            <button class="quiz-nav__back" id="backBtn" onclick="goBack()" disabled>Back</button>
+            <button class="quiz-nav__next" id="nextBtn" onclick="goNext()" disabled>NEXT</button>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     RESULTS
+     ============================================ -->
+<section class="results-section section--hidden" id="results">
+    <div class="container">
+
+        <!-- Score Gauge -->
+        <div class="gauge-wrap" id="gaugeWrap"></div>
+
+        <!-- Radar Chart -->
+        <div class="radar-wrap" id="radarWrap">
+            <h3>YOUR SYSTEM PROFILE</h3>
+        </div>
+
+        <!-- System Breakdown -->
+        <div class="breakdown">
+            <div class="breakdown__title">SYSTEM BREAKDOWN</div>
+            <div class="breakdown__cards" id="breakdownCards"></div>
+        </div>
+
+        <!-- Priority Card -->
+        <div id="priorityCard"></div>
+
+        <!-- Recovery Quote -->
+        <div class="recovery-quote">
+            <p class="recovery-quote__text">
+                Same principles. Whether it's sobriety or sleep. Behavior leads belief. You don't need motivation. You need defaults.
+            </p>
+        </div>
+
+        <!-- Attribution -->
+        <div class="attribution">
+            Christian Schiffner | German Master Chef (Kuechenmeister) | 20+ Years Operations | 1,200+ Days Recovery Proof
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     EMAIL CAPTURE
+     ============================================ -->
+<section class="email-section section--hidden" id="emailSection">
+    <div class="container">
+        <div class="email-card" id="emailCard">
+            <div id="emailForm">
+                <h2 class="email-card__title">GET YOUR PERSONALIZED 72-HOUR PLAN</h2>
+                <p class="email-card__sub">Your scores + specific actions for each system. Delivered to your inbox.</p>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Name <span class="required">*</span></label>
+                        <input type="text" class="form-input" id="inputName" placeholder="Your name" required>
+                        <div class="form-error" id="errorName"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email <span class="required">*</span></label>
+                        <input type="email" class="form-input" id="inputEmail" placeholder="your@email.com" required>
+                        <div class="form-error" id="errorEmail"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Restaurant Name</label>
+                        <input type="text" class="form-input" id="inputRestaurant" placeholder="Optional">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone</label>
+                        <input type="tel" class="form-input" id="inputPhone" placeholder="Optional">
+                    </div>
+                </div>
+
+                <button class="btn btn--gold email-card__submit" onclick="submitEmail()">SEND MY PLAN</button>
+                <p class="email-card__privacy">No spam. No BS. Just systems.</p>
+            </div>
+
+            <div class="email-success" id="emailSuccess"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     CTA SECTION
+     ============================================ -->
+<section class="cta-section section--hidden" id="ctaSection">
+    <div class="container">
+        <div class="cta-grid">
+            <div class="cta-card">
+                <h3 class="cta-card__title">TAKE THE MENU PROFIT SCORE</h3>
+                <p class="cta-card__text">Now fix the restaurant. Score your menu in 3 minutes.</p>
+                <a href="#" class="btn btn--outline btn--sm" id="menuScoreLink" target="_blank">SCORE YOUR MENU</a>
+            </div>
+            <div class="cta-card">
+                <h3 class="cta-card__title">BOOK A DISCOVERY CALL</h3>
+                <p class="cta-card__text">Fix the operator AND the restaurant. 90-Day Transformation.</p>
+                <a href="#" class="btn btn--gold btn--sm" id="discoveryLink" target="_blank">BOOK YOUR CALL</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__tagline">Systems that work when you're exhausted.</div>
+        <div class="footer__brand">The Grumpy Chef | <a href="https://thegrumpychef.ca" target="_blank" rel="noopener">thegrumpychef.ca</a></div>
+    </div>
+</footer>
+
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
+<script>
+(function() {
+    'use strict';
+
+    /* ===========================================
+       GRUMPY CHEF PROGRESSION TRACKER (SHARED)
+       =========================================== */
+    var GC_TOOLS = {
+        calculator: { name: '72-Hour Profit Discovery Calculator', url: '72-hour-profit-discovery-calculator.html' },
+        assessment: { name: 'Menu Profit Score Assessment', url: 'menu-profit-score-assessment.html' },
+        lifeos: { name: 'Operator Life OS Scorecard', url: 'operator-life-os-scorecard.html' }
+    };
+    var GC_TOOL_ORDER = ['calculator', 'assessment', 'lifeos'];
+
+    function gcGetProgression() {
+        try {
+            var data = JSON.parse(localStorage.getItem('grumpychef_progression') || '{}');
+            if (!data.completedTools) data.completedTools = [];
+            return data;
+        } catch (e) { return { completedTools: [] }; }
+    }
+
+    function gcRecordCompletion(toolId, email, name) {
+        var data = gcGetProgression();
+        if (data.completedTools.indexOf(toolId) === -1) {
+            data.completedTools.push(toolId);
+        }
+        data.timestamps = data.timestamps || {};
+        data.timestamps[toolId] = new Date().toISOString();
+        if (email) data.email = email;
+        if (name) data.name = name;
+        localStorage.setItem('grumpychef_progression', JSON.stringify(data));
+        return data;
+    }
+
+    function gcHasCompleted(toolId) {
+        return gcGetProgression().completedTools.indexOf(toolId) !== -1;
+    }
+
+    function gcIsPowerUser() {
+        return gcGetProgression().completedTools.length >= 3;
+    }
+
+    function gcGetNextTool(currentToolId) {
+        var completed = gcGetProgression().completedTools;
+        for (var i = 0; i < GC_TOOL_ORDER.length; i++) {
+            var id = GC_TOOL_ORDER[i];
+            if (id !== currentToolId && completed.indexOf(id) === -1) return id;
+        }
+        return null;
+    }
+
+    function gcGetCompletedCount() {
+        return gcGetProgression().completedTools.length;
+    }
+
+    function gcShowBanner() {
+        var data = gcGetProgression();
+        var count = data.completedTools.length;
+        if (count === 0) return;
+
+        var banner = document.getElementById('gc-progression-banner');
+        var textEl = document.getElementById('gc-banner-text');
+        var countEl = document.getElementById('gc-banner-count');
+        if (!banner) return;
+
+        if (gcIsPowerUser()) {
+            textEl.innerHTML = '<strong>Power User</strong> \u2014 You\'ve completed all 3 diagnostics. Priority Academy access earned.';
+        } else {
+            textEl.innerHTML = '<strong>Welcome back</strong> \u2014 You\'ve completed ' + count + ' of 3 diagnostics. Complete all 3 to unlock priority Academy access.';
+        }
+        countEl.textContent = count + '/3';
+
+        GC_TOOL_ORDER.forEach(function(id) {
+            var dot = document.getElementById('gc-dot-' + id);
+            if (dot && data.completedTools.indexOf(id) !== -1) dot.classList.add('filled');
+        });
+
+        banner.classList.add('show');
+    }
+
+    function gcBuildSuccessContent(currentToolId) {
+        if (gcIsPowerUser()) {
+            return '<div class="power-user-panel">' +
+                '<div class="power-user-panel__badge">Power User Status Earned</div>' +
+                '<div class="power-user-panel__text">You just did what 95% of restaurant operators never will. You\'ve diagnosed your profit leaks. Scored your menu. Audited your personal operating system. You have the complete picture.</div>' +
+                '<ul class="power-user-panel__perks">' +
+                    '<li>Priority access when The Grumpy Chef Academy opens</li>' +
+                    '<li>Founding member pricing (locked in)</li>' +
+                    '<li>Priority scheduling for Discovery Calls</li>' +
+                '</ul>' +
+                '<div class="power-user-panel__btns">' +
+                    '<a href="https://thegrumpychef.ca/academy.html" class="btn btn--gold" target="_blank" style="width:100%;max-width:420px;text-align:center;">Join the Academy Waitlist \u2014 Priority Access</a>' +
+                    '<a href="https://thegrumpychef.ca/services.html#discovery-call" class="btn btn--outline" target="_blank" style="width:100%;max-width:420px;text-align:center;">Book a Discovery Call</a>' +
+                '</div>' +
+            '</div>';
+        }
+
+        var next = gcGetNextTool(currentToolId);
+        var count = gcGetCompletedCount();
+        var html = '<div class="email-success__title">SENT</div>';
+        html += '<p class="email-success__text">Check your inbox. Your 72-hour plan is on its way. Behavior leads belief \u2014 start tonight.</p>';
+
+        if (next) {
+            html += '<div class="next-step-panel">';
+            if (!gcHasCompleted('calculator')) {
+                html += '<div class="next-step-panel__text"><strong>Your life score is in.</strong> Now find where your restaurant bleeds money.</div>';
+                html += '<a href="72-hour-profit-discovery-calculator.html" class="btn btn--gold btn--sm">Run the Profit Calculator</a>';
+            } else if (!gcHasCompleted('assessment')) {
+                html += '<div class="next-step-panel__text"><strong>Almost there.</strong> Score your menu to complete the full diagnostic.</div>';
+                html += '<a href="menu-profit-score-assessment.html" class="btn btn--gold btn--sm">Score Your Menu</a>';
+            }
+            html += '</div>';
+        }
+        return html;
+    }
+
+    /* ===========================================
+       CONFIGURATION
+       =========================================== */
+    const WEBHOOK_URL = 'https://christhegrumpychef.app.n8n.cloud/webhook/calculator-email-agent';
+    const CALENDLY_LINK = 'https://thegrumpychef.ca/services.html#discovery-call';
+    const ASSESSMENT_URL = 'https://thegrumpychef.netlify.app/assessment';
+
+    /* ===========================================
+       QUIZ DATA
+       =========================================== */
+    const SYSTEMS = [
+        {
+            key: 'goals',
+            name: 'Goals & Direction',
+            principle: 'Recovery Principle: Pre-decide everything',
+            fix: 'Block 30 minutes this Sunday. Write one 90-day personal goal. Just one.',
+            priorityText: 'Without a direction, every decision costs energy you don\'t have. You\'re running the restaurant on reflex. One written goal changes the operating system.'
+        },
+        {
+            key: 'time',
+            name: 'Time & Energy',
+            principle: 'Recovery Principle: Build for 60% capacity',
+            fix: 'Pick a hard shutdown time tonight. Tell one person. Start tomorrow.',
+            priorityText: 'You\'re spending energy you don\'t have on time you haven\'t protected. One shutdown boundary changes everything downstream.'
+        },
+        {
+            key: 'health',
+            name: 'Health',
+            principle: 'Recovery Principle: Behavior leads belief',
+            fix: 'Set your alarm for the same time tomorrow. Put your phone in another room tonight.',
+            priorityText: 'Your body is running on fumes. You can\'t lead a kitchen at 60% health. One consistent wake-up time is the smallest fix with the biggest return.'
+        },
+        {
+            key: 'relationships',
+            name: 'Relationships',
+            principle: 'Recovery Principle: No "just once" exceptions',
+            fix: 'Text your partner right now. Pick a day this week for date night. Put it in the calendar.',
+            priorityText: 'The people around you are paying for your chaos. One scheduled, non-negotiable commitment changes the pattern. Pre-decide and protect it.'
+        },
+        {
+            key: 'money',
+            name: 'Money',
+            principle: 'Recovery Principle: Consistency over optimization',
+            fix: 'Open your bank app. Create a separate savings account. Set up a $50 auto-transfer.',
+            priorityText: 'If you don\'t know your personal numbers, you\'re blind. Separate your money from the restaurant\'s. One auto-transfer is the beginning of control.'
+        }
+    ];
+
+    const QUESTIONS = [
+        // System 1: Goals & Direction
+        { system: 0, text: 'Do you have a written goal beyond "survive this month"?' },
+        { system: 0, text: 'Have you thought about where you want to be in 3 years?' },
+        { system: 0, text: 'Do you review your priorities weekly?' },
+        { system: 0, text: 'Can you name your #1 personal goal right now?' },
+        { system: 0, text: 'Do you have a system for deciding what to say yes or no to?' },
+        // System 2: Time & Energy
+        { system: 1, text: 'Do you time-block personal activities (gym, family, rest)?' },
+        { system: 1, text: 'Do you have a set "done for the day" time?' },
+        { system: 1, text: 'Do you protect your mornings from work?' },
+        { system: 1, text: 'Do you take at least one full day off per week?' },
+        { system: 1, text: 'Do you have a weekly review routine?' },
+        // System 3: Health
+        { system: 2, text: 'Do you sleep 7+ hours most nights?' },
+        { system: 2, text: 'Do you have a meal plan — not just grabbing whatever\'s available?' },
+        { system: 2, text: 'Do you exercise at least 3 times per week?' },
+        { system: 2, text: 'Is your phone out of the bedroom at night?' },
+        { system: 2, text: 'Do you have a consistent wake-up time?' },
+        // System 4: Relationships
+        { system: 3, text: 'Do you have a recurring date night or dedicated partner time?' },
+        { system: 3, text: 'Do you see friends at least once a month?' },
+        { system: 3, text: 'Do you have "standing order" social events on the calendar?' },
+        { system: 3, text: 'Have you had a real conversation with your partner about how things are going in the last 30 days?' },
+        { system: 3, text: 'Do your kids or family know when they can count on your full presence?' },
+        // System 5: Money
+        { system: 4, text: 'Do you have a personal budget separate from the restaurant?' },
+        { system: 4, text: 'Do you automatically save a percentage of income?' },
+        { system: 4, text: 'Do you know your exact personal monthly expenses?' },
+        { system: 4, text: 'Do you have an emergency fund covering 3+ months?' },
+        { system: 4, text: 'Do you have a system for paying bills — not last-minute scrambling?' }
+    ];
+
+    const OPTIONS = [
+        { label: 'Yes', value: 2 },
+        { label: 'Partially', value: 1 },
+        { label: 'No', value: 0 }
+    ];
+
+    const SCORE_ZONES = [
+        { min: 0,  max: 15, key: 'red',    color: '#C53030', label: 'RED ZONE',      desc: 'Your personal systems are in crisis. The restaurant is surviving on willpower alone.' },
+        { min: 16, max: 30, key: 'yellow',  color: '#D4AF37', label: 'YELLOW ZONE',   desc: 'You have fragments of systems, but gaps are draining your energy.' },
+        { min: 31, max: 40, key: 'green',   color: '#2F855A', label: 'GREEN ZONE',    desc: 'Foundation is there. Time to tighten and automate.' },
+        { min: 41, max: 50, key: 'blue',    color: '#00A6D6', label: 'OPERATOR MODE', desc: 'Rare. Your life systems are supporting your business.' }
+    ];
+
+    /* ===========================================
+       STATE
+       =========================================== */
+    let currentQuestion = 0;
+    let answers = new Array(25).fill(null);
+
+    /* ===========================================
+       DOM HELPERS
+       =========================================== */
+    function $(id) { return document.getElementById(id); }
+    function show(id) { $(id).classList.remove('section--hidden'); }
+    function hide(id) { $(id).classList.add('section--hidden'); }
+
+    /* ===========================================
+       START
+       =========================================== */
+    window.startAssessment = function() {
+        hide('hero');
+        hide('intro');
+        show('progress');
+        show('quiz');
+        currentQuestion = 0;
+        renderQuestion();
+        $('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    /* ===========================================
+       RENDER QUESTION
+       =========================================== */
+    function renderQuestion() {
+        var q = QUESTIONS[currentQuestion];
+        var sys = SYSTEMS[q.system];
+        var isFirstInSystem = currentQuestion === 0 || QUESTIONS[currentQuestion - 1].system !== q.system;
+
+        // System header
+        if (isFirstInSystem) {
+            $('systemHeader').innerHTML =
+                '<div class="system-header">' +
+                    '<div class="system-header__icon">' + (q.system + 1) + '</div>' +
+                    '<div class="system-header__text">' +
+                        '<div class="system-header__name">' + sys.name + '</div>' +
+                        '<div class="system-header__principle">' + sys.principle + '</div>' +
+                    '</div>' +
+                '</div>';
+        }
+
+        // Question card
+        var selected = answers[currentQuestion];
+        var optionsHtml = '';
+        for (var i = 0; i < OPTIONS.length; i++) {
+            var opt = OPTIONS[i];
+            var isSelected = selected === opt.value;
+            optionsHtml +=
+                '<button class="option-btn' + (isSelected ? ' option-btn--selected' : '') + '" onclick="selectOption(' + opt.value + ')">' +
+                    '<span class="option-btn__indicator"></span>' +
+                    '<span>' + opt.label + '</span>' +
+                '</button>';
+        }
+
+        $('questionCard').innerHTML =
+            '<div class="question-card">' +
+                '<div class="question-card__number">Q' + (currentQuestion + 1) + ' / 25</div>' +
+                '<div class="question-card__text">' + q.text + '</div>' +
+                '<div class="question-card__options">' + optionsHtml + '</div>' +
+            '</div>';
+
+        // Progress
+        $('progressCount').textContent = 'Question ' + (currentQuestion + 1) + ' of 25';
+        $('progressFill').style.width = ((currentQuestion + 1) / 25 * 100) + '%';
+
+        // Nav state
+        $('backBtn').disabled = currentQuestion === 0;
+        $('nextBtn').disabled = answers[currentQuestion] === null;
+        $('nextBtn').textContent = currentQuestion === 24 ? 'SEE MY RESULTS' : 'NEXT';
+    }
+
+    /* ===========================================
+       SELECT OPTION
+       =========================================== */
+    window.selectOption = function(value) {
+        answers[currentQuestion] = value;
+        renderQuestion();
+        // Auto-advance after short delay for snappy feel
+        if (currentQuestion < 24) {
+            setTimeout(function() { goNext(); }, 350);
+        }
+    };
+
+    /* ===========================================
+       NAVIGATION
+       =========================================== */
+    window.goNext = function() {
+        if (answers[currentQuestion] === null) return;
+        if (currentQuestion < 24) {
+            currentQuestion++;
+            renderQuestion();
+            $('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            showResults();
+        }
+    };
+
+    window.goBack = function() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            renderQuestion();
+            $('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
+    /* ===========================================
+       CALCULATE RESULTS
+       =========================================== */
+    function calcResults() {
+        var systemScores = {};
+        var systemAnswers = {};
+        for (var s = 0; s < SYSTEMS.length; s++) {
+            systemScores[SYSTEMS[s].key] = 0;
+            systemAnswers[SYSTEMS[s].key] = [];
+        }
+
+        for (var i = 0; i < QUESTIONS.length; i++) {
+            var sysKey = SYSTEMS[QUESTIONS[i].system].key;
+            var val = answers[i] !== null ? answers[i] : 0;
+            systemScores[sysKey] += val;
+            systemAnswers[sysKey].push({ question: QUESTIONS[i].text, answer: val, index: i });
+        }
+
+        var totalScore = 0;
+        for (var k in systemScores) totalScore += systemScores[k];
+
+        var zone = SCORE_ZONES[0];
+        for (var z = 0; z < SCORE_ZONES.length; z++) {
+            if (totalScore >= SCORE_ZONES[z].min && totalScore <= SCORE_ZONES[z].max) {
+                zone = SCORE_ZONES[z];
+                break;
+            }
+        }
+
+        // Find weakest system
+        var weakestKey = SYSTEMS[0].key;
+        var weakestScore = systemScores[SYSTEMS[0].key];
+        for (var w = 1; w < SYSTEMS.length; w++) {
+            if (systemScores[SYSTEMS[w].key] < weakestScore) {
+                weakestScore = systemScores[SYSTEMS[w].key];
+                weakestKey = SYSTEMS[w].key;
+            }
+        }
+
+        return {
+            totalScore: totalScore,
+            maxScore: 50,
+            zone: zone,
+            systemScores: systemScores,
+            systemAnswers: systemAnswers,
+            weakestKey: weakestKey
+        };
+    }
+
+    /* ===========================================
+       SHOW RESULTS
+       =========================================== */
+    function showResults() {
+        hide('progress');
+        hide('quiz');
+        show('results');
+        show('emailSection');
+        show('ctaSection');
+
+        var r = calcResults();
+        window._results = r;
+
+        renderGauge(r);
+        renderRadar(r);
+        renderBreakdown(r);
+        renderPriority(r);
+
+        // Set CTA links
+        var dlnk = $('discoveryLink'); if (dlnk) dlnk.href = CALENDLY_LINK;
+        var dbtn = $('discoveryBtn'); if (dbtn) dbtn.href = CALENDLY_LINK;
+        var mslnk = $('menuScoreLink'); if (mslnk) mslnk.href = ASSESSMENT_URL;
+
+        $('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    /* ===========================================
+       SVG GAUGE
+       =========================================== */
+    function renderGauge(r) {
+        var pct = r.totalScore / r.maxScore;
+        var radius = 100;
+        var cx = 140;
+        var cy = 120;
+        var startAngle = Math.PI;
+        var endAngle = 0;
+        var sweepAngle = startAngle - (startAngle - endAngle) * pct;
+
+        // Background arc
+        var bgD = describeArc(cx, cy, radius, startAngle, endAngle);
+        // Value arc (will be animated)
+        var valD = describeArc(cx, cy, radius, startAngle, sweepAngle);
+
+        var trackColor = '#1A2D4D';
+
+        var svg =
+            '<svg class="gauge-svg" viewBox="0 0 280 150" xmlns="http://www.w3.org/2000/svg">' +
+                '<path d="' + bgD + '" fill="none" stroke="' + trackColor + '" stroke-width="14" stroke-linecap="round"/>' +
+                '<path id="gaugeArc" d="' + bgD + '" fill="none" stroke="' + r.zone.color + '" stroke-width="14" stroke-linecap="round" ' +
+                    'stroke-dasharray="' + arcLength(radius, Math.PI) + '" stroke-dashoffset="' + arcLength(radius, Math.PI) + '"/>' +
+            '</svg>' +
+            '<div class="gauge__score-display" style="color:' + r.zone.color + '"><span id="scoreNum">0</span><span class="gauge__max"> / ' + r.maxScore + '</span></div>' +
+            '<div class="gauge__zone" style="color:' + r.zone.color + '">' + r.zone.label + '</div>' +
+            '<div class="gauge__desc">' + r.zone.desc + '</div>';
+
+        $('gaugeWrap').innerHTML = svg;
+
+        // Animate arc
+        var arc = document.getElementById('gaugeArc');
+        var totalLen = arcLength(radius, Math.PI);
+        var targetOffset = totalLen * (1 - pct);
+
+        requestAnimationFrame(function() {
+            arc.style.transition = 'stroke-dashoffset 1.2s ease';
+            arc.style.strokeDashoffset = targetOffset;
+        });
+
+        // Animate number
+        animateNumber('scoreNum', 0, r.totalScore, 1200);
+    }
+
+    function describeArc(cx, cy, r, startAngle, endAngle) {
+        var x1 = cx + r * Math.cos(startAngle);
+        var y1 = cy - r * Math.sin(startAngle);
+        var x2 = cx + r * Math.cos(endAngle);
+        var y2 = cy - r * Math.sin(endAngle);
+        var largeArc = (startAngle - endAngle) > Math.PI ? 1 : 0;
+        return 'M ' + x1 + ' ' + y1 + ' A ' + r + ' ' + r + ' 0 ' + largeArc + ' 1 ' + x2 + ' ' + y2;
+    }
+
+    function arcLength(r, angle) {
+        return r * angle;
+    }
+
+    function animateNumber(id, from, to, duration) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var start = null;
+        function step(ts) {
+            if (!start) start = ts;
+            var progress = Math.min((ts - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(from + (to - from) * eased);
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    /* ===========================================
+       SVG RADAR CHART
+       =========================================== */
+    function renderRadar(r) {
+        var size = 340;
+        var cx = size / 2;
+        var cy = size / 2;
+        var maxR = 120;
+        var levels = 5;
+        var axes = 5;
+        var labels = ['Goals', 'Time', 'Health', 'Relationships', 'Money'];
+        var keys = ['goals', 'time', 'health', 'relationships', 'money'];
+        var maxPerSystem = 10;
+
+        // Angles: start from top (-90deg), go clockwise
+        function angle(i) {
+            return -Math.PI / 2 + (2 * Math.PI / axes) * i;
+        }
+        function point(i, val) {
+            var a = angle(i);
+            var dist = (val / maxPerSystem) * maxR;
+            return { x: cx + dist * Math.cos(a), y: cy + dist * Math.sin(a) };
+        }
+
+        var svg = '<svg class="radar-svg" viewBox="0 0 ' + size + ' ' + size + '" xmlns="http://www.w3.org/2000/svg">';
+
+        // Grid: concentric pentagons
+        for (var lvl = 1; lvl <= levels; lvl++) {
+            var pts = [];
+            for (var a = 0; a < axes; a++) {
+                var p = point(a, (lvl / levels) * maxPerSystem);
+                pts.push(p.x + ',' + p.y);
+            }
+            svg += '<polygon points="' + pts.join(' ') + '" fill="none" stroke="#1A2D4D" stroke-width="1"/>';
+        }
+
+        // Axis lines
+        for (var ax = 0; ax < axes; ax++) {
+            var pe = point(ax, maxPerSystem);
+            svg += '<line x1="' + cx + '" y1="' + cy + '" x2="' + pe.x + '" y2="' + pe.y + '" stroke="#1A2D4D" stroke-width="1"/>';
+        }
+
+        // Data polygon
+        var dataPts = [];
+        for (var d = 0; d < axes; d++) {
+            var dp = point(d, r.systemScores[keys[d]]);
+            dataPts.push(dp.x + ',' + dp.y);
+        }
+        svg += '<polygon points="' + dataPts.join(' ') + '" fill="rgba(212, 175, 55, 0.15)" stroke="#D4AF37" stroke-width="2"/>';
+
+        // Data dots
+        for (var dd = 0; dd < axes; dd++) {
+            var ddp = point(dd, r.systemScores[keys[dd]]);
+            svg += '<circle cx="' + ddp.x + '" cy="' + ddp.y + '" r="4" fill="#D4AF37"/>';
+        }
+
+        // Labels
+        var labelOffsets = [
+            { dx: 0, dy: -14, anchor: 'middle' },    // top (Goals)
+            { dx: 14, dy: 4, anchor: 'start' },       // right-top (Time)
+            { dx: 10, dy: 14, anchor: 'start' },      // right-bottom (Health)
+            { dx: -10, dy: 14, anchor: 'end' },       // left-bottom (Relationships)
+            { dx: -14, dy: 4, anchor: 'end' }         // left-top (Money)
+        ];
+        for (var lb = 0; lb < axes; lb++) {
+            var lp = point(lb, maxPerSystem);
+            var off = labelOffsets[lb];
+            var scoreColor = getScoreColor(r.systemScores[keys[lb]], maxPerSystem);
+            svg += '<text x="' + (lp.x + off.dx) + '" y="' + (lp.y + off.dy) + '" text-anchor="' + off.anchor + '" ' +
+                'font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#B8BEC8">' + labels[lb] + '</text>';
+            svg += '<text x="' + (lp.x + off.dx) + '" y="' + (lp.y + off.dy + 14) + '" text-anchor="' + off.anchor + '" ' +
+                'font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="' + scoreColor + '">' +
+                r.systemScores[keys[lb]] + '/10</text>';
+        }
+
+        svg += '</svg>';
+        $('radarWrap').innerHTML = '<h3>YOUR SYSTEM PROFILE</h3>' + svg;
+    }
+
+    function getScoreColor(score, max) {
+        var pct = score / max;
+        if (pct <= 0.3) return '#C53030';
+        if (pct <= 0.6) return '#D4AF37';
+        if (pct <= 0.8) return '#2F855A';
+        return '#00A6D6';
+    }
+
+    /* ===========================================
+       SYSTEM BREAKDOWN CARDS
+       =========================================== */
+    function renderBreakdown(r) {
+        var html = '';
+        for (var s = 0; s < SYSTEMS.length; s++) {
+            var sys = SYSTEMS[s];
+            var score = r.systemScores[sys.key];
+            var color = getScoreColor(score, 10);
+            var pct = (score / 10) * 100;
+
+            // Find zero-score questions
+            var missing = [];
+            var sysAnswers = r.systemAnswers[sys.key];
+            for (var q = 0; q < sysAnswers.length; q++) {
+                if (sysAnswers[q].answer === 0) {
+                    missing.push(sysAnswers[q].question);
+                }
+            }
+
+            var missingHtml = '';
+            if (missing.length > 0) {
+                missingHtml = '<div class="sys-card__missing"><strong>What\'s missing:</strong>';
+                for (var m = 0; m < missing.length; m++) {
+                    missingHtml += (m > 0 ? ' | ' : '') + missing[m].replace(/^Do you /, '').replace(/\?$/, '');
+                }
+                missingHtml += '</div>';
+            } else {
+                missingHtml = '<div class="sys-card__missing"><strong>Solid foundation.</strong> All areas covered. Now tighten and automate.</div>';
+            }
+
+            html +=
+                '<div class="sys-card">' +
+                    '<div class="sys-card__header">' +
+                        '<div class="sys-card__name">' + sys.name + '</div>' +
+                        '<div class="sys-card__score" style="color:' + color + '">' + score + ' / 10</div>' +
+                    '</div>' +
+                    '<div class="sys-card__bar">' +
+                        '<div class="sys-card__fill" style="width:' + pct + '%; background:' + color + '"></div>' +
+                    '</div>' +
+                    missingHtml +
+                    '<div class="sys-card__fix">' +
+                        '<div class="sys-card__fix-label">72-HOUR FIX</div>' +
+                        '<div class="sys-card__fix-text">' + sys.fix + '</div>' +
+                    '</div>' +
+                '</div>';
+        }
+        $('breakdownCards').innerHTML = html;
+    }
+
+    /* ===========================================
+       PRIORITY CARD
+       =========================================== */
+    function renderPriority(r) {
+        var weakest = null;
+        for (var s = 0; s < SYSTEMS.length; s++) {
+            if (SYSTEMS[s].key === r.weakestKey) { weakest = SYSTEMS[s]; break; }
+        }
+        if (!weakest) return;
+
+        $('priorityCard').innerHTML =
+            '<div class="priority-card">' +
+                '<div class="priority-card__label">YOUR #1 PRIORITY</div>' +
+                '<div class="priority-card__system">' + weakest.name + '</div>' +
+                '<div class="priority-card__text">' + weakest.priorityText + '</div>' +
+                '<div class="sys-card__fix mt-16">' +
+                    '<div class="sys-card__fix-label">START HERE</div>' +
+                    '<div class="sys-card__fix-text">' + weakest.fix + '</div>' +
+                '</div>' +
+            '</div>';
+    }
+
+    /* ===========================================
+       EMAIL SUBMISSION
+       =========================================== */
+    window.submitEmail = function() {
+        var name = $('inputName').value.trim();
+        var email = $('inputEmail').value.trim();
+        var restaurant = $('inputRestaurant').value.trim();
+        var phone = $('inputPhone').value.trim();
+
+        // Reset errors
+        $('errorName').textContent = '';
+        $('errorEmail').textContent = '';
+
+        var valid = true;
+        if (!name) {
+            $('errorName').textContent = 'Name is required.';
+            valid = false;
+        }
+        if (!email || !isValidEmail(email)) {
+            $('errorEmail').textContent = 'Valid email is required.';
+            valid = false;
+        }
+        if (!valid) return;
+
+        var r = window._results;
+        var weakestSystem = '';
+        for (var s = 0; s < SYSTEMS.length; s++) {
+            if (SYSTEMS[s].key === r.weakestKey) { weakestSystem = SYSTEMS[s].name; break; }
+        }
+
+        var progressionData = gcRecordCompletion('lifeos', email, name);
+        var payload = {
+            contact: {
+                name: name,
+                email: email,
+                restaurant: restaurant,
+                phone: phone
+            },
+            completedTools: progressionData.completedTools,
+            results: {
+                totalScore: r.totalScore,
+                maxScore: r.maxScore,
+                scoreZone: r.zone.label,
+                weakestSystem: weakestSystem,
+                systemScores: r.systemScores,
+                answeredQuestions: 25,
+                totalQuestions: 25,
+                answers: answers.slice(),
+                timestamp: new Date().toISOString(),
+                source: 'operator-life-os-scorecard-v1'
+            },
+            utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
+        };
+
+        // Send webhook
+        if (WEBHOOK_URL && WEBHOOK_URL !== 'YOUR_N8N_WEBHOOK_URL') {
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(function(res) {
+                if (!res.ok) console.log('Webhook response not ok:', res.status);
+            })
+            .catch(function(err) {
+                console.log('Webhook failed, payload logged below:');
+                console.log(JSON.stringify(payload, null, 2));
+            });
+        } else {
+            console.log('Webhook URL not configured. Payload:');
+            console.log(JSON.stringify(payload, null, 2));
+        }
+
+        // Redirect to thank-you page if inside LP iframe
+        if (window.parent !== window) {
+            window.parent.postMessage({ type: 'redirect', url: '/lp/thank-you-lifeos.html' }, '*');
+            return;
+        }
+
+        // Show success with dynamic progression content
+        $('emailForm').style.display = 'none';
+        var successEl = $('emailSuccess');
+        successEl.innerHTML = gcBuildSuccessContent('lifeos');
+        successEl.classList.add('email-success--visible');
+        gcShowBanner();
+    };
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    // Init progression banner
+    gcShowBanner();
+
+})();
+</script>
+<script>
+if (window.parent !== window) {
+    function reportHeight() {
+        var h = document.documentElement.scrollHeight;
+        window.parent.postMessage({ type: 'resize', height: h }, '*');
+    }
+    reportHeight();
+    new MutationObserver(reportHeight).observe(document.body, { childList: true, subtree: true, attributes: true });
+    window.addEventListener('resize', reportHeight);
+}
+</script>
+</body>
+</html>

@@ -12,47 +12,99 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Restaurant Profit Recovery — The Grumpy Chef",
-      "description": "Restaurant operations consulting for independent operators. Free diagnostic tools, self-serve frameworks, and done-with-you 90-day transformation. Based on the 21-Day Restaurant Recovery Protocol by German Master Chef Christian Schiffner.",
-      "provider": {
-        "@type": "Person",
-        "name": "Christian Schiffner",
-        "jobTitle": "German Master Chef (Kuchenmeister)",
-        "url": "https://thegrumpychef.ca/about.html"
-      },
-      "serviceType": "Restaurant Consulting",
-      "areaServed": {
-        "@type": "Country",
-        "name": "Canada"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Restaurant Profit Recovery Services",
-        "itemListElement": [
-          {
+      "@graph": [
+        {
+          "@type": "Service",
+          "@id": "https://thegrumpychef.ca/services.html#free-tools",
+          "name": "Free Restaurant Diagnostic Tools",
+          "description": "72-Hour Profit Discovery Calculator and Menu Profit Score Assessment. Free tools built from 20+ years of operator experience to find hidden restaurant profit leaks.",
+          "provider": { "@id": "https://thegrumpychef.ca/#person" },
+          "url": "https://thegrumpychef.ca/calculator.html",
+          "serviceType": "Restaurant Diagnostics",
+          "areaServed": { "@type": "Country", "name": "Canada" },
+          "offers": {
             "@type": "Offer",
-            "name": "Free Diagnostic Tools",
-            "description": "72-Hour Profit Discovery Calculator, Menu Profit Score Assessment, and community content",
             "price": "0",
-            "priceCurrency": "USD"
-          },
-          {
+            "priceCurrency": "CAD"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://thegrumpychef.ca/services.html#operators-toolkit",
+          "name": "Operator's Toolkit",
+          "description": "8 ready-to-use spreadsheet templates and operations dashboard for food cost, labor, waste, menu engineering, vendor tracking, and inventory management. Weekly health score auto-calculated.",
+          "provider": { "@id": "https://thegrumpychef.ca/#person" },
+          "url": "https://thegrumpychef.ca/toolkit-bundle.html",
+          "serviceType": "Restaurant Operations Tools",
+          "areaServed": { "@type": "Country", "name": "Canada" },
+          "offers": {
             "@type": "Offer",
-            "name": "Self-Serve Frameworks & Guides",
-            "description": "Digital frameworks, implementation guides, and tools for specific restaurant pain points",
-            "price": "200",
-            "priceCurrency": "USD"
-          },
-          {
-            "@type": "Offer",
-            "name": "90-Day Restaurant Transformation",
-            "description": "Done-with-you coaching: the full 21-Day Protocol run 3 times, all pain points addressed systematically with custom tools built for your restaurant",
-            "price": "5000",
+            "price": "47",
             "priceCurrency": "USD"
           }
-        ]
-      }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://thegrumpychef.ca/services.html#discovery-kit",
+          "name": "72-Hour Profit Discovery Kit",
+          "description": "The exact 3-day framework used to find $41,000 in hidden waste. Includes day-by-day walkthrough videos, exposure sheet, diagnosis workbook, protocol builder, measurement tracker, and pre-decided response cards.",
+          "provider": { "@id": "https://thegrumpychef.ca/#person" },
+          "url": "https://thegrumpychef.ca/kit.html",
+          "serviceType": "Restaurant Profit Recovery",
+          "areaServed": { "@type": "Country", "name": "Canada" },
+          "offers": {
+            "@type": "Offer",
+            "price": "197",
+            "priceCurrency": "USD",
+            "description": "Founding Rate (increases to $297 after 20 operators)"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://thegrumpychef.ca/services.html#transformation",
+          "name": "90-Day Restaurant Transformation",
+          "description": "Done-with-you coaching running the full 21-Day Restaurant Recovery Protocol three times. All 8 pain points addressed systematically with custom analysis and tools built for your specific restaurant.",
+          "provider": { "@id": "https://thegrumpychef.ca/#person" },
+          "url": "https://thegrumpychef.ca/services.html#discovery-call",
+          "serviceType": "Restaurant Operations Consulting",
+          "areaServed": { "@type": "Country", "name": "Canada" },
+          "offers": {
+            "@type": "Offer",
+            "price": "5000",
+            "priceCurrency": "USD",
+            "description": "Starting price, application required"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does it cost to work with The Grumpy Chef?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Four tiers: Free diagnostic tools ($0), Operator's Toolkit ($47), 72-Hour Profit Discovery Kit ($197 founding rate), and 90-Day Restaurant Transformation (starting at $5,000, application required)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is included in the 72-Hour Profit Discovery Kit?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Day-by-day walkthrough videos (3 x 30 min), Exposure Sheet to pull real numbers, Diagnosis Workbook to find your #1 leak, Protocol Builder for a one-page fix, Measurement Tracker for daily/weekly/30-day tracking, and Pre-Decided Response Cards. Includes a find-a-leak money-back guarantee."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the 90-Day Restaurant Transformation?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A done-with-you coaching engagement that runs the 21-Day Restaurant Recovery Protocol three complete cycles. Covers all 8 restaurant pain points with custom analysis and operational tools built for your specific restaurant. Includes weekly check-ins throughout."
+              }
+            }
+          ]
+        }
+      ]
     }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -224,6 +276,7 @@
             .footer-top { flex-direction: column; }
         }
     </style>
+    <script src="/js/analytics.js"></script>
 </head>
 <body>
     <!-- NAV -->
@@ -235,6 +288,7 @@
                 <a href="/about.html">My Story</a>
                 <a href="/framework.html">The Protocol</a>
                 <a href="/services.html" class="nav-active">Work With Me</a>
+                <a href="/blog/">Blog</a>
                 <a href="/calculator.html">Free Tools</a>
                 <a href="/kit.html" class="nav-cta">Get the Kit — $197</a>
             </div>
@@ -512,11 +566,12 @@
 
         const payload = {
             name, email, restaurant_name: restaurant, biggest_challenge: challenge,
-            timestamp: new Date().toISOString(), page_source: 'discovery-call-services'
+            timestamp: new Date().toISOString(), page_source: 'discovery-call-services',
+            utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
         };
 
         try {
-            await fetch('https://christhwegrumpychef.app.n8n.cloud/webhook/calculator-email-agent', {
+            await fetch('https://christhegrumpychef.app.n8n.cloud/webhook/calculator-email-agent', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)

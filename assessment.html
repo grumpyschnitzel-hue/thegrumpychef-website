@@ -934,6 +934,7 @@
             .container { max-width: 100%; }
         }
     </style>
+    <script src="/js/analytics.js"></script>
 </head>
 <body>
 
@@ -1205,7 +1206,7 @@
 /* ============================================
    CONFIG
    ============================================ */
-const WEBHOOK_URL = 'https://christhwegrumpychef.app.n8n.cloud/webhook/calculator-email-agent';
+const WEBHOOK_URL = 'https://christhegrumpychef.app.n8n.cloud/webhook/calculator-email-agent';
 const SCOREAPP_API_URL = '';
 
 /* ============================================
@@ -1734,7 +1735,8 @@ function buildWebhookPayload() {
             })),
             timestamp: new Date().toISOString(),
             source: 'menu-profit-score-assessment-v1'
-        }
+        },
+        utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
     };
 }
 
@@ -1805,6 +1807,12 @@ async function submitCapture(e) {
         console.log('Score App format:', JSON.stringify(buildScoreAppPayload(), null, 2));
     }
 
+    // Redirect to thank-you page if inside LP iframe
+    if (window.parent !== window) {
+        window.parent.postMessage({ type: 'redirect', url: '/lp/thank-you-assessment.html' }, '*');
+        return;
+    }
+
     // Show success regardless — never leave the user hanging
     document.getElementById('captureForm').style.display = 'none';
     document.getElementById('captureSuccess').classList.add('active');
@@ -1835,7 +1843,8 @@ document.getElementById('assessment-discovery-form').addEventListener('submit', 
         source: 'discovery-call-request',
         tags: ['discovery-call-request'],
         page_source: 'menu-profit-score-assessment',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
     };
 
     fetch('https://hook.us1.make.com/placeholder-discovery', {
@@ -1849,6 +1858,17 @@ document.getElementById('assessment-discovery-form').addEventListener('submit', 
 
     console.log('Discovery call request (assessment):', payload);
 });
+</script>
+<script>
+if (window.parent !== window) {
+    function reportHeight() {
+        var h = document.documentElement.scrollHeight;
+        window.parent.postMessage({ type: 'resize', height: h }, '*');
+    }
+    reportHeight();
+    new MutationObserver(reportHeight).observe(document.body, { childList: true, subtree: true, attributes: true });
+    window.addEventListener('resize', reportHeight);
+}
 </script>
 
 </body>
