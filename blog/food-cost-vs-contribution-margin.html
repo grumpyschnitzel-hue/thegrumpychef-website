@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's the Difference Between Food Cost Percentage and Contribution Margin? | The Grumpy Chef</title>
+    <meta name="description" content="Food cost percentage tells you how efficient a dish is. Contribution margin tells you how much money it makes. Most restaurants track the wrong number. Here's the math that matters.">
+    <meta property="og:title" content="What's the Difference Between Food Cost Percentage and Contribution Margin? | The Grumpy Chef">
+    <meta property="og:description" content="Food cost percentage tells you how efficient a dish is. Contribution margin tells you how much money it makes. Most restaurants track the wrong number. Here's the math that matters.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://thegrumpychef.ca/blog/food-cost-vs-contribution-margin.html">
+    <meta property="og:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://thegrumpychef.ca/blog/food-cost-vs-contribution-margin.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "What's the Difference Between Food Cost Percentage and Contribution Margin?",
+          "description": "Food cost percentage tells you how efficient a dish is. Contribution margin tells you how much money it makes. Most restaurants track the wrong number. Here's the math that matters.",
+          "author": {
+            "@type": "Person",
+            "@id": "https://thegrumpychef.ca/#person",
+            "name": "Christian Schiffner",
+            "jobTitle": "German Master Chef (Kuchenmeister)",
+            "url": "https://thegrumpychef.ca/about.html"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Grumpy Chef",
+            "url": "https://thegrumpychef.ca",
+            "logo": "https://thegrumpychef.ca/images/Kitchen1.jpg"
+          },
+          "datePublished": "2026-03-01",
+          "dateModified": "2026-03-01",
+          "url": "https://thegrumpychef.ca/blog/food-cost-vs-contribution-margin.html",
+          "mainEntityOfPage": "https://thegrumpychef.ca/blog/food-cost-vs-contribution-margin.html",
+          "image": "https://thegrumpychef.ca/images/Kitchen1.jpg",
+          "wordCount": "1580"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is a lower food cost percentage always better?",
+              "acceptedAnswer": { "@type": "Answer", "text": "No. A lower food cost percentage means a dish is more efficient, but it doesn't mean it makes more money. A $12 salad at 18% food cost contributes $9.84 per plate. A $28 salmon at 32% food cost contributes $19.04 per plate. The salmon's percentage is 'worse' but it puts $9.20 more cash in your register every single sale. Track contribution margin — that's what pays rent." }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I calculate contribution margin?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Contribution margin equals the menu price minus the food cost. If a dish sells for $24 and the ingredients cost $7.20, the contribution margin is $16.80. That's the actual dollars left over from each sale to cover labor, rent, and profit. Multiply that by units sold per week to see total dollar contribution per item." }
+            },
+            {
+              "@type": "Question",
+              "name": "What is a good contribution margin for a restaurant?",
+              "acceptedAnswer": { "@type": "Answer", "text": "A good contribution margin depends on your price point and concept, but most profitable restaurants aim for $12 to $20 per plate on entrees. The number matters more than the percentage. A fast-casual spot might average $8 per plate on high volume. A fine dining restaurant might average $25 per plate on lower volume. What matters is total contribution margin across all sales covering your fixed costs." }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thegrumpychef.ca/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://thegrumpychef.ca/blog/" },
+            { "@type": "ListItem", "position": 3, "name": "Food Cost Percentage vs Contribution Margin" }
+          ]
+        }
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --blue: #00A6D6;
+            --red: #C53030;
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background: var(--navy); color: var(--white); line-height: 1.6; }
+        a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--white); }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,22,40,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--navy-border); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--white); letter-spacing: 1px; text-transform: uppercase; }
+        .nav-logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a { color: var(--white-dim); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a.active { color: var(--gold); }
+        .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 8px 20px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .nav-cta:hover { background: var(--white); color: var(--navy) !important; }
+        .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+
+        .breadcrumb { padding: 80px 24px 0; max-width: 740px; margin: 0 auto; }
+        .breadcrumb a, .breadcrumb span { font-size: 0.8rem; color: var(--white-dim); }
+        .breadcrumb a:hover { color: var(--gold); }
+        .breadcrumb .sep { margin: 0 8px; color: var(--gray); }
+
+        .article-header { padding: 32px 24px 48px; max-width: 740px; margin: 0 auto; }
+        .article-meta { display: flex; gap: 16px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+        .article-meta span { font-family: var(--font-mono); font-size: 0.75rem; color: var(--white-dim); letter-spacing: 0.5px; }
+        .article-header h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; text-transform: uppercase; }
+        .article-header h1 span { color: var(--gold); }
+
+        .article-body { max-width: 740px; margin: 0 auto; padding: 0 24px 60px; }
+        .article-body p { font-size: 1.05rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 24px; }
+        .article-body p strong { color: var(--white); }
+        .article-body h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin: 48px 0 16px; color: var(--white); }
+        .article-body h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; text-transform: uppercase; margin: 32px 0 12px; color: var(--white); }
+        .article-body ul, .article-body ol { margin: 0 0 24px 24px; }
+        .article-body li { font-size: 1rem; color: var(--white-dim); line-height: 1.7; margin-bottom: 8px; }
+        .article-body blockquote { border-left: 3px solid var(--gold); padding: 16px 24px; margin: 32px 0; background: var(--navy-card); border-radius: 0 8px 8px 0; }
+        .article-body blockquote p { font-family: var(--font-mono); font-size: 0.95rem; color: var(--white-dim); font-style: italic; margin-bottom: 0; }
+        .article-body table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; }
+        .article-body th { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gold); text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--gold-border); }
+        .article-body td { font-size: 0.95rem; color: var(--white-dim); padding: 12px 16px; border-bottom: 1px solid var(--navy-border); }
+        .article-body tr:hover td { color: var(--white); background: var(--navy-card); }
+
+        .callout-box { background: var(--navy-card); border: 1px solid var(--gold-border); border-radius: 12px; padding: 28px; margin: 32px 0; }
+        .callout-box h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+        .callout-box p { font-size: 0.95rem; margin-bottom: 0; }
+
+        .faq-section { margin-top: 48px; padding-top: 48px; border-top: 1px solid var(--navy-border); }
+        .faq-section h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-bottom: 24px; }
+        .faq-item { border-bottom: 1px solid var(--navy-border); padding: 20px 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; color: var(--white); }
+        .faq-item p { font-size: 0.95rem; color: var(--white-dim); line-height: 1.7; margin-bottom: 0; }
+
+        .author-card { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 12px; padding: 32px; margin-top: 48px; display: flex; gap: 20px; align-items: flex-start; }
+        .author-photo { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--gold); object-fit: cover; flex-shrink: 0; }
+        .author-info h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+        .author-info .author-title { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+        .author-info p { font-size: 0.9rem; color: var(--white-dim); line-height: 1.6; }
+
+        .cta-section { padding: 80px 24px; text-align: center; background: var(--navy-light); border-top: 1px solid var(--navy-border); }
+        .cta-title { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; text-transform: uppercase; margin-bottom: 16px; line-height: 1.15; }
+        .cta-title span { color: var(--gold); }
+        .cta-text { font-size: 1rem; color: var(--white-dim); max-width: 500px; margin: 0 auto 24px; }
+        .btn-primary { display: inline-block; background: var(--gold); color: var(--navy); padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s; border: 2px solid var(--gold); }
+        .btn-primary:hover { background: transparent; color: var(--gold); }
+
+        .related-section { padding: 60px 24px; max-width: 740px; margin: 0 auto; }
+        .related-section h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+        .related-links { display: flex; flex-direction: column; gap: 12px; }
+        .related-links a { font-size: 0.95rem; padding: 12px 16px; background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 8px; transition: border-color 0.2s; }
+        .related-links a:hover { border-color: var(--gold-border); }
+
+        .footer { background: var(--navy-light); border-top: 1px solid var(--navy-border); padding: 60px 24px 32px; }
+        .footer-inner { max-width: 1000px; margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+        .footer-brand { max-width: 360px; }
+        .footer-brand-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
+        .footer-brand-name span { color: var(--gold); }
+        .footer-brand p { font-size: 0.85rem; color: var(--white-dim); line-height: 1.6; }
+        .footer-links h4 { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 12px; }
+        .footer-links a { display: block; font-size: 0.85rem; color: var(--white-dim); margin-bottom: 8px; }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-bottom { border-top: 1px solid var(--navy-border); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .footer-bottom p { font-size: 0.75rem; color: var(--gray); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy-light); flex-direction: column; padding: 20px 24px; gap: 16px; border-bottom: 1px solid var(--navy-border); }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .breadcrumb { padding-top: 76px; }
+            .article-header h1 { font-size: 1.8rem; }
+            .author-card { flex-direction: column; text-align: center; align-items: center; }
+            .footer-top { flex-direction: column; }
+        }
+    </style>
+    <script src="/js/analytics.js"></script>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+            <div class="nav-links">
+                <a href="/about.html">My Story</a>
+                <a href="/framework.html">The Protocol</a>
+                <a href="/services.html">Work With Me</a>
+                <a href="/blog/" class="active">Blog</a>
+                <a href="/calculator.html">Free Tools</a>
+                <a href="/kit.html" class="nav-cta">Get the Kit &mdash; $197</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><span>Food Cost vs Contribution Margin</span>
+    </div>
+
+    <header class="article-header">
+        <div class="article-meta">
+            <span>8 min read</span>
+            <span>Published March 01, 2026</span>
+            <span>By Christian Schiffner</span>
+        </div>
+        <h1>What's the Difference Between <span>Food Cost Percentage</span> and <span>Contribution Margin?</span></h1>
+    </header>
+
+    <article class="article-body">
+        <p><strong>Food cost percentage tells you what fraction of a dish's price goes to ingredients. Contribution margin tells you how many actual dollars are left after ingredients. A $28 salmon at 32% food cost contributes $19.04 per plate. A $12 salad at 18% food cost contributes $9.84. The salmon's percentage is "worse" but it puts $9.20 more cash in your register every time it sells. Track contribution margin. That's what pays rent.</strong></p>
+
+        <p>This is the single most expensive mistake I see restaurant owners make. They obsess over food cost percentage. They build their entire menu around keeping that number under 30%. And they end up with a menu full of "efficient" dishes that don't make any money.</p>
+
+        <p>I made this mistake myself. For years. Across kitchens in Germany, Switzerland, and Canada. I was so proud of my food cost percentage that I almost went bankrupt chasing it. More on that later.</p>
+
+        <p>First, let me show you the math. Because once you see it, you can't unsee it.</p>
+
+        <h2>Food Cost Percentage: What It Actually Tells You</h2>
+
+        <p>Food cost percentage is simple. Take your ingredient cost, divide by your menu price, multiply by 100.</p>
+
+        <p>A burger with $4.50 in ingredients priced at $16? That's 28.1% food cost. A steak with $12 in ingredients priced at $38? That's 31.6% food cost.</p>
+
+        <p>The industry says 28-32% is "good." Under 25% is "great." Over 35% is "a problem."</p>
+
+        <p>And that framing has destroyed more independent restaurants than bad food ever has.</p>
+
+        <p>Because food cost percentage only tells you one thing: <strong>how efficient a dish is at converting price to gross margin.</strong> It doesn't tell you the thing that actually matters — how much money the dish puts in your pocket.</p>
+
+        <p>A dish can be incredibly efficient (low food cost percentage) and still contribute almost nothing to paying your bills. A $6 side salad at 15% food cost? Great percentage. It contributes $5.10 per sale. You'd need to sell 200 of them to cover one month's rent.</p>
+
+        <p>Meanwhile, a $42 ribeye at 36% food cost — "too high" by industry standards — contributes $26.88 per plate. Sell 40 of those and you've covered the same rent.</p>
+
+        <p><strong>Percentages measure efficiency. Dollars measure survival.</strong></p>
+
+        <h2>Contribution Margin: The Dollars-Per-Plate Number</h2>
+
+        <p>Contribution margin is even simpler. Menu price minus food cost. That's it.</p>
+
+        <p>A $24 pasta with $6.00 in ingredients? Contribution margin is $18.00. That $18.00 is the money left over from each sale to cover labor, rent, utilities, insurance, and — if there's anything left — profit.</p>
+
+        <p>The word "contribution" is the whole point. It's what each dish contributes to covering your fixed costs. Your rent doesn't change based on food cost percentage. Your insurance doesn't care if you're at 28% or 33%. Those bills come every month regardless. You need dollars to pay them. Not percentages.</p>
+
+        <p>When you sort your menu by contribution margin instead of food cost percentage, the picture changes completely. The "expensive" dishes with "high" food cost percentages are often your best money makers. And the "efficient" low-food-cost items are often the ones holding you back.</p>
+
+        <h2>The Math That Changes Everything</h2>
+
+        <p>Let me show you five real menu items side by side. These are based on dishes I've actually costed out in my own kitchens.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Menu Item</th>
+                    <th>Price</th>
+                    <th>Food Cost</th>
+                    <th>FC %</th>
+                    <th>Contribution Margin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Garden Salad</td>
+                    <td>$12.00</td>
+                    <td>$2.16</td>
+                    <td>18%</td>
+                    <td>$9.84</td>
+                </tr>
+                <tr>
+                    <td>Chicken Schnitzel</td>
+                    <td>$22.00</td>
+                    <td>$5.94</td>
+                    <td>27%</td>
+                    <td>$16.06</td>
+                </tr>
+                <tr>
+                    <td>Wild Salmon</td>
+                    <td>$28.00</td>
+                    <td>$8.96</td>
+                    <td>32%</td>
+                    <td>$19.04</td>
+                </tr>
+                <tr>
+                    <td>Pork Schnitzel</td>
+                    <td>$19.00</td>
+                    <td>$4.75</td>
+                    <td>25%</td>
+                    <td>$14.25</td>
+                </tr>
+                <tr>
+                    <td>Ribeye Steak</td>
+                    <td>$38.00</td>
+                    <td>$13.30</td>
+                    <td>35%</td>
+                    <td>$24.70</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Look at that table. If you're chasing food cost percentage, the garden salad is your hero at 18%. The ribeye is your "problem" at 35%.</p>
+
+        <p>But if you sell 100 garden salads this week, you generate $984 in contribution margin. Sell 100 ribeyes, you generate $2,470. The ribeye — your "worst" item by percentage — puts $1,486 more dollars in your register.</p>
+
+        <p><strong>Which number pays your electric bill? Exactly.</strong></p>
+
+        <div class="callout-box">
+            <h4>The Contribution Margin Rule</h4>
+            <p>Sort your entire menu by contribution margin per plate. The top 5 items are your Stars. Push them. Feature them. Train your servers to sell them. The bottom 5 items are either Dogs (low margin, low popularity — cut them) or Puzzles (high margin, low popularity — reposition them). This is the foundation of menu engineering.</p>
+        </div>
+
+        <h2>How This Changes Your Menu Strategy</h2>
+
+        <p>Once you see your menu through contribution margin, three things change immediately.</p>
+
+        <p><strong>1. You stop promoting low-margin items just because they sell.</strong> That popular $12 appetizer everyone loves? If it's contributing $7.50 per plate while pushing down orders of your $24 entree that contributes $16.00, you're losing $8.50 in potential margin every time someone fills up on appetizers instead of ordering mains. That's a Plowhorse — popular but low margin. You keep it on the menu. You just stop pushing it.</p>
+
+        <p><strong>2. You start engineering your menu to sell Stars.</strong> Stars are high-margin, high-popularity items. In menu engineering, these are your best friends. Put them in the top right corner of the menu. Put a box around them. Have your servers mention them first. Every extra Star you sell is maximum dollars per transaction.</p>
+
+        <p><strong>3. You find your Puzzles and fix them.</strong> Puzzles are high-margin items that don't sell well. Maybe the name is bad. Maybe the description is boring. Maybe it's buried at the bottom of the menu. These are money sitting on the table. Better descriptions, better positioning, or a server who knows how to pitch it — any of these can turn a Puzzle into a Star.</p>
+
+        <p>This is the <a href="/blog/menu-engineering-restaurant-profit.html">Stars/Plowhorses/Puzzles/Dogs matrix</a>. And it only works when you rank by contribution margin, not food cost percentage.</p>
+
+        <h2>The "Low Food Cost" Menu That Almost Bankrupted Me</h2>
+
+        <p>Time for the story I promised.</p>
+
+        <p>Early in my career, I was running a kitchen in Switzerland. Beautiful spot. Good reputation. And I was obsessed with food cost percentage. Obsessed. I had it down to 24%. I was bragging about it. My chef buddies were jealous. Twenty-four percent. That's textbook perfect.</p>
+
+        <p>The restaurant was barely breaking even.</p>
+
+        <p>I couldn't figure it out. My food cost was amazing. My plates looked great. Customers were happy. Why was there no money?</p>
+
+        <p>Because my menu was full of "efficient" dishes that didn't make any real money. I'd designed the whole thing around keeping food cost percentage low. So my proteins were small. My price points were moderate. My highest-priced item was $26.</p>
+
+        <p>The average contribution margin across my menu was $11.40 per plate. Sounds okay until you do the math. At 80 covers a night, that's $912 in gross margin. Rent was $4,500/month. Labor was running $18,000/month. Insurance, utilities, supplies — another $6,000. I needed $28,500/month in contribution margin just to break even. At $912/night, I was generating $27,360. We were underwater by $1,140 every single month.</p>
+
+        <p>And I was proud of my 24% food cost the entire time.</p>
+
+        <p>The fix was painful for my ego. I added a $38 dry-aged steak. Food cost: 34%. I added a $32 seafood dish. Food cost: 31%. My blended food cost percentage went from 24% to 29%. It looked "worse" on paper.</p>
+
+        <p>But my average contribution margin per plate jumped from $11.40 to $15.80. At the same 80 covers, that's $37,920/month. From underwater to $9,420 in profit. By making my food cost percentage "worse."</p>
+
+        <p>That lesson cost me two years and a lot of sleepless nights. I'm giving it to you in 8 minutes.</p>
+
+        <blockquote>
+            <p>"I spent two years chasing a percentage while the dollars walked out the door. The menu looked perfect on a spreadsheet. The bank account told a different story."</p>
+        </blockquote>
+
+        <h2>How the Food Cost Lie Connects to Your Menu</h2>
+
+        <p>I call this the Food Cost Lie. Not because food cost percentage is useless — it's a useful efficiency metric. The lie is making it the primary number you manage your menu by.</p>
+
+        <p>The <a href="/assessment.html">Menu Profit Score Assessment</a> scores your menu across multiple dimensions, including whether you're tracking contribution margin or falling into the food cost percentage trap. It takes 5 minutes and shows you exactly where your menu is leaving money on the table.</p>
+
+        <p>Here's the simple version of what to do right now:</p>
+
+        <ol>
+            <li>Pull your menu. Every item.</li>
+            <li>Cost out the ingredients for each dish. Be honest. Include waste, trim, the side that comes with it, the sauce, the garnish. Everything.</li>
+            <li>Calculate contribution margin for each item: menu price minus total food cost.</li>
+            <li>Sort by contribution margin. Highest to lowest.</li>
+            <li>Cross-reference with your POS sales data. Which high-margin items sell well? Those are Stars. Push them. Which high-margin items don't sell? Those are Puzzles. Fix the description, position, or presentation.</li>
+        </ol>
+
+        <p>This exercise takes about 2 hours for a 30-item menu. And it will change more about your profitability than any other 2 hours you spend this month.</p>
+
+        <p>Your food cost percentage can stay at 32%. Your rent doesn't care. Your landlord doesn't ask what percentage your chicken costs. They ask for the check. Make sure you have the dollars to write it.</p>
+
+        <!-- FAQ SECTION -->
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>Is a lower food cost percentage always better?</h3>
+                <p>No. A lower food cost percentage means a dish is more efficient, but it doesn't mean it makes more money. A $12 salad at 18% food cost contributes $9.84 per plate. A $28 salmon at 32% food cost contributes $19.04 per plate. The salmon's percentage is "worse" but it puts $9.20 more cash in your register every single sale. Track contribution margin — that's what pays rent.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I calculate contribution margin?</h3>
+                <p>Contribution margin equals the menu price minus the food cost. If a dish sells for $24 and the ingredients cost $7.20, the contribution margin is $16.80. That's the actual dollars left over from each sale to cover labor, rent, and profit. Multiply that by units sold per week to see total dollar contribution per item.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is a good contribution margin for a restaurant?</h3>
+                <p>A good contribution margin depends on your price point and concept, but most profitable restaurants aim for $12 to $20 per plate on entrees. The number matters more than the percentage. A fast-casual spot might average $8 per plate on high volume. A fine dining restaurant might average $25 per plate on lower volume. What matters is total contribution margin across all sales covering your fixed costs.</p>
+            </div>
+        </div>
+
+        <!-- AUTHOR BIO -->
+        <div class="author-card">
+            <img src="/images/Kitchen1.jpg" alt="Chef Christian Schiffner — The Grumpy Chef" class="author-photo">
+            <div class="author-info">
+                <h4>Christian Schiffner</h4>
+                <div class="author-title">German Master Chef (Kuchenmeister)</div>
+                <p>20+ years of professional kitchen experience across Germany, Switzerland, Austria, Spain, and Canada. Lost a restaurant and $370K. Rebuilt with recovery frameworks. 1,200+ days of proof that systems beat hustle. Founder of The Grumpy Chef.</p>
+            </div>
+        </div>
+    </article>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <h2 class="cta-title">Is Your Menu Chasing <span>Percentages or Dollars?</span></h2>
+        <p class="cta-text">The Menu Profit Score Assessment shows you in 5 minutes. Find out if your menu is leaving money on the table.</p>
+        <a href="/assessment.html" class="btn-primary">Take the Free Assessment</a>
+    </section>
+
+    <!-- RELATED ARTICLES -->
+    <div class="related-section">
+        <h3>Related Articles</h3>
+        <div class="related-links">
+            <a href="/blog/price-restaurant-menu.html">How Do I Price My Restaurant Menu Correctly?</a>
+            <a href="/blog/menu-engineering-restaurant-profit.html">What Is Menu Engineering and How Does It Increase Restaurant Profit?</a>
+            <a href="/blog/lower-restaurant-food-cost.html">How Do I Lower Food Cost in My Restaurant Without Cutting Quality?</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
+                    <p>Restaurant operations consulting founded by Christian Schiffner, a German Master Chef (Kuchenmeister) with 20+ years of experience across 5 countries. Based in Dawson City, Yukon.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigate</h4>
+                    <a href="/about.html">My Story</a>
+                    <a href="/framework.html">The 21-Day Protocol</a>
+                    <a href="/services.html">Work With Me</a>
+                    <a href="/blog/">Blog</a>
+                    <a href="/calculator.html">Profit Leak Calculator</a>
+                    <a href="/assessment.html">Menu Profit Score</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="https://www.linkedin.com/in/christian-schiffner/" target="_blank">LinkedIn</a>
+                    <a href="https://substack.com/@thegrumpychef" target="_blank">Newsletter</a>
+                    <a href="mailto:christian@thegrumpychef.ca">Email</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Christian Schiffner | The Grumpy Chef | German Master Chef (Kuechenmeister)</p>
+                <p>Dawson City, Yukon &bull; From the Black Forest, Germany</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

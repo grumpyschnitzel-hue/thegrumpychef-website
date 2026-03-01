@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Grumpy Chef Blog</title>
+    <link>https://thegrumpychef.ca/blog/</link>
+    <description>Restaurant profit recovery frameworks, food cost control, and menu engineering from a German Master Chef with 20+ years of operator experience.</description>
+    <language>en-ca</language>
+    <lastBuildDate>Sat, 01 Mar 2026 00:00:00 -0800</lastBuildDate>
+    <atom:link href="https://thegrumpychef.ca/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>How Do I Lower Food Cost in My Restaurant Without Cutting Quality?</title>
+      <link>https://thegrumpychef.ca/blog/lower-restaurant-food-cost.html</link>
+      <description>The answer isn't cheaper ingredients. It's tracking what you're already wasting. The Track/Discover/Drive framework that found $41,000 in hidden waste.</description>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 -0800</pubDate>
+      <guid>https://thegrumpychef.ca/blog/lower-restaurant-food-cost.html</guid>
+    </item>
+    <item>
+      <title>What Is Menu Engineering and How Does It Increase Restaurant Profit?</title>
+      <link>https://thegrumpychef.ca/blog/menu-engineering-restaurant-profit.html</link>
+      <description>Menu engineering classifies every item by profitability and popularity using the Stars/Plowhorses/Puzzles/Dogs matrix.</description>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 -0800</pubDate>
+      <guid>https://thegrumpychef.ca/blog/menu-engineering-restaurant-profit.html</guid>
+    </item>
+    <item>
+      <title>Why Is My Restaurant Busy but Not Profitable?</title>
+      <link>https://thegrumpychef.ca/blog/restaurant-busy-not-profitable.html</link>
+      <description>Full dining room, empty bank account. The problem isn't revenue — it's prime cost and hidden profit leaks.</description>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 -0800</pubDate>
+      <guid>https://thegrumpychef.ca/blog/restaurant-busy-not-profitable.html</guid>
+    </item>
+    <item>
+      <title>How Do I Price My Restaurant Menu Correctly?</title>
+      <link>https://thegrumpychef.ca/blog/price-restaurant-menu.html</link>
+      <description>Food cost percentage is a trap. Contribution margin — the actual dollars left after food cost — is what pays your rent.</description>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 -0800</pubDate>
+      <guid>https://thegrumpychef.ca/blog/price-restaurant-menu.html</guid>
+    </item>
+    <item>
+      <title>What Is a Restaurant Profit Leak and How Do I Find Mine?</title>
+      <link>https://thegrumpychef.ca/blog/restaurant-profit-leak.html</link>
+      <description>A profit leak is money leaving your restaurant that doesn't show up on your P&amp;L. Most operators have 5-8 active leaks across 9 categories.</description>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 -0800</pubDate>
+      <guid>https://thegrumpychef.ca/blog/restaurant-profit-leak.html</guid>
+    </item>
+    <item>
+      <title>How to Do a 72-Hour Restaurant Audit</title>
+      <link>https://thegrumpychef.ca/blog/72-hour-restaurant-audit.html</link>
+      <description>Three days. Nine categories. Find your biggest profit leak before the weekend. The 72-Hour Profit Discovery framework.</description>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 -0800</pubDate>
+      <guid>https://thegrumpychef.ca/blog/72-hour-restaurant-audit.html</guid>
+    </item>
+    <item>
+      <title>What's the Difference Between Food Cost Percentage and Contribution Margin?</title>
+      <link>https://thegrumpychef.ca/blog/food-cost-vs-contribution-margin.html</link>
+      <description>The industry obsesses over food cost percentage. But a 22% food cost item can make you less money than a 35% item. Here's the math.</description>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 -0800</pubDate>
+      <guid>https://thegrumpychef.ca/blog/food-cost-vs-contribution-margin.html</guid>
+    </item>
+    <item>
+      <title>How Do Independent Restaurants Compete with Chains on Profitability?</title>
+      <link>https://thegrumpychef.ca/blog/independent-restaurant-compete-chains.html</link>
+      <description>Chains have purchasing power. You have speed. Here's how to use the 60% Capacity Rule to compete on profitability.</description>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 -0800</pubDate>
+      <guid>https://thegrumpychef.ca/blog/independent-restaurant-compete-chains.html</guid>
+    </item>
+    <item>
+      <title>What Should a Restaurant Owner Track Daily to Protect Profit Margins?</title>
+      <link>https://thegrumpychef.ca/blog/restaurant-daily-tracking.html</link>
+      <description>Monthly P&amp;L statements show averages. Daily tracking shows leaks. The 5 leading indicators every operator needs.</description>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 -0800</pubDate>
+      <guid>https://thegrumpychef.ca/blog/restaurant-daily-tracking.html</guid>
+    </item>
+    <item>
+      <title>How to Rebuild a Failing Restaurant in 21 Days</title>
+      <link>https://thegrumpychef.ca/blog/rebuild-failing-restaurant-21-days.html</link>
+      <description>The 21-Day Restaurant Recovery Protocol. Three weeks. Three phases. The framework that rebuilt a restaurant from $370K in debt.</description>
+      <pubDate>Sat, 01 Mar 2026 00:00:00 -0800</pubDate>
+      <guid>https://thegrumpychef.ca/blog/rebuild-failing-restaurant-21-days.html</guid>
+    </item>
+  </channel>
+</rss>

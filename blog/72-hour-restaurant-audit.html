@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Do a 72-Hour Restaurant Audit | The Grumpy Chef</title>
+    <meta name="description" content="Find your restaurant's biggest profit leak in 3 days. The 72-Hour Restaurant Audit framework: Day 1 pulls numbers, Day 2 diagnoses leaks, Day 3 builds your fix. Step-by-step guide.">
+    <meta property="og:title" content="How to Do a 72-Hour Restaurant Audit | The Grumpy Chef">
+    <meta property="og:description" content="Find your restaurant's biggest profit leak in 3 days. The 72-Hour Restaurant Audit framework: Day 1 pulls numbers, Day 2 diagnoses leaks, Day 3 builds your fix. Step-by-step guide.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://thegrumpychef.ca/blog/72-hour-restaurant-audit.html">
+    <meta property="og:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://thegrumpychef.ca/blog/72-hour-restaurant-audit.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "How to Do a 72-Hour Restaurant Audit",
+          "description": "Find your restaurant's biggest profit leak in 3 days. The 72-Hour Restaurant Audit framework: Day 1 pulls numbers, Day 2 diagnoses leaks, Day 3 builds your fix. Step-by-step guide.",
+          "author": {
+            "@type": "Person",
+            "@id": "https://thegrumpychef.ca/#person",
+            "name": "Christian Schiffner",
+            "jobTitle": "German Master Chef (Kuchenmeister)",
+            "url": "https://thegrumpychef.ca/about.html"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "The Grumpy Chef",
+            "url": "https://thegrumpychef.ca",
+            "logo": "https://thegrumpychef.ca/images/Kitchen1.jpg"
+          },
+          "datePublished": "2026-03-01",
+          "dateModified": "2026-03-01",
+          "url": "https://thegrumpychef.ca/blog/72-hour-restaurant-audit.html",
+          "mainEntityOfPage": "https://thegrumpychef.ca/blog/72-hour-restaurant-audit.html",
+          "image": "https://thegrumpychef.ca/images/Kitchen1.jpg",
+          "wordCount": "1780"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Can I do a restaurant audit without a consultant?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. The 72-Hour Audit is designed for owner-operators to run themselves. You don't need an MBA or a $10,000 consultant. You need your POS data, your invoices from the last 4 weeks, your scheduling records, and 3 days of focused attention. The framework walks you through every step. A consultant can help you go deeper, but the first audit should always be yours." }
+            },
+            {
+              "@type": "Question",
+              "name": "What numbers do I need for a restaurant audit?",
+              "acceptedAnswer": { "@type": "Answer", "text": "You need 5 things: your POS sales data broken down by item for the last 4 weeks, your food and beverage invoices for the same period, your staff schedule versus actual clock-in times, your waste log (start one if you don't have one), and your comp and discount reports. Most of this lives in your POS system and your email inbox. Collecting it is Day 1 of the audit." }
+            },
+            {
+              "@type": "Question",
+              "name": "How often should I audit my restaurant?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Run a full 72-Hour Audit every quarter. Between audits, track your top 3 metrics daily — the ones you identified as your biggest leaks. Daily tracking takes 10 minutes. The quarterly audit takes 3 days. Think of it like this: daily tracking is checking your mirrors while driving. The quarterly audit is getting the car inspected." }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thegrumpychef.ca/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://thegrumpychef.ca/blog/" },
+            { "@type": "ListItem", "position": 3, "name": "How to Do a 72-Hour Restaurant Audit" }
+          ]
+        }
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --blue: #00A6D6;
+            --red: #C53030;
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background: var(--navy); color: var(--white); line-height: 1.6; }
+        a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--white); }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,22,40,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--navy-border); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--white); letter-spacing: 1px; text-transform: uppercase; }
+        .nav-logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a { color: var(--white-dim); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a.active { color: var(--gold); }
+        .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 8px 20px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .nav-cta:hover { background: var(--white); color: var(--navy) !important; }
+        .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+
+        .breadcrumb { padding: 80px 24px 0; max-width: 740px; margin: 0 auto; }
+        .breadcrumb a, .breadcrumb span { font-size: 0.8rem; color: var(--white-dim); }
+        .breadcrumb a:hover { color: var(--gold); }
+        .breadcrumb .sep { margin: 0 8px; color: var(--gray); }
+
+        .article-header { padding: 32px 24px 48px; max-width: 740px; margin: 0 auto; }
+        .article-meta { display: flex; gap: 16px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+        .article-meta span { font-family: var(--font-mono); font-size: 0.75rem; color: var(--white-dim); letter-spacing: 0.5px; }
+        .article-header h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; text-transform: uppercase; }
+        .article-header h1 span { color: var(--gold); }
+
+        .article-body { max-width: 740px; margin: 0 auto; padding: 0 24px 60px; }
+        .article-body p { font-size: 1.05rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 24px; }
+        .article-body p strong { color: var(--white); }
+        .article-body h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin: 48px 0 16px; color: var(--white); }
+        .article-body h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; text-transform: uppercase; margin: 32px 0 12px; color: var(--white); }
+        .article-body ul, .article-body ol { margin: 0 0 24px 24px; }
+        .article-body li { font-size: 1rem; color: var(--white-dim); line-height: 1.7; margin-bottom: 8px; }
+        .article-body blockquote { border-left: 3px solid var(--gold); padding: 16px 24px; margin: 32px 0; background: var(--navy-card); border-radius: 0 8px 8px 0; }
+        .article-body blockquote p { font-family: var(--font-mono); font-size: 0.95rem; color: var(--white-dim); font-style: italic; margin-bottom: 0; }
+
+        .callout-box { background: var(--navy-card); border: 1px solid var(--gold-border); border-radius: 12px; padding: 28px; margin: 32px 0; }
+        .callout-box h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+        .callout-box p { font-size: 0.95rem; margin-bottom: 0; }
+
+        .faq-section { margin-top: 48px; padding-top: 48px; border-top: 1px solid var(--navy-border); }
+        .faq-section h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-bottom: 24px; }
+        .faq-item { border-bottom: 1px solid var(--navy-border); padding: 20px 0; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; color: var(--white); }
+        .faq-item p { font-size: 0.95rem; color: var(--white-dim); line-height: 1.7; margin-bottom: 0; }
+
+        .author-card { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 12px; padding: 32px; margin-top: 48px; display: flex; gap: 20px; align-items: flex-start; }
+        .author-photo { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--gold); object-fit: cover; flex-shrink: 0; }
+        .author-info h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+        .author-info .author-title { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+        .author-info p { font-size: 0.9rem; color: var(--white-dim); line-height: 1.6; }
+
+        .cta-section { padding: 80px 24px; text-align: center; background: var(--navy-light); border-top: 1px solid var(--navy-border); }
+        .cta-title { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; text-transform: uppercase; margin-bottom: 16px; line-height: 1.15; }
+        .cta-title span { color: var(--gold); }
+        .cta-text { font-size: 1rem; color: var(--white-dim); max-width: 500px; margin: 0 auto 24px; }
+        .btn-primary { display: inline-block; background: var(--gold); color: var(--navy); padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s; border: 2px solid var(--gold); }
+        .btn-primary:hover { background: transparent; color: var(--gold); }
+
+        .related-section { padding: 60px 24px; max-width: 740px; margin: 0 auto; }
+        .related-section h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+        .related-links { display: flex; flex-direction: column; gap: 12px; }
+        .related-links a { font-size: 0.95rem; padding: 12px 16px; background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 8px; transition: border-color 0.2s; }
+        .related-links a:hover { border-color: var(--gold-border); }
+
+        .footer { background: var(--navy-light); border-top: 1px solid var(--navy-border); padding: 60px 24px 32px; }
+        .footer-inner { max-width: 1000px; margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+        .footer-brand { max-width: 360px; }
+        .footer-brand-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
+        .footer-brand-name span { color: var(--gold); }
+        .footer-brand p { font-size: 0.85rem; color: var(--white-dim); line-height: 1.6; }
+        .footer-links h4 { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 12px; }
+        .footer-links a { display: block; font-size: 0.85rem; color: var(--white-dim); margin-bottom: 8px; }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-bottom { border-top: 1px solid var(--navy-border); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .footer-bottom p { font-size: 0.75rem; color: var(--gray); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy-light); flex-direction: column; padding: 20px 24px; gap: 16px; border-bottom: 1px solid var(--navy-border); }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            .breadcrumb { padding-top: 76px; }
+            .article-header h1 { font-size: 1.8rem; }
+            .author-card { flex-direction: column; text-align: center; align-items: center; }
+            .footer-top { flex-direction: column; }
+        }
+    </style>
+    <script src="/js/analytics.js"></script>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+            <div class="nav-links">
+                <a href="/about.html">My Story</a>
+                <a href="/framework.html">The Protocol</a>
+                <a href="/services.html">Work With Me</a>
+                <a href="/blog/" class="active">Blog</a>
+                <a href="/calculator.html">Free Tools</a>
+                <a href="/kit.html" class="nav-cta">Get the Kit &mdash; $197</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><span>72-Hour Restaurant Audit</span>
+    </div>
+
+    <header class="article-header">
+        <div class="article-meta">
+            <span>10 min read</span>
+            <span>Published March 01, 2026</span>
+            <span>By Christian Schiffner</span>
+        </div>
+        <h1>How to Do a <span>72-Hour Restaurant Audit</span></h1>
+    </header>
+
+    <article class="article-body">
+        <p><strong>A 72-hour restaurant audit is a focused, three-day process to find your biggest profit leak. Day 1: pull your real numbers across 9 categories. Day 2: diagnose the top 3 leaks by dollar impact. Day 3: build a one-page protocol to fix the #1 leak. This isn't a months-long consulting project. It's an emergency diagnostic you can run this weekend.</strong></p>
+
+        <p>Most restaurant owners know something is wrong. Sales look decent. The dining room is busy. But the bank account tells a different story. So they do what most people do — they work harder. More hours. More shifts. More hustle. And nothing changes because the problem isn't effort. The problem is invisible.</p>
+
+        <p>The 72-Hour Audit makes it visible. Three days. No consultants. No software subscriptions. Just you, your real numbers, and a framework that tells you exactly where to look.</p>
+
+        <p>I built this method after spending 20 years in kitchens across Germany, Switzerland, Austria, Spain, and Canada. It's the same process I used when I was drowning in $370K of debt and needed to find the leaks before they sank me. It works whether you run a fine dining spot in Vancouver or a food truck in Dawson City.</p>
+
+        <h2>Day 1: Pull Your Numbers</h2>
+
+        <p>Day 1 is collection. Not analysis. Not panic. Just data.</p>
+
+        <p>Most operators skip this step or half-do it. They pull their P&L and call it done. That's not enough. Your P&L is a summary. You need the raw numbers. Here's exactly what to collect and where to find it.</p>
+
+        <h3>What to Track</h3>
+        <ul>
+            <li><strong>Sales data by item</strong> — Pull your POS report for the last 4 weeks. Every item. Quantity sold. Revenue per item. You need to see which items actually move and which ones sit there taking up menu space.</li>
+            <li><strong>Food invoices</strong> — Every invoice from every supplier for the last 4 weeks. If they're in your email, download them. If they're in a shoebox, dig them out. You need the line items, not just the totals.</li>
+            <li><strong>Beverage invoices</strong> — Same thing. Every bottle. Every keg. Every case. Separate from food because the margins and loss patterns are completely different.</li>
+            <li><strong>Labor records</strong> — Your schedule versus actual clock-in/clock-out times. Not what you planned. What actually happened. The gap between these two numbers is where labor waste hides.</li>
+            <li><strong>Waste log</strong> — If you have one. Most don't. If you don't, start one today. Even 4 weeks of waste data changes everything. Write down what you throw away, how much, and why. Every shift.</li>
+            <li><strong>Comp and discount reports</strong> — Every free meal, every discount, every manager comp. Your POS tracks this if you're ringing it in. The problem is most comps never get rung in at all.</li>
+        </ul>
+
+        <h3>Where to Find It</h3>
+        <p>Your POS system holds about 60% of what you need. Your email inbox (supplier invoices) holds another 25%. Your scheduling app or paper schedule covers 10%. The last 5% is the stuff nobody tracks — waste, comps, over-portioning. That 5% is usually where the biggest leaks are hiding.</p>
+
+        <h3>What Tools You Need</h3>
+        <p>A spreadsheet. That's it. Google Sheets, Excel, a notebook — doesn't matter. You're making a pile of numbers, not building software. Fancy tools come later. Right now you need the truth, and the truth lives in your invoices and your POS.</p>
+
+        <div class="callout-box">
+            <h4>Day 1 Checklist</h4>
+            <p>4 weeks of POS sales data (by item). 4 weeks of food invoices (line items). 4 weeks of beverage invoices. Schedule vs. actual labor hours. Waste log (start one if you don't have one). Comp and discount reports. Time needed: 3-5 hours. Don't analyze yet. Just collect.</p>
+        </div>
+
+        <h2>Day 2: Diagnose the Top 3 Leaks</h2>
+
+        <p>Day 2 is where most people mess up. They look at everything. They try to fix everything. They get overwhelmed. They quit.</p>
+
+        <p>Don't do that.</p>
+
+        <p>Day 2 has one job: <strong>find the top 3 leaks by dollar amount.</strong> Not percentage. Dollars. Because percentages lie.</p>
+
+        <p>Here's what I mean. A 2% increase in food cost sounds small. On $25,000/month in food purchases, that's $500/month walking out the door. A 20% over-pour rate on cocktails sounds huge. But if your total bar revenue is $2,000/month, that's $400. The food cost "2%" is actually a bigger leak than the bar's "20%."</p>
+
+        <p><strong>Always rank by dollars. Always.</strong></p>
+
+        <p>Take your Day 1 data and run it through the <a href="/blog/restaurant-profit-leak.html">9 Profit Leak Categories</a>. For each category, answer one question: how many dollars per month am I losing here?</p>
+
+        <p>Some categories will be easy to calculate. Food cost versus food revenue — straightforward. Labor scheduled versus labor needed — you can see it in the schedule gaps.</p>
+
+        <p>Some will be estimates. That's okay. An imperfect number is better than no number. If you think you're losing "somewhere between $500 and $1,500 a month" on beverage shrinkage, write down $1,000. You can refine later. Right now you need a ranking, not perfection.</p>
+
+        <p>Once you have dollar estimates for all 9 categories, rank them. Top 3 leaks. Write them down. Circle the biggest one. That's your target.</p>
+
+        <h3>The Dollar-First Rule</h3>
+        <p>I've seen operators spend 6 months trying to fix a 1% food cost variance while ignoring $3,000/month in staff turnover costs. They focused on percentage because that's what the industry talks about. But the restaurant doesn't pay rent with percentages. It pays rent with dollars.</p>
+
+        <p>A $3,000/month leak that's "hard to measure" matters more than a $300/month leak you can track to the penny. Focus on the big dollars. Not the easy numbers.</p>
+
+        <h2>Day 3: Build Your One-Page Fix</h2>
+
+        <p>Day 3 is the day that separates operators who find problems from operators who fix them.</p>
+
+        <p>You're going to build a one-page protocol for your #1 leak. One page. Not a business plan. Not a strategic roadmap. One page that answers 5 questions:</p>
+
+        <ol>
+            <li><strong>What's the leak?</strong> Name it. Be specific. "Food waste" is too vague. "Over-prepping proteins on Thursday for Saturday service, resulting in $800/month in spoilage" is a leak you can fix.</li>
+            <li><strong>How much is it costing?</strong> Your dollar estimate from Day 2. Write it down. Make it real.</li>
+            <li><strong>What's the fix?</strong> One specific action. Not three. Not five. One. "Prep proteins on the day of service based on reservation count plus 20% buffer." Simple. Clear. Executable.</li>
+            <li><strong>Who owns it?</strong> A name. Not "the kitchen." A person. Someone who will be responsible for making sure this happens every single day.</li>
+            <li><strong>How will you measure it next week?</strong> What number will you check 7 days from now to know if the fix is working? "Compare protein waste log this week versus last week's baseline." Done.</li>
+        </ol>
+
+        <p>That's your protocol. One page. Five answers. You can write it on a napkin. Tape it to the walk-in door. The format doesn't matter. The specificity does.</p>
+
+        <blockquote>
+            <p>"A protocol isn't a suggestion. It's a pre-decided response. When X happens, we do Y. No thinking. No negotiating. No exceptions."</p>
+        </blockquote>
+
+        <p>This concept comes straight from recovery. In recovery, you don't wake up every morning and decide whether to stay sober. You pre-decide. The decision is already made. You just execute. Restaurant protocols work the same way. Pre-decide the response. Remove the daily negotiation.</p>
+
+        <h2>The First Audit I Ran on My Own Restaurant</h2>
+
+        <p>Let me tell you about the first time I did this to myself. It was brutal.</p>
+
+        <p>I was running Grumpy Schnitzel in Dawson City. Up in the Yukon. Population 1,300. Seasonal tourist town. I'd been a Kuchenmeister — German Master Chef — for years. I'd cooked in some of the best kitchens in Europe. And I was going broke.</p>
+
+        <p>Not slowly. Fast.</p>
+
+        <p>I was working 16-hour days. My food was good. Customers liked it. But every month, the bank account got thinner. I kept thinking I just needed a bigger summer season. More tourists. More covers. More revenue would fix everything.</p>
+
+        <p>It wouldn't have. And deep down, I knew it.</p>
+
+        <p>So one Sunday night, after close, I sat down with every invoice, every POS report, every piece of paper I could find. I didn't sleep. I pulled numbers until 4 AM. That was my Day 1.</p>
+
+        <p>Day 2 was worse. Because the numbers told me things I didn't want to hear. My food cost wasn't the 30% I thought it was. It was 37% when I counted the waste I wasn't tracking and the comps I wasn't ringing in. My labor was 4% over because I was scheduling for hope instead of data — staffing up for busy nights that were only busy in my imagination.</p>
+
+        <p>The total? $41,000 in year one. In a town of 1,300 people. Forty-one thousand dollars I didn't know I was losing.</p>
+
+        <p>Day 3 I built my first protocol. It was ugly. Handwritten on printer paper. But it had the 5 answers: the leak (protein over-portioning), the cost ($1,200/month), the fix (portion scales on every station, specs on every protein), the owner (me), and the measure (weigh 10 random plates per shift and compare to spec).</p>
+
+        <p>That one protocol saved me $900 the first month. Not $1,200. $900. Because the fix wasn't perfect. But it was $900 I had been throwing away every month for a year without knowing it. That's $10,800 a year from one napkin-sized protocol.</p>
+
+        <h2>What Happens After the 72 Hours</h2>
+
+        <p>The audit gives you clarity. What you do with that clarity determines everything.</p>
+
+        <p>Here's the path that works:</p>
+
+        <p><strong>Week 1:</strong> Execute your one-page protocol. Just the #1 leak. Don't try to fix everything. Fix one thing. Measure it daily.</p>
+
+        <p><strong>Week 2-3:</strong> Once the first protocol is running and you can see results, build a protocol for leak #2. Same format. One page. Five answers.</p>
+
+        <p><strong>Week 4:</strong> Review all three leaks. What's the dollar recovery so far? What needs adjusting? What's working?</p>
+
+        <p><strong>Month 2-3:</strong> This is where the <a href="/blog/rebuild-failing-restaurant-21-days.html">21-Day Protocol</a> kicks in. The audit showed you the leaks. The 21-Day Protocol gives you the system to keep them plugged. Permanently.</p>
+
+        <p>Most operators who run the 72-Hour Audit find $2,000 to $5,000 per month in recoverable waste. That's $24,000 to $60,000 per year. From 3 days of work.</p>
+
+        <p>The math is simple. Three days of uncomfortable truth versus 12 more months of invisible bleeding. Your choice.</p>
+
+        <h2>How the 72-Hour Profit Discovery Connects to This</h2>
+
+        <p>The 72-Hour Audit is a framework. The <a href="/services.html#discovery-call">72-Hour Profit Discovery</a> is the guided version where I walk through it with you.</p>
+
+        <p>Same method. Same 9 categories. Same Day 1/Day 2/Day 3 structure. But instead of running it alone, you get a trained set of eyes — someone who's done this in kitchens across 5 countries and found $41,000 in his own restaurant.</p>
+
+        <p>I've seen things operators miss because they're too close to their own numbers. The supplier creep they've gotten used to. The labor pattern they think is normal. The menu item they love that's actually their biggest money loser.</p>
+
+        <p>If you want to run it yourself, this guide gives you everything you need. If you want someone who's been through the fire to run it with you, that's what the <a href="/services.html#discovery-call">Discovery Call</a> is for. Either way, the first step is the same: 72 hours. Real numbers. No more guessing.</p>
+
+        <!-- FAQ SECTION -->
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>Can I do a restaurant audit without a consultant?</h3>
+                <p>Yes. The 72-Hour Audit is designed for owner-operators to run themselves. You don't need an MBA or a $10,000 consultant. You need your POS data, your invoices from the last 4 weeks, your scheduling records, and 3 days of focused attention. The framework walks you through every step. A consultant can help you go deeper, but the first audit should always be yours.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What numbers do I need for a restaurant audit?</h3>
+                <p>You need 5 things: your POS sales data broken down by item for the last 4 weeks, your food and beverage invoices for the same period, your staff schedule versus actual clock-in times, your waste log (start one if you don't have one), and your comp and discount reports. Most of this lives in your POS system and your email inbox. Collecting it is Day 1 of the audit.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How often should I audit my restaurant?</h3>
+                <p>Run a full 72-Hour Audit every quarter. Between audits, track your top 3 metrics daily — the ones you identified as your biggest leaks. Daily tracking takes 10 minutes. The quarterly audit takes 3 days. Think of it like this: daily tracking is checking your mirrors while driving. The quarterly audit is getting the car inspected.</p>
+            </div>
+        </div>
+
+        <!-- AUTHOR BIO -->
+        <div class="author-card">
+            <img src="/images/Kitchen1.jpg" alt="Chef Christian Schiffner — The Grumpy Chef" class="author-photo">
+            <div class="author-info">
+                <h4>Christian Schiffner</h4>
+                <div class="author-title">German Master Chef (Kuchenmeister)</div>
+                <p>20+ years of professional kitchen experience across Germany, Switzerland, Austria, Spain, and Canada. Lost a restaurant and $370K. Rebuilt with recovery frameworks. 1,200+ days of proof that systems beat hustle. Founder of The Grumpy Chef.</p>
+            </div>
+        </div>
+    </article>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <h2 class="cta-title">Ready to Find <span>Your #1 Profit Leak?</span></h2>
+        <p class="cta-text">Book a Discovery Call. I'll walk through the 72-Hour Audit with you and show you exactly where your money is going.</p>
+        <a href="/services.html#discovery-call" class="btn-primary">Book a Discovery Call</a>
+    </section>
+
+    <!-- RELATED ARTICLES -->
+    <div class="related-section">
+        <h3>Related Articles</h3>
+        <div class="related-links">
+            <a href="/blog/restaurant-profit-leak.html">What Is a Restaurant Profit Leak and How Do I Find Mine?</a>
+            <a href="/blog/restaurant-daily-tracking.html">What Should a Restaurant Owner Track Daily to Protect Profit Margins?</a>
+            <a href="/blog/rebuild-failing-restaurant-21-days.html">How to Rebuild a Failing Restaurant in 21 Days</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
+                    <p>Restaurant operations consulting founded by Christian Schiffner, a German Master Chef (Kuchenmeister) with 20+ years of experience across 5 countries. Based in Dawson City, Yukon.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigate</h4>
+                    <a href="/about.html">My Story</a>
+                    <a href="/framework.html">The 21-Day Protocol</a>
+                    <a href="/services.html">Work With Me</a>
+                    <a href="/blog/">Blog</a>
+                    <a href="/calculator.html">Profit Leak Calculator</a>
+                    <a href="/assessment.html">Menu Profit Score</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="https://www.linkedin.com/in/christian-schiffner/" target="_blank">LinkedIn</a>
+                    <a href="https://substack.com/@thegrumpychef" target="_blank">Newsletter</a>
+                    <a href="mailto:christian@thegrumpychef.ca">Email</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Christian Schiffner | The Grumpy Chef | German Master Chef (Kuechenmeister)</p>
+                <p>Dawson City, Yukon &bull; From the Black Forest, Germany</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

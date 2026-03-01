@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>UTM Link Builder | The Grumpy Chef (Internal)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #0A1628; --navy-light: #0E1B30; --navy-card: #111E35; --navy-border: #1A2D4D;
+            --white: #F8F9FA; --white-dim: #B8BEC8; --gray: #4A5568;
+            --gold: #D4AF37; --gold-dim: #B89630; --gold-glow: rgba(212,175,55,0.10); --gold-border: rgba(212,175,55,0.25);
+            --green: #2F855A; --red: #E53E3E;
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+        body { font-family: var(--font-body); background: var(--navy); color: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .top-bar { height: 3px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dim) 50%, var(--gold) 100%); }
+
+        .container { max-width: 680px; margin: 0 auto; padding: 2rem 1.5rem; }
+        .page-label { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+        .page-title { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 0.5rem; }
+        .page-text { font-size: 0.9rem; color: var(--white-dim); margin-bottom: 2rem; }
+
+        .field { margin-bottom: 1.25rem; }
+        .field label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.35rem; color: var(--white); }
+        .field label span { color: var(--white-dim); font-weight: 400; font-size: 0.75rem; }
+        .field select, .field input { width: 100%; padding: 0.65rem 0.75rem; background: var(--navy-light); border: 1px solid var(--navy-border); border-radius: 4px; color: var(--white); font-family: var(--font-body); font-size: 0.9rem; transition: border-color 0.2s; }
+        .field select:focus, .field input:focus { outline: none; border-color: var(--gold); }
+        .field select { cursor: pointer; }
+
+        .output-section { margin-top: 2rem; }
+        .output-label { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+
+        .output-box { background: var(--navy-card); border: 1px solid var(--gold-border); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+        .output-url { font-family: var(--font-mono); font-size: 0.8rem; word-break: break-all; color: var(--gold); line-height: 1.8; user-select: all; }
+
+        .btn-row { display: flex; gap: 0.75rem; margin-top: 1rem; }
+        .btn { padding: 0.65rem 1.25rem; border: none; border-radius: 4px; cursor: pointer; font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; }
+        .btn--gold { background: var(--gold); color: var(--navy); }
+        .btn--gold:hover { background: var(--gold-dim); }
+        .btn--outline { background: transparent; color: var(--gold); border: 1px solid var(--gold-border); }
+        .btn--outline:hover { border-color: var(--gold); background: var(--gold-glow); }
+
+        .copied { position: fixed; top: 1rem; right: 1rem; background: var(--green); color: var(--white); padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 100; }
+        .copied.show { opacity: 1; }
+
+        .convention { margin-top: 2rem; background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 8px; padding: 1.25rem; }
+        .convention__title { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .convention__text { font-size: 0.8rem; color: var(--white-dim); line-height: 1.7; }
+        .convention code { font-family: var(--font-mono); font-size: 0.75rem; background: rgba(212,175,55,0.1); padding: 2px 6px; border-radius: 3px; color: var(--gold); }
+
+        .history { margin-top: 2rem; }
+        .history__title { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+        .history__item { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 6px; padding: 0.75rem; margin-bottom: 0.5rem; cursor: pointer; transition: border-color 0.2s; }
+        .history__item:hover { border-color: var(--gold-border); }
+        .history__url { font-family: var(--font-mono); font-size: 0.7rem; color: var(--white-dim); word-break: break-all; }
+        .history__meta { font-size: 0.7rem; color: var(--gray); margin-top: 0.25rem; }
+
+        .lp-footer { text-align: center; padding: 2rem 1.5rem; font-size: 0.75rem; color: var(--gray); border-top: 1px solid var(--navy-border); margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="top-bar"></div>
+    <div class="copied" id="copiedToast">Copied to clipboard</div>
+
+    <div class="container">
+        <div class="page-label">Internal Tool</div>
+        <h1 class="page-title">UTM Link Builder</h1>
+        <p class="page-text">Generate tracking URLs for content. Select platform, format, and destination. Copy the link.</p>
+
+        <div class="field">
+            <label>Platform <span>(utm_source)</span></label>
+            <select id="source">
+                <option value="">Select platform...</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="instagram">Instagram</option>
+                <option value="facebook">Facebook</option>
+                <option value="twitter">Twitter / X</option>
+                <option value="substack">Substack</option>
+                <option value="email">Email / Kit</option>
+                <option value="direct">Direct / Other</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Content Type <span>(utm_medium)</span></label>
+            <select id="medium">
+                <option value="">Select content type...</option>
+                <option value="text-post">Text Post</option>
+                <option value="carousel">Carousel</option>
+                <option value="reel">Reel / Short Video</option>
+                <option value="story">Story</option>
+                <option value="newsletter">Newsletter</option>
+                <option value="email-sequence">Email Sequence</option>
+                <option value="comment">Comment / Reply</option>
+                <option value="dm">Direct Message</option>
+                <option value="bio-link">Bio Link</option>
+                <option value="cta">CTA Button</option>
+                <option value="ad">Paid Ad</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Topic <span>(first part of utm_campaign)</span></label>
+            <select id="topic">
+                <option value="">Select topic...</option>
+                <option value="foodcost">Food Cost / Profit Leaks</option>
+                <option value="menu">Menu Engineering / Pricing</option>
+                <option value="burnout">Burnout / Work-Life</option>
+                <option value="systems">Systems / SOPs</option>
+                <option value="labor">Labor / Scheduling</option>
+                <option value="recovery">Recovery / Rebuild Story</option>
+                <option value="ai">AI-Powered Tools</option>
+                <option value="academy">Academy Launch</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Awareness Stage <span>(middle of utm_campaign)</span></label>
+            <select id="stage">
+                <option value="">Select stage...</option>
+                <option value="U">Unaware</option>
+                <option value="P">Problem Aware</option>
+                <option value="S">Solution Aware</option>
+                <option value="A">Product Aware</option>
+                <option value="M">Most Aware</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Destination <span>(end of utm_campaign + URL)</span></label>
+            <select id="destination">
+                <option value="">Select destination...</option>
+                <option value="calculator" data-url="/lp/calculator">LP: 72-Hour Profit Calculator</option>
+                <option value="assessment" data-url="/lp/assessment">LP: Menu Profit Assessment</option>
+                <option value="lifeos" data-url="/lp/life-os">LP: Operator Life OS</option>
+                <option value="academy" data-url="/lp/academy">LP: Academy Waitlist</option>
+                <option value="discovery" data-url="/lp/discovery">LP: Discovery Call</option>
+                <option value="newsletter" data-url="https://thegrumpychef.substack.com">Substack Newsletter</option>
+                <option value="homepage" data-url="https://thegrumpychef.ca">Homepage</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Custom Content Label <span>(utm_content — optional)</span></label>
+            <input type="text" id="content" placeholder="e.g., hook-v2, cta-bottom, carousel-slide5">
+        </div>
+
+        <div class="output-section">
+            <div class="output-label">Generated URL</div>
+            <div class="output-box">
+                <div class="output-url" id="outputUrl">Select all fields above to generate a link...</div>
+            </div>
+            <div class="btn-row">
+                <button class="btn btn--gold" id="copyBtn" disabled>Copy Link</button>
+                <button class="btn btn--outline" id="resetBtn">Reset</button>
+            </div>
+        </div>
+
+        <div class="convention">
+            <div class="convention__title">UTM Convention</div>
+            <div class="convention__text">
+                <code>utm_source</code> = platform<br>
+                <code>utm_medium</code> = content type<br>
+                <code>utm_campaign</code> = <code>{topic}_{stage}_{destination}</code><br>
+                <code>utm_content</code> = optional variant label<br><br>
+                Example: <code>?utm_source=linkedin&utm_medium=text-post&utm_campaign=foodcost_P_calculator</code>
+            </div>
+        </div>
+
+        <div class="history" id="historySection" style="display: none;">
+            <div class="history__title">Recent Links</div>
+            <div id="historyList"></div>
+        </div>
+    </div>
+
+    <footer class="lp-footer">
+        Internal tool. Not indexed. &copy; 2026 The Grumpy Chef.
+    </footer>
+
+    <script>
+    (function() {
+        var BASE = 'https://thegrumpychef.ca';
+        var els = {
+            source: document.getElementById('source'),
+            medium: document.getElementById('medium'),
+            topic: document.getElementById('topic'),
+            stage: document.getElementById('stage'),
+            destination: document.getElementById('destination'),
+            content: document.getElementById('content'),
+            output: document.getElementById('outputUrl'),
+            copyBtn: document.getElementById('copyBtn'),
+            resetBtn: document.getElementById('resetBtn'),
+            toast: document.getElementById('copiedToast'),
+            historySection: document.getElementById('historySection'),
+            historyList: document.getElementById('historyList')
+        };
+
+        function getDestinationUrl() {
+            var opt = els.destination.options[els.destination.selectedIndex];
+            return opt && opt.dataset.url ? opt.dataset.url : '';
+        }
+
+        function buildUrl() {
+            var source = els.source.value;
+            var medium = els.medium.value;
+            var topic = els.topic.value;
+            var stage = els.stage.value;
+            var dest = els.destination.value;
+            var content = els.content.value.trim().replace(/\s+/g, '-').toLowerCase();
+            var destUrl = getDestinationUrl();
+
+            if (!source || !medium || !topic || !stage || !dest) {
+                els.output.textContent = 'Select all fields above to generate a link...';
+                els.copyBtn.disabled = true;
+                return '';
+            }
+
+            var campaign = topic + '_' + stage + '_' + dest;
+            var fullUrl = destUrl.startsWith('http') ? destUrl : BASE + destUrl;
+
+            var params = 'utm_source=' + source + '&utm_medium=' + medium + '&utm_campaign=' + campaign;
+            if (content) params += '&utm_content=' + encodeURIComponent(content);
+
+            var separator = fullUrl.indexOf('?') > -1 ? '&' : '?';
+            var result = fullUrl + separator + params;
+
+            els.output.textContent = result;
+            els.copyBtn.disabled = false;
+            return result;
+        }
+
+        // Rebuild on any change
+        [els.source, els.medium, els.topic, els.stage, els.destination, els.content].forEach(function(el) {
+            el.addEventListener('change', buildUrl);
+            el.addEventListener('input', buildUrl);
+        });
+
+        // Copy
+        els.copyBtn.addEventListener('click', function() {
+            var url = els.output.textContent;
+            if (!url || url.indexOf('Select all') > -1) return;
+
+            navigator.clipboard.writeText(url).then(function() {
+                els.toast.classList.add('show');
+                setTimeout(function() { els.toast.classList.remove('show'); }, 2000);
+                saveToHistory(url);
+            });
+        });
+
+        // Reset
+        els.resetBtn.addEventListener('click', function() {
+            els.source.value = '';
+            els.medium.value = '';
+            els.topic.value = '';
+            els.stage.value = '';
+            els.destination.value = '';
+            els.content.value = '';
+            els.output.textContent = 'Select all fields above to generate a link...';
+            els.copyBtn.disabled = true;
+        });
+
+        // History (localStorage)
+        function saveToHistory(url) {
+            try {
+                var history = JSON.parse(localStorage.getItem('gc_utm_history') || '[]');
+                history.unshift({ url: url, time: new Date().toISOString() });
+                if (history.length > 20) history = history.slice(0, 20);
+                localStorage.setItem('gc_utm_history', JSON.stringify(history));
+                renderHistory();
+            } catch(e) {}
+        }
+
+        function renderHistory() {
+            try {
+                var history = JSON.parse(localStorage.getItem('gc_utm_history') || '[]');
+                if (history.length === 0) { els.historySection.style.display = 'none'; return; }
+                els.historySection.style.display = 'block';
+                els.historyList.innerHTML = history.slice(0, 10).map(function(item) {
+                    var date = new Date(item.time);
+                    var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    return '<div class="history__item" data-url="' + item.url.replace(/"/g, '&quot;') + '">' +
+                        '<div class="history__url">' + item.url + '</div>' +
+                        '<div class="history__meta">' + dateStr + '</div>' +
+                    '</div>';
+                }).join('');
+
+                // Click to copy
+                els.historyList.querySelectorAll('.history__item').forEach(function(el) {
+                    el.addEventListener('click', function() {
+                        navigator.clipboard.writeText(el.dataset.url).then(function() {
+                            els.toast.classList.add('show');
+                            setTimeout(function() { els.toast.classList.remove('show'); }, 2000);
+                        });
+                    });
+                });
+            } catch(e) {}
+        }
+
+        renderHistory();
+    })();
+    </script>
+</body>
+</html>

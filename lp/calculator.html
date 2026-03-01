@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Find Your Restaurant's Hidden Profit Leaks | The Grumpy Chef</title>
+    <meta name="description" content="Free 3-minute calculator reveals where your restaurant is bleeding $50K-$160K per year. Built by a Master Chef who found $41K in his own operation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="/js/analytics.js"></script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Gold top bar */
+        .top-bar {
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dim) 50%, var(--gold) 100%);
+        }
+
+        /* Hero */
+        .hero {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 2rem;
+            text-align: center;
+        }
+        .hero__label {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .hero__headline {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        .hero__headline em {
+            font-style: normal;
+            color: var(--gold);
+        }
+        .hero__sub {
+            font-size: 1.1rem;
+            color: var(--white-dim);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding: 1rem 0;
+            border-top: 1px solid var(--navy-border);
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat__number {
+            font-family: var(--font-mono);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .stat__label {
+            font-size: 0.75rem;
+            color: var(--white-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CTA Button */
+        .btn--gold {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+        }
+        .btn--gold:hover {
+            background: var(--gold-dim);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--gold-glow);
+        }
+
+        /* Brand photo */
+        .hero__photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
+            margin: 1.5rem auto 0.5rem;
+            display: block;
+        }
+        .hero__photo-caption {
+            font-size: 0.7rem;
+            color: var(--gray);
+            text-align: center;
+        }
+
+        /* Problem section */
+        .section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+        .section__label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        .section__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        /* Pain cards */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .pain-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+        .pain-card__icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .pain-card__title {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .pain-card__text {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            line-height: 1.5;
+        }
+        .pain-card__stat {
+            font-family: var(--font-mono);
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Solution steps */
+        .steps {
+            list-style: none;
+            counter-reset: steps;
+        }
+        .steps li {
+            counter-increment: steps;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .steps li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .steps li::before {
+            content: counter(steps);
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold);
+            min-width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--gold-border);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .steps__text strong {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+        .steps__text span {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+        }
+
+        /* Social proof / credibility */
+        .proof {
+            background: var(--navy-light);
+            border-top: 1px solid var(--navy-border);
+            border-bottom: 1px solid var(--navy-border);
+            padding: 2rem 1.5rem;
+        }
+        .proof__inner {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .proof__photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .proof__text {
+            font-size: 0.9rem;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+        .proof__text strong {
+            color: var(--white);
+        }
+        .proof__badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+        }
+        .proof__badge {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            padding: 0.25rem 0.75rem;
+            border: 1px solid var(--gold-border);
+            border-radius: 3px;
+        }
+
+        /* Tool embed */
+        .tool-section {
+            background: var(--navy);
+            padding: 1rem 0;
+        }
+        .tool-section__label {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        .tool-frame {
+            width: 100%;
+            border: none;
+            min-height: 800px;
+            display: block;
+        }
+
+        /* Footer */
+        .lp-footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.75rem;
+            color: var(--gray);
+            border-top: 1px solid var(--navy-border);
+        }
+        .lp-footer a { color: var(--gold); text-decoration: none; }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .hero { padding: 2rem 1rem 1.5rem; }
+            .stats-bar { gap: 1rem; }
+            .stat__number { font-size: 1.1rem; }
+            .proof__inner { flex-direction: column; text-align: center; }
+            .proof__badges { justify-content: center; }
+            .section { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Gold top bar -->
+    <div class="top-bar"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero__label">The Grumpy Chef</div>
+        <h1 class="hero__headline">
+            Your Kitchen Is Losing <em>$50K&ndash;$160K/Year</em>.<br>Here's Where.
+        </h1>
+        <p class="hero__sub">
+            This free 3-minute calculator scans 8 leak categories and shows you exactly where your restaurant is bleeding money. No signup required to see your results.
+        </p>
+
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat__number">20+</div>
+                <div class="stat__label">Years Operations</div>
+            </div>
+            <div class="stat">
+                <div class="stat__number">$160K</div>
+                <div class="stat__label">Avg Leaks Found</div>
+            </div>
+            <div class="stat">
+                <div class="stat__number">3 min</div>
+                <div class="stat__label">To Complete</div>
+            </div>
+        </div>
+
+        <a href="#tool" class="btn--gold">Start the Free Calculator</a>
+
+        <img src="/images/Kitchen1.jpg" alt="Chef Christian Schiffner" class="hero__photo" loading="lazy">
+        <div class="hero__photo-caption">Christian Schiffner | German Master Chef (Kuchenmeister)</div>
+    </section>
+
+    <!-- PROBLEM SECTION (PAS: Problem + Agitate) -->
+    <section class="section">
+        <div class="section__label">The Problem</div>
+        <h2 class="section__title">You're Working Harder Than Ever. Profits Keep Shrinking.</h2>
+
+        <div class="pain-grid">
+            <div class="pain-card">
+                <div class="pain-card__icon">&#x1F4B8;</div>
+                <div class="pain-card__title">Invisible Food Waste</div>
+                <div class="pain-card__text">
+                    The average restaurant wastes <span class="pain-card__stat">$10K&ndash;$30K/year</span> on food that never reaches a plate. Over-ordering, prep waste, spoilage.
+                </div>
+            </div>
+            <div class="pain-card">
+                <div class="pain-card__icon">&#x1F4C9;</div>
+                <div class="pain-card__title">Menu Pricing Gaps</div>
+                <div class="pain-card__text">
+                    <span class="pain-card__stat">76% of operators</span> can't control their food cost percentage. Menus priced by gut feel, not contribution margin.
+                </div>
+            </div>
+            <div class="pain-card">
+                <div class="pain-card__icon">&#x23F0;</div>
+                <div class="pain-card__title">Labor Bleeding</div>
+                <div class="pain-card__text">
+                    Scheduling without systems costs you <span class="pain-card__stat">$15K&ndash;$40K/year</span> in overtime, over-staffing, and turnover replacement.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION SECTION (PAS: Solution) -->
+    <section class="section">
+        <div class="section__label">What You'll Discover</div>
+        <h2 class="section__title">8 Categories. 3 Minutes. Your #1 Leak Identified.</h2>
+
+        <ol class="steps">
+            <li>
+                <div class="steps__text">
+                    <strong>Answer Quick Diagnostic Questions</strong>
+                    <span>8 leak categories: food waste, menu pricing, labor, inventory, vendor costs, operational inefficiency, revenue capture, and technology gaps.</span>
+                </div>
+            </li>
+            <li>
+                <div class="steps__text">
+                    <strong>See Your Ranked Leak Report</strong>
+                    <span>Each category scored and ranked by annual dollar impact. No vague percentages. Real numbers for your operation.</span>
+                </div>
+            </li>
+            <li>
+                <div class="steps__text">
+                    <strong>Get Your Day 1 Action Plan</strong>
+                    <span>Your #1 leak gets a specific first action you can take tomorrow morning. Built for operators running at 60% capacity.</span>
+                </div>
+            </li>
+        </ol>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="proof">
+        <div class="proof__inner">
+            <img src="/images/Kitchen1.jpg" alt="Chef Christian Schiffner" class="proof__photo" loading="lazy">
+            <div>
+                <div class="proof__text">
+                    <strong>Built by an operator, not a consultant.</strong>
+                    I found $41K in leaks in my own restaurant. Then I lost $180K and rebuilt from scratch. 1,200+ days later, same restaurant, different systems. This calculator is built from 20 years of finding money other people miss.
+                </div>
+                <div class="proof__badges">
+                    <span class="proof__badge">German Master Chef</span>
+                    <span class="proof__badge">20+ Years</span>
+                    <span class="proof__badge">5 Countries</span>
+                    <span class="proof__badge">1,200+ Days Rebuilt</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMBEDDED TOOL -->
+    <section class="tool-section" id="tool">
+        <div class="tool-section__label">Start Your Diagnostic</div>
+        <iframe
+            src="/calculator.html"
+            class="tool-frame"
+            title="72-Hour Profit Discovery Calculator"
+            loading="lazy"
+            allow="clipboard-write"
+        ></iframe>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="lp-footer">
+        &copy; 2026 The Grumpy Chef. Systems that work when you're exhausted.<br>
+        <a href="https://thegrumpychef.ca">thegrumpychef.ca</a>
+    </footer>
+
+    <script>
+        // Listen for messages from iframe (resize + redirect)
+        window.addEventListener('message', function(e) {
+            if (e.data && e.data.type === 'resize' && e.data.height) {
+                document.querySelector('.tool-frame').style.height = e.data.height + 'px';
+            }
+            if (e.data && e.data.type === 'redirect' && e.data.url) {
+                window.location.href = e.data.url;
+            }
+        });
+
+        // Track CTA click
+        document.querySelector('.btn--gold').addEventListener('click', function() {
+            if (typeof gcTrack === 'function') {
+                gcTrack('cta_click', { label: 'Start the Free Calculator', page: '/lp/calculator' });
+            }
+        });
+    </script>
+</body>
+</html>
