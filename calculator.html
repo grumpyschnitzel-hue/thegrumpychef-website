@@ -644,6 +644,27 @@
         .capture__input::placeholder { color: var(--gray-dark); }
         .capture__input:focus { border-color: var(--gold-dim); }
         .capture__input.err { border-color: var(--red); }
+        .capture__select {
+            font-family: var(--font-body);
+            font-size: 15px;
+            padding: 12px 14px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            color: var(--white);
+            outline: none;
+            width: 100%;
+            transition: border-color 0.12s;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A5568' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            cursor: pointer;
+        }
+        .capture__select:focus { border-color: var(--gold-dim); }
+        .capture__select.err { border-color: var(--red); }
+        .capture__select option { background: var(--navy); color: var(--white); }
         .capture__submit {
             font-family: var(--font-display);
             font-weight: 600;
@@ -1043,8 +1064,40 @@
                                     <input class="capture__input" type="text" id="f-restaurant" placeholder="Your restaurant" required>
                                 </div>
                                 <div class="capture__field">
-                                    <label class="capture__lbl" for="f-sales">Monthly Sales <span class="opt">(optional)</span></label>
-                                    <input class="capture__input" type="text" id="f-sales" placeholder="e.g. $80,000">
+                                    <label class="capture__lbl" for="f-type">Restaurant Type</label>
+                                    <select class="capture__select" id="f-type" required>
+                                        <option value="" disabled selected>Select type</option>
+                                        <option value="fine dining">Fine Dining</option>
+                                        <option value="casual">Casual</option>
+                                        <option value="fast casual">Fast Casual</option>
+                                        <option value="QSR">QSR</option>
+                                        <option value="bar & grill">Bar & Grill</option>
+                                        <option value="café">Café</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="capture__row">
+                                <div class="capture__field">
+                                    <label class="capture__lbl" for="f-revenue">Monthly Revenue</label>
+                                    <select class="capture__select" id="f-revenue" required>
+                                        <option value="" disabled selected>Select range</option>
+                                        <option value="under $30K">Under $30K</option>
+                                        <option value="$30-80K">$30K - $80K</option>
+                                        <option value="$80-150K">$80K - $150K</option>
+                                        <option value="$150K+">$150K+</option>
+                                    </select>
+                                </div>
+                                <div class="capture__field">
+                                    <label class="capture__lbl" for="f-headache">Biggest Headache</label>
+                                    <select class="capture__select" id="f-headache" required>
+                                        <option value="" disabled selected>Pick one</option>
+                                        <option value="food cost">Food Cost</option>
+                                        <option value="staffing">Staffing</option>
+                                        <option value="menu pricing">Menu Pricing</option>
+                                        <option value="inventory">Inventory</option>
+                                        <option value="I don't know where to start">I Don't Know Where to Start</option>
+                                    </select>
                                 </div>
                             </div>
                             <button type="submit" class="capture__submit" id="cap-btn">Send My Protocol</button>
@@ -1127,7 +1180,7 @@
     // ============================================
     // CONFIG
     // ============================================
-    const WEBHOOK_URL = 'https://christhwegrumpychef.app.n8n.cloud/webhook/calculator-email-agent';
+    const WEBHOOK_URL = 'https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/insert-calculator-lead';
 
     // ============================================
     // DATA
@@ -1490,21 +1543,43 @@
         const name = document.getElementById('f-name').value.trim();
         const email = document.getElementById('f-email').value.trim();
         const restaurant = document.getElementById('f-restaurant').value.trim();
-        const sales = document.getElementById('f-sales').value.trim();
+        const restaurantType = document.getElementById('f-type').value;
+        const revenueRange = document.getElementById('f-revenue').value;
+        const biggestHeadache = document.getElementById('f-headache').value;
 
         err.style.display = 'none';
-        document.querySelectorAll('.capture__input').forEach(el => el.classList.remove('err'));
+        document.querySelectorAll('.capture__input, .capture__select').forEach(el => el.classList.remove('err'));
 
         let bad = false;
         if (!name) { document.getElementById('f-name').classList.add('err'); bad = true; }
         if (!email || !email.includes('@') || !email.includes('.')) { document.getElementById('f-email').classList.add('err'); bad = true; }
         if (!restaurant) { document.getElementById('f-restaurant').classList.add('err'); bad = true; }
+        if (!restaurantType) { document.getElementById('f-type').classList.add('err'); bad = true; }
+        if (!revenueRange) { document.getElementById('f-revenue').classList.add('err'); bad = true; }
+        if (!biggestHeadache) { document.getElementById('f-headache').classList.add('err'); bad = true; }
         if (bad) { err.textContent = 'Fill in the required fields.'; err.style.display = 'block'; return; }
 
+        const results = buildPayload();
+        const rk = results.allLeaks || [];
+        let score;
+        if (results.leakPercentOfRevenue !== null) {
+            score = Math.max(0, Math.min(100, Math.round(100 - results.leakPercentOfRevenue * 5)));
+        } else {
+            // Fallback: score based on number of leak categories (8 max)
+            score = Math.max(0, Math.min(100, Math.round(100 - (results.leakCategoriesIdentified / 8) * 100)));
+        }
+
         const payload = {
-            contact: { name, email, restaurant, monthlySales: sales || null },
-            results: buildPayload(),
-            utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
+            email: email,
+            first_name: name,
+            business_name: restaurant,
+            restaurant_type: restaurantType,
+            revenue_range: revenueRange,
+            biggest_headache: biggestHeadache,
+            top_leak_1: rk.length > 0 ? rk[0].category : null,
+            top_leak_2: rk.length > 1 ? rk[1].category : null,
+            estimated_monthly_waste: results.totalMonthlyLeak || 0,
+            overall_score: score
         };
 
         btn.disabled = true;
