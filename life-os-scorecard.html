@@ -1915,6 +1915,14 @@
             return;
         }
 
+        // GA4: Track Tier 1 lead capture
+        if (typeof gtag === 'function') {
+            gtag('event', 'lead_gen_tier1', {
+                'event_category': 'lead_capture',
+                'event_label': 'life_os_scorecard'
+            });
+        }
+
         // Show success with dynamic progression content
         $('emailForm').style.display = 'none';
         var successEl = $('emailSuccess');

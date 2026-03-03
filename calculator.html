@@ -1651,6 +1651,15 @@
             return;
         }
 
+        // GA4: Track Tier 1 lead capture
+        if (typeof gtag === 'function') {
+            gtag('event', 'lead_gen_tier1', {
+                'event_category': 'lead_capture',
+                'event_label': 'profit_leak_calculator',
+                'value': score
+            });
+        }
+
         document.getElementById('cap-form-wrap').style.display = 'none';
         document.getElementById('cap-ok').style.display = 'block';
         btn.disabled = false;

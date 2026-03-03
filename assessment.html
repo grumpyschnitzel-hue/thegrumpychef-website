@@ -1868,6 +1868,14 @@ async function submitCapture(e) {
         return;
     }
 
+    // GA4: Track Tier 1 lead capture
+    if (typeof gtag === 'function') {
+        gtag('event', 'lead_gen_tier1', {
+            'event_category': 'lead_capture',
+            'event_label': 'menu_profit_assessment'
+        });
+    }
+
     // Show success regardless — never leave the user hanging
     document.getElementById('captureForm').style.display = 'none';
     document.getElementById('captureSuccess').classList.add('active');
