@@ -901,7 +901,7 @@
         <p class="footer__text">
             &copy; 2026 The Grumpy Chef
             <br>
-            <a href="https://www.linkedin.com/in/christian-schiffner/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/christian-schiffner-938142335/" target="_blank" rel="noopener">LinkedIn</a>
             <a href="mailto:christian@thegrumpychef.ca">Contact</a>
         </p>
         <div class="footer__tagline">Systems that work when you're exhausted.</div>
@@ -915,7 +915,7 @@
    ============================================ */
 const SCOREAPP_API_URL = '';
 const SCOREAPP_API_KEY = '';
-const WEBHOOK_URL = 'https://christhwegrumpychef.app.n8n.cloud/webhook/calculator-email-agent';
+const WEBHOOK_URL = 'https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/capture-form';
 const TOTAL_SPOTS = 100;
 const STORAGE_KEY = 'grumpychef_waitlist_count';
 
@@ -1096,6 +1096,13 @@ async function submitWaitlist(e) {
             analytics.trackError('webhook', err.message);
         }
     }
+
+    // Tag in Kit as waitlist-lead
+    fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, first_name: first + ' ' + last, tag_id: '15797831' })
+    }).catch(function(err) { console.warn('Kit tagging failed:', err); });
 
     // Both failed with real endpoints configured
     if (!submitted && !SCOREAPP_API_URL.includes('YOUR_') && !WEBHOOK_URL.includes('YOUR_')) {

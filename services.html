@@ -9,6 +9,11 @@
     <meta property="og:description" content="Still working 80+ hours and watching money disappear? You need an operator who lost everything, rebuilt with systems, and has 1,200+ days of proof.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://thegrumpychef.ca/services.html">
+    <meta property="og:url" content="https://thegrumpychef.ca/services.html">
+    <meta property="og:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
+    <meta property="og:image:alt" content="The Grumpy Chef — Restaurant profit recovery consulting services">
+    <meta name="author" content="Christian Schiffner">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -73,6 +78,38 @@
             "price": "5000",
             "priceCurrency": "USD",
             "description": "Starting price, application required"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://thegrumpychef.ca/services.html#academy",
+          "name": "Grumpy Chef Academy",
+          "description": "90-day systematic restaurant transformation program. Founding member waitlist now open. Covers food cost control, menu engineering, staff systems, and operational protocols.",
+          "provider": { "@id": "https://thegrumpychef.ca/#person" },
+          "url": "https://thegrumpychef.ca/academy.html",
+          "serviceType": "Restaurant Training Program",
+          "areaServed": { "@type": "Country", "name": "Canada" },
+          "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/PreOrder",
+            "description": "Founding member waitlist — pricing announced at launch"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://thegrumpychef.ca/services.html#monthly-advisory",
+          "name": "Monthly Profit Advisory",
+          "description": "Ongoing monthly restaurant profit advisory. Weekly check-ins, operational review, and accountability for independent restaurant operators implementing the 21-Day Protocol.",
+          "provider": { "@id": "https://thegrumpychef.ca/#person" },
+          "url": "https://thegrumpychef.ca/services.html",
+          "serviceType": "Restaurant Consulting",
+          "areaServed": { "@type": "Country", "name": "Canada" },
+          "offers": {
+            "@type": "Offer",
+            "price": "297",
+            "priceCurrency": "USD",
+            "billingIncrement": "P1M",
+            "description": "$297/month — ongoing advisory"
           }
         },
         {
@@ -570,14 +607,15 @@
             utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
         };
 
+        // Tag in Kit as discovery-call-request
         try {
-            await fetch('https://christhwegrumpychef.app.n8n.cloud/webhook/calculator-email-agent', {
+            await fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: JSON.stringify({ email: email, first_name: name, tag_id: '15875865' })
             });
         } catch (err) {
-            console.log('Webhook error:', err.message);
+            console.warn('Kit tagging failed:', err);
         }
 
         document.getElementById('discoveryFormCard').style.display = 'none';
@@ -617,7 +655,7 @@
                 </div>
                 <div class="footer-links">
                     <h4>Connect</h4>
-                    <a href="https://www.linkedin.com/in/christian-schiffner/" target="_blank">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/christian-schiffner-938142335/" target="_blank">LinkedIn</a>
                     <a href="https://substack.com/@thegrumpychef" target="_blank">Newsletter</a>
                     <a href="mailto:christian@thegrumpychef.ca">Email</a>
                 </div>

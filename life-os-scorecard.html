@@ -1314,7 +1314,7 @@
     /* ===========================================
        CONFIGURATION
        =========================================== */
-    const WEBHOOK_URL = 'https://christhwegrumpychef.app.n8n.cloud/webhook/calculator-email-agent';
+    const WEBHOOK_URL = 'https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/capture-form';
     const CALENDLY_LINK = 'https://thegrumpychef.ca/services.html#discovery-call';
     const ASSESSMENT_URL = 'https://thegrumpychef.netlify.app/assessment';
 
@@ -1874,6 +1874,13 @@
             },
             utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
         };
+
+        // Tag in Kit as life-os-lead
+        fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, first_name: name, tag_id: '16379184' })
+        }).catch(function(err) { console.warn('Kit tagging failed:', err); });
 
         // Send webhook
         if (WEBHOOK_URL && WEBHOOK_URL !== 'YOUR_N8N_WEBHOOK_URL') {
