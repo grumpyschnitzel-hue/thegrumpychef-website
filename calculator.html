@@ -5,6 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>72-Hour Profit Discovery Calculator | The Grumpy Chef</title>
     <meta name="description" content="Find where your restaurant is bleeding money. 9 common leaks. $60K-$220K potential recovery. Built by a Master Chef who found $41K in his own operation.">
+    <meta property="og:title" content="72-Hour Profit Discovery Calculator | The Grumpy Chef">
+    <meta property="og:description" content="Find where your restaurant is bleeding money. 9 common leaks. $60K-$220K potential recovery. Built by a Master Chef who found $41K in his own operation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thegrumpychef.ca/calculator.html">
+    <meta property="og:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
+    <meta property="og:image:alt" content="72-Hour Profit Discovery Calculator — Find your restaurant's hidden profit leaks">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://thegrumpychef.ca/calculator.html">
+    <meta name="author" content="Christian Schiffner">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://thegrumpychef.ca/calculator.html#app",
+          "name": "72-Hour Profit Discovery Calculator",
+          "description": "Free restaurant profit leak calculator. Scans 9 categories of hidden profit leaks — food waste, labor misallocation, staff turnover, menu mispricing, supplier overpayment, delivery platform bleed, beverage shrinkage, operational waste, and untracked comps.",
+          "url": "https://thegrumpychef.ca/calculator.html",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Any",
+          "author": { "@id": "https://thegrumpychef.ca/#person" },
+          "provider": { "@id": "https://thegrumpychef.ca/#business" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "CAD"
+          },
+          "isPartOf": { "@id": "https://thegrumpychef.ca/#website" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thegrumpychef.ca/" },
+            { "@type": "ListItem", "position": 2, "name": "72-Hour Profit Discovery Calculator" }
+          ]
+        }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -1679,26 +1719,12 @@ document.getElementById('discovery-form').addEventListener('submit', function(e)
     var email = document.getElementById('discovery-email').value;
     var name = document.getElementById('discovery-name').value;
 
-    // Send to webhook
-    var payload = {
-        email: email,
-        first_name: name || '',
-        source: 'discovery-call-request',
-        tags: ['discovery-call-request'],
-        timestamp: new Date().toISOString(),
-        utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
-    };
-
-    // Try webhook
-    fetch('https://hook.us1.make.com/placeholder-discovery', {
+    // Tag in Kit via subscribe-and-tag Edge Function
+    fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    }).catch(function() {});
-
-    // Also try mailto fallback
-    var subject = encodeURIComponent('Discovery Call Request — ' + (name || 'New Lead'));
-    var body = encodeURIComponent('Email: ' + email + '\nName: ' + (name || 'Not provided') + '\nSource: Calculator page\nTime: ' + new Date().toISOString());
+        body: JSON.stringify({ email: email, first_name: name || '', tag_id: '15875865' })
+    }).catch(function(err) { console.warn('Kit tagging failed:', err); });
 
     // Show success
     document.getElementById('discovery-form-container').style.display = 'none';
