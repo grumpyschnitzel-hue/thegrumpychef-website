@@ -505,6 +505,89 @@ I built a free calculator that finds these in 3 minutes. No signup. Link in bio 
 
 ---
 
+## APPROVED Example: LinkedIn Text Post — LEADERSHIP / AUTHORITY
+
+**APPROVED** — Real post by Chris. Use as primary voice reference.
+
+**Pain point:** Leadership / Authority (applies to operator mindset)
+**Awareness stage:** Unaware → Problem Aware
+**Hook type:** Story / Observation
+**CTA destination:** Organic engagement (no tool CTA — pure value post)
+**Trinity voice:** Sage (primary), Creator (secondary)
+**Pillar:** Systematic Excellence
+
+---
+
+I watched two chefs destroy each other over a title nobody offered them.
+
+Early in my career. Hotel kitchen. I was a young Commis.
+
+The Sous Chef position was empty.
+Two senior guys had been there for years.
+Both decided the job was theirs.
+
+But neither of them stepped up.
+
+They didn't run better service.
+They didn't teach the junior cooks.
+They didn't solve problems.
+
+They just started telling people what to do.
+
+"Do this." "I'm in charge." "Listen to me."
+
+The kitchen turned into a war zone.
+Team morale collapsed.
+People stopped caring.
+
+And the result?
+
+Neither got the job.
+The team wouldn't follow either of them.
+
+Because here's the thing about authority in a kitchen:
+
+You can't claim it.
+You can't demand it.
+You can only earn it.
+
+The chef who stays late to prep for the guy
+who's drowning — that's authority.
+
+The chef who teaches the new kid how to
+hold a knife properly — that's authority.
+
+The chef who runs service clean when
+everything's falling apart — that's authority.
+
+Title follows value. Never the other way around.
+
+I've run kitchens for 20 years since then.
+The best leaders I've ever worked with
+never once asked for the title.
+
+They just did the work.
+And everyone followed.
+
+Stop chasing positions.
+Start providing value.
+The title will find you.
+
+---
+
+**Structural notes for SKILL.md:**
+- Hook: vivid scene from early career (young Commis watching two seniors self-destruct)
+- Story arc: observation > what they did wrong > consequence > reframe > universal lesson
+- No dollar signs — this is a pure value/engagement post, not profit-focused
+- Rhythm: short lines, almost poetic. Line breaks used for pacing, not paragraphs.
+- The repetition pattern ("You can't claim it. You can't demand it. You can only earn it.") is a signature Sage move
+- Three parallel examples of real authority — each one line, each concrete
+- Closing: three short imperatives. No CTA link. The post IS the value.
+- Voice: 100% Sage. Fatherly, gruff, earned wisdom. No sarcasm (Rebel absent). No systems talk (Creator light).
+- This is the model for "pure engagement" posts in the 50-30-20 mix (30% engagement bucket)
+
+---
+
 ## Winners Tracker
 
 *As real posts are published and validated, track the top performers here. These become the permanent gold standards.*
@@ -512,7 +595,7 @@ I built a free calculator that finds these in 3 minutes. No signup. Link in bio 
 | # | Platform | Pain Point | Stage | Hook Type | Post Summary | Engagement Notes | Status |
 |---|----------|-----------|-------|-----------|-------------|-----------------|--------|
 | 1 | LinkedIn Text | Food Sovereignty / Supply Chain | Unaware | Pattern Interrupt | Sicily markets vs. Yukon 3,000km supply chain — food independence contrast | Posted 2026-02-19 — track engagement | POSTED |
-| 2 | | | | | | | PLACEHOLDER |
+| 2 | LinkedIn Text | Leadership / Authority | Unaware | Story / Observation | Two chefs fighting over a title nobody offered — authority is earned | APPROVED gold standard | APPROVED |
 | 3 | | | | | | | PLACEHOLDER |
 | 4 | | | | | | | PLACEHOLDER |
 | 5 | | | | | | | PLACEHOLDER |

@@ -1,73 +1,311 @@
-antigravity-skill-creator.md
-#Antigravity Skill Creator System Instructions
-You are an expert developer specializing in creating "Skills" for the Antigravity agent environment. Your goal is to generate high-quality, predictable, and efficient `.agent/skills/` directories based on user requirements.
-## 1. Core Structural Requirements
-Every skill you generate must follow this folder hierarchy:
-- `<skill-name>/`
-    - `SKILL.md` (Required: Main logic and instructions)
-    - `scripts/` (Optional: Helper scripts)
-    - `examples/` (Optional: Reference implementations)
-    - `resources/` (Optional: Templates or assets)
+---
+name: skill-engineering
+description: "Builds advanced AI agent skills using the Skill Engineering framework. Triggers when the user says 'build a skill', 'create a skill', 'new skill for', 'skill for [task]', 'automate this process', 'make this repeatable', or wants to turn any manual workflow into a reusable agent capability. Outputs a complete skill folder with SKILL.md, reference files, and self-improvement logic."
+---
 
-## 2. YAML Frontmatter Standards
-The `SKILL.md` must start with YAML frontmatter following these strict rules:
-- **name**: Gerund form (e.g., `testing-code`, `managing-databases`). Max 64 chars. Lowercase, numbers, and hyphens only. No "claude" or "anthropic" in the name.
-- **description**: Written in **third person**. Must include specific triggers/keywords. Max 1024 chars. (e.g., "Extracts text from PDFs. Use when the user mentions document processing or PDF files.")
+# Skill Engineering — Building Advanced AI Agent Skills
 
-## 3. Writing Principles (The "Claude Way")
-When writing the body of `SKILL.md`, adhere to these best practices:
+> Skills are not prompts. They are modular folders of instructions, scripts, and resources that allow agents to execute complex, non-deterministic workflows. Treat skill engineering like software engineering for AI agents.
 
-* **Conciseness**: Assume the agent is smart. Do not explain what a PDF or a Git repo is. Focus only on the unique logic of the skill.
-* **Progressive Disclosure**: Keep `SKILL.md` under 500 lines. If more detail is needed, link to secondary files (e.g., `[See ADVANCED.md](ADVANCED.md)`) only one level deep.
-* **Forward Slashes**: Always use `/` for paths, never `\`.
-* **Degrees of Freedom**: 
-    - Use **Bullet Points** for high-freedom tasks (heuristics).
-    - Use **Code Blocks** for medium-freedom (templates).
-    - Use **Specific Bash Commands** for low-freedom (fragile operations).
+---
 
-## 4. Workflow & Feedback Loops
-For complex tasks, include:
-1.  **Checklists**: A markdown checklist the agent can copy and update to track state.
-2.  **Validation Loops**: A "Plan-Validate-Execute" pattern. (e.g., Run a script to check a config file BEFORE applying changes).
-3.  **Error Handling**: Instructions for scripts should be "black boxes"—tell the agent to run `--help` if they are unsure.
+## When to Use This Skill
 
-## 5. Output Template
-When asked to create a skill, output the result in this format:
+- "Build me a skill for [task]"
+- "Create a skill that [does X]"
+- "Make this process repeatable"
+- "Automate this workflow"
+- "Turn this into a skill"
+- Any time a manual process has been done 3+ times and should be codified
 
-### [Folder Name]
-**Path:** `.agent/skills/[skill-name]/`
+---
 
-### [SKILL.md]
+## Phase 1: Strategy (Before Building)
+
+Most people skip this. It makes the biggest difference.
+
+### 1.1 Define the Ideal Process
+
+Before writing anything, map the exact step-by-step process to achieve a high-quality result.
+
+**Ask the user:**
+- [ ] What is the specific task this skill should perform?
+- [ ] What does a "perfect" output look like? (Get an example if possible)
+- [ ] What are the inputs? (minimum viable input vs. full input)
+- [ ] What tools/APIs/MCPs does this need to access?
+- [ ] Where does human judgment need to intervene?
+
+### 1.2 Gather Knowledge Sources
+
+- [ ] Style guides, brand voice docs, ICP descriptions
+- [ ] Business context files (who is this for, what constraints exist)
+- [ ] Reference examples of "good" output (this impacts performance the most)
+- [ ] Any existing SOPs, checklists, or templates
+
+### 1.3 Define the Failure Modes
+
+Apply inversion: How could this skill produce bad output?
+
+- [ ] What mistakes would a junior person make on this task?
+- [ ] What are the edge cases?
+- [ ] What does "bad" output look like specifically?
+
+---
+
+## Phase 2: Build the Skill
+
+### 2.1 Folder Structure
+
+Every skill follows this hierarchy:
+
+```
+<skill-name>/
+  SKILL.md              # Required: Core SOP (the process)
+  references/           # Optional: Context files loaded on demand
+    style-guide.md
+    icp.md
+    examples.md
+  scripts/              # Optional: Code for API calls, automations
+  resources/            # Optional: Templates, assets, images
+```
+
+### 2.2 SKILL.md Structure
+
+The core file. Keep it focused on PROCESS ONLY — move all data to reference files.
+
 ```markdown
 ---
-name: [gerund-name]
-description: [3rd-person description]
+name: [gerund-form-name]        # e.g., "writing-cold-outreach"
+description: "[3rd person, max 1024 chars. Include trigger phrases.]"
+triggers: ["phrase 1", "phrase 2", "phrase 3"]
+version: 1.0
 ---
 
 # [Skill Title]
 
-## When to use this skill
-- [Trigger 1]
-- [Trigger 2]
+## Objective
+[One sentence: what this skill produces and why it matters.]
+
+## When to Use
+- [Trigger condition 1]
+- [Trigger condition 2]
+
+## Required Inputs
+- [Input 1] (required/optional)
+- [Input 2] (required/optional)
+- Minimum viable input: [what's the least the user can provide?]
+
+## Reference Files
+[List files the agent should load and WHEN to load them]
+| File | Load When | Purpose |
+|------|-----------|---------|
+| `references/style-guide.md` | Always | Voice and tone rules |
+| `references/examples.md` | Step 4 (writing) | Quality calibration |
+| `references/icp.md` | Step 1 (parsing) | Audience context |
 
 ## Workflow
-[Insert checklist or step-by-step guide here]
 
-## Instructions
-[Specific logic, code snippets, or rules]
+### Step 1: [Parse / Understand]
+- [What to do]
+- [What to check]
 
-## Resources
-- [Link to scripts/ or resources/]
-[Supporting Files]
-(If applicable, provide the content for scripts/ or examples/)
+> HUMAN CHECK: [Present summary for approval before proceeding]
+
+### Step 2: [Research / Prepare]
+- [What to do]
+- [Reference files to load]
+
+### Step 3: [Execute / Build]
+- [Core production logic]
+- [Templates or patterns to follow]
+
+> HUMAN CHECK: [Present 3-5 variations for selection]
+
+### Step 4: [Quality Gate]
+- [ ] [Check 1]
+- [ ] [Check 2]
+- [ ] [Check 3]
+
+### Step 5: [Output / Deliver]
+- [Final format]
+- [Where to save or publish]
+
+## Rules
+[Predict errors. Write them as explicit rules. Update this section continuously.]
+- NEVER [specific thing to avoid]
+- ALWAYS [specific thing to ensure]
+- IF [edge case], THEN [how to handle it]
+
+## Progressive Updates
+[Self-improvement instructions — the skill evolves with use.]
+- When the user approves a final output, save it to `references/examples.md`
+- When the user flags an error, add a new rule to the Rules section
+- When the user corrects voice/tone, update `references/style-guide.md`
+- When a tool/MCP fails, create an MCP reference doc in `references/`
+```
+
+### 2.3 YAML Frontmatter Rules
+
+- **name**: Gerund form, lowercase, hyphens only. Max 64 chars. No "claude" or "anthropic."
+- **description**: Third person. Include trigger keywords. Max 1024 chars.
+- **triggers**: Array of phrases that activate this skill.
+- **version**: Increment on significant updates.
 
 ---
 
-## Instructions for use
+## Phase 3: Write It Right
 
-1.  **Copy the content above** into a new file named `antigravity-skill-creator.md`.
-2.  **Upload this file** to your AI agent or paste it into the system prompt area.
-3.  **Trigger a skill creation** by saying: *"Based on my skill creator instructions, build me a skill for [Task, e.g., 'automating React component testing with Vitest']."**
+### Writing Principles
 
-### Suggested Next Step
-Would you like me to use this new logic to **generate a specific example skill** for you right now (such as a "Deployment Guard" or "Code Reviewer" skill)?
+- **Concise**: The agent is smart. Don't explain basics. Focus on unique logic.
+- **Progressive Disclosure**: SKILL.md stays under 500 lines. Detailed data goes in reference files.
+- **Forward slashes**: Always `/` for paths, never `\`.
+- **Degrees of Freedom**:
+  - Bullet points → high freedom (heuristics, judgment calls)
+  - Code blocks → medium freedom (templates, patterns)
+  - Specific commands → low freedom (fragile operations that must be exact)
+
+### Human-in-the-Loop Design
+
+Treat the skill's interaction like UX design:
+
+- **Checkpoints**: Insert `> HUMAN CHECK:` at decision points where judgment matters
+- **Multiple options**: Ask the agent to present 3-5 variations instead of one
+- **Feedback fields**: Use checklists the user can mark up
+- **Never auto-ship**: Final output always requires user approval before publishing
+
+### Context Management (Progressive Disclosure)
+
+Three levels — only load what's needed:
+
+| Level | What's Stored | When It Loads |
+|-------|--------------|---------------|
+| **Metadata** | Name + description only | Always in agent memory |
+| **SOP** | SKILL.md process steps | When the skill is triggered |
+| **References** | Style guides, examples, ICP docs | When a specific step calls for them |
+
+This allows one agent to manage hundreds of skills without context overload.
+
+---
+
+## Phase 4: Make It Self-Improving
+
+A skill is never finished. Best skills require 4-5 iterations of real use.
+
+### 4.1 Progressive Updates
+
+Include this section in every SKILL.md:
+
+```markdown
+## Progressive Updates
+- When I approve a final output → save to `references/examples.md` as new gold standard
+- When I flag an error → add a permanent rule to the Rules section
+- When I correct voice/tone → update `references/style-guide.md`
+- When a tool/MCP fails → create `references/[tool]-guide.md` after manual walkthrough
+```
+
+### 4.2 Failure Diagnosis
+
+When output is wrong, diagnose and fix at the right level:
+
+| Problem | Fix |
+|---------|-----|
+| Wrong steps / missed a stage | Update SKILL.md workflow |
+| Low quality output / wrong tone | Update or create a reference file |
+| Recurring specific error | Add a rule to the Rules section |
+| Tool/API struggles | Guide manually once, then create MCP reference doc |
+| Skill doesn't trigger | Update triggers array and description keywords |
+
+### 4.3 Example Library Growth
+
+The approved examples library is the most powerful self-improvement mechanism:
+
+1. Agent produces output
+2. User reviews and approves (or corrects)
+3. Approved output is saved to `references/examples.md`
+4. Next run, agent calibrates against growing library of "good"
+5. Quality compounds over time
+
+---
+
+## Phase 5: Quality Checklist
+
+Before delivering any new skill, verify:
+
+### Structure
+- [ ] SKILL.md has valid YAML frontmatter (name, description, triggers, version)
+- [ ] SKILL.md is under 500 lines (detailed data in reference files)
+- [ ] Folder structure follows the standard hierarchy
+- [ ] All paths use forward slashes
+
+### Process
+- [ ] Clear objective (one sentence)
+- [ ] Defined minimum viable input
+- [ ] Step-by-step workflow with numbered steps
+- [ ] At least one HUMAN CHECK checkpoint
+- [ ] Quality gate with specific checklist items
+- [ ] Expected output format defined
+
+### Self-Improvement
+- [ ] Progressive Updates section included
+- [ ] Rules section exists (even if starting empty)
+- [ ] Reference files linked with load-timing specified
+- [ ] At least one example of "good" output included
+
+### Edge Cases
+- [ ] Error handling for missing inputs
+- [ ] Fallback behavior defined
+- [ ] Rules predict at least 3 common failure modes
+
+---
+
+## Skills vs. Plugins (Reference)
+
+| Feature | Skills | Plugins |
+|---------|--------|---------|
+| Unit | Single process/task | Bundle of skills + tools |
+| Components | SKILL.md + reference files | Skills, commands, agent teams, connectors |
+| Complexity | Focused and specific | Multi-step workflow orchestration |
+| Best for | Individual tasks, personal productivity | Team distribution, department toolkits |
+| Distribution | Single folder, zip, or GitHub | Versionable packages across accounts |
+
+Build skills first. Bundle into plugins when you have 3+ related skills that work together.
+
+---
+
+## Quick Start
+
+When the user says "build me a skill for [X]":
+
+1. Run Phase 1 questions (strategy)
+2. Define the folder structure
+3. Write SKILL.md following the template
+4. Create initial reference files
+5. Run the Quality Checklist
+6. Present the complete skill for review
+7. Iterate based on feedback (expect 4-5 rounds)
+
+---
+
+## Creating MCP Reference Documents
+
+When an agent struggles with a tool/API:
+
+1. Guide the agent manually through the correct steps
+2. Once successful, ask: "Create an MCP reference document for how to perform [task] in [tool]"
+3. Save as `references/[tool]-guide.md` in the skill folder
+4. The skill now knows how to use that tool autonomously
+
+---
+
+## Rules
+
+- NEVER create a skill without running Phase 1 strategy questions first
+- NEVER put detailed data (examples, style guides, ICP context) directly in SKILL.md — use reference files
+- ALWAYS include at least one HUMAN CHECK in the workflow
+- ALWAYS include a Progressive Updates section
+- ALWAYS include a Rules section (even if initially empty)
+- ALWAYS present multiple output options at decision points
+- IF the user provides an example of "good" output, save it immediately to references/examples.md
+- IF the user corrects output, update the relevant reference file AND add a rule
+- IF a skill exceeds 500 lines, split into SKILL.md + ADVANCED.md (one level deep only)
