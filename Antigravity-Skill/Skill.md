@@ -259,7 +259,21 @@ Before delivering any new skill, verify:
 
 ---
 
-## Skills vs. Plugins (Reference)
+## Skills vs Systems vs Plugins
+
+### Skills vs Systems
+
+| | Skills | Systems |
+|---|--------|---------|
+| **Human involvement** | Human-in-the-loop. User triggers and approves. | Fully autonomous. Runs without intervention. |
+| **Frequency** | On-demand, "as and when needed" | Same task, every day, on schedule |
+| **Evolution** | Improves over time (progressive updates, new rules) | Fixed process, rarely changes |
+| **Best for** | Creative work, judgment calls, evolving processes | Data scraping, backups, monitoring, notifications |
+| **Examples** | Content production, skill engineering, credibility filter | Morning news digest, knowledge base refresh, daily analytics |
+
+**Rule:** If the process requires judgment or might change → build a Skill. If it does the exact same thing every day with no variation → build a System.
+
+### Skills vs Plugins
 
 | Feature | Skills | Plugins |
 |---------|--------|---------|
@@ -270,6 +284,19 @@ Before delivering any new skill, verify:
 | Distribution | Single folder, zip, or GitHub | Versionable packages across accounts |
 
 Build skills first. Bundle into plugins when you have 3+ related skills that work together.
+
+---
+
+## Skill Difficulty Levels
+
+| Level | Type | What It Does | Example |
+|:-----:|------|-------------|---------|
+| **1** | Basic Task Automation | Single script, one input → one output | URL shortener, file renamer, format converter |
+| **2** | Branded Document Generation | Uses brand assets + templates, deterministic output | PDF invoices, branded reports, HTML pages |
+| **3** | Research & Digest Systems | Multi-source scraping, signal vs noise filtering | Morning briefing, competitor monitoring, trend detection |
+| **4** | Content Repurposing + Voice Matching | Multi-format output from single input, calibrated to creator voice | Transcript → LinkedIn + email + carousel + video script |
+
+**Where Chris's system currently sits:** Levels 1-3 fully built. Level 4 partially built (content batch skill exists, voice calibration via gold standard examples). Next evolution: vector database for voice matching at scale.
 
 ---
 
@@ -287,6 +314,19 @@ When the user says "build me a skill for [X]":
 
 ---
 
+## The Codify-After-Success Rule
+
+**NEVER build a skill from theory. Build it from a task you've already done successfully.**
+
+The correct workflow:
+1. Do the task manually (or with AI assistance) — spar back and forth until the output is right
+2. Once the result is approved, THEN codify into a skill using this framework
+3. The skill captures what WORKED, not what might work
+
+Skills built from theory require 4-5 iterations to become useful. Skills built from a successful task are useful on run #1.
+
+---
+
 ## Creating MCP Reference Documents
 
 When an agent struggles with a tool/API:
@@ -298,14 +338,53 @@ When an agent struggles with a tool/API:
 
 ---
 
+## Voice Calibration Architecture
+
+### Current: Gold Standard Examples (Level 3)
+- 8 approved posts with performance data in `gold-standard-examples.md`
+- Content skills calibrate voice against these examples
+- Strength: includes WHAT WORKS (performance data), not just what sounds right
+- Limitation: small sample size, manual selection
+
+### Future: Vector Database Voice Matching (Level 4)
+- Load ALL approved posts into a Pinecone (or similar) vector database
+- Content skills query the database for tone/style matching
+- The AI references historical content to match exact voice patterns
+- Enables: "write this in the style of my top-performing posts" with mathematical precision
+- Trigger to build: when Chris has 20-30 approved posts with performance data
+
+### Why Both Matter
+- Vector DB matches VOICE (how Chris sounds)
+- Gold standard examples match PERFORMANCE (what the audience responds to)
+- The combination = content that sounds like Chris AND performs like his best posts
+- 99% of creators use one or the other. Using both is the competitive edge.
+
+---
+
+## Skill Catalog Management
+
+Every time a new skill is built and approved:
+
+1. Update the CLAUDE.md file with the new skill entry (name, location, trigger, purpose)
+2. Update the relevant agent routing (if the skill belongs to a specific agent domain)
+3. Verify the skill doesn't duplicate an existing capability — merge if overlap exists
+
+The CLAUDE.md file is the "rolodex" — it ensures every future session knows what skills exist and when to use them. A skill that isn't cataloged is a skill that won't get triggered.
+
+---
+
 ## Rules
 
 - NEVER create a skill without running Phase 1 strategy questions first
 - NEVER put detailed data (examples, style guides, ICP context) directly in SKILL.md — use reference files
+- NEVER build a skill from theory — codify after a successful manual execution
 - ALWAYS include at least one HUMAN CHECK in the workflow
 - ALWAYS include a Progressive Updates section
 - ALWAYS include a Rules section (even if initially empty)
 - ALWAYS present multiple output options at decision points
+- ALWAYS update CLAUDE.md catalog after building a new skill
 - IF the user provides an example of "good" output, save it immediately to references/examples.md
 - IF the user corrects output, update the relevant reference file AND add a rule
 - IF a skill exceeds 500 lines, split into SKILL.md + ADVANCED.md (one level deep only)
+- IF a task runs the same way every day with no variation, build it as a System, not a Skill
+- IF a skill has 20+ approved examples, consider upgrading to vector database voice matching
