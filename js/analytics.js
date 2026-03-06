@@ -16,7 +16,7 @@
   // =============================================
   // CONFIGURATION — Replace these placeholders
   // =============================================
-  var GA4_ID = 'GA4_MEASUREMENT_ID';       // e.g. 'G-ABC123XYZ'
+  var GA4_ID = 'G-F41KYXCEXL';
   var CLARITY_ID = 'CLARITY_PROJECT_ID';   // e.g. 'abc123xyz'
 
   // =============================================

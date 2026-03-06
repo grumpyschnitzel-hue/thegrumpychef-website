@@ -1,96 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F41KYXCEXL"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-F41KYXCEXL');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-F41KYXCEXL');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Discovery Call — Free Restaurant Diagnosis | The Grumpy Chef</title>
-    <meta name="description" content="30 minutes. Your numbers. A plan specific to your restaurant. No pitch. Just a diagnosis from a Master Chef who found $41K in his own operation.">
+    <meta name="description"
+        content="30 minutes. Your numbers. A plan specific to your restaurant. No pitch. Just a diagnosis from a Master Chef who found $41K in his own operation.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <script src="/js/analytics.js"></script>
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         :root {
-            --navy: #0A1628; --navy-light: #0E1B30; --navy-card: #111E35; --navy-border: #1A2D4D;
-            --white: #F8F9FA; --white-dim: #B8BEC8; --gray: #4A5568;
-            --gold: #D4AF37; --gold-dim: #B89630; --gold-glow: rgba(212,175,55,0.10); --gold-border: rgba(212,175,55,0.25);
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
             --font-display: 'Oswald', 'Arial Narrow', sans-serif;
             --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
         }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background: var(--navy); color: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-        .top-bar { height: 3px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dim) 50%, var(--gold) 100%); }
-        .hero { max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem 2rem; text-align: center; }
-        .hero__label { font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-        .hero__headline { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.1; margin-bottom: 1rem; }
-        .hero__headline em { font-style: normal; color: var(--gold); }
-        .hero__sub { font-size: 1.1rem; color: var(--white-dim); max-width: 600px; margin: 0 auto 2rem; line-height: 1.7; }
-        .stats-bar { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; padding: 1rem 0; border-top: 1px solid var(--navy-border); border-bottom: 1px solid var(--navy-border); }
-        .stat { text-align: center; }
-        .stat__number { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--gold); }
-        .stat__label { font-size: 0.75rem; color: var(--white-dim); text-transform: uppercase; letter-spacing: 1px; }
-        .btn--gold { display: inline-block; background: var(--gold); color: var(--navy); font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; padding: 1rem 2.5rem; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; }
-        .btn--gold:hover { background: var(--gold-dim); transform: translateY(-1px); box-shadow: 0 4px 20px var(--gold-glow); }
-        .hero__photo { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--gold); object-fit: cover; margin: 1.5rem auto 0.5rem; display: block; }
-        .hero__photo-caption { font-size: 0.7rem; color: var(--gray); text-align: center; }
-        .section { max-width: 800px; margin: 0 auto; padding: 2.5rem 1.5rem; }
-        .section__label { font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
-        .section__title { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2; }
-        .steps { list-style: none; counter-reset: steps; }
-        .steps li { counter-increment: steps; display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--navy-border); }
-        .steps li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .steps li::before { content: counter(steps); font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; color: var(--gold); min-width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border: 2px solid var(--gold-border); border-radius: 50%; flex-shrink: 0; }
-        .steps__text strong { display: block; font-family: var(--font-display); font-size: 0.95rem; margin-bottom: 0.2rem; }
-        .steps__text span { font-size: 0.85rem; color: var(--white-dim); }
-        .proof { background: var(--navy-light); border-top: 1px solid var(--navy-border); border-bottom: 1px solid var(--navy-border); padding: 2rem 1.5rem; }
-        .proof__inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; gap: 1.5rem; }
-        .proof__photo { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--gold); object-fit: cover; flex-shrink: 0; }
-        .proof__text { font-size: 0.9rem; color: var(--white-dim); line-height: 1.6; }
-        .proof__text strong { color: var(--white); }
-        .proof__badges { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.75rem; }
-        .proof__badge { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); padding: 0.25rem 0.75rem; border: 1px solid var(--gold-border); border-radius: 3px; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .top-bar {
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dim) 50%, var(--gold) 100%);
+        }
+
+        .hero {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .hero__label {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero__headline {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero__headline em {
+            font-style: normal;
+            color: var(--gold);
+        }
+
+        .hero__sub {
+            font-size: 1.1rem;
+            color: var(--white-dim);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding: 1rem 0;
+            border-top: 1px solid var(--navy-border);
+            border-bottom: 1px solid var(--navy-border);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat__number {
+            font-family: var(--font-mono);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .stat__label {
+            font-size: 0.75rem;
+            color: var(--white-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn--gold {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+        }
+
+        .btn--gold:hover {
+            background: var(--gold-dim);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--gold-glow);
+        }
+
+        .hero__photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
+            margin: 1.5rem auto 0.5rem;
+            display: block;
+        }
+
+        .hero__photo-caption {
+            font-size: 0.7rem;
+            color: var(--gray);
+            text-align: center;
+        }
+
+        .section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .section__label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .section__title {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .steps {
+            list-style: none;
+            counter-reset: steps;
+        }
+
+        .steps li {
+            counter-increment: steps;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--navy-border);
+        }
+
+        .steps li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .steps li::before {
+            content: counter(steps);
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold);
+            min-width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--gold-border);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .steps__text strong {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .steps__text span {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+        }
+
+        .proof {
+            background: var(--navy-light);
+            border-top: 1px solid var(--navy-border);
+            border-bottom: 1px solid var(--navy-border);
+            padding: 2rem 1.5rem;
+        }
+
+        .proof__inner {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .proof__photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .proof__text {
+            font-size: 0.9rem;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+
+        .proof__text strong {
+            color: var(--white);
+        }
+
+        .proof__badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+        }
+
+        .proof__badge {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            padding: 0.25rem 0.75rem;
+            border: 1px solid var(--gold-border);
+            border-radius: 3px;
+        }
 
         /* Inline form for discovery call */
-        .form-section { max-width: 600px; margin: 0 auto; padding: 2.5rem 1.5rem; }
-        .form-card { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 12px; padding: 2rem; }
-        .form-card__title { font-family: var(--font-display); font-size: 1.3rem; text-align: center; margin-bottom: 1.5rem; }
-        .form-group { margin-bottom: 1rem; }
-        .form-label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--white-dim); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 1px; }
-        .form-input, .form-select, .form-textarea {
-            width: 100%; padding: 0.75rem 1rem; background: var(--navy); border: 1px solid var(--navy-border);
-            border-radius: 6px; color: var(--white); font-family: var(--font-body); font-size: 0.95rem;
+        .form-section {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .form-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .form-card__title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--white-dim);
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
             transition: border-color 0.2s;
         }
-        .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--gold); }
-        .form-textarea { resize: vertical; min-height: 80px; }
-        .form-select { appearance: none; cursor: pointer; }
-        .form-btn { width: 100%; margin-top: 0.5rem; }
-        .form-error { display: none; color: #C53030; font-size: 0.85rem; text-align: center; margin-bottom: 1rem; }
-        .form-success { display: none; text-align: center; padding: 2rem; }
-        .form-success__icon { font-size: 3rem; margin-bottom: 1rem; }
-        .form-success__title { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .form-success__text { color: var(--white-dim); font-size: 0.95rem; }
 
-        .lp-footer { text-align: center; padding: 2rem 1.5rem; font-size: 0.75rem; color: var(--gray); border-top: 1px solid var(--navy-border); }
-        .lp-footer a { color: var(--gold); text-decoration: none; }
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .form-btn {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .form-error {
+            display: none;
+            color: #C53030;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .form-success__icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-success__title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-success__text {
+            color: var(--white-dim);
+            font-size: 0.95rem;
+        }
+
+        .lp-footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.75rem;
+            color: var(--gray);
+            border-top: 1px solid var(--navy-border);
+        }
+
+        .lp-footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
         @media (max-width: 600px) {
-            .hero { padding: 2rem 1rem 1.5rem; } .stats-bar { gap: 1rem; } .stat__number { font-size: 1.1rem; }
-            .proof__inner { flex-direction: column; text-align: center; } .proof__badges { justify-content: center; }
-            .section { padding: 2rem 1rem; } .form-section { padding: 2rem 1rem; }
+            .hero {
+                padding: 2rem 1rem 1.5rem;
+            }
+
+            .stats-bar {
+                gap: 1rem;
+            }
+
+            .stat__number {
+                font-size: 1.1rem;
+            }
+
+            .proof__inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .proof__badges {
+                justify-content: center;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .form-section {
+                padding: 2rem 1rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="top-bar"></div>
 
@@ -101,7 +450,8 @@
             <em>30 Minutes.</em> Your Numbers. A Plan.
         </h1>
         <p class="hero__sub">
-            You know the leaks are there. You've seen the numbers. Now you need someone who's been in the weeds for 20 years to look at your specific situation and tell you exactly where to start.
+            You know the leaks are there. You've seen the numbers. Now you need someone who's been in the weeds for 20
+            years to look at your specific situation and tell you exactly where to start.
         </p>
 
         <div class="stats-bar">
@@ -134,19 +484,22 @@
             <li>
                 <div class="steps__text">
                     <strong>You Share Your Numbers</strong>
-                    <span>Revenue, food cost, labor cost, biggest headache. I need real numbers to give you real answers.</span>
+                    <span>Revenue, food cost, labor cost, biggest headache. I need real numbers to give you real
+                        answers.</span>
                 </div>
             </li>
             <li>
                 <div class="steps__text">
                     <strong>I Identify Your #1 Leak</strong>
-                    <span>Based on 20 years of pattern recognition across 5 countries. Most operators have one leak that accounts for 60%+ of the problem.</span>
+                    <span>Based on 20 years of pattern recognition across 5 countries. Most operators have one leak that
+                        accounts for 60%+ of the problem.</span>
                 </div>
             </li>
             <li>
                 <div class="steps__text">
                     <strong>You Leave With a Plan</strong>
-                    <span>A specific next step you can take this week. Whether we work together or not, you walk away with clarity.</span>
+                    <span>A specific next step you can take this week. Whether we work together or not, you walk away
+                        with clarity.</span>
                 </div>
             </li>
         </ol>
@@ -159,13 +512,14 @@
             <div>
                 <div class="proof__text">
                     <strong>I'm not a consultant. I'm an operator who lost everything and rebuilt with systems.</strong>
-                    $180K in debt. Restaurant on the edge. 1,200+ days later, same restaurant, different operating system. I've been where you are. That's why I can see what's invisible to you.
+                    $370K CAD in debt. Restaurant on the edge. 1,200+ days later, same restaurant, different operating
+                    system. I've been where you are. That's why I can see what's invisible to you.
                 </div>
                 <div class="proof__badges">
                     <span class="proof__badge">Master Chef</span>
                     <span class="proof__badge">20+ Years Ops</span>
                     <span class="proof__badge">5 Countries</span>
-                    <span class="proof__badge">$180K Rebuilt</span>
+                    <span class="proof__badge">$370K CAD Rebuilt</span>
                 </div>
             </div>
         </div>
@@ -202,7 +556,8 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="dc-problem">Biggest Problem Right Now</label>
-                    <textarea class="form-textarea" id="dc-problem" placeholder="What's keeping you up at night?"></textarea>
+                    <textarea class="form-textarea" id="dc-problem"
+                        placeholder="What's keeping you up at night?"></textarea>
                 </div>
                 <button type="submit" class="btn--gold form-btn" id="formBtn">Book My Free Call</button>
             </form>
@@ -275,4 +630,5 @@
         }
     </script>
 </body>
+
 </html>

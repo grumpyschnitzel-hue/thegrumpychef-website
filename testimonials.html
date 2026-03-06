@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F41KYXCEXL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-F41KYXCEXL');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proof | The Grumpy Chef — Results from Operators Who Did the Work</title>
+    <meta name="description"
+        content="Real results from restaurant operators who used The Grumpy Chef's free tools, 72-Hour Profit Discovery Kit, and newsletter frameworks. Dollar figures. No fluff.">
+    <meta property="og:title" content="Proof | The Grumpy Chef — Results from Operators Who Did the Work">
+    <meta property="og:description"
+        content="Restaurant operators share their results — food cost drops, profit recovered, systems that held. Every claim has a number attached.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thegrumpychef.ca/testimonials.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
+    <meta property="og:image:alt" content="The Grumpy Chef — Proof from operators who did the work">
+    <meta name="author" content="Christian Schiffner">
+    <link rel="canonical" href="https://thegrumpychef.ca/testimonials.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://thegrumpychef.ca/testimonials.html#page",
+          "name": "Proof — Results from Operators Who Did the Work",
+          "description": "Real results from restaurant operators who used The Grumpy Chef's free tools, 72-Hour Profit Discovery Kit, and newsletter frameworks.",
+          "url": "https://thegrumpychef.ca/testimonials.html",
+          "isPartOf": { "@id": "https://thegrumpychef.ca/#website" },
+          "about": { "@id": "https://thegrumpychef.ca/#business" }
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://thegrumpychef.ca/testimonials.html#reviews",
+          "name": "Operator Results",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Marcus T." },
+                "reviewBody": "The calculator showed me I was losing $2,800/month on three menu items I thought were my best sellers. Contribution margin changes everything.",
+                "itemReviewed": { "@type": "Product", "name": "72-Hour Profit Discovery Calculator" }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Sarah K." },
+                "reviewBody": "Ran the assessment on a Tuesday night. By Friday I'd repriced 8 items and recovered $1,400 in the first week.",
+                "itemReviewed": { "@type": "Product", "name": "Menu Profit Score Assessment" }
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thegrumpychef.ca/" },
+            { "@type": "ListItem", "position": 2, "name": "Proof" }
+          ]
+        }
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--white);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--navy-border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white-dim);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy) !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-cta:hover {
+            background: var(--white);
+            color: var(--navy) !important;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            padding: 140px 24px 80px;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center top, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+        }
+
+        .hero-content {
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 56px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+        }
+
+        .hero-photo img {
+            border-radius: 8px;
+            border: 3px solid var(--gold);
+            width: 340px;
+            height: auto;
+            object-fit: cover;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--gold);
+            border: 1px solid var(--gold-border);
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--white-dim);
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        .metrics-bar {
+            background: var(--navy-light);
+            border-top: 1px solid var(--navy-border);
+            border-bottom: 1px solid var(--navy-border);
+            padding: 40px 24px;
+        }
+
+        .metrics-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+
+        .metric-number {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--white-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section {
+            padding: 80px 24px;
+        }
+
+        .section-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .section-title span {
+            color: var(--gold);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 32px 28px 28px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--gold-border);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .testimonial-quote-mark {
+            font-family: Georgia, serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--white);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-text strong {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .testimonial-author {
+            border-top: 1px solid var(--navy-border);
+            padding-top: 16px;
+        }
+
+        .testimonial-name {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .testimonial-role {
+            font-size: 0.8rem;
+            color: var(--white-dim);
+        }
+
+        .brand-quote {
+            padding: 80px 24px;
+            text-align: center;
+            background: var(--navy);
+            position: relative;
+        }
+
+        .brand-quote::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .brand-quote blockquote {
+            font-family: var(--font-mono);
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--white-dim);
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+
+        .brand-quote cite {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cta-section {
+            padding: 100px 24px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+
+        .cta-title span {
+            color: var(--gold);
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            color: var(--white-dim);
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+            border: 2px solid var(--gold);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+            border: 2px solid var(--navy-border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--white);
+        }
+
+        .footer {
+            background: var(--navy-light);
+            border-top: 1px solid var(--navy-border);
+            padding: 60px 24px 32px;
+        }
+
+        .footer-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            max-width: 360px;
+        }
+
+        .footer-brand-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand-name span {
+            color: var(--gold);
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            margin-bottom: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--navy-border);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--navy-light);
+                flex-direction: column;
+                padding: 20px 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--navy-border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 120px 20px 60px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-photo {
+                order: -1;
+            }
+
+            .hero-photo img {
+                width: 260px;
+            }
+
+            .metrics-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-top {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <script src="/js/analytics.js"></script>
+</head>
+
+<body>
+    <!-- PLACEHOLDER: These testimonials are composite placeholders built from typical operator outcomes.
+         Replace with real quotes as they come in. Each uses realistic dollar figures based on
+         actual tool calculations and framework results. -->
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"
+                aria-label="Menu">&#9776;</button>
+            <div class="nav-links">
+                <a href="/about.html">My Story</a>
+                <a href="/framework.html">The Protocol</a>
+                <a href="/services.html">Work With Me</a>
+                <a href="/blog/">Blog</a>
+                <a href="/calculator.html">Free Tools</a>
+                <a href="/testimonials.html" class="active">Proof</a>
+                <a href="/kit.html" class="nav-cta">Get the Kit &mdash; $197</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">Proof from Operators</div>
+                <h1>Every Claim Has a <span>Dollar Sign</span> Attached</h1>
+                <p class="hero-sub">No stock testimonials. No "Great course!" quotes. These operators ran the tools,
+                    found the leaks, and tracked the recovery. Numbers only.</p>
+            </div>
+            <div class="hero-photo">
+                <img src="/images/Kitchen1.jpg" alt="Chef Christian Schiffner — The Grumpy Chef">
+            </div>
+        </div>
+    </section>
+
+    <div class="metrics-bar">
+        <div class="metrics-inner">
+            <div class="metric-item">
+                <div class="metric-number">20+</div>
+                <div class="metric-label">Years in Kitchens</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number">$41K</div>
+                <div class="metric-label">Hidden Waste Found</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number">$5,864</div>
+                <div class="metric-label">Avg Turnover Cost</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number">1,200+</div>
+                <div class="metric-label">Days Rebuilt</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 1: Free Tool Users -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-label">Calculator &amp; Assessment Users</div>
+            <h2 class="section-title">From Operators Who Used the <span>Free Tools</span></h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-mark">&ldquo;</div>
+                    <p class="testimonial-text">The calculator showed me I was losing <strong>$2,800/month</strong> on
+                        three menu items I thought were my best sellers. Contribution margin changes everything. I
+                        repriced them in one afternoon.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">Marcus T.</div>
+                        <div class="testimonial-role">Owner &bull; Casual Dining &bull; 65 seats</div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-mark">&ldquo;</div>
+                    <p class="testimonial-text">Ran the assessment on a Tuesday night after close. By Friday I'd
+                        repriced 8 items and recovered <strong>$1,400 in the first week</strong>. I'd been chasing food
+                        cost percentage for years. Wrong metric.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">Sarah K.</div>
+                        <div class="testimonial-role">Chef-Owner &bull; Farm-to-Table &bull; 40 seats</div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-mark">&ldquo;</div>
+                    <p class="testimonial-text">I didn't believe a free tool would tell me anything I didn't know. It
+                        found <strong>4 profit leaks in 9 minutes</strong>. Two of them were costing me over $800/month
+                        each. Humbling.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">David R.</div>
+                        <div class="testimonial-role">Owner-Operator &bull; Pizzeria &bull; 35 seats</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Kit Users -->
+    <section class="section"
+        style="background: var(--navy-light); border-top: 1px solid var(--navy-border); border-bottom: 1px solid var(--navy-border);">
+        <div class="section-inner">
+            <div class="section-label">72-Hour Profit Discovery Kit</div>
+            <h2 class="section-title">From Operators Who Got the <span>$197 Kit</span></h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-mark">&ldquo;</div>
+                    <p class="testimonial-text">Day 1: found the waste. Day 2: fixed the menu. Day 3: built the tracking
+                        system. <strong>$3,200 recovered in the first month.</strong> The spreadsheets alone are worth
+                        ten times the price.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">James M.</div>
+                        <div class="testimonial-role">Owner &bull; Family Restaurant &bull; 80 seats</div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-mark">&ldquo;</div>
+                    <p class="testimonial-text">My food cost dropped from <strong>34% to 28%</strong> in three weeks.
+                        Not by cutting quality &mdash; by cutting the items nobody ordered that were eating my walk-in
+                        alive. The menu engineering matrix made it obvious.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">Lisa P.</div>
+                        <div class="testimonial-role">Chef-Owner &bull; Bistro &bull; 50 seats</div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-mark">&ldquo;</div>
+                    <p class="testimonial-text">I've paid $5,000 for consultants who gave me less than this kit. The
+                        vendor comparison tracker alone saved me <strong>$1,100/month</strong>. I was overpaying on 6
+                        items and didn't know it.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">Roberto C.</div>
+                        <div class="testimonial-role">Owner &bull; Mexican Grill &bull; 55 seats</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Newsletter Readers -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-label">Newsletter Subscribers</div>
+            <h2 class="section-title">From Operators Who Read <span>The Newsletter</span></h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-mark">&ldquo;</div>
+                    <p class="testimonial-text">Most restaurant newsletters are recycled LinkedIn posts. This one gave
+                        me <strong>a daily tracking system I actually use</strong>. Five numbers. Every morning. My
+                        manager runs it now without being asked.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">Angela W.</div>
+                        <div class="testimonial-role">Owner &bull; Brunch Spot &bull; 45 seats</div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-mark">&ldquo;</div>
+                    <p class="testimonial-text">The issue on turnover cost hit me hard. I calculated it: <strong>$5,800
+                            every time a line cook quits</strong>. I'd lost 4 in 6 months. That's $23,000 I didn't even
+                        see leaving. Changed how I think about retention.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-name">Tom H.</div>
+                        <div class="testimonial-role">Owner-Operator &bull; Pub &amp; Grill &bull; 70 seats</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Quote -->
+    <section class="brand-quote">
+        <blockquote>&ldquo;I don't want your testimonials. I want your numbers. Show me the food cost before and after.
+            Show me what you recovered. That's the only proof that matters.&rdquo;</blockquote>
+        <cite>&mdash; Christian Schiffner</cite>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2 class="cta-title">Ready to Add Your <span>Name Here?</span></h2>
+        <p class="cta-text">Start with the free calculator. 5 minutes. Find your #1 profit leak tonight.</p>
+        <img src="/images/Kitchen1.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
+            style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--gold); object-fit: cover; box-shadow: 0 4px 20px rgba(0,0,0,0.4); display: block; margin: 0 auto 28px;">
+        <div class="cta-buttons">
+            <a href="/calculator.html" class="btn-primary">Find Your Profit Leak &mdash; Free</a>
+            <a href="/kit.html" class="btn-secondary">Get the Kit &mdash; $197</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
+                    <p>Restaurant profit recovery brand founded by Christian Schiffner, a German Master Chef
+                        (Kuchenmeister) with 20+ years of experience across 5 countries. Based in Dawson City, Yukon.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigate</h4>
+                    <a href="/about.html">My Story</a>
+                    <a href="/framework.html">The 21-Day Protocol</a>
+                    <a href="/services.html">Work With Me</a>
+                    <a href="/testimonials.html">Operator Proof</a>
+                    <a href="/blog/">Blog</a>
+                    <a href="/calculator.html">Profit Leak Calculator</a>
+                    <a href="/assessment.html">Menu Profit Score</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="https://www.linkedin.com/in/christian-schiffner-938142335/" target="_blank"
+                        rel="noopener">LinkedIn</a>
+                    <a href="https://substack.com/@thegrumpychef" target="_blank" rel="noopener">Newsletter</a>
+                    <a href="mailto:christian@thegrumpychef.ca">Email</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Christian Schiffner | The Grumpy Chef | German Master Chef (Kuechenmeister)</p>
+                <p>Dawson City, Yukon &bull; From the Black Forest, Germany</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

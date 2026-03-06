@@ -1,20 +1,23 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F41KYXCEXL"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-F41KYXCEXL');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-F41KYXCEXL');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Lower Food Cost Without Cutting Quality | The Grumpy Chef</title>
-    <meta name="description" content="Stop managing food cost percentage. Start tracking contribution margin — the metric that shows real profit per plate. Free calculator inside.">
+    <meta name="description"
+        content="Stop managing food cost percentage. Start tracking contribution margin — the metric that shows real profit per plate. Free calculator inside.">
     <meta property="og:title" content="How to Lower Food Cost Without Cutting Quality | The Grumpy Chef">
-    <meta property="og:description" content="Stop managing food cost percentage. Start tracking contribution margin — the metric that shows real profit per plate. Free calculator inside.">
+    <meta property="og:description"
+        content="Stop managing food cost percentage. Start tracking contribution margin — the metric that shows real profit per plate. Free calculator inside.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://thegrumpychef.ca/blog/how-to-lower-food-cost-without-cutting-quality.html">
     <meta property="og:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
@@ -99,9 +102,18 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         :root {
             --navy: #0A1628;
             --navy-light: #0E1B30;
@@ -120,117 +132,549 @@
             --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-mono: 'JetBrains Mono', 'Consolas', monospace;
         }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background: var(--navy); color: var(--white); line-height: 1.6; }
-        a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
-        a:hover { color: var(--white); }
 
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,22,40,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--navy-border); }
-        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-        .nav-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--white); letter-spacing: 1px; text-transform: uppercase; }
-        .nav-logo span { color: var(--gold); }
-        .nav-links { display: flex; gap: 28px; align-items: center; }
-        .nav-links a { color: var(--white-dim); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
-        .nav-links a:hover { color: var(--gold); }
-        .nav-links a.active { color: var(--gold); }
-        .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 8px 20px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .nav-cta:hover { background: var(--white); color: var(--navy) !important; }
-        .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-        .breadcrumb { padding: 80px 24px 0; max-width: 740px; margin: 0 auto; }
-        .breadcrumb a, .breadcrumb span { font-size: 0.8rem; color: var(--white-dim); }
-        .breadcrumb a:hover { color: var(--gold); }
-        .breadcrumb .sep { margin: 0 8px; color: var(--gray); }
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+        }
 
-        .article-header { padding: 32px 24px 48px; max-width: 740px; margin: 0 auto; }
-        .article-meta { display: flex; gap: 16px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
-        .article-meta span { font-family: var(--font-mono); font-size: 0.75rem; color: var(--white-dim); letter-spacing: 0.5px; }
-        .article-header h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; text-transform: uppercase; }
-        .article-header h1 span { color: var(--gold); }
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
 
-        .article-body { max-width: 740px; margin: 0 auto; padding: 0 24px 60px; }
-        .article-body p { font-size: 1.05rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 24px; }
-        .article-body p strong { color: var(--white); }
-        .article-body h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin: 48px 0 16px; color: var(--white); }
-        .article-body h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; text-transform: uppercase; margin: 32px 0 12px; color: var(--white); }
-        .article-body ul, .article-body ol { margin: 0 0 24px 24px; }
-        .article-body li { font-size: 1rem; color: var(--white-dim); line-height: 1.7; margin-bottom: 8px; }
-        .article-body blockquote { border-left: 3px solid var(--gold); padding: 16px 24px; margin: 32px 0; background: var(--navy-card); border-radius: 0 8px 8px 0; }
-        .article-body blockquote p { font-family: var(--font-mono); font-size: 0.95rem; color: var(--white-dim); font-style: italic; margin-bottom: 0; }
+        a:hover {
+            color: var(--white);
+        }
 
-        .callout-box { background: var(--navy-card); border: 1px solid var(--gold-border); border-radius: 12px; padding: 28px; margin: 32px 0; }
-        .callout-box h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-        .callout-box p { font-size: 0.95rem; margin-bottom: 0; }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--navy-border);
+        }
 
-        .faq-section { margin-top: 48px; padding-top: 48px; border-top: 1px solid var(--navy-border); }
-        .faq-section h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-bottom: 24px; }
-        .faq-item { border-bottom: 1px solid var(--navy-border); padding: 20px 0; }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-item h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; color: var(--white); }
-        .faq-item p { font-size: 0.95rem; color: var(--white-dim); line-height: 1.7; margin-bottom: 0; }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
 
-        .author-card { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 12px; padding: 32px; margin-top: 48px; display: flex; gap: 20px; align-items: flex-start; }
-        .author-photo { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--gold); object-fit: cover; flex-shrink: 0; }
-        .author-info h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
-        .author-info .author-title { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
-        .author-info p { font-size: 0.9rem; color: var(--white-dim); line-height: 1.6; }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-        .cta-section { padding: 80px 24px; text-align: center; background: var(--navy-light); border-top: 1px solid var(--navy-border); }
-        .cta-title { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; text-transform: uppercase; margin-bottom: 16px; line-height: 1.15; }
-        .cta-title span { color: var(--gold); }
-        .cta-text { font-size: 1rem; color: var(--white-dim); max-width: 500px; margin: 0 auto 24px; }
-        .btn-primary { display: inline-block; background: var(--gold); color: var(--navy); padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s; border: 2px solid var(--gold); }
-        .btn-primary:hover { background: transparent; color: var(--gold); }
+        .nav-logo span {
+            color: var(--gold);
+        }
 
-        .related-section { padding: 60px 24px; max-width: 740px; margin: 0 auto; }
-        .related-section h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
-        .related-links { display: flex; flex-direction: column; gap: 12px; }
-        .related-links a { font-size: 0.95rem; padding: 12px 16px; background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 8px; transition: border-color 0.2s; }
-        .related-links a:hover { border-color: var(--gold-border); }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
 
-        .footer { background: var(--navy-light); border-top: 1px solid var(--navy-border); padding: 60px 24px 32px; }
-        .footer-inner { max-width: 1000px; margin: 0 auto; }
-        .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
-        .footer-brand { max-width: 360px; }
-        .footer-brand-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
-        .footer-brand-name span { color: var(--gold); }
-        .footer-brand p { font-size: 0.85rem; color: var(--white-dim); line-height: 1.6; }
-        .footer-links h4 { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 12px; }
-        .footer-links a { display: block; font-size: 0.85rem; color: var(--white-dim); margin-bottom: 8px; }
-        .footer-links a:hover { color: var(--gold); }
-        .footer-bottom { border-top: 1px solid var(--navy-border); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-        .footer-bottom p { font-size: 0.75rem; color: var(--gray); }
+        .nav-links a {
+            color: var(--white-dim);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy) !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-cta:hover {
+            background: var(--white);
+            color: var(--navy) !important;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .breadcrumb {
+            padding: 80px 24px 0;
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb a,
+        .breadcrumb span {
+            font-size: 0.8rem;
+            color: var(--white-dim);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumb .sep {
+            margin: 0 8px;
+            color: var(--gray);
+        }
+
+        .article-header {
+            padding: 32px 24px 48px;
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .article-meta span {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--white-dim);
+            letter-spacing: 0.5px;
+        }
+
+        .article-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            line-height: 1.15;
+            text-transform: uppercase;
+        }
+
+        .article-header h1 span {
+            color: var(--gold);
+        }
+
+        .article-body {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+
+        .article-body p {
+            font-size: 1.05rem;
+            color: var(--white-dim);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .article-body p strong {
+            color: var(--white);
+        }
+
+        .article-body h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 48px 0 16px;
+            color: var(--white);
+        }
+
+        .article-body h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 32px 0 12px;
+            color: var(--white);
+        }
+
+        .article-body ul,
+        .article-body ol {
+            margin: 0 0 24px 24px;
+        }
+
+        .article-body li {
+            font-size: 1rem;
+            color: var(--white-dim);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .article-body blockquote {
+            border-left: 3px solid var(--gold);
+            padding: 16px 24px;
+            margin: 32px 0;
+            background: var(--navy-card);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .article-body blockquote p {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            color: var(--white-dim);
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        .callout-box {
+            background: var(--navy-card);
+            border: 1px solid var(--gold-border);
+            border-radius: 12px;
+            padding: 28px;
+            margin: 32px 0;
+        }
+
+        .callout-box h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .callout-box p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .faq-section {
+            margin-top: 48px;
+            padding-top: 48px;
+            border-top: 1px solid var(--navy-border);
+        }
+
+        .faq-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--navy-border);
+            padding: 20px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h3 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: var(--white);
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+            color: var(--white-dim);
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        .author-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 48px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .author-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .author-info h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .author-info .author-title {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            padding: 80px 24px;
+            text-align: center;
+            background: var(--navy-light);
+            border-top: 1px solid var(--navy-border);
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+
+        .cta-title span {
+            color: var(--gold);
+        }
+
+        .cta-text {
+            font-size: 1rem;
+            color: var(--white-dim);
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+            border: 2px solid var(--gold);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .related-section {
+            padding: 60px 24px;
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        .related-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .related-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .related-links a {
+            font-size: 0.95rem;
+            padding: 12px 16px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            transition: border-color 0.2s;
+        }
+
+        .related-links a:hover {
+            border-color: var(--gold-border);
+        }
+
+        .footer {
+            background: var(--navy-light);
+            border-top: 1px solid var(--navy-border);
+            padding: 60px 24px 32px;
+        }
+
+        .footer-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            max-width: 360px;
+        }
+
+        .footer-brand-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand-name span {
+            color: var(--gold);
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            margin-bottom: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--navy-border);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy-light); flex-direction: column; padding: 20px 24px; gap: 16px; border-bottom: 1px solid var(--navy-border); }
-            .nav-links.active { display: flex; }
-            .nav-toggle { display: block; }
-            .breadcrumb { padding-top: 76px; }
-            .article-header h1 { font-size: 1.8rem; }
-            .author-card { flex-direction: column; text-align: center; align-items: center; }
-            .footer-top { flex-direction: column; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--navy-light);
+                flex-direction: column;
+                padding: 20px 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--navy-border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .breadcrumb {
+                padding-top: 76px;
+            }
+
+            .article-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .author-card {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+
+            .footer-top {
+                flex-direction: column;
+            }
         }
     </style>
     <script src="/js/analytics.js"></script>
 </head>
+
 <body>
     <nav class="nav">
         <div class="nav-inner">
             <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
-            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"
+                aria-label="Menu">&#9776;</button>
             <div class="nav-links">
                 <a href="/about.html">My Story</a>
                 <a href="/framework.html">The Protocol</a>
                 <a href="/services.html">Work With Me</a>
                 <a href="/blog/" class="active">Blog</a>
-                <a href="/calculator.html">Free Tools</a>
+                <a href="/testimonials.html">Proof</a>`n                <a href="/calculator.html">Free Tools</a>
                 <a href="/kit.html" class="nav-cta">Get the Kit &mdash; $197</a>
             </div>
         </div>
     </nav>
 
     <div class="breadcrumb">
-        <a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><span>Lower Food Cost Without Cutting Quality</span>
+        <a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><span>Lower
+            Food Cost Without Cutting Quality</span>
     </div>
 
     <header class="article-header">
@@ -243,37 +687,50 @@
     </header>
 
     <article class="article-body">
-        <p><strong>Stop chasing food cost percentage. Start tracking what each plate actually puts in your pocket.</strong></p>
+        <p><strong>Stop chasing food cost percentage. Start tracking what each plate actually puts in your
+                pocket.</strong></p>
 
-        <p>Most food cost advice tells you to negotiate with suppliers, buy cheaper ingredients, and shrink your portions. That works &mdash; until your customers notice and your staff stops caring. You've cut costs and quality at the same time.</p>
+        <p>Most food cost advice tells you to negotiate with suppliers, buy cheaper ingredients, and shrink your
+            portions. That works &mdash; until your customers notice and your staff stops caring. You've cut costs and
+            quality at the same time.</p>
 
-        <p>After 20 years in kitchens across 5 countries &mdash; and losing $180K learning the hard way &mdash; I can tell you the operators who actually fix food cost don't start with cheaper ingredients. They start with better information.</p>
+        <p>After 20 years in kitchens across 5 countries &mdash; and losing $370K CAD learning the hard way &mdash; I
+            can tell you the operators who actually fix food cost don't start with cheaper ingredients. They start with
+            better information.</p>
 
-        <p>Here's the system that changed everything for me &mdash; and the one I teach now. Three steps. No software subscription required.</p>
+        <p>Here's the system that changed everything for me &mdash; and the one I teach now. Three steps. No software
+            subscription required.</p>
 
         <h2>The Metric That's Lying to You</h2>
 
-        <p>Every POS system shows food cost percentage. Every culinary school teaches it. Every article on this topic tells you to "keep it under 30%."</p>
+        <p>Every POS system shows food cost percentage. Every culinary school teaches it. Every article on this topic
+            tells you to "keep it under 30%."</p>
 
         <p>Here's why that advice is incomplete.</p>
 
         <p>A $16 salad at 25% food cost makes you $12 per plate.<br>
-        A $48 steak at 38% food cost makes you $29.76 per plate.</p>
+            A $48 steak at 38% food cost makes you $29.76 per plate.</p>
 
         <p>Which one do you want to sell more of?</p>
 
-        <p>If you manage by food cost percentage, you push the salad. If you manage by <strong>contribution margin</strong> &mdash; the actual dollars each plate puts in your pocket &mdash; you push the steak.</p>
+        <p>If you manage by food cost percentage, you push the salad. If you manage by <strong>contribution
+                margin</strong> &mdash; the actual dollars each plate puts in your pocket &mdash; you push the steak.
+        </p>
 
-        <p>Food cost percentage measures efficiency. Contribution margin measures profit. They're different conversations. Most operators are having the wrong one.</p>
+        <p>Food cost percentage measures efficiency. Contribution margin measures profit. They're different
+            conversations. Most operators are having the wrong one.</p>
 
         <div class="callout-box">
             <h4>Contribution Margin Formula</h4>
-            <p>Selling price &minus; food cost in dollars = contribution margin<br><br>That's it. That's the number your POS doesn't show you. And it changes everything about how you price, position, and promote your menu items.</p>
+            <p>Selling price &minus; food cost in dollars = contribution margin<br><br>That's it. That's the number your
+                POS doesn't show you. And it changes everything about how you price, position, and promote your menu
+                items.</p>
         </div>
 
         <h2>Step 1: Track What Actually Moves the Needle</h2>
 
-        <p>Before you cut a single ingredient, you need to know where your money is actually going. Not what your POS report says &mdash; what's happening plate by plate.</p>
+        <p>Before you cut a single ingredient, you need to know where your money is actually going. Not what your POS
+            report says &mdash; what's happening plate by plate.</p>
 
         <p><strong>For every dish on your menu, calculate three things:</strong></p>
 
@@ -285,83 +742,129 @@
 
         <p>Most operators know their top sellers. Almost none know their top earners. These are different lists.</p>
 
-        <p>I once had a dish that was our #3 seller. Great food cost percentage &mdash; 26%. Looked perfect on paper. When I ran the contribution margin, it was making me $9.80 per plate. My #8 seller &mdash; a dish I almost cut &mdash; was making me $24.50 per plate at 36% food cost.</p>
+        <p>I once had a dish that was our #3 seller. Great food cost percentage &mdash; 26%. Looked perfect on paper.
+            When I ran the contribution margin, it was making me $9.80 per plate. My #8 seller &mdash; a dish I almost
+            cut &mdash; was making me $24.50 per plate at 36% food cost.</p>
 
         <p>The "efficient" dish was my trap. The "expensive" dish was my money maker.</p>
 
-        <p><strong>Do this first:</strong> Pick your top 10 sellers. Calculate contribution margin on each one. I guarantee at least 2-3 of them will surprise you.</p>
+        <p><strong>Do this first:</strong> Pick your top 10 sellers. Calculate contribution margin on each one. I
+            guarantee at least 2-3 of them will surprise you.</p>
 
         <h2>Step 2: Discover Your Stars and Dogs</h2>
 
-        <p>Once you have the numbers, every dish on your menu falls into one of four categories. This is called a <strong>menu engineering matrix</strong> &mdash; the restaurant industry has had this framework since 1982, but almost no independent operator uses it.</p>
+        <p>Once you have the numbers, every dish on your menu falls into one of four categories. This is called a
+            <strong>menu engineering matrix</strong> &mdash; the restaurant industry has had this framework since 1982,
+            but almost no independent operator uses it.</p>
 
-        <p><strong>Stars</strong> &mdash; High contribution margin, high popularity. Your money makers. Feature them. Promote them. Never touch them.</p>
+        <p><strong>Stars</strong> &mdash; High contribution margin, high popularity. Your money makers. Feature them.
+            Promote them. Never touch them.</p>
 
-        <p><strong>Plowhorses</strong> &mdash; Low contribution margin, high popularity. People love them, but they're not making you much per plate. Re-engineer the recipe, adjust the portion, or raise the price carefully.</p>
+        <p><strong>Plowhorses</strong> &mdash; Low contribution margin, high popularity. People love them, but they're
+            not making you much per plate. Re-engineer the recipe, adjust the portion, or raise the price carefully.</p>
 
-        <p><strong>Puzzles</strong> &mdash; High contribution margin, low popularity. Hidden gold. They make great money when they sell &mdash; they just don't sell enough. Better menu placement, a two-line description, or a server recommendation fixes this.</p>
+        <p><strong>Puzzles</strong> &mdash; High contribution margin, low popularity. Hidden gold. They make great money
+            when they sell &mdash; they just don't sell enough. Better menu placement, a two-line description, or a
+            server recommendation fixes this.</p>
 
-        <p><strong>Dogs</strong> &mdash; Low contribution margin, low popularity. Nobody orders them, and when they do, you barely make money. Cut them. Free up the prep time, the walk-in space, and the mental energy.</p>
+        <p><strong>Dogs</strong> &mdash; Low contribution margin, low popularity. Nobody orders them, and when they do,
+            you barely make money. Cut them. Free up the prep time, the walk-in space, and the mental energy.</p>
 
-        <p>A typical 40-item menu has 8-12 Dogs sitting on it right now. Each Dog costs you prep hours, ingredient waste, and walk-in space for items that contribute almost nothing.</p>
+        <p>A typical 40-item menu has 8-12 Dogs sitting on it right now. Each Dog costs you prep hours, ingredient
+            waste, and walk-in space for items that contribute almost nothing.</p>
 
-        <p>I cut 4 Dogs from my menu in one afternoon. Freed up 6 hours of prep per week. Nobody &mdash; not one customer &mdash; asked where those dishes went.</p>
+        <p>I cut 4 Dogs from my menu in one afternoon. Freed up 6 hours of prep per week. Nobody &mdash; not one
+            customer &mdash; asked where those dishes went.</p>
 
         <h2>Step 3: Drive Profit Without Raising Prices</h2>
 
-        <p>Here's where it gets interesting. Once you know your Stars, you can increase profit without changing a single price.</p>
+        <p>Here's where it gets interesting. Once you know your Stars, you can increase profit without changing a single
+            price.</p>
 
-        <p><strong>Menu placement matters more than you think.</strong> Where a dish sits on your menu changes what people order. A Star buried on page two doesn't sell. The same dish in a high-attention zone &mdash; top right of a two-page menu, first item in a section, or boxed separately &mdash; sells 15-20% more.</p>
+        <p><strong>Menu placement matters more than you think.</strong> Where a dish sits on your menu changes what
+            people order. A Star buried on page two doesn't sell. The same dish in a high-attention zone &mdash; top
+            right of a two-page menu, first item in a section, or boxed separately &mdash; sells 15-20% more.</p>
 
-        <p><strong>Descriptions sell.</strong> "Grilled Chicken Breast" and "Free-Range Chicken, Fire-Grilled, Served on Roasted Garlic Mash with Pan Jus" are the same dish. The second version sells for $4 more and gets ordered more often. That's not a price increase &mdash; that's engineering.</p>
+        <p><strong>Descriptions sell.</strong> "Grilled Chicken Breast" and "Free-Range Chicken, Fire-Grilled, Served on
+            Roasted Garlic Mash with Pan Jus" are the same dish. The second version sells for $4 more and gets ordered
+            more often. That's not a price increase &mdash; that's engineering.</p>
 
-        <p><strong>Server recommendations move mountains.</strong> If your servers know which 3 dishes are Stars, a simple "I'd recommend the..." drives additional daily contribution margin. $300/day &times; 20 operating days = <strong>$6,000/month</strong>. From a conversation.</p>
+        <p><strong>Server recommendations move mountains.</strong> If your servers know which 3 dishes are Stars, a
+            simple "I'd recommend the..." drives additional daily contribution margin. $300/day &times; 20 operating
+            days = <strong>$6,000/month</strong>. From a conversation.</p>
 
-        <p><strong>Cross-utilize ingredients.</strong> Every ingredient that appears in only one dish is a liability. The more dishes that share prep components, the lower your waste and the faster your prep.</p>
+        <p><strong>Cross-utilize ingredients.</strong> Every ingredient that appears in only one dish is a liability.
+            The more dishes that share prep components, the lower your waste and the faster your prep.</p>
 
-        <p>When I ran my schnitzel restaurant in the Yukon, my protein prep fed 4 dishes. My vegetable prep fed 6. When a delivery came in, almost nothing sat in the walk-in waiting for one specific dish to be ordered. Everything moved. Waste dropped. Prep sped up. I wasn't carrying inventory for 40 different recipes &mdash; I was carrying ingredients that worked across the whole menu.</p>
+        <p>When I ran my schnitzel restaurant in the Yukon, my protein prep fed 4 dishes. My vegetable prep fed 6. When
+            a delivery came in, almost nothing sat in the walk-in waiting for one specific dish to be ordered.
+            Everything moved. Waste dropped. Prep sped up. I wasn't carrying inventory for 40 different recipes &mdash;
+            I was carrying ingredients that worked across the whole menu.</p>
 
         <h2>The Real Problem Isn't Your Ingredients</h2>
 
-        <p>Most food cost articles tell you to buy cheaper ingredients, negotiate harder with suppliers, and control portions.</p>
+        <p>Most food cost articles tell you to buy cheaper ingredients, negotiate harder with suppliers, and control
+            portions.</p>
 
         <p>That's not wrong. It's just not where the real money is hiding.</p>
 
-        <p>The real money is in knowing which dishes to feature, which to fix, and which to cut. It's in understanding that a 38% food cost on your best earner is more profitable than a 25% food cost on a plate that makes you $9.</p>
+        <p>The real money is in knowing which dishes to feature, which to fix, and which to cut. It's in understanding
+            that a 38% food cost on your best earner is more profitable than a 25% food cost on a plate that makes you
+            $9.</p>
 
-        <p>After I lost $180K and rebuilt my restaurant from the ground up, the first thing I fixed wasn't my suppliers. It was my visibility. I couldn't see where the money was actually going because I was staring at the wrong numbers.</p>
+        <p>After I lost $370K CAD and rebuilt my restaurant from the ground up, the first thing I fixed wasn't my
+            suppliers. It was my visibility. I couldn't see where the money was actually going because I was staring at
+            the wrong numbers.</p>
 
-        <p>The day I switched from food cost percentage to contribution margin, everything changed. Not because the food changed &mdash; because my decisions did.</p>
+        <p>The day I switched from food cost percentage to contribution margin, everything changed. Not because the food
+            changed &mdash; because my decisions did.</p>
 
         <h2>Run Your Numbers in 3 Minutes</h2>
 
-        <p>I built a free calculator that does this math for you. Type in your dishes, costs, and prices. It classifies every item as a Star, Plowhorse, Puzzle, or Dog &mdash; and shows you contribution margin alongside food cost percentage.</p>
+        <p>I built a free calculator that does this math for you. Type in your dishes, costs, and prices. It classifies
+            every item as a Star, Plowhorse, Puzzle, or Dog &mdash; and shows you contribution margin alongside food
+            cost percentage.</p>
 
         <p>No signup. No subscription. No email required to see your results.</p>
 
-        <p><strong><a href="/calculator.html">Run the free menu classifier &rarr; thegrumpychef.ca/calculator</a></strong></p>
+        <p><strong><a href="/calculator.html">Run the free menu classifier &rarr;
+                    thegrumpychef.ca/calculator</a></strong></p>
 
         <div class="faq-section">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-item">
                 <h3>What is a good food cost percentage for a restaurant?</h3>
-                <p>Most operators aim for 28-35%, depending on the concept. But food cost percentage alone is misleading. A dish at 38% food cost that earns you $29.76 per plate is more profitable than a dish at 25% that earns $12. Track contribution margin alongside food cost percentage &mdash; that's where real profit visibility lives.</p>
+                <p>Most operators aim for 28-35%, depending on the concept. But food cost percentage alone is
+                    misleading. A dish at 38% food cost that earns you $29.76 per plate is more profitable than a dish
+                    at 25% that earns $12. Track contribution margin alongside food cost percentage &mdash; that's where
+                    real profit visibility lives.</p>
             </div>
             <div class="faq-item">
                 <h3>How do I calculate food cost per dish?</h3>
-                <p>Add up the cost of every ingredient in the dish at current prices, including portions and waste factor. Divide that total by your selling price and multiply by 100 for the percentage. But more importantly: subtract the food cost from the selling price to get contribution margin &mdash; the actual dollars that dish puts in your pocket.</p>
+                <p>Add up the cost of every ingredient in the dish at current prices, including portions and waste
+                    factor. Divide that total by your selling price and multiply by 100 for the percentage. But more
+                    importantly: subtract the food cost from the selling price to get contribution margin &mdash; the
+                    actual dollars that dish puts in your pocket.</p>
             </div>
             <div class="faq-item">
                 <h3>What is contribution margin in a restaurant?</h3>
-                <p>Contribution margin is the dollar amount left after subtracting food cost from the selling price. A $48 steak with $18.24 in food cost has a contribution margin of $29.76. That's the money available to cover labor, rent, and profit. It's the metric that matters most for menu decisions.</p>
+                <p>Contribution margin is the dollar amount left after subtracting food cost from the selling price. A
+                    $48 steak with $18.24 in food cost has a contribution margin of $29.76. That's the money available
+                    to cover labor, rent, and profit. It's the metric that matters most for menu decisions.</p>
             </div>
             <div class="faq-item">
                 <h3>How often should I review my food costs?</h3>
-                <p>Weekly for your top 10 items. Monthly for a full menu engineering analysis. Quarterly for a complete menu overhaul. Supplier prices shift, seasonal availability changes, and customer preferences evolve. The operators who stay profitable review regularly &mdash; not once a year when the accountant calls.</p>
+                <p>Weekly for your top 10 items. Monthly for a full menu engineering analysis. Quarterly for a complete
+                    menu overhaul. Supplier prices shift, seasonal availability changes, and customer preferences
+                    evolve. The operators who stay profitable review regularly &mdash; not once a year when the
+                    accountant calls.</p>
             </div>
             <div class="faq-item">
                 <h3>Can I lower food cost without making my food worse?</h3>
-                <p>Yes &mdash; and that's the entire point. The biggest food cost savings don't come from cheaper ingredients. They come from cutting dishes nobody orders (Dogs), promoting dishes that earn the most per plate (Stars), and cross-utilizing ingredients across your menu. Your food gets better because you're focusing your prep time and ingredient quality on fewer, higher-performing dishes.</p>
+                <p>Yes &mdash; and that's the entire point. The biggest food cost savings don't come from cheaper
+                    ingredients. They come from cutting dishes nobody orders (Dogs), promoting dishes that earn the most
+                    per plate (Stars), and cross-utilizing ingredients across your menu. Your food gets better because
+                    you're focusing your prep time and ingredient quality on fewer, higher-performing dishes.</p>
             </div>
         </div>
 
@@ -370,23 +873,30 @@
             <div class="author-info">
                 <h4>Christian Schiffner</h4>
                 <div class="author-title">German Master Chef (Kuchenmeister)</div>
-                <p>20+ years of professional kitchen experience across Germany, Switzerland, Austria, Spain, and Canada. After losing $180K and rebuilding from rock bottom, he now helps independent restaurant operators find hidden profit in their menus. Free tools available at <a href="/">thegrumpychef.ca</a>.</p>
+                <p>20+ years of professional kitchen experience across Germany, Switzerland, Austria, Spain, and Canada.
+                    After losing $370K CAD and rebuilding from rock bottom, he now helps independent restaurant
+                    operators find hidden profit in their menus. Free tools available at <a
+                        href="/">thegrumpychef.ca</a>.</p>
             </div>
         </div>
     </article>
 
     <section class="cta-section">
         <h2 class="cta-title">See Which Dishes Are <span>Making You Money</span></h2>
-        <p class="cta-text">Type in your menu items. Get contribution margin, food cost percentage, and Star/Dog classification in 3 minutes. No signup required.</p>
+        <p class="cta-text">Type in your menu items. Get contribution margin, food cost percentage, and Star/Dog
+            classification in 3 minutes. No signup required.</p>
         <a href="/calculator.html" class="btn-primary">Run the Free Menu Classifier</a>
     </section>
 
     <div class="related-section">
         <h3>Related Articles</h3>
         <div class="related-links">
-            <a href="/blog/food-cost-vs-contribution-margin.html">Food Cost vs. Contribution Margin: Which Number Actually Matters?</a>
-            <a href="/blog/menu-engineering-restaurant-profit.html">What Is Menu Engineering and How Does It Increase Restaurant Profit?</a>
-            <a href="/blog/lower-restaurant-food-cost.html">How Do I Lower Food Cost? The Track/Discover/Drive Framework</a>
+            <a href="/blog/food-cost-vs-contribution-margin.html">Food Cost vs. Contribution Margin: Which Number
+                Actually Matters?</a>
+            <a href="/blog/menu-engineering-restaurant-profit.html">What Is Menu Engineering and How Does It Increase
+                Restaurant Profit?</a>
+            <a href="/blog/lower-restaurant-food-cost.html">How Do I Lower Food Cost? The Track/Discover/Drive
+                Framework</a>
         </div>
     </div>
 
@@ -395,7 +905,9 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
-                    <p>Restaurant operations consulting founded by Christian Schiffner, a German Master Chef (Kuchenmeister) with 20+ years of experience across 5 countries. Based in Dawson City, Yukon.</p>
+                    <p>Restaurant profit recovery brand founded by Christian Schiffner, a German Master Chef
+                        (Kuchenmeister) with 20+ years of experience across 5 countries. Based in Dawson City, Yukon.
+                    </p>
                 </div>
                 <div class="footer-links">
                     <h4>Navigate</h4>
@@ -420,4 +932,5 @@
         </div>
     </footer>
 </body>
+
 </html>
