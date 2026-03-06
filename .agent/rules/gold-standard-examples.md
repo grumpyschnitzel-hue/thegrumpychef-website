@@ -507,7 +507,7 @@ I built a free calculator that finds these in 3 minutes. No signup. Link in bio 
 
 ## APPROVED Example: LinkedIn Text Post — LEADERSHIP / AUTHORITY
 
-**APPROVED** — Real post by Chris. Use as primary voice reference.
+**APPROVED** — Real post by Chris. #1 PERFORMER. THE gold standard for all content.
 
 **Pain point:** Leadership / Authority (applies to operator mindset)
 **Awareness stage:** Unaware → Problem Aware
@@ -515,6 +515,7 @@ I built a free calculator that finds these in 3 minutes. No signup. Link in bio 
 **CTA destination:** Organic engagement (no tool CTA — pure value post)
 **Trinity voice:** Sage (primary), Creator (secondary)
 **Pillar:** Systematic Excellence
+**Performance:** 69,903 impressions, 345 reactions, 70 comments, 51 reposts. Best post by 3x.
 
 ---
 
@@ -586,6 +587,487 @@ The title will find you.
 - Voice: 100% Sage. Fatherly, gruff, earned wisdom. No sarcasm (Rebel absent). No systems talk (Creator light).
 - This is the model for "pure engagement" posts in the 50-30-20 mix (30% engagement bucket)
 
+**Why this is the #1 post (69,903 impressions) — the anatomy of virality through credibility:**
+
+1. **Universal truth in a specific scene.** The story is about two chefs in a hotel kitchen — but the lesson applies to every industry. That's why it crossed the hospitality bubble and hit general leadership audiences. 51 reposts = people sharing it with their non-restaurant networks.
+
+2. **No stats. No framework. Just the scar.** Compare to the turnover post (9,411) which led with stats, or the onboarding post (26,283) which mixed scar + stats. This post has ZERO data points. Pure story. Pure Sage. And it 3x'd everything else. The lesson: at the top of the performance curve, story beats stats.
+
+3. **The three-line repetition is the signature move.** "You can't claim it. You can't demand it. You can only earn it." — This pattern appears in post #4 (Swiss sous chef, 3,202) too. But HERE it goes viral. The rhythm is poetic without trying to be. It reads like something carved into a kitchen wall.
+
+4. **Three parallel examples of REAL authority.** "The chef who stays late to prep... The chef who teaches the new kid... The chef who runs service clean..." — Each one is specific, visual, and earns a nod from anyone who's worked a kitchen. High signal, zero noise.
+
+5. **The close is an imperative triple.** "Stop chasing positions. Start providing value. The title will find you." — Three short sentences. Done. No question CTA. No "what do you think?" The post earned the right to command.
+
+6. **70 comments = conversation engine.** The comments include: chefs sharing their own stories (Jim LeBlanc), industry leaders adding nuance (Dominic P., Graham Donovan), challenges that let Chris show deeper knowledge (Lance Knowling). Every comment Chris replied to added value — never generic, always asked a specific question back.
+
+**Comment response patterns (model these):**
+- Generic praise ("Well said!"): Acknowledge + ask a specific question about THEIR experience
+- Story shares (Jim LeBlanc's prep-to-AKM story): Validate the specific detail + reframe it as proof of the thesis
+- Nuanced additions (Dominic P. on hierarchy): Agree AND push further ("leadership without ownership is just opinions competing for airtime")
+- Challenges (Lance Knowling "leaderless kitchen"): Answer directly + redirect to the systems lesson + ask back
+- Emoji-only reactions: Brief thanks OR turn into engagement by asking a question
+
+**The master formula for 70K+ posts:**
+Pure Sage. One scene. One truth. Three parallel examples. Imperative close. No stats needed. Let the scar do all the work.
+
+---
+
+## APPROVED Example: LinkedIn Text Post — PROFIT / SYSTEMS
+
+**APPROVED** — Real post by Chris. Use as Creator-mode reference.
+
+**Pain point:** Hidden Profit Leaks / Systems
+**Awareness stage:** Problem Aware
+**Hook type:** Contrarian Take / Pattern Interrupt
+**CTA destination:** Organic engagement (question CTA, no tool link)
+**Trinity voice:** Creator (primary), Sage (secondary)
+**Pillar:** Systematic Excellence
+**Performance:** 852 impressions, 5 reactions, 2 reposts
+
+---
+
+Profit is an unnatural occurrence.
+
+Not a motivational quote. An operational truth.
+
+Left unsupervised, every restaurant burns through its own resources. That's not a management failure. That's human nature. Without accountability, entropy wins. Every time.
+
+Without a system telling the prep cook how much to pull, they'll pull too much. Without a menu engineered around cross-utilization, you're buying 40 ingredients when 25 would cover it. Without someone reviewing plate costs quarterly, your best seller quietly becomes your worst earner.
+
+42% of restaurant operators are not profitable right now.
+(National Restaurant Association, 2026)
+
+Not because the food is bad. Not because customers aren't coming. Because nobody is supervising the profit.
+
+Profit doesn't happen by accident. Someone has to engineer it.
+
+That means:
+
+A menu where the same protein shows up in three dishes — not three proteins for three dishes.
+
+A prep plan with quantities tied to forecasts — not "whatever feels right."
+
+A regular review of what's earning its spot and what's dead weight. Monthly. Minimum.
+
+Staff who understand why the system exists, not just what it says.
+
+And here's the part most operators skip — you have to genuinely care about your people. Because systems don't enforce themselves. People do. Take care of them and they'll take care of the business.
+
+Profit isn't natural. Accountability creates it. Systems protect it. People deliver it.
+
+What's the one thing in your operation right now that nobody is supervising?
+
+---
+
+**Structural notes for SKILL.md:**
+- Hook: "Profit is an unnatural occurrence." — 5-word contrarian opener that reframes everything
+- Structure: Principle > Examples > Stat > Framework > People twist > Question CTA
+- Voice: Creator mode. Teaching systems with precision. Sage enters at the end (people twist).
+- Stat: NRA 2026 data point adds external credibility
+- The cross-utilization example (same protein in 3 dishes) is peak high-signal content — specific, actionable, operational
+- Closing question drives engagement without needing a tool CTA
+
+**What makes this weaker than Example #2 (Leadership post):**
+- No personal scar. No "I did this wrong" moment. It teaches FROM authority but doesn't show the wound that built the authority.
+- Reads more like a framework lesson than a story. The leadership post had a vivid scene (two chefs, hotel kitchen, young Commis watching). This one has principles.
+- The NRA stat, while useful, feels slightly external — Chris's own dollar figure ($370K, $2,400/month found) hits harder than an industry stat.
+- Longer without the story payoff that justifies length.
+
+**How to elevate this pattern next time:**
+- Open with the scar: "I ran 38% food cost for a year thinking my best seller was my money maker. It wasn't. Profit is an unnatural occurrence."
+- Replace the NRA stat with a personal data point: "I found $2,400/month hiding in 3 dishes. Not because I wasn't working hard. Because nobody was supervising the profit."
+- Keep the cross-utilization framework — that's the gold. Just anchor it to lived experience.
+
+**Use this example when:** Producing Creator-mode educational posts about systems, profit, operations. Pair with Sage-mode scar opening for maximum impact.
+
+---
+
+## APPROVED Example: LinkedIn Text Post — LEADERSHIP / AUTHORITY (Part 2)
+
+**APPROVED** — Real post by Chris. Sequel to the first leadership post. Use as story-driven Sage reference.
+
+**Pain point:** Leadership / Authority (operator mindset)
+**Awareness stage:** Problem Aware
+**Hook type:** Story / Observation
+**CTA destination:** Organic engagement (question CTA, no tool link)
+**Trinity voice:** Sage (primary), Creator (secondary)
+**Pillar:** Systematic Excellence
+**Performance:** 3,202 impressions, 7 reactions, 2 reposts
+
+---
+
+A title on a contract doesn't carry you through a Friday night rush.
+
+Boutique hotel kitchen in Switzerland. A new sous chef started — hired from outside for the position.
+
+On paper, he was qualified. He could cook. He knew technique. He understood how things should be done. From a pure skill perspective, he was fine.
+
+But leadership? Completely missing.
+
+The team saw it immediately. Not because he made bad food. Because he didn't show up as someone worth following.
+
+He didn't run service — he watched it.
+He didn't solve problems — he pointed at them.
+He didn't earn trust — he assumed it came with the title.
+
+And the team struggled. Hard. Not because they were difficult. Because respect in a kitchen isn't assigned. It's earned. Every single shift.
+
+I've been in kitchens for 20 years. The pattern is always the same:
+
+You can hire someone into a position.
+You cannot hire someone into leadership.
+
+The chefs who earn respect? They show up first. Fix the problem nobody wants to touch. Stay on the line when it gets ugly. And never once remind you of their title.
+
+Last week I wrote about two chefs who destroyed each other fighting over a title nobody offered them. This is the mirror — what happens when the title IS given but the leadership isn't there.
+
+Same lesson both times: title follows behavior. Never the other way around.
+
+What's your experience? Ever worked under someone with the title but not the respect?
+
+---
+
+**Structural notes for SKILL.md:**
+- Hook: "A title on a contract doesn't carry you through a Friday night rush." — Specific, visual, immediately sets the scene.
+- Story arc: setting (Switzerland, boutique hotel) > character (new sous chef) > what he did wrong (three parallel negatives) > consequence > universal principle > callback to previous post > question CTA
+- The three-line repetition pattern again: "He didn't run service — he watched it. / He didn't solve problems — he pointed at them. / He didn't earn trust — he assumed it came with the title." This is becoming a signature structural move.
+- Same pattern from post #2: "You can't claim it. You can't demand it. You can only earn it." — now "You can hire someone into a position. You cannot hire someone into leadership."
+- The callback ("Last week I wrote about...") creates content continuity — builds a body of work, not isolated posts. This is credibility compounding in action.
+- "Same lesson both times" — positions Chris as someone who sees patterns across 20 years, not someone who has one story.
+
+**What makes this strong:**
+- Real scene. Specific country (Switzerland). Specific context (boutique hotel). You can see it.
+- The "mirror" framing is smart — post #2 was about claiming authority you don't have; this is about being given authority you haven't earned. Two sides of the same lesson.
+- 3,202 impressions vs 852 for the profit post — story-driven Sage content outperforms Creator teaching content by ~4x. This is a signal.
+- The question CTA ("Ever worked under someone with the title but not the respect?") invites personal stories — high comment potential.
+
+**What could be even stronger:**
+- Could name the specific impact on Chris personally — was he on the team? Did he have to pick up the slack? A one-line personal cost would add the scar layer.
+- The closing could land harder with one final short line after the question (like post #2's "They just did the work. And everyone followed.")
+
+**Key pattern emerging across approved posts:**
+Posts #2 and #4 (the two leadership posts) significantly outperform post #3 (the profit/systems post). The data says: **Sage-mode stories with vivid scenes beat Creator-mode teaching posts.** The system should bias toward story-first content with framework embedded, not framework-first content with story added.
+
+**Use this example when:** Producing story-driven leadership/culture content. Model the three-line repetition, the "mirror" sequel technique, and the callback to previous posts.
+
+---
+
+## APPROVED Example: LinkedIn Text Post — STAFF TURNOVER / SYSTEMS
+
+**APPROVED** — Real post by Chris. Best performer to date. Use as hybrid Creator+Sage reference.
+
+**Pain point:** Staff Chaos / Turnover
+**Awareness stage:** Problem Aware
+**Hook type:** Stat-Driven
+**CTA destination:** Organic engagement (imperative close, no tool link)
+**Trinity voice:** Creator (primary — stats, math, systems), Sage (secondary — personal scar + closing wisdom)
+**Pillar:** Systematic Excellence
+**Performance:** 9,411 impressions, 30 reactions, 5 comments, 1 repost. Triggered debate — people challenged the stats.
+
+---
+
+The hospitality industry turns over 70-80% of its staff every year.
+
+Every. Single. Year.
+
+Cross-industry average? 20-25%.
+Us? Three to four times worse.
+
+Nobody does the math on what that actually costs.
+
+Cornell did. Here it is:
+
+$5,864 to replace one employee.
+-- $3,049 of that is lost productivity (52%)
+-- $1,173 in recruiting
+-- $821 in training
+-- The rest in screening and admin
+
+A restaurant that loses 20 people a year?
+$117,000. Gone.
+
+Not on your P&L. Not in your POS dashboard.
+Just bleeding out the back door while you're posting another Indeed ad.
+
+And here's what kills me:
+
+63% of hospitality workers report experiencing sexual harassment on the job.
+The top reasons people leave aren't pay.
+They're unpredictable schedules.
+Bad management.
+No career path.
+No onboarding beyond "follow Sarah for two days."
+Chaos.
+
+You know what Costco's turnover rate is? 8%.
+In-N-Out? Far below the industry average.
+Hilton? 96% retention after 6 months for trained employees.
+
+They're not magic. They pay fairly, post schedules two weeks out, build real onboarding, and write things down.
+
+That last one changed everything for me.
+
+I was running kitchens with 100% turnover and wondering why nobody stayed. Then I wrote it down.
+
+One page. Opening checklist. Closing checklist. Prep standards. Decision tree for the 5 problems that happen every night.
+
+Turnover dropped. Not because I paid more. Because people finally knew what was expected.
+
+The math is simple:
+Cutting turnover in half saves $50,000-$60,000 a year.
+
+A one-page SOP costs you nothing but an hour of your time on a Monday morning.
+
+Stop replacing people. Start building something they don't want to leave.
+
+---
+
+**Structural notes for SKILL.md:**
+- Hook: Industry stat delivered as a punch. "Every. Single. Year." — fragmented emphasis that earns the pause.
+- Structure: This is a 5-act post:
+  1. The problem (70-80% turnover stat)
+  2. The cost (Cornell math — $5,864 per person, $117K per restaurant)
+  3. The cause (harassment, schedules, no onboarding — names the real reasons)
+  4. The proof (Costco 8%, In-N-Out, Hilton — what works elsewhere)
+  5. The scar + solution (personal story: "Then I wrote it down." + closing imperative)
+- The Cornell breakdown is devastating because it's line-itemed. Not just "$5,864" but showing WHERE: productivity, recruiting, training. This specificity is why people engage.
+- "Not on your P&L. Not in your POS dashboard. Just bleeding out the back door while you're posting another Indeed ad." — This is the line that hits hardest. Makes the invisible visible.
+- The scar lands late but lands hard: "I was running kitchens with 100% turnover and wondering why nobody stayed. Then I wrote it down." Two sentences. 20 years of learning compressed.
+- Closing is an imperative, not a question: "Stop replacing people. Start building something they don't want to leave." Stronger than a question CTA here because the post already earned the authority to command.
+- The comment section proved the post works — people challenged the stats, which led to Chris's reply showing even deeper knowledge (BLS data, monthly separations, QSR 150%+, 42% not profitable). The challenge HELPED the post.
+
+**Why this is the top performer — the winning formula:**
+1. **Stat-driven hook** stops the scroll (specific number, industry-wide problem)
+2. **Dollar math** makes it personal (every operator can calculate their own $117K)
+3. **External proof** builds credibility (Cornell, Costco, In-N-Out, Hilton — not just Chris's opinion)
+4. **Personal scar** earns the right to teach ("I was running 100% turnover")
+5. **Simple solution** makes action feel possible ("one page, one hour, Monday morning")
+6. **Imperative close** commands respect earned by the post
+
+This is the hybrid model: Creator-mode stats + Sage-mode scar + imperative close. The data says this combination outperforms pure Sage (3,202) and pure Creator (852) by a wide margin.
+
+**Comment response model:**
+Chris's reply to the stat challenge (Andreas Spove) is a gold standard for comment engagement:
+- Acknowledged the challenge ("Good challenge, Andreas")
+- Provided deeper data (BLS, monthly separations, QSR 150%+)
+- Added context (conservative since 2019 with labor/food up 35%)
+- Turned it back with a genuine question ("What are you seeing at Camelot?")
+- This response style should be the default for challenged-stat comments.
+
+**Use this example when:** Producing stat-driven posts about industry problems. Model the 5-act structure, the line-item cost breakdown, the late personal scar, and the imperative close.
+
+---
+
+## APPROVED Example: LinkedIn Text Post — STAFF ONBOARDING (BEST PERFORMER)
+
+**APPROVED** — Real post by Chris. Highest performer to date. THE template for future content.
+
+**Pain point:** Staff Chaos / Onboarding
+**Awareness stage:** Problem Aware → Solution Aware
+**Hook type:** Story + Stat-Driven hybrid
+**CTA destination:** Organic engagement (imperative close, no tool link)
+**Trinity voice:** Sage (opening scar), Creator (framework + stats), Rebel (closing imperative)
+**Pillar:** Systematic Excellence
+**Performance:** 26,283 impressions, 108 reactions, 8 comments, 8 reposts. Best post to date by 3x.
+
+---
+
+I showed up to a new country for a new job. Commis de Cuisine. Hotel kitchen. Thursday afternoon.
+
+Nobody was in the kitchen.
+
+The guy who met me turned out to be the finance controller. He was a trained chef, but that wasn't his job anymore. He gave me a quick walkthrough and handed me a menu.
+
+That was my onboarding.
+
+Front of house had a full orientation. Guest communication standards. Little laminated sheets with local regulations. The works.
+
+The kitchen got a menu and "figure it out."
+
+A week later more chefs arrived. We scrambled to get ready for a busy winter season. Most of what I learned that first week I learned by guessing wrong.
+
+And here's the thing -- that was normal. That's still normal.
+
+The average restaurant employee lasts 56 days. (7shifts data)
+
+Not because people don't want to work in kitchens. Because nobody gives them a reason to stay past week one.
+
+Structured onboarding makes new hires 58% more likely to stay for 3 years. (Wynhurst Group)
+
+But most kitchens don't have onboarding. They have "follow the other guy."
+
+Here's what a 3-day onboarding doc looks like. One page. Nothing fancy.
+
+Day 1: Kitchen tour. Safety. Station setup. Close-down checklist. Send them home early.
+
+Day 2: Prep standards with weights -- not "a handful of this." One full service with a buddy assigned.
+
+Day 3: Decision tree for the 5 things that go wrong every night. Who to call. What to do. Written down.
+
+That's it. One page. Three days. No guessing.
+
+The average cost to replace one kitchen employee is $5,864.
+
+A one-page onboarding doc saves you $12,000-$18,000 a year.
+
+Stop blaming the labor market. Start giving people a reason to stay past Tuesday.
+
+---
+
+**Structural notes for SKILL.md:**
+- Hook: "I showed up to a new country for a new job." — Simple. Cinematic. You're IN the scene immediately. No stat, no contrarian take — just a moment happening.
+- "Nobody was in the kitchen." — Five words that carry the entire thesis. The absence IS the problem.
+
+**The 6-act structure (Chris's best-performing pattern):**
+1. **Personal scar** (arriving in a new country, empty kitchen, finance controller onboarding, "figure it out")
+2. **Universal truth** ("that was normal. That's still normal." — bridges personal to industry)
+3. **Stats that prove the problem** (56 days average tenure, 58% retention with onboarding)
+4. **Actionable framework** (3-day onboarding doc, day-by-day breakdown)
+5. **Dollar math** ($5,864 to replace, $12K-$18K saved)
+6. **Imperative close** ("Stop blaming the labor market.")
+
+**Why this is the #1 performer — what's different from the turnover post (#5):**
+- **Scar comes FIRST, not last.** The turnover post led with stats and embedded the scar late. This one opens with the scene and embeds stats in the middle. Opening with the scar earned 3x the impressions.
+- **The framework is ACTIONABLE.** Not "write things down" (abstract) but "Day 1: Kitchen tour. Safety. Station setup." (concrete). Readers can implement this Monday morning.
+- **Three voices in one post.** Sage opens (the scar), Creator builds (the framework + stats), Rebel closes ("Stop blaming the labor market"). The full Trinity activated.
+- **"Not a handful of this"** — this tiny detail is pure high-signal. Only someone who's BEEN on the line knows that prep instructions default to vague handfuls. This is a scar disguised as a joke.
+
+**Comment response patterns worth modeling:**
+- Lorraine ("Chefs eat their young"): Chris validated the pain, reframed the culture ("laziness dressed up as tradition"), and thanked her for saying it out loud. Empathy + reframe + gratitude.
+- David (onboarding is ongoing): Chris agreed AND expanded ("30, 60, 90 day check-ins. Not formal. Just 'how are you doing and what do you need.'"). Added value in the reply.
+- Scott (emoji reaction): Chris turned a low-effort comment into engagement by asking a specific question back. Never leave a reaction unanswered.
+
+**The formula distilled (use this for all future content):**
+```
+1. SCAR (open with a specific scene from your life)
+2. BRIDGE ("that was normal. That's still normal.")
+3. STATS (external data that makes the problem undeniable)
+4. FRAMEWORK (actionable, day-by-day, implementable Monday)
+5. DOLLAR MATH (cost of the problem vs cost of the fix)
+6. IMPERATIVE CLOSE (command, not question)
+```
+
+**Use this example as THE primary template** for all future LinkedIn content. This is the proven winner.
+
+---
+
+## APPROVED Example: LinkedIn Carousel — LEADERSHIP (LOW PERFORMER)
+
+**APPROVED** — Real post by Chris. Kept as a lesson in what doesn't work. Do NOT model this format.
+
+**Pain point:** Leadership / Staff
+**Awareness stage:** Problem Aware
+**Hook type:** Direct Challenge
+**CTA destination:** Organic engagement
+**Trinity voice:** Creator
+**Performance:** 149 impressions, 4 reactions, 4 comments, 1 repost. Lowest performer by far.
+
+---
+
+Cover text: "Your kitchen doesn't have a staff problem. It has a leadership problem."
+Caption: "3 things that changed everything after 20 years of getting it wrong. Swipe through. Systems Over Hustle."
+
+(10 slides — content not captured, images only)
+
+---
+
+**Why this failed — structural diagnosis:**
+
+1. **Carousels tank compared to text posts.** The same leadership topic got 3,202 (text) and 26,283 (text) impressions. As a carousel: 149. That's a 99% drop. LinkedIn's algorithm currently favors text posts heavily over document/carousel posts for accounts at Chris's growth stage.
+
+2. **No scar in the caption.** The caption is generic: "3 things that changed everything." Compare to the onboarding post's opening: "I showed up to a new country for a new job. Nobody was in the kitchen." The carousel caption gives no reason to swipe.
+
+3. **"Swipe through" is a weak CTA.** It asks for effort without earning it. The best text posts pull you in — carousels have to sell the swipe in the first 3 seconds.
+
+4. **No alt text on slides.** LinkedIn can't index the content for search or feed distribution. The algorithm literally can't read what's in the carousel.
+
+5. **The topic already performed as text.** Same leadership angle, same audience. The audience already engaged with the text version. A carousel rehash adds format complexity without adding value.
+
+**Rules to add from this data:**
+- At Chris's current growth stage, text posts outperform carousels by 20-100x
+- Do NOT carousel a topic that already worked as text — it cannibalizes without adding
+- If using carousels: the caption must contain the scar/hook (not just "swipe through")
+- Always add alt text to carousel slides for algorithm indexing
+- Carousels may work better at higher follower counts with established engagement patterns
+
+**Use this example when:** Someone suggests a carousel. Show this data first. Text is the winning format right now.
+
+---
+
+## APPROVED Example: LinkedIn Text Post — FOOD COST TOOLS (LOW PERFORMER)
+
+**APPROVED** — Real post by Chris. Kept as a lesson in what doesn't work. Contains wrong debt figure ($180K — should be $370K CAD).
+
+**Pain point:** Food Cost / Hidden Profit Leaks
+**Awareness stage:** Solution Aware
+**Hook type:** Contrarian + Product Tease
+**CTA destination:** Product tease ("Stay tuned")
+**Trinity voice:** Rebel (primary — attacking other tools), Creator (secondary)
+**Performance:** 424 impressions, 1 reaction, 1 comment. Second-lowest performer.
+
+---
+
+I counted 47 food cost tools last week.
+
+And not one of them was built by someone who's actually stood in a walk-in at midnight, counting cases while the fryer still smelled like the dinner rush.
+
+Here's what 20 years in kitchens across 5 countries taught me about food cost:
+
+The problem was never math.
+
+The problem is that every tool out there wants you to become a data analyst when you're already working 14-hour days just to keep the line moving.
+
+Spreadsheets that take longer to update than the food takes to spoil. Software subscriptions that cost more than the waste they're supposed to prevent. Dashboards built by people who've never portioned a single plate.
+
+I lost $180K before I figured out what actually matters.
+
+Not more data. Better systems.
+
+Systems that work when you're exhausted. When you're at 60% capacity. When it's Tuesday night and you haven't sat down since 6 AM.
+
+So I'm building something.
+
+Not another dashboard. Not another subscription.
+
+Something built from every mistake I've made. Every kitchen I've run. Every dollar I've watched walk out the back door.
+
+It's not ready yet. But it's close.
+
+If you've ever stared at a food cost spreadsheet at 11 PM and thought "there has to be a better way" --
+
+There is. Stay tuned.
+
+---
+
+**Why this failed — structural diagnosis:**
+
+1. **It's a product tease, not a value post.** The entire post builds toward "I'm building something. Stay tuned." That's asking the audience to care about YOUR project. The best posts give THEM something. The onboarding post (26,283) gave a 3-day doc. The turnover post (9,411) gave the Cornell math. This one gives... a promise.
+
+2. **No scene.** Compare to the #1 post (69,903): "Hotel kitchen. I was a young Commis." You're IN the moment. This post starts with "I counted 47 food cost tools" — that's research, not a scar. The walk-in line is vivid but it's in the second paragraph, not the hook.
+
+3. **Wrong debt figure.** $180K instead of $370K CAD. Minor but matters for brand consistency.
+
+4. **"Stay tuned" is the weakest possible CTA.** It converts to nothing. No question to drive comments. No framework to bookmark. No tool to run. Just "wait." The audience doesn't wait — they scroll.
+
+5. **Rebel without Sage.** The post attacks other tools (Rebel mode) but never grounds the attack in a specific personal story (Sage mode). "Dashboards built by people who've never portioned a single plate" is a great line — but it's a claim, not a scene. Show the bad dashboard experience. Name the moment.
+
+6. **Solution Aware targeting is narrow.** The best posts target Unaware/Problem Aware (wider audience). This targets people already shopping for food cost tools — much smaller pool.
+
+**How to fix this post pattern for next time:**
+- Open with the scar scene: "I was standing in the walk-in at midnight, counting cases for the third time that week because the spreadsheet didn't match reality."
+- Give the framework: "Here's what I learned matters more than any dashboard: [3 specific things]"
+- End with value, not a tease: "Here's the one-page tracking system I use now. Takes 10 minutes/week."
+- If you MUST tease a product, do it in the P.S. after delivering the value. Never make the tease the point.
+
+**Rules confirmed by this data:**
+- NEVER make a product tease the core of a post — deliver value first, tease second
+- NEVER use "Stay tuned" as a CTA — it converts to nothing
+- Rebel voice (attacking competitors) without Sage anchor (personal scene) underperforms
+- Solution Aware targeting gets 1/60th the reach of Unaware/Problem Aware posts
+
+**Use this example when:** Tempted to write a product launch tease. Show this data. Deliver value first. Always.
+
 ---
 
 ## Winners Tracker
@@ -595,13 +1077,13 @@ The title will find you.
 | # | Platform | Pain Point | Stage | Hook Type | Post Summary | Engagement Notes | Status |
 |---|----------|-----------|-------|-----------|-------------|-----------------|--------|
 | 1 | LinkedIn Text | Food Sovereignty / Supply Chain | Unaware | Pattern Interrupt | Sicily markets vs. Yukon 3,000km supply chain — food independence contrast | Posted 2026-02-19 — track engagement | POSTED |
-| 2 | LinkedIn Text | Leadership / Authority | Unaware | Story / Observation | Two chefs fighting over a title nobody offered — authority is earned | APPROVED gold standard | APPROVED |
-| 3 | | | | | | | PLACEHOLDER |
-| 4 | | | | | | | PLACEHOLDER |
-| 5 | | | | | | | PLACEHOLDER |
-| 6 | | | | | | | PLACEHOLDER |
-| 7 | | | | | | | PLACEHOLDER |
-| 8 | | | | | | | PLACEHOLDER |
+| 2 | LinkedIn Text | Leadership / Authority | Unaware | Story / Observation | Two chefs fighting over a title nobody offered — authority is earned. #1 POST. | 69,903 impressions, 345 reactions, 70 comments, 51 reposts | APPROVED |
+| 3 | LinkedIn Text | Profit / Systems | Problem Aware | Contrarian / Creator | "Profit is an unnatural occurrence" — entropy vs systems, cross-utilization, people deliver it | 852 impressions, 5 reactions, 2 reposts | APPROVED |
+| 4 | LinkedIn Text | Leadership / Authority | Problem Aware | Story / Observation | Swiss hotel sous chef — title given but leadership missing. Mirror of post #2 | 3,202 impressions, 7 reactions, 2 reposts | APPROVED |
+| 5 | LinkedIn Text | Staff Turnover / Systems | Problem Aware | Stat-Driven + Scar | Cornell turnover math + personal SOP story. Hybrid Creator+Sage. Triggered debate. | 9,411 impressions, 30 reactions, 5 comments, 1 repost | APPROVED |
+| 6 | LinkedIn Text | Staff Onboarding / Systems | Problem Aware | Story + Stats + Actionable | New country, no onboarding, personal scar + 3-day doc framework. Best performer. | 26,283 impressions, 108 reactions, 8 comments, 8 reposts | APPROVED |
+| 7 | LinkedIn Carousel | Leadership / Systems | Problem Aware | Direct Challenge | "Your kitchen doesn't have a staff problem. It has a leadership problem." 3 tips carousel. | 149 impressions, 4 reactions, 4 comments, 1 repost | APPROVED (LOW PERFORMER — lesson data) |
+| 8 | LinkedIn Text | Food Cost / Product Tease | Solution Aware | Contrarian + Promo | "I counted 47 food cost tools." Product tease with no scar scene. Wrong debt figure ($180K). | 424 impressions, 1 reaction, 1 comment | APPROVED (LOW PERFORMER — lesson data) |
 | 9 | | | | | | | PLACEHOLDER |
 | 10 | | | | | | | PLACEHOLDER |
 
