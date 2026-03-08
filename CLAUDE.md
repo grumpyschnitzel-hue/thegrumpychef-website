@@ -29,7 +29,7 @@ Files deploy exactly as they exist in the repo.
   assessment.html         # Menu Profit Score Assessment (interactive JS quiz)
   life-os-scorecard.html  # Operator Life OS Scorecard (interactive JS tool)
   scorecard.html          # Restaurant Profit Leak Scorecard
-  academy.html            # Academy page
+  app-preview.html        # Menu Engineering App Preview
   kit.html                # 72-Hour Profit Discovery Kit ($197 product)
   kit-access.html         # Kit access/login
   toolkit-bundle.html     # Toolkit bundle sales page
@@ -48,7 +48,7 @@ Files deploy exactly as they exist in the repo.
     calculator.html       # Landing page — Calculator
     assessment.html       # Landing page — Assessment
     discovery.html        # Landing page — Discovery Call
-    academy.html          # Landing page — Academy
+    app.html              # Landing page — Menu Engineering App
     life-os.html          # Landing page — Life OS Scorecard
     utm-builder.html      # Internal UTM builder tool
     thank-you-*.html      # 5 thank-you pages (post-conversion)
@@ -201,7 +201,8 @@ No build step. No environment variables. No `.env` files.
 
 1. **Never mention AI** as a selling point in any customer-facing page
 2. Position tools as "built from 20 years of operator experience"
-3. Every claim includes dollar signs and concrete ROI projections
+3. Lead with the "Black Forest to Yukon" storytelling arc (Roots -> Collapse -> Systematic Rebuild)
+4. Every claim includes dollar signs and concrete ROI projections
 4. Voice: German-direct, recovery language, short sentences, no corporate BS
 5. Lead with failure/vulnerability, not credentials
 6. Apply the 60% capacity test — would a tired operator actually use this?
@@ -260,17 +261,25 @@ No build step. No environment variables. No `.env` files.
 | Skill | Location | Purpose |
 |-------|----------|---------|
 | **Brand DNA & Content Skill** | [`skill_creator.md`](Antigravity-Skill/skill_creator.md) | Full Brand DNA, Grumpy Trinity voice system, content pillars, audience definition, platform strategy, product ecosystem |
-| **LinkedIn Commenter** | [`linkedin-commenter.md`](../Antigravity-Skill/Skill/linkedin-commenter.md) | LinkedIn engagement system — comment replies, connection evaluation, DM responses, post boost advisory, proactive strategy (5 modes) |
-| **LinkedIn Carousel Builder** | [`linkedin-carousel-builder.md`](../Antigravity-Skill/Skill/linkedin-carousel-builder.md) | Carousel production — slide copy + PPTX generation, Premium Authority brand palette, 7 slide types, 3 structures, posting workflow |
-| **Grumpy Content Engine** | [`SKILL.md`](../Antigravity-Skill/Skill/grumpy-content-engine/SKILL.md) | 3-phase Rebel→Creator→Sage content protocol — LinkedIn posts, emails, X threads, blog posts. References pain-points research + strategy tables |
-| **Systems Builder** | [`SKILL.md`](../Antigravity-Skill/Skill/systems-builder/SKILL.md) | Interview-driven SOP/checklist/metrics builder. Light + Full modes, operations manual, dependency mapping. For life, business, or client systems |
+| **Skill Engineering** | [`Skill.md`](Antigravity-Skill/Skill.md) | Meta-skill for building new skills. Folder structure, YAML frontmatter, progressive updates, quality checklist |
+| **Credibility Economy** | [`SKILL.md`](Antigravity-Skill/Skill/credibility-economy/SKILL.md) | Credibility Economy lens — filters content/offers through scars-over-studies framework, validates positioning against trust recession dynamics |
+| **LinkedIn Commenter** | [`SKILL.md`](Antigravity-Skill/Skill/linkedin-commenter/SKILL.md) | LinkedIn engagement system — 5 modes: comment replies, connection evaluation, outgoing requests, DM responses, post boost advisory |
+| **LinkedIn Carousel Builder** | [`SKILL.md`](Antigravity-Skill/Skill/linkedin-carousel-builder/SKILL.md) | Carousel production — slide copy + .pptx (1080x1080, Premium Authority palette), 7 slide types, 3 structures |
+| **Grumpy Content Engine** | [`SKILL.md`](Antigravity-Skill/Skill/grumpy-content-engine/SKILL.md) | 3-phase Rebel→Creator→Sage content protocol — LinkedIn posts, emails, X threads, blog posts. Maps to 8 pain points |
+| **Systems Builder** | [`SKILL.md`](Antigravity-Skill/Skill/systems-builder/SKILL.md) | Interview-driven SOP/checklist/metrics builder. Light + Full modes, 60% capacity test, dependency mapping |
+| **Antigravity-Claude Bridge** | [`SKILL.md`](Antigravity-Skill/Skill/antigravity-claude-bridge/SKILL.md) | Coordinates Antigravity (planner) + Claude Code (executor). 5-phase workflow: plan → handoff → execute → sync → verify |
+| **Content Manager** (System) | [`SYSTEM.md`](Antigravity-Skill/Skill/content-manager/SYSTEM.md) | Autonomous content pipeline: raw footage → transcribe → clean cut → editor handoff → shorts + thumbnails + descriptions → LinkedIn + X thread + newsletter. Operator drops footage and polishes final output. Integrates Grumpy Content Engine + Carousel Builder. |
 
 **Usage:**
 - Before producing ANY content, read `Antigravity-Skill/skill_creator.md` and apply the Rebel-Creator-Sage logic.
-- For ANY LinkedIn interaction (comments, DMs, connection requests, boost decisions), read `linkedin-commenter.md` and follow the appropriate mode.
-- For carousel/document post requests, read `linkedin-carousel-builder.md` — produces slide copy + .pptx file.
 - For written content (posts, emails, threads, blog articles), trigger `grumpy-content-engine/SKILL.md` — enforces the 3-phase Grumpy Protocol.
-- For systemizing anything (SOPs, processes, routines), trigger `systems-builder/SKILL.md` — interview → build → index in operations manual.
+- For carousel/document post requests, read `linkedin-carousel-builder/SKILL.md` — produces slide copy + .pptx file.
+- For ANY LinkedIn interaction (comments, DMs, connection requests, boost decisions), read `linkedin-commenter/SKILL.md` and follow the appropriate mode.
+- For credibility checks on content/offers, trigger `credibility-economy/SKILL.md` — scars-over-studies filter.
+- For systemizing anything (SOPs, processes, routines), trigger `systems-builder/SKILL.md` — interview → build → 60% capacity test.
+- For multi-tool workflows (plan in Antigravity, build in Claude Code), read `antigravity-claude-bridge/SKILL.md` — uses `docs/handoff/` for shared context.
+- To build new skills, follow `Antigravity-Skill/Skill.md` — the skill engineering framework.
+- For video-to-content pipeline (raw footage → multi-platform content), trigger `content-manager/SYSTEM.md` — autonomous 6-phase pipeline with scripts in `scripts/`.
 
 
 ---

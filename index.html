@@ -189,6 +189,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="/css/theme.css">
   <style>
     *,
     *::before,
@@ -954,31 +955,35 @@
         <a href="/framework.html">The Protocol</a>
         <a href="/services.html">Work With Me</a>
         <a href="/blog/">Blog</a>
-        <a href="/testimonials.html">Proof</a>`n                <a href="/calculator.html">Free Tools</a>
-        <a href="/kit.html" class="nav-cta">Get the Kit — $197</a>
+        <a href="/testimonials.html">Proof</a>
+        <a href="/calculator.html">Free Tools</a>
+        <a href="/kit.html" class="nav-cta">Discovery Kit</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- HERO (The Journey Arc) -->
+  <section class="hero"
+    style="background: linear-gradient(rgba(5, 11, 20, 0.8), rgba(5, 11, 20, 0.8)), url('/images/systems_hustle_hero.png') center/cover no-repeat;">
     <div class="hero-content">
       <div class="hero-text">
-        <div class="hero-badge">German Master Chef &bull; 20+ Years &bull; 5 Countries</div>
-        <h1>Your Restaurant Is Full.<br><span>Your Profit Should Be Too.</span></h1>
-        <p class="hero-sub">You don't need to "save" your restaurant. You need to optimize it. Built by a master chef
-          who lost everything and rebuilt with recovery frameworks.</p>
+        <div class="hero-badge">Black Forest &rarr; Yukon &bull; German Master Chef &bull; 20+ Years</div>
+        <h1>Systems That Work<br><span>When You're Exhausted.</span></h1>
+        <p class="hero-sub">From a culinary disaster in Germany to a systematic rebuild in the Yukon. I help independent
+          restaurant operators hunt down profit leaks using protocols that don't break under stress.</p>
         <div class="hero-buttons">
-          <a href="/calculator.html" class="btn-primary">Find Your #1 Profit Leak</a>
-          <a href="/about.html" class="btn-secondary">Read My Story</a>
+          <a href="/calculator.html" class="btn-premium">Find Your Profit Leak</a>
+          <a href="/about.html" class="btn-premium btn-premium-outline">The Storey: Black Forest to Yukon</a>
         </div>
       </div>
       <div class="hero-photo">
-        <img src="/images/hero-kitchen.jpg" alt="Chef Christian Schiffner working the line — The Grumpy Chef"
-          class="brand-photo-circle brand-photo-circle--hero"
-          onerror="this.onerror=null;this.src='/images/Kitchen1.jpg';">
-        <p class="brand-photo-caption">Christian Schiffner | Küchenmeister | 20+ Years, 5 Countries</p>
+        <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
+          class="brand-photo-circle brand-photo-circle--hero glass-card" style="border-width: 2px;">
+        <p class="brand-photo-caption" style="color: var(--gold-liquid);">Christian Schiffner | Küchenmeister</p>
       </div>
+    </div>
+    <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden;">
+      <img src="/images/yukon-river-valley.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.15;" loading="lazy">
     </div>
   </section>
 
@@ -1097,39 +1102,73 @@
     </div>
   </section>
 
-  <!-- STORY SECTION -->
-  <section class="section section-alt">
+  <!-- STORYTELLING ARC: From the Black Forest to the Yukon -->
+  <section class="section"
+    style="background: var(--pine-german); position: relative; overflow: hidden; padding-bottom: 0;">
     <div class="section-inner">
-      <div class="section-label">The Proof</div>
-      <h2 class="section-title">Same Person. Same Kitchen.<br><span>Different Operating System.</span></h2>
-      <div class="story-grid">
-        <div class="story-before">
-          <div class="story-heading">Before (2019-2022)</div>
-          <ul class="story-list">
-            <li>2 restaurants, both bleeding money</li>
-            <li>80-100 hour weeks, every week</li>
-            <li>Food cost untracked and out of control</li>
-            <li>Staff turnover on repeat</li>
-            <li>$370K in debt</li>
-            <li>No systems. Just willpower.</li>
-            <li>Collapse.</li>
-          </ul>
+      <div class="section-label" style="color: var(--gold-liquid);">The Journey</div>
+      <h2 class="section-title">From the Black Forest<br><span>To the Yukon.</span></h2>
+      <div class="story-grid" style="align-items: center; gap: 60px;">
+        <div class="story-visual" style="position: relative;">
+          <img src="/images/black-forest-sunlight.jpg" alt="Sunlight through the Black Forest trees in Germany" class="glass-card"
+            style="border-radius: 20px; box-shadow: 0 0 50px rgba(0,0,0,0.8);">
+          <div
+            style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.7); padding: 10px 20px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-liquid); border: 1px solid var(--gold-border);">
+            Location: Baden-Württemberg, Germany</div>
         </div>
-        <div class="story-after">
-          <div class="story-heading">After (2022-Present)</div>
-          <ul class="story-list">
-            <li>1 restaurant, actually profitable</li>
-            <li>60 hours/week, with days off</li>
-            <li>Food cost tracked and controlled</li>
-            <li>Small team, clear systems</li>
-            <li>$41K waste found in year 1</li>
-            <li>Pre-decided protocols for everything</li>
-            <li>1,200+ days and counting.</li>
-          </ul>
+        <div class="story-text">
+          <h3 style="font-family: var(--font-display); color: var(--gold-liquid); margin-bottom: 20px;">I lost it all.
+          </h3>
+          <p class="section-text" style="color: var(--white-soft);">I was a trained German Master Chef. I followed the
+            rules. I worked the 100-hour weeks. And in 2022, I watched it all collapse. $370,000 in debt. A family on
+            the edge. The Black Forest isn't just roots — it's where I learned that <span>hustle is a lie if you don't
+              have systems.</span></p>
         </div>
       </div>
-      <div style="text-align: center; margin-top: 40px;">
-        <a href="/about.html" class="btn-secondary">Read the Full Story</a>
+    </div>
+  </section>
+
+  <section class="section" style="background: linear-gradient(to bottom, var(--pine-german), var(--navy-deep));">
+    <div class="section-inner">
+      <div class="story-grid" style="grid-template-columns: 1fr 1.2fr; align-items: center; gap: 60px;">
+        <div class="story-text">
+          <h3 style="font-family: var(--font-display); color: var(--gold-liquid); margin-bottom: 20px;">Rebuilt in the
+            Cold.</h3>
+          <p class="section-text" style="color: var(--white-soft);">I moved to the Yukon. In the isolation of the North,
+            I rebuilt. I didn't use theory. I used recovery frameworks to build restaurant systems that <span>work when
+              you're exhausted.</span> Today, $41,000 in waste is found in single years. Prime costs are controlled. I'm
+            not a consultant. I'm an operator who found the exit.</p>
+        </div>
+        <div class="story-visual">
+          <img src="/images/yukon-river-valley.jpg" alt="Yukon River valley in fall — Dawson City, where The Grumpy Chef rebuilt" class="glass-card"
+            style="border-radius: 20px; box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE APP: FLAGSHIP FEATURE -->
+  <section class="section" style="background: var(--navy-deep); border-top: 1px solid var(--gold-border);">
+    <div class="section-inner">
+      <div class="section-label">Digital Edge</div>
+      <h2 class="section-title">The Master Chef's<br><span>Menu Engineering App</span></h2>
+      <div class="story-grid" style="grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center;">
+        <div class="app-visual">
+          <img src="/images/menu_engineering_app.png" alt="Menu Engineering App Mockup" class="glass-card"
+            style="width: 100%; border-radius: 12px;">
+        </div>
+        <div class="app-info">
+          <p class="section-text" style="margin-bottom: 30px;">Stop guessing which dishes make money. Our new app
+            applies Master Chef logic to your ingredient costs and menu physics, instantly identifying your stars and
+            your duds.</p>
+          <ul class="story-list" style="margin-bottom: 40px;">
+            <li>Instant Prime Cost Visualization</li>
+            <li>Theoretical vs. Actual Waste Analysis</li>
+            <li>Dynamic Menu Matrix (Stars/Plowhorses/Puzzles/Dogs)</li>
+            <li>1-Click Recipe Costing</li>
+          </ul>
+          <a href="#" class="btn-premium">Explore the App</a>
+        </div>
       </div>
     </div>
   </section>
@@ -1137,29 +1176,30 @@
   <!-- FREE TOOLS -->
   <section class="section">
     <div class="section-inner">
-      <div class="section-label">Free Tools</div>
-      <h2 class="section-title">Built From 20 Years of<br><span>Operator Experience</span></h2>
-      <p class="section-text">Not theory. Not slide decks from consultants. Working tools built by an operator who's been in the
-        weeds. Use them tonight.</p>
+      <div class="section-label">The Tools</div>
+      <h2 class="section-title">Designed for Exhausted<br><span>Operators</span></h2>
+      <p class="section-text">Not theory. Not slide decks from consultants. Working tools built by an operator who's
+        been in the weeds. Use them tonight.</p>
       <div class="tools-grid">
-        <a href="/calculator.html" class="tool-card">
+        <a href="/calculator.html" class="tool-card glass-card">
           <div class="tool-icon">&#9888;</div>
           <div class="tool-name">72-Hour Profit Discovery</div>
           <div class="tool-desc">Find your restaurant's hidden profit leaks across 9 categories. Instant results. Takes
             5 minutes.</div>
           <div class="tool-link">Start Free Calculator &rarr;</div>
         </a>
-        <a href="/assessment.html" class="tool-card">
+        <a href="/assessment.html" class="tool-card glass-card">
           <div class="tool-icon">&#9733;</div>
           <div class="tool-name">Menu Profit Score</div>
           <div class="tool-desc">10 questions. Instant score. Find out if your menu is making money or losing it.</div>
           <div class="tool-link">Take the Assessment &rarr;</div>
         </a>
-        <a href="/academy.html" class="tool-card">
-          <div class="tool-icon">&#9670;</div>
-          <div class="tool-name">Grumpy Chef Academy</div>
-          <div class="tool-desc">90-day systematic restaurant transformation. Founding member waitlist now open.</div>
-          <div class="tool-link">Join the Waitlist &rarr;</div>
+        <a href="/lp/discovery.html" class="tool-card glass-card" style="border-color: var(--gold-liquid);">
+          <div class="tool-icon">&#10148;</div>
+          <div class="tool-name">Discovery Call</div>
+          <div class="tool-desc">90-day systematic restaurant transformation. Apply for a qualification call today.
+          </div>
+          <div class="tool-link">Apply Now &rarr;</div>
         </a>
       </div>
     </div>
@@ -1171,9 +1211,8 @@
     <h2 class="section-title">Where Is Your Restaurant<br><span>Bleeding Money?</span></h2>
     <p class="cta-text">5 minutes. 9 categories. Find your #1 profit leak tonight. Built by an operator who found
       $41,000 in waste he didn't know about.</p>
-    <img src="/images/headshot-clean.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
-      class="brand-photo-circle brand-photo-circle--cta" style="display: block; margin: 0 auto 24px;"
-      onerror="this.onerror=null;this.src='/images/Kitchen1.jpg';">
+    <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
+      class="brand-photo-circle brand-photo-circle--cta" style="display: block; margin: 0 auto 24px;">
     <a href="/calculator.html" class="btn-primary">Find Your #1 Profit Leak</a>
   </section>
 
@@ -1239,9 +1278,8 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand" style="display: flex; gap: 16px; align-items: flex-start;">
-          <img src="/images/headshot-clean.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
-            class="brand-photo-circle brand-photo-circle--footer"
-            onerror="this.onerror=null;this.src='/images/Kitchen1.jpg';">
+          <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
+            class="brand-photo-circle brand-photo-circle--footer">
           <div>
             <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
             <p>The Grumpy Chef is a restaurant profit recovery brand founded by Christian Schiffner, a German

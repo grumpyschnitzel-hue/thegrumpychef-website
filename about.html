@@ -1,20 +1,24 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F41KYXCEXL"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-F41KYXCEXL');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-F41KYXCEXL');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Story | The Grumpy Chef — I Lost $370,000 Before I Found the System That Worked</title>
-    <meta name="description" content="German Master Chef who lost a restaurant, $370K, and himself. Rebuilt with recovery frameworks. 1,200+ days proof that the same systems work for sobriety and business.">
-    <meta property="og:title" content="My Story | The Grumpy Chef — I Lost $370,000 Before I Found the System That Worked">
-    <meta property="og:description" content="20+ years. 5 countries. Lost everything. Rebuilt with systems. The full story of The Grumpy Chef.">
+    <meta name="description"
+        content="German Master Chef who lost a restaurant, $370K, and himself. Rebuilt with recovery frameworks. 1,200+ days proof that the same systems work for sobriety and business.">
+    <meta property="og:title"
+        content="My Story | The Grumpy Chef — I Lost $370,000 Before I Found the System That Worked">
+    <meta property="og:description"
+        content="20+ years. 5 countries. Lost everything. Rebuilt with systems. The full story of The Grumpy Chef.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://thegrumpychef.ca/about.html">
@@ -124,9 +128,18 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         :root {
             --navy: #0A1628;
             --navy-light: #0E1B30;
@@ -146,125 +159,562 @@
             --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-mono: 'JetBrains Mono', 'Consolas', monospace;
         }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background: var(--navy); color: var(--white); line-height: 1.6; }
-        a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
-        a:hover { color: var(--white); }
-        img { max-width: 100%; height: auto; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--white);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
 
         /* NAV */
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,22,40,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--navy-border); }
-        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-        .nav-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--white); letter-spacing: 1px; text-transform: uppercase; }
-        .nav-logo span { color: var(--gold); }
-        .nav-links { display: flex; gap: 28px; align-items: center; }
-        .nav-links a { color: var(--white-dim); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
-        .nav-links a:hover { color: var(--gold); }
-        .nav-links a.active { color: var(--gold); }
-        .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 8px 20px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .nav-cta:hover { background: var(--white); color: var(--navy) !important; }
-        .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--navy-border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white-dim);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy) !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-cta:hover {
+            background: var(--white);
+            color: var(--navy) !important;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
         /* HERO */
-        .hero { padding: 140px 24px 80px; background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%); position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at center top, rgba(212,175,55,0.05) 0%, transparent 60%); }
-        .hero-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; display: flex; align-items: flex-start; gap: 48px; }
-        .hero-text { flex: 1; }
-        .hero-badge { display: inline-block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); border: 1px solid var(--gold-border); padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; letter-spacing: 1px; text-transform: uppercase; }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 24px; text-transform: uppercase; }
-        .hero h1 span { color: var(--gold); }
-        .hero-sub { font-size: 1.1rem; color: var(--white-dim); line-height: 1.7; }
-        .hero-photo { flex-shrink: 0; }
+        .hero {
+            padding: 140px 24px 80px;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center top, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: flex-start;
+            gap: 48px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--gold);
+            border: 1px solid var(--gold-border);
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--white-dim);
+            line-height: 1.7;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+        }
 
         /* BRAND PHOTO */
-        .brand-photo-circle { border-radius: 50%; border: 3px solid #D4AF37; object-fit: cover; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); }
-        .brand-photo-circle--cta { width: 100px; height: 100px; }
-        .brand-photo-circle--footer { width: 80px; height: 80px; }
-        .brand-photo-rect { border-radius: 8px; border: 3px solid #D4AF37; max-width: 400px; width: 100%; object-fit: cover; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); }
-        .brand-photo-caption { color: #6B7280; font-size: 0.75rem; text-align: center; margin-top: 0.5rem; }
+        .brand-photo-circle {
+            border-radius: 50%;
+            border: 3px solid #D4AF37;
+            object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .brand-photo-circle--cta {
+            width: 100px;
+            height: 100px;
+        }
+
+        .brand-photo-circle--footer {
+            width: 80px;
+            height: 80px;
+        }
+
+        .brand-photo-rect {
+            border-radius: 8px;
+            border: 3px solid #D4AF37;
+            max-width: 400px;
+            width: 100%;
+            object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .brand-photo-caption {
+            color: #6B7280;
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
 
         /* STORY BODY */
-        .story-section { padding: 80px 24px; }
-        .story-inner { max-width: 720px; margin: 0 auto; }
-        .story-inner p { font-size: 1.05rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 24px; }
-        .story-inner p strong { color: var(--white); }
-        .story-inner p:last-child { margin-bottom: 0; }
+        .story-section {
+            padding: 80px 24px;
+        }
+
+        .story-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .story-inner p {
+            font-size: 1.05rem;
+            color: var(--white-dim);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .story-inner p strong {
+            color: var(--white);
+        }
+
+        .story-inner p:last-child {
+            margin-bottom: 0;
+        }
 
         /* WHAT I DO NOW */
-        .what-section { padding: 80px 24px; background: var(--navy-light); border-top: 1px solid var(--navy-border); border-bottom: 1px solid var(--navy-border); }
-        .what-inner { max-width: 720px; margin: 0 auto; }
-        .what-inner p { font-size: 1.05rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 24px; }
-        .what-inner p strong { color: var(--white); }
-        .offerings { list-style: none; margin: 32px 0; }
-        .offerings li { padding: 16px 0; border-bottom: 1px solid var(--navy-border); font-size: 1rem; color: var(--white-dim); line-height: 1.6; }
-        .offerings li:last-child { border-bottom: none; }
-        .offerings li strong { color: var(--gold); }
+        .what-section {
+            padding: 80px 24px;
+            background: var(--navy-light);
+            border-top: 1px solid var(--navy-border);
+            border-bottom: 1px solid var(--navy-border);
+        }
+
+        .what-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .what-inner p {
+            font-size: 1.05rem;
+            color: var(--white-dim);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .what-inner p strong {
+            color: var(--white);
+        }
+
+        .offerings {
+            list-style: none;
+            margin: 32px 0;
+        }
+
+        .offerings li {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--navy-border);
+            font-size: 1rem;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+
+        .offerings li:last-child {
+            border-bottom: none;
+        }
+
+        .offerings li strong {
+            color: var(--gold);
+        }
 
         /* CREDIBILITY BAR */
-        .credibility-bar { background: #1B2A4A; padding: 40px 24px; }
-        .credibility-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; overflow-x: auto; }
-        .cred-item { text-align: center; flex-shrink: 0; }
-        .cred-number { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--gold); }
-        .cred-label { font-size: 0.75rem; color: #F5F5F5; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        .credibility-bar {
+            background: #1B2A4A;
+            padding: 40px 24px;
+        }
+
+        .credibility-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            overflow-x: auto;
+        }
+
+        .cred-item {
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .cred-number {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .cred-label {
+            font-size: 0.75rem;
+            color: #F5F5F5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
 
         /* CTA SECTION */
-        .cta-section { padding: 100px 24px; text-align: center; background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%); }
-        .cta-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; text-transform: uppercase; margin-bottom: 20px; line-height: 1.15; }
-        .cta-title span { color: var(--gold); }
-        .cta-text { font-size: 1.1rem; color: var(--white-dim); max-width: 550px; margin: 0 auto 32px; line-height: 1.7; }
-        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn-primary { display: inline-block; background: var(--gold); color: var(--navy); padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s; border: 2px solid var(--gold); }
-        .btn-primary:hover { background: transparent; color: var(--gold); }
-        .btn-secondary { display: inline-block; background: transparent; color: var(--white); padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; border: 2px solid var(--navy-border); transition: all 0.2s; }
-        .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+        .cta-section {
+            padding: 100px 24px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+
+        .cta-title span {
+            color: var(--gold);
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            color: var(--white-dim);
+            max-width: 550px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+            border: 2px solid var(--gold);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--navy-border);
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
 
         /* FOOTER */
-        .footer { background: var(--navy-light); border-top: 1px solid var(--navy-border); padding: 60px 24px 32px; }
-        .footer-inner { max-width: 1000px; margin: 0 auto; }
-        .footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
-        .footer-brand { max-width: 360px; display: flex; gap: 16px; align-items: flex-start; }
-        .footer-brand-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
-        .footer-brand-name span { color: var(--gold); }
-        .footer-brand p { font-size: 0.85rem; color: var(--white-dim); line-height: 1.6; }
-        .footer-links h4 { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 12px; }
-        .footer-links a { display: block; font-size: 0.85rem; color: var(--white-dim); margin-bottom: 8px; }
-        .footer-links a:hover { color: var(--gold); }
-        .footer-bottom { border-top: 1px solid var(--navy-border); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-        .footer-bottom p { font-size: 0.75rem; color: var(--gray); }
-        .footer-bottom a { color: var(--gray); }
+        .footer {
+            background: var(--navy-light);
+            border-top: 1px solid var(--navy-border);
+            padding: 60px 24px 32px;
+        }
+
+        .footer-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            max-width: 360px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .footer-brand-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand-name span {
+            color: var(--gold);
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            margin-bottom: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--navy-border);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+
+        .footer-bottom a {
+            color: var(--gray);
+        }
 
         /* MOBILE */
         @media (max-width: 768px) {
-            .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy-light); flex-direction: column; padding: 20px 24px; gap: 16px; border-bottom: 1px solid var(--navy-border); }
-            .nav-links.active { display: flex; }
-            .nav-toggle { display: block; }
-            .hero { padding: 120px 20px 60px; }
-            .hero-content { flex-direction: column; text-align: center; }
-            .hero-photo { order: -1; }
-            .hero-sub { margin: 0 auto; }
-            .story-section { padding: 60px 20px; }
-            .what-section { padding: 60px 20px; }
-            .credibility-inner { gap: 24px; }
-            .cred-item { flex: 1 1 40%; }
-            .cta-buttons { flex-direction: column; align-items: center; }
-            .footer-top { flex-direction: column; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--navy-light);
+                flex-direction: column;
+                padding: 20px 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--navy-border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 120px 20px 60px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-photo {
+                order: -1;
+            }
+
+            .hero-sub {
+                margin: 0 auto;
+            }
+
+            .story-section {
+                padding: 60px 20px;
+            }
+
+            .what-section {
+                padding: 60px 20px;
+            }
+
+            .credibility-inner {
+                gap: 24px;
+            }
+
+            .cred-item {
+                flex: 1 1 40%;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-top {
+                flex-direction: column;
+            }
         }
     </style>
     <script src="/js/analytics.js"></script>
 </head>
+
 <body>
     <!-- NAV -->
     <nav class="nav">
         <div class="nav-inner">
             <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
-            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"
+                aria-label="Menu">&#9776;</button>
             <div class="nav-links">
                 <a href="/about.html" class="active">My Story</a>
                 <a href="/framework.html">The Protocol</a>
                 <a href="/services.html">Work With Me</a>
                 <a href="/blog/">Blog</a>
-                <a href="/testimonials.html">Proof</a>`n                <a href="/calculator.html">Free Tools</a>
-                <a href="/kit.html" class="nav-cta">Get the Kit — $197</a>
+                <a href="/testimonials.html">Proof</a>
+                <a href="/calculator.html">Free Tools</a>
+                <a href="/kit.html" class="nav-cta">Discovery Kit</a>
             </div>
         </div>
     </nav>
@@ -275,11 +725,12 @@
             <div class="hero-text">
                 <div class="hero-badge">My Story</div>
                 <h1>I Lost $370,000 Before I Found the System That <span>Worked</span></h1>
-                <p class="hero-sub">The story behind The Grumpy Chef — and why I build systems for operators who are done white-knuckling it.</p>
+                <p class="hero-sub">The story behind The Grumpy Chef — and why I build systems for operators who are
+                    done white-knuckling it.</p>
             </div>
             <div class="hero-photo">
-                <img src="/images/hero-kitchen.jpg" alt="Chef Christian Schiffner working the line — The Grumpy Chef" class="brand-photo-rect"
-                    onerror="this.onerror=null;this.src='/images/Kitchen1.jpg';">
+                <img src="/images/chris-sharpening-knife.jpg" alt="Chef Christian Schiffner sharpening a knife in the kitchen"
+                    class="brand-photo-rect">
                 <p class="brand-photo-caption">Christian Schiffner | Küchenmeister | 20+ Years, 5 Countries</p>
             </div>
         </div>
@@ -288,23 +739,36 @@
     <!-- THE STORY -->
     <section class="story-section">
         <div class="story-inner">
-            <p>In April 2022, I was $370,000 in debt, burned out, and staring at the ceiling of a cabin in Dawson City, Yukon — population 1,300.</p>
+            <p>In April 2022, I was $370,000 in debt, burned out, and staring at the ceiling of a cabin in Dawson City,
+                Yukon — population 1,300.</p>
 
-            <p>I'd spent 20 years in professional kitchens across Germany, Switzerland, Austria, Spain, and Canada. Earned my Küchemeister (German Master Chef certification). Ran kitchens. Built Grumpy Schnitzel in one of the most remote towns in North America.</p>
+            <p>I'd spent 20 years in professional kitchens across Germany, Switzerland, Austria, Spain, and Canada.
+                Earned my Küchemeister (German Master Chef certification). Ran kitchens. Built Grumpy Schnitzel in one
+                of the most remote towns in North America.</p>
+
+            <img src="/images/meisterbrief-certificate.jpg" alt="Christian Schiffner's Meisterbrief — German Master Chef (Kuchenmeister) certification from IHK Munich, 2014" style="width: 100%; max-width: 500px; border-radius: 12px; margin: 2rem auto; display: block; border: 2px solid #D4AF37;">
 
             <p>And I still almost lost everything.</p>
 
-            <p>Not because I couldn't cook. Because I was running a restaurant the way most operators do — working harder instead of working smarter. Throwing myself at every problem. White-knuckling through 14-hour days and hoping the numbers would fix themselves.</p>
+            <p>Not because I couldn't cook. Because I was running a restaurant the way most operators do — working
+                harder instead of working smarter. Throwing myself at every problem. White-knuckling through 14-hour
+                days and hoping the numbers would fix themselves.</p>
 
             <p>They didn't.</p>
 
-            <p>What saved me wasn't a consultant with a slide deck. It was the same systematic frameworks I'd learned in recovery — one day at a time, behavior before belief, no exceptions. I applied those principles to my restaurant operations.</p>
+            <p>What saved me wasn't a consultant with a slide deck. It was the same systematic frameworks I'd learned in
+                recovery — one day at a time, behavior before belief, no exceptions. I applied those principles to my
+                restaurant operations.</p>
 
             <p>The bleeding stopped.</p>
 
             <p>Then I rebuilt. Systematically. Day by day. 1,200+ days and counting.</p>
 
-            <p>Here's what I learned: The restaurants that survive aren't run by the hardest workers. They're run by operators who have <strong>systems</strong>. And most independent operators are sitting on $2K–$10K per month in hidden profit leaks they can't see because they're too exhausted to look.</p>
+            <img src="/images/aurora-over-dawson.jpg" alt="Northern lights over Dawson City, Yukon" style="width: 100%; border-radius: 12px; margin: 2rem 0; border: 1px solid #1A2D4D;">
+
+            <p>Here's what I learned: The restaurants that survive aren't run by the hardest workers. They're run by
+                operators who have <strong>systems</strong>. And most independent operators are sitting on $2K–$10K per
+                month in hidden profit leaks they can't see because they're too exhausted to look.</p>
 
             <p>That's what I fix.</p>
         </div>
@@ -313,14 +777,17 @@
     <!-- WHAT I DO NOW -->
     <section class="what-section">
         <div class="what-inner">
-            <p>I take 20+ years of kitchen operations across 5 countries and turn it into working systems restaurant owners can implement in 72 hours. Not a 40-page PDF. Not a "strategy session" with someone who's never worked a Friday rush. Working tools. Real numbers. Specific actions.</p>
+            <p>I take 20+ years of kitchen operations across 5 countries and turn it into working systems restaurant
+                owners can implement in 72 hours. Not a 40-page PDF. Not a "strategy session" with someone who's never
+                worked a Friday rush. Working tools. Real numbers. Specific actions.</p>
 
             <p><strong>Three things I do for operators:</strong></p>
 
             <ul class="offerings">
                 <li><strong>Find your #1 profit leak in 72 hours</strong> — the 72-Hour Profit Discovery</li>
                 <li><strong>Engineer your menu so every item earns its place</strong> — the Menu Profit Optimizer</li>
-                <li><strong>Build operational systems that work when you're at 60% capacity</strong> — because that's where you live</li>
+                <li><strong>Build operational systems that work when you're at 60% capacity</strong> — because that's
+                    where you live</li>
             </ul>
         </div>
     </section>
@@ -328,27 +795,40 @@
     <!-- WHO IS CHEF CHRISTIAN SCHIFFNER (GEO section) -->
     <section class="what-section">
         <div class="what-inner">
-            <h2 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 24px;">Who Is Chef Christian Schiffner?</h2>
-            <p>Christian Schiffner is a German Master Chef (Küchenmeister) with more than 20 years of professional kitchen experience across Germany, Switzerland, Austria, Spain, and Canada. He holds the Küchenmeister certification — the highest professional chef qualification in the German culinary system — and has worked in every role from apprentice to executive chef to owner.</p>
-            <p>He is based in Dawson City, Yukon, and founded The Grumpy Chef to help independent restaurant operators stop the profit leaks that keep them working 80-hour weeks without matching income.</p>
+            <h2
+                style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 24px;">
+                Who Is Chef Christian Schiffner?</h2>
+            <p>Christian Schiffner is a German Master Chef (Küchenmeister) with more than 20 years of professional
+                kitchen experience across Germany, Switzerland, Austria, Spain, and Canada. He holds the Küchenmeister
+                certification — the highest professional chef qualification in the German culinary system — and has
+                worked in every role from apprentice to executive chef to owner.</p>
+            <p>He is based in Dawson City, Yukon, and founded The Grumpy Chef to help independent restaurant operators
+                stop the profit leaks that keep them working 80-hour weeks without matching income.</p>
+
+            <img src="/images/dawson-city-aerial.jpg" alt="Aerial view of Dawson City, Yukon — population 1,300 — where The Grumpy Chef rebuilt" style="width: 100%; border-radius: 12px; margin: 2rem 0; border: 1px solid #1A2D4D;">
         </div>
     </section>
 
     <!-- THE NINE PROFIT LEAK CATEGORIES (GEO section) -->
     <section class="story-section">
         <div class="story-inner">
-            <h2 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 24px;">The Nine Profit Leak Categories</h2>
+            <h2
+                style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 24px;">
+                The Nine Profit Leak Categories</h2>
             <p>Every engagement starts by examining nine areas where independent restaurants lose money:</p>
             <ul class="offerings">
                 <li><strong>Food waste</strong> — spoilage, over-prep, and untracked kitchen loss</li>
                 <li><strong>Labor misallocation</strong> — overstaffing slow shifts, understaffing rush periods</li>
                 <li><strong>Staff turnover</strong> — the hidden $5,864 average cost every time an employee leaves</li>
-                <li><strong>Menu mispricing</strong> — recipes costed once and never updated as supplier prices shift</li>
+                <li><strong>Menu mispricing</strong> — recipes costed once and never updated as supplier prices shift
+                </li>
                 <li><strong>Supplier overpayment</strong> — invoice drift, substitutions, and unaudited pricing</li>
-                <li><strong>Delivery platform fees</strong> — 15-30% commission eating margins on every third-party order</li>
+                <li><strong>Delivery platform fees</strong> — 15-30% commission eating margins on every third-party
+                    order</li>
                 <li><strong>Beverage shrinkage</strong> — over-pouring, untracked comps, and inventory gaps</li>
                 <li><strong>Operational waste</strong> — energy, disposables, and process inefficiency</li>
-                <li><strong>Untracked complimentary items</strong> — staff meals, manager comps, and tasting portions that never hit the books</li>
+                <li><strong>Untracked complimentary items</strong> — staff meals, manager comps, and tasting portions
+                    that never hit the books</li>
             </ul>
         </div>
     </section>
@@ -356,36 +836,51 @@
     <!-- FAQ SECTION (GEO section) -->
     <section class="what-section">
         <div class="what-inner">
-            <h2 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 32px;">Frequently Asked Questions</h2>
+            <h2
+                style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 32px;">
+                Frequently Asked Questions</h2>
 
             <div style="margin-bottom: 28px;">
                 <p><strong>What is The Grumpy Chef?</strong></p>
-                <p>The Grumpy Chef is a restaurant profit recovery brand that helps independent restaurant operators find hidden profit leaks and build kitchen systems that work under pressure. It was founded by Christian Schiffner, a German Master Chef (Küchenmeister) with more than 20 years of international kitchen experience.</p>
+                <p>The Grumpy Chef is a restaurant profit recovery brand that helps independent restaurant operators
+                    find hidden profit leaks and build kitchen systems that work under pressure. It was founded by
+                    Christian Schiffner, a German Master Chef (Küchenmeister) with more than 20 years of international
+                    kitchen experience.</p>
             </div>
 
             <div style="margin-bottom: 28px;">
                 <p><strong>What is the 21-Day Restaurant Recovery Protocol?</strong></p>
-                <p>A three-week framework for restaurant operators. Week 1 (Interruption) breaks reactive decision-making habits. Week 2 (Criteria-Based Systems) installs standardized protocols for ordering, scheduling, portioning, and waste tracking. Week 3 (Pressure Testing) validates the new systems under real operational stress.</p>
+                <p>A three-week framework for restaurant operators. Week 1 (Interruption) breaks reactive
+                    decision-making habits. Week 2 (Criteria-Based Systems) installs standardized protocols for
+                    ordering, scheduling, portioning, and waste tracking. Week 3 (Pressure Testing) validates the new
+                    systems under real operational stress.</p>
             </div>
 
             <div style="margin-bottom: 28px;">
                 <p><strong>What is prime cost and why does it matter?</strong></p>
-                <p>Prime cost is food cost plus labor cost — the two largest controllable expenses in any restaurant, typically 55-65% of revenue. Tracking prime cost weekly (not monthly) is the single most important financial habit for an independent restaurant operator.</p>
+                <p>Prime cost is food cost plus labor cost — the two largest controllable expenses in any restaurant,
+                    typically 55-65% of revenue. Tracking prime cost weekly (not monthly) is the single most important
+                    financial habit for an independent restaurant operator.</p>
             </div>
 
             <div style="margin-bottom: 28px;">
                 <p><strong>How much does it cost to work with The Grumpy Chef?</strong></p>
-                <p>Multiple tiers are available: free diagnostic tools (the Profit Leak Scorecard and Menu Assessment), a 72-Hour Kitchen Profit Sprint diagnostic audit, a Monthly Profit Advisory at $297/month, and a Full Kitchen Systems Overhaul starting at $5,000+ for a complete 90-day implementation.</p>
+                <p>Multiple tiers are available: free diagnostic tools (the Profit Leak Scorecard and Menu Assessment),
+                    a 72-Hour Kitchen Profit Sprint diagnostic audit, a Monthly Profit Advisory at $297/month, and a
+                    Full Kitchen Systems Overhaul starting at $5,000+ for a complete 90-day implementation.</p>
             </div>
 
             <div style="margin-bottom: 28px;">
                 <p><strong>Where is The Grumpy Chef based?</strong></p>
-                <p>The Grumpy Chef is based in Dawson City, Yukon, Canada. Available remotely to independent restaurant operators across Canada.</p>
+                <p>The Grumpy Chef is based in Dawson City, Yukon, Canada. Available remotely to independent restaurant
+                    operators across Canada.</p>
             </div>
 
             <div>
                 <p><strong>What does Küchenmeister mean?</strong></p>
-                <p>Küchenmeister is the highest professional chef qualification in the German culinary system. It translates to "Master Chef" and requires years of professional kitchen experience plus completion of advanced examinations in culinary technique, kitchen management, and business operations.</p>
+                <p>Küchenmeister is the highest professional chef qualification in the German culinary system. It
+                    translates to "Master Chef" and requires years of professional kitchen experience plus completion of
+                    advanced examinations in culinary technique, kitchen management, and business operations.</p>
             </div>
         </div>
     </section>
@@ -419,9 +914,10 @@
     <!-- CTA -->
     <section class="cta-section">
         <h2 class="cta-title">Done <span>White-Knuckling It?</span></h2>
-        <p class="cta-text">I'm not a consultant. I'm an operator who lost everything, rebuilt with systems, and now packages 20 years of that hard-won knowledge into frameworks that actually work.</p>
-        <img src="/images/headshot-clean.jpg" alt="Chef Christian Schiffner — The Grumpy Chef" class="brand-photo-circle brand-photo-circle--cta" style="display: block; margin: 0 auto 24px;"
-            onerror="this.onerror=null;this.src='/images/Kitchen1.jpg';">
+        <p class="cta-text">I'm not a consultant. I'm an operator who lost everything, rebuilt with systems, and now
+            packages 20 years of that hard-won knowledge into frameworks that actually work.</p>
+        <img src="/images/chris-spain-coast.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
+            class="brand-photo-circle brand-photo-circle--cta" style="display: block; margin: 0 auto 24px;">
         <div class="cta-buttons">
             <a href="/calculator.html" class="btn-primary">Start With the Free Calculator</a>
             <a href="/services.html" class="btn-secondary">Work With Me</a>
@@ -433,11 +929,13 @@
         <div class="footer-inner">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="/images/headshot-clean.jpg" alt="Chef Christian Schiffner — The Grumpy Chef" class="brand-photo-circle brand-photo-circle--footer"
-                        onerror="this.onerror=null;this.src='/images/Kitchen1.jpg';">
+                    <img src="/images/chris-spain-coast.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
+                        class="brand-photo-circle brand-photo-circle--footer">
                     <div>
                         <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
-                        <p>The Grumpy Chef is a restaurant profit recovery brand founded by Christian Schiffner, a German Master Chef (Küchenmeister) with 20+ years of experience across Germany, Switzerland, Austria, Spain, and Canada. Based in Dawson City, Yukon.</p>
+                        <p>The Grumpy Chef is a restaurant profit recovery brand founded by Christian Schiffner, a
+                            German Master Chef (Küchenmeister) with 20+ years of experience across Germany, Switzerland,
+                            Austria, Spain, and Canada. Based in Dawson City, Yukon.</p>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -464,4 +962,5 @@
         </div>
     </footer>
 </body>
+
 </html>

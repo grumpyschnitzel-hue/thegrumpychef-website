@@ -37,12 +37,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://thegrumpychef.ca/academy.html</loc>
-    <lastmod>2026-02-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://thegrumpychef.ca/newsletter.html</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -139,9 +133,27 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://thegrumpychef.ca/toolkit/thank-you</loc>
-    <lastmod>2026-02-27</lastmod>
+    <loc>https://thegrumpychef.ca/testimonials.html</loc>
+    <lastmod>2026-03-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thegrumpychef.ca/scorecard.html</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thegrumpychef.ca/toolkit-bundle.html</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thegrumpychef.ca/blog/systems-over-hustle.html</loc>
+    <lastmod>2026-03-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
