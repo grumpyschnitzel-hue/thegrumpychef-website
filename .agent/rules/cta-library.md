@@ -1,5 +1,7 @@
 # CTA Library: By Platform, Goal & Awareness Stage
 
+> ⚠️ Some example CTAs below contain dollar figures and client references that have NOT been verified. Lines marked [UNVERIFIED] must be updated with real data before use. See `.agent/rules/factual-guardrails.md` for verified facts.
+
 > **Purpose:** Ready-to-use CTAs organized by goal, platform format, and Schwartz awareness stage. Every cell is a plug-and-play CTA for content production.
 > **Not in this file:** Writing formula, voice rules, platform format specs, hooks. Those live in their own files.
 > **Rule:** SKILL.md selects the goal + awareness stage + platform, then pulls the matching CTA from this file. One CTA per post. No stacking.
@@ -103,7 +105,7 @@ Purpose: Generate algorithmic signals, start conversations, build community. No 
 | **IG Carousel** | ❌ |
 | **IG Stories** | ⚡ "DM me RESULTS if you want to see what this looked like for a real restaurant" |
 | **Twitter/X** | ⚡ "If this thread resonated, follow — I post frameworks like this every week" |
-| **Email Newsletter** | "Here's what the calculator found for a Vancouver operator last month: $2,400/month in hidden margin sitting in 3 dishes. Want to find yours? Run the free calculator → [link]" |
+| **Email Newsletter** | [UNVERIFIED — UPDATE WITH REAL DATA WHEN AVAILABLE] "Here's what the calculator found for a Vancouver operator last month: $2,400/month in hidden margin sitting in 3 dishes. Want to find yours? Run the free calculator → [link]" |
 
 ### Most Aware Stage
 *Ready to act. Direct offer. No preamble.*
@@ -161,14 +163,14 @@ Purpose: Get operators into the free tools (72-Hour Profit Discovery Calculator,
 
 | Format | CTA |
 |--------|-----|
-| **LinkedIn Text** | "Most menu consultants charge $5K for what this free calculator does in 3 minutes. I'm not kidding. Link in comments — run it and tell me if I'm wrong" |
+| **LinkedIn Text** | [UNVERIFIED — UPDATE WITH REAL DATA WHEN AVAILABLE] "Most menu consultants charge $5K for what this free calculator does in 3 minutes. I'm not kidding. Link in comments — run it and tell me if I'm wrong" |
 | **LinkedIn Carousel** | Final slide: "This isn't a spreadsheet template. It's the same engine I use with clients. Free → link in comments" |
 | **Substack Notes** | ⚡ "I mentioned contribution margin vs food cost %. The calculator does this math automatically. If you want to see it in action with your numbers → link in bio" |
 | **FB Groups** | ⚡ "For anyone asking 'how do I actually calculate this?' — I built a free tool that does it. DM me CALC and I'll send the link" |
 | **IG Reels** | ⚡ "This is the exact tool I use with paying clients. It's free → link in bio" |
 | **IG Carousel** | ⚡ "The full system is in the free calculator → link in bio" |
 | **IG Stories** | ⚡ Link sticker: "The tool I use with clients — free for you" |
-| **Twitter/X** | "I charge $2K+ to implement this for restaurants. The diagnostic calculator is free. Same engine → [link]" |
+| **Twitter/X** | [UNVERIFIED — UPDATE WITH REAL DATA WHEN AVAILABLE] "I charge $2K+ to implement this for restaurants. The diagnostic calculator is free. Same engine → [link]" |
 | **Email Newsletter** | "I mentioned I use contribution margin, not food cost %, when I work with restaurants. Want to see the difference for your menu? The calculator does both → [link]" |
 
 ### Product Aware Stage
@@ -184,7 +186,7 @@ Purpose: Get operators into the free tools (72-Hour Profit Discovery Calculator,
 | **IG Carousel** | ❌ |
 | **IG Stories** | ⚡ Countdown sticker + link: "Running a free menu audit this week — starts with the calculator" |
 | **Twitter/X** | ⚡ "Reminder: the free restaurant profit calculator is still live. 3 minutes, no signup → [link]" |
-| **Email Newsletter** | "You signed up but haven't run your numbers yet. I get it — you're busy. Here's what takes 3 minutes and saves most operators $800-$2,400/month: [link]. Your data stays private. Nothing leaves your browser." |
+| **Email Newsletter** | [UNVERIFIED — UPDATE WITH REAL DATA WHEN AVAILABLE] "You signed up but haven't run your numbers yet. I get it — you're busy. Here's what takes 3 minutes and saves most operators $800-$2,400/month: [link]. Your data stays private. Nothing leaves your browser." |
 
 ### Most Aware Stage
 *They used the tool. Now bridge to the paid offer.*
@@ -257,15 +259,15 @@ Purpose: Move people from platform to owned content — newsletter issues, blog 
 
 | Format | CTA |
 |--------|-----|
-| **LinkedIn Text** | ⚡ "Last month an operator found $2,400/month in hidden margin across 3 dishes. I documented how. Link in comments" |
+| **LinkedIn Text** | ⚡ [UNVERIFIED — UPDATE WITH REAL DATA WHEN AVAILABLE] "Last month an operator found $2,400/month in hidden margin across 3 dishes. I documented how. Link in comments" |
 | **LinkedIn Carousel** | ⚡ "The full case study with before/after numbers → link in comments" |
 | **Substack Notes** | ❌ |
 | **FB Groups** | ❌ |
 | **IG Reels** | ❌ |
 | **IG Carousel** | ❌ |
-| **IG Stories** | ⚡ Link sticker: "Real case study: $2,400/month found in 3 dishes →" |
-| **Twitter/X** | ⚡ "Case study: how one operator found $2,400/month in hidden margin. Full breakdown → [link]" |
-| **Email Newsletter** | "I documented a real implementation this month. An operator in Vancouver found $2,400/month in hidden margin sitting in 3 dishes. Full case study with the exact steps → [link]" |
+| **IG Stories** | ⚡ [UNVERIFIED — UPDATE WITH REAL DATA WHEN AVAILABLE] Link sticker: "Real case study: $2,400/month found in 3 dishes →" |
+| **Twitter/X** | ⚡ [UNVERIFIED — UPDATE WITH REAL DATA WHEN AVAILABLE] "Case study: how one operator found $2,400/month in hidden margin. Full breakdown → [link]" |
+| **Email Newsletter** | [UNVERIFIED — UPDATE WITH REAL DATA WHEN AVAILABLE] "I documented a real implementation this month. An operator in Vancouver found $2,400/month in hidden margin sitting in 3 dishes. Full case study with the exact steps → [link]" |
 
 ### Most Aware Stage
 
@@ -425,7 +427,7 @@ Purpose: Book a direct conversation. Requires the highest trust level. Only use 
 | **IG Carousel** | ❌ |
 | **IG Stories** | ⚡ Countdown sticker: "Discovery call spots close Friday → DM me CALL" |
 | **Twitter/X** | ⚡ "3 discovery call spots left this month. DM me READY if you want one" |
-| **Email Newsletter** | "I have 3 spots open this month for the 72-Hour Profit Discovery. Last month's operators found an average of $1,800/month in hidden margin. If you want one — reply READY. First come, first served." |
+| **Email Newsletter** | [UNVERIFIED — UPDATE WITH REAL DATA WHEN AVAILABLE] "I have 3 spots open this month for the 72-Hour Profit Discovery. Last month's operators found an average of $1,800/month in hidden margin. If you want one — reply READY. First come, first served." |
 
 ### Most Aware Stage
 *They're ready. Direct offer. No preamble.*

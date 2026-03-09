@@ -44,7 +44,7 @@ Content exists on a spectrum. Position yourself at the right end.
 
 **The shift:** 500 views from the right people > 50,000 views from the wrong people.
 
-**Chris application:** A post about "why restaurants fail" = high noise (everyone has an opinion). A post about "the exact weekly tracking system that caught a $1,200/month waste leak in my walk-in" = high signal (only operators who've lived it can write this).
+**Chris application:** A post about "why restaurants fail" = high noise (everyone has an opinion). A post about "the exact weekly tracking system that catches walk-in waste in 7 days instead of 30" = high signal (only operators who've lived it can write this). Note: use verified specifics (time, process, frequency) — don't invent dollar figures.
 
 ---
 

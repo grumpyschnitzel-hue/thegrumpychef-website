@@ -22,10 +22,18 @@ if (-not (Test-Path $VideoPath)) {
 
 $fileName = [System.IO.Path]::GetFileNameWithoutExtension($VideoPath)
 
+# Resolve FFmpeg path
+$ffmpeg = "ffmpeg"
+if (-not (Get-Command $ffmpeg -ErrorAction SilentlyContinue)) {
+    $wingetPath = "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.0.1-full_build\bin\ffmpeg.exe"
+    if (Test-Path $wingetPath) { $ffmpeg = $wingetPath }
+}
+
 Write-Host "=== Transcription ===" -ForegroundColor Cyan
 Write-Host "Input: $VideoPath"
 Write-Host "Model: $Model"
 Write-Host "Output: $OutputDir"
+Write-Host "Using FFmpeg at: $ffmpeg"
 Write-Host ""
 
 # Step 1: Extract audio (WAV, 16kHz mono — optimal for Whisper)
@@ -33,7 +41,7 @@ $audioPath = Join-Path $OutputDir "audio_temp.wav"
 Write-Host "[1/3] Extracting audio..." -ForegroundColor Yellow
 
 $ffmpegArgs = @("-i", $VideoPath, "-vn", "-acodec", "pcm_s16le", "-ar", "16000", "-ac", "1", $audioPath, "-y")
-$process = Start-Process ffmpeg -ArgumentList $ffmpegArgs -Wait -PassThru -NoNewWindow -RedirectStandardError (Join-Path $OutputDir "ffmpeg_log.txt")
+$process = Start-Process $ffmpeg -ArgumentList $ffmpegArgs -Wait -PassThru -NoNewWindow -RedirectStandardError (Join-Path $OutputDir "ffmpeg_log.txt")
 
 if ($process.ExitCode -ne 0) {
     Write-Error "FFmpeg audio extraction failed. Check ffmpeg_log.txt"

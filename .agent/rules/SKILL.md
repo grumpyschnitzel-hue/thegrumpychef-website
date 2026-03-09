@@ -112,6 +112,8 @@ Every piece must pass ALL checks before output.
 
 ## Quality Gate — Anti-Slop Writing Checks
 
+> ⚠️ BEFORE THIS CHECKLIST: Verify all claims against `.agent/rules/factual-guardrails.md`. That file overrides all other rules. No fabricated dollar figures, testimonials, or social proof.
+
 ### Voice Checks
 - [ ] **Beer Test:** Would Chris say this to another chef over a beer?
 - [ ] **Forest Walk Test:** Does it sound like a thought after a solo Black Forest walk?
@@ -129,7 +131,7 @@ Every piece must pass ALL checks before output.
 - [ ] **No AI mentions** in customer-facing content
 - [ ] **No corporate buzzwords** ("leverage", "synergy", "optimize", "circle back")
 - [ ] **No "I'd love to..."** or "I'd be happy to..."
-- [ ] **Dollar signs present?** At least one concrete ROI or cost figure
+- [ ] **Concrete specifics present?** At least one VERIFIED dollar figure (check `factual-guardrails.md`), time saved, frequency count, or process detail. If no verified number exists, framework language is acceptable.
 - [ ] **Recovery language natural?** If used, it flows — not forced
 - [ ] **$370K CAD** (not $180K) when referencing the debt
 

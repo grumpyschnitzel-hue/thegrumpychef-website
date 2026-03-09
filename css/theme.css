@@ -1,0 +1,107 @@
+/* theme.css — The Grumpy Chef Unified Design System (2025) */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* Color Palette: Liquid Gold & Shadow Navy */
+  --navy-deep: #050B14;
+  --navy-main: #0A1628;
+  --navy-surface: rgba(13, 21, 38, 0.85);
+  /* For Glassmorphism */
+  --navy-border: #1A2D4D;
+
+  --gold-liquid: #D4AF37;
+  --gold-glow: rgba(212, 175, 55, 0.15);
+  --gold-border: rgba(212, 175, 55, 0.35);
+
+  --silver-steel: #E2E8F0;
+  --white-soft: #F8F9FA;
+  --white-dim: #B8BEC8;
+
+  --red-rebel: #C53030;
+  --green-sage: #2D4A3E;
+  --pine-german: #0A1A10;
+  /* Deep Black Forest Green */
+
+  /* Typography */
+  --font-display: 'Oswald', 'Impact', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Glassmorphism Styles */
+.glass-card {
+  background: var(--navy-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--gold-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-liquid);
+  box-shadow: 0 12px 40px 0 var(--gold-glow);
+}
+
+/* Typography Overrides */
+h1,
+h2,
+h3,
+.nav-logo {
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--silver-steel);
+}
+
+.gold-accent {
+  color: var(--gold-liquid);
+}
+
+.mono-system {
+  font-family: var(--font-mono);
+  color: var(--gold-liquid);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+/* Premium Button Styling */
+.btn-premium {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--gold-liquid);
+  color: var(--navy-deep);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 6px;
+  border: 2px solid var(--gold-liquid);
+  transition: var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn-premium:hover {
+  background: transparent;
+  color: var(--gold-liquid);
+  box-shadow: 0 0 25px var(--gold-glow);
+}
+
+.btn-premium-outline {
+  background: transparent;
+  color: var(--white-soft);
+  border: 2px solid var(--navy-border);
+}
+
+.btn-premium-outline:hover {
+  border-color: var(--gold-liquid);
+  color: var(--gold-liquid);
+}

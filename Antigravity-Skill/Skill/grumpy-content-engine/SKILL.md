@@ -145,7 +145,7 @@ Write the opening that earns attention:
 ### Step 5: Phase 2 — CREATOR (Write the Substance)
 Write the body that delivers value:
 - Systems, data, frameworks, specific operational detail
-- Include dollar figures or measurable outcomes
+- Include VERIFIED dollar figures (check `.agent/rules/factual-guardrails.md`) or measurable outcomes — time saved, frequency, process details. Never invent a dollar figure.
 - Reference specific experience (countries, kitchens, situations)
 - Teach the messy HOW, not the clean WHAT
 - Format for scannability (short paragraphs, line breaks, fragments)
@@ -179,6 +179,8 @@ Wait for user selection or direction to combine elements.
 
 Run the selected draft through these checks:
 
+> ⚠️ BEFORE THIS CHECKLIST: Verify all claims against `.agent/rules/factual-guardrails.md`. That file overrides all other rules. No fabricated dollar figures, testimonials, or social proof.
+
 **Voice Checks:**
 - [ ] Would Chris say this after a solo walk in the Black Forest?
 - [ ] Short sentences? Fragments? German-direct?
@@ -187,7 +189,7 @@ Run the selected draft through these checks:
 - [ ] No consultant-speak? (leverage, synergy, optimize, cutting-edge)
 
 **Content Checks:**
-- [ ] At least one dollar figure or concrete ROI projection?
+- [ ] At least one concrete specific — VERIFIED dollar figure (check `.agent/rules/factual-guardrails.md`), time saved, frequency count, or process detail? If no verified number exists, framework language is acceptable.
 - [ ] Maps to at least one of the 8 pain points?
 - [ ] Specific experience referenced (country, kitchen, situation)?
 - [ ] CTA is clear and direct — no gimmicks?
@@ -259,7 +261,7 @@ Deliver the approved content in the requested format:
 
 ## Rules
 
-1. **NEVER** let content ship without at least one dollar figure or measurable outcome.
+1. **NEVER** let content ship without at least one concrete specific — a VERIFIED dollar figure (check `.agent/rules/factual-guardrails.md`), time saved, frequency, or process detail. Never invent a dollar figure.
 2. **NEVER** mention AI, Claude, automation, or any internal tooling in customer-facing content.
 3. **NEVER** use consultant-speak: leverage, synergy, optimize, cutting-edge, innovative, disruptive.
 4. **NEVER** use the word "authentic" — show it, don't label it.

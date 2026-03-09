@@ -93,6 +93,8 @@ When creating any content:
 4. Include the dollar figure or measurable outcome
 5. End with the tool/system that prevents the scar from happening to the reader
 
-**The formula:** Scar + System + Dollar Figure = Credible Content
+**The formula:** Scar + System + Specific Detail = Credible Content
 
-Example: "I was reviewing food cost monthly. By the time I saw the problem, I'd already lost $4,200. Now I track weekly — takes 20 minutes. The Weekly Prime Cost Tracker catches drift in 7 days, not 30. Here's the exact spreadsheet."
+Example: "I was reviewing food cost monthly. By the time I saw the problem, weeks of waste had already piled up. Now I track weekly — takes 20 minutes. The Weekly Prime Cost Tracker catches drift in 7 days, not 30. Here's the exact spreadsheet."
+
+> IMPORTANT: Only use dollar figures that are VERIFIED in `.agent/rules/factual-guardrails.md`. If a real number doesn't exist, use time saved, frequency, or process specifics instead. "Catches drift in 7 days, not 30" is more credible than an invented dollar amount.

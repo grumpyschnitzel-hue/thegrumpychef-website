@@ -91,12 +91,14 @@ Deliver:
 ## Rules
 - NEVER let "studies" content ship without attaching it to a specific scar
 - NEVER use hype language, urgency theater, or lifestyle signaling
-- ALWAYS include at least one dollar figure or measurable outcome per piece
+- ALWAYS include at least one VERIFIED specific detail per piece — dollar figures only if verified in `.agent/rules/factual-guardrails.md`. Time saved, process details, and frequency counts are equally credible.
 - ALWAYS connect content to a specific experience from Chris's 20 years
+- NEVER fabricate dollar figures, testimonials, client results, or subscriber counts. See `.agent/rules/factual-guardrails.md` — it overrides all other rules.
 - IF content scores below 4/5 on signal check, THEN rewrite before shipping
 - IF content could be written by AI without Chris's context, THEN it's not credible — add scars
 - IF the content sounds like it's selling, THEN rewrite with restraint — credibility doesn't need to convince
 - NEVER use the word "authentic" — show it, don't label it
+- LEAD WITH FREE VALUE — diagnosis is free, cure is paid. Every interaction earns the right to the next one.
 
 ## Progressive Updates
 - When a piece of content performs well (high engagement from operators) — save to `references/high-signal-winners.md`

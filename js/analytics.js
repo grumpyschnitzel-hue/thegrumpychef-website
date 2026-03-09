@@ -17,7 +17,7 @@
   // CONFIGURATION — Replace these placeholders
   // =============================================
   var GA4_ID = 'G-F41KYXCEXL';
-  var CLARITY_ID = 'CLARITY_PROJECT_ID';   // e.g. 'abc123xyz'
+  var CLARITY_ID = 'vsdyoa3a71';
 
   // =============================================
   // GA4 INITIALIZATION
@@ -133,7 +133,7 @@
 
     // Track CTA clicks (buttons with gold styling or explicit CTA classes)
     if (btn.classList.contains('btn--gold') || btn.classList.contains('cta') ||
-        btn.tagName === 'BUTTON' || btn.closest('.hero') || btn.closest('.cta-section')) {
+      btn.tagName === 'BUTTON' || btn.closest('.hero') || btn.closest('.cta-section')) {
       fireEvent('cta_click', {
         label: label,
         href: href,

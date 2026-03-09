@@ -354,9 +354,10 @@ ffmpeg -i raw_footage.mp4 -filter_complex "[0:v]trim=0:134,setpts=PTS-STARTPTS[v
       - [ ] Blog article — reviewed (if applicable)
 
       ## Quality Checks
+      > ⚠️ BEFORE THIS CHECKLIST: Verify all claims against `.agent/rules/factual-guardrails.md`. That file overrides all other rules. No fabricated dollar figures, testimonials, or social proof.
       - [ ] All content passes Grumpy Content Engine quality gate
       - [ ] No AI mentioned in customer-facing content
-      - [ ] At least one dollar figure per written piece
+      - [ ] At least one concrete specific per written piece — VERIFIED dollar figure (check `.agent/rules/factual-guardrails.md`), time saved, frequency, or process detail. No invented numbers.
       - [ ] CTAs point to correct destination
       - [ ] Brand voice confirmed (Black Forest walk test)
 
@@ -609,7 +610,7 @@ The operator at 60% capacity (exhausted post-service, 11pm) can:
 7. **IF transcript contains multiple distinct topics THEN split into separate pipeline runs.** One topic per campaign.
 8. **ALWAYS map every piece of written content to at least one pain point.** No orphan content.
 9. **NEVER mention AI in any customer-facing output.** Position as "20 years of operator experience."
-10. **ALWAYS include dollar figures in written content.** No feel-good fluff without numbers.
+10. **ALWAYS include concrete specifics in written content** — VERIFIED dollar figures (check `.agent/rules/factual-guardrails.md`), time saved, frequency, or process details. No invented numbers. No feel-good fluff without specifics.
 
 ---
 

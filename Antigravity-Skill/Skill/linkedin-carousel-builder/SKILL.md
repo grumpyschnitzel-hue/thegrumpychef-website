@@ -102,7 +102,7 @@ Write each slide following these constraints:
 - **Max 30 words per slide** (readability on mobile)
 - **One idea per slide** (never stack concepts)
 - **Hook slide: max 12 words** (pattern interrupt, not a paragraph)
-- **Every carousel must include at least one dollar figure or measurable outcome**
+- **Every carousel must include at least one concrete specific — a VERIFIED dollar figure (check `.agent/rules/factual-guardrails.md`), time saved, frequency, or process detail. Never invent a dollar figure.**
 - **CTA slide: single clear action** (not three things)
 
 For each slide, specify:
@@ -116,9 +116,11 @@ For each slide, specify:
 
 Run this checklist before presenting slides:
 
+> ⚠️ BEFORE THIS CHECKLIST: Verify all claims against `.agent/rules/factual-guardrails.md`. That file overrides all other rules. No fabricated dollar figures, testimonials, or social proof.
+
 - [ ] **Slide count**: 7-12 slides total (fewer = incomplete, more = loses attention)
 - [ ] **Word count**: No slide exceeds 30 words. Hook slide under 12 words.
-- [ ] **Dollar signs**: At least one concrete dollar figure or ROI number in the carousel
+- [ ] **Concrete specifics**: At least one VERIFIED dollar figure (check `.agent/rules/factual-guardrails.md`), time saved, frequency, or process detail. No invented numbers.
 - [ ] **CTA present**: Final slide has a clear, single call to action
 - [ ] **Brand voice**: Passes the "Would Chris say this after a forest walk?" test
 - [ ] **No AI mention**: Zero references to AI, automation, or tools in customer-facing copy
@@ -181,7 +183,7 @@ Include posting notes:
 ## Rules
 
 1. NEVER exceed 30 words on any single slide. If it doesn't fit in 30 words, split into two slides.
-2. NEVER publish a carousel without at least one dollar figure or concrete measurable outcome.
+2. NEVER publish a carousel without at least one concrete specific — a VERIFIED dollar figure (check `.agent/rules/factual-guardrails.md`), time saved, frequency, or process detail. Never invent a dollar figure.
 3. NEVER mention AI, automation, Claude, or any tools in carousel copy. Position everything as "built from 20 years of operator experience."
 4. NEVER skip the HUMAN CHECK after slide copy. The .pptx is expensive to rebuild — get copy approval first.
 5. NEVER use more than 2 fonts (Oswald + Inter). No decorative fonts. No script fonts.

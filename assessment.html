@@ -120,6 +120,86 @@
             padding: 0 24px;
         }
 
+        /* NAV */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--navy-border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white-dim);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy) !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-cta:hover {
+            background: var(--white);
+            color: var(--navy) !important;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         .gold-top {
             height: 3px;
             background: linear-gradient(90deg, var(--gold), var(--blue), var(--gold));
@@ -129,7 +209,7 @@
            HERO
            ============================================ */
         .hero {
-            padding: 56px 0 40px;
+            padding: 120px 0 40px;
             background: linear-gradient(180deg, #0C1A2E 0%, var(--navy) 100%);
             border-bottom: 1px solid var(--navy-border);
         }
@@ -1140,6 +1220,33 @@
         /* ============================================
            RESPONSIVE
            ============================================ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--navy-light);
+                flex-direction: column;
+                padding: 20px 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--navy-border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 100px 0 28px;
+            }
+        }
+
         @media (max-width: 600px) {
             .hero__layout {
                 flex-direction: column;
@@ -1215,6 +1322,7 @@
                 color: #111;
             }
 
+            .nav,
             .gold-top,
             .hero__cta,
             .progress-section,
@@ -1331,6 +1439,23 @@
 </head>
 
 <body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"
+                aria-label="Menu">&#9776;</button>
+            <div class="nav-links">
+                <a href="/about.html">My Story</a>
+                <a href="/framework.html">The Protocol</a>
+                <a href="/services.html">Work With Me</a>
+                <a href="/blog/">Blog</a>
+                <a href="/calculator.html">Free Tools</a>
+                <a href="/kit.html" class="nav-cta">Discovery Kit</a>
+            </div>
+        </div>
+    </nav>
 
     <div class="gold-top"></div>
 
@@ -1489,8 +1614,8 @@
             </div>
 
             <div class="post-results-quote">
-                "This assessment shows you WHAT you're missing. The discovery call shows you HOW to fix it. The Grumpy
-                Chef Academy teaches you to never miss it again."
+                "This assessment shows you WHAT you're missing. The discovery call shows you HOW to fix it. The Menu
+                Engineering App gives you the digital edge to never miss it again."
             </div>
 
             <!-- ATTRIBUTION -->
@@ -1595,16 +1720,16 @@
                     <div class="cta-secondary__title">72-Hour Profit Discovery</div>
                     <div class="cta-secondary__sub">Find all 8 operational leaks</div>
                 </a>
-                <a class="cta-secondary" href="/academy.html">
-                    <div class="cta-secondary__title">The Grumpy Chef Academy</div>
-                    <div class="cta-secondary__sub">Join the founding member waitlist</div>
+                <a class="cta-secondary" href="/app.html">
+                    <div class="cta-secondary__title">Menu Engineering App</div>
+                    <div class="cta-secondary__sub">Get the Digital Edge</div>
                 </a>
             </div>
 
             <div class="cta-funnel">
                 This assessment shows you WHAT you're missing.<br>
                 The discovery call shows you HOW to fix it.<br>
-                The Grumpy Chef Academy teaches you to never miss it again.
+                The Menu Engineering App gives you the digital edge to never miss it again.
             </div>
         </div>
     </section>
@@ -1617,7 +1742,7 @@
             <p class="footer__text">
                 The Grumpy Chef &mdash; Systems that work when you're exhausted.
                 <br>
-                <a href="72-hour-profit-discovery-calculator.html">72-Hour Profit Discovery</a>
+                <a href="/calculator.html">72-Hour Profit Discovery</a>
             </p>
         </div>
     </footer>

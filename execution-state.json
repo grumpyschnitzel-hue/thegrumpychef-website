@@ -1,0 +1,194 @@
+{
+    "project": "The Grumpy Chef",
+    "last_updated": "2026-03-08",
+    "current_phase": "PHASE 2: Content Engine",
+    "phases": [
+        {
+            "name": "PHASE 1: Foundation",
+            "status": "in-progress",
+            "tasks": [
+                {
+                    "id": "1a",
+                    "task": "Homepage redesign (hero tightened, latest essay section, Oswald font, fake content removed)",
+                    "status": "completed",
+                    "completed_date": "2026-03-08"
+                },
+                {
+                    "id": "1b",
+                    "task": "Fix 'Storey' typo on homepage",
+                    "status": "completed",
+                    "completed_date": "2026-03-08"
+                },
+                {
+                    "id": "1c",
+                    "task": "Brand Stripe checkout pages",
+                    "status": "pending",
+                    "note": "Needs manual login"
+                },
+                {
+                    "id": "1d",
+                    "task": "Publish Systems Over Hustle essay (feed.xml, sitemap.xml updated)",
+                    "status": "completed",
+                    "completed_date": "2026-03-08"
+                },
+                {
+                    "id": "1e",
+                    "task": "Create execution-state.json",
+                    "status": "completed",
+                    "completed_date": "2026-03-08"
+                },
+                {
+                    "id": "1f",
+                    "task": "Remove fabricated content (fake testimonials, $41K, 400+ operators, unvalidated pricing)",
+                    "status": "completed",
+                    "completed_date": "2026-03-08"
+                },
+                {
+                    "id": "1g",
+                    "task": "Build guardrails system (factual-guardrails.md + all skill files updated)",
+                    "status": "completed",
+                    "completed_date": "2026-03-08"
+                },
+                {
+                    "id": "1h",
+                    "task": "Fix navigation consistency across all pages",
+                    "status": "pending"
+                },
+                {
+                    "id": "1i",
+                    "task": "Fix broken links (academy.html, calculator relative link)",
+                    "status": "pending"
+                },
+                {
+                    "id": "1j",
+                    "task": "Review/remove testimonials.html",
+                    "status": "pending"
+                },
+                {
+                    "id": "1k",
+                    "task": "Commit + push all changes to deploy",
+                    "status": "pending"
+                }
+            ]
+        },
+        {
+            "name": "PHASE 2: Content Engine",
+            "status": "pending",
+            "tasks": [
+                {
+                    "id": "2a",
+                    "task": "Write + publish essay #2",
+                    "status": "pending"
+                },
+                {
+                    "id": "2b",
+                    "task": "Slice essays into 3-5 LinkedIn posts",
+                    "status": "pending"
+                },
+                {
+                    "id": "2c",
+                    "task": "Send first Kit newsletter broadcast",
+                    "status": "pending"
+                },
+                {
+                    "id": "2d",
+                    "task": "Fix Profit Recovery sequence 0% click rate",
+                    "status": "pending"
+                },
+                {
+                    "id": "2e",
+                    "task": "Set up /morning daily brief",
+                    "status": "pending"
+                }
+            ]
+        },
+        {
+            "name": "PHASE 3: Community + Engagement",
+            "status": "pending",
+            "tasks": [
+                {
+                    "id": "3a",
+                    "task": "Brand Skool community",
+                    "status": "pending"
+                },
+                {
+                    "id": "3b",
+                    "task": "Seed Skool with blog posts + tool links",
+                    "status": "pending"
+                },
+                {
+                    "id": "3c",
+                    "task": "Start daily LinkedIn commenting",
+                    "status": "pending"
+                },
+                {
+                    "id": "3d",
+                    "task": "Activate Unipile LinkedIn MCP",
+                    "status": "pending"
+                },
+                {
+                    "id": "3e",
+                    "task": "Create customer-facing manifesto",
+                    "status": "pending"
+                }
+            ]
+        },
+        {
+            "name": "PHASE 4: Outreach + Partnerships",
+            "status": "pending",
+            "tasks": [
+                {
+                    "id": "4a",
+                    "task": "Identify 3 complementary creators",
+                    "status": "pending"
+                },
+                {
+                    "id": "4b",
+                    "task": "Start daily outreach to restaurant owners",
+                    "status": "pending"
+                },
+                {
+                    "id": "4c",
+                    "task": "Interview 5 operators for offer validation",
+                    "status": "pending"
+                },
+                {
+                    "id": "4d",
+                    "task": "Document sales process",
+                    "status": "pending"
+                }
+            ]
+        },
+        {
+            "name": "PHASE 5: Automation + Scale",
+            "status": "pending",
+            "tasks": [
+                {
+                    "id": "5a",
+                    "task": "Set up first cron job (morning brief)",
+                    "status": "pending"
+                },
+                {
+                    "id": "5b",
+                    "task": "Chain wispr -> content-batch workflow",
+                    "status": "pending"
+                },
+                {
+                    "id": "5c",
+                    "task": "Deploy Menu Engineering App to Vercel",
+                    "status": "pending"
+                },
+                {
+                    "id": "5d",
+                    "task": "Create pitch deck from 21-Day Protocol",
+                    "status": "pending"
+                },
+                {
+                    "id": "5e",
+                    "task": "Connect Stripe to data layer",
+                    "status": "pending"
+                }
+            ]
+        }
+    ]
+}

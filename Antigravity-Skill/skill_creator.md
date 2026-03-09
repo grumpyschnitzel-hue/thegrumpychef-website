@@ -1,5 +1,7 @@
 # The Grumpy Chef — Brand DNA & Content Skill
 
+> ⚠️ All dollar figures and claims must be verified against `.agent/rules/factual-guardrails.md` before use in customer-facing content. That file overrides all other rules.
+
 ## Brand Mantra
 **Systems That Work When You're Exhausted.**
 
@@ -99,12 +101,14 @@ Operator who's already hit bottom (or close). Debt, burnout, maybe addiction. Lo
 
 ## Content Production Rules
 
+> ⚠️ BEFORE THIS CHECKLIST: Verify all claims against `.agent/rules/factual-guardrails.md`. That file overrides all other rules. No fabricated dollar figures, testimonials, or social proof.
+
 1. Pick **one pillar** per piece of content
 2. Pick **1-2 voices** from the Grumpy Trinity
 3. Identify the **enemy** being fought in this piece
 4. Lead with vulnerability/failure, not credentials
 5. Short sentences. Fragments okay. German-direct.
-6. Every claim includes **dollar signs and concrete ROI**
+6. Every claim includes **concrete specifics WHERE VERIFIED** — dollar figures only from `.agent/rules/factual-guardrails.md`. When no verified number exists, use time saved, frequency, or process details. A claim with no number is better than a fake number.
 7. End with a clear, no-BS CTA
 8. Voice test: Would Chris say this after a solo walk in the Black Forest?
 9. **Never mention AI** as a selling point in customer-facing content
@@ -135,7 +139,7 @@ Operator who's already hit bottom (or close). Debt, burnout, maybe addiction. Lo
 | **Free** | Operator Life OS Scorecard | $0 | Lead capture, personal systems diagnosis |
 | **Entry** | Operator's Toolkit (8 spreadsheets + dashboard) | $47 | Tripwire, self-serve tracking tools |
 | **Mid** | 72-Hour Profit Discovery Kit (videos + workbooks) | $197 | Self-guided implementation framework |
-| **Premium** | 90-Day Restaurant Transformation | $5,000+ | Done-with-you coaching, 3 full protocol cycles |
+| **Premium** | 90-Day Restaurant Transformation | Apply to discuss (not yet validated with real sales) | Done-with-you coaching, 3 full protocol cycles |
 | **Waitlist** | Grumpy Chef Academy | TBD | 90-day group program, founding members |
 
 **Funnel logic:** Free tool -> email nurture -> toolkit/kit -> discovery call -> transformation

@@ -23,11 +23,26 @@ if (-not $OutputPath) {
     $OutputPath = Join-Path $dir "clean_cut.mp4"
 }
 
+# Resolve FFmpeg path
+$ffmpeg = "ffmpeg"
+if (-not (Get-Command $ffmpeg -ErrorAction SilentlyContinue)) {
+    $wingetPath = "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.0.1-full_build\bin\ffmpeg.exe"
+    if (Test-Path $wingetPath) { $ffmpeg = $wingetPath }
+}
+
+# Resolve FFprobe path
+$ffprobe = "ffprobe"
+if (-not (Get-Command $ffprobe -ErrorAction SilentlyContinue)) {
+    $wingetPath = "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winet.Source_8wekyb3d8bbwe\ffmpeg-8.0.1-full_build\bin\ffprobe.exe"
+    if (Test-Path $wingetPath) { $ffprobe = $wingetPath }
+}
+
 Write-Host "=== Clean Cut Generator ===" -ForegroundColor Cyan
 Write-Host "Input: $VideoPath"
 Write-Host "Outtakes: $OuttakesLog"
 Write-Host "Output: $OutputPath"
 Write-Host "Crossfade: ${CrossfadeDuration}s"
+Write-Host "Using FFmpeg at: $ffmpeg"
 Write-Host ""
 
 # Parse outtakes log
@@ -44,7 +59,7 @@ if ($outtakes.Count -eq 0) {
 Write-Host "Removing $($outtakes.Count) outtake segments..." -ForegroundColor Yellow
 
 # Get video duration
-$durationOutput = ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 $VideoPath 2>&1
+$durationOutput = & $ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 $VideoPath 2>&1
 $totalDuration = [double]$durationOutput
 
 # Convert outtake timestamps to seconds
@@ -119,7 +134,7 @@ $ffmpegArgs = @(
     "-y"
 )
 
-$process = Start-Process ffmpeg -ArgumentList $ffmpegArgs -Wait -PassThru -NoNewWindow
+$process = Start-Process $ffmpeg -ArgumentList $ffmpegArgs -Wait -PassThru -NoNewWindow
 
 if ($process.ExitCode -eq 0) {
     # Calculate savings

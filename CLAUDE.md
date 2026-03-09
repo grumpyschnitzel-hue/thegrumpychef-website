@@ -1,5 +1,15 @@
 # CLAUDE.md — thegrumpychef.ca Website
 
+## GLOBAL RULE — Scars First, Value First, Always
+
+> **Before generating ANY customer-facing content:** Connect it to a specific scar from `Antigravity-Skill/Skill/credibility-economy/references/chris-credibility-map.md`. If the content could be written by ChatGPT without Chris's 20 years — it's not ready. Add the scar, the system, and the specific detail. Generic advice is the enemy.
+>
+> **Lead with free value.** Diagnosis is free, cure is paid. Every piece of content must GIVE before it asks. Earn the right to the next interaction.
+>
+> **Verify before publishing.** All claims must pass `.agent/rules/factual-guardrails.md`. No fabricated numbers, testimonials, or social proof. A real scar beats an invented statistic every time.
+
+---
+
 ## Project Overview
 
 **The Grumpy Chef** — Restaurant profit recovery website for Christian Schiffner.
@@ -199,14 +209,22 @@ No build step. No environment variables. No `.env` files.
 
 ## Content Rules
 
+### Credibility Economy (Governing Philosophy)
+**Scars over Studies. Free Value First. Credibility Compounds. Never Fabricate.**
+
+See `.agent/rules/factual-guardrails.md` for the complete factual accuracy system — it overrides ALL other rules.
+
+### Content Principles
 1. **Never mention AI** as a selling point in any customer-facing page
 2. Position tools as "built from 20 years of operator experience"
 3. Lead with the "Black Forest to Yukon" storytelling arc (Roots -> Collapse -> Systematic Rebuild)
-4. Every claim includes dollar signs and concrete ROI projections
-4. Voice: German-direct, recovery language, short sentences, no corporate BS
-5. Lead with failure/vulnerability, not credentials
-6. Apply the 60% capacity test — would a tired operator actually use this?
-7. CTA language: direct, no gimmicks ("Message me if you're done white-knuckling it")
+4. **Never fabricate dollar figures, testimonials, or social proof.** Use verified facts from `.agent/rules/factual-guardrails.md` only. When no real number exists, use process details, time saved, or framework language instead.
+5. **Lead with free value.** Diagnosis is free, cure is paid. Every interaction earns the right to the next one.
+6. Voice: German-direct, recovery language, short sentences, no corporate BS
+7. Lead with failure/vulnerability, not credentials
+8. Apply the 60% capacity test — would a tired operator actually use this?
+9. Apply the Fraud Test — would Chris feel like a fraud if called on this claim?
+10. CTA language: direct, no gimmicks ("Message me if you're done white-knuckling it")
 
 ---
 
@@ -226,12 +244,17 @@ No build step. No environment variables. No `.env` files.
 
 ## Known Gaps / Planned Work
 
+- **Navigation inconsistency** — calculator.html and assessment.html have NO nav bar; blog posts have reduced nav; CTA text varies across pages
+- **Broken links** — calculator.html links to non-existent /academy.html; assessment.html links to non-existent relative path
+- **testimonials.html** — likely contains fabricated testimonials; needs review/removal. "Proof" nav link points here.
+- **Missing images** — about.html and essay reference images not yet in repo (meisterbrief, aurora, black-forest, chris-spain-coast, etc.)
+- **Footer inconsistency** — no two pages have identical footers
 - **Microsoft Clarity** — configured in analytics.js but project ID not yet set
 - **analytics.js** — prepared but not yet included on most pages (GA4 is hardcoded inline instead)
 - **Blog scaling** — currently manual HTML; consider 11ty/Hugo if growing past ~15 articles
-- **No shared CSS file** — each page has inline styles (deliberate simplicity, but means style changes require multi-file edits)
+- **css/theme.css** — started (~40% complete: variables, buttons, glass-card) but pages still use inline styles
 - **No favicon** — not detected in source
-- **Single image** — only Kitchen1.jpg in images/ (no other assets)
+- **Changes not yet deployed** — all March 8 edits are local, not pushed to GitHub/Netlify
 
 ---
 
@@ -260,6 +283,7 @@ No build step. No environment variables. No `.env` files.
 
 | Skill | Location | Purpose |
 |-------|----------|---------|
+| **Factual Guardrails** | [`.agent/rules/factual-guardrails.md`](.agent/rules/factual-guardrails.md) | **OVERRIDES ALL OTHER RULES.** Verified facts table, no-fabrication mandate, Credibility Economy philosophy, publishing checklist. Read BEFORE creating any customer-facing content. |
 | **Brand DNA & Content Skill** | [`skill_creator.md`](Antigravity-Skill/skill_creator.md) | Full Brand DNA, Grumpy Trinity voice system, content pillars, audience definition, platform strategy, product ecosystem |
 | **Skill Engineering** | [`Skill.md`](Antigravity-Skill/Skill.md) | Meta-skill for building new skills. Folder structure, YAML frontmatter, progressive updates, quality checklist |
 | **Credibility Economy** | [`SKILL.md`](Antigravity-Skill/Skill/credibility-economy/SKILL.md) | Credibility Economy lens — filters content/offers through scars-over-studies framework, validates positioning against trust recession dynamics |

@@ -21,9 +21,17 @@ if (-not (Test-Path $VideoPath)) {
     exit 1
 }
 
+# Resolve FFmpeg path
+$ffmpeg = "ffmpeg"
+if (-not (Get-Command $ffmpeg -ErrorAction SilentlyContinue)) {
+    $wingetPath = "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.0.1-full_build\bin\ffmpeg.exe"
+    if (Test-Path $wingetPath) { $ffmpeg = $wingetPath }
+}
+
 Write-Host "=== Outtake Detection ===" -ForegroundColor Cyan
 Write-Host "Input: $VideoPath"
 Write-Host "Silence threshold: ${SilenceThresholdDb}dB, min duration: ${SilenceMinDuration}s"
+Write-Host "Using FFmpeg at: $ffmpeg"
 Write-Host ""
 
 $outtakes = @()
@@ -39,7 +47,7 @@ $ffmpegArgs = @(
 )
 
 # FFmpeg outputs to stderr
-Start-Process ffmpeg -ArgumentList $ffmpegArgs -Wait -NoNewWindow -RedirectStandardError $silenceLog
+Start-Process $ffmpeg -ArgumentList $ffmpegArgs -Wait -NoNewWindow -RedirectStandardError $silenceLog
 
 if (Test-Path $silenceLog) {
     $logContent = Get-Content $silenceLog
