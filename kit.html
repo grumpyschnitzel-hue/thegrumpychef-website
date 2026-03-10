@@ -2,1238 +2,1985 @@
 <html lang="en">
 
 <head>
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F41KYXCEXL"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-F41KYXCEXL');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>72-Hour Profit Discovery Kit | The Grumpy Chef</title>
-    <meta name="description"
-        content="Find and fix your restaurant's #1 profit leak in 72 hours. The exact framework that found $41,000 in hidden waste in a Yukon kitchen. $197 founding rate.">
-    <meta property="og:title" content="72-Hour Profit Discovery Kit — Find $41K in Hidden Profit">
-    <meta property="og:description"
-        content="The exact 3-day framework a German Master Chef used to find $41,000 in hidden waste. Now packaged so you can do the same this weekend.">
-    <meta property="og:type" content="product">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
-        rel="stylesheet">
-    <style>
-        /* ============================================
-           RESET & TOKENS
-           ============================================ */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --navy: #0A1628;
-            --navy-light: #0E1B30;
-            --navy-card: #111E35;
-            --navy-border: #1A2D4D;
-            --navy-hover: #162642;
-            --white: #F8F9FA;
-            --white-dim: #B8BEC8;
-            --gray: #4A5568;
-            --gray-dark: #2D3748;
-            --gold: #D4AF37;
-            --gold-dim: #B89630;
-            --gold-glow: rgba(212, 175, 55, 0.10);
-            --gold-border: rgba(212, 175, 55, 0.25);
-            --blue: #00A6D6;
-            --red: #C53030;
-            --red-soft: #E53E3E;
-            --green: #2F855A;
-            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
-            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-body);
-            background: var(--navy);
-            color: var(--white);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ============================================
-           GLOBAL
-           ============================================ */
-        .gold-top {
-            height: 3px;
-            background: linear-gradient(90deg, var(--gold), var(--blue), var(--gold));
-        }
-
-        .container {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .container--wide {
-            max-width: 900px;
-        }
-
-        strong {
-            color: var(--gold);
-            font-weight: 600;
-        }
-
-        .text-dim {
-            color: var(--white-dim);
-        }
-
-        .text-gold {
-            color: var(--gold);
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        /* ============================================
-           CTA BUTTON
-           ============================================ */
-        .cta-btn {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--navy);
-            padding: 18px 40px;
-            border-radius: 8px;
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.05rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            border: 2px solid var(--gold);
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-
-        .cta-btn:hover {
-            background: transparent;
-            color: var(--gold);
-        }
-
-        .cta-sub {
-            display: block;
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            font-weight: 400;
-            color: var(--white-dim);
-            margin-top: 10px;
-            text-transform: none;
-            letter-spacing: 0;
-        }
-
-        /* ============================================
-           HERO
-           ============================================ */
-        .hero {
-            padding: 72px 24px 64px;
-            background: linear-gradient(180deg, #0C1A2E 0%, var(--navy) 100%);
-            border-bottom: 1px solid var(--navy-border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at center top, rgba(212, 175, 55, 0.04) 0%, transparent 60%);
-        }
-
-        .hero-inner {
-            max-width: 760px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero__badge {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            color: var(--gold);
-            border: 1px solid var(--gold-border);
-            padding: 6px 16px;
-            border-radius: 20px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 28px;
-        }
-
-        .hero__title {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: clamp(2.2rem, 6vw, 3.6rem);
-            line-height: 1.08;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 20px;
-        }
-
-        .hero__title span {
-            color: var(--gold);
-        }
-
-        .hero__sub {
-            font-size: 1.1rem;
-            color: var(--white-dim);
-            max-width: 600px;
-            line-height: 1.65;
-            margin-bottom: 36px;
-        }
-
-        .hero__proof {
-            display: flex;
-            gap: 32px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .hero__proof-item {
-            text-align: center;
-        }
-
-        .hero__proof-num {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-
-        .hero__proof-label {
-            font-size: 0.7rem;
-            color: var(--white-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 2px;
-        }
-
-        /* ============================================
-           HERO AUTHOR
-           ============================================ */
-        .hero__author {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 28px;
-        }
-
-        .hero__author-photo {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            border: 2px solid var(--gold);
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .hero__author-info {
-            font-size: 0.85rem;
-            color: var(--white-dim);
-            line-height: 1.5;
-        }
-
-        .hero__author-name {
-            font-weight: 700;
-            color: var(--white);
-            font-size: 0.9rem;
-        }
-
-        /* ============================================
-           SECTIONS
-           ============================================ */
-        .section {
-            padding: 80px 24px;
-        }
-
-        .section--alt {
-            background: var(--navy-light);
-            border-top: 1px solid var(--navy-border);
-            border-bottom: 1px solid var(--navy-border);
-        }
-
-        .section__label {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            color: var(--gold);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-
-        .section__title {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: clamp(1.6rem, 4vw, 2.4rem);
-            line-height: 1.15;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        .section__text {
-            font-size: 1.05rem;
-            color: var(--white-dim);
-            line-height: 1.75;
-            margin-bottom: 20px;
-        }
-
-        .section__text strong {
-            color: var(--white);
-        }
-
-        /* ============================================
-           LEAK CARDS
-           ============================================ */
-        .leaks {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 32px 0;
-        }
-
-        .leak-card {
-            background: var(--navy-card);
-            border: 1px solid var(--navy-border);
-            border-radius: 10px;
-            padding: 20px;
-        }
-
-        .leak-card__name {
-            font-size: 0.85rem;
-            color: var(--white-dim);
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-
-        .leak-card__amount {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--red-soft);
-        }
-
-        .leak-card__amount span {
-            color: var(--white-dim);
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 400;
-        }
-
-        /* ============================================
-           3-DAY FLOW
-           ============================================ */
-        .day-flow {
-            margin: 40px 0;
-        }
-
-        .day-card {
-            background: var(--navy-card);
-            border: 1px solid var(--navy-border);
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .day-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gold);
-        }
-
-        .day-card__number {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            color: var(--gold);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .day-card__title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .day-card__desc {
-            font-size: 0.95rem;
-            color: var(--white-dim);
-            line-height: 1.7;
-        }
-
-        /* ============================================
-           OFFER STACK
-           ============================================ */
-        .offer-box {
-            background: var(--navy-card);
-            border: 2px solid var(--gold-border);
-            border-radius: 16px;
-            padding: 40px 32px;
-            margin: 40px 0;
-        }
-
-        .offer-item {
-            display: flex;
-            gap: 16px;
-            padding: 18px 0;
-            border-bottom: 1px solid var(--navy-border);
-            align-items: flex-start;
-        }
-
-        .offer-item:last-child {
-            border-bottom: none;
-        }
-
-        .offer-check {
-            flex-shrink: 0;
-            width: 28px;
-            height: 28px;
-            background: rgba(212, 175, 55, 0.12);
-            border: 1px solid var(--gold-border);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            color: var(--gold);
-            margin-top: 2px;
-        }
-
-        .offer-name {
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
-
-        .offer-desc {
-            font-size: 0.88rem;
-            color: var(--white-dim);
-            line-height: 1.6;
-        }
-
-        /* ============================================
-           PRICE SECTION
-           ============================================ */
-        .price-section {
-            text-align: center;
-            padding: 60px 0;
-        }
-
-        .price-anchor {
-            font-size: 1rem;
-            color: var(--white-dim);
-            margin-bottom: 8px;
-        }
-
-        .price-anchor s {
-            color: var(--gray);
-            font-size: 1.1rem;
-        }
-
-        .price-main {
-            font-family: var(--font-display);
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--gold);
-            margin-bottom: 4px;
-        }
-
-        .price-note {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            color: var(--gold-dim);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 32px;
-        }
-
-        /* ============================================
-           GUARANTEE
-           ============================================ */
-        .guarantee {
-            background: var(--navy-card);
-            border: 1px solid var(--navy-border);
-            border-radius: 12px;
-            padding: 32px;
-            margin: 40px 0;
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .guarantee__icon {
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            background: rgba(47, 133, 90, 0.15);
-            border: 1px solid rgba(47, 133, 90, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-        }
-
-        .guarantee__title {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .guarantee__text {
-            font-size: 0.95rem;
-            color: var(--white-dim);
-            line-height: 1.7;
-        }
-
-        /* ============================================
-           FAQ
-           ============================================ */
-        .faq-item {
-            border-bottom: 1px solid var(--navy-border);
-            padding: 24px 0;
-        }
-
-        .faq-item:first-child {
-            padding-top: 0;
-        }
-
-        .faq-q {
-            font-weight: 700;
-            font-size: 1.05rem;
-            margin-bottom: 10px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-q::after {
-            content: '+';
-            font-family: var(--font-mono);
-            font-size: 1.2rem;
-            color: var(--gold);
-            flex-shrink: 0;
-            margin-left: 16px;
-            transition: transform 0.2s;
-        }
-
-        .faq-item.open .faq-q::after {
-            content: '-';
-        }
-
-        .faq-a {
-            font-size: 0.95rem;
-            color: var(--white-dim);
-            line-height: 1.7;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .faq-item.open .faq-a {
-            max-height: 300px;
-        }
-
-        /* ============================================
-           CREDIBILITY FOOTER
-           ============================================ */
-        .cred-footer {
-            padding: 48px 24px;
-            text-align: center;
-            border-top: 1px solid var(--navy-border);
-        }
-
-        .cred-photo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid var(--gold);
-            object-fit: cover;
-            margin: 0 auto 16px;
-            display: block;
-        }
-
-        .cred-name {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-        }
-
-        .cred-title {
-            font-size: 0.8rem;
-            color: var(--white-dim);
-            margin-bottom: 4px;
-        }
-
-        .cred-quote {
-            font-style: italic;
-            font-size: 0.9rem;
-            color: var(--gold-dim);
-            margin-top: 12px;
-        }
-
-        /* ============================================
-           STICKY MOBILE CTA
-           ============================================ */
-        .sticky-cta {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10, 22, 40, 0.96);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid var(--gold-border);
-            padding: 12px 24px;
-            z-index: 100;
-            text-align: center;
-        }
-
-        .sticky-cta .cta-btn {
-            width: 100%;
-            padding: 16px 24px;
-            font-size: 0.95rem;
-        }
-
-        /* ============================================
-           SEPARATOR
-           ============================================ */
-        .sep {
-            width: 60px;
-            height: 3px;
-            background: var(--gold);
-            margin: 0 auto 40px;
-            border-radius: 2px;
-        }
-
-        /* ============================================
-           RESPONSIVE
-           ============================================ */
-        @media (max-width: 767px) {
-            .hero {
-                padding: 56px 20px 48px;
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F41KYXCEXL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-F41KYXCEXL');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>72-Hour Profit Discovery Starter Kit | The Grumpy Chef</title>
+  <meta name="description" content="Find your restaurant's biggest profit leak in 72 hours. 8 operational spreadsheets, a structured 3-day walkthrough, and the exact diagnostic tools built by a German Master Chef who rebuilt from $370K in debt.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="72-Hour Profit Discovery Starter Kit — Find Your Biggest Leak in 3 Days">
+  <meta property="og:description" content="8 spreadsheets. A 72-hour structured walkthrough. The diagnostic tools a German Master Chef used to rebuild from $370K in debt. $297.">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://thegrumpychef.ca/kit.html">
+  <meta property="og:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
+  <meta property="og:image:alt" content="The Grumpy Chef — 72-Hour Profit Discovery Starter Kit">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="72-Hour Profit Discovery Starter Kit | The Grumpy Chef">
+  <meta name="twitter:description" content="Find your restaurant's biggest profit leak in 72 hours. Built by a German Master Chef who rebuilt from $370K in debt.">
+  <meta name="twitter:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
+
+  <link rel="canonical" href="https://thegrumpychef.ca/kit.html">
+  <meta name="author" content="Christian Schiffner">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "@id": "https://thegrumpychef.ca/kit.html#product",
+        "name": "72-Hour Profit Discovery Starter Kit",
+        "description": "A structured 3-day diagnostic kit for independent restaurant operators to find and address their biggest profit leak. Includes 8 operational Excel spreadsheets, the 72-Hour Quick-Start Guide, and 5 discovery tools. Built by German Master Chef Christian Schiffner.",
+        "url": "https://thegrumpychef.ca/kit.html",
+        "image": "https://thegrumpychef.ca/images/Kitchen1.jpg",
+        "brand": {
+          "@type": "Brand",
+          "name": "The Grumpy Chef"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christian Schiffner",
+          "jobTitle": "German Master Chef (Küchenmeister)",
+          "url": "https://thegrumpychef.ca/about.html"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "297",
+          "priceCurrency": "CAD",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "Organization",
+            "name": "The Grumpy Chef",
+            "url": "https://thegrumpychef.ca"
+          }
+        },
+        "category": "Restaurant Operations",
+        "keywords": "restaurant profit leak, food cost control, restaurant systems, restaurant profit discovery"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thegrumpychef.ca/" },
+          { "@type": "ListItem", "position": 2, "name": "72-Hour Profit Discovery Starter Kit" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What exactly is in the 72-Hour Profit Discovery Starter Kit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The kit includes 8 operational Excel spreadsheets (Recipe Costing, Prime Cost Tracker, Menu Engineering Matrix, Par Level Calculator, Waste Tracking Log, Delivery Profitability Calculator, Menu Psychology Audit, and Vendor Price Comparison), the 72-Hour Quick-Start Guide covering Days 1 through 7, and the 5 Discovery Kit diagnostic tools (diagnosis workbook, exposure sheet, measurement tracker, protocol builder, and response cards)."
             }
-
-            .hero__title {
-                font-size: 2rem;
+          },
+          {
+            "@type": "Question",
+            "name": "Is this for restaurants that are failing or barely breaking even?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is built for independent operators at $800K to $3M annual revenue who are busy and profitable on paper, but cannot find where the money is actually going. Industry data suggests operators in this range may have 5 to 7 active profit leaks running simultaneously. The kit is not a turnaround tool for a restaurant in financial crisis needing capital."
             }
-
-            .hero__proof {
-                gap: 20px;
+          },
+          {
+            "@type": "Question",
+            "name": "Why $297 and not $97 or $1,000?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A restaurant consultant charges $2,000 to $5,000 for an operational diagnostic. This kit packages the same structured process so you can run it on your own operation in a weekend. Industry data suggests operators at $800K to $3M revenue may lose $2,500 to $5,500 per month to common profit leaks. $297 is less than two days of average monthly loss in a single leak category."
             }
-
-            .section {
-                padding: 56px 20px;
+          },
+          {
+            "@type": "Question",
+            "name": "What do I do after I finish the 72-hour process?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Quick-Start Guide covers Days 1 through 7. By Day 7, you will have identified your single biggest profit leak and begun addressing it. The guide ends with a clear path to the 21-Day Recovery Protocol, which is the full system for operators who want to build permanent operational fixes rather than one-time corrections."
             }
-
-            .leaks {
-                grid-template-columns: 1fr;
+          },
+          {
+            "@type": "Question",
+            "name": "Does this work for any kind of restaurant?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is built for independent operator-run restaurants, not chains or franchise operations. The tools and process assume you have operational control over purchasing, scheduling, menu pricing, and staffing decisions. If someone else controls those levers, the kit will identify the leaks but you will not be able to install the fixes."
             }
-
-            .offer-box {
-                padding: 28px 20px;
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need accounting software or technical skills to use this?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The spreadsheets run on Excel or Google Sheets. The process is designed for an operator working at 60 percent capacity after a full shift. If you can read a P&L and do basic math, you can use this kit."
             }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
-            .guarantee {
-                flex-direction: column;
-            }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-            .price-main {
-                font-size: 3rem;
-            }
+  <style>
+    /* ============================================
+       RESET & TOKENS
+       ============================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-            .sticky-cta {
-                display: block;
-            }
+    :root {
+      --navy:        #0A1628;
+      --navy-light:  #0E1B30;
+      --navy-card:   #111E35;
+      --navy-border: #1A2D4D;
+      --navy-hover:  #162642;
+      --white:       #F8F9FA;
+      --white-dim:   #B8BEC8;
+      --gray:        #4A5568;
+      --gold:        #D4AF37;
+      --gold-dim:    #B89630;
+      --gold-glow:   rgba(212, 175, 55, 0.10);
+      --gold-border: rgba(212, 175, 55, 0.25);
+      --red:         #C53030;
+      --red-light:   rgba(197, 48, 48, 0.12);
+      --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+      --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono:    'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+    }
 
-            body {
-                padding-bottom: 80px;
-            }
-        }
-    </style>
-    <script src="/js/analytics.js"></script>
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover { color: var(--white); }
+
+    /* ============================================
+       NAV
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10, 22, 40, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--navy-border);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--white-dim);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-cta:hover {
+      background: var(--white);
+      color: var(--navy) !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ============================================
+       LAYOUT UTILITIES
+       ============================================ */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .container--wide {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      padding: 130px 24px 80px;
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-bottom: 1px solid var(--navy-border);
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      background: var(--gold-glow);
+      padding: 6px 16px;
+      border-radius: 4px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 .gold { color: var(--gold); }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--white-dim);
+      max-width: 640px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .hero-sub strong { color: var(--white); font-weight: 600; }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 16px 32px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: #e8c84a;
+      color: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--white-dim);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 16px 0;
+    }
+
+    .btn-secondary:hover { color: var(--white); }
+
+    .hero-trust {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .hero-trust-item {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--white-dim);
+      opacity: 0.7;
+    }
+
+    .hero-trust-item span { color: var(--gold); margin-right: 6px; }
+
+    /* ============================================
+       PROOF BAR
+       ============================================ */
+    .proof-bar {
+      background: var(--navy-card);
+      border-bottom: 1px solid var(--navy-border);
+      padding: 20px 24px;
+    }
+
+    .proof-bar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .proof-stat {
+      text-align: center;
+    }
+
+    .proof-stat-number {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+      line-height: 1.1;
+    }
+
+    .proof-stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--white-dim);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .proof-bar-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--navy-border);
+    }
+
+    /* ============================================
+       SECTIONS
+       ============================================ */
+    .section {
+      padding: 80px 24px;
+    }
+
+    .section--dark {
+      background: var(--navy-light);
+      border-top: 1px solid var(--navy-border);
+      border-bottom: 1px solid var(--navy-border);
+    }
+
+    .section--card {
+      background: var(--navy-card);
+      border-top: 1px solid var(--navy-border);
+      border-bottom: 1px solid var(--navy-border);
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.15;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .section-title .gold { color: var(--gold); }
+
+    .section-body {
+      font-size: 1rem;
+      color: var(--white-dim);
+      line-height: 1.8;
+      max-width: 680px;
+    }
+
+    .section-body p + p { margin-top: 16px; }
+
+    .section-body strong { color: var(--white); font-weight: 600; }
+
+    /* ============================================
+       PROBLEM SECTION — LEAK CATEGORIES
+       ============================================ */
+    .leak-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .leak-card {
+      background: var(--navy);
+      border: 1px solid var(--navy-border);
+      border-radius: 10px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .leak-card:hover { border-color: var(--gold-border); }
+
+    .leak-number {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .leak-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    .leak-desc {
+      font-size: 0.85rem;
+      color: var(--white-dim);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .leak-range {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+      background: var(--gold-glow);
+      border: 1px solid var(--gold-border);
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .leak-disclaimer {
+      margin-top: 32px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray);
+      text-align: center;
+    }
+
+    /* ============================================
+       72-HOUR PROCESS — DAYS
+       ============================================ */
+    .process-steps {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0;
+      position: relative;
+    }
+
+    .process-step + .process-step .step-connector {
+      display: block;
+    }
+
+    .step-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step-day {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    .step-line {
+      width: 2px;
+      flex: 1;
+      background: var(--navy-border);
+      margin: 8px 0;
+      min-height: 32px;
+    }
+
+    .step-last .step-line { display: none; }
+
+    .step-right {
+      padding: 4px 0 40px 24px;
+    }
+
+    .step-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .step-name .gold { color: var(--gold); }
+
+    .step-body {
+      font-size: 0.95rem;
+      color: var(--white-dim);
+      line-height: 1.75;
+    }
+
+    .step-body strong { color: var(--white); font-weight: 600; }
+
+    .step-detail {
+      margin-top: 14px;
+      padding: 16px 20px;
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.85rem;
+      color: var(--white-dim);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       WHAT'S INCLUDED — KIT CONTENTS
+       ============================================ */
+    .kit-contents {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .kit-group {
+      background: var(--navy);
+      border: 1px solid var(--navy-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .kit-group-header {
+      background: var(--navy-card);
+      border-bottom: 1px solid var(--navy-border);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .kit-group-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .kit-group-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--white);
+    }
+
+    .kit-group-subtitle {
+      font-size: 0.8rem;
+      color: var(--white-dim);
+      margin-top: 3px;
+    }
+
+    .kit-group-count {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gold);
+      background: var(--gold-glow);
+      border: 1px solid var(--gold-border);
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .kit-group-items {
+      padding: 20px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .kit-item {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .kit-item-check {
+      color: var(--gold);
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding-top: 2px;
+    }
+
+    .kit-item-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .kit-item-benefit {
+      font-size: 0.82rem;
+      color: var(--white-dim);
+      line-height: 1.55;
+    }
+
+    /* ============================================
+       SCAR / CREDIBILITY SECTION
+       ============================================ */
+    .scar-block {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 12px 12px 0;
+      padding: 40px 40px;
+      max-width: 720px;
+    }
+
+    .scar-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+      font-weight: 500;
+      line-height: 1.45;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .scar-quote em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .scar-attr {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .scar-attr-photo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .scar-attr-name {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--white);
+    }
+
+    .scar-attr-title {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .credential-item {
+      background: var(--navy);
+      border: 1px solid var(--navy-border);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .credential-value {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+      line-height: 1.1;
+    }
+
+    .credential-label {
+      font-size: 0.78rem;
+      color: var(--white-dim);
+      margin-top: 6px;
+      line-height: 1.4;
+      display: block;
+    }
+
+    /* ============================================
+       PRICE ANCHOR SECTION
+       ============================================ */
+    .price-block {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .price-comparison {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .price-col {
+      text-align: center;
+    }
+
+    .price-col-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--white-dim);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .price-col-amount {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .price-col-amount--high {
+      color: var(--red);
+      text-decoration: line-through;
+      opacity: 0.7;
+      font-size: 1.8rem;
+    }
+
+    .price-col-amount--kit {
+      color: var(--gold);
+    }
+
+    .price-col-sub {
+      font-size: 0.78rem;
+      color: var(--white-dim);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .price-vs {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy-border);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .price-disclaimer {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-top: 16px;
+    }
+
+    .price-cta {
+      margin-top: 32px;
+    }
+
+    .btn-buy {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 20px 48px;
+      border-radius: 10px;
+      transition: background 0.2s, transform 0.15s;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .btn-buy:hover {
+      background: #e8c84a;
+      color: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .btn-buy-sub {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--white-dim);
+      margin-top: 12px;
+    }
+
+    /* ============================================
+       WHAT THIS IS / IS NOT
+       ============================================ */
+    .for-not-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .for-col {
+      background: var(--navy);
+      border: 1px solid var(--navy-border);
+      border-radius: 10px;
+      padding: 28px;
+    }
+
+    .for-col--yes { border-top: 3px solid var(--gold); }
+    .for-col--no  { border-top: 3px solid var(--gray); }
+
+    .for-col-title {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    .for-col--yes .for-col-title { color: var(--gold); }
+    .for-col--no  .for-col-title { color: var(--gray); }
+
+    .for-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .for-list li {
+      font-size: 0.88rem;
+      color: var(--white-dim);
+      line-height: 1.5;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .for-col--yes .for-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .for-col--no .for-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gray);
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    /* ============================================
+       FAQ
+       ============================================ */
+    .faq-list {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .faq-item {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 28px;
+      text-align: left;
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      line-height: 1.4;
+      transition: background 0.2s;
+    }
+
+    .faq-question:hover { background: var(--navy-hover); }
+
+    .faq-icon {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-left: 16px;
+      transition: transform 0.2s;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      display: none;
+      padding: 0 28px 24px;
+      font-size: 0.9rem;
+      color: var(--white-dim);
+      line-height: 1.75;
+      border-top: 1px solid var(--navy-border);
+      padding-top: 20px;
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ============================================
+       ASCENSION SECTION
+       ============================================ */
+    .ascension-block {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: 12px;
+      padding: 36px 36px;
+      max-width: 680px;
+    }
+
+    .ascension-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .ascension-body {
+      font-size: 0.9rem;
+      color: var(--white-dim);
+      line-height: 1.75;
+    }
+
+    .ascension-body strong { color: var(--white); font-weight: 600; }
+
+    /* ============================================
+       FINAL CTA SECTION
+       ============================================ */
+    .final-cta {
+      padding: 100px 24px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
+      border-top: 1px solid var(--navy-border);
+    }
+
+    .final-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.15;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .final-cta h2 .gold { color: var(--gold); }
+
+    .final-cta-sub {
+      font-size: 1rem;
+      color: var(--white-dim);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background: var(--navy-light);
+      border-top: 1px solid var(--navy-border);
+      padding: 60px 24px 32px;
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand { max-width: 340px; }
+
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand-name span { color: var(--gold); }
+
+    .footer-brand p {
+      font-size: 0.82rem;
+      color: var(--white-dim);
+      line-height: 1.6;
+    }
+
+    .footer-links h4 {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--white-dim);
+      margin-bottom: 8px;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--navy-border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.72rem;
+      color: var(--gray);
+    }
+
+    /* ============================================
+       MOBILE — 768px BREAKPOINT
+       ============================================ */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--navy-light);
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 16px;
+        border-bottom: 1px solid var(--navy-border);
+      }
+
+      .nav-links.active { display: flex; }
+
+      .nav-toggle { display: block; }
+
+      .hero { padding: 110px 20px 60px; }
+
+      .section { padding: 60px 20px; }
+
+      .proof-bar-inner { gap: 20px; }
+
+      .proof-bar-divider { display: none; }
+
+      .leak-grid { grid-template-columns: 1fr; }
+
+      .process-step { grid-template-columns: 60px 1fr; }
+
+      .step-day { width: 52px; height: 52px; font-size: 0.8rem; }
+
+      .scar-block { padding: 28px 24px; }
+
+      .credentials-grid { grid-template-columns: 1fr 1fr; }
+
+      .price-block { padding: 32px 24px; }
+
+      .price-comparison { grid-template-columns: 1fr; gap: 16px; }
+
+      .price-vs { display: none; }
+
+      .for-not-grid { grid-template-columns: 1fr; }
+
+      .ascension-block { padding: 28px 24px; }
+
+      .footer-top { flex-direction: column; }
+
+      .kit-group-header { flex-wrap: wrap; gap: 10px; }
+
+      .kit-group-count { margin-left: 0; }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- Gold accent bar -->
-    <div class="gold-top"></div>
-
-    <!-- ============================================
-     HERO SECTION
-     ============================================ -->
-    <section class="hero">
-        <div class="hero-inner">
-            <div class="hero__badge">Founding Rate &mdash; Limited to First 20 Operators</div>
-            <h1 class="hero__title">
-                The 72-Hour System That Found <span>$41,000</span> Hiding in a Yukon Kitchen
-            </h1>
-            <p class="hero__sub">
-                The exact 3-day framework a German Master Chef used to find $41,000 in hidden waste &mdash; in a
-                restaurant in a town of 1,300 people. Now packaged so you can do the same thing this weekend.
-            </p>
-            <div class="hero__author">
-                <img class="hero__author-photo" src="/images/chris-chef-portrait.jpg"
-                    alt="Christian Schiffner — German Master Chef">
-                <div class="hero__author-info">
-                    <div class="hero__author-name">Christian Schiffner</div>
-                    German Master Chef (Kuchenmeister) &bull; 20+ Years &bull; 5 Countries
-                </div>
-            </div>
-            <a href="https://buy.stripe.com/6oUaEY4PkbN8dZBdRDfAc01" class="cta-btn">
-                Get the 72-Hour Profit Discovery Kit &mdash; $197
-            </a>
-            <div class="hero__proof">
-                <div class="hero__proof-item">
-                    <div class="hero__proof-num">$41K</div>
-                    <div class="hero__proof-label">Found in Hidden Waste</div>
-                </div>
-                <div class="hero__proof-item">
-                    <div class="hero__proof-num">72hrs</div>
-                    <div class="hero__proof-label">To Find Your #1 Leak</div>
-                </div>
-                <div class="hero__proof-item">
-                    <div class="hero__proof-num">20+</div>
-                    <div class="hero__proof-label">Years Kitchen Ops</div>
-                </div>
-                <div class="hero__proof-item">
-                    <div class="hero__proof-num">5</div>
-                    <div class="hero__proof-label">Countries</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
-     PROBLEM SECTION
-     ============================================ -->
-    <section class="section">
-        <div class="container">
-            <div class="section__label">The Problem</div>
-            <h2 class="section__title">Your Restaurant Made Money Last Month. You Just Can't Find It.</h2>
-
-            <p class="section__text">
-                You know the feeling. Full dining room. Good tips. Food moving. Staff showed up. By every measure you
-                can see &mdash; a solid night.
-            </p>
-            <p class="section__text">
-                Then you check the bank account. <strong style="color: var(--white);">It doesn't add up.</strong>
-            </p>
-            <p class="section__text">
-                Revenue looks healthy. Profit doesn't exist. And you can't explain the gap. Not specifically. Not in
-                dollars. Not in a way you could fix by Friday.
-            </p>
-            <p class="section__text">
-                So you do what every operator does. You work harder. Open earlier. Close later. Cut a shift here. Raise
-                a price there. Hope next month is different.
-            </p>
-            <p class="section__text">
-                It won't be. Because the problem isn't effort. <strong>It's visibility. You can't fix what you can't
-                    see.</strong>
-            </p>
-        </div>
-    </section>
-
-    <!-- ============================================
-     AGITATE &mdash; THE LEAKS
-     ============================================ -->
-    <section class="section section--alt">
-        <div class="container">
-            <div class="section__label">The Reality</div>
-            <h2 class="section__title">The Average Restaurant Leaks $50,000&ndash;$160,000 Per Year</h2>
-
-            <p class="section__text">
-                Across eight categories. Not because you're careless. Because you're running on fumes making 50+
-                decisions before lunch. Who has energy for a financial audit after a double?
-            </p>
-            <p class="section__text">
-                Nobody. So the leaks keep running. Week after week. Month after month. And you keep working harder to
-                cover the gap.
-            </p>
-
-            <div class="leaks">
-                <div class="leak-card">
-                    <div class="leak-card__name">Food hitting the bin instead of the plate</div>
-                    <div class="leak-card__amount">$15K&ndash;$40K <span>/year</span></div>
-                </div>
-                <div class="leak-card">
-                    <div class="leak-card__name">Paying people to stand around</div>
-                    <div class="leak-card__amount">$10K&ndash;$30K <span>/year</span></div>
-                </div>
-                <div class="leak-card">
-                    <div class="leak-card__name">Selling $14 plates that cost you $13 to make</div>
-                    <div class="leak-card__amount">$8K&ndash;$25K <span>/year</span></div>
-                </div>
-                <div class="leak-card">
-                    <div class="leak-card__name">Your supplier charging more because you never checked</div>
-                    <div class="leak-card__amount">$5K&ndash;$20K <span>/year</span></div>
-                </div>
-                <div class="leak-card">
-                    <div class="leak-card__name">Delivery apps taking 30% and you eating the rest</div>
-                    <div class="leak-card__amount">$5K&ndash;$15K <span>/year</span></div>
-                </div>
-                <div class="leak-card">
-                    <div class="leak-card__name">Drinks walking out the back door</div>
-                    <div class="leak-card__amount">$3K&ndash;$12K <span>/year</span></div>
-                </div>
-                <div class="leak-card">
-                    <div class="leak-card__name">Broken processes nobody fixed because "we're too busy"</div>
-                    <div class="leak-card__amount">$2K&ndash;$8K <span>/year</span></div>
-                </div>
-                <div class="leak-card">
-                    <div class="leak-card__name">Free meals nobody tracked</div>
-                    <div class="leak-card__amount">$2K&ndash;$10K <span>/year</span></div>
-                </div>
-            </div>
-
-            <p class="section__text">
-                You don't need to fix all eight. You need to find the biggest one and stop it. <strong>That's what this
-                    Kit does.</strong>
-            </p>
-        </div>
-    </section>
-
-    <!-- ============================================
-     STORY / PROOF
-     ============================================ -->
-    <section class="section">
-        <div class="container">
-            <div class="section__label">How I Found $41,000</div>
-            <h2 class="section__title">I Ran My Restaurant for 3 Years Before I Actually Looked</h2>
-
-            <p class="section__text">
-                I'm Christian Schiffner. German Master Chef &mdash; Kuchenmeister. 20+ years in professional kitchens
-                across Germany, Switzerland, Austria, Spain, and Canada.
-            </p>
-            <p class="section__text">
-                I built a restaurant in Dawson City, Yukon &mdash; population 1,300, -40&deg;C winters, two-week supply
-                delay. Then I lost it. And $370,000.
-            </p>
-            <p class="section__text">
-                Rock bottom was April 2022. Broke, drunk, no systems. Just chaos and hustle.
-            </p>
-            <p class="section__text">
-                Recovery taught me something the restaurant industry won't tell you: <strong
-                    style="color: var(--white);">the first step isn't fixing anything. It's honest inventory.</strong>
-                You can't sober up while lying about how much you drink. You can't stop bleeding money while lying about
-                where it goes.
-            </p>
-            <p class="section__text">
-                When I finally looked &mdash; sober, clear, honest &mdash; I found <strong>$41,000 in annual
-                    waste</strong> I didn't know existed. In a small restaurant. In a tiny town. With a supply chain
-                that should have forced me to be careful.
-            </p>
-            <p class="section__text">
-                <strong>The money was always there. I just had to stop lying to myself about it.</strong>
-            </p>
-            <p class="section__text">
-                1,200+ days sober. Same restaurant. Same town. Different operating system. The 72-Hour Profit Discovery
-                is the first thing I did when I got clear. Now I've packaged the exact framework so you can do it this
-                weekend.
-            </p>
-        </div>
-    </section>
-
-    <!-- ============================================
-     MECHANISM &mdash; HOW IT WORKS
-     ============================================ -->
-    <section class="section section--alt">
-        <div class="container">
-            <div class="section__label">The Framework</div>
-            <h2 class="section__title">3 Days. One Leak. One Fix. That's All It Takes.</h2>
-
-            <p class="section__text">
-                This isn't another "optimize your operations" guide. It's a forced reckoning with your real numbers.
-                Three days. No hiding.
-            </p>
-
-            <div class="day-flow">
-                <div class="day-card">
-                    <div class="day-card__number">Day 1 &mdash; 3&ndash;4 Hours</div>
-                    <div class="day-card__title">Exposure</div>
-                    <p class="day-card__desc">
-                        See where the money actually goes. Cash snapshot. Ratio reality check. Physical waste walk.
-                        Labor leak audit. Complete picture of every dollar entering and exiting your restaurant. Most
-                        operators have never done this.
-                    </p>
-                </div>
-                <div class="day-card">
-                    <div class="day-card__number">Day 2 &mdash; 2&ndash;3 Hours</div>
-                    <div class="day-card__title">Diagnosis</div>
-                    <p class="day-card__desc">
-                        Rank every leak by dollar amount. Find the #1 &mdash; the one costing the most that you can fix
-                        now. Run the 5 Whys to find the root cause. Not the symptom. The system that's missing.
-                    </p>
-                </div>
-                <div class="day-card">
-                    <div class="day-card__number">Day 3 &mdash; 2&ndash;3 Hours</div>
-                    <div class="day-card__title">Install</div>
-                    <p class="day-card__desc">
-                        Build one protocol. One page. Print it. Brief your team. Start measuring today. Close the escape
-                        routes before staff (or you) can negotiate around it. Same principle that keeps my recovery
-                        intact.
-                    </p>
-                </div>
-            </div>
-
-            <p class="section__text" style="text-align: center;">
-                <strong>Total time: 7&ndash;10 hours across 3 days.</strong><br>
-                <span class="text-dim">Potential annual recovery: $50,000&ndash;$160,000.</span>
-            </p>
-        </div>
-    </section>
-
-    <!-- ============================================
-     MID-PAGE CTA
-     ============================================ -->
-    <section class="section" style="padding: 56px 24px; text-align: center;">
-        <div class="container">
-            <a href="https://buy.stripe.com/6oUaEY4PkbN8dZBdRDfAc01" class="cta-btn">
-                Get the Kit &mdash; Find Your #1 Leak This Weekend
-            </a>
-            <p class="cta-sub">$197 founding rate. Lifetime access. No subscription.</p>
-        </div>
-    </section>
-
-    <!-- ============================================
-     SOCIAL PROOF
-     ============================================ -->
-    <section class="section section--alt" style="padding: 56px 24px;">
-        <div class="container" style="text-align: center;">
-            <p
-                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;">
-                The Proof</p>
-            <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 24px;">
-                <div style="text-align: center;">
-                    <div
-                        style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--gold);">
-                        $41K</div>
-                    <div
-                        style="font-size: 0.72rem; color: var(--white-dim); text-transform: uppercase; letter-spacing: 1px;">
-                        Found Year 1</div>
-                </div>
-                <div style="text-align: center;">
-                    <div
-                        style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--gold);">
-                        72hrs</div>
-                    <div
-                        style="font-size: 0.72rem; color: var(--white-dim); text-transform: uppercase; letter-spacing: 1px;">
-                        To Find Your #1 Leak</div>
-                </div>
-                <div style="text-align: center;">
-                    <div
-                        style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--gold);">
-                        1,200+</div>
-                    <div
-                        style="font-size: 0.72rem; color: var(--white-dim); text-transform: uppercase; letter-spacing: 1px;">
-                        Days Sober &mdash; Same Systems</div>
-                </div>
-            </div>
-            <p
-                style="font-size: 0.9rem; color: var(--white-dim); font-style: italic; max-width: 500px; margin: 0 auto;">
-                "I didn't find $41,000 because I'm smarter than other operators. I found it because I finally stopped
-                guessing and looked. This Kit forces you to look &mdash; the same way recovery forced me to be honest
-                about everything else."</p>
-            <p style="font-size: 0.8rem; color: var(--gray); margin-top: 10px;">&mdash; Christian Schiffner, 1,200+ days
-                sober, Dawson City, Yukon</p>
-        </div>
-    </section>
-
-    <!-- ============================================
-     OFFER STACK
-     ============================================ -->
-    <section class="section section--alt" id="get-the-kit">
-        <div class="container">
-            <div class="section__label">What You Get</div>
-            <h2 class="section__title">The 72-Hour Profit Discovery Kit</h2>
-
-            <div class="offer-box">
-                <div class="offer-item">
-                    <div class="offer-check">&#10003;</div>
-                    <div>
-                        <div class="offer-name">Day-by-Day Walkthrough Videos (3 x 30 min) <span
-                                style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gold); border: 1px solid var(--gold-border); padding: 2px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle;">RECORDING
-                                NOW</span></div>
-                        <div class="offer-desc">I walk you through each day of the Discovery. Not theory &mdash; the
-                            exact steps, in order, with examples from real restaurants. Videos are being recorded now
-                            and will be added to your access page &mdash; all 5 tools are available immediately at
-                            purchase.</div>
-                    </div>
-                </div>
-                <div class="offer-item">
-                    <div class="offer-check">&#10003;</div>
-                    <div>
-                        <div class="offer-name">The Exposure Sheet (Fillable Template)</div>
-                        <div class="offer-desc">Pull your actual numbers into one document. Revenue, costs, ratios,
-                            waste inventory. The template tells you exactly what to pull and where to find it.</div>
-                    </div>
-                </div>
-                <div class="offer-item">
-                    <div class="offer-check">&#10003;</div>
-                    <div>
-                        <div class="offer-name">The Diagnosis Workbook</div>
-                        <div class="offer-desc">Rank every leak by dollar amount. Run the 5 Whys to find root causes.
-                            Identify your #1 leak &mdash; the one costing the most that you can fix this week.</div>
-                    </div>
-                </div>
-                <div class="offer-item">
-                    <div class="offer-check">&#10003;</div>
-                    <div>
-                        <div class="offer-name">The Protocol Builder Template</div>
-                        <div class="offer-desc">Design your one-page fix. Trigger, pre-decided response, who executes,
-                            how you measure, what success looks like. Print it. Post it. Done.</div>
-                    </div>
-                </div>
-                <div class="offer-item">
-                    <div class="offer-check">&#10003;</div>
-                    <div>
-                        <div class="offer-name">Measurement Tracker (Spreadsheet)</div>
-                        <div class="offer-desc">Daily, weekly, and 30-day tracking built in. No complicated software.
-                            Enter numbers. See trends. Know if the leak is shrinking.</div>
-                    </div>
-                </div>
-                <div class="offer-item">
-                    <div class="offer-check">&#10003;</div>
-                    <div>
-                        <div class="offer-name">Pre-Decided Response Cards (8 Common Leaks)</div>
-                        <div class="offer-desc">Laminate-ready cards for every excuse: "We were too busy." "I forgot."
-                            Pre-decided responses so you never negotiate with the system.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
-     PRICING + GUARANTEE
-     ============================================ -->
-    <section class="section">
-        <div class="container">
-            <div class="price-section">
-                <p class="price-anchor">
-                    Restaurant consultants charge <s>$5,000&ndash;$20,000</s> for this analysis.
-                </p>
-                <div class="price-main">$197</div>
-                <div class="price-note">Founding Rate &mdash; Increases to $297 After First 20 Operators</div>
-
-                <a href="https://buy.stripe.com/6oUaEY4PkbN8dZBdRDfAc01" class="cta-btn">
-                    Get the 72-Hour Profit Discovery Kit &mdash; $197
-                </a>
-                <p class="cta-sub">One-time payment. Lifetime access. No subscription. No recurring fee.</p>
-            </div>
-
-            <div class="guarantee">
-                <div class="guarantee__icon">&#9745;</div>
-                <div>
-                    <div class="guarantee__title">The "Find a Leak" Guarantee</div>
-                    <p class="guarantee__text">
-                        Complete the 72-Hour Discovery. If you don't find at least one profit leak worth more than
-                        $197/month, email me. Full refund. No questions. In 20 years of restaurant operations across 5
-                        countries, I've never seen a restaurant that wasn't leaking somewhere. The only question is how
-                        much.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
-     FAQ / OBJECTION HANDLING
-     ============================================ -->
-    <section class="section section--alt">
-        <div class="container">
-            <div class="section__label">Common Questions</div>
-            <h2 class="section__title">Before You Decide</h2>
-
-            <div class="faq-item open">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                    "I don't have time for a 3-day audit."
-                </div>
-                <div class="faq-a">
-                    <p>The Kit takes 7&ndash;10 hours across 3 days. You can do it during slow periods or after service.
-                        You're already working 70+ hours a week. This is 7 hours that show you where the other 63 are
-                        leaking money.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                    "I already know my numbers."
-                </div>
-                <div class="faq-a">
-                    <p>You know your revenue. Do you know your prime cost percentage this week? Your waste in dollars
-                        per day? Your labor cost per $1,000 of revenue? The Kit forces specificity. Gut feelings don't
-                        stop leaks. Numbers do.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                    "$197 is a lot right now."
-                </div>
-                <div class="faq-a">
-                    <p>If your restaurant is losing $800/week in untracked waste &mdash; that's $3,200/month. The Kit
-                        costs less than 2 days of what you're already losing. And it gives you the system to stop it
-                        permanently.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                    "Can't I just do this myself with a spreadsheet?"
-                </div>
-                <div class="faq-a">
-                    <p>You can. You've had that option for years. The reason you haven't is because you need a framework
-                        that forces you through the uncomfortable parts &mdash; looking at real numbers, admitting
-                        what's broken, building the fix, and closing the escape routes. That's what the Kit does.
-                        Structure, not information.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-                    "What if my restaurant is different?"
-                </div>
-                <div class="faq-a">
-                    <p>I built this in Dawson City, Yukon &mdash; population 1,300, -40&deg;C, two-week supply delay. If
-                        the framework works there, it works for you. The 9 leak categories are universal across every
-                        restaurant I've worked in across 5 countries and 20 years.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
-     FINAL CTA + URGENCY
-     ============================================ -->
-    <section class="section">
-        <div class="container" style="text-align: center;">
-            <div class="sep"></div>
-            <h2 class="section__title" style="max-width: 600px; margin: 0 auto 24px;">Every Week You Don't Know Your
-                Numbers Is a Week You Lose Money You'll Never Get Back</h2>
-
-            <p class="section__text" style="text-align: center; max-width: 540px; margin: 0 auto 12px;">
-                $800/week in waste = <strong style="color: var(--red-soft);">$41,600/year.</strong>
-            </p>
-            <p class="section__text" style="text-align: center; max-width: 540px; margin: 0 auto 12px;">
-                $500/week in labor leaks = <strong style="color: var(--red-soft);">$26,000/year.</strong>
-            </p>
-            <p class="section__text" style="text-align: center; max-width: 540px; margin: 0 auto 32px;">
-                $300/week in menu mispricing = <strong style="color: var(--red-soft);">$15,600/year.</strong>
-            </p>
-
-            <p class="section__text" style="text-align: center; max-width: 500px; margin: 0 auto 40px;">
-                <strong style="color: var(--white);">You don't need to work harder. You need to see where the money
-                    goes.</strong><br>
-                72 hours. One leak. One fix. That's all it takes to start.
-            </p>
-
-            <a href="https://buy.stripe.com/6oUaEY4PkbN8dZBdRDfAc01" class="cta-btn">
-                Get the 72-Hour Profit Discovery Kit &mdash; $197
-            </a>
-            <p class="cta-sub">Founding rate. Lifetime access. "Find a Leak" guarantee.</p>
-        </div>
-    </section>
-
-    <!-- ============================================
-     NOT READY? — ESCAPE HATCH
-     ============================================ -->
-    <section class="section" style="padding: 48px 24px; text-align: center; border-top: 1px solid var(--navy-border);">
-        <div class="container">
-            <p
-                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;">
-                Not Ready to Buy?</p>
-            <p
-                style="font-size: 1.05rem; color: var(--white-dim); line-height: 1.7; max-width: 500px; margin: 0 auto 24px;">
-                Start with the free Profit Leak Calculator. 5 minutes. 9 categories. Find where your restaurant is
-                bleeding money &mdash; then decide if you want the full framework to fix it.
-            </p>
-            <a href="/calculator.html"
-                style="display: inline-block; padding: 14px 32px; border: 2px solid var(--gold-border); border-radius: 8px; color: var(--gold); font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; transition: all 0.2s;">Start
-                the Free Calculator</a>
-            <p style="font-size: 0.8rem; color: var(--gray); margin-top: 16px;">Or get the <a
-                    href="/toolkit-bundle.html" style="color: var(--gold-dim); text-decoration: underline;">Operator's
-                    Toolkit for $47</a> &mdash; 8 spreadsheets to start tracking your numbers this week.</p>
-        </div>
-    </section>
-
-    <!-- ============================================
-     CREDIBILITY FOOTER
-     ============================================ -->
-    <div class="cred-footer">
-        <img class="cred-photo" src="/images/chris-chef-portrait.jpg" alt="Christian Schiffner — German Master Chef">
-        <div class="cred-title">German Master Chef (Kuchenmeister) &bull; 20+ Years Operations &bull; 5 Countries</div>
-        <div class="cred-title">1,200+ Days Recovery &bull; Dawson City, Yukon</div>
-        <p class="cred-quote">"Same restaurant. Same me. Different operating system."</p>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+      <button class="nav-toggle"
+        onclick="document.querySelector('.nav-links').classList.toggle('active')"
+        aria-label="Menu">&#9776;</button>
+      <div class="nav-links">
+        <a href="/about.html">My Story</a>
+        <a href="/framework.html">The Protocol</a>
+        <a href="/services.html">Work With Me</a>
+        <a href="/blog/">Blog</a>
+        <a href="/calculator.html">Free Tools</a>
+        <a href="/kit.html" class="nav-cta">Discovery Kit</a>
+      </div>
     </div>
+  </nav>
 
-    <div class="gold-top"></div>
-
-    <!-- ============================================
-     STICKY MOBILE CTA
-     ============================================ -->
-    <div class="sticky-cta" id="stickyCta">
-        <a href="https://buy.stripe.com/6oUaEY4PkbN8dZBdRDfAc01" class="cta-btn">Get the Kit &mdash; $197</a>
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">72-Hour Profit Discovery &mdash; Starter Kit</span>
+      <h1>
+        You're Busy.<br>
+        But You're Not<br>
+        <span class="gold">as Profitable as You Should Be.</span>
+      </h1>
+      <p class="hero-sub">
+        Industry data suggests independent restaurants at your revenue level lose
+        <strong>$60,000 to $220,000 per year</strong> to profit leaks most operators never find.
+        Not because they're lazy. Because the leaks are invisible until you know where to look.
+        <br><br>
+        This kit gives you the tools and the 72-hour process to find your single biggest one.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#buy" class="btn-primary">Get the Kit &mdash; $297</a>
+        <a href="#whats-inside" class="btn-secondary">See what's included &darr;</a>
+      </div>
+      <div class="hero-trust">
+        <span class="hero-trust-item"><span>&#10003;</span> 8 operational spreadsheets</span>
+        <span class="hero-trust-item"><span>&#10003;</span> 72-hour structured walkthrough</span>
+        <span class="hero-trust-item"><span>&#10003;</span> 5 diagnostic tools</span>
+        <span class="hero-trust-item"><span>&#10003;</span> instant download</span>
+      </div>
     </div>
+  </section>
 
-    <script>
-        // Show sticky CTA after scrolling past hero
-        const stickyCta = document.getElementById('stickyCta');
-        const hero = document.querySelector('.hero');
-        if (stickyCta && hero) {
-            const observer = new IntersectionObserver(([entry]) => {
-                if (window.innerWidth <= 767) {
-                    stickyCta.style.display = entry.isIntersecting ? 'none' : 'block';
-                }
-            }, { threshold: 0 });
-            observer.observe(hero);
-        }
+  <!-- ============================================
+       PROOF BAR
+       ============================================ -->
+  <div class="proof-bar">
+    <div class="proof-bar-inner">
+      <div class="proof-stat">
+        <span class="proof-stat-number">20+</span>
+        <span class="proof-stat-label">Years in Professional Kitchens</span>
+      </div>
+      <div class="proof-bar-divider"></div>
+      <div class="proof-stat">
+        <span class="proof-stat-number">5</span>
+        <span class="proof-stat-label">Countries Worked</span>
+      </div>
+      <div class="proof-bar-divider"></div>
+      <div class="proof-stat">
+        <span class="proof-stat-number">$370K</span>
+        <span class="proof-stat-label">Debt Rebuilt From</span>
+      </div>
+      <div class="proof-bar-divider"></div>
+      <div class="proof-stat">
+        <span class="proof-stat-number">1,200+</span>
+        <span class="proof-stat-label">Days of Continuous Proof</span>
+      </div>
+      <div class="proof-bar-divider"></div>
+      <div class="proof-stat">
+        <span class="proof-stat-number">K&uuml;chen&shy;meister</span>
+        <span class="proof-stat-label">German Master Chef Credential</span>
+      </div>
+    </div>
+  </div>
 
-        // FAQ accordion - close others when opening one
-        document.querySelectorAll('.faq-q').forEach(q => {
-            q.addEventListener('click', () => {
-                const parent = q.parentElement;
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    if (item !== parent) item.classList.remove('open');
-                });
-            });
-        });
-    </script>
+  <!-- ============================================
+       PROBLEM — THE LEAKS
+       ============================================ -->
+  <section class="section">
+    <div class="container--wide">
+      <span class="section-label">The Problem</span>
+      <h2 class="section-title">Your Restaurant Has Leaks.<br>You Just Can't See <span class="gold">Where They Are.</span></h2>
+      <div class="section-body">
+        <p>
+          You check the register at close. Sales look fine. You're not throwing money away on obvious things.
+          But the bank account tells a different story every month.
+        </p>
+        <p>
+          Industry research identifies seven categories where independent restaurants consistently lose money.
+          Most operators have five to seven of them running simultaneously. Not because they're bad at their job.
+          Because no one ever showed them where to look.
+        </p>
+      </div>
+
+      <div class="leak-grid">
+        <div class="leak-card">
+          <span class="leak-number">Leak 01</span>
+          <div class="leak-name">Untracked Food Waste</div>
+          <p class="leak-desc">Over-prepped proteins in the bin at close. Expired produce no one logged. The gap between what you planned to throw away and what you actually did.</p>
+          <span class="leak-range">Industry data: $15K&ndash;$40K/year</span>
+        </div>
+        <div class="leak-card">
+          <span class="leak-number">Leak 02</span>
+          <div class="leak-name">Labor Misallocation</div>
+          <p class="leak-desc">Owner doing $15/hour prep work. Scheduled hours not tied to actual covers. Paying a full crew for a half-house night.</p>
+          <span class="leak-range">Industry data: $10K&ndash;$30K/year</span>
+        </div>
+        <div class="leak-card">
+          <span class="leak-number">Leak 03</span>
+          <div class="leak-name">Staff Turnover</div>
+          <p class="leak-desc">Industry research puts the cost of replacing a single employee at $5,864 in lost productivity, recruitment, and training. Multiply by how many you replaced last year.</p>
+          <span class="leak-range">Industry data: $10K&ndash;$60K/year</span>
+        </div>
+        <div class="leak-card">
+          <span class="leak-number">Leak 04</span>
+          <div class="leak-name">Menu Mispricing</div>
+          <p class="leak-desc">Gut-feel pricing without contribution margin data. High-cost items priced the same as low-cost ones. No engineering. Just guessing.</p>
+          <span class="leak-range">Industry data: $8K&ndash;$25K/year</span>
+        </div>
+        <div class="leak-card">
+          <span class="leak-number">Leak 05</span>
+          <div class="leak-name">Supplier Overpayment</div>
+          <p class="leak-desc">Same supplier. No competitive quote process. No negotiation. For years. Loyalty is fine. Paying above market is not.</p>
+          <span class="leak-range">Industry data: $5K&ndash;$20K/year</span>
+        </div>
+        <div class="leak-card">
+          <span class="leak-number">Leak 06</span>
+          <div class="leak-name">Delivery Platform Bleed</div>
+          <p class="leak-desc">25 to 30 percent commission structures eroding every delivery order. Revenue goes up. Margin goes down. Nobody notices until the P&amp;L.</p>
+          <span class="leak-range">Industry data: $5K&ndash;$15K/year</span>
+        </div>
+        <div class="leak-card">
+          <span class="leak-number">Leak 07</span>
+          <div class="leak-name">Beverage and Bar Shrinkage</div>
+          <p class="leak-desc">Untracked pours. Complimentary drinks with no system. Staff drinks that don't show up anywhere. Small amounts. Consistent pattern.</p>
+          <span class="leak-range">Industry data: $3K&ndash;$12K/year</span>
+        </div>
+      </div>
+
+      <p class="leak-disclaimer">
+        Ranges are based on industry research data and represent estimates, not guaranteed results.<br>
+        Individual restaurant figures vary based on revenue, category, and operational context.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       THE PROCESS — 72 HOURS
+       ============================================ -->
+  <section class="section section--dark">
+    <div class="container">
+      <span class="section-label">The Process</span>
+      <h2 class="section-title">Three Days.<br><span class="gold">One System. One Fix.</span></h2>
+      <div class="section-body">
+        <p>
+          Most operators try to fix everything at once. That's why nothing gets fixed. The 72-hour process finds your single biggest leak and installs one system to address it. That's it.
+        </p>
+        <p>
+          Start Monday. By Wednesday you know exactly where you're losing the most money and you've started fixing it.
+        </p>
+      </div>
+
+      <div class="process-steps">
+        <!-- Day 1 -->
+        <div class="process-step">
+          <div class="step-left">
+            <div class="step-day">Day<br>1</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-right">
+            <div class="step-name"><span class="gold">Exposure.</span> Walk the Territory.</div>
+            <p class="step-body">
+              Not the map. The territory. You're going to physically walk your operation and measure what you actually throw away &mdash; not what you think you throw away.
+              Most operators have never done this. The gap between the estimate and the real number is the leak.
+            </p>
+            <div class="step-detail">
+              <strong>What you'll use:</strong> The Exposure Sheet and Waste Tracking Log. You log every discarded, over-prepped, or expired item by weight and dollar value. No estimates allowed.
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="process-step">
+          <div class="step-left">
+            <div class="step-day">Day<br>2</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-right">
+            <div class="step-name"><span class="gold">Diagnosis.</span> Five Whys.</div>
+            <p class="step-body">
+              You take the single biggest find from Day 1 and apply the 5 Whys. Not ten problems. One. You keep asking why until you hit the root system failure, not the symptom.
+              Then you design one fix. Not a list. One.
+            </p>
+            <div class="step-detail">
+              <strong>What you'll use:</strong> The Diagnosis Workbook and Measurement Tracker. The workbook walks you through the 5 Whys process with prompts specific to each leak category.
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="process-step step-last">
+          <div class="step-left">
+            <div class="step-day">Day<br>3</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-right">
+            <div class="step-name"><span class="gold">Install.</span> Start Today. Not Monday.</div>
+            <p class="step-body">
+              You write a one-page protocol. You brief the team. You start measuring today.
+              Not after the weekend. Not when things slow down. Today. The protocol builder keeps it to one page because anything longer won't survive a busy service.
+            </p>
+            <div class="step-detail">
+              <strong>What you'll use:</strong> The Protocol Builder and Response Cards. One-page format. Team-brief script included. Measurement starts day one of install, not when you get around to it.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       WHAT'S INSIDE
+       ============================================ -->
+  <section class="section" id="whats-inside">
+    <div class="container--wide">
+      <span class="section-label">What's Inside</span>
+      <h2 class="section-title">Everything You Need.<br><span class="gold">Nothing You Don't.</span></h2>
+      <div class="section-body">
+        <p>The kit is three components. Spreadsheets for the numbers. A structured walkthrough for the process. Diagnostic tools for the diagnosis. That's it. No video course to sit through. No weekly calls. You do it in your own kitchen on your own schedule.</p>
+      </div>
+
+      <div class="kit-contents">
+
+        <!-- GROUP 1: Spreadsheets -->
+        <div class="kit-group">
+          <div class="kit-group-header">
+            <div class="kit-group-icon">&#128202;</div>
+            <div>
+              <div class="kit-group-title">The 8 Operational Spreadsheets</div>
+              <div class="kit-group-subtitle">Excel format. Works in Google Sheets too.</div>
+            </div>
+            <span class="kit-group-count">8 Files</span>
+          </div>
+          <div class="kit-group-items">
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Recipe Costing &amp; Plate Cost Calculator</div>
+                <p class="kit-item-benefit">Know the exact food cost percentage on every dish before you price it. No more gut-feel pricing on items you haven't actually costed.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Weekly Prime Cost Tracker</div>
+                <p class="kit-item-benefit">Track your combined food and labor cost percentage week by week. Spot the trends before they become crises. The single number that tells you if your operation is healthy or not.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Menu Engineering Matrix</div>
+                <p class="kit-item-benefit">Map every menu item by profitability and popularity. Find the items that look busy but drain your margin. Find the ones that print money quietly.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Par Level &amp; Order Calculator</div>
+                <p class="kit-item-benefit">Stop over-ordering. Stop under-ordering. Set par levels based on actual usage, not habit. Reduce food waste at the source.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Waste Tracking Log</div>
+                <p class="kit-item-benefit">Weigh what you throw away. Dollar-value every discard. The core tool for Day 1 of the 72-hour process. Most operators have never done this. The number is always surprising.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Delivery Profitability Calculator</div>
+                <p class="kit-item-benefit">Run the real numbers on every delivery platform. After commission, packaging, and labor, how much are you actually keeping? For most operators, the answer changes how they feel about delivery.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Menu Psychology Audit Checklist</div>
+                <p class="kit-item-benefit">A structured review of your menu layout, item placement, description copy, and price anchoring. Small changes here move money from low-margin to high-margin items without changing a single recipe.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Vendor Price Comparison Tracker</div>
+                <p class="kit-item-benefit">Get competitive quotes. Track price movements across suppliers. Know when your supplier raises prices on a specific item without telling you. Most operators never look.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GROUP 2: Quick-Start Guide -->
+        <div class="kit-group">
+          <div class="kit-group-header">
+            <div class="kit-group-icon">&#128196;</div>
+            <div>
+              <div class="kit-group-title">72-Hour Quick-Start Guide</div>
+              <div class="kit-group-subtitle">Days 1 through 7. Structured walkthrough.</div>
+            </div>
+            <span class="kit-group-count">7-Day Guide</span>
+          </div>
+          <div class="kit-group-items">
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Days 1&ndash;3: The 72-Hour Discovery</div>
+                <p class="kit-item-benefit">Step-by-step walkthrough of the Exposure, Diagnosis, and Install process. What to do each day. What tools to use. What questions to ask. Designed to work even if you're running a service that night.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Days 4&ndash;7: First-Week Implementation</div>
+                <p class="kit-item-benefit">After you've found the leak and installed the protocol, what do you actually do next? Days 4 through 7 walk you through the first week of running your new system &mdash; what to measure, what to look for, how to know if it's working.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">The Handoff Point</div>
+                <p class="kit-item-benefit">Day 7 ends with a clear picture of what you've found and what comes next. You'll know your single biggest leak, have one system running, and understand which of the remaining categories to address. The guide tells you exactly how to read that picture.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GROUP 3: Discovery Tools -->
+        <div class="kit-group">
+          <div class="kit-group-header">
+            <div class="kit-group-icon">&#128270;</div>
+            <div>
+              <div class="kit-group-title">The 5 Discovery Kit Tools</div>
+              <div class="kit-group-subtitle">The diagnostic layer. Process over guesswork.</div>
+            </div>
+            <span class="kit-group-count">5 Tools</span>
+          </div>
+          <div class="kit-group-items">
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Diagnosis Workbook</div>
+                <p class="kit-item-benefit">Structured prompts for applying the 5 Whys to your biggest leak. Takes you from "we waste a lot of food" to the root system failure causing it.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Exposure Sheet</div>
+                <p class="kit-item-benefit">The Day 1 audit document. Log every discard by category, item, quantity, and dollar value. Replaces vague estimates with empirical data.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Measurement Tracker</div>
+                <p class="kit-item-benefit">Tracks the specific metric you're addressing week over week. You can't manage what you don't measure. This makes the leak visible and keeps it visible.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Protocol Builder</div>
+                <p class="kit-item-benefit">One-page format for your new operational protocol. The constraint is intentional &mdash; anything longer won't survive a busy service. Includes a team-brief script.</p>
+              </div>
+            </div>
+            <div class="kit-item">
+              <span class="kit-item-check">&#10003;</span>
+              <div>
+                <div class="kit-item-name">Response Cards</div>
+                <p class="kit-item-benefit">Pre-written Situation-Action responses for the most common exceptions your team will encounter. Takes the decision out of the moment and puts it in the card.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       WHO IT'S FOR / NOT FOR
+       ============================================ -->
+  <section class="section section--card">
+    <div class="container">
+      <span class="section-label">Who This Is For</span>
+      <h2 class="section-title">Honest About <span class="gold">Who Gets Results Here.</span></h2>
+      <div class="section-body">
+        <p>This kit is not for everyone. Here's who gets value from it and who doesn't.</p>
+      </div>
+      <div class="for-not-grid">
+        <div class="for-col for-col--yes">
+          <div class="for-col-title">Built for you if&hellip;</div>
+          <ul class="for-list">
+            <li>You run an independent restaurant at $800K to $3M annual revenue</li>
+            <li>You're busy. Probably profitable on paper. But you know something's off.</li>
+            <li>You have direct control over purchasing, scheduling, menu pricing, and staffing</li>
+            <li>You want to know exactly where you're losing money before you spend more trying to fix things</li>
+            <li>You're done guessing and ready to look at actual numbers</li>
+            <li>You can work through a structured process in your off-hours without hand-holding</li>
+          </ul>
+        </div>
+        <div class="for-col for-col--no">
+          <div class="for-col-title">Not built for you if&hellip;</div>
+          <ul class="for-list">
+            <li>You're a chain or franchise operator without control over core decisions</li>
+            <li>You're in active financial crisis needing capital &mdash; this is a diagnostic, not a rescue</li>
+            <li>You want someone to fix it for you without doing any of the work yourself</li>
+            <li>You're looking for a magic software tool that tracks everything automatically</li>
+            <li>Your operation is under $500K &mdash; the leak ranges won't justify the process investment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CREDIBILITY / SCAR
+       ============================================ -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">Why This Framework Exists</span>
+      <h2 class="section-title">I Built This in a<br><span class="gold">Yukon Kitchen After Losing Everything.</span></h2>
+
+      <div class="scar-block" style="margin-top: 40px;">
+        <p class="scar-quote">
+          &ldquo;I owed <em>$370,000</em>. The restaurant was open. The dining room was full. And I couldn't figure out where the money was going. I had no system for measuring anything. I was running on instinct after 15 years in professional kitchens and I was still losing.&rdquo;
+        </p>
+        <div class="scar-attr">
+          <img src="/images/Kitchen1.jpg" alt="Christian Schiffner — The Grumpy Chef" class="scar-attr-photo">
+          <div>
+            <div class="scar-attr-name">Christian Schiffner</div>
+            <div class="scar-attr-title">K&uuml;chenmeister &bull; The Grumpy Chef &bull; Dawson City, Yukon</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-body" style="margin-top: 32px;">
+        <p>
+          I started as an apprentice at Hotel Rothaus in the Black Forest in 2004, age 17. Over 20 years I cooked professionally in Germany, Switzerland, Austria, Spain, and Canada. I earned my K&uuml;chenmeister credential &mdash; the German Master Chef designation &mdash; which requires years of documented practice and examination under the German Chamber of Crafts.
+        </p>
+        <p>
+          None of that stopped me from losing $370,000.
+        </p>
+        <p>
+          What stopped the bleeding was measurement. A physical waste walk every day. Par levels set against real numbers, not habit. A vendor comparison process instead of loyalty. Menu engineering instead of gut-feel pricing. The frameworks in this kit are what I actually used in my own kitchen, working 80 to 140 hours a week, in a town of 1,300 people in the Yukon, with no margin for error and no consultant to call.
+        </p>
+        <p>
+          I rebuilt from $370,000 in debt in one of the most isolated restaurant markets in North America. This kit is the documented version of how I did it.
+        </p>
+      </div>
+
+      <div class="credentials-grid">
+        <div class="credential-item">
+          <span class="credential-value">20+</span>
+          <span class="credential-label">Years in professional kitchens across 5 countries</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-value">K&uuml;chen&shy;meister</span>
+          <span class="credential-label">German Master Chef &mdash; German Chamber of Crafts</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-value">$370K</span>
+          <span class="credential-label">Personal debt rebuilt using these exact frameworks</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-value">1,200+</span>
+          <span class="credential-label">Days of documented operational recovery</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-value">145</span>
+          <span class="credential-label">Day operating season at Grumpy Schnitzel, Dawson City</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-value">2004</span>
+          <span class="credential-label">Started kitchen apprenticeship at 17, Black Forest, Germany</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PRICE ANCHOR
+       ============================================ -->
+  <section class="section section--dark" id="buy">
+    <div class="container">
+      <span class="section-label">The Price Argument</span>
+      <h2 class="section-title">$297 vs. What You're<br><span class="gold">Already Losing Every Month.</span></h2>
+      <div class="section-body" style="margin-bottom: 48px;">
+        <p>
+          A restaurant consultant charges $2,000 to $5,000 for an operational diagnostic. This kit packages the same structured process so you can run it on your own operation in a weekend. You don't need to clear your schedule or fly someone in.
+        </p>
+        <p>
+          Industry data suggests independent operators at $800K to $3M revenue may lose $2,500 to $5,500 per month to common profit leaks. The kit costs $297. That is less than two days of average monthly loss in a single leak category.
+        </p>
+      </div>
+
+      <div class="price-block">
+        <div class="price-comparison">
+          <div class="price-col">
+            <span class="price-col-label">Industry data: avg. monthly leak exposure</span>
+            <div class="price-col-amount price-col-amount--high">$5,500</div>
+            <p class="price-col-sub">Per month. Across 7 leak categories.<br>Industry estimate for operators at your revenue level.</p>
+          </div>
+          <div class="price-vs">vs.</div>
+          <div class="price-col">
+            <span class="price-col-label">The kit</span>
+            <div class="price-col-amount price-col-amount--kit">$297</div>
+            <p class="price-col-sub">One-time. Instant download.<br>8 spreadsheets + 72-hr guide + 5 diagnostic tools.</p>
+          </div>
+        </div>
+
+        <p style="font-size: 0.88rem; color: var(--white-dim); line-height: 1.7; text-align: left; margin-bottom: 32px;">
+          If the 72-hour process finds one leak and you address it, the kit cost is recovered in days, not months. If it finds nothing &mdash; which would be unusual given what industry data says about operators at your revenue level &mdash; you spent $297 and got eight operational tools you can use in your kitchen from this week forward.
+        </p>
+
+        <div class="price-cta">
+          <a href="https://buy.stripe.com/3cI5kE6Xs8AW5t53cZfAc03" class="btn-buy">Get the Kit &mdash; $297 CAD</a>
+          <span class="btn-buy-sub">Instant download &bull; Excel + PDF &bull; Works on any device</span>
+        </div>
+
+        <p class="price-disclaimer" style="margin-top: 24px;">
+          <em>The $297 price is for the Starter Kit &mdash; the 8 spreadsheets, 72-Hour Quick-Start Guide, and 5 diagnostic tools. Industry data figures ($60K&ndash;$220K annual, $2,500&ndash;$5,500 monthly, $5,864 per employee) are estimates from industry research and do not represent guaranteed results. Individual restaurant outcomes vary.</em>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       WHAT HAPPENS AFTER
+       ============================================ -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">What Comes Next</span>
+      <h2 class="section-title">Day 7 Is the<br><span class="gold">Beginning, Not the End.</span></h2>
+      <div class="section-body" style="margin-bottom: 40px;">
+        <p>By Day 7 you'll have found your single biggest leak and started fixing it. That's what the kit is built to do. But one leak is not your whole problem.</p>
+      </div>
+      <div class="ascension-block">
+        <div class="ascension-title">The 21-Day Recovery Protocol</div>
+        <p class="ascension-body">
+          The Quick-Start Guide ends with a clear picture of what remains. Operators who want to address all seven leak categories systematically &mdash; not just the biggest one &mdash; can continue into the 21-Day Recovery Protocol.
+          <br><br>
+          <strong>Week 1:</strong> Interruption. Break the automatic decisions that caused the leaks.
+          <br>
+          <strong>Week 2:</strong> Criteria-Based Systems. Replace emotional decision-making with Situation-Action protocols.
+          <br>
+          <strong>Week 3:</strong> Pressure Testing. Validate every new system under real operational stress.
+          <br><br>
+          The guide tells you exactly when you're ready for it and what it covers. No hard sell. If you finish the kit and find one leak &mdash; you'll know whether you want to go further.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FAQ
+       ============================================ -->
+  <section class="section section--dark">
+    <div class="container">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">Questions Operators<br><span class="gold">Actually Ask.</span></h2>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What exactly is in the kit?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Three components. First: 8 operational Excel spreadsheets covering recipe costing, prime cost tracking, menu engineering, par levels, waste tracking, delivery profitability, menu psychology, and vendor comparison. Second: the 72-Hour Quick-Start Guide, a day-by-day structured walkthrough covering Days 1 through 7 of the process. Third: 5 diagnostic tools &mdash; the diagnosis workbook, exposure sheet, measurement tracker, protocol builder, and response cards. All delivered as instant download files.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is this for restaurants that are failing?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            No. It is built for operators who are busy and functional &mdash; probably profitable on paper &mdash; but who know something is off and cannot find it on a spreadsheet. If your restaurant is in active financial crisis needing outside capital to stay open, this is a diagnostic, not a rescue. The diagnostic is most useful when you have the operational control to implement what you find.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Why $297 and not less?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            A restaurant consultant charges $2,000 to $5,000 for an operational diagnostic. Industry data suggests operators at $800K to $3M revenue lose $2,500 to $5,500 monthly to the seven most common profit leaks. $297 is less than two days of average monthly loss in a single category. If the kit finds one thing and you address it, the cost is recovered in days. If it finds nothing &mdash; you have eight operational tools for your kitchen going forward.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How long does this actually take?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            The 72-hour discovery process spans three days but doesn't require three full days of your time. Day 1 is a physical audit during or after a service &mdash; an hour to two hours. Day 2 is a structured analysis session &mdash; 60 to 90 minutes. Day 3 is protocol writing and team brief &mdash; under an hour. Days 4 through 7 are implementation and monitoring. The whole process is designed for an operator running a full schedule.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do I need accounting software or technical skills?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            No. The spreadsheets run on Excel or Google Sheets. If you can enter a number and read a cell, you can use these. The process is designed for an operator working at 60 percent capacity after a full shift. If you can read a P&L and do basic math, you have all the technical skills this kit requires.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What if I don't find anything useful?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Industry data suggests independent operators at $800K to $3M revenue have five to seven active profit leaks running at any given time. The process is designed to surface the biggest one. If your operation is genuinely tight across all seven categories, you'll have eight tools to maintain that tightness going forward. Reach out directly if you complete the process and feel it didn't deliver &mdash; I answer those emails myself.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is this for any type of restaurant?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Independent operator-run restaurants, not chains or franchise operations. The tools assume you have direct control over purchasing decisions, scheduling, menu pricing, and staffing. If someone else controls those levers centrally, the kit will show you where the leaks are but you won't have the authority to fix them. Full-service, QSR, and bar-restaurants all work with this framework.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FINAL CTA
+       ============================================ -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Find Your Biggest Leak<br>in <span class="gold">72 Hours.</span></h2>
+      <p class="final-cta-sub">
+        Eight operational spreadsheets. A 7-day structured walkthrough. Five diagnostic tools. The exact process a German Master Chef used to rebuild from $370,000 in debt.
+      </p>
+      <a href="https://buy.stripe.com/3cI5kE6Xs8AW5t53cZfAc03" class="btn-buy" style="margin: 0 auto; display: inline-block;">Get the Kit &mdash; $297 CAD</a>
+      <div style="margin-top: 20px;">
+        <span class="btn-buy-sub">Instant download &bull; Works in Excel and Google Sheets &bull; Start today</span>
+      </div>
+      <div style="margin-top: 32px; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
+        <span class="hero-trust-item" style="opacity: 1;"><span style="color: var(--gold); margin-right: 6px;">&#10003;</span> 8 spreadsheets</span>
+        <span class="hero-trust-item" style="opacity: 1;"><span style="color: var(--gold); margin-right: 6px;">&#10003;</span> 72-hr quick-start guide</span>
+        <span class="hero-trust-item" style="opacity: 1;"><span style="color: var(--gold); margin-right: 6px;">&#10003;</span> 5 diagnostic tools</span>
+        <span class="hero-trust-item" style="opacity: 1;"><span style="color: var(--gold); margin-right: 6px;">&#10003;</span> no calls required</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
+          <p>Restaurant profit recovery for independent operators who are busy but not profitable. Built by Christian Schiffner, German Master Chef (K&uuml;chenmeister), 20+ years across Germany, Switzerland, Austria, Spain, and Canada. Based in Dawson City, Yukon.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigate</h4>
+          <a href="/about.html">My Story</a>
+          <a href="/framework.html">The 21-Day Protocol</a>
+          <a href="/services.html">Work With Me</a>
+          <a href="/kit.html">72-Hour Discovery Kit</a>
+          <a href="/calculator.html">Profit Leak Calculator</a>
+          <a href="/assessment.html">Menu Profit Score</a>
+          <a href="/blog/">Blog</a>
+        </div>
+        <div class="footer-links">
+          <h4>Connect</h4>
+          <a href="https://www.linkedin.com/in/christian-schiffner-938142335/" target="_blank">LinkedIn</a>
+          <a href="https://substack.com/@thegrumpychef" target="_blank">Newsletter</a>
+          <a href="mailto:christian@thegrumpychef.ca">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Christian Schiffner | The Grumpy Chef | German Master Chef (K&uuml;chenmeister)</p>
+        <p>Dawson City, Yukon &bull; From the Black Forest, Germany</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       JS: NAV TOGGLE + FAQ ACCORDION
+       ============================================ -->
+  <script>
+    function toggleFaq(btn) {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      // Open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    }
+  </script>
 
 </body>
-
 </html>
