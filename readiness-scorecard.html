@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F41KYXCEXL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-F41KYXCEXL');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Readiness Scorecard | The Grumpy Chef</title>
+    <meta name="description"
+        content="Answer 17 questions to find out if your restaurant is ready for outside help — and what to fix first. Built from 20+ years of restaurant experience by Chef Christian Schiffner.">
+    <meta property="og:title" content="Restaurant Readiness Scorecard | The Grumpy Chef">
+    <meta property="og:description"
+        content="Answer 17 questions to find out if your restaurant is ready for outside help — and what to fix first. Built from 20+ years of restaurant experience.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thegrumpychef.ca/readiness-scorecard.html">
+    <meta property="og:image" content="https://thegrumpychef.ca/images/chris-chef-portrait.jpg">
+    <meta property="og:image:alt" content="Restaurant Readiness Scorecard — find out what to fix first.">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://thegrumpychef.ca/readiness-scorecard.html">
+    <meta name="author" content="Christian Schiffner">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://thegrumpychef.ca/readiness-scorecard.html#app",
+          "name": "Restaurant Readiness Scorecard",
+          "description": "17-question assessment that scores your restaurant on operational control, growth readiness, and owner dependency. Built from 20+ years of hands-on restaurant experience by Chef Christian Schiffner.",
+          "url": "https://thegrumpychef.ca/readiness-scorecard.html",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Any",
+          "author": { "@id": "https://thegrumpychef.ca/#person" },
+          "provider": { "@id": "https://thegrumpychef.ca/#business" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "CAD"
+          },
+          "isPartOf": { "@id": "https://thegrumpychef.ca/#website" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thegrumpychef.ca/" },
+            { "@type": "ListItem", "position": 2, "name": "Restaurant Readiness Scorecard" }
+          ]
+        }
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET & VARIABLES
+           ============================================ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --navy-hover: #162642;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gray-dark: #2D3748;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --green: #2F855A;
+            --green-glow: rgba(47, 133, 90, 0.10);
+            --red: #C53030;
+            --red-glow: rgba(197, 48, 48, 0.10);
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================
+           NAV
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--navy-border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white-dim);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy) !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-cta:hover {
+            background: var(--white);
+            color: var(--navy) !important;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .gold-top {
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-dim), var(--gold));
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            padding: 120px 0 48px;
+            background: linear-gradient(180deg, #0C1A2E 0%, var(--navy) 100%);
+            border-bottom: 1px solid var(--navy-border);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(28px, 5.5vw, 44px);
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-family: var(--font-body);
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--white-dim);
+            max-width: 560px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .hero h2 strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 200ms ease;
+            letter-spacing: 0.3px;
+        }
+
+        .btn--gold {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn--gold:hover {
+            background: #E0BF4A;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn--gold:disabled {
+            background: var(--gray-dark);
+            color: var(--gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn--subtle {
+            background: transparent;
+            color: var(--white-dim);
+            border: 1px solid var(--navy-border);
+        }
+
+        .btn--subtle:hover {
+            border-color: var(--gold-border);
+            color: var(--gold);
+        }
+
+        /* ============================================
+           VALUE PROPOSITION
+           ============================================ */
+        .value-prop {
+            padding: 64px 0;
+        }
+
+        .value-prop h3 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 0.5px;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .value-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 10px;
+            padding: 28px 24px;
+            text-align: center;
+            transition: border-color 200ms ease;
+        }
+
+        .value-card:hover {
+            border-color: var(--gold-border);
+        }
+
+        .value-card__icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .value-card__title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .value-card__text {
+            font-size: 14px;
+            color: var(--white-dim);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           CREDIBILITY
+           ============================================ */
+        .credibility {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 48px 0 40px;
+        }
+
+        .credibility h3 {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            letter-spacing: 0.3px;
+        }
+
+        .credibility p {
+            font-size: 15px;
+            color: var(--white-dim);
+            line-height: 1.65;
+            margin-bottom: 12px;
+        }
+
+        .credibility strong {
+            color: var(--gold);
+        }
+
+        .bridge-copy {
+            font-style: italic;
+            border-left: 3px solid var(--gold);
+            padding: 16px 24px;
+            margin: 24px auto;
+            max-width: 580px;
+            text-align: left;
+            color: var(--white-dim);
+            font-size: 15px;
+            line-height: 1.65;
+            background: var(--gold-glow);
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* ============================================
+           EMAIL CAPTURE
+           ============================================ */
+        .email-capture {
+            padding: 48px 0 72px;
+        }
+
+        .email-capture h3 {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .email-capture .subtitle {
+            text-align: center;
+            color: var(--white-dim);
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+
+        .capture-form {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .form-row input {
+            flex: 1;
+            height: 48px;
+            padding: 0 16px;
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--white);
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 200ms ease;
+        }
+
+        .form-row input::placeholder {
+            color: var(--gray);
+        }
+
+        .form-row input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px var(--gold-glow);
+        }
+
+        .capture-form .btn {
+            width: 100%;
+            height: 48px;
+            font-size: 15px;
+        }
+
+        .capture-privacy {
+            text-align: center;
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           QUIZ
+           ============================================ */
+        .quiz-container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 100px 24px 60px;
+        }
+
+        .progress-bar {
+            margin-bottom: 40px;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background: var(--navy-card);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gold);
+            border-radius: 3px;
+            transition: width 400ms ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--white-dim);
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        .question-card {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .question-text {
+            font-family: var(--font-display);
+            font-size: clamp(20px, 4vw, 28px);
+            font-weight: 600;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 32px;
+            letter-spacing: 0.3px;
+        }
+
+        .answer-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .answer-btn {
+            min-height: 48px;
+            padding: 12px 24px;
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 200ms ease;
+        }
+
+        .answer-btn:hover {
+            border-color: var(--gold-border);
+            background: var(--navy-hover);
+        }
+
+        .answer-btn.selected {
+            border-color: var(--gold);
+            background: var(--gold-glow);
+            transform: scale(1.02);
+            box-shadow: 0 0 0 3px var(--gold-glow);
+        }
+
+        .answer-yn {
+            width: 50%;
+        }
+
+        .answer-option {
+            width: 100%;
+            text-align: left;
+        }
+
+        .answer-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .open-text {
+            width: 100%;
+            min-height: 100px;
+            padding: 14px 16px;
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--white);
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            outline: none;
+            resize: vertical;
+            transition: border-color 200ms ease;
+        }
+
+        .open-text:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px var(--gold-glow);
+        }
+
+        .open-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+
+        .quiz-nav {
+            margin-top: 32px;
+            text-align: left;
+        }
+
+        /* ============================================
+           RESULTS
+           ============================================ */
+        .results-block {
+            padding: 100px 0 60px;
+        }
+
+        .result-score {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .speedometer {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: conic-gradient(var(--gold) 0deg, var(--navy-card) 0deg);
+            transition: background 800ms ease;
+        }
+
+        .speedometer::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border-radius: 50%;
+            background: var(--navy);
+        }
+
+        .speed-value {
+            position: relative;
+            z-index: 1;
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .result-headline {
+            font-family: var(--font-display);
+            font-size: clamp(22px, 4.5vw, 32px);
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .leak-amount {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 700;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .leak-meter {
+            width: 100%;
+            height: 8px;
+            background: var(--navy-card);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .leak-fill {
+            height: 100%;
+            background: var(--gold);
+            border-radius: 4px;
+            transition: width 800ms ease;
+            width: 0%;
+        }
+
+        .leak-callout {
+            background: var(--red-glow);
+            border: 1px solid rgba(197, 48, 48, 0.3);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 24px 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--white);
+        }
+
+        .leak-caveat {
+            font-size: 12px;
+            color: var(--gray);
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .category-insight {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .category-insight h4 {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .category-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--navy);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .category-fill {
+            height: 100%;
+            background: var(--gold);
+            border-radius: 4px;
+            transition: width 800ms ease;
+            width: 0%;
+        }
+
+        .insight-text {
+            font-style: italic;
+            font-size: 14px;
+            color: var(--white-dim);
+            line-height: 1.55;
+        }
+
+        .override-callout {
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            padding: 24px;
+            margin: 32px 0;
+            text-align: center;
+            background: var(--gold-glow);
+        }
+
+        .override-callout p {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .report-includes {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .report-includes li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--white-dim);
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .report-includes li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .report-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 32px 0;
+        }
+
+        .next-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 32px 0;
+        }
+
+        .next-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 200ms ease;
+        }
+
+        .next-link::after {
+            content: ' \2192';
+        }
+
+        .next-link:hover {
+            color: #E0BF4A;
+        }
+
+        .contact-line {
+            font-size: 13px;
+            color: var(--gray);
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* ============================================
+           PRINT STYLES
+           ============================================ */
+        .print-only {
+            display: none;
+        }
+
+        @media print {
+            /* Hide everything except print pages */
+            .nav,
+            .gold-top,
+            .state-landing,
+            .state-quiz,
+            .no-print,
+            .results-block {
+                display: none !important;
+            }
+
+            .print-only {
+                display: block !important;
+            }
+
+            body {
+                background: #fff !important;
+                color: #1a1a1a !important;
+                font-family: 'Inter', -apple-system, sans-serif;
+                font-size: 11pt;
+                line-height: 1.5;
+            }
+
+            /* Page 1: Header & Score */
+            .print-header {
+                text-align: center;
+                border-bottom: 3px solid #D4AF37;
+                padding-bottom: 16px;
+                margin-bottom: 24px;
+            }
+
+            .print-header h1 {
+                font-family: 'Oswald', sans-serif;
+                font-size: 28pt;
+                color: #0A1628;
+                margin: 0;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+
+            .print-header p {
+                font-size: 11pt;
+                color: #666;
+                margin: 4px 0 0;
+            }
+
+            .print-page-1 h2,
+            .print-page-2 h2 {
+                font-family: 'Oswald', sans-serif;
+                font-size: 18pt;
+                color: #0A1628;
+                margin: 20px 0 8px;
+            }
+
+            .print-page-1 h3,
+            .print-page-2 h3 {
+                font-family: 'Oswald', sans-serif;
+                font-size: 14pt;
+                color: #0A1628;
+                border-bottom: 1px solid #D4AF37;
+                padding-bottom: 4px;
+                margin: 24px 0 12px;
+            }
+
+            .print-score {
+                background: #0A1628;
+                color: #D4AF37;
+                padding: 16px 24px;
+                border-radius: 8px;
+                font-size: 20pt;
+                text-align: center;
+                margin: 16px 0;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .print-leak {
+                background: #f8f5ec;
+                border-left: 4px solid #D4AF37;
+                padding: 12px 20px;
+                font-size: 14pt;
+                margin: 12px 0 20px;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .print-page-1 > p {
+                font-size: 10pt;
+                color: #555;
+                margin: 4px 0;
+            }
+
+            /* Category breakdown */
+            .print-page-1 h3 + p,
+            .print-page-1 h3 + p + p,
+            .print-page-1 h3 + p + p + p {
+                padding: 4px 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            /* Insights */
+            .print-page-1 h3:last-of-type ~ p {
+                font-style: italic;
+                color: #333;
+                padding: 8px 0;
+                border-bottom: 1px solid #f0f0f0;
+                font-size: 10pt;
+            }
+
+            /* Page 2: Action Plan */
+            .print-page-2 {
+                page-break-before: always;
+            }
+
+            .print-action {
+                background: #fafafa;
+                border-left: 4px solid #D4AF37;
+                padding: 12px 16px;
+                margin: 16px 0;
+                break-inside: avoid;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .print-action h4 {
+                font-family: 'Oswald', sans-serif;
+                font-size: 12pt;
+                color: #0A1628;
+                margin: 0 0 6px;
+            }
+
+            .print-action p {
+                font-size: 10pt;
+                margin: 4px 0;
+                color: #333;
+            }
+
+            .print-rec {
+                background: #0A1628;
+                color: #fff;
+                padding: 16px 20px;
+                border-radius: 8px;
+                margin: 24px 0;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .print-rec h4 {
+                font-family: 'Oswald', sans-serif;
+                color: #D4AF37;
+                margin: 0 0 8px;
+                font-size: 12pt;
+            }
+
+            .print-rec p {
+                margin: 0;
+                font-size: 11pt;
+            }
+
+            .print-footer {
+                text-align: center;
+                color: #999;
+                font-size: 9pt;
+                margin-top: 40px;
+                border-top: 1px solid #ddd;
+                padding-top: 12px;
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                flex-direction: column;
+                padding: 16px 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--navy-border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .value-card {
+                padding: 24px 20px;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .answer-row {
+                flex-direction: column;
+            }
+
+            .answer-yn {
+                width: 100%;
+            }
+
+            .report-buttons {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: clamp(24px, 7vw, 36px);
+            }
+
+            .hero {
+                padding: 100px 0 40px;
+            }
+
+            .speedometer {
+                width: 160px;
+                height: 160px;
+            }
+
+            .speed-value {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"
+                aria-label="Menu">&#9776;</button>
+            <div class="nav-links">
+                <a href="/about.html">My Story</a>
+                <a href="/framework.html">The Protocol</a>
+                <a href="/services.html">Work With Me</a>
+                <a href="/blog/">Blog</a>
+                <a href="/calculator.html">Free Tools</a>
+                <a href="/kit.html" class="nav-cta">Discovery Kit</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="gold-top"></div>
+
+    <!-- ============================================
+     STATE 1: LANDING
+     ============================================ -->
+    <div id="stateLanding" class="state-landing">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container">
+                <h1>Working 70+ hours a week but your profit margins keep shrinking?</h1>
+                <h2>Answer <strong>17 questions</strong> to find out if your restaurant is ready for outside help &mdash; and what to fix first.</h2>
+                <a href="#emailCapture" class="btn btn--gold">Find Out Where You Stand &darr;</a>
+            </div>
+        </section>
+
+        <!-- VALUE PROPOSITION -->
+        <section class="value-prop">
+            <div class="container">
+                <h3>Your scorecard covers three critical areas</h3>
+                <div class="value-grid">
+                    <div class="value-card">
+                        <div class="value-card__icon">&#9881;</div>
+                        <div class="value-card__title">Operational Control</div>
+                        <p class="value-card__text">Do your systems run the restaurant &mdash; or are you the system? We measure food cost tracking, inventory discipline, and labour scheduling.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-card__icon">&#9650;</div>
+                        <div class="value-card__title">Growth Readiness</div>
+                        <p class="value-card__text">Could your restaurant handle 20% more revenue tomorrow without breaking? We look at capacity, pricing, and financial visibility.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-card__icon">&#128274;</div>
+                        <div class="value-card__title">Owner Dependency</div>
+                        <p class="value-card__text">What happens when you take a week off? We assess how much the operation depends on you being there every single day.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CREDIBILITY -->
+        <section class="credibility">
+            <div class="container">
+                <h3>Built by someone who has lived it</h3>
+                <p><strong>Chef Christian Schiffner</strong> &mdash; German K&uuml;chenmeister with 20+ years running kitchens across Germany, Switzerland, Austria, Spain, and Canada.</p>
+                <p>Rebuilt from $370K in debt after a business failure. Learned what no textbook teaches: the 17 indicators that separate restaurants that survive from restaurants that bleed out slowly.</p>
+                <div class="bridge-copy">
+                    &ldquo;I spent 20 years and $370K in mistakes to learn these 17 indicators. This scorecard gives you the same clarity in under 5 minutes &mdash; free.&rdquo;
+                </div>
+            </div>
+        </section>
+
+        <!-- EMAIL CAPTURE -->
+        <section class="email-capture" id="emailCapture">
+            <div class="container">
+                <h3>Ready to find out where you stand?</h3>
+                <p class="subtitle">Enter your details below and we'll send your custom 2-page report once you finish.</p>
+                <form class="capture-form" id="captureForm" novalidate>
+                    <div class="form-row">
+                        <input type="text" id="firstName" name="firstName" placeholder="First Name" required autocomplete="given-name">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required autocomplete="email">
+                    </div>
+                    <button type="submit" class="btn btn--gold" id="startBtn" disabled>Start My Assessment &rarr;</button>
+                    <p class="capture-privacy">We need your email to send your custom 2-page report. No spam. Unsubscribe anytime.</p>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ============================================
+     STATE 2: QUIZ (rendered by JS)
+     ============================================ -->
+    <div id="stateQuiz" class="state-quiz" style="display:none;">
+        <div class="quiz-container container">
+            <div class="progress-bar">
+                <div class="progress-text"><span id="qNum">6</span>% complete</div>
+                <div class="progress-track">
+                    <div id="progressFill" class="progress-fill" style="width: 5.88%"></div>
+                </div>
+            </div>
+            <div id="questionCard" class="question-card"></div>
+            <div class="quiz-nav">
+                <button id="backBtn" class="btn btn--subtle" disabled>&larr; Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+     STATE 3: RESULTS (rendered by JS)
+     ============================================ -->
+    <div id="stateResults" class="state-results" style="display:none;"></div>
+
+    <!-- Analytics -->
+    <script src="/js/analytics.js"></script>
+
+    <script>
+        /* ============================================
+           STATE & FORM LOGIC
+           ============================================ */
+        (function () {
+            'use strict';
+
+            // State object
+            var scorecardState = {
+                firstName: '',
+                email: '',
+                currentStep: 0,
+                answers: new Array(17).fill(null)
+            };
+
+            // DOM refs
+            var firstNameInput = document.getElementById('firstName');
+            var emailInput = document.getElementById('email');
+            var startBtn = document.getElementById('startBtn');
+            var captureForm = document.getElementById('captureForm');
+            var stateLanding = document.getElementById('stateLanding');
+            var stateQuiz = document.getElementById('stateQuiz');
+            var stateResults = document.getElementById('stateResults');
+
+            // Simple email regex
+            function isValidEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            // Enable/disable button based on input validity
+            function validateForm() {
+                var nameOk = firstNameInput.value.trim().length > 0;
+                var emailOk = isValidEmail(emailInput.value.trim());
+                startBtn.disabled = !(nameOk && emailOk);
+            }
+
+            firstNameInput.addEventListener('input', validateForm);
+            emailInput.addEventListener('input', validateForm);
+
+            // Form submit
+            captureForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var name = firstNameInput.value.trim();
+                var email = emailInput.value.trim();
+
+                if (!name || !isValidEmail(email)) return;
+
+                // Store in state
+                scorecardState.firstName = name;
+                scorecardState.email = email;
+
+                // Fire GA4 event
+                if (typeof gtag === 'function') {
+                    gtag('event', 'tool_start', {
+                        event_category: 'readiness_scorecard',
+                        event_label: 'email_captured'
+                    });
+                }
+
+                // Transition: hide landing, show quiz
+                stateLanding.style.display = 'none';
+                stateQuiz.style.display = 'block';
+                renderQuestion();
+                window.scrollTo(0, 0);
+            });
+
+            // ============================================
+            // QUESTIONS DATA
+            // ============================================
+            var QUESTIONS = [
+                { id: 1, text: 'Do you have documented SOPs for your three highest-volume tasks (opening, closing, prep)?', type: 'yesno', category: 'operational_control', scored: true },
+                { id: 2, text: 'Does every shift run from a written checklist \u2014 not just from memory?', type: 'yesno', category: 'operational_control', scored: true },
+                { id: 3, text: 'Do you track food cost weekly (not just when your accountant tells you)?', type: 'yesno', category: 'operational_control', scored: true },
+                { id: 4, text: 'Do you have a system for handling the top 3 things that go wrong on a busy night?', type: 'yesno', category: 'operational_control', scored: true },
+                { id: 5, text: 'Do you review your P&L monthly and know your actual profit margin?', type: 'yesno', category: 'growth_readiness', scored: true },
+                { id: 6, text: 'Do you have at least one revenue stream beyond dine-in (catering, delivery, retail)?', type: 'yesno', category: 'growth_readiness', scored: true },
+                { id: 7, text: 'Have you raised prices in the last 12 months based on actual cost data?', type: 'yesno', category: 'growth_readiness', scored: true },
+                { id: 8, text: 'Could your restaurant run a full weekend service profitably without you on-site?', type: 'yesno', category: 'owner_dependency', scored: true },
+                { id: 9, text: 'Does your team make daily operational decisions (ordering, scheduling, comps) without calling you?', type: 'yesno', category: 'owner_dependency', scored: true },
+                { id: 10, text: 'Have you taken more than 3 consecutive days off without sales dropping in the past year?', type: 'yesno', category: 'owner_dependency', scored: true },
+                { id: 11, text: "What's your approximate annual revenue?", type: 'select', category: 'hybrid', scored: false,
+                  options: [
+                      { label: 'Under $500K', value: 'under-500k', midpoint: 350000 },
+                      { label: '$500K\u2013$1M', value: '500k-1m', midpoint: 750000 },
+                      { label: '$1M\u2013$2M', value: '1m-2m', midpoint: 1500000 },
+                      { label: '$2M\u2013$5M', value: '2m-5m', midpoint: 3500000 },
+                      { label: '$5M+', value: '5m-plus', midpoint: 6000000 }
+                  ]
+                },
+                { id: 12, text: "What's your current food cost percentage?", type: 'select', category: 'hybrid', scored: false,
+                  options: [
+                      { label: 'Under 25%', value: 'under-25', gapMultiplier: 0.00 },
+                      { label: '25\u201330%', value: '25-30', gapMultiplier: 0.01 },
+                      { label: '30\u201335%', value: '30-35', gapMultiplier: 0.04 },
+                      { label: '35\u201340%', value: '35-40', gapMultiplier: 0.07 },
+                      { label: 'Over 40%', value: 'over-40', gapMultiplier: 0.10 },
+                      { label: "I don't know", value: 'unknown', gapMultiplier: 0.08 }
+                  ]
+                },
+                { id: 13, text: 'Which best describes you right now?', type: 'select', category: 'qualifying', scored: false,
+                  options: [
+                      { label: 'First 2 years of ownership', value: 'new-owner' },
+                      { label: 'Running 3\u201310 years', value: 'mid-career' },
+                      { label: 'Veteran operator (10+ years)', value: 'veteran' },
+                      { label: 'Multiple locations', value: 'multi-unit' }
+                  ]
+                },
+                { id: 14, text: "What's the #1 thing you want to achieve in the next 90 days?", type: 'select', category: 'qualifying', scored: false,
+                  options: [
+                      { label: 'Reduce my hours without losing revenue', value: 'reduce-hours' },
+                      { label: 'Improve profit margins', value: 'improve-margins' },
+                      { label: 'Build systems so the team runs without me', value: 'build-systems' },
+                      { label: 'Prepare to open a second location or sell', value: 'scale-or-exit' }
+                  ]
+                },
+                { id: 15, text: "What's the biggest thing stopping you right now?", type: 'select', category: 'qualifying', scored: false,
+                  options: [
+                      { label: "I don't know where the money is leaking", value: 'money-leaking' },
+                      { label: "My team can't operate without me", value: 'team-dependent' },
+                      { label: "I don't have time to fix systems while running service", value: 'no-time' },
+                      { label: "I've tried consultants before and it didn't work", value: 'burned-before' },
+                      { label: "None of these \u2014 I'm actually doing great", value: 'doing-great' }
+                  ]
+                },
+                { id: 16, text: 'Which type of help suits you best?', type: 'select', category: 'qualifying', scored: false,
+                  options: [
+                      { label: 'A book or course I can work through myself (~$30\u201350)', value: 'diy' },
+                      { label: 'A toolkit with templates and guides (~$300)', value: 'toolkit' },
+                      { label: 'Ongoing coaching or a platform (~$250/month)', value: 'coaching' },
+                      { label: 'Someone to build the systems for me (~$3,500/month)', value: 'done-for-you' }
+                  ]
+                },
+                { id: 17, text: 'Is there anything else we should know about your situation?', type: 'opentext', category: 'qualifying', scored: false }
+            ];
+
+            // ============================================
+            // QUIZ RENDERING
+            // ============================================
+            function renderQuestion() {
+                var q = QUESTIONS[scorecardState.currentStep];
+                var card = document.getElementById('questionCard');
+                var existing = scorecardState.answers[scorecardState.currentStep];
+
+                document.getElementById('qNum').textContent = Math.round(((scorecardState.currentStep + 1) / QUESTIONS.length) * 100);
+                document.getElementById('progressFill').style.width =
+                    ((scorecardState.currentStep + 1) / QUESTIONS.length * 100) + '%';
+                document.getElementById('backBtn').disabled = scorecardState.currentStep === 0;
+
+                var html = '<p class="question-text">' + q.text + '</p>';
+
+                if (q.type === 'yesno') {
+                    html += '<div class="answer-row">';
+                    html += '<button class="answer-btn answer-yn' + (existing === true ? ' selected' : '') + '" data-value="true">Yes</button>';
+                    html += '<button class="answer-btn answer-yn' + (existing === false ? ' selected' : '') + '" data-value="false">No</button>';
+                    html += '</div>';
+                } else if (q.type === 'select') {
+                    html += '<div class="answer-stack">';
+                    q.options.forEach(function(opt) {
+                        var sel = existing === opt.value ? ' selected' : '';
+                        html += '<button class="answer-btn answer-option' + sel + '" data-value="' + opt.value + '">' + opt.label + '</button>';
+                    });
+                    html += '</div>';
+                } else if (q.type === 'opentext') {
+                    html += '<textarea id="openBox" class="open-text" rows="4" placeholder="Optional \u2014 share anything that might help us give better recommendations...">' + (existing || '') + '</textarea>';
+                    html += '<div class="open-actions">';
+                    html += '<button class="btn btn--subtle" id="skipBtn">Skip</button>';
+                    html += '<button class="btn btn--gold" id="submitQuizBtn">See My Results &rarr;</button>';
+                    html += '</div>';
+                }
+
+                card.innerHTML = html;
+                attachAnswerHandlers(q);
+            }
+
+            // ============================================
+            // ANSWER HANDLERS
+            // ============================================
+            function attachAnswerHandlers(q) {
+                var card = document.getElementById('questionCard');
+                if (q.type === 'yesno') {
+                    card.querySelectorAll('.answer-yn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var val = this.getAttribute('data-value') === 'true';
+                            scorecardState.answers[scorecardState.currentStep] = val;
+                            card.querySelectorAll('.answer-yn').forEach(function(b) { b.classList.remove('selected'); });
+                            this.classList.add('selected');
+                            fireQuestionEvent(q);
+                            setTimeout(goNext, 500);
+                        });
+                    });
+                } else if (q.type === 'select') {
+                    card.querySelectorAll('.answer-option').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            scorecardState.answers[scorecardState.currentStep] = this.getAttribute('data-value');
+                            card.querySelectorAll('.answer-option').forEach(function(b) { b.classList.remove('selected'); });
+                            this.classList.add('selected');
+                            fireQuestionEvent(q);
+                            setTimeout(goNext, 500);
+                        });
+                    });
+                } else if (q.type === 'opentext') {
+                    document.getElementById('skipBtn').addEventListener('click', function() {
+                        scorecardState.answers[scorecardState.currentStep] = '';
+                        goNext();
+                    });
+                    document.getElementById('submitQuizBtn').addEventListener('click', function() {
+                        var textarea = document.getElementById('openBox');
+                        scorecardState.answers[scorecardState.currentStep] = textarea ? textarea.value.trim() : '';
+                        goNext();
+                    });
+                }
+            }
+
+            // ============================================
+            // ANALYTICS HELPERS
+            // ============================================
+            function fireQuestionEvent(q) {
+                if (window.gcQuestionAnswered) {
+                    window.gcQuestionAnswered('readiness-scorecard', scorecardState.currentStep + 1, q.category);
+                } else if (typeof gtag === 'function') {
+                    gtag('event', 'question_answered', { tool: 'readiness-scorecard', question_number: scorecardState.currentStep + 1, category: q.category });
+                }
+            }
+
+            function fireSectionEvent(section, count) {
+                if (window.gcSectionCompleted) {
+                    window.gcSectionCompleted('readiness-scorecard', section, count);
+                } else if (typeof gtag === 'function') {
+                    gtag('event', 'section_completed', { tool: 'readiness-scorecard', section: section, question_count: count });
+                }
+            }
+
+            // ============================================
+            // NAVIGATION
+            // ============================================
+            function goNext() {
+                if (scorecardState.currentStep === 9) fireSectionEvent('best-practices', 10);
+                if (scorecardState.currentStep === 11) fireSectionEvent('hybrid-scoring', 2);
+
+                scorecardState.currentStep++;
+                if (scorecardState.currentStep < QUESTIONS.length) {
+                    renderQuestion();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    fireSectionEvent('qualifying', 5);
+                    showResults();
+                }
+            }
+
+            document.getElementById('backBtn').addEventListener('click', function() {
+                if (scorecardState.currentStep > 0) {
+                    scorecardState.currentStep--;
+                    renderQuestion();
+                }
+            });
+
+            // ============================================
+            // INSIGHTS LOOKUP TABLE
+            // ============================================
+            var INSIGHTS = {
+                operational_control: [
+                    "You're missing all four operational control basics \u2014 no SOPs, no checklists, no weekly food cost tracking, no crisis systems. This is where the bleeding starts.",
+                    "You've got one piece in place, but three critical systems are missing. Without SOPs, checklists, and weekly cost tracking working together, you're firefighting instead of running a business.",
+                    "Half your operational controls are in place. The gaps are creating inconsistency \u2014 some shifts run well, others don't. That inconsistency is where profit leaks hide.",
+                    "You're close on operational control \u2014 three of four systems are working. Closing the last gap will lock in the consistency that turns good weeks into every week.",
+                    "Full marks on operational control. Your systems are running. This is rare \u2014 most operators never get here. The question now is whether these systems are working without you."
+                ],
+                growth_readiness: [
+                    "No P&L review, no diversified revenue, no data-driven pricing. You're flying blind on growth \u2014 and likely leaving significant money on the table.",
+                    "One growth fundamental in place, but two major gaps. Without knowing your actual margin and adjusting prices to match, growth just means scaling the same problems.",
+                    "Two of three growth indicators are solid. The missing piece is the one that usually separates restaurants that survive from those that actually scale profitably.",
+                    "Growth readiness is strong \u2014 you know your numbers, you've diversified revenue, and you're pricing from data. You're positioned to scale when the other areas catch up."
+                ],
+                owner_dependency: [
+                    "The restaurant cannot function without you. You can't take a day off without things breaking. This isn't a business \u2014 it's a job that owns you.",
+                    "Your team handles some decisions, but the restaurant still depends on your presence for critical operations. One illness or vacation and things start to slide.",
+                    "Your team handles daily decisions and you've managed some time away, but sales still dip when you're gone. The last step is making your absence invisible to the P&L.",
+                    "Low owner dependency \u2014 your team runs service profitably without you and you've taken real time off. This is the foundation that makes everything else possible."
+                ]
+            };
+
+            // ============================================
+            // ACTION ITEMS (priority ordered)
+            // ============================================
+            var ACTION_ITEMS = [
+                { qIndex: 4, action: 'Review your P&L monthly \u2014 block 2 hours on the 1st of every month.', why: "You can't improve what you don't measure. Most operators are shocked by what they find.", impact: 'Identifies 3\u20138% of hidden margin loss within 60 days.' },
+                { qIndex: 2, action: 'Track food cost weekly, not monthly.', why: 'Monthly means you find problems 30 days too late. Weekly catches waste, theft, and pricing gaps in real time.', impact: 'Operators who switch to weekly tracking typically recover 2-4% margin within 90 days.' },
+                { qIndex: 0, action: 'Document SOPs for your top 3 tasks (open, close, prep).', why: "When procedures live in your head, quality dies when you're not there. Written SOPs = consistent execution.", impact: "Reduces training time by 50% and eliminates 'I didn't know' mistakes." },
+                { qIndex: 7, action: "Build a 'weekend without you' plan \u2014 delegate one Saturday in the next 30 days.", why: "If you can't leave, you don't own a business. Start with one shift. Document what breaks. Fix those things.", impact: 'First step toward owner-independence. Most issues are smaller than you think.' },
+                { qIndex: 1, action: 'Create shift checklists for every position.', why: "Checklists aren't micromanagement \u2014 they're how airlines prevent crashes. Same principle, smaller stakes.", impact: "Eliminates 80% of 'I forgot' errors. Takes one afternoon to build." },
+                { qIndex: 6, action: 'Raise prices based on actual cost data this quarter.', why: 'Most operators underprice by 10-15% out of fear. Your competitors already raised theirs.', impact: 'Even a 5% price increase on high-volume items can add $20K-$50K annually.' },
+                { qIndex: 8, action: 'Delegate one daily decision to your team this week.', why: "Start small \u2014 ordering, scheduling, or comp approvals. Coach the decision, don't make it.", impact: 'Builds the muscle your team needs to run without you.' },
+                { qIndex: 3, action: "Write a 'Top 3 Things That Go Wrong' playbook.", why: 'Every restaurant has the same 3 crises. Write down what to do for each. Your team will stop calling you.', impact: 'Reduces owner call-ins by 60%+ on crisis nights.' },
+                { qIndex: 5, action: 'Add one revenue stream beyond dine-in within 90 days.', why: "Catering, meal kits, retail sauces, delivery \u2014 pick one. Single-revenue restaurants are fragile.", impact: 'Even a small secondary stream adds 5-15% revenue buffer.' },
+                { qIndex: 9, action: 'Schedule 3 consecutive days off in the next 60 days.', why: "This isn't a vacation \u2014 it's a stress test. What breaks while you're gone IS your priority list.", impact: 'Reveals the real dependency bottlenecks no checklist can find.' }
+            ];
+
+            var COGS_OVERRIDE = {
+                action: 'Set up weekly COGS tracking.',
+                why: "Pick one supplier invoice day. Every week, same day, calculate: (opening inventory + purchases - closing inventory) / revenue = food cost %. If you don't know this number, every other fix is guessing.",
+                impact: 'This 20-minute weekly habit usually uncovers $2,000\u2013$8,000 in immediate savings within the first month.'
+            };
+
+            // ============================================
+            // SCORING ENGINE
+            // ============================================
+            function calculateScores() {
+                var yesCount = 0;
+                var ocScore = 0, grScore = 0, odScore = 0;
+
+                for (var i = 0; i < 10; i++) {
+                    if (scorecardState.answers[i] === true) {
+                        yesCount++;
+                        if (i < 4) ocScore++;
+                        else if (i < 7) grScore++;
+                        else odScore++;
+                    }
+                }
+
+                var bestPracticeScore = Math.round((yesCount / 10) * 100);
+                var operationalControl = Math.round((ocScore / 4) * 100);
+                var growthReadiness = Math.round((grScore / 3) * 100);
+                var ownerDependency = Math.round((odScore / 3) * 100);
+
+                var revenueOpt = QUESTIONS[10].options.find(function(o) { return o.value === scorecardState.answers[10]; });
+                var foodCostOpt = QUESTIONS[11].options.find(function(o) { return o.value === scorecardState.answers[11]; });
+                var revenueMidpoint = revenueOpt ? revenueOpt.midpoint : 750000;
+                var foodCostGap = foodCostOpt ? foodCostOpt.gapMultiplier : 0.05;
+
+                var baseLeak;
+                if (bestPracticeScore >= 80) baseLeak = 0.03;
+                else if (bestPracticeScore >= 50) baseLeak = 0.06;
+                else baseLeak = 0.10;
+
+                var leakEstimate = Math.round(revenueMidpoint * (baseLeak + foodCostGap));
+
+                var composite = bestPracticeScore;
+                var q16 = scorecardState.answers[15];
+                var q13 = scorecardState.answers[12];
+                var q14 = scorecardState.answers[13];
+                var q15 = scorecardState.answers[14];
+
+                if (q16 === 'coaching' || q16 === 'done-for-you') composite += 20;
+                if (q13 === 'veteran' || q13 === 'multi-unit') composite += 10;
+                if (q14 === 'build-systems' || q14 === 'scale-or-exit') composite += 10;
+                if (q15 === 'doing-great') composite -= 30;
+                composite = Math.max(0, Math.min(composite, 140));
+
+                var classification;
+                if (composite > 80) classification = 'hot';
+                else if (composite >= 50) classification = 'warm';
+                else classification = 'nurture';
+
+                var leakPercent = Math.round((leakEstimate / revenueMidpoint) * 100);
+
+                return {
+                    bestPracticeScore: bestPracticeScore,
+                    operationalControl: operationalControl,
+                    growthReadiness: growthReadiness,
+                    ownerDependency: ownerDependency,
+                    ocRaw: ocScore, grRaw: grScore, odRaw: odScore,
+                    leakEstimate: leakEstimate, leakPercent: leakPercent,
+                    revenueMidpoint: revenueMidpoint,
+                    composite: composite, classification: classification,
+                    foodCostUnknown: scorecardState.answers[11] === 'unknown',
+                    revenueBracket: scorecardState.answers[10],
+                    foodCostBracket: scorecardState.answers[11],
+                    currentSituation: scorecardState.answers[12],
+                    goal90day: scorecardState.answers[13],
+                    obstacle: scorecardState.answers[14],
+                    preferredSolution: scorecardState.answers[15],
+                    openBox: scorecardState.answers[16] || ''
+                };
+            }
+
+            // ============================================
+            // HELPER FUNCTIONS
+            // ============================================
+            function buildCategoryInsight(name, raw, max, pct, insightArr) {
+                var html = '<div class="category-insight">';
+                html += '<h4>' + name + ': ' + raw + '/' + max + '</h4>';
+                html += '<div class="category-bar"><div class="category-fill" style="width: ' + pct + '%"></div></div>';
+                html += '<p class="insight-text">' + insightArr[raw] + '</p>';
+                html += '</div>';
+                return html;
+            }
+
+            function buildNextStepLinks(scores) {
+                var html = '<div class="next-links">';
+                var hasLinks = false;
+                if (scores.operationalControl < 50) { html += '<a href="/calculator.html" class="next-link">Try the Profit Leak Calculator &rarr;</a>'; hasLinks = true; }
+                if (scores.growthReadiness < 67) { html += '<a href="/blog/" class="next-link">Read: How to price your menu with data &rarr;</a>'; hasLinks = true; }
+                if (scores.ownerDependency < 67) { html += '<a href="/framework.html" class="next-link">Explore the 21-Day Recovery Protocol &rarr;</a>'; hasLinks = true; }
+                if (!hasLinks) html += '<a href="/" class="next-link">Explore more free tools &rarr;</a>';
+                html += '</div>';
+                return html;
+            }
+
+            // High-scorer fallback actions (Owner Dependency focus — never show generic filler)
+            var HIGH_SCORE_ACTIONS = [
+                { action: 'Schedule 3 consecutive days off in the next 60 days.', why: "This isn't a vacation \u2014 it's a stress test. What breaks while you're gone IS your priority list.", impact: 'Reveals the real dependency bottlenecks no checklist can find.' },
+                { action: 'Document who can approve comps, schedule changes, and supplier orders without calling you.', why: 'Daily decisions are still routing through you. Each one you delegate buys back an hour.', impact: 'Cuts owner phone calls by 70\u201380% within 30 days.' },
+                { action: 'Run one full weekend "owner-absent" simulation with your manager leading.', why: "Sales still dip when you're gone \u2014 that's the final test.", impact: 'Makes your absence invisible to the P&L (the last step to true freedom).' }
+            ];
+
+            function getTop3Actions(scores) {
+                var actions = [];
+                if (scores.foodCostUnknown) actions.push(COGS_OVERRIDE);
+                ACTION_ITEMS.forEach(function(item) {
+                    if (actions.length >= 3) return;
+                    if (scorecardState.answers[item.qIndex] === false) actions.push(item);
+                });
+                // High scorers: use Owner Dependency actions instead of filler
+                var fallbackIdx = 0;
+                while (actions.length < 3) {
+                    actions.push(HIGH_SCORE_ACTIONS[fallbackIdx] || HIGH_SCORE_ACTIONS[2]);
+                    fallbackIdx++;
+                }
+                return actions.slice(0, 3);
+            }
+
+            function animateSpeedometer(target) {
+                var el = document.querySelector('.speedometer');
+                if (!el) return;
+                var duration = 1500;
+                var start = performance.now();
+                function tick(now) {
+                    var elapsed = now - start;
+                    var progress = Math.min(elapsed / duration, 1);
+                    var current = Math.round(target * progress);
+                    el.style.background = 'conic-gradient(var(--gold) ' + (current * 3.6) + 'deg, var(--navy-card) 0deg)';
+                    el.querySelector('.speed-value').textContent = current + '%';
+                    if (progress < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+            }
+
+            function buildPrintPages(scores) {
+                var html = '';
+                // Page 1
+                html += '<div class="print-page-1 print-only">';
+                html += '<div class="print-header"><h1>The Grumpy Chef</h1><p>Restaurant Readiness Report</p></div>';
+                html += '<h2>' + scorecardState.firstName + "'s Restaurant Readiness Report</h2>";
+                html += '<p>Generated: ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + '</p>';
+                html += '<div class="print-score"><strong>Readiness Score: ' + scores.bestPracticeScore + '%</strong></div>';
+                html += '<div class="print-leak"><strong>Potentially Recoverable Profit: $' + scores.leakEstimate.toLocaleString('en-US') + '/year</strong></div>';
+                html += '<h3>Category Breakdown</h3>';
+                html += '<p>Operational Control: ' + scores.ocRaw + '/4 (' + scores.operationalControl + '%)</p>';
+                html += '<p>Growth Readiness: ' + scores.grRaw + '/3 (' + scores.growthReadiness + '%)</p>';
+                html += '<p>Owner Dependency: ' + scores.odRaw + '/3 (' + scores.ownerDependency + '%)</p>';
+                html += '<h3>Insights</h3>';
+                html += '<p>' + INSIGHTS.operational_control[scores.ocRaw] + '</p>';
+                html += '<p>' + INSIGHTS.growth_readiness[scores.grRaw] + '</p>';
+                html += '<p>' + INSIGHTS.owner_dependency[scores.odRaw] + '</p>';
+                html += '</div>';
+                // Page 2
+                html += '<div class="print-page-2 print-only">';
+                html += '<h2>Your Personalized 90-Day Action Plan</h2>';
+                html += '<p>Based on your answers, here are your top 3 priorities:</p>';
+                var actions = getTop3Actions(scores);
+                actions.forEach(function(a, i) {
+                    html += '<div class="print-action">';
+                    html += '<h4>Priority ' + (i + 1) + ': ' + a.action + '</h4>';
+                    html += '<p><strong>Why it matters:</strong> ' + a.why + '</p>';
+                    html += '<p><strong>Expected impact:</strong> ' + a.impact + '</p>';
+                    html += '</div>';
+                });
+                var recMap = {
+                    'diy': 'Start with our free tools: thegrumpychef.ca/calculator and thegrumpychef.ca/blog',
+                    'toolkit': 'The 72-Hour Profit Discovery Kit was built for exactly this \u2014 thegrumpychef.ca/kit',
+                    'coaching': 'Our Operational Operating System launches soon \u2014 join the waitlist',
+                    'done-for-you': 'Chris works with 4-5 operators at a time on async retainers \u2014 thegrumpychef.ca/lp/discovery'
+                };
+                var rec = recMap[scores.preferredSolution] || recMap['diy'];
+                html += '<div class="print-rec"><h4>Recommended Next Step</h4><p>' + rec + '</p></div>';
+                html += '<p class="print-footer">Questions? chris@thegrumpychef.ca | thegrumpychef.ca</p>';
+                html += '</div>';
+                return html;
+            }
+
+            function downloadPDF() {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'pdf_download', { event_category: 'engagement', tool: 'readiness-scorecard' });
+                }
+                window.print();
+            }
+
+            // ============================================
+            // RESULTS — FULL IMPLEMENTATION
+            // ============================================
+            function showResults() {
+                var scores = calculateScores();
+
+                stateQuiz.style.display = 'none';
+                stateResults.style.display = 'block';
+
+                var html = '';
+
+                // Block 1: Big Reveal
+                var headline;
+                if (scores.bestPracticeScore >= 80) headline = "Strong foundations \u2014 you're closer than you think.";
+                else if (scores.bestPracticeScore >= 50) headline = "Solid start, but there's real room to improve.";
+                else headline = "Your restaurant is running you. Let's fix that.";
+
+                html += '<section class="results-block result-score"><div class="container">';
+                html += '<div class="speedometer" data-score="' + scores.bestPracticeScore + '"><span class="speed-value">0%</span></div>';
+                html += '<h2 class="result-headline">' + headline + '</h2>';
+                html += '</div></section>';
+
+                // Block 2: Profit Leak
+                html += '<section class="results-block result-leak"><div class="container">';
+                html += '<p class="leak-intro">Based on your revenue and food cost data, you have approximately</p>';
+                html += '<p class="leak-amount">$' + scores.leakEstimate.toLocaleString('en-US') + '</p>';
+                html += '<p class="leak-label">in potentially recoverable profit per year</p>';
+                html += '<div class="leak-meter"><div class="leak-fill" style="width: ' + Math.min(scores.leakPercent, 100) + '%"></div></div>';
+                html += '<p class="leak-percent">' + scores.leakPercent + '% of your revenue is recoverable</p>';
+                if (scores.foodCostUnknown) {
+                    html += '<p class="leak-callout">You couldn\'t answer your food cost percentage \u2014 that blind spot alone is likely costing you money every single week. You can\'t fix what you don\'t measure.</p>';
+                }
+                html += '<p class="leak-caveat">This is an estimate based on industry benchmarks \u2014 your actual number may vary.</p>';
+                html += '</div></section>';
+
+                // Block 3: Category Insights
+                html += '<section class="results-block result-insights"><div class="container">';
+                if (scores.foodCostUnknown) {
+                    html += '<div class="override-callout"><strong>Priority #1:</strong> You don\'t know your food cost percentage. Nothing else matters until you fix this.</div>';
+                }
+                html += buildCategoryInsight('Operational Control', scores.ocRaw, 4, scores.operationalControl, INSIGHTS.operational_control);
+                html += buildCategoryInsight('Growth Readiness', scores.grRaw, 3, scores.growthReadiness, INSIGHTS.growth_readiness);
+                html += buildCategoryInsight('Owner Dependency', scores.odRaw, 3, scores.ownerDependency, INSIGHTS.owner_dependency);
+                html += '</div></section>';
+
+                // Block 4: PDF Report
+                html += '<section class="results-block result-report no-print"><div class="container">';
+                html += '<h3>Your Free Readiness Report</h3>';
+                html += '<p>We\'ve built a personalized report based on your answers.</p>';
+                html += '<ul class="report-includes"><li>Your full score breakdown by category</li><li>Your estimated recoverable profit</li><li>A prioritized 90-day action plan based on your weakest area</li><li>A recommended next step matched to your goals</li></ul>';
+                html += '<div class="report-buttons">';
+                html += '<button class="btn btn--gold" onclick="downloadPDF()">Print / Save as PDF</button>';
+                html += '<button class="btn btn--subtle" onclick="emailReport()">Email Me My Report</button>';
+                html += '</div></div></section>';
+
+                // Block 5: Soft Next Steps
+                html += '<section class="results-block result-next no-print"><div class="container">';
+                html += '<p>Check your inbox \u2014 we\'ve sent your first recommendation based on your score.</p>';
+                html += buildNextStepLinks(scores);
+                html += '<p class="contact-line">Questions? <a href="mailto:chris@thegrumpychef.ca">chris@thegrumpychef.ca</a> | <a href="https://thegrumpychef.ca">thegrumpychef.ca</a></p>';
+                html += '</div></section>';
+
+                // Print pages
+                html += buildPrintPages(scores);
+
+                stateResults.innerHTML = html;
+                animateSpeedometer(scores.bestPracticeScore);
+
+                // Fire analytics
+                var resultData = { score: scores.bestPracticeScore, leak_estimate: scores.leakEstimate, composite_score: scores.composite };
+                if (window.gcToolComplete) { window.gcToolComplete('readiness-scorecard', resultData); }
+                else if (typeof gtag === 'function') { gtag('event', 'tool_complete', Object.assign({ tool: 'readiness-scorecard' }, resultData)); }
+
+                // Backend submission + Kit tagging
+                var tagIds = computeTags(scores);
+                submitToBackend(scores, tagIds);
+
+                // Store scores for Task 8 backend submission
+                window.scorecardScores = scores;
+
+                window.scrollTo(0, 0);
+            }
+
+            // Expose functions globally for onclick handlers
+            window.downloadPDF = downloadPDF;
+            // ============================================
+            // BACKEND SUBMISSION + KIT TAGGING
+            // ============================================
+            var SUPABASE_URL = 'https://cusexfqdhskgsywrqduj.supabase.co/functions/v1';
+
+            var TAG_IDS = {
+                'readiness-scorecard': '17574140',
+                'readiness-high': '17574142',
+                'readiness-mid': '17574143',
+                'readiness-low': '17574144',
+                'budget-tier-diy': '17574145',
+                'budget-tier-kit': '17574146',
+                'budget-tier-coaching': '17574147',
+                'budget-tier-retainer': '17574148',
+                'blind-spot-food-cost': '17574149',
+                'multi-unit': '17574150',
+                'tire-kicker': '17574151',
+                'hot-lead': '17574152',
+                'report-requested': '17574153',
+                'status-saturated': '17578366',
+                'high-value-veteran': '17578367'
+            };
+
+            function computeTags(scores) {
+                var tagNames = ['readiness-scorecard'];
+
+                if (scores.bestPracticeScore >= 80) tagNames.push('readiness-high');
+                else if (scores.bestPracticeScore >= 50) tagNames.push('readiness-mid');
+                else tagNames.push('readiness-low');
+
+                var budgetMap = { 'diy': 'budget-tier-diy', 'toolkit': 'budget-tier-kit', 'coaching': 'budget-tier-coaching', 'done-for-you': 'budget-tier-retainer' };
+                if (budgetMap[scores.preferredSolution]) tagNames.push(budgetMap[scores.preferredSolution]);
+
+                if (scores.foodCostUnknown) tagNames.push('blind-spot-food-cost');
+                if (scores.currentSituation === 'multi-unit') tagNames.push('multi-unit');
+                if (scores.obstacle === 'doing-great') {
+                    tagNames.push('tire-kicker');
+                    tagNames.push('status-saturated');
+                }
+                if (scores.composite > 80) tagNames.push('hot-lead');
+                if (scores.composite > 120) tagNames.push('high-value-veteran');
+
+                return tagNames.map(function(name) { return TAG_IDS[name]; }).filter(Boolean);
+            }
+
+            function fetchWithRetry(url, payload) {
+                fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).catch(function(err) {
+                    console.warn('First attempt failed, retrying in 3s:', err);
+                    setTimeout(function() {
+                        fetch(url, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        }).catch(function(err2) {
+                            console.error('Retry failed:', err2);
+                        });
+                    }, 3000);
+                });
+            }
+
+            function submitToBackend(scores, tagIds) {
+                var utm = typeof window.getUTMParams === 'function' ? window.getUTMParams() : {};
+
+                var capturePayload = {
+                    email: scorecardState.email,
+                    first_name: scorecardState.firstName,
+                    best_practice_score: scores.bestPracticeScore,
+                    operational_control_score: scores.operationalControl,
+                    growth_readiness_score: scores.growthReadiness,
+                    owner_dependency_score: scores.ownerDependency,
+                    leak_estimate: scores.leakEstimate,
+                    composite_score: scores.composite,
+                    revenue_bracket: scores.revenueBracket,
+                    food_cost_bracket: scores.foodCostBracket,
+                    current_situation: scores.currentSituation,
+                    goal_90day: scores.goal90day,
+                    obstacle: scores.obstacle,
+                    preferred_solution: scores.preferredSolution,
+                    open_box: scores.openBox,
+                    lead_classification: scores.classification,
+                    tags: tagIds,
+                    utm_source: utm.utm_source || '',
+                    utm_medium: utm.utm_medium || '',
+                    utm_campaign: utm.utm_campaign || ''
+                };
+
+                fetchWithRetry(SUPABASE_URL + '/capture-scorecard', capturePayload);
+
+                tagIds.forEach(function(tagId) {
+                    fetchWithRetry(SUPABASE_URL + '/subscribe-and-tag', {
+                        email: scorecardState.email,
+                        first_name: scorecardState.firstName,
+                        tag_id: tagId
+                    });
+                });
+
+                if (typeof gtag === 'function') {
+                    gtag('event', 'lead_gen_tier1', {
+                        event_category: 'lead_capture',
+                        event_label: 'readiness-scorecard',
+                        score: scores.bestPracticeScore,
+                        composite: scores.composite
+                    });
+                }
+            }
+
+            function emailReport() {
+                fetchWithRetry(SUPABASE_URL + '/subscribe-and-tag', {
+                    email: scorecardState.email,
+                    first_name: scorecardState.firstName,
+                    tag_id: TAG_IDS['report-requested']
+                });
+
+                if (typeof gtag === 'function') {
+                    gtag('event', 'report_emailed', { event_category: 'engagement', tool: 'readiness-scorecard' });
+                }
+
+                var btn = document.querySelector('[onclick="emailReport()"]');
+                if (btn) {
+                    btn.textContent = 'Report sent to ' + scorecardState.email;
+                    btn.disabled = true;
+                }
+            }
+
+            window.emailReport = emailReport;
+
+            // Expose state for later quiz/results scripts
+            window.scorecardState = scorecardState;
+        })();
+    </script>
+
+</body>
+</html>
