@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F41KYXCEXL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-F41KYXCEXL');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Readiness Scorecard | Is Your Operation Ready? | The Grumpy Chef</title>
+    <meta name="description" content="17 questions. 3 minutes. Find out if your restaurant is ready for outside help — and exactly what to fix first. Free. Built from 20+ years of hands-on kitchen experience.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Restaurant Readiness Scorecard — Free Assessment | The Grumpy Chef">
+    <meta property="og:description" content="17 questions. 3 minutes. Find out exactly where your restaurant operation breaks down — and what to fix first. Built by a German Master Chef with 20+ years in kitchens.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thegrumpychef.ca/lp/readiness.html">
+    <meta property="og:image" content="https://thegrumpychef.ca/images/chris-chef-portrait.jpg">
+    <meta property="og:image:alt" content="Restaurant Readiness Scorecard — find out what to fix first.">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://thegrumpychef.ca/lp/readiness.html">
+    <meta name="author" content="Christian Schiffner">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebApplication",
+                "@id": "https://thegrumpychef.ca/lp/readiness.html#app",
+                "name": "Restaurant Readiness Scorecard",
+                "description": "17-question assessment that scores your restaurant on operational control, growth readiness, owner dependency, and staff retention. Free. Instant results. Built from 20+ years of hands-on restaurant experience.",
+                "url": "https://thegrumpychef.ca/lp/readiness.html",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Any",
+                "author": { "@id": "https://thegrumpychef.ca/#person" },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "CAD"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --green: #2F855A;
+            --red: #C53030;
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--white); }
+        img { max-width: 100%; height: auto; }
+
+        /* NAV */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between; height: 64px;
+        }
+        .nav-logo {
+            font-family: var(--font-display); font-size: 1.2rem; font-weight: 700;
+            color: var(--white); letter-spacing: 1px; text-transform: uppercase; text-decoration: none;
+        }
+        .nav-logo span { color: var(--gold); }
+        .nav-back {
+            font-size: 0.85rem; color: var(--white-dim); font-weight: 500;
+        }
+        .nav-back:hover { color: var(--gold); }
+
+        /* LAYOUT */
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 80px 24px; }
+        .section-alt { background: var(--navy-light); }
+
+        /* HERO */
+        .hero {
+            padding: 140px 24px 80px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+            position: relative;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at center top, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+        }
+        .hero-inner {
+            max-width: 680px; margin: 0 auto; position: relative; z-index: 1;
+        }
+        .hero-badge {
+            display: inline-block; font-family: var(--font-mono); font-size: 0.7rem;
+            color: var(--gold); border: 1px solid var(--gold-border);
+            padding: 6px 16px; border-radius: 20px; margin-bottom: 24px;
+            letter-spacing: 1px; text-transform: uppercase;
+        }
+        .hero h1 {
+            font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase;
+        }
+        .hero h1 span { color: var(--gold); }
+        .hero-sub {
+            font-size: 1.1rem; color: var(--white-dim); max-width: 560px;
+            margin: 0 auto 32px; line-height: 1.7;
+        }
+
+        /* CTA BUTTON */
+        .btn-primary {
+            display: inline-block; background: var(--gold); color: var(--navy);
+            padding: 16px 40px; border-radius: 8px; font-weight: 700; font-size: 1rem;
+            text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s;
+            border: 2px solid var(--gold); cursor: pointer;
+        }
+        .btn-primary:hover { background: transparent; color: var(--gold); }
+
+        .btn-secondary {
+            display: inline-block; background: transparent; color: var(--white);
+            padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+            border: 2px solid var(--navy-border); transition: all 0.2s;
+        }
+        .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* CTA META — the "fast, free, instant" line */
+        .cta-meta {
+            display: flex; justify-content: center; gap: 24px; margin-top: 16px; flex-wrap: wrap;
+        }
+        .cta-meta-item {
+            font-family: var(--font-mono); font-size: 0.7rem; color: var(--white-dim);
+            text-transform: uppercase; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .cta-meta-item span { color: var(--gold); font-size: 0.9rem; }
+
+        /* PROOF BAR */
+        .proof-bar {
+            background: var(--navy-light); border-top: 1px solid var(--navy-border);
+            border-bottom: 1px solid var(--navy-border); padding: 24px;
+        }
+        .proof-bar-inner {
+            max-width: 720px; margin: 0 auto;
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+        }
+        .proof-item { text-align: center; }
+        .proof-number {
+            font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--gold);
+        }
+        .proof-label {
+            font-size: 0.7rem; color: var(--white-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px;
+        }
+
+        /* SECTION HEADERS */
+        .section-label {
+            font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold);
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            font-weight: 700; text-transform: uppercase; margin-bottom: 16px; line-height: 1.15;
+        }
+        .section-title span { color: var(--gold); }
+        .section-text {
+            font-size: 1rem; color: var(--white-dim); max-width: 600px; line-height: 1.7;
+        }
+
+        /* WHAT IT MEASURES — 4 dimension cards */
+        .dimension-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px; margin-top: 40px;
+        }
+        .dimension-card {
+            background: var(--navy-card); border: 1px solid var(--navy-border);
+            border-radius: 12px; padding: 28px; position: relative; overflow: hidden;
+        }
+        .dimension-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: var(--gold);
+        }
+        .dimension-icon { font-size: 1.8rem; margin-bottom: 12px; }
+        .dimension-name {
+            font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+            text-transform: uppercase; margin-bottom: 8px;
+        }
+        .dimension-desc {
+            font-size: 0.85rem; color: var(--white-dim); line-height: 1.5;
+        }
+        .dimension-questions {
+            font-family: var(--font-mono); font-size: 0.65rem; color: var(--gold);
+            text-transform: uppercase; letter-spacing: 1px; margin-top: 12px;
+        }
+
+        /* CREDIBILITY */
+        .credibility {
+            display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start;
+        }
+        .credibility-photo {
+            width: 140px; height: 140px; border-radius: 50%;
+            border: 3px solid var(--gold); object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        .credibility-name {
+            font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;
+            text-transform: uppercase; margin-bottom: 4px;
+        }
+        .credibility-title {
+            font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
+        }
+        .credibility-bio {
+            font-size: 0.95rem; color: var(--white-dim); line-height: 1.7; margin-bottom: 20px;
+        }
+        .credibility-stats {
+            display: flex; gap: 24px; flex-wrap: wrap;
+        }
+        .cred-stat {
+            background: var(--navy-card); border: 1px solid var(--navy-border);
+            border-radius: 8px; padding: 12px 16px; text-align: center;
+        }
+        .cred-stat-number {
+            font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--gold);
+        }
+        .cred-stat-label {
+            font-size: 0.65rem; color: var(--white-dim); text-transform: uppercase; letter-spacing: 0.5px;
+        }
+
+        /* STATS / RESEARCH */
+        .research-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px; margin-top: 32px;
+        }
+        .research-card {
+            background: var(--navy-card); border: 1px solid var(--navy-border);
+            border-radius: 10px; padding: 24px; text-align: center;
+        }
+        .research-stat {
+            font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--gold);
+        }
+        .research-label {
+            font-size: 0.8rem; color: var(--white-dim); margin-top: 6px; line-height: 1.4;
+        }
+        .research-source {
+            font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray);
+            text-transform: uppercase; letter-spacing: 0.5px; margin-top: 8px;
+        }
+
+        /* HOW IT WORKS */
+        .steps-list { margin-top: 32px; }
+        .step-item {
+            display: flex; gap: 20px; align-items: flex-start; padding: 20px 0;
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .step-item:last-child { border-bottom: none; }
+        .step-num {
+            width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--gold);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+        }
+        .step-content { flex: 1; }
+        .step-name {
+            font-weight: 700; font-size: 1rem; margin-bottom: 4px;
+        }
+        .step-desc {
+            font-size: 0.85rem; color: var(--white-dim); line-height: 1.5;
+        }
+
+        /* MID-PAGE CTA */
+        .mid-cta {
+            text-align: center; padding: 60px 24px;
+            background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
+            border-top: 1px solid var(--gold-border);
+            border-bottom: 1px solid var(--gold-border);
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--navy-border); padding: 20px 0;
+        }
+        .faq-q {
+            font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+            text-transform: uppercase; margin-bottom: 8px;
+        }
+        .faq-a {
+            font-size: 0.9rem; color: var(--white-dim); line-height: 1.6;
+        }
+
+        /* FINAL CTA */
+        .final-cta {
+            text-align: center; padding: 100px 24px;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+        }
+        .final-cta-photo {
+            width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--gold);
+            object-fit: cover; margin: 0 auto 20px; display: block;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--navy-light); border-top: 1px solid var(--navy-border);
+            padding: 32px 24px; text-align: center;
+        }
+        .footer p {
+            font-size: 0.75rem; color: var(--gray); margin-bottom: 4px;
+        }
+        .footer a { color: var(--gray); font-size: 0.75rem; }
+        .footer a:hover { color: var(--gold); }
+        .footer-links { margin-top: 12px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .hero { padding: 120px 20px 60px; }
+            .section { padding: 60px 20px; }
+            .credibility { grid-template-columns: 1fr; text-align: center; }
+            .credibility-photo { margin: 0 auto; }
+            .credibility-stats { justify-content: center; }
+            .proof-bar-inner { gap: 24px; }
+            .proof-item { flex: 1 1 40%; }
+            .cta-meta { gap: 16px; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+            <a href="/" class="nav-back">&larr; Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">Free Assessment &bull; 17 Questions &bull; Instant Results</div>
+            <h1>Is Your Restaurant <span>Ready?</span></h1>
+            <p class="hero-sub">Most operators know something is wrong. They just don't know what to fix first.</p>
+            <p style="font-size: 0.95rem; color: var(--white-dim); max-width: 520px; margin: 0 auto 12px; line-height: 1.7; font-style: italic;">"I worked 140 days straight &mdash; 80 hours a week &mdash; and still only built myself an expensive job."</p>
+            <p style="font-size: 0.9rem; color: var(--white-dim); max-width: 520px; margin: 0 auto 32px; line-height: 1.7;">This 17-question scorecard shows you exactly where your systems are failing &mdash; and what to fix first.</p>
+            <a href="/readiness-scorecard.html" class="btn-primary">Find Out What to Fix First</a>
+            <div class="cta-meta">
+                <div class="cta-meta-item"><span>&#9201;</span> 3 Minutes</div>
+                <div class="cta-meta-item"><span>&#10003;</span> 100% Free</div>
+                <div class="cta-meta-item"><span>&#9889;</span> Instant Results</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF BAR — Chris's own scars only -->
+    <div class="proof-bar">
+        <div class="proof-bar-inner">
+            <div class="proof-item">
+                <div class="proof-number">20+</div>
+                <div class="proof-label">Years in Kitchens</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">5</div>
+                <div class="proof-label">Countries</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">$370K</div>
+                <div class="proof-label">Debt Rebuilt From</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-number">145</div>
+                <div class="proof-label">Hours Recovered (One Season)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHAT IT MEASURES -->
+    <section class="section">
+        <div class="container">
+            <div class="section-label">What It Measures</div>
+            <h2 class="section-title">Four Dimensions That <span>Define Readiness</span></h2>
+            <p class="section-text">This isn't a generic quiz. Each question maps to a specific operational dimension that determines whether your restaurant can absorb change — or whether it'll break under the weight of it.</p>
+
+            <div class="dimension-grid">
+                <div class="dimension-card">
+                    <div class="dimension-icon">&#9881;</div>
+                    <div class="dimension-name">Operational Control</div>
+                    <div class="dimension-desc">SOPs, checklists, tracking systems, crisis protocols. Do your systems hold when you're not standing over them?</div>
+                    <div class="dimension-questions">5 Questions</div>
+                </div>
+                <div class="dimension-card">
+                    <div class="dimension-icon">&#128200;</div>
+                    <div class="dimension-name">Growth Readiness</div>
+                    <div class="dimension-desc">P&L review cadence, revenue diversification, data-driven pricing. Can your operation grow without breaking?</div>
+                    <div class="dimension-questions">4 Questions</div>
+                </div>
+                <div class="dimension-card">
+                    <div class="dimension-icon">&#128100;</div>
+                    <div class="dimension-name">Owner Dependency</div>
+                    <div class="dimension-desc">Team autonomy, delegation, your absence impact. Does your restaurant run — or do you run it?</div>
+                    <div class="dimension-questions">4 Questions</div>
+                </div>
+                <div class="dimension-card">
+                    <div class="dimension-icon">&#128101;</div>
+                    <div class="dimension-name">Staff & Culture</div>
+                    <div class="dimension-desc">Retention systems, training frameworks, team stability. Are you building people or just filling shifts?</div>
+                    <div class="dimension-questions">4 Questions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECOVERY PATH -->
+    <section class="section section-alt" style="padding: 60px 24px;">
+        <div class="container">
+            <div class="section-label">Your Path Out</div>
+            <h2 class="section-title">The <span>Recovery Roadmap</span></h2>
+            <p class="section-text" style="margin-bottom: 32px;">You don't need to figure this out alone. Each step builds on the last.</p>
+            <div style="display: flex; flex-direction: column; gap: 0;">
+                <div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 8px; background: rgba(212, 175, 55, 0.06); border: 1px solid var(--gold-border);">
+                    <div style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--gray); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; background: var(--navy-card); flex-shrink: 0;">&#9888;</div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.85rem;">Free Diagnostic Tools</div>
+                        <div style="font-size: 0.75rem; color: var(--white-dim);">Find the leaks &mdash; Calculator, Menu Score</div>
+                    </div>
+                </div>
+                <div style="width: 2px; height: 12px; background: var(--gold-border); margin-left: 33px;"></div>
+                <div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 8px; background: rgba(212, 175, 55, 0.12); border: 1px solid var(--gold);">
+                    <div style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; background: rgba(212, 175, 55, 0.15); flex-shrink: 0; box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);">&#127919;</div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.85rem; color: var(--gold);">Readiness Scorecard <span style="font-family: var(--font-mono); font-size: 0.6rem; background: rgba(212, 175, 55, 0.15); padding: 2px 8px; border-radius: 4px; margin-left: 8px; letter-spacing: 1px;">YOU ARE HERE</span></div>
+                        <div style="font-size: 0.75rem; color: var(--white-dim);">See exactly where you stand &mdash; and what to fix first</div>
+                    </div>
+                </div>
+                <div style="width: 2px; height: 12px; background: var(--navy-border); margin-left: 33px;"></div>
+                <div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 8px;">
+                    <div style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--navy-border); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; background: var(--navy-card); flex-shrink: 0;">&#128230;</div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.85rem;">72-Hour Profit Discovery Kit &mdash; $297</div>
+                        <div style="font-size: 0.75rem; color: var(--white-dim);">Plug the biggest holes this week</div>
+                    </div>
+                </div>
+                <div style="width: 2px; height: 12px; background: var(--navy-border); margin-left: 33px;"></div>
+                <div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 8px;">
+                    <div style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--navy-border); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; background: var(--navy-card); flex-shrink: 0;">&#9881;</div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.85rem;">21-Day Recovery Protocol</div>
+                        <div style="font-size: 0.75rem; color: var(--white-dim);">First systems that run without you</div>
+                    </div>
+                </div>
+                <div style="width: 2px; height: 12px; background: var(--navy-border); margin-left: 33px;"></div>
+                <div style="display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 8px;">
+                    <div style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--navy-border); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; background: var(--navy-card); flex-shrink: 0;">&#10148;</div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 0.85rem;">Async Retainer</div>
+                        <div style="font-size: 0.75rem; color: var(--white-dim);">A Master Chef reviewing your actual numbers every month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-label">How It Works</div>
+            <h2 class="section-title">Three Minutes. <span>Zero Guesswork.</span></h2>
+
+            <div class="steps-list">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <div class="step-name">Answer 17 Questions Honestly</div>
+                        <div class="step-desc">No trick questions. No math. Just how your restaurant actually operates today — not how you wish it did.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <div class="step-name">Get Your Readiness Score Instantly</div>
+                        <div class="step-desc">Scored across all four dimensions with a clear breakdown. You'll see exactly where your operation is strong and where it's exposed.</div>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <div class="step-name">Receive Your Priority Action List</div>
+                        <div class="step-desc">Not a generic report. A ranked list of what to fix first based on your specific answers — with recommended next steps for your score level.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MID-PAGE CTA -->
+    <div class="mid-cta">
+        <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">Ready?</p>
+        <h2 class="section-title" style="margin-bottom: 16px;">Find Out What to <span>Fix First</span></h2>
+        <a href="/readiness-scorecard.html" class="btn-primary">Start the Scorecard</a>
+        <div class="cta-meta" style="margin-top: 16px;">
+            <div class="cta-meta-item"><span>&#9201;</span> 3 Minutes</div>
+            <div class="cta-meta-item"><span>&#10003;</span> 100% Free</div>
+            <div class="cta-meta-item"><span>&#9889;</span> Instant Results</div>
+        </div>
+    </div>
+
+    <!-- CREDIBILITY -->
+    <section class="section">
+        <div class="container">
+            <div class="section-label">Who Built This</div>
+            <h2 class="section-title" style="margin-bottom: 32px;">Built by an Operator. <span>Not a Consultant.</span></h2>
+
+            <div class="credibility">
+                <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef" class="credibility-photo">
+                <div>
+                    <div class="credibility-name">Christian Schiffner</div>
+                    <div class="credibility-title">German Master Chef (K&uuml;chenmeister)</div>
+                    <p class="credibility-bio">I spent 20+ years in kitchens across Germany, Switzerland, Austria, Spain, and Canada. I earned my K&uuml;chenmeister — the highest culinary certification in the German trades system. I also lost everything. $370K in debt. A family on the edge. I rebuilt in the isolation of the Yukon using recovery frameworks — not motivation, not hustle.</p>
+                    <p class="credibility-bio">This scorecard isn't based on theory. Every question maps to a failure mode I've either lived through or watched destroy someone else's operation. The same systems that gave me back 145 hours in a single season and pulled me out of $370K debt. I built this because the diagnostic I needed at my worst didn't exist.</p>
+
+                    <div class="credibility-stats">
+                        <div class="cred-stat">
+                            <div class="cred-stat-number">20+</div>
+                            <div class="cred-stat-label">Years in Kitchens</div>
+                        </div>
+                        <div class="cred-stat">
+                            <div class="cred-stat-number">5</div>
+                            <div class="cred-stat-label">Countries</div>
+                        </div>
+                        <div class="cred-stat">
+                            <div class="cred-stat-number">$370K</div>
+                            <div class="cred-stat-label">Debt Rebuilt From</div>
+                        </div>
+                        <div class="cred-stat">
+                            <div class="cred-stat-number">1,200+</div>
+                            <div class="cred-stat-label">Days Proof</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY THIS EXISTS — scar-based, no unverified stats -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-label">Why This Exists</div>
+            <h2 class="section-title">I Built Myself an <span>Expensive Job.</span></h2>
+            <p style="font-size: 1rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 20px;">I spent 20+ years in kitchens and still got it wrong. 140 straight days of 80-hour weeks. $370K in debt. A restaurant in Dawson City that couldn't run for a single shift without me standing in it.</p>
+            <p style="font-size: 1rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 20px;">I didn't build a business. I built myself an expensive job.</p>
+            <p style="font-size: 1rem; color: var(--white-dim); line-height: 1.8; margin-bottom: 20px;">The turnaround started with one SOP that gave me back 145 hours in a single season. Not theory. Not a course. One system, applied under real pressure, that actually held when I was exhausted.</p>
+            <p style="font-size: 1rem; color: var(--white-dim); line-height: 1.8;">This scorecard isn't theory. Every question comes from the exact failure modes that almost destroyed my operation. If you're working 60+ hours and something still feels off &mdash; this diagnostic will show you exactly where the cracks are.</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-label">Common Questions</div>
+            <h2 class="section-title" style="margin-bottom: 32px;">Before You <span>Start</span></h2>
+
+            <div class="faq-item">
+                <div class="faq-q">How long does it take?</div>
+                <div class="faq-a">3 minutes. 17 questions. No trick questions, no math. Just honest answers about how your restaurant actually runs today.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Is it really free?</div>
+                <div class="faq-a">Yes. No credit card. No 47-email sequence. You get your score and your priority list immediately. We'll ask for your email to send the full report — that's it.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">What do I get at the end?</div>
+                <div class="faq-a">A readiness score across four dimensions, a breakdown of where your operation is strong vs. exposed, and a ranked priority list of what to fix first — with specific next steps based on your score level.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Who is this for?</div>
+                <div class="faq-a">Independent restaurant operators doing $300K+ in annual revenue who are working 60+ hours a week, know something is off, and are tired of owning a job instead of a business. Not for chains. Not for startups. Not for operators who think harder work is the answer.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">What happens after I get my results?</div>
+                <div class="faq-a">That depends on your score. High readiness? You'll get pointed to the right tool for your biggest remaining gap. Low readiness? You'll get the foundational steps to stabilize before investing in anything else. No hard sell. Just the honest next step.</div>
+            </div>
+            <div class="faq-item" style="border-bottom: none;">
+                <div class="faq-q">Why should I trust this assessment?</div>
+                <div class="faq-a">Because it was built by someone who failed first. Every question maps to a real failure mode from 20+ years of hands-on kitchen experience. This isn't a marketing quiz — it's a diagnostic built from scars.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner" class="final-cta-photo">
+        <div class="section-label">Start Here</div>
+        <h2 class="section-title">Find Out What to <span>Fix First</span></h2>
+        <p style="font-size: 1rem; color: var(--white-dim); max-width: 480px; margin: 0 auto 32px; line-height: 1.7;">17 questions. 3 minutes. You'll know exactly where your operation breaks down — and what to do about it.</p>
+        <a href="/readiness-scorecard.html" class="btn-primary">Start the Scorecard</a>
+        <div class="cta-meta" style="margin-top: 16px;">
+            <div class="cta-meta-item"><span>&#9201;</span> 3 Minutes</div>
+            <div class="cta-meta-item"><span>&#10003;</span> 100% Free</div>
+            <div class="cta-meta-item"><span>&#9889;</span> Instant Results</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>Christian Schiffner | The Grumpy Chef | German Master Chef (K&uuml;chenmeister)</p>
+        <p>Dawson City, Yukon &bull; From the Black Forest, Germany</p>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/about.html">My Story</a>
+            <a href="/services.html">Work With Me</a>
+            <a href="https://www.linkedin.com/in/christian-schiffner-938142335/" target="_blank">LinkedIn</a>
+            <a href="mailto:christian@thegrumpychef.ca">Email</a>
+        </div>
+    </footer>
+
+    <!-- ANALYTICS -->
+    <script src="/js/analytics.js"></script>
+    <script>
+        // Track landing page view
+        gtag('event', 'readiness_landing_view', {
+            event_category: 'landing_page',
+            event_label: 'readiness_scorecard'
+        });
+
+        // Track CTA clicks
+        document.querySelectorAll('a[href="/readiness-scorecard.html"]').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                gtag('event', 'readiness_landing_start', {
+                    event_category: 'landing_page',
+                    event_label: 'cta_click',
+                    event_value: btn.closest('section, div').className || 'unknown'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
