@@ -67,50 +67,76 @@
         }
 
         /* Navigation */
-        nav {
+        .nav {
             position: fixed;
             top: 0;
-            width: 100%;
+            left: 0;
+            right: 0;
+            z-index: 100;
             background: rgba(10, 22, 40, 0.95);
             backdrop-filter: blur(10px);
-            z-index: 1000;
             border-bottom: 1px solid var(--navy-border);
         }
 
-        .nav-container {
+        .nav-inner {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0 24px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            height: 64px;
         }
 
         .nav-logo {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.4rem;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
             font-weight: 700;
-            color: var(--gold);
-            text-decoration: none;
+            color: var(--white);
+            letter-spacing: 1px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
-            list-style: none;
+            gap: 28px;
+            align-items: center;
         }
 
         .nav-links a {
             color: var(--white-dim);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .nav-links a:hover {
             color: var(--gold);
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy) !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-cta:hover {
+            background: var(--white);
+            color: var(--navy) !important;
         }
 
         .nav-toggle {
@@ -122,11 +148,32 @@
             cursor: pointer;
         }
 
+        .breadcrumb {
+            padding: 80px 24px 0;
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb a,
+        .breadcrumb span {
+            font-size: 0.8rem;
+            color: var(--white-dim);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+
+        .breadcrumb .sep {
+            margin: 0 8px;
+            color: var(--gray);
+        }
+
         /* Article Layout */
         .article-header {
-            max-width: 760px;
+            padding: 32px 24px 48px;
+            max-width: 740px;
             margin: 0 auto;
-            padding: 8rem 2rem 3rem;
         }
 
         .article-meta {
@@ -303,14 +350,31 @@
 
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--navy-light);
+                flex-direction: column;
+                padding: 20px 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--navy-border);
+            }
+
+            .nav-links.active {
+                display: flex;
             }
 
             .nav-toggle {
                 display: block;
             }
 
+            .breadcrumb {
+                padding-top: 76px;
+            }
+
             .article-header {
-                padding: 6rem 1.25rem 2rem;
+                padding: 24px 20px 32px;
             }
 
             .article-body {
@@ -331,41 +395,61 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "Systems Over Hustle: Why Hustle Culture Creates Expensive Jobs, Not Businesses",
-        "author": {
-            "@type": "Person",
-            "name": "Christian Schiffner",
-            "jobTitle": "Kuchenmeister (German Master Chef)",
-            "url": "https://thegrumpychef.ca/about.html"
-        },
-        "datePublished": "2026-03-06",
-        "dateModified": "2026-03-06",
-        "publisher": {
-            "@type": "Organization",
-            "name": "The Grumpy Chef",
-            "url": "https://thegrumpychef.ca"
-        },
-        "description": "After 22 years in hospitality and 140 straight days of 80-hour weeks, I realized I didn't have a business. I had an expensive job.",
-        "image": "https://thegrumpychef.ca/images/Kitchen1.jpg",
-        "mainEntityOfPage": "https://thegrumpychef.ca/blog/systems-over-hustle.html"
+        "@graph": [
+            {
+                "@type": "Article",
+                "headline": "Systems Over Hustle: Why Hustle Culture Creates Expensive Jobs, Not Businesses",
+                "author": {
+                    "@type": "Person",
+                    "name": "Christian Schiffner",
+                    "jobTitle": "Kuchenmeister (German Master Chef)",
+                    "url": "https://thegrumpychef.ca/about.html"
+                },
+                "datePublished": "2026-03-06",
+                "dateModified": "2026-03-19",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "The Grumpy Chef",
+                    "url": "https://thegrumpychef.ca"
+                },
+                "description": "After 22 years in hospitality and 140 straight days of 80-hour weeks, I realized I didn't have a business. I had an expensive job.",
+                "image": "https://thegrumpychef.ca/images/Kitchen1.jpg",
+                "mainEntityOfPage": "https://thegrumpychef.ca/blog/systems-over-hustle.html"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thegrumpychef.ca/" },
+                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://thegrumpychef.ca/blog/" },
+                    { "@type": "ListItem", "position": 3, "name": "Systems Over Hustle" }
+                ]
+            }
+        ]
     }
     </script>
 </head>
 
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="/" class="nav-logo">The Grumpy Chef</a>
-            <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
-            <ul class="nav-links">
-                <li><a href="/about.html">My Story</a></li>
-                <li><a href="/framework.html">The Protocol</a></li>
-                <li><a href="/services.html">Work With Me</a></li>
-                <li><a href="/blog/">Blog</a></li>
-            </ul>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"
+                aria-label="Menu">&#9776;</button>
+            <div class="nav-links">
+                <a href="/about.html">My Story</a>
+                <a href="/framework.html">The Protocol</a>
+                <a href="/services.html">Work With Me</a>
+                <a href="/blog/" class="active">Blog</a>
+                <a href="/calculator.html">Free Tools</a>
+                <a href="/kit.html" class="nav-cta">Get the Kit — $297</a>
+            </div>
         </div>
     </nav>
+
+    <div class="breadcrumb">
+        <a href="/">Home</a><span class="sep">/</span><a href="/blog/">Blog</a><span
+            class="sep">/</span><span>Systems Over Hustle</span>
+    </div>
 
     <article>
         <header class="article-header">
@@ -599,9 +683,8 @@
     <div class="article-cta">
         <div class="cta-box">
             <h3>Stop White-Knuckling Your Business</h3>
-            <p>I'm looking for 3 ambitious operators ready to transition from "Expensive Job" to "Profitable Asset."
-                We'll rebuild your P&L and operations from the ground up in 90 days.</p>
-            <a href="/services.html#discovery-call" class="cta-button">Apply for Transformation</a>
+            <p>Every week I share one earned lesson from 20+ years behind the line — systems, margins, and the hard truths nobody posts on Instagram.</p>
+            <a href="/newsletter.html" class="cta-button">Join the Newsletter</a>
         </div>
     </div>
 
@@ -610,10 +693,7 @@
     </footer>
 
     <script>
-        document.querySelector('.nav-toggle').addEventListener('click', function () {
-            const links = document.querySelector('.nav-links');
-            links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-        });
+        // Mobile nav handled by inline onclick on .nav-toggle
     </script>
 </body>
 
