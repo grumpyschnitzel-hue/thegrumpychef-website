@@ -1,6 +1,6 @@
 /**
  * The Grumpy Chef — Shared Analytics
- * GA4 + Microsoft Clarity + UTM Capture + Custom Events
+ * GA4 + Microsoft Clarity + LinkedIn Insight Tag + UTM Capture + Custom Events
  *
  * Usage: Add <script src="/js/analytics.js"></script> before </head> on every page.
  *
@@ -18,6 +18,7 @@
   // =============================================
   var GA4_ID = 'G-F41KYXCEXL';
   var CLARITY_ID = 'vsdyoa3a71';
+  var LINKEDIN_PARTNER_ID = '8833114';
 
   // =============================================
   // GA4 INITIALIZATION
@@ -44,6 +45,26 @@
       t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
       y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, 'clarity', 'script', CLARITY_ID);
+  }
+
+  // =============================================
+  // LINKEDIN INSIGHT TAG
+  // =============================================
+  if (LINKEDIN_PARTNER_ID) {
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(LINKEDIN_PARTNER_ID);
+    (function (l) {
+      if (!l) {
+        window.lintrk = function (a, b) { window.lintrk.q.push([a, b]); };
+        window.lintrk.q = [];
+      }
+      var s = document.getElementsByTagName('script')[0];
+      var b = document.createElement('script');
+      b.type = 'text/javascript';
+      b.async = true;
+      b.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
+      s.parentNode.insertBefore(b, s);
+    })(window.lintrk);
   }
 
   // =============================================
