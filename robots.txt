@@ -1,4 +1,54 @@
+# The Grumpy Chef — robots.txt
+# thegrumpychef.ca
+
+# All search engines
 User-agent: *
 Allow: /
+Disallow: /lp/thank-you-*
+Disallow: /kit-access.html
+Disallow: /toolkit/thank-you.html
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# AI Engines — explicitly welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Block scrapers that add no value
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
 
 Sitemap: https://thegrumpychef.ca/sitemap.xml
