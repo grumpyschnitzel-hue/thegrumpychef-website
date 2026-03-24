@@ -41,10 +41,10 @@
           "logo": "https://thegrumpychef.ca/images/Kitchen1.jpg",
           "description": "Restaurant profit recovery helping independent operators find hidden profit leaks and build systems that work when they're exhausted. Based on the 21-Day Restaurant Recovery Protocol — recovery frameworks applied to restaurant operations.",
           "founder": { "@id": "https://thegrumpychef.ca/#person" },
-          "areaServed": {
-            "@type": "Country",
-            "name": "Canada"
-          },
+          "areaServed": [
+            { "@type": "Country", "name": "Canada" },
+            { "@type": "Country", "name": "United States" }
+          ],
           "serviceType": ["Restaurant Operations", "Profit Recovery", "Menu Engineering", "Operations Systems", "Food Cost Control"],
           "priceRange": "$0 - $25,000",
           "knowsAbout": ["Restaurant Operations", "Food Cost Control", "Menu Engineering", "Staff Retention Systems", "Kitchen Management", "Restaurant Profit Recovery"],
@@ -58,7 +58,7 @@
           "@id": "https://thegrumpychef.ca/#person",
           "name": "Christian Schiffner",
           "alternateName": "The Grumpy Chef",
-          "image": "https://thegrumpychef.ca/images/Kitchen1.jpg",
+          "image": "https://thegrumpychef.ca/images/chris-chef-portrait.jpg",
           "jobTitle": "German Master Chef (Kuchenmeister)",
           "description": "German Master Chef (Kuchenmeister) with 20+ years of international kitchen experience across Germany, Switzerland, Austria, Spain, and Canada. Rebuilt from $370K debt using recovery frameworks. Now helps independent restaurant operators build profitable systems.",
           "url": "https://thegrumpychef.ca/about.html",
@@ -121,7 +121,10 @@
           "provider": { "@id": "https://thegrumpychef.ca/#business" },
           "url": "https://thegrumpychef.ca/framework.html",
           "serviceType": "Restaurant Profit Recovery",
-          "areaServed": { "@type": "Country", "name": "Canada" }
+          "areaServed": [
+            { "@type": "Country", "name": "Canada" },
+            { "@type": "Country", "name": "United States" }
+          ]
         },
         {
           "@type": "FAQPage",
