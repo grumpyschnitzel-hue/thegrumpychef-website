@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The 72-Hour Profit Discovery Kit — 8 Excel tools that find your restaurant's #1 profit leak in three days. For independent operators running $500K–$3M restaurants.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>72-Hour Profit Discovery Kit — The Grumpy Chef</title>
+    <meta property="og:title" content="72-Hour Profit Discovery Kit — The Grumpy Chef">
+    <meta property="og:description" content="The 72-Hour Profit Discovery Kit — 8 Excel tools that find your restaurant's #1 profit leak in three days. For independent operators running $500K–$3M restaurants.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thegrumpychef.ca/brochure-kit.html">
+    <meta property="og:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://thegrumpychef.ca/brochure-kit.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* ─── Core Variables (extend main.css) ───────────────────────── */
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --navy-deep: #050B14;
+            --white: #F8F9FA;
+            --white-soft: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gold: #D4AF37;
+            --gold-liquid: #D4AF37;
+            --gold-glow: rgba(212, 175, 55, 0.15);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --font-display: 'Oswald', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        /* ─── Nav (matches site) ─────────────────────────────────────── */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--gold); }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--white-dim);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy) !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .nav-cta:hover {
+            background: var(--white);
+            color: var(--navy) !important;
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ─── Scroll Progress Bar ────────────────────────────────────── */
+        .scroll-progress {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            height: 3px;
+            background: var(--gold-liquid);
+            z-index: 99;
+            width: 0%;
+            transition: width 50ms linear;
+        }
+
+        /* ─── Sticky Bottom CTA ──────────────────────────────────────── */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 90;
+            background: rgba(5, 11, 20, 0.97);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid var(--gold-border);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sticky-cta.visible {
+            transform: translateY(0);
+        }
+        .sticky-cta-text {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            letter-spacing: 0.05em;
+        }
+        .sticky-cta-text strong {
+            color: var(--gold-liquid);
+        }
+        .sticky-cta .btn-premium {
+            padding: 0.6rem 1.8rem;
+            font-size: 0.85rem;
+        }
+
+        /* ─── Layout Scaffolding ─────────────────────────────────────── */
+        .brochure {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .brochure-section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        /* ─── Section Dividers ───────────────────────────────────────── */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                var(--gold-border) 20%,
+                var(--gold-liquid) 50%,
+                var(--gold-border) 80%,
+                transparent 100%
+            );
+            opacity: 0.5;
+        }
+
+        /* ─── Ambient Glow Between Sections ──────────────────────────── */
+        .ambient-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ─── Fade-in stagger helpers ────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── Section-level typography ───────────────────────────────── */
+        .section-heading {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--white-soft);
+        }
+
+        .section-body {
+            color: var(--white-dim);
+            font-size: 1.1rem;
+            line-height: 1.75;
+            max-width: 680px;
+        }
+
+        .section-label {
+            margin-bottom: 2rem;
+        }
+
+        /* ─── SECTION 1: COVER ───────────────────────────────────────── */
+        #cover {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #cover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(5, 11, 20, 0.85) 0%, rgba(10, 22, 40, 0.92) 50%, var(--navy-deep) 100%),
+                url('/images/Kitchen1.jpg') center/cover no-repeat;
+            z-index: 0;
+        }
+
+        #cover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .cover-inner {
+            max-width: 720px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-eyebrow {
+            margin-bottom: 2.5rem;
+        }
+
+        .cover-h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            color: var(--white-soft);
+        }
+
+        .cover-subline {
+            font-family: var(--font-mono);
+            color: var(--white-dim);
+            font-size: 1.2rem;
+            letter-spacing: 0.12em;
+        }
+
+        .cover-rule {
+            width: 64px;
+            height: 2px;
+            background: var(--gold-liquid);
+            margin: 2rem auto 0;
+        }
+
+        .cover-scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: bobDown 2s ease-in-out infinite;
+        }
+
+        .cover-scroll-hint span {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--white-dim);
+            opacity: 0.5;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .scroll-arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid var(--gold-liquid);
+            border-bottom: 2px solid var(--gold-liquid);
+            transform: rotate(45deg);
+            opacity: 0.4;
+        }
+
+        @keyframes bobDown {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ─── SECTION 2: PROBLEM ─────────────────────────────────────── */
+        #problem {
+            background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+        }
+
+        .leak-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .leak-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leak-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--gold-liquid);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .leak-card:hover::before {
+            opacity: 1;
+        }
+
+        .leak-number {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--gold-liquid);
+            opacity: 0.6;
+            flex-shrink: 0;
+            padding-top: 3px;
+            min-width: 1.5rem;
+        }
+
+        .leak-content { flex: 1; }
+
+        .leak-name {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--white-soft);
+            margin-bottom: 0.25rem;
+        }
+
+        .leak-range {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--gold-liquid);
+            font-weight: 700;
+        }
+
+        .leak-total {
+            margin-top: 2rem;
+            text-align: center;
+            padding: 1.5rem;
+            border: 1px solid var(--gold-border);
+            border-radius: 8px;
+            background: rgba(212, 175, 55, 0.03);
+        }
+
+        .leak-total-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--white-dim);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .leak-total-value {
+            font-family: var(--font-mono);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold-liquid);
+        }
+
+        /* ─── SECTION 3: METHOD ──────────────────────────────────────── */
+        #method {
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .method-card {
+            padding: 2.5rem 2rem;
+            position: relative;
+            border-right: 1px solid var(--navy-border);
+        }
+
+        .method-card:last-child {
+            border-right: none;
+        }
+
+        .method-step-number {
+            font-family: var(--font-mono);
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gold-liquid);
+            opacity: 0.08;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            line-height: 1;
+        }
+
+        .method-day-label {
+            margin-bottom: 1.5rem;
+        }
+
+        .method-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--white-soft);
+            margin-bottom: 1rem;
+        }
+
+        .method-body {
+            color: var(--white-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .method-connector {
+            display: none;
+            text-align: center;
+            color: var(--gold-liquid);
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            padding: 0.5rem 0;
+        }
+
+        /* ─── SECTION 4: KIT CONTENTS ────────────────────────────────── */
+        #kit-contents {
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+        }
+
+        .kit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+            counter-reset: kit-counter;
+        }
+
+        .kit-card {
+            padding: 1.5rem;
+            counter-increment: kit-counter;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .kit-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .kit-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--gold-liquid);
+            letter-spacing: 0.15em;
+            opacity: 0.7;
+            margin-bottom: 0.75rem;
+        }
+
+        .kit-name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--white-soft);
+            margin-bottom: 0.5rem;
+        }
+
+        .kit-desc {
+            color: var(--white-dim);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .kit-footnote {
+            margin-top: 2rem;
+            padding: 1rem 1.5rem;
+            background: rgba(212, 175, 55, 0.04);
+            border-left: 2px solid var(--gold-border);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .kit-footnote p {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            letter-spacing: 0.05em;
+        }
+
+        /* ─── SECTION 5: WHO IT'S FOR ────────────────────────────────── */
+        #who {
+            background: var(--navy-deep);
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .persona-card {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .persona-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .persona-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gold-liquid);
+            margin-bottom: 1rem;
+            line-height: 1.35;
+        }
+
+        .persona-body {
+            color: var(--white-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .qualifier-block {
+            margin-top: 3rem;
+            padding: 1.5rem 2rem;
+            border-left: 3px solid var(--gold-liquid);
+            background: rgba(212, 175, 55, 0.04);
+        }
+
+        .qualifier-block p {
+            color: var(--white-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .qualifier-block strong {
+            color: var(--white-soft);
+            font-family: var(--font-mono);
+        }
+
+        /* ─── SECTION 6: ROI MATH ────────────────────────────────────── */
+        #roi {
+            background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+        }
+
+        .math-display {
+            margin: 3rem 0;
+            padding: 3rem;
+            border: 1px solid var(--gold-border);
+            border-radius: 12px;
+            background: rgba(212, 175, 55, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .math-display::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .math-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--navy-border);
+            position: relative;
+        }
+
+        .math-row:last-child { border-bottom: none; }
+
+        .math-label {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .math-value {
+            font-family: var(--font-mono);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold-liquid);
+        }
+
+        .math-value.highlight {
+            font-size: 1.8rem;
+        }
+
+        .math-separator {
+            text-align: center;
+            font-family: var(--font-mono);
+            color: var(--gold-liquid);
+            opacity: 0.4;
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--navy-border);
+        }
+
+        .math-source {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--white-dim);
+            opacity: 0.6;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        /* ─── SECTION 7: CREDIBILITY ─────────────────────────────────── */
+        #credibility {
+            background: var(--navy);
+        }
+
+        .bio-layout {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+            margin-top: 3rem;
+        }
+
+        .bio-photo {
+            flex-shrink: 0;
+        }
+
+        .bio-photo img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 3px solid var(--gold-liquid);
+            object-fit: cover;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .bio-block {
+            padding: 0;
+            flex: 1;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--white-dim);
+        }
+
+        .bio-text em {
+            color: var(--gold-liquid);
+            font-style: normal;
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+        }
+
+        .credentials-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .credential-tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--gold-liquid);
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--gold-border);
+            padding: 0.35rem 0.85rem;
+            border-radius: 2px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* ─── SECTION 8: CTA ─────────────────────────────────────────── */
+        #cta {
+            text-align: center;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 50%, var(--navy) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 600px;
+            background: radial-gradient(ellipse, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .price-display {
+            margin: 2.5rem 0 1rem;
+            position: relative;
+        }
+
+        .price-figure {
+            font-family: var(--font-mono);
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            color: var(--gold-liquid);
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        .price-qualifier {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--white-dim);
+            margin-top: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .cta-button-wrap {
+            margin: 2.5rem 0;
+        }
+
+        .btn-premium.btn-large {
+            font-size: 1.1rem;
+            padding: 1.25rem 3.5rem;
+            letter-spacing: 0.15em;
+        }
+
+        .cta-promise {
+            max-width: 560px;
+            margin: 0 auto 1.5rem;
+            color: var(--white-dim);
+            font-size: 1rem;
+            line-height: 1.75;
+            position: relative;
+        }
+
+        .cta-fine-print {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--white-dim);
+            opacity: 0.5;
+            letter-spacing: 0.08em;
+        }
+
+        /* ─── Divider rule ───────────────────────────────────────────── */
+        .gold-rule {
+            width: 48px;
+            height: 2px;
+            background: var(--gold-liquid);
+            margin: 0 0 2.5rem;
+        }
+
+        .gold-rule.centered {
+            margin: 0 auto 2.5rem;
+        }
+
+        /* ─── Footer (matches site) ──────────────────────────────────── */
+        .footer {
+            background: var(--navy-deep);
+            border-top: 1px solid var(--navy-border);
+            padding: 60px 24px 30px;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .footer-brand { max-width: 360px; }
+        .footer-brand-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .footer-brand-name span { color: var(--gold); }
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+        .footer-links h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .footer-links a {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            margin-bottom: 8px;
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-bottom {
+            border-top: 1px solid var(--navy-border);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer-bottom p {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+        .brand-photo-circle--footer {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ─── Mobile ─────────────────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0; right: 0;
+                background: var(--navy-light);
+                flex-direction: column;
+                padding: 20px 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--navy-border);
+            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+
+            .brochure-section { padding: 80px 0; }
+
+            .method-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .method-card {
+                border-right: none;
+                border-bottom: 1px solid var(--navy-border);
+            }
+            .method-card:last-child { border-bottom: none; }
+            .method-connector { display: block; }
+
+            .math-display { padding: 1.5rem; }
+            .math-row {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .bio-layout {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .bio-photo img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .footer-top { flex-direction: column; }
+
+            .sticky-cta-text { display: none; }
+
+            .cover-scroll-hint { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .brochure { padding: 0 1.25rem; }
+            .cover-h1 { font-size: 2.6rem; }
+        }
+
+        /* ─── Print / PDF ────────────────────────────────────────────── */
+        @media print {
+            body { background: #ffffff !important; color: #111111 !important; }
+            .nav, .scroll-progress, .sticky-cta, .cover-scroll-hint { display: none !important; }
+            .brochure-section {
+                padding: 60px 0;
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            #cover { min-height: auto; page-break-after: always; }
+            #cover::before, #cover::after, #cta::before, .math-display::before, .ambient-glow { display: none !important; }
+            .glass-card, .glass-container {
+                background: #f4f4f4 !important;
+                border: 1px solid #cccccc !important;
+                backdrop-filter: none !important;
+            }
+            .section-heading, .cover-h1, .method-title, .kit-name, .persona-title, .bio-text, .math-label { color: #111111 !important; }
+            .gold-accent, .leak-range, .math-value, .price-figure, .credential-tag { color: #8B6914 !important; }
+            .section-body, .method-body, .kit-desc, .persona-body, .bio-text, .cta-promise { color: #444444 !important; }
+            .stats-box { background: #eeeeee !important; color: #8B6914 !important; border: 1px solid #cccccc !important; }
+            .gold-rule { background: #8B6914 !important; }
+            .btn-premium, .cta-button-wrap, .cover-rule { display: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+            .math-display { border-color: #cccccc !important; background: #f4f4f4 !important; }
+            .qualifier-block { border-left-color: #8B6914 !important; background: #f4f4f4 !important; }
+            .kit-footnote { background: #f4f4f4 !important; border-left-color: #8B6914 !important; }
+            .credential-tag { background: #eeeeee !important; border-color: #cccccc !important; }
+            .section-divider { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════════ -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+        <div class="nav-links">
+            <a href="/about.html">My Story</a>
+            <a href="/framework.html">The Protocol</a>
+            <a href="/services.html">Work With Me</a>
+            <a href="/blog/">Blog</a>
+            <a href="/calculator.html">Free Tools</a>
+            <a href="/kit.html" class="nav-cta">Discovery Kit</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ═══ SCROLL PROGRESS ═══════════════════════════════════════════════ -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══ STICKY BOTTOM CTA ═════════════════════════════════════════════ -->
+<div class="sticky-cta" id="stickyCta">
+    <span class="sticky-cta-text"><strong>$297 CAD</strong> &mdash; one-time, lifetime access</span>
+    <a href="kit.html" class="btn-premium">Get the Kit</a>
+</div>
+
+<main class="brochure">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 1 — COVER
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section id="cover" class="brochure-section">
+        <div class="cover-inner reveal">
+            <div class="cover-eyebrow">
+                <span class="stats-box">72-HOUR PROFIT DISCOVERY KIT</span>
+            </div>
+            <h1 class="cover-h1">
+                Find Your #1<br>
+                <span class="gold-accent">Profit Leak</span>
+            </h1>
+            <p class="cover-subline">Plug it before Monday.</p>
+            <div class="cover-rule"></div>
+        </div>
+        <div class="cover-scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 2 — THE PROBLEM
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section id="problem" class="brochure-section">
+        <div class="section-label reveal">
+            <span class="stats-box">THE PROBLEM</span>
+        </div>
+        <div class="gold-rule reveal" style="transition-delay: 0.1s;"></div>
+        <h2 class="section-heading reveal" style="transition-delay: 0.15s;">
+            Your Restaurant Is Busy.<br>But Is It <span class="gold-accent">Profitable</span>?
+        </h2>
+        <p class="section-body reveal" style="transition-delay: 0.2s;">
+            Most operators have never stopped long enough to look at where the money actually goes. Not because they're careless — because they're too busy running the restaurant to audit it. The average independent restaurant leaks $50K–$160K per year across 8 categories.
+        </p>
+
+        <div class="leak-grid">
+            <div class="glass-card leak-card reveal" style="transition-delay: 0.25s;">
+                <span class="leak-number">01</span>
+                <div class="leak-content">
+                    <div class="leak-name">Food Waste</div>
+                    <div class="leak-range">$15K – $40K / yr</div>
+                </div>
+            </div>
+            <div class="glass-card leak-card reveal" style="transition-delay: 0.3s;">
+                <span class="leak-number">02</span>
+                <div class="leak-content">
+                    <div class="leak-name">Labour Misallocation</div>
+                    <div class="leak-range">$10K – $30K / yr</div>
+                </div>
+            </div>
+            <div class="glass-card leak-card reveal" style="transition-delay: 0.35s;">
+                <span class="leak-number">03</span>
+                <div class="leak-content">
+                    <div class="leak-name">Menu Mispricing</div>
+                    <div class="leak-range">$8K – $25K / yr</div>
+                </div>
+            </div>
+            <div class="glass-card leak-card reveal" style="transition-delay: 0.4s;">
+                <span class="leak-number">04</span>
+                <div class="leak-content">
+                    <div class="leak-name">Supplier Overpayment</div>
+                    <div class="leak-range">$5K – $20K / yr</div>
+                </div>
+            </div>
+            <div class="glass-card leak-card reveal" style="transition-delay: 0.45s;">
+                <span class="leak-number">05</span>
+                <div class="leak-content">
+                    <div class="leak-name">Delivery Platform Bleed</div>
+                    <div class="leak-range">$5K – $15K / yr</div>
+                </div>
+            </div>
+            <div class="glass-card leak-card reveal" style="transition-delay: 0.5s;">
+                <span class="leak-number">06</span>
+                <div class="leak-content">
+                    <div class="leak-name">Bar Shrinkage</div>
+                    <div class="leak-range">$3K – $12K / yr</div>
+                </div>
+            </div>
+            <div class="glass-card leak-card reveal" style="transition-delay: 0.55s;">
+                <span class="leak-number">07</span>
+                <div class="leak-content">
+                    <div class="leak-name">Utilities &amp; Equipment</div>
+                    <div class="leak-range">$2K – $8K / yr</div>
+                </div>
+            </div>
+            <div class="glass-card leak-card reveal" style="transition-delay: 0.6s;">
+                <span class="leak-number">08</span>
+                <div class="leak-content">
+                    <div class="leak-name">Comps &amp; Discounts</div>
+                    <div class="leak-range">$2K – $10K / yr</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="leak-total reveal" style="transition-delay: 0.65s;">
+            <div class="leak-total-label">Total Annual Leakage</div>
+            <div class="leak-total-value">$50K &ndash; $160K / yr</div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 3 — THE METHOD
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section id="method" class="brochure-section">
+        <div class="section-label reveal">
+            <span class="stats-box">THE METHOD</span>
+        </div>
+        <div class="gold-rule reveal" style="transition-delay: 0.1s;"></div>
+        <h2 class="section-heading reveal" style="transition-delay: 0.15s;">
+            3 Days. 1 System.<br>Your Biggest Leak <span class="gold-accent">Found and Fixed</span>.
+        </h2>
+
+        <div class="method-grid">
+            <div class="glass-card method-card reveal" style="transition-delay: 0.2s;">
+                <span class="method-step-number">1</span>
+                <div class="method-day-label">
+                    <span class="stats-box">DAY 1: EXPOSURE</span>
+                </div>
+                <h3 class="method-title">See What's Really Happening</h3>
+                <p class="method-body">Cash snapshot. Ratio check. Waste walk. Labour audit. You're not guessing what's leaking — you're measuring it.</p>
+            </div>
+
+            <div class="method-connector reveal" style="transition-delay: 0.3s;">&#8594;</div>
+
+            <div class="glass-card method-card reveal" style="transition-delay: 0.3s;">
+                <span class="method-step-number">2</span>
+                <div class="method-day-label">
+                    <span class="stats-box">DAY 2: DIAGNOSIS</span>
+                </div>
+                <h3 class="method-title">Find the #1 Leak</h3>
+                <p class="method-body">Rank every leak by dollar impact. Find the #1. Run the 5 Whys. Design the fix. You leave Day 2 with a target and a plan.</p>
+            </div>
+
+            <div class="method-connector reveal" style="transition-delay: 0.4s;">&#8594;</div>
+
+            <div class="glass-card method-card reveal" style="transition-delay: 0.4s;">
+                <span class="method-step-number">3</span>
+                <div class="method-day-label">
+                    <span class="stats-box">DAY 3: INSTALL</span>
+                </div>
+                <h3 class="method-title">Put the System in Place</h3>
+                <p class="method-body">Write the protocol. One page max. Install today. Set the measurement cadence. No escape routes. The leak doesn't come back.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 4 — WHAT'S IN THE KIT
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section id="kit-contents" class="brochure-section">
+        <div class="section-label reveal">
+            <span class="stats-box">WHAT'S INCLUDED</span>
+        </div>
+        <div class="gold-rule reveal" style="transition-delay: 0.1s;"></div>
+        <h2 class="section-heading reveal" style="transition-delay: 0.15s;">
+            Everything You Need to Run<br>the <span class="gold-accent">72-Hour Discovery</span>
+        </h2>
+
+        <div class="kit-grid">
+            <div class="glass-card kit-card reveal" style="transition-delay: 0.2s;">
+                <div class="kit-number">TOOL 01 / 08</div>
+                <div class="kit-name">Cash Snapshot Template</div>
+                <p class="kit-desc">Where your money actually goes vs. where you think. The first number most operators see clearly for the first time.</p>
+            </div>
+            <div class="glass-card kit-card reveal" style="transition-delay: 0.25s;">
+                <div class="kit-number">TOOL 02 / 08</div>
+                <div class="kit-name">Ratio Reality Check Calculator</div>
+                <p class="kit-desc">Food cost, labour cost, prime cost measured against industry benchmarks. See exactly where you stand.</p>
+            </div>
+            <div class="glass-card kit-card reveal" style="transition-delay: 0.3s;">
+                <div class="kit-number">TOOL 03 / 08</div>
+                <div class="kit-name">Waste Walk Checklist</div>
+                <p class="kit-desc">Physical audit sheet for every station. Takes the guesswork out of the waste walk and forces real numbers.</p>
+            </div>
+            <div class="glass-card kit-card reveal" style="transition-delay: 0.35s;">
+                <div class="kit-number">TOOL 04 / 08</div>
+                <div class="kit-name">Labour Leak Audit Sheet</div>
+                <p class="kit-desc">Who does what, when, and does it match revenue. The tool that exposes the scheduling assumptions nobody talks about.</p>
+            </div>
+            <div class="glass-card kit-card reveal" style="transition-delay: 0.4s;">
+                <div class="kit-number">TOOL 05 / 08</div>
+                <div class="kit-name">Leak Ranking Matrix</div>
+                <p class="kit-desc">Sort all leaks by dollar impact, biggest first. Forces you to work on the problem that actually matters.</p>
+            </div>
+            <div class="glass-card kit-card reveal" style="transition-delay: 0.45s;">
+                <div class="kit-number">TOOL 06 / 08</div>
+                <div class="kit-name">Root Cause Worksheet</div>
+                <p class="kit-desc">The 5 Whys method applied to your #1 leak. Gets past symptoms and finds the system failure underneath.</p>
+            </div>
+            <div class="glass-card kit-card reveal" style="transition-delay: 0.5s;">
+                <div class="kit-number">TOOL 07 / 08</div>
+                <div class="kit-name">Protocol Builder Template</div>
+                <p class="kit-desc">One-page SOP for the system that fixes the leak. Short enough that someone actually reads it. Specific enough that it works.</p>
+            </div>
+            <div class="glass-card kit-card reveal" style="transition-delay: 0.55s;">
+                <div class="kit-number">TOOL 08 / 08</div>
+                <div class="kit-name">Measurement Tracker</div>
+                <p class="kit-desc">Daily and weekly cadence sheet to make sure the fix holds. The leak doesn't come back if you're watching the numbers.</p>
+            </div>
+        </div>
+
+        <div class="kit-footnote reveal" style="transition-delay: 0.6s;">
+            <p>All Excel-based. No software subscriptions. Works offline. Open it on your phone between service if you have to.</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 5 — WHO IT'S FOR
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section id="who" class="brochure-section">
+        <div class="section-label reveal">
+            <span class="stats-box">WHO THIS IS FOR</span>
+        </div>
+        <div class="gold-rule reveal" style="transition-delay: 0.1s;"></div>
+        <h2 class="section-heading reveal" style="transition-delay: 0.15s;">
+            Built for Operators Running<br><span class="gold-accent">$500K – $3M</span> Restaurants
+        </h2>
+
+        <div class="persona-grid">
+            <div class="glass-card persona-card reveal" style="transition-delay: 0.2s;">
+                <p class="persona-title">The Owner-Operator Doing Everything Themselves</p>
+                <p class="persona-body">You run the line, manage staff, handle vendors, and do the books at midnight. You know something is leaking but you've never had three uninterrupted days to find it.</p>
+            </div>
+            <div class="glass-card persona-card reveal" style="transition-delay: 0.3s;">
+                <p class="persona-title">The Chef Who Runs the Kitchen But Doesn't Control the Numbers</p>
+                <p class="persona-body">You can feel the waste but can't prove it. The Kit gives you the data to walk into any meeting with the owner and point at the problem.</p>
+            </div>
+            <div class="glass-card persona-card reveal" style="transition-delay: 0.4s;">
+                <p class="persona-title">The Operator With a Bookkeeper But No Systems In Between</p>
+                <p class="persona-body">The books tell you what happened last month. The Kit tells you what's happening right now — and what to do about it before the month is over.</p>
+            </div>
+        </div>
+
+        <div class="qualifier-block reveal" style="transition-delay: 0.5s;">
+            <p><strong>NOT FOR:</strong> chains, franchises, or restaurants with a full-time CFO.<br>
+            This is for the person who IS the system.</p>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 6 — THE MATH
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section id="roi" class="brochure-section">
+        <div class="section-label reveal">
+            <span class="stats-box">THE MATH</span>
+        </div>
+        <div class="gold-rule reveal" style="transition-delay: 0.1s;"></div>
+        <h2 class="section-heading reveal" style="transition-delay: 0.15s;">
+            The ROI on <span class="gold-accent">$297</span>
+        </h2>
+
+        <div class="math-display reveal" style="transition-delay: 0.2s;">
+            <div class="math-row">
+                <span class="math-label">Kit Cost</span>
+                <span class="math-value">$297</span>
+            </div>
+            <div class="math-separator">&#247;</div>
+            <div class="math-row">
+                <span class="math-label">Average food waste leak (alone)</span>
+                <span class="math-value">$15,000 – $40,000 / yr</span>
+            </div>
+            <div class="math-separator">=</div>
+            <div class="math-row">
+                <span class="math-label">Return if you find one leak</span>
+                <span class="math-value highlight"><span class="gold-accent">50x – 134x</span></span>
+            </div>
+        </div>
+
+        <p class="section-body reveal" style="transition-delay: 0.3s;">
+            That's not marketing math. That's what happens when an operator who's never done a structured waste audit actually weighs what goes in the bin for three days.
+        </p>
+
+        <p class="math-source reveal" style="transition-delay: 0.35s;">
+            Ranges based on NRA food waste benchmarks and independent operator data.
+        </p>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 7 — CREDIBILITY
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section id="credibility" class="brochure-section">
+        <div class="section-label reveal">
+            <span class="stats-box">WHO BUILT THIS</span>
+        </div>
+        <div class="gold-rule reveal" style="transition-delay: 0.1s;"></div>
+        <h2 class="section-heading reveal" style="transition-delay: 0.15s;">
+            Built by a Chef Who Lost<br>Everything and <span class="gold-accent">Rebuilt</span>
+        </h2>
+
+        <div class="bio-layout reveal" style="transition-delay: 0.2s;">
+            <div class="bio-photo">
+                <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef" loading="lazy">
+            </div>
+            <div class="bio-block glass-container">
+                <p class="bio-text">
+                    20 years in professional kitchens across Germany, Switzerland, Austria, Spain, and Canada. Trained in the Black Forest. Earned the <em>Küchenmeister</em> — the German Master Chef credential. Lost $370,000 and a restaurant. Rebuilt with systems, not hustle. Now based in Dawson City, Yukon — where extreme constraints forced extreme discipline. I built these tools for myself first. Then I realized every operator needs them.
+                </p>
+                <div class="credentials-row">
+                    <span class="credential-tag">20 Years Professional Kitchen</span>
+                    <span class="credential-tag">German Küchenmeister</span>
+                    <span class="credential-tag">Black Forest Trained</span>
+                    <span class="credential-tag">Germany · Switzerland · Austria · Spain · Canada</span>
+                    <span class="credential-tag">Dawson City, Yukon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 8 — CTA
+    ═══════════════════════════════════════════════════════════════════ -->
+    <section id="cta" class="brochure-section">
+        <div class="section-label reveal">
+            <span class="stats-box">GET THE KIT</span>
+        </div>
+        <div class="gold-rule centered reveal" style="transition-delay: 0.1s;"></div>
+        <h2 class="section-heading reveal" style="transition-delay: 0.15s;">
+            Find Your #1 Profit Leak<br><span class="gold-accent">This Weekend</span>
+        </h2>
+
+        <div class="price-display reveal" style="transition-delay: 0.25s;">
+            <div class="price-figure">$297 <span style="font-size: 0.45em; opacity: 0.7;">CAD</span></div>
+            <div class="price-qualifier">One-time purchase. Lifetime access.</div>
+        </div>
+
+        <div class="cta-button-wrap reveal" style="transition-delay: 0.35s;">
+            <a href="kit.html" class="btn-premium btn-large">Get the Kit</a>
+        </div>
+
+        <p class="cta-promise reveal" style="transition-delay: 0.45s;">
+            You'll get immediate access to all 8 tools via email. Start Friday evening. By Monday morning, you'll know exactly where your restaurant is bleeding — and you'll have a system to stop it.
+        </p>
+
+        <p class="cta-fine-print reveal" style="transition-delay: 0.5s;">
+            No subscriptions. No upsells during the Kit. Just the tools.
+        </p>
+    </section>
+
+</main>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════════════════ -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand" style="display: flex; gap: 16px; align-items: flex-start;">
+                <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef" class="brand-photo-circle--footer">
+                <div>
+                    <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
+                    <p>Restaurant profit recovery brand founded by Christian Schiffner, a German Master Chef (Küchenmeister) with 20+ years of experience across Germany, Switzerland, Austria, Spain, and Canada. Based in Dawson City, Yukon.</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navigate</h4>
+                <a href="/about.html">My Story</a>
+                <a href="/framework.html">The 21-Day Protocol</a>
+                <a href="/services.html">Work With Me</a>
+                <a href="/kit.html">72-Hour Discovery Kit</a>
+                <a href="/calculator.html">Profit Leak Calculator</a>
+                <a href="/assessment.html">Menu Profit Score</a>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <a href="https://www.linkedin.com/in/christian-schiffner-938142335/" target="_blank">LinkedIn</a>
+                <a href="https://substack.com/@thegrumpychef" target="_blank">Newsletter</a>
+                <a href="mailto:christian@thegrumpychef.ca">Email</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Christian Schiffner | The Grumpy Chef | German Master Chef (Kuechenmeister)</p>
+            <p>Dawson City, Yukon &bull; From the Black Forest, Germany</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ─── Intersection Observer — triggers .reveal on scroll ─────────
+    (function () {
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(function (el) {
+            observer.observe(el);
+        });
+
+        // Fallback: show everything after 2s
+        setTimeout(function () {
+            document.querySelectorAll('.reveal:not(.visible)').forEach(function (el) {
+                el.classList.add('visible');
+            });
+        }, 2000);
+    }());
+
+    // ─── Scroll Progress Bar ────────────────────────────────────────
+    (function () {
+        var bar = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', function () {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            bar.style.width = pct + '%';
+        });
+    }());
+
+    // ─── Sticky CTA — appears after scrolling past the cover ────────
+    (function () {
+        var stickyCta = document.getElementById('stickyCta');
+        var cover = document.getElementById('cover');
+        var ctaSection = document.getElementById('cta');
+
+        var coverObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) {
+                    stickyCta.classList.add('visible');
+                } else {
+                    stickyCta.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        var ctaObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    stickyCta.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        coverObserver.observe(cover);
+        ctaObserver.observe(ctaSection);
+    }());
+</script>
+
+</body>
+</html>

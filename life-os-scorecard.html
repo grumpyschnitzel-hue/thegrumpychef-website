@@ -13,6 +13,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Operator Life OS Scorecard | The Grumpy Chef</title>
     <meta name="description" content="Score yourself across 5 personal life systems in 5 minutes. Find where the chaos lives. Built for restaurant operators at 60% capacity. From a German Master Chef with 1,200+ days recovery proof.">
+    <meta property="og:title" content="Operator Life OS Scorecard | The Grumpy Chef">
+    <meta property="og:description" content="Score yourself across 5 personal life systems in 5 minutes. Find where the chaos lives. Built for restaurant operators at 60% capacity.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thegrumpychef.ca/life-os-scorecard.html">
+    <meta property="og:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://thegrumpychef.ca/life-os-scorecard.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
@@ -1210,8 +1217,8 @@
        GRUMPY CHEF PROGRESSION TRACKER (SHARED)
        =========================================== */
     var GC_TOOLS = {
-        calculator: { name: '72-Hour Profit Discovery Calculator', url: '72-hour-profit-discovery-calculator.html' },
-        assessment: { name: 'Menu Profit Score Assessment', url: 'menu-profit-score-assessment.html' },
+        calculator: { name: '72-Hour Profit Discovery Calculator', url: '/calculator.html' },
+        assessment: { name: 'Menu Profit Score Assessment', url: '/assessment.html' },
         lifeos: { name: 'Operator Life OS Scorecard', url: 'operator-life-os-scorecard.html' }
     };
     var GC_TOOL_ORDER = ['calculator', 'assessment', 'lifeos'];
@@ -1294,7 +1301,7 @@
                     '<li>Priority scheduling for Discovery Calls</li>' +
                 '</ul>' +
                 '<div class="power-user-panel__btns">' +
-                    '<a href="https://thegrumpychef.ca/academy.html" class="btn btn--gold" target="_blank" style="width:100%;max-width:420px;text-align:center;">Join the Academy Waitlist \u2014 Priority Access</a>' +
+                    '<!-- academy.html not built yet -->' +
                     '<a href="https://thegrumpychef.ca/services.html#discovery-call" class="btn btn--outline" target="_blank" style="width:100%;max-width:420px;text-align:center;">Book a Discovery Call</a>' +
                 '</div>' +
             '</div>';
@@ -1309,10 +1316,10 @@
             html += '<div class="next-step-panel">';
             if (!gcHasCompleted('calculator')) {
                 html += '<div class="next-step-panel__text"><strong>Your life score is in.</strong> Now find where your restaurant bleeds money.</div>';
-                html += '<a href="72-hour-profit-discovery-calculator.html" class="btn btn--gold btn--sm">Run the Profit Calculator</a>';
+                html += '<a href="/calculator.html" class="btn btn--gold btn--sm">Run the Profit Calculator</a>';
             } else if (!gcHasCompleted('assessment')) {
                 html += '<div class="next-step-panel__text"><strong>Almost there.</strong> Score your menu to complete the full diagnostic.</div>';
-                html += '<a href="menu-profit-score-assessment.html" class="btn btn--gold btn--sm">Score Your Menu</a>';
+                html += '<a href="/assessment.html" class="btn btn--gold btn--sm">Score Your Menu</a>';
             }
             html += '</div>';
         }
@@ -1324,7 +1331,7 @@
        =========================================== */
     const WEBHOOK_URL = 'https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/capture-form';
     const CALENDLY_LINK = 'https://thegrumpychef.ca/services.html#discovery-call';
-    const ASSESSMENT_URL = 'https://thegrumpychef.netlify.app/assessment';
+    const ASSESSMENT_URL = 'https://thegrumpychef.ca/assessment.html';
 
     /* ===========================================
        QUIZ DATA

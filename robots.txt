@@ -38,6 +38,12 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 # Block scrapers that add no value
 User-agent: AhrefsBot
 Disallow: /
