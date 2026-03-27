@@ -1,0 +1,24 @@
+# The Grumpy Chef — Netlify Configuration
+# thegrumpychef.ca
+
+[build]
+  publish = "."
+
+# Disable Pretty URLs — only .html should return 200
+# This prevents /about and /about.html from BOTH being indexed
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = false
+
+# Redirect /academy to homepage (was returning 404, indexed in Google)
+[[redirects]]
+  from = "/academy"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/academy/"
+  to = "/"
+  status = 301
