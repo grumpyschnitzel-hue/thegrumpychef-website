@@ -14,6 +14,15 @@
 4. **Use pattern interrupts.** Say something unexpected, contrarian, or uncomfortably honest to break the scroll.
 5. **Keep hooks short.** 1–2 lines max on Reels/Shorts. Trim every filler word. No "today I want to talk about…"
 6. **Voice test:** Would Chris say this after a solo walk in the Black Forest? If it sounds like a marketing template, rewrite it.
+7. **ALWAYS:** Story-first hooks ("I [action]") outperform abstract/conceptual hooks by 2.7x on score and 27x on impressions. Never lead with a concept — lead with a specific moment. *Source: auto-learn week-of-2026-03-13, evidence: 5 scored posts, story avg 42/100 vs abstract avg 15.67/100*
+8. **NEVER:** Trust a high hook score (62-72/80) without verifying it follows story-first format. All 3 highest-scored hooks underperformed massively (14-19/100 actual). *Source: auto-learn week-of-2026-03-13, evidence: 3/3 high-scoring hooks had negative deltas of -48 to -54*
+
+### Proven Winners Log (from real performance data)
+| Hook | Score | Impressions | Pattern |
+|------|-------|-------------|---------|
+| "I watched two chefs destroy each other over a title nobody offered them." | 52/100 | 71,212 | First-person + conflict + specific scene. Zero data. Pure story. |
+| "I showed up to a new country for a new job. Nobody was in the kitchen." | 32/100 | 27,797 | Displacement + vulnerability + specific moment. Story-first, data later. |
+| "The hospitality industry turns over 70-80% of its staff every year." | 17/100 | 9,453 | Data-led with personal frame. Solid but 3x lower reach than story-first. |
 
 ---
 

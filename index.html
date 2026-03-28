@@ -14,12 +14,14 @@
   <meta name="google-site-verification" content="google0cb16c22e6731c34" />
   <meta name="google-site-verification" content="google6055a9e4625a295f" />
   <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
-  <title>The Grumpy Chef | Your Restaurant Is Leaking Money</title>
+  <title>Restaurant Profit Recovery | The Grumpy Chef</title>
   <meta name="description"
     content="German Master Chef Christian Schiffner helps exhausted restaurant operators find hidden profit leaks using recovery frameworks. Find your #1 profit leak today.">
-  <meta property="og:title" content="The Grumpy Chef | Systems That Work When You're Exhausted">
+  <meta property="og:title" content="Restaurant Profit Recovery | The Grumpy Chef">
   <meta property="og:description"
     content="20+ years. 5 countries. Rebuilt with systems. Find the hidden profit in your restaurant without working harder.">
   <meta property="og:type" content="website">
@@ -39,7 +41,7 @@
           "name": "The Grumpy Chef",
           "alternateName": "The Grumpy Chef — Restaurant Profit Recovery",
           "url": "https://thegrumpychef.ca",
-          "logo": "https://thegrumpychef.ca/images/Kitchen1.jpg",
+          "logo": "https://thegrumpychef.ca/images/chris-chef-portrait.jpg",
           "description": "Restaurant profit recovery helping independent operators find hidden profit leaks and build systems that work when they're exhausted. Based on the 21-Day Restaurant Recovery Protocol — recovery frameworks applied to restaurant operations.",
           "founder": { "@id": "https://thegrumpychef.ca/#person" },
           "areaServed": [
@@ -52,7 +54,13 @@
           "sameAs": [
             "https://www.linkedin.com/in/christian-schiffner-938142335/",
             "https://substack.com/@thegrumpychef"
-          ]
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "christian@thegrumpychef.ca",
+            "contactType": "customer service",
+            "availableLanguage": ["English", "German"]
+          }
         },
         {
           "@type": "Person",
@@ -191,12 +199,7 @@
       ]
     }
     </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/theme.css">
   <style>
     *,
     *::before,
@@ -1002,8 +1005,12 @@
       </div>
       <div class="hero-photo">
         <div style="position: relative; display: inline-block;">
-          <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
-            class="brand-photo-circle brand-photo-circle--hero" style="border: 2px solid var(--gold);">
+          <picture>
+            <source srcset="/images/chris-chef-portrait.webp" type="image/webp">
+            <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
+              class="brand-photo-circle brand-photo-circle--hero" style="border: 2px solid var(--gold);"
+              width="2944" height="2208" loading="eager">
+          </picture>
           <div
             style="position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); padding: 4px 12px; border-radius: 4px; font-weight: 700; font-size: 0.7rem; white-space: nowrap; text-transform: uppercase; letter-spacing: 1px;">
             K&uuml;chenmeister</div>
@@ -1112,8 +1119,12 @@
       <div class="article-card"
         style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; padding: 0; background: transparent; border: none; margin-top: 40px; align-items: center;">
         <div style="border-radius: 12px; overflow: hidden; border: 1px solid var(--navy-border);">
-          <img src="/images/Kitchen1.jpg" alt="72-Hour Profit Discovery"
-            style="width: 100%; height: 100%; object-fit: cover;">
+          <picture>
+            <source srcset="/images/Kitchen1.webp" type="image/webp">
+            <img src="/images/Kitchen1.jpg" alt="72-Hour Profit Discovery"
+              style="width: 100%; height: 100%; object-fit: cover;"
+              width="2944" height="2208" loading="lazy">
+          </picture>
         </div>
         <div>
           <div class="article-badge badge-strategy"
@@ -1176,8 +1187,12 @@
       <h2 class="section-title">From the Black Forest<br><span>To the Yukon.</span></h2>
       <div class="story-grid" style="align-items: center; gap: 60px;">
         <div class="story-visual" style="position: relative;">
-          <img src="/images/black-forest-sunlight.jpg" alt="Sunlight through the Black Forest trees in Germany"
-            class="glass-card" style="border-radius: 20px; box-shadow: 0 0 50px rgba(0,0,0,0.8);">
+          <picture>
+            <source srcset="/images/black-forest-sunlight.webp" type="image/webp">
+            <img src="/images/black-forest-sunlight.jpg" alt="Sunlight through the Black Forest trees in Germany"
+              class="glass-card" style="border-radius: 20px; box-shadow: 0 0 50px rgba(0,0,0,0.8);"
+              width="4000" height="2252" loading="lazy">
+          </picture>
           <div
             style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.7); padding: 10px 20px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-liquid); border: 1px solid var(--gold-border);">
             Location: Baden-Württemberg, Germany</div>
@@ -1206,9 +1221,13 @@
             not a consultant. I'm an operator who found the exit.</p>
         </div>
         <div class="story-visual">
-          <img src="/images/yukon-river-valley.jpg"
-            alt="Yukon River valley in fall — Dawson City, where The Grumpy Chef rebuilt" class="glass-card"
-            style="border-radius: 20px; box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);">
+          <picture>
+            <source srcset="/images/yukon-river-valley.webp" type="image/webp">
+            <img src="/images/yukon-river-valley.jpg"
+              alt="Yukon River valley in fall — Dawson City, where The Grumpy Chef rebuilt" class="glass-card"
+              style="border-radius: 20px; box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);"
+              width="566" height="755" loading="lazy">
+          </picture>
         </div>
       </div>
     </div>
@@ -1241,8 +1260,12 @@
       <h2 class="section-title">The Master Chef's<br><span>Menu Engineering App</span></h2>
       <div class="story-grid" style="grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center;">
         <div class="app-visual">
-          <img src="/images/menu_engineering_app.png" alt="Menu Engineering App Mockup" class="glass-card"
-            style="width: 100%; border-radius: 12px;">
+          <picture>
+            <source srcset="/images/menu_engineering_app.webp" type="image/webp">
+            <img src="/images/menu_engineering_app.png" alt="Menu Engineering App Mockup" class="glass-card"
+              style="width: 100%; border-radius: 12px;"
+              width="640" height="640" loading="lazy">
+          </picture>
         </div>
         <div class="app-info">
           <p class="section-text" style="margin-bottom: 30px;">Stop guessing which dishes make money. Our new app
@@ -1304,8 +1327,12 @@
     <div class="section-label">Start Here</div>
     <h2 class="section-title">Where Is Your Restaurant<br><span>Bleeding Money?</span></h2>
     <p class="cta-text">5 minutes. 9 categories. Find your #1 profit leak tonight. Built by an operator who's been in the weeds for 20+ years.</p>
-    <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
-      class="brand-photo-circle brand-photo-circle--cta" style="display: block; margin: 0 auto 24px;">
+    <picture>
+      <source srcset="/images/chris-chef-portrait.webp" type="image/webp">
+      <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
+        class="brand-photo-circle brand-photo-circle--cta" style="display: block; margin: 0 auto 24px;"
+        width="2944" height="2208" loading="lazy">
+    </picture>
     <a href="/calculator.html" class="btn-primary">Find Your #1 Profit Leak</a>
   </section>
 
@@ -1380,8 +1407,12 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand" style="display: flex; gap: 16px; align-items: flex-start;">
-          <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
-            class="brand-photo-circle brand-photo-circle--footer">
+          <picture>
+            <source srcset="/images/chris-chef-portrait.webp" type="image/webp">
+            <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
+              class="brand-photo-circle brand-photo-circle--footer"
+              width="2944" height="2208" loading="lazy">
+          </picture>
           <div>
             <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
             <p>The Grumpy Chef is a restaurant profit recovery brand founded by Christian Schiffner, a German

@@ -29,21 +29,21 @@ BUT Chris is right — the website needs to feel "share-worthy" before driving t
 
 | # | Task | Freq | Time | Auto% | Automation Method |
 |---|------|------|------|-------|-------------------|
-| 1 | Write LinkedIn posts | Daily | 30-45m | 80% | Voice memo → Whisper → `wispr-to-linkedin` → review → post |
-| 2 | LinkedIn commenting/engagement | Daily | 30-60m | 30% | `linkedin-commenter` drafts. YOU engage. Unipile MCP pulls notifications |
-| 3 | Blog writing | 2x/week | 2-3h ea | 70% | `blog-pipeline`: topic → SEO article → HTML. You provide story/scar |
-| 4 | Email newsletter (Kit) | Every 2 days | 30m | 75% | `wispr-to-email` + `social-publisher`. Repurpose blog/LinkedIn |
-| 5 | Content research/trending | Daily AM | 20m | 90% | `discovery-engine` → `/morning`. Needs cron job |
+| 1 | Write LinkedIn posts | Daily | 30-45m | 80% | Voice memo → Whisper → `draft-linkedin` → review → post |
+| 2 | LinkedIn commenting/engagement | Daily | 30-60m | 30% | `engage-linkedin` drafts. YOU engage. Unipile MCP pulls notifications |
+| 3 | Blog writing | 2x/week | 2-3h ea | 70% | `publish-blog`: topic → SEO article → HTML. You provide story/scar |
+| 4 | Email newsletter (Kit) | Every 2 days | 30m | 75% | `draft-email` + `publish-social`. Repurpose blog/LinkedIn |
+| 5 | Content research/trending | Daily AM | 20m | 90% | `discover-topics` → `/morning`. Needs cron job |
 | 6 | Framework creation + recording | Daily (walks) | 30-60m | 10% | YOUR IP. Whisper Flow transcribes automatically |
-| 7 | Carousel/visual content | As needed | 30m | 85% | `linkedin-carousel-builder`, `pptx-carousel` |
+| 7 | Carousel/visual content | As needed | 30m | 85% | `build-li-carousel`, `build-deck` |
 
 ### BUSINESS DEVELOPMENT (Daily — ~1 hr)
 
 | # | Task | Freq | Time | Auto% | Automation Method |
 |---|------|------|------|-------|-------------------|
-| 8 | Outreach to restaurant owners | Daily | 30m | 60% | `cold-outreach` drafts DMs. You send manually |
-| 9 | Discovery call follow-ups | As needed | 15m | 50% | `nurture-cadence` flags stale connections |
-| 10 | Partnership research | Weekly | 30m | 70% | `research` skill + web search |
+| 8 | Outreach to restaurant owners | Daily | 30m | 60% | `draft-outreach` drafts DMs. You send manually |
+| 9 | Discovery call follow-ups | As needed | 15m | 50% | `run-nurture` flags stale connections |
+| 10 | Partnership research | Weekly | 30m | 70% | `gather-research` skill + web search |
 
 ### WEBSITE & SEO (Daily morning — ~30 min)
 
@@ -60,7 +60,7 @@ BUT Chris is right — the website needs to feel "share-worthy" before driving t
 |---|------|------|------|-------|-------------------|
 | 15 | Skool community management | Daily | 20m | 20% | YOU engage. Repurpose blog posts as content |
 | 16 | Integrate free tools into Skool | One-time | 2h | 50% | Link calculator/assessment/scorecard |
-| 17 | Community growth plan | One-time | 1h | 60% | `marketing-orchestrator` + `offer-ecosystem` |
+| 17 | Community growth plan | One-time | 1h | 60% | `marketing-orchestrator [ARCHIVED]` + `map-offers` |
 
 ### ADMIN & OPERATIONS (~30 min/day)
 
@@ -68,7 +68,7 @@ BUT Chris is right — the website needs to feel "share-worthy" before driving t
 |---|------|------|------|-------|-------------------|
 | 18 | Email management (Gmail) | Daily | 15m | 40% | Gmail MCP reads/drafts. You approve |
 | 19 | Stripe setup + branding | One-time | 1h | 0% | Manual — brand checkout pages |
-| 20 | Planning what to do next | Daily | 15m | 70% | `exec-dashboard` + execution-state.json |
+| 20 | Planning what to do next | Daily | 15m | 70% | `show-dashboard` + execution-state.json |
 | 21 | Claude/Antigravity session prep | Per session | 10m | 80% | CLAUDE.md + MEMORY.md handle this |
 | 22 | Antigravity ↔ Claude Code workflow | Ongoing | Var | 50% | `antigravity-claude-bridge` skill |
 
@@ -77,7 +77,7 @@ BUT Chris is right — the website needs to feel "share-worthy" before driving t
 | # | Task | Freq | Time | Auto% | Automation Method |
 |---|------|------|------|-------|-------------------|
 | 23 | Voice memo capture (walks) | Daily | 15-30m | 0% | This IS the work. Whisper Flow transcribes |
-| 24 | Process transcripts into content | Daily | 30m | 85% | `content-batch` → 5 formats from 1 transcript |
+| 24 | Process transcripts into content | Daily | 30m | 85% | `batch-content` → 5 formats from 1 transcript |
 | 25 | Content consumption (learning) | Daily | 60m | 0% | Not automatable. Budget it deliberately |
 
 ### TOTALS
@@ -162,7 +162,7 @@ Strong back-end (brand docs, skills, tools) but almost no front-end assets that 
 - **Gaps:** No Stripe data integration, no link tracking, no centralized data store (Supabase configured but unused)
 
 ### Layer 3: INTELLIGENCE — 20% Done (BIGGEST GAP)
-- discovery-engine skill exists but requires manual trigger
+- discover-topics skill exists but requires manual trigger
 - **Gaps:** No daily brief automation, no cron jobs, no communication capture (Slack/Telegram), no meeting recorder, LinkedIn MCP dormant
 
 ### Layer 4: AUTOMATE — 70% Skills Built / 10% Actually Automated
@@ -226,7 +226,7 @@ Strong back-end (brand docs, skills, tools) but almost no front-end assets that 
 | # | Action | Asset Impact | Time |
 |---|--------|-------------|------|
 | 5a | Set up first cron job (morning brief → email) | Intelligence Layer | 2 hrs |
-| 5b | Chain wispr → content-batch → review workflow | Automate Layer | 2 hrs |
+| 5b | Chain wispr → batch-content → review workflow | Automate Layer | 2 hrs |
 | 5c | Deploy Menu Engineering App to Vercel | Technology (#22) | 2 hrs |
 | 5d | Create pitch deck from 21-Day Protocol | Pitch (#1) | 3 hrs |
 | 5e | Connect Stripe to Antigravity data layer | Data Layer | 1 hr |
@@ -252,7 +252,7 @@ Strong back-end (brand docs, skills, tools) but almost no front-end assets that 
 
 ### "I want to grow aggressively on LinkedIn"
 The growth lever is **commenting**, not posting. The formula:
-- 1 post/day (voice memo → wispr-to-linkedin → review → post)
+- 1 post/day (voice memo → draft-linkedin → review → post)
 - 30-60 min commenting on OTHER people's posts (restaurant, hospitality, small business)
 - Respond to every comment on your posts within 2 hours
 - This is 80% manual. The 20% automation comes from content drafting skills.

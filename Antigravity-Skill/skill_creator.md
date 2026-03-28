@@ -138,7 +138,7 @@ Operator who's already hit bottom (or close). Debt, burnout, maybe addiction. Lo
 | **Free** | Menu Profit Score Assessment | $0 | Lead capture, menu-specific diagnosis |
 | **Free** | Operator Life OS Scorecard | $0 | Lead capture, personal systems diagnosis |
 | **Entry** | Operator's Toolkit (8 spreadsheets + dashboard) | $47 | Tripwire, self-serve tracking tools |
-| **Mid** | 72-Hour Profit Discovery Kit (videos + workbooks) | $197 | Self-guided implementation framework |
+| **Mid** | 72-Hour Profit Discovery Kit (videos + workbooks) | $297 | Self-guided implementation framework |
 | **Premium** | 90-Day Restaurant Transformation | Apply to discuss (not yet validated with real sales) | Done-with-you coaching, 3 full protocol cycles |
 | **Waitlist** | Grumpy Chef Academy | TBD | 90-day group program, founding members |
 
@@ -154,7 +154,7 @@ Operator who's already hit bottom (or close). Debt, burnout, maybe addiction. Lo
 | 2 | Menu Profit Score Assessment | Email, quiz score | `assessment-lead` |
 | 3 | Operator Life OS Scorecard | Email, 5 system scores | `life-os-lead` |
 | 4 | Operator's Toolkit ($47) | Purchase | `toolkit-buyer` |
-| 5 | 72-Hour Profit Discovery Kit ($197) | Purchase | `kit-buyer` |
+| 5 | 72-Hour Profit Discovery Kit ($297) | Purchase | `kit-buyer` |
 | 6 | Academy Waitlist | Email | `waitlist-lead` |
 | 7 | Discovery Call | Email, call request | `discovery-call-request` |
 | 8 | Newsletter / Substack | Email | Substack managed |

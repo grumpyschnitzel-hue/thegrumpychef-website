@@ -1020,7 +1020,7 @@ The problem is that every tool out there wants you to become a data analyst when
 
 Spreadsheets that take longer to update than the food takes to spoil. Software subscriptions that cost more than the waste they're supposed to prevent. Dashboards built by people who've never portioned a single plate.
 
-I lost $180K before I figured out what actually matters.
+I lost $370K before I figured out what actually matters.
 
 Not more data. Better systems.
 
