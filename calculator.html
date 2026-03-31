@@ -2331,6 +2331,17 @@
                 console.log('Payload:', JSON.stringify(payload, null, 2));
             }
 
+            // Tag subscriber in Kit → triggers calculator nurture sequence
+            try {
+                await fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, first_name: name || '', tag_id: '15797829' })
+                });
+            } catch (e) {
+                console.warn('Kit tagging failed:', e);
+            }
+
             // Redirect to thank-you page if inside LP iframe
             if (window.parent !== window) {
                 window.parent.postMessage({ type: 'redirect', url: '/lp/thank-you-calculator.html' }, '*');
