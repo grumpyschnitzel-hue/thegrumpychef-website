@@ -36,7 +36,7 @@
           "@type": "WebApplication",
           "@id": "https://thegrumpychef.ca/assessment.html#app",
           "name": "Menu Profit Score Assessment",
-          "description": "10-question menu engineering assessment that scores your restaurant menu on profitability, pricing strategy, and menu psychology. Research-backed principles from a German Master Chef with 20+ years experience.",
+          "description": "15-question menu engineering assessment that scores your restaurant menu on profitability, pricing strategy, and menu psychology. Research-backed principles from a German Master Chef with 20+ years experience.",
           "url": "https://thegrumpychef.ca/assessment.html",
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "Any",
@@ -64,7 +64,7 @@
               "name": "What does the Menu Profit Score measure?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "19 questions across 5 profit categories: pricing strategy, menu mix, food cost control, menu psychology, and operational efficiency. Your score shows where your menu is leaving money on the table."
+                "text": "15 questions across menu psychology, cost control, and revenue strategy. 10 scored best-practice questions plus 5 qualifying questions to personalize your results."
               }
             },
             {
@@ -72,7 +72,7 @@
               "name": "How long does the assessment take?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "3 minutes. 19 multiple-choice questions. Instant results with your top 3 quick wins."
+                "text": "3 minutes. 15 questions. Instant results with your top 3 quick wins and personalized recommendations."
               }
             },
             {
@@ -447,6 +447,141 @@
         /* ============================================
            PROGRESS BAR
            ============================================ */
+        /* ============================================
+           EMAIL GATE
+           ============================================ */
+        .gate-section {
+            display: none;
+            padding: 48px 0;
+        }
+
+        .gate-section.active {
+            display: block;
+        }
+
+        .gate__box {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 40px 32px;
+            text-align: center;
+        }
+
+        .gate__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .gate__sub {
+            font-size: 14px;
+            color: var(--white-dim);
+            margin-bottom: 24px;
+            line-height: 1.55;
+        }
+
+        .gate__form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .gate__field {
+            font-family: var(--font-body);
+            font-size: 14px;
+            padding: 12px 16px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            color: var(--white);
+            outline: none;
+            transition: border-color 0.15s;
+        }
+
+        .gate__field:focus {
+            border-color: var(--gold-dim);
+        }
+
+        .gate__field::placeholder {
+            color: var(--gray-dark);
+        }
+
+        .gate__btn {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--navy);
+            background: var(--gold);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .gate__btn:hover {
+            background: var(--gold-dim);
+        }
+
+        .gate__btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .gate__error {
+            display: none;
+            color: var(--red);
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .gate__privacy {
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 12px;
+        }
+
+        /* ============================================
+           QUALIFYING QUESTIONS
+           ============================================ */
+        .qualifying-card .answer-option {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .qualifying-card .answer-option__points {
+            display: none;
+        }
+
+        .qualifying-card textarea {
+            width: 100%;
+            min-height: 100px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            padding: 12px 16px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            color: var(--white);
+            outline: none;
+            resize: vertical;
+            transition: border-color 0.15s;
+        }
+
+        .qualifying-card textarea:focus {
+            border-color: var(--gold-dim);
+        }
+
+        .qualifying-card textarea::placeholder {
+            color: var(--gray-dark);
+        }
+
         .progress-section {
             padding: 24px 0 0;
             display: none;
@@ -1496,8 +1631,8 @@
                     <div class="hero__brand">The Grumpy Chef</div>
                     <h1 class="hero__title">Is Your Menu Leaving<br>$50K+ on the Table?</h1>
                     <p class="hero__sub">
-                        Take the <strong>3-minute Menu Profit Score</strong> assessment and find out exactly what you're
-                        missing. No guesswork. Research-backed menu engineering principles.
+                        Answer <strong>15 quick questions</strong> to discover your menu's hidden profit leaks.
+                        No guesswork. Research-backed menu engineering principles from 20+ years in real kitchens.
                     </p>
                 </div>
                 <div class="hero__photo">
@@ -1518,7 +1653,7 @@
                     <div class="stat__label">Price Increases<br>Needed</div>
                 </div>
                 <div class="stat">
-                    <div class="stat__num">10</div>
+                    <div class="stat__num">15</div>
                     <div class="stat__label">Research-Backed<br>Questions</div>
                 </div>
                 <div class="stat">
@@ -1532,7 +1667,7 @@
                 <span>|</span> 20+ years operations <span>|</span> 5 countries
             </div>
 
-            <button class="hero__cta" onclick="startAssessment()">Start the Assessment</button>
+            <button class="hero__cta" onclick="showGate()">Start the Assessment</button>
         </div>
     </section>
 
@@ -1557,13 +1692,35 @@
     </section>
 
     <!-- ============================================
+     EMAIL GATE (capture before quiz)
+     ============================================ -->
+    <section class="gate-section" id="gateSection">
+        <div class="container">
+            <div class="gate__box">
+                <div class="gate__title">Get Your Personalized Results</div>
+                <p class="gate__sub">
+                    Enter your name and email so we can send you a detailed action plan based on your score.
+                    Then you'll start the assessment immediately.
+                </p>
+                <form class="gate__form" onsubmit="submitGate(event)">
+                    <input type="text" class="gate__field" id="gateName" placeholder="Your Name" required>
+                    <input type="email" class="gate__field" id="gateEmail" placeholder="Email Address" required>
+                    <div class="gate__error" id="gateError">Please enter a valid name and email.</div>
+                    <button type="submit" class="gate__btn" id="gateBtn">Start the Assessment</button>
+                </form>
+                <p class="gate__privacy">No spam. Just your results and specific next steps.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
      PROGRESS BAR
      ============================================ -->
     <section class="progress-section" id="progressSection">
         <div class="container">
             <div class="progress__header">
                 <div class="progress__label">Assessment</div>
-                <div class="progress__count" id="progressCount">Question 1 of 10</div>
+                <div class="progress__count" id="progressCount">Question 1 of 15</div>
             </div>
             <div class="progress__bar">
                 <div class="progress__fill" id="progressFill"></div>
@@ -1908,6 +2065,67 @@
         ];
 
         /* ============================================
+           QUALIFYING QUESTIONS (not scored)
+           ============================================ */
+        const qualifyingQuestions = [
+            {
+                id: 'current_situation',
+                text: 'Which best describes your current situation?',
+                type: 'choice',
+                options: [
+                    { label: 'Independent restaurant owner' },
+                    { label: 'Chain or multi-unit manager' },
+                    { label: 'Hotel F&B director' },
+                    { label: 'Starting a new restaurant concept' },
+                    { label: 'Chef looking to move into ownership' }
+                ]
+            },
+            {
+                id: 'ninety_day_goal',
+                text: 'What is your #1 goal for the next 90 days?',
+                type: 'choice',
+                options: [
+                    { label: 'Cut food costs without cutting quality' },
+                    { label: 'Increase revenue per guest' },
+                    { label: 'Launch or redesign my menu' },
+                    { label: 'Improve overall profit margins' },
+                    { label: 'Get systems in place so I can step back' }
+                ]
+            },
+            {
+                id: 'biggest_obstacle',
+                text: 'What is the biggest thing stopping you right now?',
+                type: 'choice',
+                options: [
+                    { label: 'No time — I am in the kitchen all day' },
+                    { label: 'No systems — everything is in my head' },
+                    { label: 'Staff issues — turnover, training, consistency' },
+                    { label: 'I don\'t know where to start' },
+                    { label: 'I know what to do but can\'t execute' }
+                ]
+            },
+            {
+                id: 'preferred_solution',
+                text: 'Which type of solution fits you best right now?',
+                type: 'choice',
+                options: [
+                    { label: 'DIY tools and templates I can use myself ($47 Toolkit)' },
+                    { label: 'Guided system with coaching support ($297 Discovery Kit)' },
+                    { label: 'Done-for-you consulting — just fix it for me' },
+                    { label: 'Not sure yet — I want to learn more first' }
+                ]
+            },
+            {
+                id: 'open_box',
+                text: 'Is there anything else we should know about your situation?',
+                type: 'textarea',
+                placeholder: 'Optional — but leads who share context here get more specific recommendations.'
+            }
+        ];
+
+        const TOTAL_QUESTIONS = questions.length + qualifyingQuestions.length;
+
+        /* ============================================
            SCORING TIERS
            ============================================ */
         const tiers = [
@@ -1963,6 +2181,8 @@
            ============================================ */
         let currentQuestion = 0;
         let answers = new Array(questions.length).fill(null);
+        let qualifyingAnswers = {};
+        let gatedContact = { name: '', email: '' };
 
         /* ============================================
            RENDER QUIZ
@@ -1971,9 +2191,10 @@
             const container = document.getElementById('quizContainer');
             let html = '';
 
+            // Render 10 scored questions
             questions.forEach((q, qi) => {
-                html += `<div class="question-card" id="q${qi}" ${qi === 0 ? '' : ''}>`;
-                html += `<div class="question-card__num">Question ${qi + 1} of ${questions.length}</div>`;
+                html += `<div class="question-card" id="q${qi}">`;
+                html += `<div class="question-card__num">Question ${qi + 1} of ${TOTAL_QUESTIONS}</div>`;
                 html += `<div class="question-card__text">${q.text}</div>`;
 
                 q.options.forEach((opt, oi) => {
@@ -1994,19 +2215,106 @@
                 html += `
             <div class="quiz-nav">
                 <button class="btn-back" onclick="prevQuestion()" ${qi === 0 ? 'disabled' : ''}>Back</button>
-                <button class="btn-next" id="nextBtn-${qi}" onclick="${qi === questions.length - 1 ? 'showResults()' : 'nextQuestion()'}" disabled>
-                    ${qi === questions.length - 1 ? 'See My Score' : 'Next Question'}
+                <button class="btn-next" id="nextBtn-${qi}" onclick="nextQuestion()" disabled>
+                    Next Question
                 </button>
             </div>
         </div>`;
             });
 
+            // Render 5 qualifying questions
+            qualifyingQuestions.forEach((q, qqi) => {
+                const globalIdx = questions.length + qqi;
+                const isLast = qqi === qualifyingQuestions.length - 1;
+                html += `<div class="question-card qualifying-card" id="q${globalIdx}">`;
+                html += `<div class="question-card__num">Question ${globalIdx + 1} of ${TOTAL_QUESTIONS}</div>`;
+                html += `<div class="question-card__text">${q.text}</div>`;
+
+                if (q.type === 'textarea') {
+                    html += `
+                <textarea id="qf-${q.id}" placeholder="${q.placeholder || ''}"
+                    oninput="selectQualifying('${q.id}', this.value, ${globalIdx})"></textarea>
+                <div class="quiz-nav">
+                    <button class="btn-back" onclick="prevQuestion()">Back</button>
+                    <button class="btn-next" id="nextBtn-${globalIdx}" onclick="showResults()">
+                        See My Score
+                    </button>
+                </div>`;
+                } else {
+                    q.options.forEach((opt, oi) => {
+                        html += `
+                <div class="answer-option" id="opt-${globalIdx}-${oi}" onclick="selectQualifyingChoice('${q.id}', '${opt.label.replace(/'/g, "\\'")}', ${globalIdx}, ${oi}, ${q.options.length})">
+                    <div class="answer-option__radio">
+                        <div class="answer-option__radio__dot"></div>
+                    </div>
+                    <div class="answer-option__content">
+                        <div class="answer-option__label">${opt.label}</div>
+                    </div>
+                </div>
+                `;
+                    });
+
+                    html += `
+                <div class="quiz-nav">
+                    <button class="btn-back" onclick="prevQuestion()">Back</button>
+                    <button class="btn-next" id="nextBtn-${globalIdx}" onclick="${isLast ? 'showResults()' : 'nextQuestion()'}" disabled>
+                        ${isLast ? 'See My Score' : 'Next Question'}
+                    </button>
+                </div>`;
+                }
+
+                html += `</div>`;
+            });
+
             container.innerHTML = html;
+
+            // The open box (last qualifying) doesn't require an answer — enable its next button
+            const lastIdx = questions.length + qualifyingQuestions.length - 1;
+            const lastBtn = document.getElementById('nextBtn-' + lastIdx);
+            if (lastBtn) lastBtn.disabled = false;
         }
 
         /* ============================================
            QUIZ NAVIGATION
            ============================================ */
+        /* ============================================
+           GATE LOGIC
+           ============================================ */
+        function showGate() {
+            document.getElementById('gateSection').classList.add('active');
+            document.getElementById('gateSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function submitGate(e) {
+            e.preventDefault();
+            const name = document.getElementById('gateName').value.trim();
+            const email = document.getElementById('gateEmail').value.trim();
+            const errorEl = document.getElementById('gateError');
+
+            if (!name || !email) {
+                errorEl.style.display = 'block';
+                errorEl.textContent = 'Please enter your name and email.';
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errorEl.style.display = 'block';
+                errorEl.textContent = 'Please enter a valid email address.';
+                return;
+            }
+
+            errorEl.style.display = 'none';
+            gatedContact.name = name;
+            gatedContact.email = email;
+
+            // Pre-fill the post-results capture form
+            document.getElementById('capName').value = name;
+            document.getElementById('capEmail').value = email;
+
+            // Hide gate, start quiz
+            document.getElementById('gateSection').classList.remove('active');
+            startAssessment();
+        }
+
         function startAssessment() {
             document.getElementById('progressSection').classList.add('active');
             document.getElementById('quizSection').classList.add('active');
@@ -2042,8 +2350,26 @@
             if (nextBtn) nextBtn.disabled = false;
         }
 
+        function selectQualifyingChoice(id, label, globalIdx, oi, totalOpts) {
+            qualifyingAnswers[id] = label;
+
+            // Update visual state
+            for (let i = 0; i < totalOpts; i++) {
+                const el = document.getElementById(`opt-${globalIdx}-${i}`);
+                if (el) el.classList.toggle('selected', i === oi);
+            }
+
+            // Enable next button
+            const nextBtn = document.getElementById(`nextBtn-${globalIdx}`);
+            if (nextBtn) nextBtn.disabled = false;
+        }
+
+        function selectQualifying(id, value, globalIdx) {
+            qualifyingAnswers[id] = value;
+        }
+
         function nextQuestion() {
-            if (currentQuestion < questions.length - 1) {
+            if (currentQuestion < TOTAL_QUESTIONS - 1) {
                 showQuestion(currentQuestion + 1);
                 document.getElementById('progressSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
@@ -2057,14 +2383,15 @@
         }
 
         function updateProgress() {
-            const pct = ((currentQuestion + 1) / questions.length) * 100;
+            const pct = ((currentQuestion + 1) / TOTAL_QUESTIONS) * 100;
             document.getElementById('progressFill').style.width = pct + '%';
-            document.getElementById('progressCount').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+            document.getElementById('progressCount').textContent = `Question ${currentQuestion + 1} of ${TOTAL_QUESTIONS}`;
         }
 
         function updateNavState() {
             const nextBtn = document.getElementById(`nextBtn-${currentQuestion}`);
-            if (nextBtn) {
+            if (nextBtn && currentQuestion < questions.length) {
+                // Scored questions require an answer
                 nextBtn.disabled = answers[currentQuestion] === null;
             }
         }
@@ -2265,17 +2592,18 @@
                 });
 
             return {
-                email: document.getElementById('capEmail').value.trim(),
-                name: document.getElementById('capName').value.trim(),
+                email: document.getElementById('capEmail').value.trim() || gatedContact.email,
+                name: document.getElementById('capName').value.trim() || gatedContact.name,
                 restaurant_name: document.getElementById('capRestaurant').value.trim(),
                 monthly_revenue: document.getElementById('capRevenue').value || 'not provided',
                 score: totalScore,
                 score_tier: tier.name,
                 opportunity_amount: tier.opportunity,
                 answers: answersMap,
+                qualifying: qualifyingAnswers,
                 missed_opportunities: missedOpportunities,
                 timestamp: new Date().toISOString(),
-                source: 'menu-profit-score-assessment'
+                source: 'menu-profit-score-assessment-v2'
             };
         }
 
@@ -2284,10 +2612,17 @@
 
             return {
                 contact: {
-                    name: document.getElementById('capName').value.trim(),
-                    email: document.getElementById('capEmail').value.trim(),
+                    name: document.getElementById('capName').value.trim() || gatedContact.name,
+                    email: document.getElementById('capEmail').value.trim() || gatedContact.email,
                     restaurant: document.getElementById('capRestaurant').value.trim(),
                     monthlyRevenue: document.getElementById('capRevenue').value
+                },
+                qualifying: {
+                    currentSituation: qualifyingAnswers.current_situation || null,
+                    ninetyDayGoal: qualifyingAnswers.ninety_day_goal || null,
+                    biggestObstacle: qualifyingAnswers.biggest_obstacle || null,
+                    preferredSolution: qualifyingAnswers.preferred_solution || null,
+                    openBox: qualifyingAnswers.open_box || null
                 },
                 results: {
                     totalScore: totalScore,
@@ -2307,7 +2642,7 @@
                         pointsLost: a.pointsPossible - a.pointsEarned
                     })),
                     timestamp: new Date().toISOString(),
-                    source: 'menu-profit-score-assessment-v1'
+                    source: 'menu-profit-score-assessment-v2'
                 },
                 utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
             };
@@ -2379,6 +2714,29 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: email, first_name: name, tag_id: '15797830' })
             }).catch(function (err) { console.warn('Kit tagging failed:', err); });
+
+            // Tag by score tier
+            const { tier: scoreTier } = getScoreData();
+            const tierTagMap = {
+                'Menu Engineering Pro': 'score-tier-pro',
+                'Strong Foundation, Missing Key Wins': 'score-tier-foundation',
+                'Profitable Changes Waiting': 'score-tier-profitable',
+                'Significant Profit Leak': 'score-tier-leak',
+                'Emergency Redesign Needed': 'score-tier-emergency'
+            };
+            console.log('Score tier for Kit tagging:', scoreTier.name, '(' + (tierTagMap[scoreTier.name] || 'unknown') + ')');
+
+            // Tag by preferred solution
+            const solutionTagMap = {
+                'DIY tools and templates I can use myself ($47 Toolkit)': 'solution-diy',
+                'Guided system with coaching support ($297 Discovery Kit)': 'solution-guided',
+                'Done-for-you consulting — just fix it for me': 'solution-dfy',
+                'Not sure yet — I want to learn more first': 'solution-exploring'
+            };
+            const preferredSolution = qualifyingAnswers.preferred_solution;
+            if (preferredSolution) {
+                console.log('Preferred solution for Kit tagging:', solutionTagMap[preferredSolution] || preferredSolution);
+            }
 
             // Log payload if neither endpoint is configured
             if (!submitted) {
