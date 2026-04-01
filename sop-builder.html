@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F41KYXCEXL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-F41KYXCEXL');
+    </script>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>AI Kitchen SOP Builder | The Grumpy Chef</title>
+    <meta name="description"
+        content="Generate professional kitchen SOPs and recipe cards with AI. Includes cost calculations, allergen matrix, plating notes, and printable format. Built by a Master Chef with 20+ years experience.">
+    <meta property="og:title" content="AI Kitchen SOP Builder | The Grumpy Chef">
+    <meta property="og:description"
+        content="Generate professional kitchen SOPs and recipe cards with AI. Includes cost calculations, allergen matrix, and printable format.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thegrumpychef.ca/sop-builder.html">
+    <meta property="og:image" content="https://thegrumpychef.ca/images/menu_engineering_app.png">
+    <meta property="og:image:alt" content="AI Kitchen SOP Builder - Generate professional recipe cards">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://thegrumpychef.ca/sop-builder.html">
+    <meta name="author" content="Christian Schiffner">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://thegrumpychef.ca/sop-builder.html#app",
+          "name": "AI Kitchen SOP Builder",
+          "description": "Generate professional kitchen SOPs and recipe cards with AI. Includes cost calculations, allergen matrix, plating notes, storage instructions, and printable format.",
+          "url": "https://thegrumpychef.ca/sop-builder.html",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Any",
+          "author": { "@id": "https://thegrumpychef.ca/#person" },
+          "provider": { "@id": "https://thegrumpychef.ca/#business" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "CAD"
+          },
+          "isPartOf": { "@id": "https://thegrumpychef.ca/#website" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thegrumpychef.ca/" },
+            { "@type": "ListItem", "position": 2, "name": "AI Kitchen SOP Builder" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is a Kitchen SOP?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Kitchen SOP (Standard Operating Procedure) is a documented recipe card with step-by-step instructions, exact measurements, cost calculations, allergen information, and plating standards. It ensures every plate leaves the pass consistently, regardless of who is cooking."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the AI SOP Builder work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Enter your dish details (name, cuisine, portions, target food cost, allergens) and our AI generates a complete professional SOP card with ingredients, step-by-step instructions, cost calculations, allergen matrix, plating notes, and storage instructions. Print it, laminate it, and post it at your station."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is the SOP Builder free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Enter your email to unlock the builder. You get 3 free SOP generations per day. Each SOP is printable and downloadable as PDF."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <style>
+        /* ============================================
+           RESET
+           ============================================ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --navy-hover: #162642;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gray-dark: #2D3748;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --red: #C53030;
+            --red-glow: rgba(197, 48, 48, 0.10);
+            --green: #2F855A;
+            --green-glow: rgba(47, 133, 90, 0.10);
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* NAV */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--navy-border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white-dim);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy) !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold-dim);
+            transform: translateY(-1px);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            padding: 140px 0 80px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--gold);
+            background: var(--gold-glow);
+            border: 1px solid var(--gold-border);
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--white-dim);
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           SECTIONS
+           ============================================ */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .section-title span {
+            color: var(--gold);
+        }
+
+        /* ============================================
+           CARDS
+           ============================================ */
+        .card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--gold-border);
+        }
+
+        /* ============================================
+           FORMS
+           ============================================ */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .form-group .hint {
+            font-size: 0.75rem;
+            color: var(--white-dim);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--gray);
+        }
+
+        .form-group select option {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* Allergen checkboxes */
+        .allergen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 8px;
+        }
+
+        .allergen-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .allergen-item:hover {
+            border-color: var(--gold-border);
+        }
+
+        .allergen-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--gold);
+            cursor: pointer;
+        }
+
+        .allergen-item label {
+            font-size: 0.8rem;
+            color: var(--white-dim);
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .allergen-item input:checked + label {
+            color: var(--gold);
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--gold);
+            color: var(--navy);
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-dim);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: transparent;
+            color: var(--gold);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--gold-border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            background: var(--gold-glow);
+        }
+
+        /* ============================================
+           EMAIL GATE
+           ============================================ */
+        #email-gate {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           SOP FORM
+           ============================================ */
+        #sop-form-section {
+            display: none;
+        }
+
+        /* ============================================
+           LOADING STATE
+           ============================================ */
+        .loading-overlay {
+            display: none;
+            text-align: center;
+            padding: 60px 24px;
+        }
+
+        .loading-overlay.active {
+            display: block;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--navy-border);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 24px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--gold);
+        }
+
+        /* ============================================
+           RESULT CARD
+           ============================================ */
+        #result-section {
+            display: none;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .sop-card {
+            background: var(--navy-card);
+            border: 1px solid var(--gold-border);
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .sop-card h2 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .sop-card .sop-meta {
+            font-size: 0.85rem;
+            color: var(--white-dim);
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--navy-border);
+        }
+
+        .sop-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 24px 0 12px;
+            padding-top: 16px;
+            border-top: 1px solid var(--navy-border);
+        }
+
+        .sop-card h3:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .sop-card table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.85rem;
+        }
+
+        .sop-card th {
+            text-align: left;
+            padding: 8px 12px;
+            background: var(--navy);
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid var(--navy-border);
+        }
+
+        .sop-card td {
+            padding: 8px 12px;
+            border: 1px solid var(--navy-border);
+            color: var(--white-dim);
+        }
+
+        .sop-card ol,
+        .sop-card ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+
+        .sop-card li {
+            margin-bottom: 8px;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+
+        .sop-card .cost-highlight {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .sop-card .allergen-yes {
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        .sop-card .allergen-no {
+            color: var(--green);
+        }
+
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .cta-card {
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .cta-card:hover {
+            border-color: var(--gold-border);
+            transform: translateY(-4px);
+        }
+
+        .cta-card h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--white);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .cta-card .price {
+            font-family: var(--font-mono);
+            font-size: 1.4rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .cta-card p {
+            font-size: 0.8rem;
+            color: var(--white-dim);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           ERROR
+           ============================================ */
+        .error-msg {
+            display: none;
+            background: var(--red-glow);
+            border: 1px solid var(--red);
+            color: var(--white);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+
+        .error-msg.active {
+            display: block;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: #050B14;
+            padding: 60px 0 24px;
+            border-top: 1px solid var(--navy-border);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand-name {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .footer-brand-name span {
+            color: var(--gold);
+        }
+
+        .footer-brand p {
+            font-size: 0.8rem;
+            color: var(--white-dim);
+            line-height: 1.6;
+        }
+
+        .brand-photo-circle--footer {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold-border);
+            flex-shrink: 0;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--white);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: var(--white-dim);
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--navy-border);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                padding: 16px 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--navy-border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .allergen-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .sop-card {
+                padding: 24px 16px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .result-actions {
+                flex-direction: column;
+            }
+
+            .cta-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============================================
+           PRINT STYLES
+           ============================================ */
+        @media print {
+            body {
+                background: white;
+                color: #111;
+            }
+
+            .nav,
+            .hero,
+            #email-gate,
+            #sop-form-section,
+            .result-actions,
+            .cta-section,
+            .footer,
+            .loading-overlay,
+            .error-msg {
+                display: none !important;
+            }
+
+            #result-section {
+                display: block !important;
+                padding: 0;
+            }
+
+            .sop-card {
+                background: white;
+                border: 2px solid #333;
+                padding: 24px;
+                box-shadow: none;
+                page-break-inside: avoid;
+            }
+
+            .sop-card h2 {
+                color: #111;
+                font-size: 1.4rem;
+                border-bottom: 2px solid #333;
+                padding-bottom: 8px;
+            }
+
+            .sop-card h3 {
+                color: #333;
+                border-top: 1px solid #ccc;
+            }
+
+            .sop-card .sop-meta {
+                color: #555;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .sop-card table {
+                font-size: 0.8rem;
+            }
+
+            .sop-card th {
+                background: #eee;
+                color: #333;
+                border: 1px solid #999;
+            }
+
+            .sop-card td {
+                color: #333;
+                border: 1px solid #999;
+            }
+
+            .sop-card li {
+                color: #333;
+            }
+
+            .sop-card .cost-highlight {
+                color: #111;
+            }
+
+            .sop-card .allergen-yes {
+                color: #C53030;
+            }
+
+            .sop-card .allergen-no {
+                color: #2F855A;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .section {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"
+                aria-label="Menu">&#9776;</button>
+            <div class="nav-links">
+                <a href="/about.html">My Story</a>
+                <a href="/framework.html">The Protocol</a>
+                <a href="/services.html">Work With Me</a>
+                <a href="/blog/">Blog</a>
+                <a href="/calculator.html">Free Tools</a>
+                <a href="/kit.html" class="nav-cta">Discovery Kit</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">Free AI-Powered Tool</div>
+            <h1>Tired of Inconsistent Plates<br>and <span>Mystery Food Costs?</span></h1>
+            <p class="hero-sub">Generate a professional kitchen SOP and recipe card in under 60 seconds. Includes cost calculations, allergen matrix, and a printable format you can laminate and post at your station.</p>
+        </div>
+    </section>
+
+    <!-- EMAIL GATE -->
+    <section class="section">
+        <div class="container">
+            <div id="email-gate" class="card">
+                <div class="section-label">Step 1 of 2</div>
+                <h2 class="section-title">Unlock the <span>SOP Builder</span></h2>
+                <p style="color: var(--white-dim); margin-bottom: 24px; font-size: 0.95rem;">Enter your details to access the AI builder. We will send you the SOP as a backup too.</p>
+                <div class="error-msg" id="gate-error"></div>
+                <form id="gate-form" onsubmit="return handleGateSubmit(event)">
+                    <div class="form-group">
+                        <label for="gate-name">Your Name</label>
+                        <input type="text" id="gate-name" name="name" placeholder="e.g. Marco Bianchi" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gate-email">Email Address</label>
+                        <input type="email" id="gate-email" name="email" placeholder="marco@restaurant.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gate-restaurant">Restaurant Name</label>
+                        <input type="text" id="gate-restaurant" name="restaurant" placeholder="e.g. Trattoria Luna" required>
+                    </div>
+                    <button type="submit" class="btn-primary" id="gate-btn">Unlock SOP Builder</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOP FORM -->
+    <section class="section" id="sop-form-section">
+        <div class="container">
+            <div class="card">
+                <div class="section-label">Step 2 of 2</div>
+                <h2 class="section-title">Build Your <span>Recipe SOP</span></h2>
+                <p style="color: var(--white-dim); margin-bottom: 24px; font-size: 0.95rem;">Fill in your dish details. The more specific you are, the better the SOP.</p>
+                <div class="error-msg" id="sop-error"></div>
+                <form id="sop-form" onsubmit="return handleSopSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dish-name">Dish Name</label>
+                            <input type="text" id="dish-name" placeholder="e.g. Wiener Schnitzel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cuisine-type">Cuisine Type</label>
+                            <select id="cuisine-type" required>
+                                <option value="">Select cuisine...</option>
+                                <option value="Austrian/German">Austrian / German</option>
+                                <option value="French">French</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="Asian">Asian</option>
+                                <option value="North American">North American</option>
+                                <option value="Latin American">Latin American</option>
+                                <option value="Middle Eastern">Middle Eastern</option>
+                                <option value="Indian">Indian</option>
+                                <option value="Fusion">Fusion</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="portions">Number of Portions</label>
+                            <input type="number" id="portions" min="1" max="500" placeholder="e.g. 4" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="target-cost">Target Food Cost %</label>
+                            <div class="hint">Industry target: 28-35%</div>
+                            <input type="number" id="target-cost" min="10" max="60" step="1" placeholder="e.g. 30" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="special-notes">Special Notes (optional)</label>
+                        <textarea id="special-notes" rows="3" placeholder="e.g. Use chicken breast instead of veal. Include a vegetarian variation. Cost in CAD."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Known Allergens in This Dish</label>
+                        <div class="hint">Check all allergens present in the recipe</div>
+                        <div class="allergen-grid">
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-gluten" value="Gluten">
+                                <label for="a-gluten">Gluten</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-crustaceans" value="Crustaceans">
+                                <label for="a-crustaceans">Crustaceans</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-eggs" value="Eggs">
+                                <label for="a-eggs">Eggs</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-fish" value="Fish">
+                                <label for="a-fish">Fish</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-peanuts" value="Peanuts">
+                                <label for="a-peanuts">Peanuts</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-soybeans" value="Soybeans">
+                                <label for="a-soybeans">Soybeans</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-milk" value="Milk">
+                                <label for="a-milk">Milk / Dairy</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-tree-nuts" value="Tree Nuts">
+                                <label for="a-tree-nuts">Tree Nuts</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-sesame" value="Sesame">
+                                <label for="a-sesame">Sesame</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-sulphites" value="Sulphites">
+                                <label for="a-sulphites">Sulphites</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-mustard" value="Mustard">
+                                <label for="a-mustard">Mustard</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-celery" value="Celery">
+                                <label for="a-celery">Celery</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-lupin" value="Lupin">
+                                <label for="a-lupin">Lupin</label>
+                            </div>
+                            <div class="allergen-item">
+                                <input type="checkbox" id="a-molluscs" value="Molluscs">
+                                <label for="a-molluscs">Molluscs</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary" id="sop-btn">Generate My SOP</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOADING -->
+    <div class="loading-overlay" id="loading-state">
+        <div class="container">
+            <div class="spinner"></div>
+            <p class="loading-text">Generating your professional SOP...</p>
+            <p style="color: var(--white-dim); font-size: 0.85rem; margin-top: 8px;">This takes 15-30 seconds. Our AI is building your cost calculations, allergen matrix, and step-by-step instructions.</p>
+        </div>
+    </div>
+
+    <!-- RESULT -->
+    <section class="section" id="result-section">
+        <div class="container">
+            <div class="result-actions">
+                <button class="btn-primary" onclick="window.print()" style="width: auto;">Print SOP</button>
+                <button class="btn-secondary" onclick="downloadPdf()">Download PDF</button>
+                <button class="btn-secondary" onclick="generateAnother()">Generate Another</button>
+            </div>
+            <div class="sop-card" id="sop-output">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- UPSELL CTA (shown after result) -->
+    <section class="section cta-section" id="cta-section" style="display: none;">
+        <div class="container">
+            <div class="section-label">Want the Full System?</div>
+            <h2 class="section-title">One SOP is a Start. <span>A System is the Fix.</span></h2>
+            <p style="color: var(--white-dim); margin-bottom: 24px;">This free tool gives you one dish. The operators who actually fix consistency build a system for every dish, every station, every shift.</p>
+            <div class="cta-cards">
+                <div class="cta-card">
+                    <h4>DIY Templates</h4>
+                    <div class="price">$47</div>
+                    <p>All 10 essential kitchen SOP templates, recipe card system, cost calculator spreadsheet, and implementation guide.</p>
+                    <a href="/toolkit-bundle.html" class="btn-secondary" style="width: 100%; text-decoration: none;">Get the Toolkit</a>
+                </div>
+                <div class="cta-card" style="border-color: var(--gold-border);">
+                    <h4>Full SOP System</h4>
+                    <div class="price">$297</div>
+                    <p>Complete SOP system with cost calculator, menu engineering framework, staff training guides, and 30 days of email support.</p>
+                    <a href="/kit.html" class="btn-secondary" style="width: 100%; border-color: var(--gold); text-decoration: none;">Get the Kit</a>
+                </div>
+                <div class="cta-card">
+                    <h4>Done For You</h4>
+                    <div class="price">Custom</div>
+                    <p>I build your complete SOP system, cost every dish, and train your team. 1:1 consulting for operators who want it done right.</p>
+                    <a href="/services.html" class="btn-secondary" style="width: 100%; text-decoration: none;">Book a Call</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand" style="display: flex; gap: 16px; align-items: flex-start;">
+                    <picture>
+                        <source srcset="/images/chris-chef-portrait.webp" type="image/webp">
+                        <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner - The Grumpy Chef"
+                            class="brand-photo-circle--footer"
+                            width="64" height="64" loading="lazy">
+                    </picture>
+                    <div>
+                        <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
+                        <p>The Grumpy Chef is a restaurant profit recovery brand founded by Christian Schiffner, a German
+                            Master Chef (Kuechenmeister) with 20+ years of experience across Germany, Switzerland, Austria, Spain, and
+                            Canada. Based in Dawson City, Yukon.</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigate</h4>
+                    <a href="/about.html">My Story</a>
+                    <a href="/framework.html">The 21-Day Protocol</a>
+                    <a href="/services.html">Work With Me</a>
+                    <a href="/toolkit-bundle.html">Operator's Toolkit - $47</a>
+                    <a href="/kit.html">72-Hour Discovery Kit</a>
+                    <a href="/calculator.html">Profit Leak Calculator</a>
+                    <a href="/assessment.html">Menu Profit Score</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <a href="https://www.linkedin.com/in/christian-schiffner-938142335/" target="_blank">LinkedIn</a>
+                    <a href="https://substack.com/@thegrumpychef" target="_blank">Newsletter</a>
+                    <a href="mailto:christian@thegrumpychef.ca">Email</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Christian Schiffner | The Grumpy Chef | German Master Chef (Kuechenmeister)</p>
+                <p>Dawson City, Yukon &bull; From the Black Forest, Germany</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- html2pdf.js for PDF download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+        /* ============================================
+           STATE
+           ============================================ */
+        const SUPABASE_FUNCTION_URL = 'https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/generate-sop';
+        const KIT_SOP_TAG_ID = ''; // TODO: Create tag in Kit and set ID here
+
+        let userEmail = '';
+        let userName = '';
+        let userRestaurant = '';
+
+        /* ============================================
+           EMAIL GATE
+           ============================================ */
+        function handleGateSubmit(e) {
+            e.preventDefault();
+            const errorEl = document.getElementById('gate-error');
+            errorEl.classList.remove('active');
+
+            userName = document.getElementById('gate-name').value.trim();
+            userEmail = document.getElementById('gate-email').value.trim();
+            userRestaurant = document.getElementById('gate-restaurant').value.trim();
+
+            if (!userName || !userEmail || !userRestaurant) {
+                errorEl.textContent = 'Please fill in all fields.';
+                errorEl.classList.add('active');
+                return false;
+            }
+
+            const btn = document.getElementById('gate-btn');
+            btn.disabled = true;
+            btn.textContent = 'Subscribing...';
+
+            // Subscribe to Kit via API
+            subscribeToKit(userName, userEmail, userRestaurant)
+                .then(() => {
+                    document.getElementById('email-gate').style.display = 'none';
+                    document.getElementById('sop-form-section').style.display = 'block';
+                    document.getElementById('sop-form-section').scrollIntoView({ behavior: 'smooth' });
+                })
+                .catch(err => {
+                    // Even if Kit fails, let them through - capture is secondary to experience
+                    console.warn('Kit subscription failed:', err);
+                    document.getElementById('email-gate').style.display = 'none';
+                    document.getElementById('sop-form-section').style.display = 'block';
+                    document.getElementById('sop-form-section').scrollIntoView({ behavior: 'smooth' });
+                });
+
+            return false;
+        }
+
+        async function subscribeToKit(name, email, restaurant) {
+            // Use subscribe-and-tag edge function (same pattern as other pages)
+            const firstName = name.split(' ')[0];
+            const response = await fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: email,
+                    first_name: firstName,
+                    tag_id: KIT_SOP_TAG_ID
+                })
+            });
+            if (!response.ok) throw new Error('Subscription failed');
+            return response.json();
+        }
+
+        /* ============================================
+           SOP GENERATION
+           ============================================ */
+        function handleSopSubmit(e) {
+            e.preventDefault();
+            const errorEl = document.getElementById('sop-error');
+            errorEl.classList.remove('active');
+
+            const dishName = document.getElementById('dish-name').value.trim();
+            const cuisineType = document.getElementById('cuisine-type').value;
+            const portions = parseInt(document.getElementById('portions').value, 10);
+            const targetCost = parseInt(document.getElementById('target-cost').value, 10);
+            const specialNotes = document.getElementById('special-notes').value.trim();
+
+            // Collect checked allergens
+            const allergens = [];
+            document.querySelectorAll('.allergen-grid input:checked').forEach(cb => {
+                allergens.push(cb.value);
+            });
+
+            if (!dishName || !cuisineType || !portions || !targetCost) {
+                errorEl.textContent = 'Please fill in all required fields.';
+                errorEl.classList.add('active');
+                return false;
+            }
+
+            // Show loading
+            document.getElementById('sop-form-section').style.display = 'none';
+            document.getElementById('loading-state').classList.add('active');
+
+            const payload = {
+                dishName,
+                cuisineType,
+                portions,
+                targetFoodCostPercent: targetCost,
+                allergens,
+                specialNotes,
+                email: userEmail,
+                name: userName,
+                restaurant: userRestaurant
+            };
+
+            generateSop(payload)
+                .then(data => {
+                    document.getElementById('loading-state').classList.remove('active');
+                    renderSopCard(data);
+                    document.getElementById('result-section').style.display = 'block';
+                    document.getElementById('cta-section').style.display = 'block';
+                    document.getElementById('result-section').scrollIntoView({ behavior: 'smooth' });
+
+                    // Track event
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'sop_generated', {
+                            event_category: 'engagement',
+                            event_label: dishName,
+                            value: 1
+                        });
+                    }
+                })
+                .catch(err => {
+                    document.getElementById('loading-state').classList.remove('active');
+                    document.getElementById('sop-form-section').style.display = 'block';
+                    errorEl.textContent = 'Something went wrong generating your SOP. Please try again. (' + err.message + ')';
+                    errorEl.classList.add('active');
+                    document.getElementById('sop-form-section').scrollIntoView({ behavior: 'smooth' });
+                });
+
+            return false;
+        }
+
+        async function generateSop(payload) {
+            const response = await fetch(SUPABASE_FUNCTION_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                const errData = await response.json().catch(() => ({}));
+                throw new Error(errData.error || 'Generation failed (HTTP ' + response.status + ')');
+            }
+
+            return response.json();
+        }
+
+        /* ============================================
+           RENDER SOP CARD
+           ============================================ */
+        function renderSopCard(data) {
+            const output = document.getElementById('sop-output');
+
+            // Build allergen matrix rows
+            const allergenList = [
+                'Gluten', 'Crustaceans', 'Eggs', 'Fish', 'Peanuts', 'Soybeans',
+                'Milk', 'Tree Nuts', 'Sesame', 'Sulphites', 'Mustard', 'Celery', 'Lupin', 'Molluscs'
+            ];
+
+            let allergenRows = '';
+            allergenList.forEach(a => {
+                const present = data.allergenMatrix && data.allergenMatrix[a];
+                const status = present === 'Contains'
+                    ? '<span class="allergen-yes">Contains</span>'
+                    : present === 'May Contain'
+                        ? '<span class="allergen-yes">May Contain</span>'
+                        : '<span class="allergen-no">No</span>';
+                allergenRows += '<tr><td>' + a + '</td><td>' + status + '</td></tr>';
+            });
+
+            // Build ingredients table
+            let ingredientRows = '';
+            if (data.ingredients && data.ingredients.length) {
+                data.ingredients.forEach(ing => {
+                    ingredientRows += '<tr>' +
+                        '<td>' + escapeHtml(ing.name) + '</td>' +
+                        '<td>' + escapeHtml(ing.quantity) + '</td>' +
+                        '<td>' + escapeHtml(ing.epCost || '-') + '</td>' +
+                        '</tr>';
+                });
+            }
+
+            // Build steps list
+            let stepsList = '';
+            if (data.steps && data.steps.length) {
+                data.steps.forEach(step => {
+                    stepsList += '<li>' + escapeHtml(step) + '</li>';
+                });
+            }
+
+            // Build cost table
+            let costTable = '';
+            if (data.costCalculation) {
+                const c = data.costCalculation;
+                costTable = '<table>' +
+                    '<tr><td>Total Plate Cost</td><td class="cost-highlight">' + escapeHtml(c.totalPlateCost || '-') + '</td></tr>' +
+                    '<tr><td>Q-Factor (4%)</td><td>' + escapeHtml(c.qFactor || '-') + '</td></tr>' +
+                    '<tr><td>Final Plate Cost</td><td class="cost-highlight">' + escapeHtml(c.finalPlateCost || '-') + '</td></tr>' +
+                    '<tr><td>Food Cost %</td><td>' + escapeHtml(c.foodCostPercent || '-') + '</td></tr>' +
+                    '<tr><td>Suggested Menu Price</td><td class="cost-highlight">' + escapeHtml(c.suggestedMenuPrice || '-') + '</td></tr>' +
+                    '</table>';
+            }
+
+            // Build common mistakes
+            let mistakesList = '';
+            if (data.commonMistakes && data.commonMistakes.length) {
+                data.commonMistakes.forEach(m => {
+                    mistakesList += '<li>' + escapeHtml(m) + '</li>';
+                });
+            }
+
+            output.innerHTML =
+                '<h2>' + escapeHtml(data.recipeName || data.dishName || '') + '</h2>' +
+                '<div class="sop-meta">' +
+                    (data.cuisine ? escapeHtml(data.cuisine) + ' | ' : '') +
+                    'Yield: ' + escapeHtml(data.yield || '-') + ' | ' +
+                    'Portion: ' + escapeHtml(data.portionSize || '-') + ' | ' +
+                    'Prep: ' + escapeHtml(data.prepTime || '-') + ' | ' +
+                    'Cook: ' + escapeHtml(data.cookTime || '-') +
+                '</div>' +
+
+                '<h3>Ingredients</h3>' +
+                '<table>' +
+                    '<thead><tr><th>Ingredient</th><th>Quantity</th><th>EP Cost</th></tr></thead>' +
+                    '<tbody>' + ingredientRows + '</tbody>' +
+                '</table>' +
+
+                '<h3>Step-by-Step Instructions</h3>' +
+                '<ol>' + stepsList + '</ol>' +
+
+                '<h3>Cost Calculation</h3>' +
+                costTable +
+
+                '<h3>Allergen Matrix</h3>' +
+                '<table>' +
+                    '<thead><tr><th>Allergen</th><th>Status</th></tr></thead>' +
+                    '<tbody>' + allergenRows + '</tbody>' +
+                '</table>' +
+
+                '<h3>Plating Notes</h3>' +
+                '<p style="color: var(--white-dim); line-height: 1.7;">' + escapeHtml(data.platingNotes || '-') + '</p>' +
+
+                '<h3>Storage Instructions</h3>' +
+                '<p style="color: var(--white-dim); line-height: 1.7;">' + escapeHtml(data.storageInstructions || '-') + '</p>' +
+
+                '<h3>Common Mistakes to Avoid</h3>' +
+                '<ul>' + mistakesList + '</ul>' +
+
+                '<div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--navy-border); font-size: 0.75rem; color: var(--gray);">' +
+                    'Generated by The Grumpy Chef AI SOP Builder | thegrumpychef.ca | ' + new Date().toLocaleDateString('en-CA') +
+                '</div>';
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        /* ============================================
+           PDF DOWNLOAD
+           ============================================ */
+        function downloadPdf() {
+            const element = document.getElementById('sop-output');
+            const dishName = document.getElementById('dish-name').value.trim() || 'recipe-sop';
+            const filename = dishName.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-sop.pdf';
+
+            const opt = {
+                margin: [10, 10, 10, 10],
+                filename: filename,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: {
+                    scale: 2,
+                    backgroundColor: '#111E35',
+                    useCORS: true
+                },
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
+                    orientation: 'portrait'
+                }
+            };
+
+            html2pdf().set(opt).from(element).save();
+
+            if (typeof gtag === 'function') {
+                gtag('event', 'sop_downloaded', {
+                    event_category: 'engagement',
+                    event_label: dishName,
+                    value: 1
+                });
+            }
+        }
+
+        /* ============================================
+           GENERATE ANOTHER
+           ============================================ */
+        function generateAnother() {
+            document.getElementById('result-section').style.display = 'none';
+            document.getElementById('cta-section').style.display = 'none';
+            document.getElementById('sop-form-section').style.display = 'block';
+
+            // Reset form
+            document.getElementById('sop-form').reset();
+            document.getElementById('sop-error').classList.remove('active');
+
+            document.getElementById('sop-form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>
