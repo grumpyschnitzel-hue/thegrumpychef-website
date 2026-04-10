@@ -1,0 +1,157 @@
+/* 
+  main.css — The Grumpy Chef High-Impact Design System
+  Phase 2: Design & Prototyping
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+    /* Color Tokens */
+    --navy-deep: #050B14;
+    --navy-main: #0A1628;
+    --navy-surface: rgba(13, 21, 38, 0.85);
+    --navy-border: #1A2D4D;
+    
+    --gold-liquid: #D4AF37;
+    --gold-glow: rgba(212, 175, 55, 0.2);
+    --gold-border: rgba(212, 175, 55, 0.35);
+    
+    --white-soft: #F8F9FA;
+    --white-dim: #B8BEC8;
+    
+    /* Typography */
+    --font-display: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Spacing */
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    
+    /* Animation Tokens */
+    --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--navy-deep);
+    color: var(--white-soft);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--white-soft);
+}
+
+.gold-accent {
+    color: var(--gold-liquid);
+}
+
+/* Glassmorphism System */
+.glass-container {
+    background: var(--navy-surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--navy-border);
+    border-radius: 16px;
+    padding: var(--space-md);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--gold-border);
+    border-radius: 12px;
+    padding: var(--space-md);
+    transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold-liquid);
+    box-shadow: 0 12px 40px var(--gold-glow);
+}
+
+/* High-Impact UI Components */
+.btn-premium {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--gold-liquid);
+    color: var(--navy-deep);
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-premium::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) rotate(45deg) translateY(100%);
+    transition: var(--transition-smooth);
+}
+
+.btn-premium:hover {
+    background: var(--white-soft);
+}
+
+.btn-premium:hover::after {
+    transform: translate(-50%, -50%) rotate(45deg) translateY(-100%);
+}
+
+/* Micro-Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeInUp 0.8s var(--transition-smooth) forwards;
+}
+
+/* System Stats Display */
+.stats-box {
+    font-family: var(--font-mono);
+    color: var(--gold-liquid);
+    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stats-box::before {
+    content: '>';
+    opacity: 0.7;
+}

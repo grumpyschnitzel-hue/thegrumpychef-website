@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F41KYXCEXL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-F41KYXCEXL');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>How to Work With Me | The Grumpy Chef</title>
+  <meta name="description" content="Four levels of support for independent restaurant operators. Free tools, the $197 Discovery Kit, The 21-Day Protocol, and consulting. Start where you are.">
+  <meta property="og:title" content="How to Work With Me | The Grumpy Chef">
+  <meta property="og:description" content="Free tools, $197 Kit, 21-Day Protocol, consulting. Four levels. Start where you are.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thegrumpychef.ca/offers.html">
+  <link rel="canonical" href="https://thegrumpychef.ca/offers.html">
+  <script src="/js/analytics.js"></script>
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --navy: #0A1628;
+      --navy-light: #111E35;
+      --navy-border: #1A2D4D;
+      --white: #F8F9FA;
+      --white-dim: #B8BEC8;
+      --gray: #6B7280;
+      --font-display: 'Oswald', sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-body);
+      line-height: 1.7;
+    }
+
+    a { color: var(--gold); text-decoration: none; }
+
+    /* NAV */
+    .nav { background: var(--navy); padding: 16px 24px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--navy-border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--white-dim); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--gold) !important; color: var(--navy) !important; padding: 8px 20px; border-radius: 6px; font-weight: 700 !important; }
+    .nav-toggle { display: none; background: none; border: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
+
+    /* HERO */
+    .hero { padding: 80px 24px 60px; text-align: center; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; text-transform: uppercase; margin-bottom: 16px; }
+    .hero h1 span { color: var(--gold); }
+    .hero p { font-size: 1.05rem; color: var(--white-dim); max-width: 560px; margin: 0 auto; }
+
+    /* OFFERS GRID */
+    .offers { max-width: 1000px; margin: 0 auto; padding: 0 24px 80px; display: grid; grid-template-columns: 1fr; gap: 32px; }
+
+    .offer-card {
+      background: var(--navy-light);
+      border: 1px solid var(--navy-border);
+      border-radius: 12px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .offer-card--featured { border-color: var(--gold); }
+
+    .offer-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .offer-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .offer-price {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .offer-desc {
+      font-size: 0.95rem;
+      color: var(--white-dim);
+      margin-bottom: 24px;
+    }
+
+    .offer-btn {
+      display: inline-block;
+      padding: 14px 28px;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .offer-btn--primary { background: var(--gold); color: var(--navy); }
+    .offer-btn--primary:hover { background: #c9a22e; }
+    .offer-btn--outline { background: transparent; color: var(--gold); border: 2px solid var(--gold); }
+    .offer-btn--outline:hover { background: rgba(212, 175, 55, 0.1); }
+
+    .offer-includes h4 {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      margin-bottom: 12px;
+    }
+
+    .offer-includes ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .offer-includes li {
+      font-size: 0.88rem;
+      color: var(--white-dim);
+      padding: 6px 0 6px 20px;
+      position: relative;
+    }
+
+    .offer-includes li::before {
+      content: "+";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* FOOTER */
+    .footer { background: var(--navy); border-top: 1px solid var(--navy-border); padding: 40px 24px; text-align: center; }
+    .footer p { font-size: 0.85rem; color: var(--gray); }
+    .footer a { color: var(--gold); }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--navy-light); flex-direction: column; padding: 20px 24px; gap: 16px; }
+      .nav-links.active { display: flex; }
+      .offer-card { grid-template-columns: 1fr; gap: 24px; padding: 28px; }
+      .hero { padding: 56px 24px 40px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+      <div class="nav-links">
+        <a href="/about.html">My Story</a>
+        <a href="/framework.html">The 21-Day Protocol</a>
+        <a href="/services.html">Work With Me</a>
+        <a href="/blog/">Blog</a>
+        <a href="/calculator.html">Free Tools</a>
+        <a href="/kit.html" class="nav-cta">72-Hour Kit</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Four Levels. <span>Start Where You Are.</span></h1>
+    <p>Every operator is in a different place. Find the level that matches where you are right now.</p>
+  </section>
+
+  <!-- OFFERS -->
+  <div class="offers">
+
+    <!-- FREE -->
+    <div class="offer-card">
+      <div>
+        <div class="offer-label">Level 1</div>
+        <div class="offer-name">Free Diagnostic Tools</div>
+        <div class="offer-price">$0</div>
+        <p class="offer-desc">Find the problem. Three tools, each under 10 minutes. No email required to see your results.</p>
+        <a href="/calculator.html" class="offer-btn offer-btn--outline">Find Your #1 Profit Leak &mdash; Free</a>
+      </div>
+      <div class="offer-includes">
+        <h4>What you get</h4>
+        <ul>
+          <li>Profit Leak Calculator &mdash; estimates annual leak across 7 categories</li>
+          <li>Menu Profit Score &mdash; grades your menu's actual profitability</li>
+          <li>Readiness Scorecard &mdash; tells you if you're ready for outside help</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- KIT -->
+    <div class="offer-card offer-card--featured">
+      <div>
+        <div class="offer-label">Level 2</div>
+        <div class="offer-name">72-Hour Profit Discovery Kit</div>
+        <div class="offer-price">$197</div>
+        <p class="offer-desc">Fix the problem this weekend. 8 spreadsheets, a 72-hour guide, and 5 diagnostic tools. Find your biggest leak and close it in 3 days.</p>
+        <a href="/kit.html" class="offer-btn offer-btn--primary">Get the 72-Hour Kit &mdash; $197</a>
+      </div>
+      <div class="offer-includes">
+        <h4>What you get</h4>
+        <ul>
+          <li>8 Excel tracking templates (recipe costing, prime cost, menu engineering, waste, vendor, and more)</li>
+          <li>72-Hour Quick-Start Guide &mdash; Days 1-7 of the full protocol</li>
+          <li>5 diagnostic tools for immediate use</li>
+          <li>"Find a Leak" Guarantee &mdash; find a leak worth more than $197/month or full refund</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 21-DAY -->
+    <div class="offer-card">
+      <div>
+        <div class="offer-label">Level 3 &mdash; Coming Q3 2026</div>
+        <div class="offer-name">The 21-Day Protocol</div>
+        <div class="offer-price">Waitlist</div>
+        <p class="offer-desc">Build the system so the problem doesn't come back. Three weeks, three phases: Interruption, Criteria-Based Systems, Pressure Testing.</p>
+        <a href="/21-day-protocol.html" class="offer-btn offer-btn--outline">Join the Waitlist</a>
+      </div>
+      <div class="offer-includes">
+        <h4>What you get</h4>
+        <ul>
+          <li>Full 21-day structured protocol</li>
+          <li>Pre-decided responses for 8 recurring operational crises</li>
+          <li>Week-by-week implementation designed for operators at 60% capacity</li>
+          <li>Founding members get early access + direct support during the 21 days</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CONSULTING -->
+    <div class="offer-card">
+      <div>
+        <div class="offer-label">Level 4 &mdash; By Application</div>
+        <div class="offer-name">Consulting Retainer</div>
+        <div class="offer-price">Apply</div>
+        <p class="offer-desc">Done-with-you implementation. A German Master Chef reviews your actual numbers every month and tells you exactly what to fix. Async. No meetings.</p>
+        <a href="/lp/discovery.html" class="offer-btn offer-btn--outline">Book a 15-Minute Discovery Call</a>
+      </div>
+      <div class="offer-includes">
+        <h4>What you get</h4>
+        <ul>
+          <li>Monthly P&amp;L review with video walkthrough</li>
+          <li>Custom menu engineering analysis on your actual data</li>
+          <li>Personalized SOP builds for your kitchen</li>
+          <li>Async access via private channel &mdash; 48-hour response</li>
+          <li>Quarterly 90-minute live strategy session</li>
+          <li>Full 21-Day Protocol access included</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NOT SURE -->
+  <div style="text-align: center; padding: 0 24px 60px;">
+    <p style="font-size: 1rem; color: var(--white-dim); margin-bottom: 16px;"><strong style="color: var(--white);">Not sure where to start?</strong> The calculator takes 5 minutes and costs nothing.</p>
+    <a href="/calculator.html" class="offer-btn offer-btn--primary">Find Your #1 Profit Leak &mdash; Free</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Christian Schiffner | The Grumpy Chef | German Master Chef (Kuechenmeister)</p>
+    <p style="margin-top: 8px;">Dawson City, Yukon &bull; From the Black Forest, Germany</p>
+    <p style="margin-top: 16px;"><a href="/">Home</a> &bull; <a href="/kit.html">72-Hour Kit</a> &bull; <a href="/calculator.html">Free Tools</a> &bull; <a href="/blog/">Blog</a></p>
+  </footer>
+</body>
+
+</html>

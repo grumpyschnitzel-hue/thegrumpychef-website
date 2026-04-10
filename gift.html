@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F41KYXCEXL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-F41KYXCEXL');
+    </script>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>Free Restaurant Profit Leak Calculator | The Grumpy Chef</title>
+    <meta name="description"
+        content="Find where your restaurant is bleeding money. Free. No email required. 9 profit leaks. $60K-$220K potential recovery. Takes 3 minutes.">
+    <meta property="og:title" content="Your Restaurant Has a Leak. Find It Free.">
+    <meta property="og:description"
+        content="9 categories. $60K-$220K in hidden losses. No email required. Built by a German Master Chef who found $41K in his own operation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thegrumpychef.ca/gift.html">
+    <meta property="og:image" content="https://thegrumpychef.ca/images/menu_engineering_app.png">
+    <meta property="og:image:alt" content="Free Restaurant Profit Leak Calculator — The Grumpy Chef">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://thegrumpychef.ca/gift.html">
+    <meta name="author" content="Christian Schiffner">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Free Restaurant Profit Leak Calculator",
+      "description": "Find where your restaurant is bleeding money. Free tool — no email required. Scans 9 categories of hidden profit leaks.",
+      "url": "https://thegrumpychef.ca/gift.html",
+      "author": { "@id": "https://thegrumpychef.ca/#person" },
+      "isPartOf": { "@id": "https://thegrumpychef.ca/#website" }
+    }
+    </script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #0E1B30;
+            --navy-card: #111E35;
+            --navy-border: #1A2D4D;
+            --white: #F8F9FA;
+            --white-dim: #B8BEC8;
+            --gray: #4A5568;
+            --gray-dark: #2D3748;
+            --gold: #D4AF37;
+            --gold-dim: #B89630;
+            --gold-glow: rgba(212, 175, 55, 0.10);
+            --gold-border: rgba(212, 175, 55, 0.25);
+            --blue: #00A6D6;
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .gold-top { height: 3px; background: linear-gradient(90deg, var(--gold), var(--blue), var(--gold)); }
+
+        .container { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+
+        /* NAV */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--navy-border);
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between; height: 64px;
+        }
+        .nav-logo {
+            font-family: var(--font-display); font-size: 1.2rem; font-weight: 700;
+            color: var(--white); letter-spacing: 1px; text-transform: uppercase; text-decoration: none;
+        }
+        .nav-logo span { color: var(--gold); }
+        .nav-back {
+            color: var(--white-dim); font-size: 0.85rem; font-weight: 500;
+            text-decoration: none; letter-spacing: 0.5px;
+        }
+        .nav-back:hover { color: var(--gold); }
+
+        /* HERO */
+        .hero {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        .hero__badge {
+            display: inline-block;
+            font-family: var(--font-display); font-weight: 600;
+            font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--gold); background: var(--gold-glow);
+            border: 1px solid var(--gold-border); border-radius: 20px;
+            padding: 6px 18px; margin-bottom: 28px;
+        }
+        .hero__title {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: clamp(32px, 7vw, 52px); line-height: 1.05;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+        .hero__title em {
+            font-style: normal; color: var(--gold);
+        }
+        .hero__sub {
+            font-size: 18px; color: var(--white-dim);
+            max-width: 520px; margin: 0 auto 36px; line-height: 1.6;
+        }
+        .hero__cta {
+            display: inline-block;
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 16px; letter-spacing: 1.5px; text-transform: uppercase;
+            background: var(--gold); color: var(--navy);
+            padding: 18px 48px; border-radius: 8px;
+            text-decoration: none; transition: all 0.15s;
+        }
+        .hero__cta:hover { background: var(--white); }
+        .hero__note {
+            font-size: 13px; color: var(--gray); margin-top: 14px;
+        }
+
+        /* WHAT YOU GET */
+        .section { padding: 60px 0; }
+        .section--border { border-top: 1px solid var(--navy-border); }
+
+        .section__label {
+            font-family: var(--font-display); font-weight: 600;
+            font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--blue); margin-bottom: 24px; text-align: center;
+        }
+        .section__title {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 28px; text-transform: uppercase;
+            margin-bottom: 12px; text-align: center;
+        }
+        .section__desc {
+            font-size: 15px; color: var(--white-dim); line-height: 1.7;
+            max-width: 540px; margin: 0 auto 36px; text-align: center;
+        }
+
+        /* LEAK GRID */
+        .leaks {
+            display: grid; grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px; margin-bottom: 32px;
+        }
+        .leak {
+            background: var(--navy-card); border: 1px solid var(--navy-border);
+            border-radius: 8px; padding: 20px 16px; text-align: center;
+        }
+        .leak__icon { font-size: 24px; margin-bottom: 8px; }
+        .leak__name {
+            font-family: var(--font-display); font-weight: 600;
+            font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+            color: var(--white-dim); line-height: 1.4;
+        }
+        .leak__range {
+            font-size: 11px; color: var(--gold); margin-top: 6px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .leaks { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* PROOF */
+        .proof {
+            background: var(--navy-card); border: 1px solid var(--navy-border);
+            border-radius: 8px; padding: 28px; margin: 32px 0;
+        }
+        .proof__quote {
+            font-size: 16px; color: var(--white); line-height: 1.7;
+            font-style: italic; margin-bottom: 16px;
+        }
+        .proof__attr {
+            display: flex; align-items: center; gap: 14px;
+        }
+        .proof__photo {
+            width: 48px; height: 48px; border-radius: 50%;
+            object-fit: cover; border: 2px solid var(--gold-border);
+        }
+        .proof__name {
+            font-weight: 600; font-size: 14px;
+        }
+        .proof__title {
+            font-size: 13px; color: var(--gray);
+        }
+
+        /* HOW IT WORKS */
+        .steps {
+            display: flex; flex-direction: column; gap: 20px;
+            max-width: 480px; margin: 0 auto 36px;
+        }
+        .step {
+            display: flex; gap: 16px; align-items: flex-start;
+        }
+        .step__num {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 28px; color: var(--gold); line-height: 1;
+            flex-shrink: 0; width: 36px;
+        }
+        .step__text {
+            font-size: 15px; color: var(--white-dim); line-height: 1.6;
+        }
+        .step__text strong { color: var(--white); }
+
+        /* BOTTOM CTA */
+        .bottom-cta {
+            padding: 60px 0; text-align: center;
+            border-top: 1px solid var(--navy-border);
+        }
+        .bottom-cta__title {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 32px; text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .bottom-cta__sub {
+            font-size: 15px; color: var(--gray); margin-bottom: 32px;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0; text-align: center;
+            border-top: 1px solid var(--navy-border);
+        }
+        .footer__brand {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 8px;
+        }
+        .footer__line { font-size: 13px; color: var(--gray); }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="gold-top"></div>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+            <a href="/" class="nav-back">Back to Site</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__badge">Free Tool &mdash; No Email Required</div>
+            <h1 class="hero__title">Your Restaurant<br>Has a <em>Profit Leak</em></h1>
+            <p class="hero__sub">
+                Most operators lose $60K&ndash;$220K per year to leaks they can't see.
+                This calculator scans 9 categories and shows you exactly where the money goes.
+                Three minutes. Zero cost.
+            </p>
+            <a href="/calculator.html" class="hero__cta">Find Your Leaks Now</a>
+            <div class="hero__note">No signup. No email. Just your results.</div>
+        </div>
+    </section>
+
+    <!-- WHAT IT SCANS -->
+    <section class="section section--border">
+        <div class="container">
+            <div class="section__label">What the Calculator Scans</div>
+            <h2 class="section__title">9 Categories. 27 Checkpoints.</h2>
+            <p class="section__desc">
+                Each category has been identified from 20+ years of running kitchens across 5 countries.
+                These are the leaks I've seen in every operation I've touched &mdash; including my own.
+            </p>
+
+            <div class="leaks">
+                <div class="leak">
+                    <div class="leak__icon">&#x1F6AE;</div>
+                    <div class="leak__name">Food Waste</div>
+                    <div class="leak__range">$15K&ndash;$40K/yr</div>
+                </div>
+                <div class="leak">
+                    <div class="leak__icon">&#x23F0;</div>
+                    <div class="leak__name">Labor Misallocation</div>
+                    <div class="leak__range">$10K&ndash;$30K/yr</div>
+                </div>
+                <div class="leak">
+                    <div class="leak__icon">&#x1F6AA;</div>
+                    <div class="leak__name">Staff Turnover</div>
+                    <div class="leak__range">$10K&ndash;$60K/yr</div>
+                </div>
+                <div class="leak">
+                    <div class="leak__icon">&#x1F4CB;</div>
+                    <div class="leak__name">Menu Mispricing</div>
+                    <div class="leak__range">$8K&ndash;$25K/yr</div>
+                </div>
+                <div class="leak">
+                    <div class="leak__icon">&#x1F4E6;</div>
+                    <div class="leak__name">Supplier Overpay</div>
+                    <div class="leak__range">$5K&ndash;$20K/yr</div>
+                </div>
+                <div class="leak">
+                    <div class="leak__icon">&#x1F4F1;</div>
+                    <div class="leak__name">Delivery Bleed</div>
+                    <div class="leak__range">$5K&ndash;$15K/yr</div>
+                </div>
+                <div class="leak">
+                    <div class="leak__icon">&#x1F37A;</div>
+                    <div class="leak__name">Bar Shrinkage</div>
+                    <div class="leak__range">$3K&ndash;$12K/yr</div>
+                </div>
+                <div class="leak">
+                    <div class="leak__icon">&#x26A1;</div>
+                    <div class="leak__name">Operational Waste</div>
+                    <div class="leak__range">$2K&ndash;$8K/yr</div>
+                </div>
+                <div class="leak">
+                    <div class="leak__icon">&#x1F3F7;</div>
+                    <div class="leak__name">Untracked Comps</div>
+                    <div class="leak__range">$2K&ndash;$10K/yr</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF -->
+    <section class="section section--border">
+        <div class="container">
+            <div class="section__label">Who Built This</div>
+            <div class="proof">
+                <div class="proof__quote">
+                    "I ran my own restaurant into $370K of debt before I learned to see these leaks.
+                    Every single category in this calculator came from something I paid for in real money,
+                    real stress, and real sleepless nights. I built this tool so you don't have to."
+                </div>
+                <div class="proof__attr">
+                    <img class="proof__photo" src="/images/Kitchen1.jpg"
+                        alt="Christian Schiffner — The Grumpy Chef">
+                    <div>
+                        <div class="proof__name">Christian Schiffner</div>
+                        <div class="proof__title">German Master Chef (K&uuml;chenmeister) &mdash; 20+ years, 5 countries</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section section--border">
+        <div class="container">
+            <div class="section__label">How It Works</div>
+            <h2 class="section__title">Three Minutes. Full Diagnosis.</h2>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step__num">1</div>
+                    <div class="step__text"><strong>Check the boxes that apply.</strong> 27 honest questions across 9 categories. No trick questions. No upsells hiding behind them.</div>
+                </div>
+                <div class="step">
+                    <div class="step__num">2</div>
+                    <div class="step__text"><strong>See your estimated annual leak.</strong> The calculator shows you the total, ranks every category, and highlights your #1 priority fix.</div>
+                </div>
+                <div class="step">
+                    <div class="step__num">3</div>
+                    <div class="step__text"><strong>Get a 72-hour action plan.</strong> Not a generic checklist. A prioritized implementation plan built around YOUR specific leaks. Day 1. Day 2. Day 3. Done.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="bottom-cta">
+        <div class="container">
+            <div class="bottom-cta__title">Stop Guessing.<br>Start Recovering.</div>
+            <div class="bottom-cta__sub">The diagnosis is free. The cure is where we get to work.</div>
+            <a href="/calculator.html" class="hero__cta">Launch the Calculator</a>
+            <div class="hero__note" style="margin-top: 14px;">Free. No email. Takes 3 minutes.</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__brand">The Grumpy Chef</div>
+            <div class="footer__line">Systems that work when you're exhausted.</div>
+            <div class="footer__line" style="margin-top: 4px;">
+                <a href="/" style="color: var(--gray); text-decoration: none;">Home</a> &middot;
+                <a href="/calculator.html" style="color: var(--gray); text-decoration: none;">Calculator</a> &middot;
+                <a href="/about.html" style="color: var(--gray); text-decoration: none;">About</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
