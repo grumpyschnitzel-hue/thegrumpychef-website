@@ -35,6 +35,10 @@
 
     <link rel="canonical" href="https://thegrumpychef.ca/lp/discovery.html">
 
+    <!-- Calendly embed -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
@@ -87,10 +91,10 @@
                     },
                     {
                         "@type": "Question",
-                        "name": "What happens after I submit an application?",
+                        "name": "What happens after I book a discovery call?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Christian reviews every application personally within 3 business days. If there appears to be a fit, he will reach out directly to have a brief async conversation before any commitment is made. If there is no fit — because of size, timing, or current capacity — he will tell you straight and suggest what else might help."
+                            "text": "You get 20 minutes with Christian directly. He asks about your operation, you give honest answers, and by the end you both know whether there is a fit worth exploring further. No pitch, no automated follow-up."
                         }
                     },
                     {
@@ -726,9 +730,9 @@
         .faq-item.open .faq-toggle { transform: rotate(45deg); }
         .faq-item.open .faq-a { display: block; }
 
-        /* APPLICATION FORM */
+        /* BOOKING SECTION */
         .form-section {
-            max-width: 680px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 2.5rem 1.5rem 3.5rem;
         }
@@ -763,77 +767,25 @@
             line-height: 1.6;
         }
 
-        .form-card {
-            background: var(--navy-card);
-            border: 1px solid var(--navy-border);
+        .calendly-inline-widget {
             border-radius: 12px;
-            padding: 2rem;
+            overflow: hidden;
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.78rem;
-            font-weight: 600;
+        .calendly-fallback {
+            text-align: center;
+            margin-top: 1.25rem;
+            font-size: 0.88rem;
             color: var(--white-dim);
-            margin-bottom: 0.4rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .form-label abbr {
-            text-decoration: none;
+        .calendly-fallback a {
             color: var(--gold);
+            text-decoration: none;
         }
 
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            background: var(--navy);
-            border: 1px solid var(--navy-border);
-            border-radius: 6px;
-            color: var(--white);
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            transition: border-color 0.2s;
-        }
-
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 90px;
-        }
-
-        .form-select {
-            appearance: none;
-            cursor: pointer;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B8BEC8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            padding-right: 2.5rem;
-        }
-
-        .form-btn {
-            width: 100%;
-            margin-top: 0.75rem;
-            padding: 1.1rem 2rem;
+        .calendly-fallback a:hover {
+            text-decoration: underline;
         }
 
         .form-note {
@@ -842,43 +794,6 @@
             text-align: center;
             margin-top: 1rem;
             line-height: 1.5;
-        }
-
-        .form-error {
-            display: none;
-            color: #C53030;
-            font-size: 0.85rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            padding: 0.75rem;
-            background: rgba(197, 48, 48, 0.08);
-            border-radius: 4px;
-            border: 1px solid rgba(197, 48, 48, 0.25);
-        }
-
-        .form-success {
-            display: none;
-            text-align: center;
-            padding: 2.5rem 1.5rem;
-        }
-
-        .form-success__icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .form-success__title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-success__text {
-            color: var(--white-dim);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            max-width: 400px;
-            margin: 0 auto;
         }
 
         /* FOOTER */
@@ -937,10 +852,6 @@
                 height: 80px;
             }
 
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
             .section {
                 padding: 2rem 1rem;
             }
@@ -951,10 +862,6 @@
 
             .form-section {
                 padding: 2rem 1rem 3rem;
-            }
-
-            .form-card {
-                padding: 1.5rem;
             }
 
             .statement-block {
@@ -979,11 +886,11 @@
             <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
             <div class="nav-links">
                 <a href="/about.html">My Story</a>
-                <a href="/framework.html">The Protocol</a>
+                <a href="/framework.html">The 21-Day Protocol</a>
                 <a href="/services.html">Work With Me</a>
                 <a href="/blog/">Blog</a>
                 <a href="/calculator.html">Free Tools</a>
-                <a href="/lp/discovery.html" class="nav-cta">Apply</a>
+                <a href="/lp/discovery.html" class="nav-cta">Book a Call</a>
             </div>
         </div>
     </nav>
@@ -1001,10 +908,10 @@
         </p>
         <div class="hero__capacity">
             <div class="hero__capacity-dot"></div>
-            Applications reviewed within 3 business days
+            20-minute discovery calls — no pitch, no pressure
         </div>
         <br>
-        <a href="#apply" class="btn--gold">Submit Your Application</a>
+        <a href="#apply" class="btn--gold">Book a Discovery Call</a>
     </section>
 
     <hr class="divider">
@@ -1094,7 +1001,7 @@
                 <div class="deliverable__icon">06</div>
                 <div class="deliverable__content">
                     <strong>Full OOS Platform Access</strong>
-                    <span>All retainer clients get full access to the 21-Day Recovery Protocol, the SOP template library, weekly diagnostic frameworks, and all tools. The retainer adds eyes on your specific numbers on top of that foundation.</span>
+                    <span>All retainer clients get full access to the 21-Day Protocol, the SOP template library, weekly diagnostic frameworks, and all tools. The retainer adds eyes on your specific numbers on top of that foundation.</span>
                 </div>
             </li>
         </ul>
@@ -1179,14 +1086,14 @@
         <ol class="how-steps">
             <li>
                 <div class="how-steps__text">
-                    <strong>You Submit an Application</strong>
-                    <span>The form below takes 5 minutes. You tell me about your restaurant, your revenue range, your biggest operational challenge, and what you've already tried. This is not a lead capture. It is the first step in determining whether there's a fit worth discussing.</span>
+                    <strong>You Book a Discovery Call</strong>
+                    <span>Pick a 20-minute slot below. You tell me about your restaurant and your biggest operational challenge. I tell you straight whether I can help. No pitch, no pressure.</span>
                 </div>
             </li>
             <li>
                 <div class="how-steps__text">
-                    <strong>I Review It Within 3 Business Days</strong>
-                    <span>I read every application personally. If I see a likely fit, I reach out directly with a short set of follow-up questions — async, no call required. If there is no fit, I tell you why and suggest what might help instead. No automated responses.</span>
+                    <strong>We Talk for 20 Minutes</strong>
+                    <span>A straight conversation about what's going on in your operation. I ask direct questions, you give honest answers. By the end we both know whether there's a fit worth exploring further.</span>
                 </div>
             </li>
             <li>
@@ -1271,82 +1178,21 @@
 
     <hr class="divider">
 
-    <!-- APPLICATION FORM -->
+    <!-- BOOK A DISCOVERY CALL -->
     <section class="form-section" id="apply">
         <div class="form-header">
-            <div class="form-header__label">Retainer Application</div>
-            <h2 class="form-header__title">Tell Me About Your Restaurant</h2>
+            <div class="form-header__label">Discovery Call</div>
+            <h2 class="form-header__title">Book 20 Minutes With Me</h2>
             <p class="form-header__sub">
-                This takes 5 minutes. Be honest — the more specific you are, the faster I can tell you whether there's a fit worth discussing.
+                Pick a time that works. No pitch, no pressure — just a straight conversation about what's going on in your operation and whether I can help.
             </p>
         </div>
 
-        <div class="form-card">
-            <div class="form-error" id="formError"></div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/thegrumpychef/20min?hide_gdpr_banner=1" style="width:100%;min-height:650px;"></div>
 
-            <form id="applyForm" onsubmit="submitApplication(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label" for="ap-name">Your Name <abbr title="required">*</abbr></label>
-                        <input class="form-input" type="text" id="ap-name" required placeholder="First and last name" autocomplete="name">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="ap-email">Email <abbr title="required">*</abbr></label>
-                        <input class="form-input" type="email" id="ap-email" required placeholder="you@yourrestaurant.com" autocomplete="email">
-                    </div>
-                </div>
+        <p class="calendly-fallback">Prefer email? Reach me at <a href="mailto:christian@thegrumpychef.ca">christian@thegrumpychef.ca</a></p>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label" for="ap-restaurant">Restaurant Name <abbr title="required">*</abbr></label>
-                        <input class="form-input" type="text" id="ap-restaurant" required placeholder="Your restaurant name">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="ap-city">City / Location <abbr title="required">*</abbr></label>
-                        <input class="form-input" type="text" id="ap-city" required placeholder="City, Province/State">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="ap-revenue">Annual Revenue Range <abbr title="required">*</abbr></label>
-                    <select class="form-select" id="ap-revenue" required>
-                        <option value="">Select your range</option>
-                        <option value="under-500k">Under $500K</option>
-                        <option value="500k-800k">$500K – $800K</option>
-                        <option value="800k-1.5m">$800K – $1.5M</option>
-                        <option value="1.5m-3m">$1.5M – $3M</option>
-                        <option value="3m-plus">$3M+</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="ap-challenge">What is your biggest operational challenge right now? <abbr title="required">*</abbr></label>
-                    <textarea class="form-textarea" id="ap-challenge" required placeholder="Be specific. Not 'food costs are too high' — what is actually happening? Where do you think the problem is?" style="min-height: 100px;"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="ap-tried">What have you already tried?</label>
-                    <textarea class="form-textarea" id="ap-tried" placeholder="What solutions, systems, or approaches have you already attempted? What worked partially? What did not work at all?"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="ap-phone">Phone (Optional)</label>
-                    <input class="form-input" type="tel" id="ap-phone" placeholder="Your phone number" autocomplete="tel">
-                </div>
-
-                <button type="submit" class="btn--gold form-btn" id="formBtn">Submit My Application</button>
-            </form>
-
-            <div class="form-success" id="formSuccess">
-                <div class="form-success__icon">&#x2714;</div>
-                <div class="form-success__title">Application Received</div>
-                <div class="form-success__text">
-                    I review every application personally. You will hear from me within 3 business days — directly, not from an automated system. If there is a fit, I will reach out to continue the conversation. If there is not, I will tell you that too and point you toward what will help most right now.
-                </div>
-            </div>
-        </div>
-
-        <p class="form-note">No automated follow-up sequences. No pressure. One operator reviewing your application — Christian Schiffner, not a team.</p>
+        <p class="form-note">No automated follow-up sequences. No pressure. One operator on the other end — Christian Schiffner, not a team.</p>
     </section>
 
     <!-- FOOTER -->
@@ -1372,86 +1218,34 @@
             }
         }
 
-        // Application form submit
-        async function submitApplication(e) {
-            e.preventDefault();
+        // Calendly booking handler
+        window.addEventListener('message', function(e) {
+            if (!e.data || !e.data.event) return;
+            if (e.data.event !== 'calendly.event_scheduled') return;
 
-            var btn = document.getElementById('formBtn');
-            var errEl = document.getElementById('formError');
-
-            var name = document.getElementById('ap-name').value.trim();
-            var email = document.getElementById('ap-email').value.trim();
-            var restaurant = document.getElementById('ap-restaurant').value.trim();
-            var city = document.getElementById('ap-city').value.trim();
-            var revenue = document.getElementById('ap-revenue').value;
-            var challenge = document.getElementById('ap-challenge').value.trim();
-            var tried = document.getElementById('ap-tried').value.trim();
-            var phone = document.getElementById('ap-phone').value.trim();
-
-            errEl.style.display = 'none';
-
-            if (!name || !email || !restaurant || !city || !revenue || !challenge) {
-                errEl.textContent = 'Please complete all required fields before submitting.';
-                errEl.style.display = 'block';
-                return;
-            }
-
-            btn.disabled = true;
-            btn.textContent = 'Submitting...';
-
-            var payload = {
-                contact: {
-                    name: name,
-                    email: email,
-                    phone: phone || null,
-                    restaurant: restaurant,
-                    city: city
-                },
-                revenue_range: revenue,
-                biggest_challenge: challenge,
-                what_tried: tried,
-                source: 'retainer-application',
-                page_source: 'lp-discovery',
-                tags: ['retainer-applicant', 'discovery-call-request'],
-                timestamp: new Date().toISOString(),
-                utm: typeof getUTMParams === 'function' ? getUTMParams() : {}
-            };
-
-            try {
-                // Store application data in Supabase
-                await fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/capture-form', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-            } catch (webhookErr) {
-                console.warn('Form capture error:', webhookErr);
-            }
-
-            // Tag subscriber in Kit
-            try {
-                await fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email, first_name: name, tag_id: '15875865' })
-                });
-            } catch (tagErr) {
-                console.warn('Kit tagging failed:', tagErr);
-            }
+            var invitee = (e.data.payload && e.data.payload.invitee) || {};
+            var email = invitee.email || '';
+            var name = invitee.name || '';
 
             // GA4 event
             if (typeof gtag === 'function') {
-                gtag('event', 'retainer_application_submitted', {
-                    form_id: 'retainer-application',
-                    page: '/lp/discovery',
-                    revenue_range: revenue
+                gtag('event', 'calendly_booked', {
+                    event_type: 'discovery-call',
+                    page: '/lp/discovery'
                 });
             }
 
-            // Hide form, show success state
-            document.getElementById('applyForm').style.display = 'none';
-            document.getElementById('formSuccess').style.display = 'block';
-        }
+            // Tag subscriber in Kit via Supabase edge function
+            if (email) {
+                fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, first_name: name, tag_id: '18869665' })
+                }).catch(function(err) {
+                    console.warn('Kit tagging failed:', err);
+                });
+            }
+        });
     </script>
 
 </body>
