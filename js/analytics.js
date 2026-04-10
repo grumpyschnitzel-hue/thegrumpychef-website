@@ -21,6 +21,13 @@
   var LINKEDIN_PARTNER_ID = '8833114';
 
   // =============================================
+  // SELF-EXCLUSION (run in browser console: localStorage.setItem('ga4_exclude', 'true'))
+  // =============================================
+  if (localStorage.getItem('ga4_exclude') === 'true') {
+    window['ga-disable-' + GA4_ID] = true;
+  }
+
+  // =============================================
   // GA4 INITIALIZATION
   // =============================================
   if (GA4_ID !== 'GA4_MEASUREMENT_ID') {
