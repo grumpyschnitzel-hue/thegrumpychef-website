@@ -305,12 +305,94 @@
   });
 
   // =============================================
+  // CUSTOM GA4 EVENTS
+  // =============================================
+
+  // 1. calculator_submit — fires on calculator email capture form
+  function setupCalculatorSubmit() {
+    if (window.location.pathname !== '/calculator.html') return;
+    var form = document.getElementById('cap-form');
+    if (form) {
+      form.addEventListener('submit', function () {
+        fireEvent('calculator_submit', { page: window.location.pathname });
+      });
+    }
+  }
+
+  // 2. newsletter_signup — fires on any email form submission
+  function setupNewsletterSignup() {
+    var forms = document.querySelectorAll('form');
+    forms.forEach(function (form) {
+      var emailInput = form.querySelector('input[type="email"]');
+      if (!emailInput) return;
+      // Skip the calculator capture form — that gets its own event
+      if (form.id === 'cap-form') return;
+      form.addEventListener('submit', function () {
+        fireEvent('newsletter_signup', {
+          form_id: form.id || 'unnamed',
+          page: window.location.pathname
+        });
+      });
+    });
+  }
+
+  // 3. kit_page_view — fires on /kit.html load
+  function setupKitPageView() {
+    if (window.location.pathname === '/kit.html') {
+      fireEvent('kit_page_view', { referrer: document.referrer });
+    }
+  }
+
+  // 4. discovery_call_click — fires on any link to discovery call pages
+  function setupDiscoveryCallClick() {
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      if (href.indexOf('discovery') !== -1 || href.indexOf('calendly.com') !== -1) {
+        fireEvent('discovery_call_click', {
+          label: link.textContent.trim().substring(0, 60),
+          href: href,
+          page: window.location.pathname
+        });
+      }
+    });
+  }
+
+  // 5. calendly_booked — fires when Calendly confirms a booking
+  function setupCalendlyBooked() {
+    window.addEventListener('message', function (e) {
+      if (e.origin && e.origin.indexOf('calendly.com') !== -1 &&
+          e.data && e.data.event === 'calendly.event_scheduled') {
+        var payload = (e.data.payload || {});
+        fireEvent('calendly_booked', {
+          event_uri: payload.event && payload.event.uri || '',
+          invitee_uri: payload.invitee && payload.invitee.uri || '',
+          page: window.location.pathname
+        });
+      }
+    });
+  }
+
+  // =============================================
   // INIT
   // =============================================
+  function initCustomEvents() {
+    setupCalculatorSubmit();
+    setupNewsletterSignup();
+    setupKitPageView();
+    setupDiscoveryCallClick();
+    setupCalendlyBooked();
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupFormTracking);
+    document.addEventListener('DOMContentLoaded', function () {
+      setupFormTracking();
+      initCustomEvents();
+    });
   } else {
     setupFormTracking();
+    initCustomEvents();
   }
 
 })();
