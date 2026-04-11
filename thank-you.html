@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>You're In — 64°N Weekly | The Grumpy Chef</title>
+<meta name="description" content="Welcome to 64°N Weekly. One system. Every Tuesday. Written from Dawson City, Yukon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="/js/analytics.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0A1628;
+  --navy-light: #0E1B30;
+  --navy-card: #111E35;
+  --navy-border: #1A2D4D;
+  --gold: #D4AF37;
+  --gold-dim: rgba(212,175,55,0.10);
+  --gold-border: rgba(212,175,55,0.25);
+  --white: #F0EDE6;
+  --white-dim: #8A95A3;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+}
+
+.card {
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+}
+
+.check {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px;
+}
+
+.check svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.divider {
+  width: 40px;
+  height: 3px;
+  background: var(--gold);
+  margin: 0 auto 1.5rem;
+  opacity: 0.7;
+}
+
+.lead {
+  font-size: 1.05rem;
+  color: var(--white-dim);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lead strong {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.expect {
+  background: var(--navy-card);
+  border: 1px solid var(--navy-border);
+  border-radius: 8px;
+  padding: 32px;
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+
+.expect h2 {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.expect ul {
+  list-style: none;
+  padding: 0;
+}
+
+.expect li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--navy-border);
+  font-size: 0.95rem;
+  color: var(--white-dim);
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.expect li:last-child {
+  border-bottom: none;
+}
+
+.expect li::before {
+  content: '--';
+  font-family: var(--font-mono);
+  color: var(--gold);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.next-step {
+  margin-bottom: 2rem;
+}
+
+.next-step p {
+  font-size: 0.95rem;
+  color: var(--white-dim);
+  margin-bottom: 16px;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover {
+  background: #E5C04B;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 14px 32px;
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-left: 12px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--white);
+}
+
+.footer {
+  text-align: center;
+  padding: 32px 24px;
+  border-top: 1px solid var(--navy-border);
+  font-size: 0.8rem;
+  color: var(--white-dim);
+}
+
+.footer a {
+  color: var(--white-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer a:hover {
+  color: var(--gold);
+}
+
+@media (max-width: 600px) {
+  .main { padding: 60px 16px; }
+  .expect { padding: 24px 16px; }
+  .btn-secondary { margin-left: 0; margin-top: 12px; display: block; text-align: center; }
+  .btn-primary { display: block; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="main">
+  <div class="card">
+    <div class="check">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+
+    <div class="kicker">64°N Weekly</div>
+    <h1>You're <em>in.</em></h1>
+    <div class="divider"></div>
+
+    <p class="lead">
+      Every Tuesday morning, you'll get <strong>one honest story and one system that works</strong>.
+      Written from Dawson City, Yukon. No fluff. No hustle motivation.
+    </p>
+
+    <div class="expect">
+      <h2>What to expect</h2>
+      <ul>
+        <li>One email every Tuesday</li>
+        <li>A real scene from 20+ years in kitchens across 5 countries</li>
+        <li>The system that was missing -- named clearly, no jargon</li>
+        <li>One thing you can install this week, even at 60% capacity</li>
+        <li>Kitchen and life -- both run on the same logic</li>
+      </ul>
+    </div>
+
+    <div class="next-step">
+      <p>While you wait for Tuesday -- find out where your restaurant is bleeding money right now.</p>
+      <a href="/calculator.html?utm_source=kit&utm_medium=email&utm_campaign=welcome" class="btn-primary">Find Your #1 Profit Leak</a>
+      <a href="/" class="btn-secondary">Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>&copy; 2026 The Grumpy Chef &middot; <a href="/about.html">My Story</a> &middot; <a href="/calculator.html">Free Tools</a> &middot; <a href="/lp/discovery.html">Book a Call</a></p>
+  <p style="margin-top:8px;">Dawson City, Yukon, Canada &middot; 64°N &middot; Systems Over Hustle</p>
+</footer>
+
+</body>
+</html>
