@@ -12,7 +12,7 @@
   <meta name="robots" content="index, follow">
   <title>Restaurant Profit Recovery | The Grumpy Chef</title>
   <meta name="description"
-    content="German Master Chef Christian Schiffner helps exhausted restaurant operators find hidden profit leaks using recovery frameworks. Find your #1 profit leak today.">
+    content="Your restaurant is making money. The profit is disappearing. German Master Chef Christian Schiffner helps independent operators find hidden profit leaks and build systems that work at 60% capacity. Free diagnostic.">
   <meta property="og:title" content="Restaurant Profit Recovery | The Grumpy Chef">
   <meta property="og:description"
     content="20+ years. 5 countries. Rebuilt with systems. Find the hidden profit in your restaurant without working harder.">
@@ -45,7 +45,7 @@
           "knowsAbout": ["Restaurant Operations", "Food Cost Control", "Menu Engineering", "Staff Retention Systems", "Kitchen Management", "Restaurant Profit Recovery"],
           "sameAs": [
             "https://www.linkedin.com/in/christian-schiffner-938142335/",
-            "/newsletter.html"
+            "https://thegrumpychef.ca/newsletter.html"
           ],
           "contactPoint": {
             "@type": "ContactPoint",
@@ -89,7 +89,7 @@
           },
           "sameAs": [
             "https://www.linkedin.com/in/christian-schiffner-938142335/",
-            "/newsletter.html"
+            "https://thegrumpychef.ca/newsletter.html"
           ]
         },
         {
@@ -104,7 +104,7 @@
           "founder": { "@id": "https://thegrumpychef.ca/#person" },
           "sameAs": [
             "https://www.linkedin.com/in/christian-schiffner-938142335/",
-            "/newsletter.html"
+            "https://thegrumpychef.ca/newsletter.html"
           ]
         },
         {
@@ -132,58 +132,34 @@
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Who is The Grumpy Chef?",
+              "name": "Is this for me if I'm already profitable?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "I've been exactly where you are — 100-hour weeks, $370K in debt, family on the edge. 20 years in kitchens across 5 countries. Kuchenmeister. I rebuilt from collapse in the Yukon using the same systems I now hand to operators."
+                "text": "Most operators I work with have revenue. The problem is what's left after food cost, labor, and the hours they're putting in. If you're working 60-hour weeks to keep margins alive, something is leaking."
               }
             },
             {
               "@type": "Question",
-              "name": "What is the 21-Day Protocol?",
+              "name": "How is this different from a restaurant consultant?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "The 21-Day Protocol applies recovery frameworks to restaurant operations. Three weeks: Week 1 breaks automatic reactions, Week 2 installs criteria-based decision systems, Week 3 pressure-tests under real stress. It's designed to work when you're at 60% capacity."
+                "text": "I'm not selling you a binder of SOPs. I find the specific system failure that's costing you the most money, and we fix that first. Everything starts with diagnostics, not guesswork."
               }
             },
             {
               "@type": "Question",
-              "name": "What does the free Profit Leak Calculator do?",
+              "name": "What if I don't have time for this?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "The 72-Hour Profit Discovery Calculator scans 9 categories of hidden profit leaks — food waste, labor misallocation, staff turnover, menu mispricing, supplier overpayment, delivery platform bleed, beverage shrinkage, operational waste, and untracked comps. It estimates your annual leak in dollars and tells you where to start fixing it."
+                "text": "The calculator takes 3 minutes. If you don't have 3 minutes, that tells you something about how your operation is running."
               }
             },
             {
               "@type": "Question",
-              "name": "How much does it cost to work with The Grumpy Chef?",
+              "name": "Do I need to be in Canada or the Yukon?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Free tools cost nothing. The 72-Hour Profit Discovery Kit is $197. The 21-Day Protocol is in development — join the waitlist. For consulting, book a 15-minute discovery call."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is a Kuchenmeister?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Kuchenmeister (German Master Chef) is the highest professional culinary certification in the German trades system, awarded by the Handwerkskammer (Chamber of Crafts). It requires years of professional kitchen experience, advanced culinary education, and passing rigorous theoretical and practical examinations."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Where is The Grumpy Chef based?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The Grumpy Chef is based in Dawson City, Yukon, Canada. Available remotely to independent restaurant operators across Canada."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is prime cost and why does it matter for restaurants?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Prime cost is food cost plus labor cost — the two largest controllable expenses in any restaurant, typically 55-65% of revenue. Tracking prime cost weekly (not monthly) is the single most important financial habit for an independent restaurant operator. Monthly tracking shows averages; weekly tracking reveals profit leaks."
+                "text": "No. Profit leaks work the same everywhere. I work with independent operators regardless of location."
               }
             }
           ]
@@ -372,6 +348,14 @@
       text-align: center;
     }
 
+    .hero-video {
+      flex-shrink: 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .hero-badge {
       display: inline-block;
       font-family: var(--font-mono);
@@ -447,42 +431,6 @@
     .btn-secondary:hover {
       border-color: var(--gold);
       color: var(--gold);
-    }
-
-    /* PROOF BAR */
-    .proof-bar {
-      background: var(--navy-light);
-      border-top: 1px solid var(--navy-border);
-      border-bottom: 1px solid var(--navy-border);
-      padding: 32px 24px;
-    }
-
-    .proof-bar-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .proof-item {
-      text-align: center;
-    }
-
-    .proof-number {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--gold);
-    }
-
-    .proof-label {
-      font-size: 0.75rem;
-      color: var(--white-dim);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 4px;
     }
 
     /* SECTIONS */
@@ -616,92 +564,6 @@
       font-size: 0.9rem;
       color: var(--white-dim);
       line-height: 1.6;
-    }
-
-    /* STORY SECTION */
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-top: 48px;
-      align-items: start;
-    }
-
-    .story-before,
-    .story-after {
-      background: var(--navy-card);
-      border: 1px solid var(--navy-border);
-      border-radius: 12px;
-      padding: 32px;
-    }
-
-    .story-before {
-      border-top: 3px solid var(--red);
-    }
-
-    .story-after {
-      border-top: 3px solid var(--gold);
-    }
-
-    .story-heading {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .story-before .story-heading {
-      color: var(--red);
-    }
-
-    .story-after .story-heading {
-      color: var(--gold);
-    }
-
-    .story-list {
-      list-style: none;
-    }
-
-    .story-list li {
-      padding: 8px 0;
-      font-size: 0.95rem;
-      color: var(--white-dim);
-      border-bottom: 1px solid var(--navy-border);
-    }
-
-    .story-list li:last-child {
-      border-bottom: none;
-    }
-
-    /* QUOTE */
-    .quote-section {
-      padding: 80px 24px;
-      text-align: center;
-      background: var(--navy-light);
-      border-top: 1px solid var(--navy-border);
-      border-bottom: 1px solid var(--navy-border);
-    }
-
-    .quote-text {
-      font-family: var(--font-mono);
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      color: var(--white-dim);
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.8;
-      font-style: italic;
-    }
-
-    .quote-text span {
-      color: var(--gold);
-      font-style: normal;
-    }
-
-    .quote-attr {
-      margin-top: 20px;
-      font-size: 0.85rem;
-      color: var(--gold);
     }
 
     /* TOOLS SECTION */
@@ -884,18 +746,6 @@
         padding: 60px 20px;
       }
 
-      .proof-bar-inner {
-        gap: 24px;
-      }
-
-      .proof-item {
-        flex: 1 1 40%;
-      }
-
-      .story-grid {
-        grid-template-columns: 1fr;
-      }
-
       .footer-top {
         flex-direction: column;
       }
@@ -917,6 +767,14 @@
 
       .hero-text {
         text-align: center !important;
+      }
+
+      .hero-video {
+        order: -1;
+      }
+
+      .hero-video video {
+        width: 180px !important;
       }
 
       .hero h1 {
@@ -984,463 +842,201 @@
   <nav class="nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
-      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"
-        aria-label="Menu">&#9776;</button>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
       <div class="nav-links">
         <a href="/about.html">My Story</a>
-        <a href="/framework.html">The 21-Day Protocol</a>
         <a href="/services.html">Work With Me</a>
         <a href="/blog/">Blog</a>
-        <a href="/calculator.html">Free Tools</a>
-        <a href="/kit.html" class="nav-cta">72-Hour Kit</a>
+        <a href="/calculator.html?utm_source=website&utm_medium=nav&utm_campaign=free-tools">Free Tools</a>
+        <a href="/calculator.html?utm_source=website&utm_medium=nav&utm_campaign=profit-leak" class="nav-cta">Find Your Profit Leak</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO (The Journey Arc) -->
-  <section class="hero"
-    style="background: linear-gradient(rgba(5, 11, 20, 0.9), rgba(5, 11, 20, 0.9)), url('/images/systems_hustle_hero.png') center/cover no-repeat;">
+  <main>
+  <!-- SECTION 1: HERO -->
+  <section class="hero">
     <div class="hero-content">
       <div class="hero-text">
-        <div class="hero-badge">20+ Years &bull; 5 Countries &bull; German Master Chef</div>
-        <h1>YOUR RESTAURANT IS GENERATING REVENUE.<br><span>THE PROFIT IS DISAPPEARING.</span></h1>
-        <p class="hero-sub">Somewhere you can't see. I find it.</p>
+        <h1>YOUR RESTAURANT IS MAKING MONEY.<br><span>THE PROFIT IS DISAPPEARING.</span></h1>
+        <p class="hero-sub">Most operators work harder when margins shrink. That's the wrong fix. The money isn't missing &mdash; it's leaking through systems you can't see.</p>
         <div class="hero-buttons" style="justify-content: flex-start;">
-          <a href="/calculator.html" class="btn-primary">Find Your #1 Profit Leak</a>
+          <a href="/calculator.html?utm_source=website&utm_medium=hero&utm_campaign=profit-leak" class="btn-primary">Find Your #1 Profit Leak &mdash; Free</a>
+        </div>
+        <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--white-dim); opacity: 0.7; margin-top: 24px; letter-spacing: 1px; text-transform: uppercase;">20+ YEARS &bull; 5 COUNTRIES &bull; GERMAN MASTER CHEF &bull; REBUILT FROM $370K IN DEBT</p>
+      </div>
+      <div class="hero-video">
+        <video autoplay muted playsinline preload="auto" poster="/images/chris-chef-portrait.jpg"
+          style="width: 240px; height: auto; border-radius: 12px; border: 2px solid var(--gold-border); box-shadow: 0 8px 32px rgba(0,0,0,0.4);"
+          onclick="this.muted=!this.muted; this.currentTime=0; this.play();">
+          <source src="/videos/hero-pitch.mp4" type="video/mp4">
+        </video>
+        <p style="font-size: 0.7rem; color: var(--white-dim); opacity: 0.5; text-align: center; margin-top: 8px;">Click to unmute</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: THE PROBLEM -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">The Reality</div>
+      <h2 class="section-title">This Is What's Actually <span>Happening</span></h2>
+      <p class="section-text">Revenue looks fine. The bank account tells a different story.</p>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-name">Food cost is a guess.</div>
+          <div class="pain-desc">You're ordering based on habit, not data. Waste walks out the back door every shift.</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-name">Labor is eating your margin.</div>
+          <div class="pain-desc">You're overstaffed on slow nights and understaffed when it counts. The schedule runs on gut feel.</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-name">You are the system.</div>
+          <div class="pain-desc">Nothing works when you're not there. Every decision, every fix, every fire &mdash; it runs through you.</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-name">You're working more and keeping less.</div>
+          <div class="pain-desc">Sixty-hour weeks. Revenue steady. Profit shrinking. You're compensating for broken systems with personal effort.</div>
         </div>
       </div>
-      <div class="hero-photo">
-        <div style="position: relative; display: inline-block;">
+    </div>
+  </section>
+
+  <!-- SECTION 3: THE SHIFT -->
+  <section class="section section-alt">
+    <div class="section-inner" style="max-width: 740px;">
+      <h2 class="section-title">You're Not Broken. <span>Your Systems Are.</span></h2>
+      <p class="section-text" style="margin-bottom: 20px;">Every operator I've worked with thought the same thing: "I just need to work harder." They were wrong.</p>
+      <p class="section-text" style="margin-bottom: 20px;">The problem isn't effort. It's that your kitchen runs on willpower instead of structure. When you're at 100%, things hold together. When you're not &mdash; and nobody is, forever &mdash; it falls apart.</p>
+      <p style="font-size: 1.15rem; color: var(--white); line-height: 1.7; border-left: 4px solid var(--gold); padding-left: 20px; margin-bottom: 20px; max-width: 700px;">If your systems only work when you're at 100%, you don't have systems. You have a ticking clock.</p>
+      <p class="section-text">The fix isn't more hours. It's finding where the money is actually going, and putting a system in place so it stops.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4: HOW I HELP -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">The Process</div>
+      <h2 class="section-title">Profit Recovery. <span>Three Steps.</span></h2>
+      <div class="week-grid">
+        <div class="week-card">
+          <div class="week-num">Step 01</div>
+          <div class="week-name">Find the leak.</div>
+          <div class="week-desc">A free diagnostic that shows you exactly where your restaurant is losing money &mdash; food cost, labor, pricing, or owner dependence.</div>
+        </div>
+        <div class="week-card">
+          <div class="week-num">Step 02</div>
+          <div class="week-name">Diagnose the system failure.</div>
+          <div class="week-desc">The leak is a symptom. I trace it back to the broken process, missing structure, or gap that's causing it.</div>
+        </div>
+        <div class="week-card">
+          <div class="week-num">Step 03</div>
+          <div class="week-name">Fix it with something that holds.</div>
+          <div class="week-desc">Not a band-aid. Not a spreadsheet you'll abandon. A practical system that works even when you're not standing over it.</div>
+        </div>
+      </div>
+      <p style="text-align: center; margin-top: 40px; font-size: 1.05rem; color: var(--white-dim); max-width: 700px; margin-left: auto; margin-right: auto;">It's finding the money your restaurant is already making &mdash; and keeping it.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5: WHY TRUST ME -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div class="section-label">The Operator</div>
+      <h2 class="section-title">Who's Behind <span>This</span></h2>
+      <div style="display: flex; gap: 40px; flex-wrap: wrap; margin-top: 40px; align-items: flex-start;">
+        <div style="flex-shrink: 0;">
           <picture>
             <source srcset="/images/chris-chef-portrait.webp" type="image/webp">
             <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
-              class="brand-photo-circle brand-photo-circle--hero" style="border: 2px solid var(--gold);"
-              width="2944" height="2208" loading="eager">
-          </picture>
-          <div
-            style="position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); padding: 4px 12px; border-radius: 4px; font-weight: 700; font-size: 0.7rem; white-space: nowrap; text-transform: uppercase; letter-spacing: 1px;">
-            K&uuml;chenmeister</div>
-        </div>
-      </div>
-    </div>
-  </section> <!-- AUTHORITY BAR -->
-  <div style="background: var(--navy); border-bottom: 1px solid var(--navy-border); padding: 20px 24px;">
-    <div
-      style="max-width: 1000px; margin: 0 auto; display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; opacity: 0.7;">
-      <div
-        style="display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">
-        <span style="font-size: 1.2rem;">&#127465;&#127466;</span> German Master Chef
-      </div>
-      <div
-        style="display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">
-        <span style="font-size: 1.2rem;">&#127464;&#127462;</span> Rebuilt in Yukon
-      </div>
-      <div
-        style="display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">
-        <span style="font-size: 1.2rem;">&#127466;&#127480;</span> 5 Countries Experience
-      </div>
-      <div
-        style="display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">
-        <span style="font-size: 1.2rem;">&#9881;</span> Recovery Frameworks
-      </div>
-    </div>
-  </div>
-
-  <!-- PROOF BAR -->
-  <div class="proof-bar">
-    <div class="proof-bar-inner">
-      <div class="proof-item">
-        <div class="proof-number">20+</div>
-        <div class="proof-label">Years in Kitchens</div>
-      </div>
-      <div class="proof-item">
-        <div class="proof-number">5</div>
-        <div class="proof-label">Countries</div>
-      </div>
-      <div class="proof-item">
-        <div class="proof-number">$370K</div>
-        <div class="proof-label">Debt Rebuilt From</div>
-      </div>
-      <div class="proof-item">
-        <div class="proof-number">1,200+</div>
-        <div class="proof-label">Days Proof</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROBLEM SECTION -->
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-label">The Problem</div>
-      <h2 class="section-title">You're Not Broken.<br><span>Your Systems Are.</span></h2>
-      <p class="section-text">Everyone tells you to work harder. You're already the hardest-working person you know. The
-        problem isn't effort. It's that your systems break when you're tired. And you're always tired in this business.
-      </p>
-      <div class="pain-grid">
-        <div class="pain-card">
-          <div class="pain-stat">76%</div>
-          <div class="pain-name">Can't Control Food Cost</div>
-          <div class="pain-desc">No systems for waste, portioning, or purchasing. Money disappears between the walk-in
-            and the plate.</div>
-        </div>
-        <div class="pain-card">
-          <div class="pain-stat">$5,864</div>
-          <div class="pain-name">Cost Per Lost Employee</div>
-          <div class="pain-desc">Industry turnover hits 80%. Each replacement costs $5,864 in lost productivity,
-            recruiting, and training. Lose 10 staff a year? That's $58K invisible on your P&L.</div>
-        </div>
-        <div class="pain-card">
-          <div class="pain-stat">51%</div>
-          <div class="pain-name">Can't Find Staff</div>
-          <div class="pain-desc">Half of all operators short-staffed. Owners fill the gaps with their own hours. Burnout
-            follows.</div>
-        </div>
-        <div class="pain-card">
-          <div class="pain-stat">#1</div>
-          <div class="pain-name">Burnout Crisis</div>
-          <div class="pain-desc">80-100 hour weeks. Highest substance abuse rates in any industry. Working harder isn't
-            the answer.</div>
-        </div>
-        <div class="pain-card">
-          <div class="pain-stat">$50K+</div>
-          <div class="pain-name">Hidden Profit Leaks</div>
-          <div class="pain-desc">Revenue looks fine. Profit doesn't exist. Most operators can't see where the money
-            goes.</div>
-        </div>
-        <div class="pain-card">
-          <div class="pain-stat">15-30%</div>
-          <div class="pain-name">Delivery Platform Bleed</div>
-          <div class="pain-desc">Trapped paying platform fees. Need the volume, can't afford the margin loss. No direct
-            channel strategy.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ORIGIN STORY -->
-  <section class="section" style="background: var(--navy-light); border-top: 1px solid var(--navy-border);">
-    <div class="section-inner" style="max-width: 720px;">
-      <div class="section-label">The Backstory</div>
-      <h2 class="section-title">I Lost Everything.<br><span>Then I Found the System.</span></h2>
-      <p class="section-text">In 2022, I watched it all collapse. $370K in debt. 100-hour weeks. A kitchen that ran on willpower and broke the moment I did.</p>
-      <p class="section-text">I moved to Dawson City, Yukon &mdash; 64 degrees North, limited supply chain, extreme constraints &mdash; and rebuilt from zero using recovery-based systems. Not motivation. Not hustle. Systems that hold when you're exhausted.</p>
-      <p class="section-text">20 years across Germany, Switzerland, Austria, Spain, and Canada. Kuchenmeister. I rebuilt using the same frameworks I now hand to operators.</p>
-    </div>
-  </section>
-
-  <!-- LATEST ESSAY -->
-  <section class="section" style="border-top: 1px solid var(--navy-border);">
-    <div class="section-inner">
-      <div class="section-label">The Signal</div>
-      <h2 class="section-title">Signature <span>Framework</span></h2>
-      <div class="article-card"
-        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; padding: 0; background: transparent; border: none; margin-top: 40px; align-items: center;">
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid var(--navy-border);">
-          <picture>
-            <source srcset="/images/Kitchen1.webp" type="image/webp">
-            <img src="/images/Kitchen1.jpg" alt="72-Hour Profit Discovery"
-              style="width: 100%; height: 100%; object-fit: cover;"
+              class="brand-photo-circle brand-photo-circle--hero"
               width="2944" height="2208" loading="lazy">
           </picture>
         </div>
-        <div>
-          <div class="article-badge badge-strategy"
-            style="background: rgba(212, 175, 55, 0.1); color: var(--gold); border: 1px solid var(--gold-border); font-family: var(--font-mono); font-size: 0.65rem; padding: 4px 10px; border-radius: 4px; text-transform: uppercase;">
-            Most Read</div>
-          <h3 class="article-title" style="font-size: 1.5rem; margin: 12px 0; font-family: var(--font-display);"><a
-              href="/blog/72-hour-profit-discovery.html" style="color: var(--white);">The 72-Hour Profit Discovery: How to Find Hidden Money in Your Restaurant This Week</a></h3>
-          <p class="article-desc" style="font-size: 0.95rem; margin-bottom: 24px; color: var(--white-dim);">Find hidden profit leaks in your restaurant within 72 hours. The signature diagnostic process from a German Master Chef that typically finds $15,000 to $50,000 in annual recovery.</p>
-          <a href="/blog/72-hour-profit-discovery.html" class="btn-primary"
-            style="padding: 10px 24px; font-size: 0.85rem;">Read Article &rarr;</a>
+        <div style="flex: 1; min-width: 280px;">
+          <p class="section-text" style="margin-bottom: 16px;">My name is Christian Schiffner. German-trained K&uuml;chenmeister. I've run kitchens in Germany, Switzerland, Austria, Spain, and Canada over the last 20 years.</p>
+          <p class="section-text" style="margin-bottom: 16px;">I built a restaurant. Watched it bleed money I didn't know I was losing. Ended up $370,000 in debt. Lost the business.</p>
+          <p class="section-text" style="margin-bottom: 16px;">Then I rebuilt &mdash; from Dawson City, Yukon. Population 1,400. The most remote kitchen in North America. I paid off every dollar. Not with a mentor or a course. With systems I built because I had no other option.</p>
+          <p style="font-size: 1.05rem; color: var(--white); max-width: 700px; line-height: 1.7;">Now I help independent operators find the same leaks I missed &mdash; before they cost what mine cost me.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUOTE -->
-  <div class="quote-section">
-    <p class="quote-text">"If your systems only work when you're at 100%, <span>you don't have systems.</span> You have willpower. And willpower runs out."</p>
-    <p class="quote-attr">— Christian Schiffner</p>
-  </div>
-
-  <!-- FRAMEWORK SECTION -->
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-label">The Solution</div>
-      <h2 class="section-title">The 21-Day Restaurant<br><span>Recovery Protocol</span></h2>
-      <p class="section-text">Recovery frameworks applied to restaurant operations. Not motivation. Not hustle. Systems
-        that hold when you're at 60% capacity. Because that's where you live most days.</p>
-      <div class="week-grid">
-        <div class="week-card">
-          <div class="week-num">Week 1</div>
-          <div class="week-name">Interruption</div>
-          <div class="week-desc">Break automatic reactions. Install "The Pause." Add friction to comfort patterns.
-            Stabilize your environment before changing anything else.</div>
-        </div>
-        <div class="week-card">
-          <div class="week-num">Week 2</div>
-          <div class="week-name">Criteria-Based Systems</div>
-          <div class="week-desc">Replace emotion with standards. Pre-decide responses to every recurring situation.
-            "Situation = Action." No negotiation. No exceptions. Decision made once.</div>
-        </div>
-        <div class="week-card">
-          <div class="week-num">Week 3</div>
-          <div class="week-name">Pressure Testing</div>
-          <div class="week-desc">Test under real stress. Close "just once" exception loops. Execute when you DON'T want
-            to. If it works at 60% capacity, it's a real system.</div>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 40px;">
-        <a href="/framework.html" class="btn-secondary">Read the Full Protocol</a>
-      </div>
-    </div>
+  <!-- SECTION 6: PRIMARY CTA -->
+  <section class="cta-section" style="background: linear-gradient(180deg, rgba(212, 175, 55, 0.03) 0%, var(--navy) 100%);">
+    <h2 class="section-title">Find Your #1 <span>Profit Leak</span></h2>
+    <p class="cta-text">Answer a few questions about your restaurant. Get a clear picture of where your profit is going &mdash; and what to fix first.</p>
+    <p class="cta-text" style="margin-bottom: 40px;">Free. Takes 3 minutes. Just your name and email.</p>
+    <a href="/calculator.html?utm_source=website&utm_medium=cta-section&utm_campaign=profit-leak" class="btn-primary" style="font-size: 1.1rem; padding: 16px 40px;">Find Your #1 Profit Leak &mdash; Free</a>
   </section>
 
-  <!-- STORYTELLING ARC: From the Black Forest to the Yukon -->
-  <section class="section"
-    style="background: var(--pine-german); position: relative; overflow: hidden; padding-bottom: 0;">
-    <div class="section-inner">
-      <div class="section-label" style="color: var(--gold-liquid);">The Journey</div>
-      <h2 class="section-title">From the Black Forest<br><span>To the Yukon.</span></h2>
-      <div class="story-grid" style="align-items: center; gap: 60px;">
-        <div class="story-visual" style="position: relative;">
-          <picture>
-            <source srcset="/images/black-forest-sunlight.webp" type="image/webp">
-            <img src="/images/black-forest-sunlight.jpg" alt="Sunlight through the Black Forest trees in Germany"
-              class="glass-card" style="border-radius: 20px; box-shadow: 0 0 50px rgba(0,0,0,0.8);"
-              width="4000" height="2252" loading="lazy">
-          </picture>
-          <div
-            style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.7); padding: 10px 20px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-liquid); border: 1px solid var(--gold-border);">
-            Location: Baden-Württemberg, Germany</div>
-        </div>
-        <div class="story-text">
-          <h3 style="font-family: var(--font-display); color: var(--gold-liquid); margin-bottom: 20px;">I lost it all.
-          </h3>
-          <p class="section-text" style="color: var(--white-soft);">I was a trained German Master Chef. I followed the
-            rules. I worked the 100-hour weeks. And in 2022, I watched it all collapse. $370,000 in debt. A family on
-            the edge. The Black Forest isn't just roots — it's where I learned that <span>hustle is a lie if you don't
-              have systems.</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="background: linear-gradient(to bottom, var(--pine-german), var(--navy-deep));">
-    <div class="section-inner">
-      <div class="story-grid" style="grid-template-columns: 1fr 1.2fr; align-items: center; gap: 60px;">
-        <div class="story-text">
-          <h3 style="font-family: var(--font-display); color: var(--gold-liquid); margin-bottom: 20px;">Rebuilt in the
-            Cold.</h3>
-          <p class="section-text" style="color: var(--white-soft);">I moved to the Yukon. In the isolation of the North,
-            I rebuilt. I didn't use theory. I used recovery frameworks to build restaurant systems that <span>work when
-              you're exhausted.</span> Prime costs are controlled. Systems hold under pressure. I'm
-            not a consultant. I'm an operator who found the exit.</p>
-        </div>
-        <div class="story-visual">
-          <picture>
-            <source srcset="/images/yukon-river-valley.webp" type="image/webp">
-            <img src="/images/yukon-river-valley.jpg"
-              alt="Yukon River valley in fall — Dawson City, where The Grumpy Chef rebuilt" class="glass-card"
-              style="border-radius: 20px; box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);"
-              width="566" height="755" loading="lazy">
-          </picture>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div id="newsletter"></div>
-
-  <!-- PRODUCT LADDER -->
-  <section class="section" style="border-top: 1px solid var(--navy-border);">
-    <div class="section-inner" style="text-align: center;">
-      <div class="section-label">The Path</div>
-      <h2 class="section-title">Four Levels.<br><span>Start Where You Are.</span></h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; text-align: left;">
-        <a href="/calculator.html" style="text-decoration: none; background: var(--navy-light); border: 1px solid var(--navy-border); border-radius: 8px; padding: 24px; display: block;">
-          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Free</div>
-          <div style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px;">Profit Leak Calculator</div>
-          <p style="font-size: 0.85rem; color: var(--white-dim); margin: 0;">Find the problem. 5 minutes.</p>
-        </a>
-        <a href="/kit.html" style="text-decoration: none; background: var(--navy-light); border: 1px solid var(--gold-border); border-radius: 8px; padding: 24px; display: block;">
-          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">$197</div>
-          <div style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px;">72-Hour Discovery Kit</div>
-          <p style="font-size: 0.85rem; color: var(--white-dim); margin: 0;">Fix the problem this weekend.</p>
-        </a>
-        <a href="/21-day-protocol.html" style="text-decoration: none; background: var(--navy-light); border: 1px solid var(--navy-border); border-radius: 8px; padding: 24px; display: block;">
-          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Coming Q3 2026</div>
-          <div style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px;">The 21-Day Protocol</div>
-          <p style="font-size: 0.85rem; color: var(--white-dim); margin: 0;">Build the system so it doesn't come back.</p>
-        </a>
-        <a href="/lp/discovery.html" style="text-decoration: none; background: var(--navy-light); border: 1px solid var(--navy-border); border-radius: 8px; padding: 24px; display: block;">
-          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">20 Minutes — No Commitment</div>
-          <div style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px;">Discovery Call</div>
-          <p style="font-size: 0.85rem; color: var(--white-dim); margin: 0;">Tell me what's broken. We figure out if there's a fit.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER SIGNUP -->
-  <section class="section"
-    style="background: var(--navy-light); border-top: 1px solid var(--navy-border); border-bottom: 1px solid var(--navy-border);">
-    <div class="section-inner" style="text-align: center;">
-      <div class="section-label">Stay Connected</div>
-      <h2 class="section-title">The Friday <span>Systems Brief</span></h2>
-      <p class="section-text" style="margin: 0 auto 32px;">One profit-saving tactic every Friday. Built for independent
-        operators working 60+ hour weeks. No fluff. Just systems.</p>
-
-      <form style="max-width: 500px; margin: 0 auto; display: flex; gap: 12px; flex-wrap: wrap;" action="#"
-        method="POST">
-        <input type="email" placeholder="Your work email..." required
-          style="flex: 1; min-width: 280px; padding: 14px 20px; border-radius: 8px; border: 1px solid var(--navy-border); background: var(--navy); color: var(--white); font-family: inherit;">
-        <button type="submit" class="btn-primary" style="border: none;">One Tactic a Week &mdash; Free</button>
-      </form>
-      <p style="font-size: 0.75rem; color: var(--gray); margin-top: 16px;">Zero spam. Unsubscribe anytime.</p>
-    </div>
-  </section>
-
-  <!-- THE APP: FLAGSHIP FEATURE -->
-  <section class="section" style="background: var(--navy-deep); border-top: 1px solid var(--gold-border);">
-    <div class="section-inner">
-      <div class="section-label">Digital Edge</div>
-      <h2 class="section-title">The Master Chef's<br><span>Menu Engineering App</span></h2>
-      <div class="story-grid" style="grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center;">
-        <div class="app-visual">
-          <picture>
-            <source srcset="/images/menu_engineering_app.webp" type="image/webp">
-            <img src="/images/menu_engineering_app.png" alt="Menu Engineering App Mockup" class="glass-card"
-              style="width: 100%; border-radius: 12px;"
-              width="640" height="640" loading="lazy">
-          </picture>
-        </div>
-        <div class="app-info">
-          <p class="section-text" style="margin-bottom: 30px;">Stop guessing which dishes make money. Our new app
-            applies Master Chef logic to your ingredient costs and menu physics, instantly identifying your stars and
-            your duds.</p>
-          <ul class="story-list" style="margin-bottom: 40px;">
-            <li>Instant Prime Cost Visualization</li>
-            <li>Theoretical vs. Actual Waste Analysis</li>
-            <li>Dynamic Menu Matrix (Stars/Plowhorses/Puzzles/Dogs)</li>
-            <li>1-Click Recipe Costing</li>
-          </ul>
-          <a href="https://menu-engineering-alpha.vercel.app" class="btn-premium">Explore the App</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- FREE TOOLS -->
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-label">The Tools</div>
-      <h2 class="section-title">Designed for Exhausted<br><span>Operators</span></h2>
-      <p class="section-text">Not theory. Not slide decks from consultants. Working tools built by an operator who's
-        been in the weeds. Use them tonight.</p>
-      <div class="tools-grid">
-        <a href="/calculator.html" class="tool-card glass-card">
-          <div class="tool-icon">&#9888;</div>
-          <div class="tool-name">72-Hour Profit Discovery</div>
-          <div class="tool-desc">Find your restaurant's hidden profit leaks across 9 categories. Instant results. Takes
-            5 minutes.</div>
-          <div class="tool-link">Find Your #1 Profit Leak &mdash; Free &rarr;</div>
-        </a>
-        <a href="/assessment.html" class="tool-card glass-card">
-          <div class="tool-icon">&#9733;</div>
-          <div class="tool-name">Menu Profit Score</div>
-          <div class="tool-desc">10 questions. Instant score. Find out if your menu is making money or losing it.</div>
-          <div class="tool-link">Take the Assessment &rarr;</div>
-        </a>
-        <a href="/readiness-scorecard.html" class="tool-card glass-card">
-          <div class="tool-icon">&#x1F3AF;</div>
-          <div class="tool-name">Readiness Scorecard</div>
-          <div class="tool-desc">Find out if your restaurant is ready for outside help</div>
-          <div class="tool-link">Run the Scorecard &mdash; Free &rarr;</div>
-        </a>
-        <a href="/lp/discovery.html" class="tool-card glass-card" style="border-color: var(--gold-liquid);">
-          <div class="tool-icon">&#10148;</div>
-          <div class="tool-name">Discovery Call</div>
-          <div class="tool-desc">20 minutes. Tell me what's broken. We figure out if there's a fit.</div>
-          <div class="tool-link">Book a Discovery Call &rarr;</div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="section-label">Start Here</div>
-    <h2 class="section-title">Where Is Your Restaurant<br><span>Bleeding Money?</span></h2>
-    <p class="cta-text">5 minutes. 9 categories. Find your #1 profit leak tonight. Built by an operator who's been in the weeds for 20+ years.</p>
-    <picture>
-      <source srcset="/images/chris-chef-portrait.webp" type="image/webp">
-      <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
-        class="brand-photo-circle brand-photo-circle--cta" style="display: block; margin: 0 auto 24px;"
-        width="2944" height="2208" loading="lazy">
-    </picture>
-    <a href="/calculator.html" class="btn-primary">Find Your #1 Profit Leak</a>
-  </section>
-
-  <!-- FAQ — AI-optimized for generative search pickup -->
+  <!-- SECTION 7: SECONDARY PATHS -->
   <section class="section section-alt">
     <div class="section-inner">
+      <div class="section-label">Next Steps</div>
+      <h2 class="section-title">Want To Go <span>Deeper</span></h2>
+      <div class="tools-grid">
+        <a href="/kit.html?utm_source=website&utm_medium=secondary&utm_campaign=discovery-kit" class="tool-card" style="text-decoration: none; color: var(--white);">
+          <div class="tool-icon">&#128295;</div>
+          <div class="tool-name">72-Hour Discovery Kit</div>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">FREE</div>
+          <div class="tool-desc">Three days of focused diagnostics delivered to your inbox. Food cost, labor, pricing.</div>
+          <div class="tool-link">Get the Kit &rarr;</div>
+        </a>
+        <a href="/21-day-protocol.html?utm_source=website&utm_medium=secondary&utm_campaign=protocol-waitlist" class="tool-card" style="text-decoration: none; color: var(--white);">
+          <div class="tool-icon">&#128203;</div>
+          <div class="tool-name">21-Day Recovery Protocol</div>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">WAITLIST</div>
+          <div class="tool-desc">A structured system rebuild. Week by week. For operators ready to fix what's actually broken.</div>
+          <div class="tool-link">Join the Waitlist &rarr;</div>
+        </a>
+        <a href="/lp/discovery.html?utm_source=website&utm_medium=secondary&utm_campaign=discovery-call" class="tool-card" style="text-decoration: none; color: var(--white);">
+          <div class="tool-icon">&#128222;</div>
+          <div class="tool-name">Discovery Call</div>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">FREE &bull; 20 MIN</div>
+          <div class="tool-desc">No pitch. We look at your situation and I tell you what I'd fix first.</div>
+          <div class="tool-link">Book a Call &rarr;</div>
+        </a>
+        <a href="/newsletter.html?utm_source=website&utm_medium=secondary&utm_campaign=newsletter" class="tool-card" style="text-decoration: none; color: var(--white);">
+          <div class="tool-icon">&#9993;</div>
+          <div class="tool-name">64&deg;N Weekly</div>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">NEWSLETTER</div>
+          <div class="tool-desc">One email every Tuesday. What it actually takes to run a restaurant without burning out.</div>
+          <div class="tool-link">Subscribe &rarr;</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: FAQ -->
+  <section class="section">
+    <div class="section-inner">
       <div class="section-label">Common Questions</div>
-      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      <h2 class="section-title">Frequently <span>Asked</span></h2>
       <div style="max-width: 740px; margin-top: 40px;">
         <div style="border-bottom: 1px solid var(--navy-border); padding: 20px 0;">
-          <h3
-            style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">
-            Who is The Grumpy Chef?</h3>
-          <p style="font-size: 0.95rem; color: var(--white-dim); line-height: 1.7;">I've been exactly where you are &mdash; 100-hour weeks, $370K in debt, family on the edge. 20 years in kitchens across 5 countries. Kuchenmeister. I rebuilt from collapse in the Yukon using the same systems I now hand to operators. That's it.</p>
+          <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Is this for me if I'm already profitable?</h3>
+          <p style="font-size: 0.95rem; color: var(--white-dim); line-height: 1.7;">Most operators I work with have revenue. The problem is what's left after food cost, labor, and the hours they're putting in. If you're working 60-hour weeks to keep margins alive, something is leaking.</p>
         </div>
         <div style="border-bottom: 1px solid var(--navy-border); padding: 20px 0;">
-          <h3
-            style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">
-            What is the 21-Day Protocol?</h3>
-          <p style="font-size: 0.95rem; color: var(--white-dim); line-height: 1.7;">The 21-Day Protocol applies recovery
-            frameworks to restaurant operations. Three weeks: Week 1 breaks automatic reactions, Week 2 installs
-            criteria-based decision systems, Week 3 pressure-tests under real stress. It's designed to work when you're
-            at 60% capacity — because that's where most operators live.</p>
+          <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">How is this different from a restaurant consultant?</h3>
+          <p style="font-size: 0.95rem; color: var(--white-dim); line-height: 1.7;">I'm not selling you a binder of SOPs. I find the specific system failure that's costing you the most money, and we fix that first. Everything starts with diagnostics, not guesswork.</p>
         </div>
         <div style="border-bottom: 1px solid var(--navy-border); padding: 20px 0;">
-          <h3
-            style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">
-            What does the free Profit Leak Calculator do?</h3>
-          <p style="font-size: 0.95rem; color: var(--white-dim); line-height: 1.7;">The 72-Hour Profit Discovery
-            Calculator scans 9 categories of hidden profit leaks — food waste, labor misallocation, staff turnover, menu
-            mispricing, supplier overpayment, delivery platform bleed, beverage shrinkage, operational waste, and
-            untracked comps. It estimates your annual leak in dollars and tells you exactly where to start fixing it.
-          </p>
-        </div>
-        <div style="border-bottom: 1px solid var(--navy-border); padding: 20px 0;">
-          <h3
-            style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">
-            Who is this NOT for?</h3>
-          <p style="font-size: 0.95rem; color: var(--white-dim); line-height: 1.7;">This is NOT for corporate chain
-            restaurants, operations making less than $300K/year, or owners who prioritize "hustle culture" over systems.
-            This is built specifically for independent operators who are exhausted and need frameworks that work when
-            they are at 60% capacity.</p>
-        </div>
-        <div style="border-bottom: 1px solid var(--navy-border); padding: 20px 0;">
-          <h3
-            style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">
-            How much does it cost to work with The Grumpy Chef?</h3>
-          <p style="font-size: 0.95rem; color: var(--white-dim); line-height: 1.7;">Free tools cost nothing. The 72-Hour Profit Discovery Kit is $197. The 21-Day Protocol is in development &mdash; <a href="/21-day-protocol.html" style="color: var(--gold);">join the waitlist</a>. For consulting, <a href="/lp/discovery.html" style="color: var(--gold);">book a 15-minute discovery call</a> &mdash; no pitch, just your numbers.</p>
+          <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">What if I don't have time for this?</h3>
+          <p style="font-size: 0.95rem; color: var(--white-dim); line-height: 1.7;">The calculator takes 3 minutes. If you don't have 3 minutes, that tells you something about how your operation is running.</p>
         </div>
         <div style="padding: 20px 0;">
-          <h3
-            style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">
-            What is a Kuchenmeister?</h3>
-          <p style="font-size: 0.95rem; color: var(--white-dim); line-height: 1.7;">Kuchenmeister (German Master Chef)
-            is the highest professional culinary certification in the German trades system, awarded by the
-            Handwerkskammer (Chamber of Crafts). It requires years of professional kitchen experience, advanced culinary
-            education, and passing rigorous theoretical and practical examinations. It is the equivalent of a
-            master's-level trade qualification.</p>
+          <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Do I need to be in Canada / the Yukon?</h3>
+          <p style="font-size: 0.95rem; color: var(--white-dim); line-height: 1.7;">No. Profit leaks work the same everywhere. I work with independent operators regardless of location.</p>
         </div>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -1455,25 +1051,22 @@
           </picture>
           <div>
             <div class="footer-brand-name">The Grumpy <span>Chef</span></div>
-            <p>The Grumpy Chef is a restaurant profit recovery brand founded by Christian Schiffner, a German
-              Master Chef (Küchenmeister) with 20+ years of experience across Germany, Switzerland, Austria, Spain, and
-              Canada. Based in Dawson City, Yukon.</p>
+            <p>Restaurant profit recovery for independent operators. German Master Chef with 20+ years across 5 countries. Based in Dawson City, Yukon.</p>
           </div>
         </div>
         <div class="footer-links">
           <h4>Navigate</h4>
           <a href="/about.html">My Story</a>
-          <a href="/framework.html">The 21-Day Protocol</a>
           <a href="/services.html">Work With Me</a>
-          <a href="/kit.html">72-Hour Discovery Kit</a>
+          <a href="/blog/">Blog</a>
           <a href="/calculator.html">Profit Leak Calculator</a>
-          <a href="/assessment.html">Menu Profit Score</a>
-          <a href="/restaurant-staff-turnover-cost.html">Staff Turnover Guide</a>
+          <a href="/kit.html">72-Hour Discovery Kit</a>
+          <a href="/framework.html">The 21-Day Protocol</a>
         </div>
         <div class="footer-links">
           <h4>Connect</h4>
-          <a href="https://www.linkedin.com/in/christian-schiffner-938142335/" target="_blank">LinkedIn</a>
-          <a href="/newsletter.html" target="_blank">Newsletter</a>
+          <a href="https://www.linkedin.com/in/christian-schiffner-938142335/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://thegrumpychef.ca/newsletter.html">Newsletter</a>
           <a href="mailto:christian@thegrumpychef.ca">Email</a>
         </div>
       </div>
