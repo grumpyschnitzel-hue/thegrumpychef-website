@@ -943,6 +943,198 @@
         }
 
         /* ============================================
+           GATE OVERLAY (email wall before detailed results)
+           ============================================ */
+        .gated-content {
+            position: relative;
+        }
+
+        .gated-content.locked > *:not(.gate-overlay) {
+            filter: blur(6px);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .gate-overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            padding: 48px 0 32px;
+        }
+
+        .gated-content.locked .gate-overlay {
+            display: block;
+        }
+
+        .gate-card {
+            background: var(--navy-card);
+            border: 2px solid var(--gold-border);
+            border-radius: 12px;
+            padding: 36px 28px;
+            max-width: 480px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .gate-card__tag {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .gate-card__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .gate-card__desc {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .gate-card__form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .gate-card__row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .gate-card__field {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .gate-card__lbl {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .gate-card__input {
+            font-family: var(--font-body);
+            font-size: 15px;
+            padding: 12px 14px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 6px;
+            color: var(--white);
+            outline: none;
+            width: 100%;
+            transition: border-color 0.12s;
+        }
+
+        .gate-card__input::placeholder {
+            color: var(--gray-dark);
+        }
+
+        .gate-card__input:focus {
+            border-color: var(--gold-dim);
+        }
+
+        .gate-card__input.err {
+            border-color: var(--red);
+        }
+
+        .gate-card__submit {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 16px;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.12s;
+            margin-top: 4px;
+            width: 100%;
+        }
+
+        .gate-card__submit:hover {
+            background: var(--gold-dim);
+        }
+
+        .gate-card__submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .gate-card__fine {
+            font-size: 11px;
+            color: var(--gray-dark);
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        .gate-card__error {
+            font-size: 13px;
+            color: var(--red);
+            text-align: center;
+            display: none;
+        }
+
+        .gate-card__bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px;
+            text-align: left;
+        }
+
+        .gate-card__bullets li {
+            font-size: 13px;
+            color: var(--white-dim);
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .gate-card__bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        @media (max-width: 600px) {
+            .gate-card {
+                padding: 28px 18px;
+            }
+
+            .gate-card__row {
+                flex-direction: column;
+            }
+        }
+
+        /* ============================================
            CAPTURE FORM
            ============================================ */
         .capture {
@@ -1435,8 +1627,15 @@
             .export,
             .btn,
             .capture,
-            .cta-section {
+            .cta-section,
+            .gate-overlay {
                 display: none !important;
+            }
+
+            .gated-content.locked > *:not(.gate-overlay) {
+                filter: none;
+                pointer-events: auto;
+                user-select: auto;
             }
 
             .footer {
@@ -1727,117 +1926,114 @@
                     <div class="results__context" id="r-context"></div>
                 </div>
 
-                <!-- PRIORITY -->
-                <div class="priority" id="priority" style="display:none;">
-                    <div class="priority__tag">Your #1 Priority &mdash; Fix This First</div>
-                    <div class="priority__name" id="p-name"></div>
-                    <div class="priority__amount" id="p-amount"></div>
-                    <div class="priority__action" id="p-action"></div>
-                </div>
+                <!-- GATED CONTENT — unlocked after email capture -->
+                <div class="gated-content locked" id="gated-content">
 
-                <!-- CHART -->
-                <div class="chart">
-                    <div class="section-label">All Leaks &mdash; Ranked</div>
-                    <div id="chart-bars"></div>
-                </div>
-
-                <!-- IMPLEMENTATION -->
-                <div class="impl" id="impl-section">
-                    <div class="impl__title">72-Hour Implementation &mdash; Built for 60% Capacity</div>
-                    <div class="impl__step"><strong>Day 1 — Exposure:</strong> <span id="impl-day1">Do the full waste
-                            walk. Get real numbers instead of estimates. This calculator gave you the map — Day 1 gives
-                            you the territory.</span></div>
-                    <div class="impl__step"><strong>Day 2 — Diagnosis:</strong> Run the 5 Whys on your #1 leak. Find the
-                        root cause. Design one system. Not eight. One.</div>
-                    <div class="impl__step"><strong>Day 3 — Install:</strong> Write the protocol. One page. Brief the
-                        team. Start measuring today. Not Monday. Today.</div>
-                    <div class="impl__note">This connects to the 21-Day Protocol — the same
-                        systematic framework that rebuilt my restaurant. The 72-Hour Discovery finds WHERE. The 21-Day
-                        Protocol fixes HOW.</div>
-                </div>
-
-                <!-- ATTRIBUTION -->
-                <div class="results-attribution">
-                    <img class="results-attribution__photo" src="/images/Kitchen1.jpg" alt="Christian Schiffner">
-                    <div class="results-attribution__text">
-                        <strong>Christian Schiffner</strong> — German Master Chef (Kuechenmeister). 20+ years, 5
-                        countries. Rebuilt from $370K debt using systematic frameworks. 1,274+ days of proof that
-                        systems beat motivation.
-                    </div>
-                </div>
-
-                <!-- EXPORT -->
-                <div class="export">
-                    <button class="btn btn--outline" onclick="exportPDF()">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 2h9l5 5v15H6z" />
-                            <path d="M14 2v5h5" />
-                            <path d="M12 11v6m-3-3l3 3 3-3" />
-                        </svg>
-                        Save as PDF
-                    </button>
-                    <button class="btn btn--outline" onclick="exportEmail()">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="4" width="20" height="16" rx="2" />
-                            <path d="M22 4L12 13 2 4" />
-                        </svg>
-                        Email Results
-                    </button>
-                    <button class="btn btn--ghost" onclick="resetAll()">Reset</button>
-                </div>
-
-                <!-- CAPTURE -->
-                <div class="capture" id="capture-section">
-                    <div class="capture__card">
-                        <div id="cap-form-wrap">
-                            <div class="capture__tag">Based on Your Results</div>
-                            <div class="capture__title">Get Your Custom 72-Hour Action Plan</div>
-                            <div class="capture__desc">
-                                Your personal protocol built around the leaks you just identified. Step-by-step. Built
-                                for when you're running on empty. Delivered to your inbox.
+                    <!-- GATE OVERLAY — email form -->
+                    <div class="gate-overlay" id="gate-overlay">
+                        <div class="gate-card">
+                            <div class="gate-card__tag">Your Full Breakdown Is Ready</div>
+                            <div class="gate-card__title">See Which Leak to Fix First</div>
+                            <div class="gate-card__desc">
+                                Your ranked leak report, #1 priority fix, and 72-hour action plan — delivered to your inbox.
                             </div>
-                            <form class="capture__form" id="cap-form" onsubmit="submitForm(event)">
-                                <div class="capture__row">
-                                    <div class="capture__field">
-                                        <label class="capture__lbl" for="f-name">Name</label>
-                                        <input class="capture__input" type="text" id="f-name" placeholder="Your name"
-                                            required>
+                            <ul class="gate-card__bullets">
+                                <li>Your #1 priority leak and the exact Day 1 fix</li>
+                                <li>All leaks ranked by dollar impact</li>
+                                <li>72-hour implementation plan built for exhausted operators</li>
+                            </ul>
+                            <form class="gate-card__form" id="gate-form" onsubmit="submitGate(event)">
+                                <div class="gate-card__row">
+                                    <div class="gate-card__field">
+                                        <label class="gate-card__lbl" for="g-name">Name</label>
+                                        <input class="gate-card__input" type="text" id="g-name" placeholder="Your name" required>
                                     </div>
-                                    <div class="capture__field">
-                                        <label class="capture__lbl" for="f-email">Email</label>
-                                        <input class="capture__input" type="email" id="f-email"
-                                            placeholder="you@restaurant.com" required>
-                                    </div>
-                                </div>
-                                <div class="capture__row">
-                                    <div class="capture__field">
-                                        <label class="capture__lbl" for="f-revenue">Monthly Revenue <span
-                                                style="color:var(--white-dim);font-weight:400">(optional)</span></label>
-                                        <select class="capture__select" id="f-revenue">
-                                            <option value="" disabled selected>Select range</option>
-                                            <option value="under $30K">Under $30K</option>
-                                            <option value="$30-80K">$30K - $80K</option>
-                                            <option value="$80-150K">$80K - $150K</option>
-                                            <option value="$150K+">$150K+</option>
-                                        </select>
+                                    <div class="gate-card__field">
+                                        <label class="gate-card__lbl" for="g-email">Email</label>
+                                        <input class="gate-card__input" type="email" id="g-email" placeholder="you@restaurant.com" required>
                                     </div>
                                 </div>
-                                <button type="submit" class="capture__submit" id="cap-btn">Send My Protocol</button>
-                                <div class="capture__error" id="cap-err"></div>
-                                <div class="capture__fine">Your protocol lands in your inbox. I'll follow up once a week with one tactic. That's it.
-                                </div>
+                                <button type="submit" class="gate-card__submit" id="gate-btn">Show My Full Report</button>
+                                <div class="gate-card__error" id="gate-err"></div>
+                                <div class="gate-card__fine">One email per week. One tactic. That's it. Unsubscribe anytime.</div>
                             </form>
                         </div>
-                        <div class="capture__ok" id="cap-ok">
+                    </div>
+
+                    <!-- PRIORITY -->
+                    <div class="priority" id="priority" style="display:none;">
+                        <div class="priority__tag">Your #1 Priority &mdash; Fix This First</div>
+                        <div class="priority__name" id="p-name"></div>
+                        <div class="priority__amount" id="p-amount"></div>
+                        <div class="priority__action" id="p-action"></div>
+                    </div>
+
+                    <!-- CHART -->
+                    <div class="chart">
+                        <div class="section-label">All Leaks &mdash; Ranked</div>
+                        <div id="chart-bars"></div>
+                    </div>
+
+                    <!-- IMPLEMENTATION -->
+                    <div class="impl" id="impl-section">
+                        <div class="impl__title">72-Hour Implementation &mdash; Built for 60% Capacity</div>
+                        <div class="impl__step"><strong>Day 1 — Exposure:</strong> <span id="impl-day1">Do the full waste
+                                walk. Get real numbers instead of estimates. This calculator gave you the map — Day 1 gives
+                                you the territory.</span></div>
+                        <div class="impl__step"><strong>Day 2 — Diagnosis:</strong> Run the 5 Whys on your #1 leak. Find the
+                            root cause. Design one system. Not eight. One.</div>
+                        <div class="impl__step"><strong>Day 3 — Install:</strong> Write the protocol. One page. Brief the
+                            team. Start measuring today. Not Monday. Today.</div>
+                        <div class="impl__note">This connects to the 21-Day Protocol — the same
+                            systematic framework that rebuilt my restaurant. The 72-Hour Discovery finds WHERE. The 21-Day
+                            Protocol fixes HOW.</div>
+                    </div>
+
+                    <!-- ATTRIBUTION -->
+                    <div class="results-attribution">
+                        <img class="results-attribution__photo" src="/images/Kitchen1.jpg" alt="Christian Schiffner">
+                        <div class="results-attribution__text">
+                            <strong>Christian Schiffner</strong> — German Master Chef (Kuechenmeister). 20+ years, 5
+                            countries. Rebuilt from $370K debt using systematic frameworks. 1,274+ days of proof that
+                            systems beat motivation.
+                        </div>
+                    </div>
+
+                    <!-- EXPORT -->
+                    <div class="export">
+                        <button class="btn btn--outline" onclick="exportPDF()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 2h9l5 5v15H6z" />
+                                <path d="M14 2v5h5" />
+                                <path d="M12 11v6m-3-3l3 3 3-3" />
+                            </svg>
+                            Save as PDF
+                        </button>
+                        <button class="btn btn--outline" onclick="exportEmail()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="4" width="20" height="16" rx="2" />
+                                <path d="M22 4L12 13 2 4" />
+                            </svg>
+                            Email Results
+                        </button>
+                        <button class="btn btn--ghost" onclick="resetAll()">Reset</button>
+                    </div>
+
+                </div><!-- /gated-content -->
+
+                <!-- POST-UNLOCK UPSELL (shown after gate is opened) -->
+                <div class="capture" id="capture-section" style="display:none;">
+                    <div class="capture__card">
+                        <div class="capture__ok" style="display:block;">
                             <div class="capture__ok-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2.5"
                                     stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="4 12 9 17 20 6" />
                                 </svg>
                             </div>
-                            <div class="capture__ok-title">Your protocol is on its way.</div>
-                            <div class="capture__ok-text" style="margin-bottom: 24px;">Check your inbox in the next few minutes. While you wait &mdash; the 72-Hour Profit Discovery Kit gives you the exact tools to execute what the calculator just found. It finds the money.</div>
-                            <a href="/kit.html" class="btn btn--gold btn--big"
+                            <div class="capture__ok-title">Your report is on its way.</div>
+                            <div class="capture__ok-text" style="margin-bottom: 24px;">Check your inbox. While you wait &mdash; the 72-Hour Kit gives you the exact spreadsheets to execute what the calculator just found.</div>
+                            <a href="/kit.html?utm_source=calculator&utm_medium=post_gate&utm_campaign=kit_upsell" class="btn btn--gold btn--big"
                                 style="text-decoration: none; margin-bottom: 12px;">
                                 Get the 72-Hour Kit &mdash; $197
                             </a>
@@ -2272,7 +2468,85 @@
         }
 
         // ============================================
-        // FORM SUBMIT
+        // GATE SUBMIT (email wall before detailed results)
+        // ============================================
+        async function submitGate(e) {
+            e.preventDefault();
+            const btn = document.getElementById('gate-btn');
+            const err = document.getElementById('gate-err');
+            const name = document.getElementById('g-name').value.trim();
+            const email = document.getElementById('g-email').value.trim();
+
+            err.style.display = 'none';
+            document.querySelectorAll('#gate-form .gate-card__input').forEach(el => el.classList.remove('err'));
+
+            let bad = false;
+            if (!name) { document.getElementById('g-name').classList.add('err'); bad = true; }
+            if (!email || !email.includes('@') || !email.includes('.')) { document.getElementById('g-email').classList.add('err'); bad = true; }
+            if (bad) { err.textContent = 'Name and valid email required.'; err.style.display = 'block'; return; }
+
+            // Unlock immediately — don't make user wait for network
+            unlockResults();
+
+            // Build payload and fire API calls in background
+            var results = buildPayload();
+            var rk = results.allLeaks || [];
+            var score;
+            if (results.leakPercentOfRevenue !== null) {
+                score = Math.max(0, Math.min(100, Math.round(100 - results.leakPercentOfRevenue * 5)));
+            } else {
+                score = Math.max(0, Math.min(100, Math.round(100 - (results.leakCategoriesIdentified / 8) * 100)));
+            }
+
+            var payload = {
+                email: email,
+                first_name: name,
+                revenue_range: null,
+                top_leak_1: rk.length > 0 ? rk[0].category : null,
+                top_leak_2: rk.length > 1 ? rk[1].category : null,
+                estimated_monthly_waste: results.totalMonthlyLeak || 0,
+                overall_score: score
+            };
+
+            // Send to Supabase (fire-and-forget)
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).catch(function(e) { console.warn('Webhook failed:', e); });
+
+            // Tag in Kit (fire-and-forget)
+            fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email, first_name: name, tag_id: '15797829' })
+            }).catch(function(e) { console.warn('Kit tagging failed:', e); });
+
+            // GA4: Track lead capture
+            if (typeof gtag === 'function') {
+                gtag('event', 'generate_lead', {
+                    'event_category': 'lead_capture',
+                    'event_label': 'calculator_gate',
+                    'value': score
+                });
+            }
+        }
+
+        function unlockResults() {
+            var gc = document.getElementById('gated-content');
+            gc.classList.remove('locked');
+            document.getElementById('gate-overlay').style.display = 'none';
+            // Show the upsell card
+            document.getElementById('capture-section').style.display = 'block';
+            // Smooth scroll to the priority section
+            var priority = document.getElementById('priority');
+            if (priority) {
+                priority.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // ============================================
+        // FORM SUBMIT (legacy — kept for iframe/LP compat)
         // ============================================
         async function submitForm(e) {
             e.preventDefault();
@@ -2351,8 +2625,8 @@
                 });
             }
 
-            document.getElementById('cap-form-wrap').style.display = 'none';
-            document.getElementById('cap-ok').style.display = 'block';
+            // Unlock results (handles both standalone and iframe)
+            unlockResults();
             btn.disabled = false;
             btn.textContent = 'Send My Protocol';
         }
@@ -2403,12 +2677,14 @@
             document.getElementById('monthly-revenue').value = '';
             render();
             updResults();
-            const fw = document.getElementById('cap-form-wrap');
-            const ok = document.getElementById('cap-ok');
-            const f = document.getElementById('cap-form');
-            if (fw) fw.style.display = 'block';
-            if (ok) ok.style.display = 'none';
-            if (f) f.reset();
+            // Re-lock the gate
+            var gc = document.getElementById('gated-content');
+            gc.classList.add('locked');
+            document.getElementById('gate-overlay').style.display = '';
+            document.getElementById('capture-section').style.display = 'none';
+            // Reset gate form
+            var gf = document.getElementById('gate-form');
+            if (gf) gf.reset();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -2439,7 +2715,7 @@
             document.getElementById('discovery-success').style.display = 'block';
 
             // Log for debugging
-            console.log('Discovery call request:', payload);
+            console.log('Discovery call request:', { email: email, name: name });
         });
     </script>
     <script>
