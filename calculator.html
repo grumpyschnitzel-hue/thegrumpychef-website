@@ -2125,9 +2125,9 @@
                 range: '$15K \u2013 $40K/yr',
                 action: 'Start a daily waste log. End of every service, 5 minutes. Weigh what gets thrown away. Track for 2 weeks. The number will shock you. That\u2019s your baseline \u2014 now you can fix it.',
                 qs: [
-                    { label: 'We don\u2019t track food waste daily \u2014 nobody weighs or logs what gets thrown away', cost: 13000 },
-                    { label: 'Prep quantities are based on feel, not forecasted covers or par sheets', cost: 11000 },
-                    { label: 'There\u2019s expired or dead inventory sitting in our walk-in right now', cost: 9000 }
+                    { label: 'We don\u2019t track food waste daily \u2014 nobody weighs or logs what gets thrown away', cost: 13000, base_pct: 0.01354, tags: ['tracking-discipline'] },
+                    { label: 'Prep quantities are based on feel, not forecasted covers or par sheets', cost: 11000, base_pct: 0.01146, tags: [] },
+                    { label: 'There\u2019s expired or dead inventory sitting in our walk-in right now', cost: 9000, base_pct: 0.00938, tags: [] }
                 ]
             },
             {
@@ -2137,9 +2137,9 @@
                 range: '$10K \u2013 $30K/yr',
                 action: 'Track your own hours for one week. Tag each hour: could someone earning $15-20/hr do this? Delegate those first. Then stagger shift start times based on actual volume, not habit.',
                 qs: [
-                    { label: 'I regularly do tasks I could pay someone $15-20/hr to handle', cost: 12000 },
-                    { label: 'No staggered start/end times \u2014 staff arrive and leave based on habit, not volume', cost: 8000 },
-                    { label: 'Overtime happens weekly because of scheduling, not because we\u2019re actually busy', cost: 7000 }
+                    { label: 'I regularly do tasks I could pay someone $15-20/hr to handle', cost: 12000, base_pct: 0.01250, tags: ['delegation-gap'] },
+                    { label: 'No staggered start/end times \u2014 staff arrive and leave based on habit, not volume', cost: 8000, base_pct: 0.00833, tags: ['scheduling'] },
+                    { label: 'Overtime happens weekly because of scheduling, not because we\u2019re actually busy', cost: 7000, base_pct: 0.00729, tags: ['scheduling', 'delegation-gap'] }
                 ]
             },
             {
@@ -2149,9 +2149,9 @@
                 range: '$10K \u2013 $60K/yr',
                 action: 'Count how many staff left in the past 12 months. Multiply by $5,864 (Cornell\u2019s research-backed replacement cost per employee). That\u2019s your invisible bleed. Then start with the #1 fix: post your schedule 2 weeks in advance. Research shows predictable scheduling alone cuts turnover by 20%.',
                 qs: [
-                    { label: 'We\u2019ve lost 3+ employees in the past year and don\u2019t track what each replacement costs us', cost: 18000 },
-                    { label: 'No structured onboarding \u2014 new hires learn by watching, not from a written training system', cost: 12000 },
-                    { label: 'Schedules posted less than a week in advance \u2014 staff can\u2019t plan around unpredictable hours', cost: 10000 }
+                    { label: 'We\u2019ve lost 3+ employees in the past year and don\u2019t track what each replacement costs us', cost: 18000, base_pct: 0.01875, tags: [] },
+                    { label: 'No structured onboarding \u2014 new hires learn by watching, not from a written training system', cost: 12000, base_pct: 0.01250, tags: ['delegation-gap'] },
+                    { label: 'Schedules posted less than a week in advance \u2014 staff can\u2019t plan around unpredictable hours', cost: 10000, base_pct: 0.01042, tags: ['scheduling'] }
                 ]
             },
             {
@@ -2161,9 +2161,9 @@
                 range: '$8K \u2013 $25K/yr',
                 action: 'Pull your top 10 sellers. Calculate actual food cost % for each. Find the ones above 35%. That\u2019s where you\u2019re giving money away. Reprice or re-engineer those dishes this week.',
                 qs: [
-                    { label: 'Menu prices are based on competition or gut feeling \u2014 not food cost calculations', cost: 10000 },
-                    { label: 'I don\u2019t know which menu items have the best and worst margins', cost: 8000 },
-                    { label: 'Menu hasn\u2019t been re-engineered for profitability in 6+ months', cost: 7000 }
+                    { label: 'Menu prices are based on competition or gut feeling \u2014 not food cost calculations', cost: 10000, base_pct: 0.01042, tags: ['margin-blindness'] },
+                    { label: 'I don\u2019t know which menu items have the best and worst margins', cost: 8000, base_pct: 0.00833, tags: ['margin-blindness'] },
+                    { label: 'Menu hasn\u2019t been re-engineered for profitability in 6+ months', cost: 7000, base_pct: 0.00729, tags: [] }
                 ]
             },
             {
@@ -2173,21 +2173,22 @@
                 range: '$5K \u2013 $20K/yr',
                 action: 'Pull your top 20 ingredients by spend. Get quotes from two alternate suppliers this week. You\u2019ll find at least 3 items where you\u2019re overpaying 10-20%. Lock in contracts for 90 days.',
                 qs: [
-                    { label: 'Haven\u2019t compared supplier prices or gotten competitive quotes in 6+ months', cost: 7000 },
-                    { label: 'No contracts locking in pricing \u2014 we pay whatever the current rate is', cost: 6000 },
-                    { label: 'We emergency-order at premium prices at least once a week', cost: 5000 }
+                    { label: 'Haven\u2019t compared supplier prices or gotten competitive quotes in 6+ months', cost: 7000, base_pct: 0.00729, tags: ['margin-blindness'] },
+                    { label: 'No contracts locking in pricing \u2014 we pay whatever the current rate is', cost: 6000, base_pct: 0.00625, tags: [] },
+                    { label: 'We emergency-order at premium prices at least once a week', cost: 5000, base_pct: 0.00521, tags: [] }
                 ]
             },
             {
                 id: 'delivery',
                 name: 'Delivery Platform Bleed',
                 desc: 'Giving 25-30% of every delivery order to a platform. With no plan to stop.',
-                range: '$5K \u2013 $15K/yr',
-                action: 'Calculate your actual margin on delivery orders after platform fees. If it\u2019s under 5%, you\u2019re paying to give food away. Price delivery menu separately. Add a card insert pushing direct orders.',
+                range: '$5K \u2013 $26K/yr',
+                action: 'Calculate your actual margin on delivery orders after platform fees. If it\u2019s under 5%, you\u2019re paying to give food away. Price delivery menu separately. Add a card insert pushing direct orders. Then verify your DoorDash / Uber Eats / SkipTheDishes menu prices haven\u2019t drifted from dine-in.',
                 qs: [
-                    { label: 'We use delivery platforms with no strategy to convert customers to direct orders', cost: 6000 },
-                    { label: 'Delivery menu uses the same prices as dine-in \u2014 doesn\u2019t account for 25-30% commission', cost: 5000 },
-                    { label: 'We run platform promotions without calculating whether they\u2019re actually profitable', cost: 4000 }
+                    { label: 'We use delivery platforms with no strategy to convert customers to direct orders', cost: 6000, base_pct: 0.00625, tags: [] },
+                    { label: 'Delivery menu uses the same prices as dine-in \u2014 doesn\u2019t account for 25-30% commission', cost: 5000, base_pct: 0.00521, tags: [] },
+                    { label: 'We run platform promotions without calculating whether they\u2019re actually profitable', cost: 4000, base_pct: 0.00417, tags: [] },
+                    { label: 'We haven\u2019t verified our menu prices on DoorDash / Uber Eats / SkipTheDishes in the last 90 days', cost: 11000, base_pct: 0.01146, tags: ['aggregator-drift'] }
                 ]
             },
             {
@@ -2197,9 +2198,9 @@
                 range: '$3K \u2013 $12K/yr',
                 action: 'Full bottle inventory today. Compare what you have vs. what you should have based on sales. The gap is your shrinkage. Then enforce jiggers, track comps, and count weekly.',
                 qs: [
-                    { label: 'Pour costs haven\u2019t been calculated or reviewed in the last 30 days', cost: 4000 },
-                    { label: 'Free drinks, buybacks, and staff drinks happen but aren\u2019t tracked or limited', cost: 4000 },
-                    { label: 'No standardized pour sizes \u2014 bartenders pour by feel, no jiggers enforced', cost: 3000 }
+                    { label: 'Pour costs haven\u2019t been calculated or reviewed in the last 30 days', cost: 4000, base_pct: 0.00417, tags: ['margin-blindness', 'tracking-discipline'] },
+                    { label: 'Free drinks, buybacks, and staff drinks happen but aren\u2019t tracked or limited', cost: 4000, base_pct: 0.00417, tags: [] },
+                    { label: 'No standardized pour sizes \u2014 bartenders pour by feel, no jiggers enforced', cost: 3000, base_pct: 0.00313, tags: [] }
                 ]
             },
             {
@@ -2209,9 +2210,9 @@
                 range: '$2K \u2013 $8K/yr',
                 action: 'Pull every recurring charge from your bank statement. Cancel what nobody uses. Check if equipment runs during closed hours. Call your insurance broker \u2014 when did you last review?',
                 qs: [
-                    { label: 'We\u2019re paying for software or subscriptions that nobody actively uses', cost: 3000 },
-                    { label: 'Equipment runs during closed hours or low-traffic periods with no auto-shutoff', cost: 2500 },
-                    { label: 'Haven\u2019t reviewed insurance, utility, or service contracts in 12+ months', cost: 2500 }
+                    { label: 'We\u2019re paying for software or subscriptions that nobody actively uses', cost: 3000, base_pct: 0.00313, tags: [] },
+                    { label: 'Equipment runs during closed hours or low-traffic periods with no auto-shutoff', cost: 2500, base_pct: 0.00260, tags: [] },
+                    { label: 'Haven\u2019t reviewed insurance, utility, or service contracts in 12+ months', cost: 2500, base_pct: 0.00260, tags: [] }
                 ]
             },
             {
@@ -2221,9 +2222,9 @@
                 range: '$2K \u2013 $10K/yr',
                 action: 'Starting today: every comp gets written down. Who approved it, why, dollar amount. Review every Sunday. Set a weekly comp budget. Anything over needs your sign-off.',
                 qs: [
-                    { label: 'Comps and discounts are given without a written policy or tracking system', cost: 4000 },
-                    { label: 'Staff can give away food or drinks without requiring manager approval', cost: 3500 },
-                    { label: 'Weekly comp totals are never reviewed \u2014 no idea what we give away for free', cost: 3000 }
+                    { label: 'Comps and discounts are given without a written policy or tracking system', cost: 4000, base_pct: 0.00417, tags: [] },
+                    { label: 'Staff can give away food or drinks without requiring manager approval', cost: 3500, base_pct: 0.00365, tags: [] },
+                    { label: 'Weekly comp totals are never reviewed \u2014 no idea what we give away for free', cost: 3000, base_pct: 0.00313, tags: ['tracking-discipline'] }
                 ]
             }
         ];
