@@ -1893,9 +1893,10 @@
             <div class="revenue-input">
                 <div class="revenue-input__wrap">
                     <div class="revenue-input__label">Your monthly revenue <span
-                            style="color:var(--gray-dark)">(optional — makes results more specific)</span></div>
+                            style="color:var(--primary-gold)">(required — every number scales from this)</span></div>
                     <input type="text" class="revenue-input__field" id="monthly-revenue" placeholder="e.g. $80,000"
-                        oninput="handleRevenue()">
+                        oninput="handleRevenue()" required>
+                    <div class="revenue-input__help" id="rev-help" style="display:none; color:var(--primary-gold); font-size:0.85rem; margin-top:8px;">Enter your monthly revenue to see your numbers.</div>
                 </div>
             </div>
 
@@ -2324,6 +2325,15 @@
         // UPDATE RESULTS
         // ============================================
         function updResults() {
+            // Gate: require revenue before showing anything
+            if (monthlyRev <= 0) {
+                document.getElementById('results-empty').style.display = 'block';
+                document.getElementById('results-empty').textContent = 'Enter your monthly revenue above to see your numbers.';
+                document.getElementById('results-data').style.display = 'none';
+                document.getElementById('s-amount').textContent = '$0';
+                document.getElementById('s-meta').textContent = 'revenue required';
+                return;
+            }
             const total = grandTotal(), lc = leakCount(), rk = ranked();
 
             // Sticky
