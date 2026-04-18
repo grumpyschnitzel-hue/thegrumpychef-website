@@ -868,6 +868,33 @@
         }
 
         /* ============================================
+           PATTERN DETECTION
+           ============================================ */
+        .patterns {
+            margin: 20px 0 32px;
+            padding: 20px 24px;
+            border: 1px dashed rgba(212, 175, 55, 0.4);
+            border-radius: 8px;
+            background: rgba(10, 22, 40, 0.25);
+        }
+        .patterns__label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--primary-gold);
+            margin-bottom: 12px;
+        }
+        .pattern-item {
+            font-size: 0.98rem;
+            line-height: 1.6;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .pattern-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ============================================
            BAR CHART
            ============================================ */
         .chart {
@@ -2050,6 +2077,12 @@
                     <div class="darkmoney__body">The one leak 95% of restaurants don't track. Your menu prices on DoorDash / Uber Eats / SkipTheDishes have drifted from dine-in prices. You don't see it. The platform profits on it. The fix takes 30 minutes.</div>
                 </div>
 
+                <!-- PATTERN DETECTION — cross-category insights, max 2 shown -->
+                <div class="patterns" id="patterns" style="display:none;">
+                    <div class="patterns__label">Pattern Detected</div>
+                    <div id="patterns-list"></div>
+                </div>
+
                 <!-- GATED CONTENT — unlocked after email capture (playbook, deep report) -->
                 <div class="gated-content locked" id="gated-content">
 
@@ -2425,6 +2458,41 @@
             return box.cost || 0;
         }
 
+        const PATTERNS = {
+            'scheduling': {
+                threshold: 3,
+                copy: 'You checked three boxes tied to scheduling \u2014 across Labor, Turnover, and Operational categories. Your core problem isn\'t food. It\'s labor orchestration. That\'s where to start.'
+            },
+            'tracking-discipline': {
+                threshold: 3,
+                copy: 'You\'re not losing money to bad operators. You\'re losing it to unmeasured operations. Pick one log this week \u2014 food waste, pour cost, or comps \u2014 and install it.'
+            },
+            'margin-blindness': {
+                threshold: 3,
+                copy: 'You\'re selling but not pricing. The margin work beats the marketing work \u2014 every time. Your top 10 sellers, actual food cost on each, this week.'
+            },
+            'delegation-gap': {
+                threshold: 3,
+                copy: 'You\'re the bottleneck. Every hour you spend doing $15/hr work costs you $40/hr in unbuilt systems. Track your own hours for a week before anything else.'
+            }
+        };
+
+        function detectPatterns() {
+            const tagCounts = {};
+            cats.forEach(c => {
+                c.qs.forEach((q, qi) => {
+                    if (st[c.id] && st[c.id][qi] && q.tags) {
+                        q.tags.forEach(tag => {
+                            tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+                        });
+                    }
+                });
+            });
+            return Object.entries(PATTERNS)
+                .filter(([tag, def]) => (tagCounts[tag] || 0) >= def.threshold)
+                .slice(0, 2);
+        }
+
         function renderBand(total) {
             const annualRev = monthlyRev * 12;
             if (annualRev <= 0) {
@@ -2520,6 +2588,15 @@
                 document.getElementById('dm-amount').textContent = fmt(calcBoxCost(dmBox)) + '/year';
             } else {
                 document.getElementById('darkmoney').style.display = 'none';
+            }
+
+            const detected = detectPatterns();
+            if (detected.length > 0) {
+                document.getElementById('patterns').style.display = 'block';
+                document.getElementById('patterns-list').innerHTML =
+                    detected.map(([tag, def]) => '<div class="pattern-item">' + def.copy + '</div>').join('');
+            } else {
+                document.getElementById('patterns').style.display = 'none';
             }
 
             // Revenue %
