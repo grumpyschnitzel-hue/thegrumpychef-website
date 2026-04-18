@@ -832,6 +832,42 @@
         }
 
         /* ============================================
+           DARK MONEY
+           ============================================ */
+        .darkmoney {
+            margin: 20px 0 32px;
+            padding: 24px;
+            border: 2px solid var(--primary-gold);
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(10, 22, 40, 0.4));
+        }
+        .darkmoney__tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--primary-gold);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .darkmoney__name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .darkmoney__amount {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-gold);
+            margin-bottom: 12px;
+        }
+        .darkmoney__body {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--white-dim);
+        }
+
+        /* ============================================
            BAR CHART
            ============================================ */
         .chart {
@@ -2006,6 +2042,14 @@
                     <div class="band__source">Conservative operator-diagnostic thresholds. Calibrated against Restaurants Canada net-margin data (3&ndash;5%) and Chris's cross-operator diagnostic sample.</div>
                 </div>
 
+                <!-- DARK MONEY — Aggregator Drift signature insight -->
+                <div class="darkmoney" id="darkmoney" style="display:none;">
+                    <div class="darkmoney__tag">The Dark Money Line</div>
+                    <div class="darkmoney__name">Aggregator Menu Drift</div>
+                    <div class="darkmoney__amount" id="dm-amount">$0</div>
+                    <div class="darkmoney__body">The one leak 95% of restaurants don't track. Your menu prices on DoorDash / Uber Eats / SkipTheDishes have drifted from dine-in prices. You don't see it. The platform profits on it. The fix takes 30 minutes.</div>
+                </div>
+
                 <!-- GATED CONTENT — unlocked after email capture (playbook, deep report) -->
                 <div class="gated-content locked" id="gated-content">
 
@@ -2465,6 +2509,18 @@
             document.getElementById('r-weekly').textContent = fmt(Math.round(total / 52));
 
             renderBand(total);
+
+            // Dark Money — fires only if aggregator-drift checkbox is checked
+            const deliveryCat = cats.find(c => c.id === 'delivery');
+            const dmIndex = deliveryCat.qs.findIndex(q => q.tags && q.tags.includes('aggregator-drift'));
+            const dmBox = dmIndex >= 0 ? deliveryCat.qs[dmIndex] : null;
+            const dmChecked = dmBox && st['delivery'] && st['delivery'][dmIndex] === true;
+            if (dmChecked && dmBox) {
+                document.getElementById('darkmoney').style.display = 'block';
+                document.getElementById('dm-amount').textContent = fmt(calcBoxCost(dmBox)) + '/year';
+            } else {
+                document.getElementById('darkmoney').style.display = 'none';
+            }
 
             // Revenue %
             const pctEl = document.getElementById('r-pct');
