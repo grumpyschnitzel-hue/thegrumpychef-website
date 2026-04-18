@@ -895,6 +895,32 @@
         }
 
         /* ============================================
+           RECOVERY FRAME
+           ============================================ */
+        .recovery {
+            margin: 24px 0 32px;
+            padding: 22px 24px;
+            border-left: 3px solid var(--primary-gold);
+            background: rgba(10, 22, 40, 0.3);
+            border-radius: 0 6px 6px 0;
+        }
+        .recovery__label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+        .recovery__body {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--white);
+        }
+        .recovery__body strong {
+            color: var(--primary-gold);
+        }
+
+        /* ============================================
            BAR CHART
            ============================================ */
         .chart {
@@ -2083,6 +2109,12 @@
                     <div id="patterns-list"></div>
                 </div>
 
+                <!-- RECOVERY FRAME — loss to recovery narrative -->
+                <div class="recovery" id="recovery" style="display:none;">
+                    <div class="recovery__label">The Recovery Frame</div>
+                    <div class="recovery__body" id="recovery-body"></div>
+                </div>
+
                 <!-- GATED CONTENT — unlocked after email capture (playbook, deep report) -->
                 <div class="gated-content locked" id="gated-content">
 
@@ -2597,6 +2629,19 @@
                     detected.map(([tag, def]) => '<div class="pattern-item">' + def.copy + '</div>').join('');
             } else {
                 document.getElementById('patterns').style.display = 'none';
+            }
+
+            // Recovery frame
+            if (total > 0 && monthlyRev > 0) {
+                const annualRev = monthlyRev * 12;
+                const recoveredHalf = Math.round(total / 2);
+                const currentMarginPct = 4;
+                const newMarginPct = ((annualRev * (currentMarginPct / 100) + recoveredHalf) / annualRev * 100).toFixed(1);
+                document.getElementById('recovery').style.display = 'block';
+                document.getElementById('recovery-body').innerHTML =
+                    'If you close 50% of these leaks over the next 90 days, you recover <strong>' + fmt(recoveredHalf) + '/year</strong>. Your net margin goes from <strong>~' + currentMarginPct + '%</strong> to <strong>~' + newMarginPct + '%</strong> \u2014 ' + fmt(recoveredHalf) + ' in your pocket, every year, compounding. That\'s the difference between scraping and breathing.';
+            } else {
+                document.getElementById('recovery').style.display = 'none';
             }
 
             // Revenue %
