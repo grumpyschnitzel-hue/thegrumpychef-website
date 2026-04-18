@@ -2261,7 +2261,7 @@
                         '<label class="chk' + (st[c.id][qi] ? ' on' : '') + '" id="i-' + c.id + '-' + qi + '">' +
                         '<input type="checkbox"' + (st[c.id][qi] ? ' checked' : '') + ' data-c="' + c.id + '" data-q="' + qi + '" onchange="chk(this)">' +
                         '<div class="chk__box"><svg viewBox="0 0 14 14" fill="none" stroke="#0A1628" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 7 5.5 10.5 11.5 3.5"/></svg></div>' +
-                        '<div><div class="chk__label">' + q.label + '</div><div class="chk__cost">est. ' + fmt(q.cost) + '/year</div></div>' +
+                        '<div><div class="chk__label">' + q.label + '</div><div class="chk__cost">est. ' + fmt(calcBoxCost(q)) + '/year</div></div>' +
                         '</label>'
                     ).join('') + '</div>';
                 el.appendChild(d);
@@ -2283,6 +2283,7 @@
         function handleRevenue() {
             const v = document.getElementById('monthly-revenue').value.replace(/[^0-9.]/g, '');
             monthlyRev = parseFloat(v) || 0;
+            render();  // re-render so per-box cost labels scale with new revenue
             updResults();
         }
 
@@ -2298,10 +2299,19 @@
         // ============================================
         // CALCULATIONS
         // ============================================
+        function calcBoxCost(box) {
+            // Primary: scale by revenue using base_pct. Fallback: flat cost (safe during rollout).
+            const annualRev = monthlyRev * 12;
+            if (annualRev > 0 && typeof box.base_pct === 'number') {
+                return Math.round(box.base_pct * annualRev);
+            }
+            return box.cost || 0;
+        }
+
         function catTotal(cid) {
             const c = cats.find(x => x.id === cid);
             let t = 0;
-            st[cid].forEach((v, i) => { if (v) t += c.qs[i].cost; });
+            st[cid].forEach((v, i) => { if (v) t += calcBoxCost(c.qs[i]); });
             return t;
         }
 
