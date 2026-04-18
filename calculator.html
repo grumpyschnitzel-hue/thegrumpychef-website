@@ -785,6 +785,53 @@
         }
 
         /* ============================================
+           COMPARISON BAND
+           ============================================ */
+        .band {
+            margin: 24px 0 32px;
+            padding: 20px 24px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 8px;
+            background: rgba(10, 22, 40, 0.35);
+        }
+        .band__label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--primary-gold);
+            margin-bottom: 12px;
+        }
+        .band__row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            font-size: 1rem;
+            opacity: 0.6;
+            transition: opacity 0.2s, background 0.2s;
+        }
+        .band__row.active {
+            opacity: 1;
+            background: rgba(212, 175, 55, 0.15);
+            border-left: 3px solid var(--primary-gold);
+            padding-left: 11px;
+            font-weight: 600;
+        }
+        .band__row.active::after {
+            content: "  \25C4 YOU";
+            color: var(--primary-gold);
+            font-weight: 700;
+            margin-left: 8px;
+        }
+        .band__source {
+            margin-top: 12px;
+            font-size: 0.78rem;
+            color: var(--white-dim);
+            line-height: 1.5;
+        }
+
+        /* ============================================
            BAR CHART
            ============================================ */
         .chart {
@@ -1941,6 +1988,24 @@
                     <div class="priority__action" id="p-action"></div>
                 </div>
 
+                <!-- COMPARISON BAND — ungated, scaled to revenue -->
+                <div class="band" id="comparison-band" style="display:none;">
+                    <div class="band__label">Where You Land</div>
+                    <div class="band__row band__row--healthy" id="band-healthy">
+                        <span class="band__name">Healthy</span>
+                        <span class="band__range">&lt; <span id="band-healthy-max">$0</span></span>
+                    </div>
+                    <div class="band__row band__row--typical" id="band-typical">
+                        <span class="band__name">Typical</span>
+                        <span class="band__range"><span id="band-typical-min">$0</span> &ndash; <span id="band-typical-max">$0</span></span>
+                    </div>
+                    <div class="band__row band__row--critical" id="band-critical">
+                        <span class="band__name">Critical</span>
+                        <span class="band__range">&gt; <span id="band-critical-min">$0</span></span>
+                    </div>
+                    <div class="band__source">Conservative operator-diagnostic thresholds. Calibrated against Restaurants Canada net-margin data (3&ndash;5%) and Chris's cross-operator diagnostic sample.</div>
+                </div>
+
                 <!-- GATED CONTENT — unlocked after email capture (playbook, deep report) -->
                 <div class="gated-content locked" id="gated-content">
 
@@ -2316,6 +2381,32 @@
             return box.cost || 0;
         }
 
+        function renderBand(total) {
+            const annualRev = monthlyRev * 12;
+            if (annualRev <= 0) {
+                document.getElementById('comparison-band').style.display = 'none';
+                return;
+            }
+            document.getElementById('comparison-band').style.display = 'block';
+
+            const healthyMax = Math.round(annualRev * 0.025);
+            const criticalMin = Math.round(annualRev * 0.06);
+
+            document.getElementById('band-healthy-max').textContent = fmt(healthyMax);
+            document.getElementById('band-typical-min').textContent = fmt(healthyMax);
+            document.getElementById('band-typical-max').textContent = fmt(criticalMin);
+            document.getElementById('band-critical-min').textContent = fmt(criticalMin);
+
+            ['healthy', 'typical', 'critical'].forEach(b => {
+                document.getElementById('band-' + b).classList.remove('active');
+            });
+            const pct = total / annualRev;
+            let active = 'healthy';
+            if (pct >= 0.06) active = 'critical';
+            else if (pct >= 0.025) active = 'typical';
+            document.getElementById('band-' + active).classList.add('active');
+        }
+
         function catTotal(cid) {
             const c = cats.find(x => x.id === cid);
             let t = 0;
@@ -2372,6 +2463,8 @@
             anim(document.getElementById('r-total'), total);
             document.getElementById('r-monthly').textContent = fmt(Math.round(total / 12));
             document.getElementById('r-weekly').textContent = fmt(Math.round(total / 52));
+
+            renderBand(total);
 
             // Revenue %
             const pctEl = document.getElementById('r-pct');
