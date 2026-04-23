@@ -359,6 +359,7 @@
 <script>(function(){function bump(){if(window.innerWidth>767)return;var w=document.createTreeWalker(document.body,NodeFilter.SHOW_ELEMENT),e;while((e=w.nextNode())){var fs=parseFloat(getComputedStyle(e).fontSize);if(fs&&fs<12)e.style.setProperty("font-size","13px","important");}}if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){bump();new MutationObserver(bump).observe(document.body,{childList:true,subtree:true});});}else{bump();new MutationObserver(bump).observe(document.body,{childList:true,subtree:true});}})();</script>
 </head>
 <body>
+<main>
 
 <div class="gold-top"></div>
 
@@ -513,5 +514,6 @@
     <div class="footer__title">German Master Chef (Kuchenmeister) &bull; 20+ Years Operations &bull; 5 Countries</div>
 </div>
 
+</main>
 </body>
 </html>
