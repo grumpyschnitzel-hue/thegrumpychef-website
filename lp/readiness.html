@@ -647,8 +647,13 @@
     <!-- ANALYTICS -->
     <script src="/js/analytics.js"></script>
     <script>
+        // Use analytics.js public helper (window.gcTrack) — no inline gtag().
+        function gcSafe(name, params) {
+            if (typeof window.gcTrack === 'function') window.gcTrack(name, params || {});
+        }
+
         // Track landing page view
-        gtag('event', 'readiness_landing_view', {
+        gcSafe('readiness_landing_view', {
             event_category: 'landing_page',
             event_label: 'readiness_scorecard'
         });
@@ -656,7 +661,7 @@
         // Track CTA clicks
         document.querySelectorAll('a[href="/readiness-scorecard.html"]').forEach(function(btn) {
             btn.addEventListener('click', function() {
-                gtag('event', 'readiness_landing_start', {
+                gcSafe('readiness_landing_start', {
                     event_category: 'landing_page',
                     event_label: 'cta_click',
                     event_value: btn.closest('section, div').className || 'unknown'

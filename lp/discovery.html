@@ -1220,13 +1220,8 @@
             var email = invitee.email || '';
             var name = invitee.name || '';
 
-            // GA4 event
-            if (typeof gtag === 'function') {
-                gtag('event', 'calendly_booked', {
-                    event_type: 'discovery-call',
-                    page: '/lp/discovery'
-                });
-            }
+            // GA4 event — handled centrally by analytics.js setupCalendlyBooked()
+            // (kept here only as a Kit-tagging trigger; analytics.js fires calendly_booked).
 
             // Tag subscriber in Kit via Supabase edge function
             if (email) {
