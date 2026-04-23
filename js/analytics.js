@@ -366,7 +366,37 @@
     });
   }
 
-  // 5. calendly_booked — fires when Calendly confirms a booking
+  // 5. toolkit_checkout_started — fires on toolkit funnel clicks
+  //    funnel_stage="intent"   when user clicks any /kit.html link from a marketing page
+  //    funnel_stage="checkout" when user clicks a Stripe checkout link (final step)
+  //    Single delegated handler replaces 13 per-page inline snippets.
+  function setupToolkitCheckoutStarted() {
+    document.addEventListener('click', function (e) {
+      if (!e.target || !e.target.closest) return;
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+
+      var stage = null;
+      // Stripe checkout link (highest specificity — check first)
+      if (href.indexOf('buy.stripe.com') !== -1) {
+        stage = 'checkout';
+      } else if (href.indexOf('/kit.html') === 0 ||
+                 href.indexOf('https://thegrumpychef.ca/kit.html') === 0) {
+        stage = 'intent';
+      }
+      if (!stage) return;
+
+      fireEvent('toolkit_checkout_started', {
+        funnel_stage: stage,
+        label: link.textContent.trim().substring(0, 60),
+        href: href,
+        source_page: window.location.pathname
+      });
+    });
+  }
+
+  // 6. calendly_booked — fires when Calendly confirms a booking
   function setupCalendlyBooked() {
     window.addEventListener('message', function (e) {
       if (e.origin && e.origin.indexOf('calendly.com') !== -1 &&
@@ -389,6 +419,7 @@
     setupNewsletterSignup();
     setupKitPageView();
     setupDiscoveryCallClick();
+    setupToolkitCheckoutStarted();
     setupCalendlyBooked();
   }
 

@@ -2,24 +2,7 @@
 <html lang="en">
 
 <head>
-    <script src="/js/analytics.js"></script>
-    <script>
-      // GA4 event hook: toolkit_checkout_started fires on click of Stripe purchase links.
-      // Delegated handler so it works for every Stripe link on this page.
-      document.addEventListener('click', function (e) {
-        var a = e.target && e.target.closest && e.target.closest('a[href*="buy.stripe.com"]');
-        if (!a) return;
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'toolkit_checkout_started', {
-            label: (a.textContent || '').trim().substring(0, 60),
-            href: a.getAttribute('href'),
-            page: window.location.pathname
-          });
-        }
-      });
-    </script>
-
-  <meta charset="UTF-8">
+    <script src="/js/analytics.js"></script><meta charset="UTF-8">
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
