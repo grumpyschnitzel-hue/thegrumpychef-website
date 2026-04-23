@@ -1069,9 +1069,7 @@
     <script src="/js/analytics.js"></script>
 </head>
 
-<body>
-<main id="audit-main" role="main">
-    <!-- NAV -->
+<body>    <!-- NAV -->
     <nav class="nav">
         <div class="nav-inner">
             <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
@@ -1087,6 +1085,9 @@
             </div>
         </div>
     </nav>
+
+<main>
+
 
     <!-- HERO -->
     <section class="hero">
@@ -1543,7 +1544,9 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer">
+    </main>
+
+<footer class="footer">
         <div class="footer-inner">
             <div class="footer-top">
                 <div class="footer-brand" style="display: flex; gap: 16px; align-items: flex-start;">
@@ -1583,7 +1586,7 @@
     </footer>
 <script>document.addEventListener("click",function(e){var a=e.target.closest('a[href^="/kit.html"], a[href^="https://thegrumpychef.ca/kit.html"]');if(a&&typeof window.gtag==="function"){window.gtag("event","toolkit_checkout_started",{href:a.getAttribute("href"),page:location.pathname});}});</script>
 <style id="audit-rule-d-mobile">@media(max-width:480px){.nav-cta{min-height:44px !important;display:inline-flex !important;align-items:center !important;justify-content:center !important;padding:10px 20px !important}a[href="/kit.html"].nav-cta,a[href="https://thegrumpychef.ca/newsletter.html"]{min-height:44px}}</style><script id="audit-rule-d-fontfloor">(function(){if(window.innerWidth>480)return;function bump(){var w=document.createTreeWalker(document.body,NodeFilter.SHOW_ELEMENT);var n;while(n=w.nextNode()){if(["SCRIPT","STYLE","NOSCRIPT","TEMPLATE"].indexOf(n.tagName)>=0)continue;var fs=parseFloat(getComputedStyle(n).fontSize);if(fs&&fs<12)n.style.fontSize="12px";}}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",bump);else bump();})();</script>
-</main>
+
 </body>
 
 </html>
