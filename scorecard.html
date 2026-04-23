@@ -1324,12 +1324,26 @@
                     payload.results.categoryScores[key] = { score: r.catScores[key].score, max: r.catScores[key].max };
                 }
 
-                // Kit tag: scorecard-lead
+                // Kit tag: scorecard-lead (base tag for all scorecard completers)
                 fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email: email, first_name: name, tag_id: '16379184' })
                 }).catch(function (err) { console.warn('Kit tagging failed:', err); });
+
+                // Score-based auto-tagging: zone tag + blind-spot tag + nurture sequence
+                fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/scorecard-auto-tag', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: email,
+                        first_name: name,
+                        totalScore: r.total,
+                        scoreZone: r.zone.label,
+                        weakestCategory: CATEGORIES[r.weakestKey].name,
+                        categoryScores: payload.results.categoryScores
+                    })
+                }).catch(function (err) { console.warn('Score auto-tag failed:', err); });
 
                 // Webhook
                 fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/capture-form', {
