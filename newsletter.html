@@ -117,6 +117,7 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center top;
+  image-orientation: from-image;
   filter: grayscale(20%) contrast(1.05);
   display: block;
 }
@@ -448,6 +449,7 @@ body {
   height: 52px;
   border-radius: 50%;
   object-fit: cover;
+  image-orientation: from-image;
   border: 2px solid var(--gold-border);
   filter: grayscale(15%);
 }
@@ -493,6 +495,7 @@ body {
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;
+  image-orientation: from-image;
   border: 3px solid var(--gold-border);
   filter: grayscale(15%);
   margin-bottom: 24px;
@@ -629,8 +632,7 @@ body {
 </head>
 <body>
 <nav class="nav">
-  <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
-  <a href="/" class="nav-back">← Back</a>
+  <span class="nav-logo">The Grumpy <span>Chef</span></span>
 </nav>
 
 <main>
@@ -670,20 +672,20 @@ body {
 <div class="proof" aria-label="Track record">
   <div class="proof-inner">
     <div class="proof-item">
-      <div class="proof-number">20+</div>
-      <div class="proof-label">Years in<br>Professional Kitchens</div>
+      <div class="proof-number" style="font-size: 1.5rem;">Küchen&shy;meister</div>
+      <div class="proof-label">IHK München 2014<br>German Master Chef</div>
     </div>
     <div class="proof-item">
-      <div class="proof-number">5</div>
-      <div class="proof-label">Countries<br>Operated In</div>
+      <div class="proof-number" style="font-size: 1.5rem;">AdA-Schein</div>
+      <div class="proof-label">IHK-licensed<br>to train apprentices</div>
     </div>
     <div class="proof-item">
       <div class="proof-number">$370K</div>
-      <div class="proof-label">Debt Rebuilt<br>From Zero</div>
+      <div class="proof-label">Debt rebuilt<br>Dawson City, pop. 1,400</div>
     </div>
     <div class="proof-item">
-      <div class="proof-number">1,200+</div>
-      <div class="proof-label">Days of<br>Proof</div>
+      <div class="proof-number" style="font-size: 1.5rem;">GaultMillau</div>
+      <div class="proof-label">el paradiso, St. Moritz<br>Design Hotels — The Cambrian</div>
     </div>
   </div>
 </div>
@@ -797,8 +799,7 @@ body {
 </main>
 
 <footer class="footer">
-  <p>© 2026 The Grumpy Chef · <a href="/about.html">My Story</a> · <a href="/calculator.html">Free Tools</a> · <a href="/lp/discovery.html">Book a Call</a></p>
-  <p style="margin-top:8px;">Dawson City, Yukon, Canada · 64°N · Systems Over Hustle</p>
+  <p>© 2026 The Grumpy Chef · Dawson City, Yukon, Canada · 64°N · Systems Over Hustle</p>
 </footer>
 
 </body>

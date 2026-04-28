@@ -1216,10 +1216,11 @@
        =========================================== */
     var GC_TOOLS = {
         calculator: { name: '72-Hour Profit Discovery Calculator', url: '/calculator.html' },
+        scorecard: { name: 'Profit Leak Scorecard', url: '/scorecard.html' },
         assessment: { name: 'Menu Profit Score Assessment', url: '/assessment.html' },
         lifeos: { name: 'Operator Life OS Scorecard', url: 'operator-life-os-scorecard.html' }
     };
-    var GC_TOOL_ORDER = ['calculator', 'assessment', 'lifeos'];
+    var GC_TOOL_ORDER = ['scorecard', 'calculator', 'assessment', 'lifeos'];
 
     function gcGetProgression() {
         try {
@@ -1312,11 +1313,14 @@
 
         if (next) {
             html += '<div class="next-step-panel">';
-            if (!gcHasCompleted('calculator')) {
+            if (!gcHasCompleted('scorecard')) {
                 html += '<div class="next-step-panel__text"><strong>Your life score is in.</strong> Now find where your restaurant bleeds money.</div>';
+                html += '<a href="/scorecard.html" class="btn btn--gold btn--sm">Run the Profit Leak Scorecard</a>';
+            } else if (!gcHasCompleted('calculator')) {
+                html += '<div class="next-step-panel__text"><strong>Almost there.</strong> Size the leak in dollars.</div>';
                 html += '<a href="/calculator.html" class="btn btn--gold btn--sm">Run the Profit Calculator</a>';
             } else if (!gcHasCompleted('assessment')) {
-                html += '<div class="next-step-panel__text"><strong>Almost there.</strong> Score your menu to complete the full diagnostic.</div>';
+                html += '<div class="next-step-panel__text"><strong>One more.</strong> Score your menu to complete the full diagnostic.</div>';
                 html += '<a href="/assessment.html" class="btn btn--gold btn--sm">Score Your Menu</a>';
             }
             html += '</div>';
