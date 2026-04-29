@@ -1444,9 +1444,13 @@
                 var next = gcGetNextTool(currentToolId);
                 var html = '<div class="email-success__title">Sent</div>';
                 html += '<p class="email-success__text">Check your inbox. Your scorecard report is on its way.</p>';
+                html += '<div class="next-tool" style="border-left: 3px solid var(--gold); padding: 16px; margin: 16px 0;">' +
+                    '<div class="next-tool__text"><strong>Done with the scorecard? Read this.</strong> The Operator OS is the system you install in yourself before you install systems in your kitchen. Founding cohort &mdash; 25 seats.</div>' +
+                    '<a href="/operator-os.html?utm_source=site&utm_medium=scorecard&utm_campaign=result_to_waitlist" class="btn-gold">Join the Waitlist &rarr;</a>' +
+                    '</div>';
                 if (next && GC_TOOLS[next]) {
                     html += '<div class="next-tool">' +
-                        '<div class="next-tool__text"><strong>Scorecard done.</strong> Now go deeper with the ' + GC_TOOLS[next].name + '.</div>' +
+                        '<div class="next-tool__text"><strong>Or go deeper.</strong> Run the ' + GC_TOOLS[next].name + ' for more diagnostic.</div>' +
                         '<a href="' + GC_TOOLS[next].url + '" class="btn-outline">Run the ' + GC_TOOLS[next].name + ' &rarr;</a>' +
                         '</div>';
                 }

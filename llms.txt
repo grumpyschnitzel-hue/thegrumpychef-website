@@ -14,6 +14,7 @@
 - [Menu Profit Score Assessment](https://thegrumpychef.ca/assessment.html): 10-question menu engineering quiz with instant scoring and actionable recommendations
 - [72-Hour Profit Discovery Kit](https://thegrumpychef.ca/kit.html): Structured diagnostic kit with exposure sheets, diagnosis workbooks, and protocol builders
 - [Restaurant Profit Leak Scorecard](https://thegrumpychef.ca/scorecard.html): 12-question self-assessment that reveals where profit is leaking across food cost, labor, waste, and operations
+- [The Operator OS — Founding Cohort Waitlist](https://thegrumpychef.ca/operator-os.html): A 21-day install for independent restaurant operators bleeding profit. Built for the exhausted, not the motivated. Founding cohort capped at 25 seats.
 
 ## Digital Products
 - [The Grumpy Chef Toolkit](https://thegrumpychef.ca/toolkit): 8 Excel spreadsheet templates for restaurant profit recovery — recipe costing, weekly prime cost tracking, menu engineering matrix, par level ordering, waste tracking, delivery profitability, menu psychology audit, and vendor price comparison. $47 one-time purchase. Built by a Master Chef with 20+ years of operations experience. Each template includes pre-built formulas, instruction tabs, and sample data.
