@@ -2279,7 +2279,8 @@
                 top_leak_1: rk.length > 0 ? rk[0].category : null,
                 top_leak_2: rk.length > 1 ? rk[1].category : null,
                 estimated_monthly_waste: results.totalMonthlyLeak || 0,
-                overall_score: score
+                overall_score: score,
+                source: 'leak-landing'
             };
 
             // Send to Supabase (fire-and-forget)
