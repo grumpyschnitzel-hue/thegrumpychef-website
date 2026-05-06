@@ -922,19 +922,12 @@
         }
 
         .gated-content.locked > *:not(.gate-overlay) {
-            filter: blur(6px);
-            pointer-events: none;
-            user-select: none;
+            display: none !important;
         }
 
         .gate-overlay {
             display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 10;
-            padding: 48px 0 32px;
+            padding: 32px 0 8px;
         }
 
         .gated-content.locked .gate-overlay {
@@ -2037,7 +2030,7 @@
                 d.innerHTML =
                     '<div class="cat-card__num">LEAK ' + (ci + 1) + ' OF 9 \u2014 ' + c.range + '</div>' +
                     '<div class="cat-card__header"><div><div class="cat-card__name">' + c.name + '</div></div>' +
-                    '<div class="cat-card__leak' + (t > 0 ? ' active' : '') + '" id="leak-' + c.id + '">' + fmt(t) + '</div></div>' +
+                    '<div class="cat-card__leak' + (t > 0 ? ' active' : '') + '" id="leak-' + c.id + '">' + (t > 0 ? fmt(t) : '—') + '</div></div>' +
                     '<div class="cat-card__desc">' + c.desc + '</div>' +
                     '<div class="cat-card__questions">' + c.qs.map((q, qi) =>
                         '<label class="chk' + (st[c.id][qi] ? ' on' : '') + '" id="i-' + c.id + '-' + qi + '">' +
@@ -2072,7 +2065,11 @@
             const t = catTotal(cid);
             const le = document.getElementById('leak-' + cid);
             const ce = document.getElementById('card-' + cid);
-            anim(le, t);
+            if (t > 0) {
+                anim(le, t);
+            } else {
+                le.textContent = '—';
+            }
             le.classList.toggle('active', t > 0);
             ce.classList.toggle('has-leaks', t > 0);
         }
