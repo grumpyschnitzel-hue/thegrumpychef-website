@@ -2269,6 +2269,7 @@
                 score = Math.max(0, Math.min(100, Math.round(100 - (results.leakCategoriesIdentified / 8) * 100)));
             }
 
+            var top = rk.length > 0 ? rk[0] : null;
             var payload = {
                 email: email,
                 first_name: name,
@@ -2277,22 +2278,39 @@
                 top_leak_2: rk.length > 1 ? rk[1].category : null,
                 estimated_monthly_waste: results.totalMonthlyLeak || 0,
                 overall_score: score,
-                source: 'leak-landing'
+                source: 'leak-landing',
+                annual_leak: results.totalAnnualLeak || 0,
+                monthly_leak: results.totalMonthlyLeak || 0,
+                weekly_leak: results.totalWeeklyLeak || 0,
+                categories_found: results.leakCategoriesIdentified || 0,
+                top_priority: top ? top.category : null,
+                top_priority_cost: top ? top.annualLeak : 0,
+                top_priority_action: top ? top.action : null
             };
 
-            // Send to Supabase (fire-and-forget)
+            // Step 1: insert lead in Supabase, then chain Kit tagging with the lead_id
+            // so subscribe-and-tag can write kit_subscriber_id + status back to the row.
             fetch(WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
-            }).catch(function(e) { console.warn('Webhook failed:', e); });
-
-            // Tag in Kit (fire-and-forget)
-            fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email, first_name: name, tag_id: '15797829' })
-            }).catch(function(e) { console.warn('Kit tagging failed:', e); });
+            })
+            .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('insert HTTP ' + r.status)); })
+            .then(function(data) {
+                var leadId = data && data.id;
+                return fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: email,
+                        first_name: name,
+                        tag_id: '15797829',
+                        lead_table: 'calculator_leads',
+                        lead_id: leadId
+                    })
+                });
+            })
+            .catch(function(e) { console.warn('Lead pipeline failed:', e); });
 
             // GA4: Track lead capture
             if (typeof gtag === 'function') {
