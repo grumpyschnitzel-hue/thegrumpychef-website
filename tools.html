@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>Free Tools for Restaurant Operators | The Grumpy Chef</title>
+  <meta name="description" content="Free diagnostic tools for independent restaurant operators. Find profit leaks, calculate staff turnover cost, score your operation. Built by a German Master Chef with 20+ years across 5 countries.">
+  <meta property="og:title" content="Free Tools for Restaurant Operators | The Grumpy Chef">
+  <meta property="og:description" content="Free diagnostic tools for independent restaurant operators. No fluff. Built from 20 years in the kitchen.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://thegrumpychef.ca/tools.html">
+  <meta property="og:url" content="https://thegrumpychef.ca/tools.html">
+  <meta property="og:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
+  <link rel="stylesheet" href="/css/theme.css">
+  <script src="/js/analytics.js" defer></script>
+  <style>
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0A1628;
+      --navy-light: #0E1B30;
+      --navy-card: #111E35;
+      --navy-border: #1A2D4D;
+      --gold: #D4AF37;
+      --gold-border: rgba(212,175,55,0.35);
+      --white: #F5F5F0;
+      --white-dim: #B8C2D1;
+      --gray-dark: #6B7894;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    html, body { background: var(--navy); color: var(--white); font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .nav { position: sticky; top: 0; z-index: 50; background: rgba(10,22,40,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--navy-border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--font-mono); font-size: 1rem; letter-spacing: 1px; text-transform: uppercase; color: var(--white); }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { font-size: 0.9rem; color: var(--white-dim); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 10px 18px; border-radius: 4px; font-weight: 600; }
+    .nav-cta:hover { background: var(--white); }
+    .nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+    .hero { padding: 80px 24px 48px; text-align: center; border-bottom: 1px solid var(--navy-border); }
+    .hero h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.15; margin-bottom: 16px; max-width: 820px; margin-left: auto; margin-right: auto; }
+    .hero h1 span { color: var(--gold); }
+    .hero p { color: var(--white-dim); max-width: 640px; margin: 0 auto; font-size: 1.05rem; }
+    .hero .label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px; }
+    .tools { padding: 64px 24px; max-width: 1100px; margin: 0 auto; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .tool-card { background: var(--navy-card); border: 1px solid var(--navy-border); border-radius: 8px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; }
+    .tool-card:hover { border-color: var(--gold-border); transform: translateY(-2px); }
+    .tool-card .badge { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+    .tool-card h2 { font-size: 1.4rem; line-height: 1.2; margin-bottom: 12px; }
+    .tool-card p { color: var(--white-dim); font-size: 0.95rem; flex-grow: 1; margin-bottom: 24px; }
+    .tool-card .meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray-dark); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+    .tool-card .cta { display: inline-block; background: var(--gold); color: var(--navy); padding: 12px 20px; border-radius: 4px; font-weight: 600; font-size: 0.95rem; align-self: flex-start; }
+    .tool-card .cta:hover { background: var(--white); }
+    .footer-cta { padding: 64px 24px; text-align: center; border-top: 1px solid var(--navy-border); background: var(--navy-light); }
+    .footer-cta h2 { font-size: clamp(24px, 3.5vw, 32px); margin-bottom: 16px; }
+    .footer-cta p { color: var(--white-dim); max-width: 540px; margin: 0 auto 24px; }
+    .footer-cta .cta { display: inline-block; background: var(--gold); color: var(--navy); padding: 14px 28px; border-radius: 4px; font-weight: 600; }
+    .footer { padding: 32px 24px; text-align: center; color: var(--gray-dark); border-top: 1px solid var(--navy-border); font-size: 0.85rem; }
+    .footer a { color: var(--white-dim); margin: 0 12px; }
+    .footer a:hover { color: var(--gold); }
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy-light); padding: 20px; gap: 16px; border-bottom: 1px solid var(--navy-border); }
+      .nav-links.active { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+      <div class="nav-links">
+        <a href="/about.html">My Story</a>
+        <a href="/services.html">Work With Me</a>
+        <a href="/blog/">Blog</a>
+        <a href="/tools.html">Free Tools</a>
+        <a href="/leak" class="nav-cta">Find Your Profit Leak</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="label">Free Tools</div>
+      <h1>Diagnostics, not <span>guesswork</span>.</h1>
+      <p>Five tools built for independent operators who don't have time to waste. Each one finds something specific. None of them ask for an email until you've seen real numbers.</p>
+    </section>
+
+    <section class="tools">
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <div class="badge">Most Popular</div>
+          <h2>Profit Leak Calculator</h2>
+          <p>Scans 9 categories where money walks out the back door &mdash; food waste, labor, turnover, menu mispricing, supplier overpayment, delivery platform bleed, beverage shrinkage, operational waste, untracked comps. You'll see your annual leak in dollars, ranked by impact.</p>
+          <div class="meta">90 seconds &bull; 9 categories &bull; Free</div>
+          <a href="/leak?utm_source=site&amp;utm_medium=tools&amp;utm_campaign=tools_hub_leak" class="cta">Find Your Leak &rarr;</a>
+        </div>
+
+        <div class="tool-card">
+          <div class="badge">Operator Self-Audit</div>
+          <h2>Readiness Scorecard</h2>
+          <p>Score your operation against the systems that separate restaurants that survive from ones that don't. Honest answers only. No fluff feedback.</p>
+          <div class="meta">5 minutes &bull; Free</div>
+          <a href="/readiness-scorecard.html?utm_source=site&amp;utm_medium=tools&amp;utm_campaign=tools_hub_readiness" class="cta">Score My Operation &rarr;</a>
+        </div>
+
+        <div class="tool-card">
+          <div class="badge">For the Operator, Not the Operation</div>
+          <h2>Life OS Scorecard</h2>
+          <p>The systems that saved my kitchen and the systems that saved me are the same systems. This one looks at your life outside the line &mdash; sleep, food, recovery, identity. Where the burnout actually starts.</p>
+          <div class="meta">5 minutes &bull; Free</div>
+          <a href="/life-os-scorecard.html?utm_source=site&amp;utm_medium=tools&amp;utm_campaign=tools_hub_lifeos" class="cta">Score My Life &rarr;</a>
+        </div>
+
+        <div class="tool-card">
+          <div class="badge">The Hidden Number</div>
+          <h2>Staff Turnover Cost Calculator</h2>
+          <p>Every employee who walks out costs $5,864 to replace (Cornell research). Most operators never count this number. Plug in your turnover, see your annual bleed, get the three fixes that cut it.</p>
+          <div class="meta">2 minutes &bull; Free</div>
+          <a href="/restaurant-staff-turnover-cost.html?utm_source=site&amp;utm_medium=tools&amp;utm_campaign=tools_hub_turnover" class="cta">Calculate the Cost &rarr;</a>
+        </div>
+
+        <div class="tool-card">
+          <div class="badge">Paid &mdash; $197 CAD</div>
+          <h2>The Toolkit</h2>
+          <p>Eight Excel templates that took me 20 years to build. Food cost tracker, labor scheduler, menu engineering matrix, waste log, par sheet builder, comp tracker, supplier comparison, daily numbers dashboard. The systems behind everything.</p>
+          <div class="meta">8 templates &bull; Lifetime access</div>
+          <a href="/kit.html?utm_source=site&amp;utm_medium=tools&amp;utm_campaign=tools_hub_kit" class="cta">See What's Inside &rarr;</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="footer-cta">
+      <h2>Not sure which one to start with?</h2>
+      <p>If you're bleeding money and don't know where, start with the Profit Leak Calculator. It tells you which fix matters most.</p>
+      <a href="/leak?utm_source=site&amp;utm_medium=tools&amp;utm_campaign=tools_hub_footer" class="cta">Start with the Leak Calculator &rarr;</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <a href="/about.html">My Story</a>
+      <a href="/services.html">Work With Me</a>
+      <a href="/blog/">Blog</a>
+      <a href="/newsletter.html">Newsletter</a>
+    </div>
+    <div style="margin-top: 16px;">Christian Schiffner &middot; Dawson City, Yukon &middot; thegrumpychef.ca</div>
+  </footer>
+</body>
+</html>

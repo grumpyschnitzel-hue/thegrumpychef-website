@@ -1054,7 +1054,7 @@
                 <a href="/framework.html">The 21-Day Protocol</a>
                 <a href="/services.html">Work With Me</a>
                 <a href="/blog/">Blog</a>
-                <a href="/calculator.html">Free Tools</a>
+                <a href="/tools.html">Free Tools</a>
                 <a href="/kit.html" class="nav-cta">Get the Toolkit ($197 CAD)</a>
             </div>
         </div>
@@ -1425,7 +1425,7 @@
                     "You've got one piece in place, but three critical systems are missing. Without SOPs, checklists, and weekly cost tracking working together, you're firefighting instead of running a business.",
                     "Half your operational controls are in place. The gaps are creating inconsistency \u2014 some shifts run well, others don't. That inconsistency is where profit leaks hide.",
                     "You're close on operational control \u2014 three of four systems are working. Closing the last gap will lock in the consistency that turns good weeks into every week.",
-                    "Full marks on operational control. Your systems are running. This is rare \u2014 most operators never get here. The question now is whether these systems are working without you."
+                    "Full marks on operational control. Your systems are running. You've built stronger foundations than most independent operators \u2014 the question now is whether these systems work without you in the building."
                 ],
                 growth_readiness: [
                     "No P&L review, no diversified revenue, no data-driven pricing. You're flying blind on growth \u2014 and likely leaving significant money on the table.",
@@ -1550,10 +1550,10 @@
             function buildNextStepLinks(scores) {
                 var html = '<div class="next-links">';
                 var hasLinks = false;
-                if (scores.operationalControl < 50) { html += '<a href="/calculator.html" class="next-link">Try the Profit Leak Calculator &rarr;</a>'; hasLinks = true; }
+                if (scores.operationalControl < 50) { html += '<a href="/leak" class="next-link">Try the Profit Leak Calculator &rarr;</a>'; hasLinks = true; }
                 if (scores.growthReadiness < 67) { html += '<a href="/blog/" class="next-link">Read: How to price your menu with data &rarr;</a>'; hasLinks = true; }
                 if (scores.ownerDependency < 67) { html += '<a href="/framework.html" class="next-link">Explore the 21-Day Protocol &rarr;</a>'; hasLinks = true; }
-                if (!hasLinks) html += '<a href="/" class="next-link">Explore more free tools &rarr;</a>';
+                if (!hasLinks) html += '<a href="/tools.html" class="next-link">Explore more free tools &rarr;</a>';
                 html += '</div>';
                 return html;
             }
@@ -1628,7 +1628,7 @@
                     html += '</div>';
                 });
                 var recMap = {
-                    'diy': 'Start with our free tools: thegrumpychef.ca/calculator and thegrumpychef.ca/blog',
+                    'diy': 'Start with our free tools: thegrumpychef.ca/tools.html and thegrumpychef.ca/blog',
                     'toolkit': 'The 72-Hour Profit Discovery Kit was built for exactly this \u2014 thegrumpychef.ca/kit',
                     'coaching': 'Our Operational Operating System launches soon \u2014 join the waitlist',
                     'done-for-you': 'Chris works with 4-5 operators at a time on async retainers \u2014 thegrumpychef.ca/lp/discovery'
@@ -1679,7 +1679,7 @@
                 if (scores.foodCostUnknown) {
                     html += '<p class="leak-callout">You couldn\'t answer your food cost percentage \u2014 that blind spot alone is likely costing you money every single week. You can\'t fix what you don\'t measure.</p>';
                 }
-                html += '<p class="leak-caveat">This is an estimate based on industry benchmarks \u2014 your actual number may vary.</p>';
+                html += '<p class="leak-caveat">Estimate based on your 17 answers and hospitality benchmarks for food cost, labor, and turnover. Your actual number depends on volume, location, and how long the gaps have been open.</p>';
                 html += '</div></section>';
 
                 // Block 3: Category Insights
@@ -1700,7 +1700,9 @@
                 html += '<div class="report-buttons">';
                 html += '<button class="btn btn--gold" onclick="downloadPDF()">Print / Save as PDF</button>';
                 html += '<button class="btn btn--subtle" onclick="emailReport()">Email Me My Report</button>';
-                html += '</div></div></section>';
+                html += '</div>';
+                html += '<p class="capture-privacy" style="margin-top: 16px; text-align: center;">Instant delivery to the email you entered. No spam, no nurture sequence dressed up as a free course. Unsubscribe anytime.</p>';
+                html += '</div></section>';
 
                 // Block 5: Soft Next Steps
                 html += '<section class="results-block result-next no-print"><div class="container">';

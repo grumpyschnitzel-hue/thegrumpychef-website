@@ -2557,9 +2557,8 @@
       if (!win) { alert('Please allow popups to export PDF.'); return; }
 
       var html = '<!DOCTYPE html><html><head><meta charset="UTF-8">';
-      html += '<meta name="robots" content="noindex, nofollow">`n    <title>Measurement Tracker Report - ' + dateStamp() + '</title>';
-      html += '
-';
+      html += '<meta name="robots" content="noindex, nofollow">';
+      html += '<title>Measurement Tracker Report - ' + dateStamp() + '</title>';
       html += '<style>';
       html += 'body { font-family: Inter, sans-serif; color: #111; padding: 2rem; max-width: 1100px; margin: 0 auto; }';
       html += '.report-header { text-align: center; border-bottom: 3px solid #D4AF37; padding-bottom: 1rem; margin-bottom: 2rem; }';

@@ -1799,7 +1799,7 @@
             </div>
 
             <div style="margin-top:32px;">
-                <div class="section-label">The 8 Profit Leak Categories</div>
+                <div class="section-label">The 9 Profit Leak Categories</div>
             </div>
             <div id="categories"></div>
         </div>
@@ -1873,6 +1873,17 @@
                 </div><!-- /gated-content -->
 
             </div>
+        </div>
+    </section>
+
+    <!-- ==================== BOTTOM CTA — DISCOVERY CALL ==================== -->
+    <section class="bottom-cta" style="padding: 80px 24px; background: var(--navy-card, #111E35); border-top: 1px solid var(--navy-border, #1A2D4D);">
+        <div class="container" style="max-width: 720px; margin: 0 auto; text-align: center;">
+            <div class="section-label" style="margin-bottom: 16px;">Stop the Bleed</div>
+            <h2 style="font-size: clamp(28px, 4vw, 38px); line-height: 1.2; margin: 0 0 16px; color: var(--white, #F5F5F0);">You found the leak. Now plug it.</h2>
+            <p style="font-size: 1.05rem; line-height: 1.6; color: var(--white-dim, #B8C2D1); max-width: 560px; margin: 0 auto 32px;">Book a 20-minute call. I'll walk you through your top 3 fixes — built around your numbers, not a template.</p>
+            <a href="https://calendly.com/thegrumpychef/20min?utm_source=site&amp;utm_medium=leak&amp;utm_campaign=cta_bottom_call" class="hero__cta" style="display: inline-block;">Book a 20-min Call &rarr;</a>
+            <p style="font-family: var(--font-mono, monospace); font-size: 0.7rem; color: var(--gray-dark, #6B7894); opacity: 0.7; margin-top: 16px; letter-spacing: 1px; text-transform: uppercase;">Free &bull; No pitch &bull; You leave with 3 fixes</p>
         </div>
     </section>
 
@@ -2266,7 +2277,7 @@
             if (results.leakPercentOfRevenue !== null) {
                 score = Math.max(0, Math.min(100, Math.round(100 - results.leakPercentOfRevenue * 5)));
             } else {
-                score = Math.max(0, Math.min(100, Math.round(100 - (results.leakCategoriesIdentified / 8) * 100)));
+                score = Math.max(0, Math.min(100, Math.round(100 - (results.leakCategoriesIdentified / 9) * 100)));
             }
 
             // results.topPriority preserves the action field; rk[0] does not
@@ -2360,7 +2371,7 @@
                 score = Math.max(0, Math.min(100, Math.round(100 - results.leakPercentOfRevenue * 5)));
             } else {
                 // Fallback: score based on number of leak categories (8 max)
-                score = Math.max(0, Math.min(100, Math.round(100 - (results.leakCategoriesIdentified / 8) * 100)));
+                score = Math.max(0, Math.min(100, Math.round(100 - (results.leakCategoriesIdentified / 9) * 100)));
             }
 
             const payload = {
@@ -2436,7 +2447,7 @@
             b += 'Monthly: ' + fmt(Math.round(total / 12)) + '\n';
             b += 'Weekly: ' + fmt(Math.round(total / 52)) + '\n';
             if (monthlyRev > 0) b += 'Revenue Impact: ' + ((total / 12 / monthlyRev * 100).toFixed(1)) + '% of monthly revenue\n';
-            b += 'Leak Categories: ' + lc + ' of 8\n\n';
+            b += 'Leak Categories: ' + lc + ' of 9\n\n';
             b += 'RANKED BY IMPACT:\n-------------------\n';
             rk.forEach((c, i) => {
                 if (c.total > 0) {
