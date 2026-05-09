@@ -1,16 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="/js/analytics.js"></script>
+  <script src="/js/analytics.js"></script>
   <meta charset="UTF-8">
-  <title>Redirecting to 72-Hour Profit Discovery Kit | The Grumpy Chef</title>
-  <meta http-equiv="refresh" content="0;url=/kit.html">
-  <link rel="canonical" href="https://thegrumpychef.ca/kit.html">
-  <meta name="robots" content="noindex, follow">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>The Restaurant Profit Leak Toolkit — 9 Chef-Built Calculators | The Grumpy Chef</title>
+  <meta name="description" content="Find where your restaurant is leaking profit in one afternoon. Nine chef-built spreadsheets for recipe costing, prime cost, menu engineering, par levels, waste, delivery, vendors, menu psychology, and weekly performance. CAD 47.">
+
+  <meta property="og:title" content="The Restaurant Profit Leak Toolkit — 9 Chef-Built Calculators">
+  <meta property="og:description" content="Nine practical Excel tools to find where your restaurant is leaking profit. Recipe costing, prime cost, menu engineering, par levels, waste, delivery, vendors, menu psychology, weekly dashboard. CAD 47.">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://thegrumpychef.ca/toolkit/">
+  <meta property="og:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
+  <meta property="og:image:alt" content="The Grumpy Chef — Restaurant Profit Leak Toolkit">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Restaurant Profit Leak Toolkit | The Grumpy Chef">
+  <meta name="twitter:description" content="Nine chef-built spreadsheets to find profit leaks in food cost, labor, waste, delivery, vendors, and menu pricing. CAD 47.">
+  <meta name="twitter:image" content="https://thegrumpychef.ca/images/Kitchen1.jpg">
+
+  <link rel="canonical" href="https://thegrumpychef.ca/toolkit/">
+  <meta name="author" content="Christian Schiffner">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "@id": "https://thegrumpychef.ca/toolkit/#product",
+        "name": "The Restaurant Profit Leak Toolkit",
+        "description": "Nine chef-built Excel calculators for independent restaurant operators to find profit leaks in food cost, labor, waste, delivery, vendors, menu pricing, par levels, and weekly performance.",
+        "url": "https://thegrumpychef.ca/toolkit/",
+        "image": "https://thegrumpychef.ca/images/Kitchen1.jpg",
+        "brand": { "@type": "Brand", "name": "The Grumpy Chef" },
+        "author": {
+          "@type": "Person",
+          "name": "Christian Schiffner",
+          "jobTitle": "German Master Chef (Küchenmeister)",
+          "url": "https://thegrumpychef.ca/about.html"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "47",
+          "priceCurrency": "CAD",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@type": "Organization", "name": "The Grumpy Chef", "url": "https://thegrumpychef.ca" }
+        },
+        "category": "Restaurant Operations"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thegrumpychef.ca/" },
+          { "@type": "ListItem", "position": 2, "name": "Restaurant Profit Leak Toolkit" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do I need to be good at Excel?", "acceptedAnswer": { "@type": "Answer", "text": "No. The toolkit is built around simple input cells and auto-calculations. You enter your numbers. The sheets do the math." } },
+          { "@type": "Question", "name": "Does this replace my accountant?", "acceptedAnswer": { "@type": "Answer", "text": "No. This is an operating toolkit, not accounting advice. Your accountant tells you what happened. These tools help you manage what is happening while you can still fix it." } },
+          { "@type": "Question", "name": "Is this for restaurants only?", "acceptedAnswer": { "@type": "Answer", "text": "It is built for restaurants, but it also works for food trucks, cafes, catering operations, ghost kitchens, pop-ups, and small hospitality businesses." } },
+          { "@type": "Question", "name": "Will this work in Google Sheets?", "acceptedAnswer": { "@type": "Answer", "text": "The toolkit is built as Excel workbooks. Some files may open in Google Sheets, but Excel is the recommended format for best results." } },
+          { "@type": "Question", "name": "How fast can I use it?", "acceptedAnswer": { "@type": "Answer", "text": "You can start the same day. The fastest first step is to cost one recipe, run one weekly prime cost check, or compare 10 common vendor items." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0A1628;
+      --navy-light:  #0E1B30;
+      --navy-card:   #111E35;
+      --navy-border: #1A2D4D;
+      --navy-hover:  #162642;
+      --white:       #F8F9FA;
+      --white-dim:   #B8BEC8;
+      --gray:        #4A5568;
+      --gold:        #D4AF37;
+      --gold-dim:    #B89630;
+      --gold-glow:   rgba(212, 175, 55, 0.10);
+      --gold-border: rgba(212, 175, 55, 0.25);
+      --red:         #C53030;
+      --red-light:   rgba(197, 48, 48, 0.12);
+      --green:       #2F6B3F;
+      --font-display:'Bebas Neue', 'Impact', sans-serif;
+      --font-body:   'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono:   'IBM Plex Mono', 'Cascadia Code', 'Consolas', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content:''; position:fixed; top:0; left:0; width:100%; height:100%;
+      pointer-events:none; z-index:9999; opacity:0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 256px 256px;
+    }
+
+    a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--white); }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,22,40,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--navy-border);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-brand {
+      font-family: var(--font-display); font-size: 22px; letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .nav-brand span { color: var(--gold); }
+    .nav-cta {
+      font-family: var(--font-mono); font-size: 13px;
+      padding: 8px 16px; background: var(--gold); color: var(--navy);
+      border-radius: 4px; font-weight: 600;
+    }
+    .nav-cta:hover { background: var(--white); color: var(--navy); }
+
+    .hero {
+      padding: 96px 0 80px;
+      background: radial-gradient(ellipse at top, var(--navy-light) 0%, var(--navy) 70%);
+      border-bottom: 1px solid var(--navy-border);
+    }
+    .eyebrow {
+      font-family: var(--font-mono); font-size: 12px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.05; letter-spacing: 0.01em;
+      margin-bottom: 24px; max-width: 900px;
+    }
+    .hero h1 .accent { color: var(--gold); }
+    .hero-sub {
+      font-size: clamp(17px, 1.8vw, 21px);
+      color: var(--white-dim); max-width: 760px; margin-bottom: 40px;
+    }
+    .hero-bullets {
+      list-style: none; display: grid; gap: 12px;
+      max-width: 720px; margin-bottom: 48px;
+    }
+    .hero-bullets li {
+      display: flex; gap: 12px; font-size: 16px;
+      color: var(--white-dim);
+    }
+    .hero-bullets li::before {
+      content: "→"; color: var(--gold); font-weight: 700; flex-shrink: 0;
+    }
+
+    .cta-row {
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+    }
+    .btn-buy {
+      display: inline-block;
+      background: var(--gold); color: var(--navy);
+      font-family: var(--font-mono); font-weight: 600; font-size: 16px;
+      letter-spacing: 0.02em;
+      padding: 18px 32px; border-radius: 4px;
+      transition: transform 0.15s, background 0.2s;
+    }
+    .btn-buy:hover { background: var(--white); color: var(--navy); transform: translateY(-1px); }
+    .btn-secondary {
+      font-family: var(--font-mono); font-size: 14px;
+      color: var(--white-dim); padding: 18px 0;
+    }
+    .btn-secondary:hover { color: var(--gold); }
+
+    section { padding: 80px 0; border-bottom: 1px solid var(--navy-border); }
+    .section-eyebrow {
+      font-family: var(--font-mono); font-size: 12px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.5vw, 52px);
+      line-height: 1.1; margin-bottom: 24px; letter-spacing: 0.01em;
+    }
+    h3 {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.6vw, 28px);
+      line-height: 1.2; margin-bottom: 12px; letter-spacing: 0.01em;
+      color: var(--gold);
+    }
+    p { margin-bottom: 16px; color: var(--white-dim); font-size: 17px; }
+    .lead { font-size: 19px; max-width: 760px; }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px; margin-top: 40px;
+    }
+    .tool-card {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: 6px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .tool-card:hover {
+      border-color: var(--gold-border);
+      transform: translateY(-2px);
+    }
+    .tool-num {
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--gold); margin-bottom: 12px;
+      letter-spacing: 0.1em;
+    }
+    .tool-card h4 {
+      font-family: var(--font-display);
+      font-size: 22px; line-height: 1.2; margin-bottom: 12px;
+      letter-spacing: 0.01em;
+    }
+    .tool-card p {
+      font-size: 15px; margin-bottom: 0; color: var(--white-dim);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px; margin-top: 32px;
+    }
+    .col-card {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: 6px; padding: 32px;
+    }
+    .col-card h3 { margin-bottom: 20px; }
+    .col-card.for h3 { color: var(--gold); }
+    .col-card.not h3 { color: var(--red); }
+    .col-card ul { list-style: none; }
+    .col-card li {
+      display: flex; gap: 12px; padding: 10px 0;
+      border-bottom: 1px solid var(--navy-border);
+      color: var(--white-dim); font-size: 16px;
+    }
+    .col-card li:last-child { border-bottom: 0; }
+    .col-card.for li::before { content: "✓"; color: var(--gold); flex-shrink: 0; font-weight: 700; }
+    .col-card.not li::before { content: "✗"; color: var(--red); flex-shrink: 0; font-weight: 700; }
+
+    .bonus {
+      background: var(--navy-card);
+      border: 1px solid var(--gold-border);
+      border-radius: 8px; padding: 40px;
+      margin-top: 32px;
+      position: relative;
+    }
+    .bonus::before {
+      content: "BONUS";
+      position: absolute; top: -12px; left: 32px;
+      background: var(--gold); color: var(--navy);
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.15em; padding: 4px 12px; border-radius: 3px;
+      font-weight: 700;
+    }
+
+    .price-block {
+      background: var(--navy-card);
+      border: 1px solid var(--gold-border);
+      border-radius: 8px;
+      padding: 48px 32px;
+      text-align: center;
+      margin-top: 32px;
+    }
+    .price-block .price {
+      font-family: var(--font-display);
+      font-size: 72px; line-height: 1; color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .price-block .price-meta {
+      font-family: var(--font-mono); font-size: 13px;
+      color: var(--white-dim); letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .faq-list { margin-top: 32px; }
+    .faq-item {
+      border-bottom: 1px solid var(--navy-border);
+      padding: 24px 0;
+    }
+    .faq-item h4 {
+      font-family: var(--font-display); font-size: 22px;
+      margin-bottom: 8px; letter-spacing: 0.01em;
+      color: var(--white);
+    }
+    .faq-item p { margin: 0; }
+
+    .guarantee {
+      display: flex; gap: 20px; align-items: flex-start;
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: 6px; padding: 28px;
+      margin-top: 32px;
+    }
+    .guarantee-mark {
+      font-family: var(--font-display); font-size: 36px; color: var(--gold);
+      flex-shrink: 0; line-height: 1;
+    }
+    .guarantee p { margin: 0; font-size: 16px; }
+
+    .final {
+      text-align: center;
+      background: radial-gradient(ellipse at center, var(--navy-light), var(--navy));
+      padding: 96px 24px;
+    }
+    .final h2 { margin-bottom: 24px; }
+    .final p { font-size: 19px; max-width: 640px; margin: 0 auto 40px; }
+
+    footer {
+      padding: 48px 0; text-align: center;
+      color: var(--white-dim); font-size: 14px;
+    }
+    footer a { margin: 0 12px; }
+    .footer-ps {
+      max-width: 600px; margin: 0 auto 24px;
+      padding: 16px; border: 1px solid var(--navy-border);
+      border-radius: 4px; font-size: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 64px 0 48px; }
+      section { padding: 56px 0; }
+      .price-block { padding: 36px 20px; }
+      .price-block .price { font-size: 56px; }
+    }
+  </style>
 </head>
+
 <body>
-<main>
-  <p>This page has moved. <a href="/kit.html">Click here if you are not redirected.</a></p>
-</main>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">THE GRUMPY <span>CHEF</span></a>
+    <a href="#buy" class="nav-cta">Get the Toolkit — $47</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">9 Chef-Built Calculators · CAD 47</div>
+    <h1>Your restaurant is leaking profit. <span class="accent">This toolkit shows you where.</span></h1>
+    <p class="hero-sub">Nine practical Excel tools to track food cost, labor, waste, delivery, vendor pricing, menu profitability, par levels, and weekly performance — without building anything from scratch.</p>
+    <ul class="hero-bullets">
+      <li>See your true prime cost before month-end.</li>
+      <li>Cost recipes with yield, labor, overhead, and Q-factor included.</li>
+      <li>Spot menu items that sell well but quietly kill margin.</li>
+      <li>Compare vendor prices instead of trusting loyalty.</li>
+      <li>Find out whether delivery is profit or expensive self-sabotage.</li>
+      <li>Track waste, par levels, and weekly performance in one simple system.</li>
+    </ul>
+    <div class="cta-row">
+      <a href="#buy" class="btn-buy">Get the Toolkit — $47 CAD</a>
+      <a href="#problem" class="btn-secondary">↓ How it works</a>
+    </div>
+  </div>
+</header>
+
+<section id="problem">
+  <div class="container">
+    <div class="section-eyebrow">The problem</div>
+    <h2>Busy does not mean profitable.</h2>
+    <p class="lead">Most restaurant operators can feel when something is off. The dining room is full. The kitchen is running hard. Staff are tired. Orders are moving. But when the bills land, the profit is thinner than it should be.</p>
+    <p class="lead">The problem is not always one big mistake. It is usually a pile of small leaks.</p>
+    <p class="lead">Food cost creeps up by a few points. Labor gets scheduled by habit instead of numbers. A vendor raises prices quietly. A delivery platform takes its cut before you see the real margin. Waste gets thrown out, but not measured. A popular menu item looks like a winner until you actually cost it.</p>
+    <p class="lead">That is how restaurants lose money while looking busy.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">The toolkit</div>
+    <h2>The numbers a real operator needs.</h2>
+    <p class="lead">The Restaurant Profit Leak Toolkit is a practical Excel-based operating system for independent restaurants, food trucks, cafes, and chef-led businesses.</p>
+    <p class="lead">It is not accounting software. It is not a complicated restaurant management platform. It is the set of tools you should have had before you opened the doors: recipe costing, prime cost tracking, waste logging, par ordering, vendor comparison, delivery profitability, menu engineering, and a weekly dashboard.</p>
+    <p class="lead">Built by a chef for operators who need answers fast.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">What's inside</div>
+    <h2>Nine tools. One goal: protect your margin.</h2>
+
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-num">01 · CALCULATOR</div>
+        <h4>Recipe Costing &amp; Plate Cost</h4>
+        <p>Know what a dish really costs before you price it. Includes yield loss, labor, overhead, Q-factor, and target food cost so menu prices come from reality, not guesswork.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-num">02 · TRACKER</div>
+        <h4>Weekly Prime Cost Tracker</h4>
+        <p>Track food cost and labor cost every week, not after the month is dead. Sales, COGS, labor %, prime cost %, and trends — before the problem becomes permanent.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-num">03 · MATRIX</div>
+        <h4>Menu Engineering Matrix</h4>
+        <p>Sort menu items into Stars, Plowhorses, Puzzles, and Dogs. Stop arguing about the menu from opinion. Decide from contribution margin and popularity.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-num">04 · CALCULATOR</div>
+        <h4>Vendor Price Comparison Tracker</h4>
+        <p>Compare prices across four vendors and see where loyalty is costing you money. Tracks the cheapest source, savings per unit, and weekly savings potential.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-num">05 · CALCULATOR</div>
+        <h4>Delivery Profitability Calculator</h4>
+        <p>Find out if delivery is actually profitable after commission, food cost, packaging, and labor. If delivery is costing you money, this will show it.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-num">06 · CALCULATOR</div>
+        <h4>Par Level &amp; Order Calculator</h4>
+        <p>Order what you need without overstocking or running out. Par levels from daily usage, delivery frequency, and safety stock. Order quantities auto-calculate.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-num">07 · LOG</div>
+        <h4>Waste Tracking Log</h4>
+        <p>Stop guessing waste. Track what gets thrown away, why it happened, what shift it happened on, and what it cost. The waste you do not measure becomes normal.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-num">08 · AUDIT</div>
+        <h4>Menu Psychology Audit</h4>
+        <p>Score your menu against practical menu psychology principles so guests notice the right items, understand the offer faster, and buy more profitably.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-num">09 · DASHBOARD</div>
+        <h4>Restaurant Operations Dashboard</h4>
+        <p>Bring the numbers together in one weekly snapshot. See where the business is strong, where it is drifting, and what needs attention first.</p>
+      </div>
+    </div>
+
+    <div class="bonus">
+      <h3 style="margin-top: 12px;">The 15-Minute Menu Psychology Audit</h3>
+      <p>Most menus are built around what the owner likes — not what guests notice first, understand fastest, or buy most profitably. This checklist gives you a quick score and shows what to fix. Included with the toolkit.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Why this is different</div>
+    <h2>Not a pretty spreadsheet bundle made by someone who has never worked a Saturday night.</h2>
+    <p class="lead">These tools are built around the numbers that matter inside a real food business. Not vanity metrics. Not generic budget templates. Not a dashboard that looks impressive but does not change what you do on Monday morning.</p>
+    <p class="lead">This toolkit focuses on the decisions that actually protect margin:</p>
+    <ul class="hero-bullets" style="margin-top: 24px;">
+      <li>What should this dish sell for?</li>
+      <li>Which menu items are helping or hurting us?</li>
+      <li>Are food and labor costs under control this week?</li>
+      <li>What are we wasting and why?</li>
+      <li>Which vendor is actually cheapest?</li>
+      <li>How much should we order?</li>
+      <li>Is delivery making money?</li>
+      <li>What needs fixing first?</li>
+    </ul>
+    <p class="lead" style="margin-top: 24px;">That is the difference between having spreadsheets and having an operating tool.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Who it's for</div>
+    <h2>Built for operators, not spreadsheet nerds.</h2>
+
+    <div class="two-col">
+      <div class="col-card for">
+        <h3>This is for you if</h3>
+        <ul>
+          <li>You run an independent restaurant, cafe, food truck, ghost kitchen, or small food business.</li>
+          <li>You know your food is good but want stronger control over the numbers.</li>
+          <li>You do not want to build calculators from scratch.</li>
+          <li>You need simple tools your team can actually use.</li>
+          <li>You want to make pricing, purchasing, delivery, and menu decisions with more confidence.</li>
+        </ul>
+      </div>
+      <div class="col-card not">
+        <h3>This is not for you if</h3>
+        <ul>
+          <li>You want a full POS-integrated software platform.</li>
+          <li>You refuse to enter numbers consistently.</li>
+          <li>You are looking for magic instead of better decisions.</li>
+          <li>You already have a full back-office analytics system your team uses every week.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="buy">
+  <div class="container">
+    <div class="section-eyebrow">Pricing</div>
+    <h2>One small leak can pay for the toolkit.</h2>
+    <p class="lead">If one vendor item is overpriced, one menu item is underpriced, one delivery platform is unprofitable, or one waste habit keeps repeating — CAD 47 is not the problem.</p>
+    <p class="lead">The problem is not knowing.</p>
+
+    <div class="price-block">
+      <div class="price">$47</div>
+      <div class="price-meta">CAD · ONE-TIME · INSTANT DOWNLOAD</div>
+      <a href="https://buy.stripe.com/bJefZi3LgcRcaNpbJvfAc02?utm_source=site&utm_medium=toolkit&utm_campaign=toolkit_47_purchase" class="btn-buy" style="font-size: 18px; padding: 20px 40px;">Get Instant Access</a>
+      <p style="margin-top: 24px; font-size: 14px;">9 Excel workbooks · Delivered immediately · Use them today</p>
+    </div>
+
+    <div class="guarantee">
+      <div class="guarantee-mark">✓</div>
+      <div>
+        <p><strong style="color: var(--white);">7-day guarantee.</strong> Use the toolkit to cost one recipe, check one week of prime cost, or compare 10 vendor items. If you do not find at least one useful insight, email me within 7 days and I will refund you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">FAQ</div>
+    <h2>Common questions.</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>Do I need to be good at Excel?</h4>
+        <p>No. The toolkit is built around simple input cells and auto-calculations. You enter your numbers. The sheets do the math.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Does this replace my accountant?</h4>
+        <p>No. This is an operating toolkit, not accounting advice. Your accountant tells you what happened. These tools help you manage what is happening while you can still fix it.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is this for restaurants only?</h4>
+        <p>It is built for restaurants, but it also works for food trucks, cafes, catering operations, ghost kitchens, pop-ups, and small hospitality businesses.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Will this work in Google Sheets?</h4>
+        <p>The toolkit is built as Excel workbooks. Some files may open in Google Sheets, but Excel is the recommended format for best results.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How fast can I use it?</h4>
+        <p>You can start the same day. The fastest first step is to cost one recipe, run one weekly prime cost check, or compare 10 common vendor items.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What about the bigger 72-Hour Profit Discovery Starter Kit?</h4>
+        <p>That is the next step up — a structured 3-day diagnostic process built around these tools. <a href="/kit.html">See the $197 starter kit</a> if you want the guided walkthrough instead of just the spreadsheets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final" style="border-bottom: 0;">
+  <div class="container">
+    <div class="section-eyebrow">One last thing</div>
+    <h2>Stop guessing where the money went.</h2>
+    <p>You do not need another lecture about margins. You need the tools to see them. Get the Restaurant Profit Leak Toolkit, enter your numbers, and find the leaks hiding in your food cost, labor, vendors, delivery, waste, inventory, and menu.</p>
+    <a href="https://buy.stripe.com/bJefZi3LgcRcaNpbJvfAc02?utm_source=site&utm_medium=toolkit&utm_campaign=toolkit_47_final_cta" class="btn-buy" style="font-size: 18px; padding: 20px 40px;">Get the Toolkit — $47 CAD</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-ps">
+      <strong style="color: var(--white);">P.S.</strong> 64°N Weekly lands every Tuesday. One system that works. <a href="/newsletter.html?utm_source=site&utm_medium=toolkit_footer&utm_campaign=cta_footer_newsletter">Subscribe →</a>
+    </div>
+    <div>
+      <a href="/">Home</a> ·
+      <a href="/about.html">About</a> ·
+      <a href="/leak?utm_source=site&utm_medium=toolkit_footer&utm_campaign=leak_diagnosis">Free Profit Leak Calculator</a> ·
+      <a href="/kit.html">$197 Starter Kit</a>
+    </div>
+    <p style="margin-top: 24px; font-size: 13px;">© The Grumpy Chef · Christian Schiffner · Dawson City, Yukon</p>
+  </div>
+</footer>
+
 </body>
 </html>

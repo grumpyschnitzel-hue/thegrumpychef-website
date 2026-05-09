@@ -1766,10 +1766,12 @@
     </style>
     <script src="/js/analytics.js"></script>
 <script src="/js/mobile-fixes.js" defer></script>
+  <link rel="stylesheet" href="/css/a11y.css">
 </head>
 
 <body>
-<main>
+<a href="#main" class="skip-link">Skip to main content</a>
+<main id="main">
 
 
     <div class="gold-top"></div>
@@ -1801,7 +1803,10 @@
             <div style="margin-top:32px;">
                 <div class="section-label">The 9 Profit Leak Categories</div>
             </div>
-            <div id="categories"></div>
+            <fieldset class="leak-categories" style="border:0; padding:0; margin:0;">
+              <legend class="visually-hidden">Where do you suspect leaks? Check all that apply.</legend>
+              <div id="categories"></div>
+            </fieldset>
         </div>
     </section>
 

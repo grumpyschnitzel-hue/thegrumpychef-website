@@ -933,9 +933,11 @@
     </style>
     <script src="/js/analytics.js"></script>
 <script src="/js/mobile-fixes.js" defer></script>
+  <link rel="stylesheet" href="/css/a11y.css">
 </head>
 
-<body>    <nav class="nav">
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>    <nav class="nav">
         <div class="nav-inner">
             <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
             <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"
@@ -951,7 +953,7 @@
         </div>
     </nav>
 
-<main>
+<main id="main">
 
 
     <section class="hero">
