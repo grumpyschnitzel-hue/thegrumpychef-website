@@ -952,7 +952,12 @@
       <div style="display: flex; gap: 40px; flex-wrap: wrap; margin-top: 40px; align-items: flex-start;">
         <div style="flex-shrink: 0;">
           <picture>
-            <source srcset="/images/chris-chef-portrait.webp" type="image/webp">
+            <source type="image/webp"
+                    srcset="/images/chris-chef-portrait-480.webp 480w,
+                            /images/chris-chef-portrait-768.webp 768w,
+                            /images/chris-chef-portrait-1200.webp 1200w,
+                            /images/chris-chef-portrait-1920.webp 1920w"
+                    sizes="(max-width: 768px) 100vw, 50vw">
             <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
               class="brand-photo-circle brand-photo-circle--hero"
               width="2944" height="2208" loading="lazy">
@@ -1133,7 +1138,12 @@
       <div class="footer-top">
         <div class="footer-brand" style="display: flex; gap: 16px; align-items: flex-start;">
           <picture>
-            <source srcset="/images/chris-chef-portrait.webp" type="image/webp">
+            <source type="image/webp"
+                    srcset="/images/chris-chef-portrait-480.webp 480w,
+                            /images/chris-chef-portrait-768.webp 768w,
+                            /images/chris-chef-portrait-1200.webp 1200w,
+                            /images/chris-chef-portrait-1920.webp 1920w"
+                    sizes="160px">
             <img src="/images/chris-chef-portrait.jpg" alt="Chef Christian Schiffner — The Grumpy Chef"
               class="brand-photo-circle brand-photo-circle--footer"
               width="2944" height="2208" loading="lazy">

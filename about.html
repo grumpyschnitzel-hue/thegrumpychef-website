@@ -725,8 +725,16 @@
                     done white-knuckling it.</p>
             </div>
             <div class="hero-photo">
-                <img src="/images/chris-sharpening-knife.jpg" alt="Chef Christian Schiffner sharpening a knife in the kitchen"
-                    class="brand-photo-rect">
+                <picture>
+                  <source type="image/webp"
+                          srcset="/images/chris-sharpening-knife-480.webp 480w,
+                                  /images/chris-sharpening-knife-768.webp 768w,
+                                  /images/chris-sharpening-knife-1200.webp 1200w,
+                                  /images/chris-sharpening-knife-1920.webp 1920w"
+                          sizes="(max-width: 768px) 100vw, 50vw">
+                  <img src="/images/chris-sharpening-knife.jpg" alt="Chef Christian Schiffner sharpening a knife in the kitchen"
+                      class="brand-photo-rect">
+                </picture>
                 <p class="brand-photo-caption">Christian Schiffner | K�chenmeister | 20+ Years, 5 Countries</p>
             </div>
         </div>
