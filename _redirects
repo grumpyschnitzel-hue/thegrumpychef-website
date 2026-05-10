@@ -2,3 +2,25 @@
 /calculator.html  /leak  301!
 /calculator       /leak  301!
 /leak  /leak.html  200
+
+# Funnel One Truth — duplicates redirected to canonical (2026-05-10)
+/scorecard.html                  /readiness-scorecard.html         301!
+/brochure-kit.html               /kit.html                         301!
+/toolkit-bundle.html             /toolkit/                         301!
+/gift.html                       /leak                             301!
+/lp/calculator.html              /leak                             301!
+/lp/readiness.html               /readiness-scorecard.html         301!
+/lp/assessment.html              /assessment.html                  301!
+/lp/life-os.html                 /                                 301!
+/lp/thank-you-calculator.html    /thank-you.html                   301!
+/lp/thank-you-assessment.html    /thank-you.html                   301!
+/lp/thank-you-discovery.html     /thank-you.html                   301!
+/lp/thank-you-lifeos.html        /thank-you.html                   301!
+
+# Standalone duplicate of /blog/restaurant-staff-turnover.html
+/restaurant-staff-turnover-cost.html  /blog/restaurant-staff-turnover.html  301!
+
+# Nav consolidation — services/tools/framework merged into offers (2026-05-10)
+/services.html                   /offers.html                      301!
+/tools.html                      /offers.html                      301!
+/framework.html                  /offers.html                      301!
