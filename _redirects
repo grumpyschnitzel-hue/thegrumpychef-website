@@ -20,6 +20,9 @@
 # Standalone duplicate of /blog/restaurant-staff-turnover.html
 /restaurant-staff-turnover-cost.html  /blog/restaurant-staff-turnover.html  301!
 
+# /toolkit.html never built — /toolkit/ is canonical $47 page
+/toolkit.html                    /toolkit/                         301!
+
 # Nav consolidation — services/tools/framework merged into offers (2026-05-10)
 /services.html                   /offers.html                      301!
 /tools.html                      /offers.html                      301!
