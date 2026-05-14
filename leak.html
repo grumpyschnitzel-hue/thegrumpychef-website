@@ -1849,6 +1849,16 @@
                                         <input class="gate-card__input" type="email" id="g-email" placeholder="you@restaurant.com" required>
                                     </div>
                                 </div>
+                                <div class="gate-card__field" style="margin-top:12px;">
+                                    <label class="gate-card__lbl" for="g-revenue">Annual revenue (so the fix is sized right)</label>
+                                    <select class="gate-card__input" id="g-revenue" required>
+                                        <option value="" disabled selected>Select a range</option>
+                                        <option value="under-500k">Under $500K</option>
+                                        <option value="500k-1m">$500K &ndash; $1M</option>
+                                        <option value="1m-2m">$1M &ndash; $2M</option>
+                                        <option value="2m-plus">$2M+</option>
+                                    </select>
+                                </div>
                                 <p class="form-microcopy" style="font-size:12px; line-height:1.4; opacity:0.65; margin-top:0; margin-bottom:8px; max-width:320px;">We email your full leak breakdown and one short note per week. Unsubscribe anytime. See our <a href="/privacy.html" style="color:inherit; text-decoration:underline;">privacy policy</a>.</p>
                                 <button type="submit" class="gate-card__submit" id="gate-btn">Send Me the Breakdown</button>
                                 <div class="gate-card__error" id="gate-err"></div>
@@ -2285,6 +2295,7 @@
             const err = document.getElementById('gate-err');
             const name = document.getElementById('g-name').value.trim();
             const email = document.getElementById('g-email').value.trim();
+            const revenueRange = document.getElementById('g-revenue') ? document.getElementById('g-revenue').value : '';
 
             err.style.display = 'none';
             document.querySelectorAll('#gate-form .gate-card__input').forEach(el => el.classList.remove('err'));
@@ -2292,7 +2303,8 @@
             let bad = false;
             if (!name) { document.getElementById('g-name').classList.add('err'); bad = true; }
             if (!email || !email.includes('@') || !email.includes('.')) { document.getElementById('g-email').classList.add('err'); bad = true; }
-            if (bad) { err.textContent = 'Name and valid email required.'; err.style.display = 'block'; return; }
+            if (!revenueRange) { document.getElementById('g-revenue').classList.add('err'); bad = true; }
+            if (bad) { err.textContent = 'Name, email, and revenue range required.'; err.style.display = 'block'; return; }
 
             // Unlock immediately — don't make user wait for network
             unlockResults();
@@ -2312,7 +2324,7 @@
             var payload = {
                 email: email,
                 first_name: name,
-                revenue_range: null,
+                revenue_range: revenueRange || null,
                 top_leak_1: rk.length > 0 ? rk[0].category : null,
                 top_leak_2: rk.length > 1 ? rk[1].category : null,
                 estimated_monthly_waste: results.totalMonthlyLeak || 0,
