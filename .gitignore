@@ -1,6 +1,11 @@
-.mcp.json
+﻿.mcp.json
 .env
 .claude/
 
 # Local Netlify folder
 .netlify
+
+# Toolkit dev artifacts — never deploy
+toolkit/files/*_DEMO.xlsx
+toolkit/files/_demo/
+toolkit/export-screenshots.ps1
