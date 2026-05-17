@@ -382,6 +382,42 @@
       .price-block { padding: 36px 20px; }
       .price-block .price { font-size: 56px; }
     }
+
+    /* Sticky mobile bottom-bar CTA */
+    .sticky-cta {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .sticky-cta {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 200;
+        background: var(--navy);
+        border-top: 1px solid var(--gold);
+        padding: 12px 16px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.3);
+        transition: transform 0.25s ease;
+      }
+      .sticky-cta.hidden { transform: translateY(110%); }
+      .sticky-cta .label {
+        color: var(--white); font-size: 14px; font-weight: 600;
+        line-height: 1.2;
+      }
+      .sticky-cta .label span {
+        color: var(--gold); font-size: 12px; font-weight: 400; display: block;
+      }
+      .sticky-cta a {
+        background: var(--gold); color: var(--navy);
+        padding: 12px 18px; border-radius: 4px;
+        font-weight: 700; font-size: 14px;
+        text-decoration: none; white-space: nowrap;
+      }
+      body { padding-bottom: 72px; }
+    }
   </style>
 </head>
 
@@ -607,6 +643,17 @@
   </div>
 </section>
 
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Not ready to buy?</div>
+    <h2>Get one system that works, every Tuesday.</h2>
+    <p class="lead">If $47 is too much today, that is fair. Drop your email and I will send you 64°N Weekly — one practical system per week, written from Dawson City. No fluff. No upsells. Unsubscribe in one click.</p>
+    <div class="kit-embed-wrapper" style="margin-top: 32px; max-width: 560px;">
+      <script async data-uid="9a2edbd396" src="https://christian-thegrumpychef-ca.kit.com/9a2edbd396/index.js"></script>
+    </div>
+  </div>
+</section>
+
 <section class="final" style="border-bottom: 0;">
   <div class="container">
     <div class="section-eyebrow">One last thing</div>
@@ -622,9 +669,15 @@
       <strong style="color: var(--white);">P.S.</strong> 64°N Weekly lands every Tuesday. One system that works. <a href="/newsletter.html?utm_source=site&utm_medium=toolkit_footer&utm_campaign=cta_footer_newsletter">Subscribe →</a>
     </div>
     <div class="footer-ps" style="margin-top: 16px;">
+      <strong style="color: var(--white);">Ready for the full walkthrough?</strong> The 72-Hour Profit Sprint is the guided 3-day diagnostic built around these tools. <a href="/kit.html?utm_source=site&utm_medium=toolkit_footer&utm_campaign=toolkit_to_kit">See the $197 Sprint →</a>
+    </div>
+    <div class="footer-ps" style="margin-top: 16px;">
       <strong style="color: var(--white);">Already bought the toolkit?</strong> Want a 20-minute walkthrough of where YOUR numbers are bleeding? <a href="https://calendly.com/thegrumpychef/20min?utm_source=site&utm_medium=toolkit_footer&utm_campaign=toolkit_to_call">Book a free call →</a>
     </div>
-    <div>
+    <div class="footer-ps" style="margin-top: 16px;">
+      ♻️ <strong style="color: var(--white);">Know an operator bleeding money?</strong> Send them this page. The cost of one bad week pays for the toolkit twice over.
+    </div>
+    <div style="margin-top: 24px;">
       <a href="/">Home</a> ·
       <a href="/about.html">About</a> ·
       <a href="/leak?utm_source=site&utm_medium=toolkit_footer&utm_campaign=leak_diagnosis">Free Profit Leak Calculator</a> ·
@@ -633,6 +686,11 @@
     <p style="margin-top: 24px; font-size: 13px;">© The Grumpy Chef · Christian Schiffner · Dawson City, Yukon</p>
   </div>
 </footer>
+
+<div class="sticky-cta" id="sticky-cta" aria-label="Buy the toolkit">
+  <div class="label">The Operator's Toolkit<span>$47 CAD · instant download</span></div>
+  <a href="https://buy.stripe.com/bJefZi3LgcRcaNpbJvfAc02?utm_source=site&utm_medium=toolkit&utm_campaign=toolkit_47_sticky">Get it →</a>
+</div>
 
 <div class="lightbox" id="lightbox">
   <img id="lightbox-img" alt="" aria-hidden="true" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=">
@@ -654,6 +712,27 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') lb.classList.remove('open');
   });
+})();
+
+// Sticky mobile CTA: hide when hero CTA or pricing/final CTA is in view (avoid double-up)
+(function() {
+  var sticky = document.getElementById('sticky-cta');
+  if (!sticky || !('IntersectionObserver' in window)) return;
+  var heroCta = document.querySelector('.hero .btn-buy');
+  var buySection = document.getElementById('buy');
+  var finalSection = document.querySelector('section.final');
+  var visibleCount = 0;
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) visibleCount++;
+      else visibleCount = Math.max(0, visibleCount - 1);
+    });
+    if (visibleCount > 0) sticky.classList.add('hidden');
+    else sticky.classList.remove('hidden');
+  }, { threshold: 0.1 });
+  [heroCta, buySection, finalSection].forEach(function(el) { if (el) io.observe(el); });
+  // Start hidden until user scrolls past hero
+  sticky.classList.add('hidden');
 })();
 </script>
 
