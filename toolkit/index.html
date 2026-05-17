@@ -721,13 +721,13 @@
   var heroCta = document.querySelector('.hero .btn-buy');
   var buySection = document.getElementById('buy');
   var finalSection = document.querySelector('section.final');
-  var visibleCount = 0;
+  var visible = new Set();
   var io = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
-      if (e.isIntersecting) visibleCount++;
-      else visibleCount = Math.max(0, visibleCount - 1);
+      if (e.isIntersecting) visible.add(e.target);
+      else visible.delete(e.target);
     });
-    if (visibleCount > 0) sticky.classList.add('hidden');
+    if (visible.size > 0) sticky.classList.add('hidden');
     else sticky.classList.remove('hidden');
   }, { threshold: 0.1 });
   [heroCta, buySection, finalSection].forEach(function(el) { if (el) io.observe(el); });
