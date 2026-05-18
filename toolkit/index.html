@@ -91,7 +91,8 @@
           { "@type": "Question", "name": "Does this replace my accountant?", "acceptedAnswer": { "@type": "Answer", "text": "No. This is an operating toolkit, not accounting advice. Your accountant tells you what happened. These tools help you manage what is happening while you can still fix it." } },
           { "@type": "Question", "name": "Is this for restaurants only?", "acceptedAnswer": { "@type": "Answer", "text": "It is built for restaurants, but it also works for food trucks, cafes, catering operations, ghost kitchens, pop-ups, and small hospitality businesses." } },
           { "@type": "Question", "name": "Will this work in Google Sheets?", "acceptedAnswer": { "@type": "Answer", "text": "The toolkit is built as Excel workbooks. Some files may open in Google Sheets, but Excel is the recommended format for best results." } },
-          { "@type": "Question", "name": "How fast can I use it?", "acceptedAnswer": { "@type": "Answer", "text": "You can start the same day. The fastest first step is to cost one recipe, run one weekly prime cost check, or compare 10 common vendor items." } }
+          { "@type": "Question", "name": "How fast can I use it?", "acceptedAnswer": { "@type": "Answer", "text": "You can start the same day. The fastest first step is to cost one recipe, run one weekly prime cost check, or compare 10 common vendor items." } },
+          { "@type": "Question", "name": "Is this just ChatGPT spreadsheets?", "acceptedAnswer": { "@type": "Answer", "text": "No. Every calculator is built around numbers a working kitchen actually generates — yield loss, Q-factor, par levels by usage pattern, vendor switching savings, real prime cost weighted by sales mix. AI templates skip the parts that matter because the model has never worked a service." } }
         ]
       }
     ]
@@ -322,7 +323,7 @@
     .col-card.for li::before { content: "✓"; color: var(--gold); flex-shrink: 0; font-weight: 700; }
     .col-card.not li::before { content: "✗"; color: var(--red); flex-shrink: 0; font-weight: 700; }
 
-    .bonus {
+    .bonus, .creds {
       background: var(--navy-card);
       border: 1px solid var(--gold-border);
       border-radius: 8px; padding: 40px;
@@ -333,6 +334,15 @@
       content: "BONUS";
       position: absolute; top: -12px; left: 32px;
       background: var(--gold); color: var(--navy);
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.15em; padding: 4px 12px; border-radius: 3px;
+      font-weight: 700;
+    }
+    .creds::before {
+      content: "BUILT BY";
+      position: absolute; top: -12px; left: 32px;
+      background: var(--navy); color: var(--gold);
+      border: 1px solid var(--gold-border);
       font-family: var(--font-mono); font-size: 11px;
       letter-spacing: 0.15em; padding: 4px 12px; border-radius: 3px;
       font-weight: 700;
@@ -604,9 +614,9 @@
 
 <section>
   <div class="container">
-    <div class="bonus">
-      <h3 style="margin-top: 12px;">BONUS: The 15-Minute Menu Psychology Audit</h3>
-      <p>Most menus are built around what the owner likes — not what guests notice first, understand fastest, or buy most profitably. This checklist gives you a quick score and shows what to fix. Included free with the toolkit.</p>
+    <div class="creds">
+      <h3 style="margin-top: 0;">Built by a chef who has lived these numbers for 20 years.</h3>
+      <p>Christian Schiffner is a German Küchenmeister — Master Chef — with two decades across Germany, Switzerland, Austria, Spain, and Canada. Now running The Grumpy Chef from Dawson City, Yukon. He has worked the line, run the books, and rebuilt P&amp;L from the floor up. These are the same calculators he uses with operators today. Not theory. Not borrowed from a textbook. Built from the scars.</p>
     </div>
   </div>
 </section>
@@ -617,6 +627,7 @@
     <h2>One small leak can pay for the toolkit.</h2>
     <p class="lead">If one vendor item is overpriced, one menu item is underpriced, one delivery platform is unprofitable, or one waste habit keeps repeating — CAD 47 is not the problem.</p>
     <p class="lead">The problem is not knowing.</p>
+    <p class="lead" style="margin-top: 24px;">A consultant charges $3,500 a month to find these leaks for you. The toolkit hands you the same calculators for $47, once. Use them as many times as you want.</p>
 
     <div class="price-block">
       <div class="price">$47</div>
@@ -659,6 +670,10 @@
       <div class="faq-item">
         <h4>How fast can I use it?</h4>
         <p>You can start the same day. The fastest first step is to cost one recipe, run one weekly prime cost check, or compare 10 common vendor items.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is this just ChatGPT spreadsheets?</h4>
+        <p>No. Every calculator is built around numbers a working kitchen actually generates — yield loss, Q-factor, par levels by usage pattern, vendor switching savings, real prime cost weighted by sales mix. AI templates skip the parts that matter because the model has never had a cook walk out mid-service or a delivery platform quietly take 32%. These came from running the line.</p>
       </div>
       <div class="faq-item">
         <h4>What about the 72-Hour Profit Sprint?</h4>
