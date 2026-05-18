@@ -197,7 +197,7 @@ body {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  font-size: clamp(2.75rem, 5vw, 4.25rem);
   font-weight: 900;
   line-height: 0.95;
   margin-bottom: 1.5rem;
@@ -661,6 +661,62 @@ body {
 }
 </style>
 <script src="/js/mobile-fixes.js" defer></script>
+<script>
+// Newsletter attribution: capture UTMs into Kit forms + fire GA4 conversion event on submit.
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var utms = {
+    utm_source:   params.get('utm_source')   || '',
+    utm_medium:   params.get('utm_medium')   || '',
+    utm_campaign: params.get('utm_campaign') || '',
+    utm_content:  params.get('utm_content')  || ''
+  };
+
+  function injectHidden(form){
+    if (form.dataset.utmInjected === '1') return;
+    Object.keys(utms).forEach(function(k){
+      if (!utms[k]) return;
+      if (form.querySelector('input[name="fields['+k+']"]')) return;
+      var input = document.createElement('input');
+      input.type  = 'hidden';
+      input.name  = 'fields['+k+']';
+      input.value = utms[k];
+      form.appendChild(input);
+    });
+    form.dataset.utmInjected = '1';
+  }
+
+  function wireForm(form){
+    injectHidden(form);
+    if (form.dataset.gaWired === '1') return;
+    form.addEventListener('submit', function(){
+      if (typeof gtag === 'function') {
+        gtag('event', 'newsletter_signup', {
+          form_id: '9a2edbd396',
+          utm_source:   utms.utm_source   || '(none)',
+          utm_medium:   utms.utm_medium   || '(none)',
+          utm_campaign: utms.utm_campaign || '(none)',
+          page_location: window.location.href
+        });
+      }
+    }, { once: false });
+    form.dataset.gaWired = '1';
+  }
+
+  function start(){
+    document.querySelectorAll('form.formkit-form').forEach(wireForm);
+    var observer = new MutationObserver(function(){
+      document.querySelectorAll('form.formkit-form').forEach(wireForm);
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+</script>
   <link rel="stylesheet" href="/css/a11y.css">
 </head>
 <body>
@@ -680,16 +736,13 @@ body {
     <h1 class="hero-title">64°N<br><em>Weekly</em></h1>
     <div class="hero-line"></div>
     <p class="hero-lead">
-      Your inbox has enough motivational garbage.<br>
-      <strong>This is different.</strong>
+      Your inbox has enough motivational garbage. <strong>This is different.</strong> One story, one system, every Tuesday — from the most remote kitchen in North America.
     </p>
-    <p class="hero-lead">
-      One story about what breaks people — in kitchens and in life. One system that stops it from happening again. Written from the most remote kitchen in North America by someone who lost everything and rebuilt it with systems, not hustle.
-    </p>
-    <p class="hero-grunt">Because hope isn't a strategy.</p>
     <div class="form-wrap">
       <script async data-uid="9a2edbd396" src="https://christian-thegrumpychef-ca.kit.com/9a2edbd396/index.js"></script>
     </div>
+    <p class="form-proof" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); opacity:0.75; margin-top:14px;">Küchenmeister · 20 years · $370K rebuilt from zero</p>
+    <p class="hero-grunt" style="margin-top:18px; margin-bottom:0;">Because hope isn't a strategy.</p>
     <p class="form-note">No spam · No fluff · Unsubscribe anytime</p>
     <p class="form-microcopy" style="font-size:12px; line-height:1.4; opacity:0.65; margin-top:6px; max-width:320px;">One email per week. Unsubscribe anytime. See our <a href="/privacy.html" style="color:inherit; text-decoration:underline;">privacy policy</a>.</p>
   </div>
