@@ -35,7 +35,11 @@
         "name": "The Restaurant Profit Leak Toolkit",
         "description": "Eight chef-built Excel calculators for independent restaurant operators to find profit leaks in food cost, labor, waste, delivery, vendors, menu pricing, and par levels.",
         "url": "https://thegrumpychef.ca/toolkit/",
-        "image": "https://thegrumpychef.ca/images/Kitchen1.jpg",
+        "image": [
+          "https://thegrumpychef.ca/toolkit/files/screenshots/01-recipe-costing.png",
+          "https://thegrumpychef.ca/toolkit/files/screenshots/02-prime-cost.png",
+          "https://thegrumpychef.ca/toolkit/files/screenshots/03-menu-matrix.png"
+        ],
         "brand": { "@type": "Brand", "name": "The Grumpy Chef" },
         "author": {
           "@type": "Person",
@@ -45,10 +49,31 @@
         },
         "offers": {
           "@type": "Offer",
+          "url": "https://thegrumpychef.ca/toolkit/#buy",
           "price": "47",
           "priceCurrency": "CAD",
+          "priceValidUntil": "2027-12-31",
           "availability": "https://schema.org/InStock",
-          "seller": { "@type": "Organization", "name": "The Grumpy Chef", "url": "https://thegrumpychef.ca" }
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": { "@type": "Organization", "name": "The Grumpy Chef", "url": "https://thegrumpychef.ca" },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "CA",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "CAD" },
+            "shippingDestination": { "@type": "DefinedRegion", "geoMidpoint": { "@type": "GeoCoordinates", "latitude": "0", "longitude": "0" } },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY" }
+            }
+          }
         },
         "category": "Restaurant Operations"
       },
