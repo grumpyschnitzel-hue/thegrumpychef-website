@@ -1709,6 +1709,21 @@
                 // Block 5: Soft Next Steps
                 html += '<section class="results-block result-next no-print"><div class="container">';
                 html += '<p>Check your inbox \u2014 we\'ve sent your first recommendation based on your score.</p>';
+
+                // Discovery call CTA \u2014 surface for all scorers, framed to match score level.
+                var callBlurb = scores.bestPracticeScore >= 60
+                    ? 'You\'ve got real foundations. The remaining $' + scores.leakEstimate.toLocaleString('en-US') + ' is hiding in places a scorecard can\'t see. Want to look at it together?'
+                    : 'Your score points at where the leak likely is. Want a second pair of eyes on the specific number before you start fixing things?';
+                html += '<div style="margin: 32px 0; padding: 28px 24px; background: rgba(212, 175, 55, 0.07); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 8px; text-align: center;">';
+                html += '<h3 style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #D4AF37; margin: 0 0 12px;">Book a 20-minute call</h3>';
+                html += '<p style="font-size: 0.95rem; color: #B8BEC8; line-height: 1.55; margin: 0 0 20px;">' + callBlurb + '</p>';
+                html += '<a href="https://calendly.com/thegrumpychef/20min?utm_source=site&utm_medium=readiness_scorecard&utm_campaign=scorecard_to_call" ';
+                html += 'style="display: inline-block; padding: 14px 28px; background: #D4AF37; color: #0A1628; font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; text-decoration: none; border-radius: 6px;" ';
+                html += 'onclick="if(typeof gtag===\'function\'){gtag(\'event\',\'calendly_click\',{event_category:\'conversion\',tool:\'readiness-scorecard\',score:' + scores.bestPracticeScore + '});}">';
+                html += 'Pick a Time &rarr;</a>';
+                html += '<p style="margin-top: 14px; font-size: 0.8rem; color: #B8BEC8; opacity: 0.7;">Free \u2022 20 minutes \u2022 No sales pitch</p>';
+                html += '</div>';
+
                 html += buildNextStepLinks(scores);
                 html += '<p class="contact-line">Questions? <a href="mailto:chris@thegrumpychef.ca">chris@thegrumpychef.ca</a> | <a href="https://thegrumpychef.ca">thegrumpychef.ca</a></p>';
                 html += '</div></section>';
