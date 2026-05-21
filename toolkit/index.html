@@ -347,6 +347,34 @@
       letter-spacing: 0.15em; padding: 4px 12px; border-radius: 3px;
       font-weight: 700;
     }
+    .upsell {
+      background: var(--navy-card);
+      border: 1px solid var(--gold-border);
+      border-radius: 8px; padding: 40px;
+      margin-top: 32px;
+      position: relative;
+    }
+    .upsell::before {
+      content: "NEXT STEP";
+      position: absolute; top: -12px; left: 32px;
+      background: var(--gold); color: var(--navy);
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.15em; padding: 4px 12px; border-radius: 3px;
+      font-weight: 700;
+    }
+    .upsell h3 { color: var(--white); margin-bottom: 16px; }
+    .upsell p { margin-bottom: 24px; }
+    .upsell-cta {
+      display: inline-block;
+      padding: 14px 28px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--font-mono); font-weight: 600; font-size: 14px;
+      letter-spacing: 0.04em;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .upsell-cta:hover { background: var(--gold); color: var(--navy); }
 
     .price-block {
       background: var(--navy-card);
@@ -690,6 +718,16 @@
     <p class="lead">If $47 is too much today, that is fair. Drop your email and I will send you 64°N Weekly — one practical system per week, written from Dawson City. No fluff. No upsells. Unsubscribe in one click.</p>
     <div class="kit-embed-wrapper" style="margin-top: 32px; max-width: 560px;">
       <script async data-uid="9a2edbd396" src="https://christian-thegrumpychef-ca.kit.com/9a2edbd396/index.js"></script>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="upsell">
+      <h3 style="margin-top: 0;">Want the guided 3-day walkthrough instead of just the spreadsheets?</h3>
+      <p>The 72-Hour Profit Sprint is the same 8 calculators wrapped in a 3-day diagnostic protocol — daily audio walkthroughs, structured worksheets, and a Find-a-Leak Guarantee. For operators who want to be told exactly what to do on Day 1, Day 2, Day 3. Same tools. Guided. $197 CAD.</p>
+      <a href="/kit.html?utm_source=site&utm_medium=toolkit_upsell&utm_campaign=toolkit_to_kit_inline" class="upsell-cta">See the $197 Sprint →</a>
     </div>
   </div>
 </section>
