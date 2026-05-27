@@ -624,8 +624,8 @@ body {
   }
 
   .hero-right {
-    height: 320px;
-    order: -1;
+    height: 240px;
+    order: 2;
   }
 
   .hero-right::after {
@@ -633,8 +633,15 @@ body {
   }
 
   .hero-left {
-    padding: 40px 24px 60px;
+    order: 1;
+    padding: 24px 24px 40px;
   }
+
+  .hero-left .location-tag { margin-bottom: 1rem; }
+  .hero-left .hero-kicker { margin-bottom: 0.5rem; }
+  .hero-title { margin-bottom: 1rem; }
+  .hero-line { margin-bottom: 1rem; }
+  .hero-lead { font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; }
 
   .hero-left::after { display: none; }
 
@@ -686,8 +693,28 @@ body {
     form.dataset.utmInjected = '1';
   }
 
+  function patchInputs(form){
+    if (form.dataset.inputsPatched === '1') return;
+    var email = form.querySelector('input[name="email_address"]');
+    if (email && email.type !== 'email') {
+      email.type = 'email';
+      email.setAttribute('inputmode', 'email');
+      email.setAttribute('autocomplete', 'email');
+      email.setAttribute('autocapitalize', 'off');
+      email.setAttribute('spellcheck', 'false');
+    }
+    var firstName = form.querySelector('input[name="fields[first_name]"]');
+    if (firstName) firstName.setAttribute('autocomplete', 'given-name');
+    var btnLabel = form.querySelector('button[data-element="submit"] span');
+    if (btnLabel && btnLabel.textContent.trim() === 'Subscribe') {
+      btnLabel.textContent = "Send me Tuesday's system";
+    }
+    form.dataset.inputsPatched = '1';
+  }
+
   function wireForm(form){
     injectHidden(form);
+    patchInputs(form);
     if (form.dataset.gaWired === '1') return;
     form.addEventListener('submit', function(){
       if (typeof gtag === 'function') {
