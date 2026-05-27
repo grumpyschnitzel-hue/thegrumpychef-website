@@ -381,6 +381,101 @@
         }
 
         /* ============================================
+           HERO SLIDER (pre-qualifier)
+           ============================================ */
+        .hero__slider {
+            max-width: 540px;
+            margin: 36px auto 0;
+            padding: 24px 24px 20px;
+            background: var(--navy-card);
+            border: 1px solid var(--gold-border);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .hero__slider-label {
+            font-size: 14px;
+            color: var(--white-dim);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+        .hero__slider-label strong {
+            color: var(--gold);
+            font-family: var(--font-mono);
+            font-weight: 600;
+            font-size: 17px;
+        }
+        #hero-revenue-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: var(--navy);
+            border: 1px solid var(--navy-border);
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+        }
+        #hero-revenue-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 26px;
+            height: 26px;
+            background: var(--gold);
+            border: 3px solid var(--navy-card);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 0 1px var(--gold-border), 0 4px 12px rgba(0,0,0,0.4);
+        }
+        #hero-revenue-slider::-moz-range-thumb {
+            width: 26px;
+            height: 26px;
+            background: var(--gold);
+            border: 3px solid var(--navy-card);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 0 1px var(--gold-border), 0 4px 12px rgba(0,0,0,0.4);
+        }
+        .hero__slider-marks {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 10px;
+            font-family: var(--font-mono);
+            color: var(--gray-dark);
+            letter-spacing: 0.3px;
+        }
+        .hero__slider-cta {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 14px 20px;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.15s, opacity 0.2s;
+        }
+        .hero__slider-cta:hover:not(:disabled) {
+            background: var(--white);
+        }
+        .hero__slider-cta:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .hero__slider-fine {
+            font-size: 11px;
+            color: var(--gray);
+            margin-top: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ============================================
            INTRO
            ============================================ */
         .intro {
@@ -1784,7 +1879,18 @@
                 <h1 class="hero__title" style="text-transform: none; font-size: clamp(28px, 4.5vw, 42px); letter-spacing: 0; line-height: 1.15;">The average independent restaurant leaks <strong>$4,000&ndash;$12,000</strong><sup><a href="#sources" style="color:#D4AF37; text-decoration:none; font-size:0.6em; vertical-align:super;">[1]</a></sup> a month and never sees it.<br>This shows you yours.</h1>
                 <p class="hero__sub" style="max-width: 640px; margin-left: auto; margin-right: auto;">Built by a Küchenmeister with 20 years across El Paradiso, Capella, and Schloss Velden &mdash; now running the most remote consultancy in North America. <strong>90 seconds. Free.</strong></p>
             </div>
-            <a href="#calculator" class="hero__cta" id="hero-cta" style="margin-top: 32px;">Show Me My Leak &#8595;</a>
+            <!-- Pre-qualifier slider: first input above the fold -->
+            <div class="hero__slider" id="hero-slider-wrap">
+                <div class="hero__slider-label">Your restaurant does roughly <strong id="slider-value">$80,000</strong>/month in revenue</div>
+                <input type="range" id="hero-revenue-slider" min="0" max="6" step="1" value="2" aria-label="Monthly revenue selector">
+                <div class="hero__slider-marks">
+                    <span>$40K</span><span>$60K</span><span>$80K</span><span>$120K</span><span>$200K</span><span>$300K</span><span>$500K+</span>
+                </div>
+                <button type="button" class="hero__slider-cta" id="hero-cta" disabled>
+                    <span id="hero-cta-label">Move the slider to see your leak</span>
+                </button>
+                <div class="hero__slider-fine">90 seconds. 9 categories. No email until you see the figure.</div>
+            </div>
         </div>
     </header>
 
@@ -2556,10 +2662,49 @@
         // Step 1: page viewed
         ga4('page_viewed');
 
-        // Step 2: hero CTA clicked
+        // Step 2: hero CTA clicked + revenue slider pre-qualifier
         var heroCta = document.getElementById('hero-cta');
+        var heroSlider = document.getElementById('hero-revenue-slider');
+        var heroSliderValue = document.getElementById('slider-value');
+        var heroCtaLabel = document.getElementById('hero-cta-label');
+        var sliderBands = [40000, 60000, 80000, 120000, 200000, 300000, 500000];
+        var sliderLabels = ['$40,000', '$60,000', '$80,000', '$120,000', '$200,000', '$300,000', '$500,000+'];
+        var sliderMoved = false;
+
+        function fmtAnnual(monthly) {
+            // Conservative leak estimate: 5% of annual revenue (midpoint of the $4K-$12K/mo band for an $80K/mo restaurant)
+            var annualLeak = Math.round(monthly * 12 * 0.05 / 100) * 100;
+            return '$' + annualLeak.toLocaleString('en-US');
+        }
+
+        function syncSlider() {
+            var idx = parseInt(heroSlider.value, 10);
+            var monthly = sliderBands[idx];
+            heroSliderValue.textContent = sliderLabels[idx];
+            heroCtaLabel.textContent = 'Show me my ' + fmtAnnual(monthly) + '/yr leak →';
+            heroCta.disabled = false;
+            // Pre-fill the existing revenue field so the calculator already knows
+            var revField = document.getElementById('monthly-revenue');
+            if (revField) {
+                revField.value = '$' + monthly.toLocaleString('en-US');
+                if (typeof handleRevenue === 'function') handleRevenue();
+            }
+            if (!sliderMoved) {
+                sliderMoved = true;
+                ga4('revenue_slider_moved');
+            }
+        }
+
+        if (heroSlider) {
+            heroSlider.addEventListener('input', syncSlider);
+        }
         if (heroCta) {
-            heroCta.addEventListener('click', function () { ga4('cta_clicked'); });
+            heroCta.addEventListener('click', function () {
+                ga4('cta_clicked');
+                if (!sliderMoved) return;
+                var target = document.getElementById('calculator');
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
         }
 
         // Step 3: calculator started — fires on first interaction with revenue input or any checkbox
