@@ -395,7 +395,7 @@
         .hero__slider-label {
             font-size: 14px;
             color: var(--white-dim);
-            margin-bottom: 14px;
+            margin-bottom: 4px;
             line-height: 1.5;
         }
         .hero__slider-label strong {
@@ -403,6 +403,14 @@
             font-family: var(--font-mono);
             font-weight: 600;
             font-size: 17px;
+        }
+        .hero__slider-leak {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(34px, 9vw, 46px);
+            line-height: 1.05;
+            color: var(--gold);
+            margin-bottom: 18px;
         }
         #hero-revenue-slider {
             -webkit-appearance: none;
@@ -1881,15 +1889,16 @@
             </div>
             <!-- Pre-qualifier slider: first input above the fold -->
             <div class="hero__slider" id="hero-slider-wrap">
-                <div class="hero__slider-label">Your restaurant does roughly <strong id="slider-value">$80,000</strong>/month in revenue</div>
+                <div class="hero__slider-label">A <strong id="slider-value">$80,000</strong>/mo restaurant bleeds about</div>
+                <div class="hero__slider-leak" id="hero-leak-num">$48,000 / year</div>
                 <input type="range" id="hero-revenue-slider" min="0" max="6" step="1" value="2" aria-label="Monthly revenue selector">
                 <div class="hero__slider-marks">
                     <span>$40K</span><span>$60K</span><span>$80K</span><span>$120K</span><span>$200K</span><span>$300K</span><span>$500K+</span>
                 </div>
-                <button type="button" class="hero__slider-cta" id="hero-cta" disabled>
-                    <span id="hero-cta-label">Move the slider to see your leak</span>
+                <button type="button" class="hero__slider-cta" id="hero-cta">
+                    <span id="hero-cta-label">Show me my $48,000/yr leak &rarr;</span>
                 </button>
-                <div class="hero__slider-fine">90 seconds. 9 categories. No email until you see the figure.</div>
+                <div class="hero__slider-fine">Drag to match your revenue. 90 seconds, 9 categories, no email until you see your figure.</div>
             </div>
         </div>
     </header>
@@ -2667,6 +2676,7 @@
         var heroSlider = document.getElementById('hero-revenue-slider');
         var heroSliderValue = document.getElementById('slider-value');
         var heroCtaLabel = document.getElementById('hero-cta-label');
+        var heroLeakNum = document.getElementById('hero-leak-num');
         var sliderBands = [40000, 60000, 80000, 120000, 200000, 300000, 500000];
         var sliderLabels = ['$40,000', '$60,000', '$80,000', '$120,000', '$200,000', '$300,000', '$500,000+'];
         var sliderMoved = false;
@@ -2677,18 +2687,31 @@
             return '$' + annualLeak.toLocaleString('en-US');
         }
 
-        function syncSlider() {
+        function currentMonthly() {
+            return sliderBands[parseInt(heroSlider.value, 10)] || sliderBands[2];
+        }
+
+        // Display only — label + big leak figure. No event, no revenue pre-fill.
+        function renderHero() {
             var idx = parseInt(heroSlider.value, 10);
             var monthly = sliderBands[idx];
             heroSliderValue.textContent = sliderLabels[idx];
+            if (heroLeakNum) heroLeakNum.textContent = fmtAnnual(monthly) + ' / year';
             heroCtaLabel.textContent = 'Show me my ' + fmtAnnual(monthly) + '/yr leak →';
-            heroCta.disabled = false;
-            // Pre-fill the existing revenue field so the calculator already knows
+        }
+
+        // Push the chosen band into the calculator's revenue field.
+        function prefillRevenue(monthly) {
             var revField = document.getElementById('monthly-revenue');
             if (revField) {
                 revField.value = '$' + monthly.toLocaleString('en-US');
                 if (typeof handleRevenue === 'function') handleRevenue();
             }
+        }
+
+        function syncSlider() {
+            renderHero();
+            prefillRevenue(currentMonthly());
             if (!sliderMoved) {
                 sliderMoved = true;
                 ga4('revenue_slider_moved');
@@ -2696,12 +2719,14 @@
         }
 
         if (heroSlider) {
+            renderHero(); // CTA is active on load with a real figure already showing
             heroSlider.addEventListener('input', syncSlider);
         }
         if (heroCta) {
             heroCta.addEventListener('click', function () {
                 ga4('cta_clicked');
-                if (!sliderMoved) return;
+                // Carry the shown figure into the calculator even if they never dragged.
+                prefillRevenue(currentMonthly());
                 var target = document.getElementById('calculator');
                 if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
