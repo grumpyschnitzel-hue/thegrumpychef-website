@@ -1554,7 +1554,7 @@
             function buildNextStepLinks(scores) {
                 var html = '<div class="next-links">';
                 var hasLinks = false;
-                if (scores.operationalControl < 50) { html += '<a href="/leak" class="next-link">Try the Profit Leak Calculator &rarr;</a>'; hasLinks = true; }
+                if (scores.operationalControl < 50) { html += '<a href="/leak?utm_source=readiness&amp;utm_medium=result&amp;utm_campaign=readiness_result_leak" class="next-link">Try the Profit Leak Calculator &rarr;</a>'; hasLinks = true; }
                 if (scores.growthReadiness < 67) { html += '<a href="/blog/" class="next-link">Read: How to price your menu with data &rarr;</a>'; hasLinks = true; }
                 if (scores.ownerDependency < 67) { html += '<a href="/offers.html" class="next-link">Explore the 21-Day Protocol &rarr;</a>'; hasLinks = true; }
                 if (!hasLinks) html += '<a href="/offers.html" class="next-link">Explore more free tools &rarr;</a>';
