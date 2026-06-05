@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit Recovery Engagement | The Grumpy Chef</title>
+    <meta name="description" content="21 days. Find the leak. Plug it. Keep the place. A diagnostic and install for restaurant operators in a trigger event — bad month, walkout, accountant shock, supplier hike, or pre-second-location.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Profit Recovery Engagement | The Grumpy Chef">
+    <meta property="og:description" content="21 days. Diagnostic, install, pressure-test. For operators in a trigger event who need the bleed stopped before the season ends.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thegrumpychef.ca/recovery">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Profit Recovery Engagement",
+        "description": "A 21-day diagnostic and install for independent restaurant operators in a trigger event. Find the structural leak, install the system that stops it, pressure-test the system before the operator runs it alone.",
+        "provider": {
+            "@type": "Person",
+            "name": "Christian Schiffner",
+            "jobTitle": "Restaurant Systems Consultant"
+        },
+        "areaServed": "North America",
+        "offers": {
+            "@type": "Offer",
+            "price": "3500",
+            "priceCurrency": "CAD",
+            "availability": "https://schema.org/LimitedAvailability"
+        }
+    }
+    </script>
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="canonical" href="https://thegrumpychef.ca/recovery">
+    <script src="/js/analytics.js"></script>
+
+    <style>
+        /* === NAV (matches site) === */
+        .nav { background: #0A1628; padding: 16px 24px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #1A2D4D; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-family: 'Helvetica Neue', 'Arial', sans-serif; font-size: 1.2rem; font-weight: 700; color: #F5F5F0; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-logo span { color: #D4AF37; }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a { color: #B8BEC8; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; text-decoration: none; }
+        .nav-links a:hover, .nav-links a.active { color: #D4AF37; }
+        .nav-cta { background: #D4AF37 !important; color: #0A1628 !important; padding: 8px 20px; border-radius: 6px; font-weight: 700 !important; }
+        .nav-toggle { display: none; background: none; border: none; color: #D4AF37; font-size: 1.5rem; cursor: pointer; }
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #111E35; flex-direction: column; padding: 20px 24px; gap: 16px; }
+            .nav-links.active { display: flex; }
+        }
+
+        /* === BASE === */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --gold: #D4AF37;
+            --navy: #0A1628;
+            --warm-brown: #8B6914;
+            --dark-brown: #6B4423;
+            --cream: #F5F5F0;
+            --white: #FFFFFF;
+            --red: #B23A3A;
+            --text-dark: #1a1a1a;
+            --text-mid: #4a4a4a;
+            --text-light: #6b6b6b;
+        }
+
+        html { font-size: 16px; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        .container-wide { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+        section { padding: 64px 0; }
+
+        /* === HERO === */
+        .hero { background: var(--navy); color: var(--cream); padding: 80px 0 64px; text-align: center; }
+        .hero-label { display: inline-block; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+        .hero h1 { font-size: 2.4rem; color: var(--white); margin-bottom: 20px; }
+        .hero-sub { font-size: 1.15rem; color: #b0b8c8; max-width: 580px; margin: 0 auto 32px; }
+        .hero-line { font-size: 1.35rem; color: var(--gold); font-style: italic; margin-bottom: 40px; }
+
+        .cta-btn {
+            display: inline-block; background: var(--gold); color: var(--navy);
+            font-family: 'Helvetica Neue', sans-serif; font-size: 1rem; font-weight: 700;
+            padding: 16px 40px; border: none; cursor: pointer; text-decoration: none;
+            letter-spacing: 0.02em; transition: background 0.2s;
+        }
+        .cta-btn:hover { background: var(--warm-brown); color: var(--white); }
+        .cta-btn[disabled] { background: #8a8a8a; cursor: not-allowed; }
+        .cta-note { display: block; font-size: 0.8rem; color: #8090a8; margin-top: 12px; }
+
+        /* === TRIGGER (who this is for) === */
+        .trigger { background: var(--white); border-bottom: 1px solid #e0ddd5; }
+        .trigger h2 { font-size: 1.6rem; color: var(--navy); margin-bottom: 16px; }
+        .trigger > .container > p { font-size: 1.05rem; color: var(--text-mid); margin-bottom: 24px; }
+        .trigger-list { list-style: none; margin: 24px 0; padding: 0; }
+        .trigger-list li { font-size: 1rem; color: var(--text-mid); padding: 10px 0 10px 28px; position: relative; border-top: 1px solid #ece9e0; }
+        .trigger-list li:first-child { border-top: none; }
+        .trigger-list li::before { content: "\2192"; position: absolute; left: 0; top: 10px; color: var(--gold); font-weight: 700; font-size: 1.1rem; }
+        .trigger-list li strong { color: var(--navy); font-family: 'Helvetica Neue', sans-serif; font-size: 0.9rem; letter-spacing: 0.04em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+
+        .trigger-notfor { background: var(--cream); padding: 24px; margin-top: 32px; border-left: 4px solid var(--text-light); font-size: 0.95rem; color: var(--text-mid); }
+        .trigger-notfor strong { color: var(--navy); }
+
+        /* === CASE STUDY === */
+        .case { background: var(--navy); color: var(--cream); }
+        .case-label { display: inline-block; font-family: 'Helvetica Neue', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+        .case h2 { font-size: 1.8rem; color: var(--white); margin-bottom: 12px; }
+        .case-sub { font-size: 1rem; color: #b0b8c8; margin-bottom: 40px; font-style: italic; }
+
+        .case-section { margin-bottom: 40px; }
+        .case-section h3 { font-size: 1.2rem; color: var(--gold); margin-bottom: 14px; font-family: 'Helvetica Neue', sans-serif; }
+        .case-section p { font-size: 1.02rem; color: #d0d6e0; margin-bottom: 14px; }
+        .case-section p strong { color: var(--cream); }
+
+        .case-table-wrap { margin: 24px 0; overflow-x: auto; }
+        .case-table { width: 100%; border-collapse: collapse; font-family: 'Helvetica Neue', sans-serif; font-size: 0.85rem; }
+        .case-table th, .case-table td { padding: 10px 8px; text-align: right; border-bottom: 1px solid #1f2d45; }
+        .case-table th { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.7rem; text-align: right; }
+        .case-table th:first-child, .case-table td:first-child { text-align: left; color: var(--cream); font-weight: 600; }
+        .case-table tr.season td { font-weight: 700; color: var(--gold); border-top: 2px solid var(--gold); border-bottom: none; padding-top: 14px; }
+        .case-table .red { color: #E67272; }
+
+        .case-takeaway { background: rgba(212, 175, 55, 0.08); border-left: 4px solid var(--gold); padding: 20px 24px; margin: 32px 0; }
+        .case-takeaway p { color: var(--cream); margin: 0; font-size: 1rem; }
+        .case-takeaway p strong { color: var(--gold); }
+
+        /* === WHAT YOU GET === */
+        .weeks { background: var(--cream); }
+        .weeks h2 { font-size: 1.6rem; color: var(--navy); margin-bottom: 12px; text-align: center; }
+        .weeks > .container > .weeks-sub { font-size: 1rem; color: var(--text-mid); text-align: center; margin-bottom: 40px; }
+        .week-card { background: var(--white); border-left: 4px solid var(--gold); padding: 28px 32px; margin-bottom: 20px; }
+        .week-label { font-family: 'Helvetica Neue', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+        .week-card h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 10px; }
+        .week-card p { font-size: 0.98rem; color: var(--text-mid); margin-bottom: 12px; }
+        .week-card ul { list-style: none; margin: 12px 0 0 0; padding: 0; }
+        .week-card ul li { font-size: 0.92rem; color: var(--text-mid); padding: 4px 0 4px 22px; position: relative; }
+        .week-card ul li::before { content: "\2022"; position: absolute; left: 8px; color: var(--gold); font-weight: 700; }
+
+        /* === PRICE === */
+        .price { background: var(--white); border-bottom: 1px solid #e0ddd5; text-align: center; }
+        .price h2 { font-size: 1.6rem; color: var(--navy); margin-bottom: 8px; }
+        .price-amount { font-family: 'Helvetica Neue', sans-serif; font-size: 3.2rem; font-weight: 700; color: var(--gold); margin: 16px 0 4px; line-height: 1; }
+        .price-currency { font-size: 1rem; color: var(--text-light); font-family: 'Helvetica Neue', sans-serif; letter-spacing: 0.08em; margin-bottom: 32px; }
+        .price-includes { background: var(--cream); padding: 28px; text-align: left; margin: 0 auto; max-width: 520px; }
+        .price-includes h3 { font-size: 0.85rem; color: var(--navy); font-family: 'Helvetica Neue', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+        .price-includes ul { list-style: none; padding: 0; margin: 0; }
+        .price-includes ul li { font-size: 0.98rem; color: var(--text-mid); padding: 6px 0 6px 22px; position: relative; }
+        .price-includes ul li::before { content: "\2713"; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+        .price-risk { max-width: 580px; margin: 32px auto 0; padding: 20px 24px; background: var(--cream); border-left: 4px solid var(--gold); text-align: left; font-size: 0.95rem; color: var(--text-mid); }
+        .price-risk strong { color: var(--navy); }
+
+        /* === APPLY === */
+        .apply { background: var(--navy); color: var(--cream); text-align: center; }
+        .apply h2 { font-size: 1.7rem; color: var(--white); margin-bottom: 16px; }
+        .apply > .container > p.apply-sub { font-size: 1.05rem; color: #b0b8c8; max-width: 560px; margin: 0 auto 40px; }
+
+        /* === FOOTER === */
+        .page-footer { background: var(--navy); color: #8090a8; padding: 32px 0; text-align: center; font-size: 0.85rem; border-top: 1px solid #1A2D4D; }
+        .page-footer a { color: var(--gold); text-decoration: none; }
+
+        /* === MOBILE === */
+        @media (max-width: 600px) {
+            .hero { padding: 56px 0 48px; }
+            .hero h1 { font-size: 1.85rem; }
+            .hero-sub { font-size: 1rem; }
+            .hero-line { font-size: 1.1rem; }
+            section { padding: 48px 0; }
+            .week-card { padding: 24px; }
+            .qualifier-form { padding: 24px 20px; }
+            .price-amount { font-size: 2.6rem; }
+            .case h2 { font-size: 1.5rem; }
+            .case-section h3 { font-size: 1.08rem; }
+            .case-table th, .case-table td { padding: 8px 6px; font-size: 0.78rem; }
+        }
+    </style>
+    <script src="/js/mobile-fixes.js" defer></script>
+    <link rel="stylesheet" href="/css/a11y.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">The Grumpy <span>Chef</span></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+            <div class="nav-links">
+                <a href="/about.html">My Story</a>
+                <a href="/recovery" class="active">Profit Recovery</a>
+                <a href="/offers.html">Work With Me</a>
+                <a href="/blog/">Blog</a>
+                <a href="/kit.html" class="nav-cta">Get the 72-Hour Sprint ($197 CAD)</a>
+            </div>
+        </div>
+    </nav>
+
+<main id="main">
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero-label">21-Day Profit Recovery Engagement</span>
+            <h1>Find the leak. Plug it. Keep the place.</h1>
+            <p class="hero-sub">For independent restaurant operators who just hit a trigger event &mdash; a bad month, a key hire walkout, an accountant meeting that didn't go the way they expected, a supplier price hike, or the lease for Location 2 sitting on the desk unsigned.</p>
+            <p class="hero-line">21 days. Diagnostic. Install. Pressure-test.</p>
+            <a href="#apply" class="cta-btn">Book a Discovery Call</a>
+            <span class="cta-note">20 minutes. No prep required.</span>
+        </div>
+    </section>
+
+    <!-- TRIGGER -->
+    <section class="trigger">
+        <div class="container">
+            <h2>This is for you if one of these landed this month.</h2>
+            <p>The Recovery Engagement is not a course, not a coaching call, not a community. It is twenty-one days where I sit inside your numbers, find the structural leak, install the system that stops it, and pressure-test the system before I leave.</p>
+
+            <ul class="trigger-list">
+                <li><strong>The bad month</strong>Sales were up. The P&amp;L came back negative anyway. You stared at it for an hour before you understood what you'd done.</li>
+                <li><strong>The walkout</strong>Your sous chef, your bar manager, your right hand &mdash; gone on a Saturday night with covers on the board. The shift survived. The system did not.</li>
+                <li><strong>The accountant meeting</strong>"You grew. You also made less money." You didn't know what to say.</li>
+                <li><strong>The supplier price hike</strong>One line item moved by twenty-five percent in six weeks. You changed nothing on the menu. Your food cost ate the difference.</li>
+                <li><strong>Pre-Location-2</strong>The lease is on the desk. The accountant pulled you aside and said "fix Location 1 first." You know they're right.</li>
+            </ul>
+
+            <div class="trigger-notfor">
+                <strong>This is not for you</strong> if you're under $800K in annual revenue, less than two years in, or shopping for the cheapest consultant. The Recovery Engagement is a structural intervention &mdash; not a tune-up.
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDY -->
+    <section class="case">
+        <div class="container-wide">
+            <span class="case-label">The Receipt</span>
+            <h2>The season that made money and still closed.</h2>
+            <p class="case-sub">My own restaurant. Yukon. A summer that worked on paper and still closed in October. The whole engagement is built around making sure this doesn't happen to you.</p>
+
+            <div class="case-section">
+                <h3>The climb</h3>
+                <p>When I ran Grumpy Schnitzel, I had the system set up right. Five Profit First accounts at the bank. Tax. Profit. Owner. Rent and power. A catch-all. The structure every consultant tells you to build. I built it. It sat there all season, exactly the way the book said it should.</p>
+                <p><strong>The money never went through it.</strong></p>
+                <p>May opened at a 36% food cost. Prime cost &mdash; food plus the wage on the books &mdash; sat at 53%. Margin: 29 cents on the dollar. The month cleared.</p>
+                <p>Then it grew the way a Yukon summer grows. Fast and short. June got busier. July got tighter as it got busier &mdash; food cost dropped to 28%, prime cost to 39%, margin hit 40%. That is the opposite of what happens to most operators. Most kitchens get sloppy when the rush hits. Costs balloon, waste climbs, nobody has time to count. This one got leaner. August was the peak. Four months in a row in the black.</p>
+                <p>On paper, this was a business that worked.</p>
+            </div>
+
+            <div class="case-section">
+                <h3>The lie</h3>
+                <p>The lie was the buckets.</p>
+                <p>They existed, so it felt handled. Tax account, sitting there. Profit account, sitting there. The structure was correct, and <strong>a correct structure feels like control.</strong></p>
+                <p>But look at what actually moved. In May, the money that left the operating account for the buckets all went to Owner. Nothing to tax. Nothing to profit. June, the system finally got fed. Then it tailed off. August, the biggest month of the year, almost nothing was set aside.</p>
+                <p>The buckets were a filing cabinet, not a system. A system changes what you do. This changed nothing. The money still ran through the hub, and the hub paid whatever was loudest that week.</p>
+            </div>
+
+            <div class="case-section">
+                <h3>The reveal</h3>
+                <p>Then the season turned, and the numbers stopped being a story about food.</p>
+                <p>September: the dining room went to a partial month, then Friday and Saturday only. Sales fell to roughly half of August. That part I expected. Tourist towns empty out. You plan for the drop.</p>
+                <p><strong>What I did not plan for was that nothing on the cost side dropped with it.</strong></p>
+                <p>The lease was a commission &mdash; a fixed percentage of sales, every month, to the landlord. When sales were strong, that was a number you could carry. When sales halved and a catch-up balance landed on top, rent moved from 16% of sales in August to 37% in September. Food cost climbed back to 41%, because you cannot run a tight kitchen two days a week. Prime cost hit 60%. The first red month of the year, and it came one month after the best month of the year.</p>
+                <p>October was the cliff. Open Friday and Saturday only. Sales collapsed by more than ninety percent versus August. The wage still went out. The lease still charged its slice. The supplier orders, the insurance, the bank fees, the bookkeeping &mdash; none of it knew the season was over. <strong>Rent alone was 139% of everything the doors took in.</strong></p>
+            </div>
+
+            <div class="case-table-wrap">
+                <table class="case-table" aria-label="Grumpy Schnitzel season: structural percentages by month">
+                    <thead>
+                        <tr><th>Month</th><th>Food cost</th><th>Prime cost</th><th>Rent % of sales</th><th>Margin</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>May</td><td>36%</td><td>53%</td><td>4%</td><td>29%</td></tr>
+                        <tr><td>June</td><td>38%</td><td>50%</td><td>13%</td><td>31%</td></tr>
+                        <tr><td>July</td><td>28%</td><td>39%</td><td>17%</td><td>40%</td></tr>
+                        <tr><td>August</td><td>32%</td><td>41%</td><td>16%</td><td>34%</td></tr>
+                        <tr><td>September</td><td class="red">41%</td><td class="red">60%</td><td class="red">37%</td><td class="red">-3%</td></tr>
+                        <tr><td>October</td><td>16%</td><td class="red">107%</td><td class="red">139%</td><td class="red">-237%</td></tr>
+                        <tr class="season"><td>Season</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>Cleared the year. Still closed.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="case-section">
+                <h3>The lesson</h3>
+                <p>Four profitable months did not save it. Two bad months at the wrong end of the calendar did the math that mattered, and there was nothing parked anywhere to absorb them.</p>
+                <p>That is the whole lesson, and it is not about food cost.</p>
+                <p>A seasonal business has to bank the summer to survive the winter. Not "set up an account for it." <strong>Bank it &mdash; move the money out of reach the same week it comes in, on a fixed rule, so the off-season is already paid for before the off-season arrives.</strong></p>
+                <p>The second lesson is the lease. A percentage-of-sales cost feels fair when you're busy &mdash; the landlord wins when you win. But it has no floor. When the season ends, a fixed cost you can negotiate down is survivable. A commission that only knows how to take its 15% is not. <strong>I signed that deal when the summer numbers made everything look possible.</strong></p>
+                <p>You cannot fix a structure you only look at once a year, after it is over.</p>
+            </div>
+
+            <div class="case-takeaway">
+                <p><strong>What you're paying for:</strong> the Recovery Engagement is twenty-one days of me sitting inside your numbers, finding your version of the bucket lie and your version of the percentage-rent &mdash; the structural leak that has no floor &mdash; and installing the rule that stops it before your own off-season arrives.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section class="weeks">
+        <div class="container">
+            <h2>What twenty-one days looks like.</h2>
+            <p class="weeks-sub">Three phases. One operator. One restaurant. One leak found and closed.</p>
+
+            <div class="week-card">
+                <div class="week-label">Days 1&ndash;7 &mdash; Diagnose</div>
+                <h3>Find your bucket lie.</h3>
+                <p>Six months of P&amp;L. POS exports. Supplier invoices. Lease and contracts. The whole structure on the table at once.</p>
+                <ul>
+                    <li>Full back-of-house cost reconstruction (food, prime, rent ratio, every fixed cost)</li>
+                    <li>Cash flow vs. P&amp;L reconciliation &mdash; where the profit goes between paper and bank</li>
+                    <li>Identification of the one structural leak that has no floor</li>
+                    <li>Written diagnostic at the end of week one &mdash; what's broken, what's working, what's a distraction</li>
+                </ul>
+            </div>
+
+            <div class="week-card">
+                <div class="week-label">Days 8&ndash;14 &mdash; Install</div>
+                <h3>Build the rule that stops the leak.</h3>
+                <p>One rule. Written down. Tied to a fixed trigger. Designed so it runs whether you remember it or not.</p>
+                <ul>
+                    <li>Cash-out rule: how much of every peak-week dollar leaves the operating account, on what schedule, into what account</li>
+                    <li>Cost-with-no-floor fix: renegotiation script, fallback supplier list, or contract clause &mdash; whichever applies</li>
+                    <li>Owner-on-the-floor or off-the-floor protocol so the rule keeps running when you take Sunday</li>
+                    <li>One-page operating dashboard so the leak shows up Monday, not on the year-end</li>
+                </ul>
+            </div>
+
+            <div class="week-card">
+                <div class="week-label">Days 15&ndash;21 &mdash; Pressure-test</div>
+                <h3>Prove the system holds without me.</h3>
+                <p>The last seven days I'm watching, not driving. The system runs. We find every place it almost broke and we patch it before I leave.</p>
+                <ul>
+                    <li>Three live operating weeks where you run the rule, I review</li>
+                    <li>Every "just this once" exception logged and closed</li>
+                    <li>Handoff document &mdash; the whole system on one page, on your desk</li>
+                    <li>Day 21 close-out call: what the next ninety days look like running solo</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICE -->
+    <section class="price">
+        <div class="container">
+            <h2>The Engagement</h2>
+            <div class="price-amount">$3,500</div>
+            <div class="price-currency">CAD &middot; one-time &middot; 21 days</div>
+
+            <div class="price-includes">
+                <h3>What's included</h3>
+                <ul>
+                    <li>Six months of P&amp;L and operations reconstruction</li>
+                    <li>Written diagnostic (Day 7)</li>
+                    <li>Installed cash-out rule and cost-with-no-floor fix (Day 14)</li>
+                    <li>Three live operating weeks of review while you run the system</li>
+                    <li>One-page operating dashboard and handoff document (Day 21)</li>
+                    <li>Direct access to me throughout &mdash; not a portal, not a chatbot</li>
+                </ul>
+            </div>
+
+            <div class="price-risk">
+                <strong>The math.</strong> The typical structural leak inside the bands this engagement is built for runs three to five thousand dollars a month. The engagement pays for itself the first month the leak is closed. Year-one return is between ten and nineteen times what you spent. I'm not selling you a coaching call. I'm selling you the difference between October being a season-end and October being a season-ender.
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLY -->
+    <section class="apply" id="apply">
+        <div class="container">
+            <h2>Book a discovery call.</h2>
+            <p class="apply-sub">Twenty minutes. Three questions on the call. You'll know by minute fifteen whether the engagement is the right move &mdash; and if it isn't, I'll tell you what is. No upsell, no follow-up sequence.</p>
+
+            <p style="text-align:center; margin: 32px 0 12px;">
+                <a href="https://calendly.com/thegrumpychef/20min?utm_source=site&amp;utm_medium=recovery_page&amp;utm_campaign=recovery_apply" class="cta-btn" target="_blank" rel="noopener">Book the 20-min discovery call</a>
+            </p>
+            <span class="cta-note">If you're under $800K in revenue or just curious, start with the <a href="/leak?utm_source=site&amp;utm_medium=recovery_page&amp;utm_campaign=recovery_soft_redirect" style="color:inherit; text-decoration:underline;">free Profit Leak Calculator</a> instead.</span>
+        </div>
+    </section>
+
+</main>
+
+<footer class="page-footer">
+    <div class="container">
+        <p>&copy; 2026 The Grumpy Chef | <a href="/">Home</a> | <a href="/kit.html">72-Hour Sprint</a> | <a href="/leak?utm_source=recovery&amp;utm_medium=footer&amp;utm_campaign=recovery_footer_leak">Profit Leak Calculator</a> | <a href="/21-day-protocol.html">21-Day Protocol</a></p>
+    </div>
+    <div class="footer-legal" style="text-align:center; padding:16px 0; font-size:12px; opacity:0.7;">
+        <a href="/privacy.html" style="color:inherit; text-decoration:underline;">Privacy</a>
+        &middot;
+        <a href="/terms.html" style="color:inherit; text-decoration:underline;">Terms</a>
+        &middot;
+        <a href="mailto:grumpyschnitzel@gmail.com" style="color:inherit; text-decoration:underline;">Contact</a>
+    </div>
+</footer>
+
+</body>
+</html>

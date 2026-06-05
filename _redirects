@@ -2,6 +2,7 @@
 /calculator.html  /leak  301!
 /calculator       /leak  301!
 /leak  /leak.html  200
+/recovery  /recovery.html  200
 
 # Funnel One Truth — duplicates redirected to canonical (2026-05-10)
 /scorecard.html                  /readiness-scorecard.html         301!
@@ -34,3 +35,6 @@
 
 # Life OS Scorecard sunset (2026-05-12) — product killed
 /life-os-scorecard.html          /                                 301!
+
+# Privacy policy slug fix — GSC 404 (2026-06-05)
+/privacy-policy                  /privacy.html                     301!
