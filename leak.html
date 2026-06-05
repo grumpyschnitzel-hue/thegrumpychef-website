@@ -2465,16 +2465,29 @@
                 top_priority_action: topPriority ? topPriority.action : null
             };
 
-            // Step 1: insert lead in Supabase, then chain Kit tagging with the lead_id
-            // so subscribe-and-tag can write kit_subscriber_id + status back to the row.
+            // Step 1: insert the lead. keepalive:true so the POST completes even if the
+            // user closes the tab the instant the breakdown unlocks — that page-leave race
+            // was silently dropping ~75% of real leads (insert was fire-and-forget, errors
+            // swallowed). No retry by design: calculator_leads has no email dedup, so a
+            // retry after a lost-but-successful response would create a duplicate row;
+            // keepalive already fixes the dominant page-leave failure on the first attempt.
+            // Fire leak_lead_saved ONLY on a real 200 so analytics measures actual capture
+            // (not the unlock); leak_lead_save_failed surfaces any remaining loss.
             fetch(WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: JSON.stringify(payload),
+                keepalive: true
             })
-            .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('insert HTTP ' + r.status)); })
+            .then(function(r) {
+                if (!r.ok) throw new Error('insert HTTP ' + r.status);
+                return r.json();
+            })
             .then(function(data) {
+                ga4('lead_saved');
                 var leadId = data && data.id;
+                // Chain Kit tagging so subscribe-and-tag writes kit_subscriber_id +
+                // status back to the row. keepalive for the same page-leave reason.
                 return fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -2484,12 +2497,16 @@
                         tag_id: '15797829',
                         lead_table: 'calculator_leads',
                         lead_id: leadId
-                    })
+                    }),
+                    keepalive: true
                 });
             })
-            .catch(function(e) { console.warn('Lead pipeline failed:', e); });
+            .catch(function(e) {
+                console.error('Lead pipeline failed:', e);
+                ga4('lead_save_failed');
+            });
 
-            // GA4: Track lead capture
+            // GA4: lead-capture intent (legacy generate_lead — fires on submit, not save)
             if (typeof gtag === 'function') {
                 gtag('event', 'generate_lead', {
                     'event_category': 'lead_capture',
@@ -2511,7 +2528,11 @@
         }
 
         // ============================================
-        // FORM SUBMIT (legacy — kept for iframe/LP compat)
+        // DEAD CODE — legacy iframe/LP capture form. NOT mounted in this page
+        // (no #cap-btn / #f-name / #f-email exist) and nothing calls submitForm.
+        // The LIVE capture path is submitGate (gate-form). This copy still uses the
+        // old fire-and-forget insert — do NOT re-wire it without porting submitGate's
+        // keepalive lead-save fix. Safe to delete in a dedicated cleanup pass.
         // ============================================
         async function submitForm(e) {
             e.preventDefault();
