@@ -29,12 +29,12 @@ and burning half the context window on irrelevant files.
 
 | Task | Load These | Skip These |
 |------|-----------|------------|
-| Edit a page's content/copy | `rules/brand-voice.md`, the page itself, `css/styles.css` | `js/`, `blog/`, `assessment.html`, `toolkit/` |
-| Write a new blog post | `rules/brand-voice.md`, `rules/content-rules.md`, `blog/` (for format reference) | `js/`, `assessment.html`, `toolkit/`, `lp/` |
-| Fix a bug / JS issue | `js/analytics.js` or the relevant script, the affected page | `rules/brand-voice.md`, `rules/content-rules.md`, `blog/`, `brand/` |
-| Update assessment tool | `assessment.html`, `js/`, Supabase + Kit integration docs | `blog/`, `brand/`, `rules/content-rules.md` |
+| Edit a page's content/copy | `skill-context/brand-voice.md`, the page itself, `css/styles.css` | `js/`, `blog/`, `assessment.html`, `toolkit/` |
+| Write a new blog post | `skill-context/brand-voice.md`, `skill-context/content-rules.md`, `blog/` (for format reference) | `js/`, `assessment.html`, `toolkit/`, `lp/` |
+| Fix a bug / JS issue | `js/analytics.js` or the relevant script, the affected page | `skill-context/brand-voice.md`, `skill-context/content-rules.md`, `blog/`, `brand/` |
+| Update assessment tool | `assessment.html`, `js/`, Supabase + Kit integration docs | `blog/`, `brand/`, `skill-context/content-rules.md` |
 | SEO / AEO improvements | The target page, `sitemap.xml`, `robots.txt` | `js/`, `toolkit/`, `brand/` |
-| Landing page edits | The target page in `lp/`, `rules/brand-voice.md`, `css/styles.css` | `blog/`, `assessment.html`, `js/analytics.js` |
+| Landing page edits | The target page in `lp/`, `skill-context/brand-voice.md`, `css/styles.css` | `blog/`, `assessment.html`, `js/analytics.js` |
 
 ## Key files
 - index.html -- homepage
