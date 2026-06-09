@@ -9,3 +9,6 @@
 toolkit/files/*_DEMO.xlsx
 toolkit/files/_demo/
 toolkit/export-screenshots.ps1
+
+# Blog stub sources — markdown drafts are build inputs, not deployed pages
+blog/drafts/
