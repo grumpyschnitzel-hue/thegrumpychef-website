@@ -7,6 +7,7 @@
 
 ## Work With Me
 - [Work With Me](https://thegrumpychef.ca/offers.html): The full offer ladder — free diagnostics, the $47 Operator's Toolkit, the $197 72-Hour Profit Sprint, and the $3,500 Profit Recovery Engagement (a 21-day diagnostic + install). Ongoing build-out (Operator OS, retainer) is qualified through a free discovery call, not bought off the page.
+- [Pricing (machine-readable)](https://thegrumpychef.ca/pricing.md): Structured price list for every offer — free diagnostics, $47 Toolkit, $197 Sprint, $3,500 Recovery Engagement, $3,500/mo retainer, and the free discovery call. Plain markdown, parseable without rendering.
 
 ## Free Diagnostics
 - [Profit Leak Calculator](https://thegrumpychef.ca/leak): Free 90-second diagnostic across 9 profit-leak categories — food cost, labor, staff turnover, menu pricing, suppliers, delivery platforms, beverage shrinkage, utilities, and untracked comps. Returns the estimated annual dollar cost of each leak.
