@@ -302,6 +302,21 @@
             color: var(--white-dim);
             font-size: 0.9rem;
         }
+        /* Embedded player cards */
+        .video-card--player {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 14px;
+        }
+        .video-card__meta { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+        .video-card__player {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 10px;
+            border: 1px solid var(--navy-border);
+            background: #000;
+            display: block;
+        }
 
         /* CALL UPSELL */
         .call-upsell {
@@ -435,7 +450,7 @@
         <ol class="quickstart__steps">
             <li class="quickstart__step">
                 <div class="quickstart__num">1</div>
-                <div class="quickstart__text"><strong>Watch the Day 1 video</strong> (30 min). Then open the Exposure Sheet and pull your real numbers. Allow 3-4 hours for Day 1.</div>
+                <div class="quickstart__text"><strong>Watch the Day 1 video</strong> (under 3 min). Then open the Exposure Sheet and pull your real numbers. Allow 3-4 hours for Day 1.</div>
             </li>
             <li class="quickstart__step">
                 <div class="quickstart__num">2</div>
@@ -475,32 +490,38 @@
         <h2 class="videos__title">Day-by-Day Guidance</h2>
         <p class="videos__note">Watch each video before starting that day's work. I walk you through every step with examples from real restaurants.</p>
 
-        <div class="video-card">
-            <div class="video-card__icon">&#9654;</div>
-            <div>
+        <div class="video-card video-card--player">
+            <div class="video-card__meta">
                 <div class="video-card__day">Day 1</div>
                 <div class="video-card__title">Exposure — See Where the Money Goes</div>
-                <div class="video-card__time">~30 minutes</div>
-                <span class="video-card__time" style="color: var(--gold);">Video coming soon — start with the tools below, they guide you step by step.</span>
+                <div class="video-card__time">2:44</div>
             </div>
+            <video class="video-card__player" controls preload="metadata" poster="/images/chris-chef-portrait.jpg">
+                <source src="/videos/day1-walkthrough.mp4" type="video/mp4">
+                Your browser can't play this video. <a href="/videos/day1-walkthrough.mp4" style="color: var(--gold);">Download it instead</a>.
+            </video>
         </div>
-        <div class="video-card">
-            <div class="video-card__icon">&#9654;</div>
-            <div>
+        <div class="video-card video-card--player">
+            <div class="video-card__meta">
                 <div class="video-card__day">Day 2</div>
                 <div class="video-card__title">Diagnosis — Find Your #1 Leak</div>
-                <div class="video-card__time">~30 minutes</div>
-                <span class="video-card__time" style="color: var(--gold);">Video coming soon — the Diagnosis Workbook walks you through every step.</span>
+                <div class="video-card__time">2:35</div>
             </div>
+            <video class="video-card__player" controls preload="metadata" poster="/images/chris-chef-portrait.jpg">
+                <source src="/videos/day2-walkthrough.mp4" type="video/mp4">
+                Your browser can't play this video. <a href="/videos/day2-walkthrough.mp4" style="color: var(--gold);">Download it instead</a>.
+            </video>
         </div>
-        <div class="video-card">
-            <div class="video-card__icon">&#9654;</div>
-            <div>
+        <div class="video-card video-card--player">
+            <div class="video-card__meta">
                 <div class="video-card__day">Day 3</div>
                 <div class="video-card__title">Install — Build the Fix</div>
-                <div class="video-card__time">~30 minutes</div>
-                <span class="video-card__time" style="color: var(--gold);">Video coming soon — the Protocol Builder has everything you need to start.</span>
+                <div class="video-card__time">2:55</div>
             </div>
+            <video class="video-card__player" controls preload="metadata" poster="/images/chris-chef-portrait.jpg">
+                <source src="/videos/day3-walkthrough.mp4" type="video/mp4">
+                Your browser can't play this video. <a href="/videos/day3-walkthrough.mp4" style="color: var(--gold);">Download it instead</a>.
+            </video>
         </div>
     </div>
 </section>
