@@ -12,3 +12,7 @@ toolkit/export-screenshots.ps1
 
 # Blog stub sources — markdown drafts are build inputs, not deployed pages
 blog/drafts/
+
+# Python bytecode from publish scripts
+scripts/__pycache__/
+__pycache__/
