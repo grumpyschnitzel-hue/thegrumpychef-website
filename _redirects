@@ -5,7 +5,7 @@
 /recovery  /recovery.html  200
 
 # Funnel One Truth — duplicates redirected to canonical (2026-05-10)
-/scorecard.html                  /readiness-scorecard.html         301!
+# /scorecard.html 301! removed 2026-06-14 — now a distinct live page (Restaurant Profit Leak Scorecard)
 /brochure-kit.html               /kit.html                         301!
 /toolkit-bundle.html             /toolkit/                         301!
 /gift.html                       /leak                             301!
