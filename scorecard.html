@@ -338,6 +338,11 @@
             transition: all 0.2s;
             font-weight: 500;
             font-size: 0.9rem;
+            background: none;
+            font-family: inherit;
+            color: inherit;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .option:hover {
@@ -1141,7 +1146,7 @@
                 var html = '';
                 for (var i = 0; i < opts.length; i++) {
                     var sel = answers[currentQ] === opts[i] ? ' selected' : '';
-                    html += '<div class="option' + sel + '" onclick="selectAnswer(\'' + opts[i] + '\')">' + labels[i] + '</div>';
+                    html += '<button type="button" class="option' + sel + '" onclick="selectAnswer(\'' + opts[i] + '\')">' + labels[i] + '</button>';
                 }
                 document.getElementById('qOptions').innerHTML = html;
 

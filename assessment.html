@@ -689,6 +689,13 @@
             cursor: pointer;
             margin-bottom: 10px;
             transition: all 0.15s ease;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .answer-option:hover {
@@ -2221,7 +2228,7 @@
 
                 q.options.forEach((opt, oi) => {
                     html += `
-                <div class="answer-option" id="opt-${qi}-${oi}" onclick="selectAnswer(${qi}, ${oi})">
+                <button type="button" class="answer-option" id="opt-${qi}-${oi}" onclick="selectAnswer(${qi}, ${oi})">
                     <div class="answer-option__radio">
                         <div class="answer-option__radio__dot"></div>
                     </div>
@@ -2230,7 +2237,7 @@
                         <div class="answer-option__insight">${opt.insight}</div>
                     </div>
                     <div class="answer-option__points">${opt.points} pts</div>
-                </div>
+                </button>
             `;
                 });
 
@@ -2265,14 +2272,14 @@
                 } else {
                     q.options.forEach((opt, oi) => {
                         html += `
-                <div class="answer-option" id="opt-${globalIdx}-${oi}" onclick="selectQualifyingChoice('${q.id}', '${opt.label.replace(/'/g, "\\'")}', ${globalIdx}, ${oi}, ${q.options.length})">
+                <button type="button" class="answer-option" id="opt-${globalIdx}-${oi}" onclick="selectQualifyingChoice('${q.id}', '${opt.label.replace(/'/g, "\\'")}', ${globalIdx}, ${oi}, ${q.options.length})">
                     <div class="answer-option__radio">
                         <div class="answer-option__radio__dot"></div>
                     </div>
                     <div class="answer-option__content">
                         <div class="answer-option__label">${opt.label}</div>
                     </div>
-                </div>
+                </button>
                 `;
                     });
 

@@ -700,6 +700,13 @@
             align-items: center;
             gap: 1rem;
             user-select: none;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 0;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .faq-q:hover { color: var(--gold); }
@@ -1118,55 +1125,55 @@
 
         <div class="faq-list">
             <div class="faq-item">
-                <div class="faq-q" onclick="toggleFaq(this)">
+                <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
                     Do I need to have my numbers organized before I apply?
-                    <span class="faq-toggle">+</span>
-                </div>
+                    <span class="faq-toggle" aria-hidden="true">+</span>
+                </button>
                 <div class="faq-a">
                     No. Most operators I work with do not have clean financial data when we start. Part of the audit process is building a clear picture from whatever you do have — POS data, QuickBooks exports, spreadsheets, or even rough estimates. Come as you are. We build from there.
                 </div>
             </div>
             <div class="faq-item">
-                <div class="faq-q" onclick="toggleFaq(this)">
+                <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
                     What does "async" actually look like day-to-day?
-                    <span class="faq-toggle">+</span>
-                </div>
+                    <span class="faq-toggle" aria-hidden="true">+</span>
+                </button>
                 <div class="faq-a">
                     You send me a voice message, a photo of a problem you saw in service, a question about a supplier quote, or a link to your numbers. I respond within 48 hours with a direct answer or a short video. No calendar scheduling. No Zoom links. No prep work required for a call. It fits around your service schedule because that is where your attention belongs.
                 </div>
             </div>
             <div class="faq-item">
-                <div class="faq-q" onclick="toggleFaq(this)">
+                <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
                     What if you're at capacity when I apply?
-                    <span class="faq-toggle">+</span>
-                </div>
+                    <span class="faq-toggle" aria-hidden="true">+</span>
+                </button>
                 <div class="faq-a">
                     I will tell you. You will go on a waitlist with a clear estimate of timing. In the meantime, I will point you to the tools and frameworks that will make the most difference while you wait — the Profit Leak Calculator, the Menu Profit Score Assessment, and the 72-Hour Profit Sprint are all available now and designed to surface your biggest leak without my involvement.
                 </div>
             </div>
             <div class="faq-item">
-                <div class="faq-q" onclick="toggleFaq(this)">
+                <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
                     Why no price on this page?
-                    <span class="faq-toggle">+</span>
-                </div>
+                    <span class="faq-toggle" aria-hidden="true">+</span>
+                </button>
                 <div class="faq-a">
                     Because the engagement is priced after we know what the problem actually is and what it will take to address it. I do not sell fixed packages at fixed prices to operators I have not spoken with. If the fit is there, we discuss investment as part of the conversation.
                 </div>
             </div>
             <div class="faq-item">
-                <div class="faq-q" onclick="toggleFaq(this)">
+                <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
                     My restaurant is not in Canada — can you still help?
-                    <span class="faq-toggle">+</span>
-                </div>
+                    <span class="faq-toggle" aria-hidden="true">+</span>
+                </button>
                 <div class="faq-a">
                     The operational principles translate across markets. Food cost, labor cost, waste, menu engineering, and supplier dynamics are universal problems. Apply and I will tell you directly whether geographic context affects what I can offer you.
                 </div>
             </div>
             <div class="faq-item">
-                <div class="faq-q" onclick="toggleFaq(this)">
+                <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
                     What's the difference between this and the free tools?
-                    <span class="faq-toggle">+</span>
-                </div>
+                    <span class="faq-toggle" aria-hidden="true">+</span>
+                </button>
                 <div class="faq-a">
                     The free tools — the Profit Leak Calculator and the Menu Score Assessment — are designed to show you <strong>where the problem is</strong>. The retainer is designed to actually build the system that fixes it, with someone who reviews your specific operation every month and is accountable for the output. If you have not used the free tools yet, start there. They will tell you whether the problem is large enough to warrant the next step.
                 </div>
@@ -1217,10 +1224,13 @@
             // Close all
             document.querySelectorAll('.faq-item.open').forEach(function(i) {
                 i.classList.remove('open');
+                var q = i.querySelector('.faq-q');
+                if (q) q.setAttribute('aria-expanded', 'false');
             });
             // Open this one if it was closed
             if (!isOpen) {
                 item.classList.add('open');
+                el.setAttribute('aria-expanded', 'true');
             }
         }
 
