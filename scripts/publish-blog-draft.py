@@ -131,6 +131,16 @@ def build_html(meta, body_html):
         reps[f"[RELATED_{n}_TITLE]"] = rt
     for k, v in reps.items():
         page = page.replace(k, v)
+    # honor frontmatter og_image: swap the shared default on og:image, twitter:image,
+    # and the Article schema "image" only — leave publisher logo + author-photo as Kitchen1.jpg
+    og = meta.get("og_image", "").strip()
+    if og:
+        abs_og = "https://thegrumpychef.ca" + og if og.startswith("/") else og
+        default = "https://thegrumpychef.ca/images/Kitchen1.jpg"
+        for attr in (f'property="og:image" content="{default}"',
+                     f'name="twitter:image" content="{default}"',
+                     f'"image": "{default}"'):
+            page = page.replace(attr, attr.replace(default, abs_og))
     left = re.findall(r"\[[A-Z_0-9 ]+\]", page)
     if left:
         print("  WARN unresolved placeholders:", sorted(set(left))[:8])
@@ -269,6 +279,8 @@ def main():
     for req in ("title", "slug", "meta_description", "published_date"):
         if not meta.get(req):
             die(f"frontmatter missing: {req}")
+    # strip the trailing OG Image Prompt block — it's image-gen metadata, not article copy
+    body = re.split(r"\n#{1,3}\s+OG Image Prompt", body, 1)[0].rstrip()
     body_html = md_to_html(body)
     page = build_html(meta, body_html)
     out = os.path.join(BLOG, meta["slug"] + ".html")
