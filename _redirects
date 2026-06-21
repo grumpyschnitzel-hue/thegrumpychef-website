@@ -32,6 +32,7 @@
 # Operator OS / 21-Day Protocol — canonical is /21-day-protocol.html (2026-05-12)
 /install.html                    /21-day-protocol.html             301!
 /operator-os.html                /21-day-protocol.html             301!
+/21-day-protocol-waitlist.html   /21-day-protocol.html             301!
 
 # Life OS Scorecard sunset (2026-05-12) — product killed
 /life-os-scorecard.html          /                                 301!

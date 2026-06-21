@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
     <title>The 21-Day Protocol | The Grumpy Chef</title>
-    <meta name="description" content="The 72-Hour Kit finds the leak. The 21-Day Protocol builds the system so it doesn't come back. Join the waitlist — founding members get early access and direct support.">
+    <meta name="description" content="The 72-Hour Sprint finds the leak. The 21-Day Protocol builds the system so it doesn't come back. 21 days, three phases, eight pain points solved with pre-decided responses. $997 CAD.">
 
     <!-- Open Graph -->
     <meta property="og:title" content="The 21-Day Protocol | The Grumpy Chef">
-    <meta property="og:description" content="21 days. Three phases. Eight pain points solved with pre-decided systems. Built for operators running on empty.">
+    <meta property="og:description" content="21 days. Three phases. Eight pain points solved with pre-decided systems. Built for operators running on empty. $997 CAD.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thegrumpychef.ca/21-day-protocol.html">
 
@@ -26,8 +25,10 @@
         },
         "offers": {
             "@type": "Offer",
-            "availability": "https://schema.org/PreOrder",
-            "description": "Founding member waitlist — launching Q3 2026"
+            "url": "https://thegrumpychef.ca/21-day-protocol.html",
+            "priceCurrency": "CAD",
+            "price": "997",
+            "availability": "https://schema.org/InStock"
         }
     }
     </script>
@@ -429,12 +430,12 @@
     <!-- HERO -->
     <section class="hero">
         <div class="container">
-            <span class="hero-label">Coming Q3 2026</span>
+            <span class="hero-label">Now Open</span>
             <h1>The 21-Day Protocol</h1>
-            <p class="hero-sub">The 72-Hour Kit finds the leak. The Protocol builds the system so it doesn't come back.</p>
+            <p class="hero-sub">The 72-Hour Sprint finds the leak. The Protocol builds the system so it doesn't come back.</p>
             <p class="hero-line">21 days. No exceptions. No negotiation.</p>
-            <a href="#waitlist" class="cta-btn">Join the Founding Member Waitlist</a>
-            <span class="cta-note">First 20 operators get founding rate + direct access during the 21 days.</span>
+            <a href="https://buy.stripe.com/dRm8wQ3Lg9F09JlfZLfAc04?utm_source=site&amp;utm_medium=protocol_hero&amp;utm_campaign=protocol_997_purchase" class="cta-btn" onclick="window.gcTrack&&window.gcTrack('protocol_buy_click',{location:'hero'})">Build the System &mdash; $997 CAD</a>
+            <span class="cta-note">First 20 operators get direct access to me during their 21 days.</span>
         </div>
     </section>
 
@@ -503,6 +504,14 @@
         </div>
     </section>
 
+    <!-- MID CTA -->
+    <section class="waitlist" style="padding: 56px 0;">
+        <div class="container">
+            <h2>Eight crises. Eight protocols. 21 days.</h2>
+            <a href="https://buy.stripe.com/dRm8wQ3Lg9F09JlfZLfAc04?utm_source=site&amp;utm_medium=protocol_mid&amp;utm_campaign=protocol_997_purchase" class="cta-btn" onclick="window.gcTrack&&window.gcTrack('protocol_buy_click',{location:'mid'})">Build the System &mdash; $997 CAD</a>
+        </div>
+    </section>
+
     <!-- ORIGIN -->
     <section class="origin">
         <div class="container">
@@ -515,53 +524,43 @@
         </div>
     </section>
 
-    <!-- WAITLIST -->
-    <section class="waitlist" id="waitlist">
+    <!-- BUY -->
+    <section class="waitlist" id="buy">
         <div class="container">
-            <h2>Join the Founding Member Waitlist</h2>
-            <p>The 21-Day Protocol launches Q3 2026. Founding members get early access at the founding rate and direct access to me during their 21 days.</p>
+            <h2>Build the system. $997 CAD.</h2>
+            <p>21 days. Three phases. Eight pain points, each with a pre-decided response. One-time payment, no subscription. Start the moment you check out.</p>
 
-            <div class="waitlist-form">
-                <form id="waitlist-form" onsubmit="return false;">
-                    <input type="email" id="waitlist-email" name="email" placeholder="Your email address" required>
-                    <button type="submit" class="cta-btn" id="waitlist-btn">Get on the Waitlist</button>
-                </form>
-                <span class="cta-note">No spam. One update when it launches. That's it. See our <a href="/privacy.html" style="color:inherit; text-decoration:underline;">privacy policy</a>.</span>
-                <div id="waitlist-success" style="display: none; padding: 24px; background: rgba(212, 175, 55, 0.1); border: 2px solid #D4AF37; margin-top: 16px;">
-                    <p style="font-family: 'Helvetica Neue', sans-serif; font-weight: 700; color: #0A1628; margin-bottom: 4px;">You're on the list.</p>
-                    <p style="font-size: 0.9rem; color: #4a4a4a; margin: 0;">You'll hear from me when founding spots open. That's it.</p>
-                </div>
-            </div>
-
-            <script>
-            document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const email = document.getElementById('waitlist-email').value.trim();
-                const btn = document.getElementById('waitlist-btn');
-                if (!email) return;
-                btn.textContent = 'Joining...';
-                btn.disabled = true;
-                try {
-                    // TODO: Replace tag_id with actual "21-day-waitlist" tag from Kit once created
-                    await fetch('https://cusexfqdhskgsywrqduj.supabase.co/functions/v1/subscribe-and-tag', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email: email, first_name: '', tag_id: 'WAITLIST_TAG_ID' })
-                    });
-                } catch (err) {
-                    console.warn('Waitlist signup failed:', err);
-                }
-                document.getElementById('waitlist-form').style.display = 'none';
-                document.getElementById('waitlist-success').style.display = 'block';
-            });
-            </script>
+            <a href="https://buy.stripe.com/dRm8wQ3Lg9F09JlfZLfAc04?utm_source=site&amp;utm_medium=protocol_final&amp;utm_campaign=protocol_997_purchase" class="cta-btn" onclick="window.gcTrack&&window.gcTrack('protocol_buy_click',{location:'final'})">Build the System &mdash; $997 CAD</a>
+            <span class="cta-note">Secure checkout via Stripe. Already ran the <a href="/kit.html" style="color:inherit; text-decoration:underline;">72-Hour Sprint</a>? This is the next step.</span>
 
             <div class="founding-note">
-                <h3>What founding members get:</h3>
-                <p>Early access before public launch. Founding rate locked in. Direct access to me during your 21 days — not a chatbot, not a VA. The chef who built this from collapse. Limited to the first 20 operators.</p>
+                <h3>What the first 20 operators get:</h3>
+                <p>Direct access to me during your 21 days — not a chatbot, not a VA. The chef who built this from collapse. After the first 20, it's the protocol on its own. Get in while the line to me is still open.</p>
             </div>
         </div>
     </section>
+
+    <!-- FLOATING CTA BAR -->
+    <style>
+      .float-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: var(--navy); border-top: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; gap: 20px; padding: 12px 24px; transform: translateY(110%); transition: transform 0.3s ease; }
+      .float-cta.show { transform: translateY(0); }
+      .float-cta-text { font-family: 'Helvetica Neue', 'Arial', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--cream); }
+      .float-cta-text span { color: var(--gold); }
+      .float-cta .cta-btn { padding: 10px 24px; font-size: 0.9rem; }
+      @media (max-width: 600px) { .float-cta { flex-direction: column; gap: 8px; padding: 10px 16px; } .float-cta-text { font-size: 0.8rem; } }
+    </style>
+    <div class="float-cta" id="floatCta">
+      <span class="float-cta-text">The 21-Day Protocol &mdash; <span>$997 CAD</span></span>
+      <a href="https://buy.stripe.com/dRm8wQ3Lg9F09JlfZLfAc04?utm_source=site&amp;utm_medium=protocol_sticky&amp;utm_campaign=protocol_997_purchase" class="cta-btn" onclick="window.gcTrack&&window.gcTrack('protocol_buy_click',{location:'sticky'})">Build the System</a>
+    </div>
+    <script>
+      (function() {
+        var bar = document.getElementById('floatCta');
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 700) { bar.classList.add('show'); } else { bar.classList.remove('show'); }
+        }, { passive: true });
+      })();
+    </script>
 
     <!-- FOOTER -->
     </main>
@@ -575,7 +574,7 @@
       &middot;
       <a href="/terms.html" style="color:inherit; text-decoration:underline;">Terms</a>
       &middot;
-      <a href="mailto:grumpyschnitzel@gmail.com" style="color:inherit; text-decoration:underline;">Contact</a>
+      <a href="mailto:christian@thegrumpychef.ca" style="color:inherit; text-decoration:underline;">Contact</a>
     </div>
   </footer>
 
