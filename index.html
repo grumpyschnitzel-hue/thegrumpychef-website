@@ -124,6 +124,18 @@
           "publisher": { "@id": "https://thegrumpychef.ca/#organization" }
         },
         {
+          "@type": "WebPage",
+          "@id": "https://thegrumpychef.ca/#webpage",
+          "url": "https://thegrumpychef.ca/",
+          "name": "The Grumpy Chef — Restaurant Profit Recovery",
+          "isPartOf": { "@id": "https://thegrumpychef.ca/#website" },
+          "about": { "@id": "https://thegrumpychef.ca/#person" },
+          "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["#who", "#ways-in"]
+          }
+        },
+        {
           "@type": "Service",
           "@id": "https://thegrumpychef.ca/#protocol",
           "name": "The 21-Day Protocol",
@@ -990,7 +1002,7 @@ h1,h2,h3,.nav-logo{font-family:var(--font-display);letter-spacing:0.05em;text-tr
   </section>
 
   <!-- SECTION 5: WHY TRUST ME -->
-  <section class="section section-alt">
+  <section class="section section-alt" id="who">
     <div class="section-inner">
       <div class="section-label">The Operator</div>
       <h2 class="section-title">Who's Behind <span>This</span></h2>
@@ -1092,7 +1104,7 @@ h1,h2,h3,.nav-logo{font-family:var(--font-display);letter-spacing:0.05em;text-tr
   </section>
 
   <!-- SECTION 5c: OFFER LADDER -->
-  <section class="section section-alt">
+  <section class="section section-alt" id="ways-in">
     <div class="section-inner">
       <div class="section-label">Where to Start</div>
       <h2 class="section-title">Three Ways In. <span>One Direction.</span></h2>
