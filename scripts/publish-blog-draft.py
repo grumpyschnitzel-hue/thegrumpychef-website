@@ -322,9 +322,15 @@ def main():
     update_index(meta)
     update_feed(meta)
     update_sitemap(meta)
+    slug = meta["slug"]
+    og = f"images/og/{slug}.jpg"
+    has_og = os.path.exists(os.path.join(ROOT, og))
     print("\nBUILT (not pushed). Preview, then commit + push to go live:")
-    print(f"  git -C \"{ROOT}\" add blog/{meta['slug']}.html blog/index.html blog/feed.xml sitemap.xml")
-    print(f"  git -C \"{ROOT}\" commit -m \"blog: {meta['slug']}\" && git -C \"{ROOT}\" push")
+    print(f"  git -C \"{ROOT}\" add blog/{slug}.html blog/index.html blog/feed.xml sitemap.xml"
+          + (f" {og}" if has_og else ""))
+    print(f"  git -C \"{ROOT}\" commit -m \"blog: {slug}\" && git -C \"{ROOT}\" push")
+    print("Then notify IndexNow (run AFTER the push is live on Netlify):")
+    print(f"  python3 scripts/indexnow-ping.py https://thegrumpychef.ca/blog/{slug}.html")
     if "--no-open" not in flags:
         webbrowser.open("file:///" + out.replace("\\", "/"))
 
