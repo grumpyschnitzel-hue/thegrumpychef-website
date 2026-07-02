@@ -2816,6 +2816,25 @@
         // Step 5: email_submitted now fires inside unlockResults() on a successful
         // optional email capture. Step 6: breakdown_viewed fires above — the moment the
         // breakdown renders, since it's no longer hidden behind the email wall.
+
+        // Step 7: result_cta_clicked — the Phase 1 conversion step (breakdown_viewed
+        // -> CTA click). Fires per click with cta_type so the leak funnel has its own
+        // same-category ratio. analytics.js ALSO catches these site-wide as
+        // discovery_call_click (calendly) / toolkit_checkout_started (/kit) for
+        // cross-page attribution — this is the in-funnel complement, not a duplicate.
+        ['cta-call', 'cta-sprint'].forEach(function (id) {
+            var box = document.getElementById(id);
+            var link = box && box.querySelector('a');
+            if (!link) return;
+            link.addEventListener('click', function () {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'leak_result_cta_clicked', {
+                        event_category: 'leak_funnel',
+                        cta_type: id === 'cta-call' ? 'discovery_call' : 'sprint'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 
