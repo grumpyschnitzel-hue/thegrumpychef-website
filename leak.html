@@ -1029,6 +1029,8 @@
            ============================================ */
         .gated-content {
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .gated-content.locked > *:not(.gate-overlay) {
@@ -1036,8 +1038,10 @@
         }
 
         .gate-overlay {
-            display: none;
-            padding: 32px 0 8px;
+            display: block;
+            order: 10; /* render below the (now always-visible) breakdown + CTA */
+            padding: 40px 0 8px;
+            margin-top: 8px;
         }
 
         .gated-content.locked .gate-overlay {
@@ -1955,14 +1959,15 @@
                 </div>
 
                 <!-- GATED CONTENT — unlocked after email capture -->
-                <div class="gated-content locked" id="gated-content">
+                <div class="gated-content" id="gated-content">
 
                     <!-- GATE OVERLAY — email form -->
                     <div class="gate-overlay" id="gate-overlay">
                         <div class="gate-card">
-                            <div class="gate-card__title">Want the category breakdown and the one fix that matters most?</div>
+                            <div class="gate-card__tag">Optional</div>
+                            <div class="gate-card__title">Want this as a PDF &mdash; with the exact order to fix them?</div>
                             <div class="gate-card__desc">
-                                Drop your email. The breakdown reveals on this page and a copy lands in your inbox.
+                                The numbers above are yours to keep. Drop your email and I&rsquo;ll send the full breakdown as a PDF, plus the one-leak-at-a-time fix sequence.
                             </div>
                             <form class="gate-card__form" id="gate-form" onsubmit="submitGate(event)">
                                 <div class="gate-card__row">
@@ -1986,7 +1991,7 @@
                                     </select>
                                 </div>
                                 <p class="form-microcopy" style="font-size:12px; line-height:1.4; opacity:0.65; margin-top:0; margin-bottom:8px; max-width:320px;">We email your full leak breakdown and one short note per week. Unsubscribe anytime. See our <a href="/privacy.html" style="color:inherit; text-decoration:underline;">privacy policy</a>.</p>
-                                <button type="submit" class="gate-card__submit" id="gate-btn">Send Me the Breakdown</button>
+                                <button type="submit" class="gate-card__submit" id="gate-btn">Email me the PDF</button>
                                 <div class="gate-card__error" id="gate-err"></div>
                                 <div class="gate-card__fine">No spam, no nurture sequence dressed up as a free course. If the result is useful, hit reply.</div>
                             </form>
@@ -2005,11 +2010,6 @@
                     <div class="chart">
                         <div class="section-label">All Leaks &mdash; Ranked</div>
                         <div id="chart-bars"></div>
-                    </div>
-
-                    <!-- SOFT CLOSE -->
-                    <div style="margin-top: 32px; padding: 24px; text-align: center; color: var(--white-dim); font-size: 0.95rem; line-height: 1.6;">
-                        You'll get a copy by email. If it's useful, hit reply.
                     </div>
 
                     <!-- KIT UPSELL -->
@@ -2517,14 +2517,13 @@
         }
 
         function unlockResults() {
-            var gc = document.getElementById('gated-content');
-            gc.classList.remove('locked');
-            document.getElementById('gate-overlay').style.display = 'none';
-            // Smooth scroll to the priority section
-            var priority = document.getElementById('priority');
-            if (priority) {
-                priority.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // The breakdown is no longer gated — it renders the moment there's a total.
+            // This now just confirms the OPTIONAL email capture after a successful submit.
+            var overlay = document.getElementById('gate-overlay');
+            if (overlay) {
+                overlay.innerHTML = '<div class="gate-card"><div class="gate-card__tag">Sent</div><div class="gate-card__title">Check your inbox.</div><div class="gate-card__desc">Your full breakdown PDF is on its way. If it’s useful, hit reply — that inbox is mine.</div></div>';
             }
+            ga4('email_submitted');
         }
 
         // ============================================
@@ -2663,11 +2662,7 @@
             document.getElementById('monthly-revenue').value = '';
             render();
             updResults();
-            // Re-lock the gate
-            var gc = document.getElementById('gated-content');
-            gc.classList.add('locked');
-            document.getElementById('gate-overlay').style.display = '';
-            // Reset gate form
+            // Reset gate form (breakdown stays visible — no re-lock)
             var gf = document.getElementById('gate-form');
             if (gf) gf.reset();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2786,25 +2781,17 @@
         }
         document.getElementById('categories').addEventListener('change', function () { ga4('calculator_started'); }, { once: true });
 
-        // Step 4: figure viewed — fires once the dollar figure renders (any leak total > 0)
+        // Step 4: figure + breakdown viewed — both render together now that the
+        // breakdown is un-gated, so fire them the moment there's a leak total > 0.
         var origUpdResults = updResults;
         updResults = function () {
             origUpdResults();
-            if (grandTotal() > 0) ga4('figure_viewed');
+            if (grandTotal() > 0) { ga4('figure_viewed'); ga4('breakdown_viewed'); }
         };
 
-        // Step 5: email_submitted — fires inside submitGate after successful validation
-        // Step 6: breakdown_viewed — fires inside unlockResults
-        var origSubmitGate = submitGate;
-        submitGate = async function (e) {
-            await origSubmitGate(e);
-            // submitGate calls unlockResults synchronously on valid input
-            // so by the time we get here, if the gate-overlay is hidden, submission succeeded
-            if (document.getElementById('gate-overlay').style.display === 'none') {
-                ga4('email_submitted');
-                ga4('breakdown_viewed');
-            }
-        };
+        // Step 5: email_submitted now fires inside unlockResults() on a successful
+        // optional email capture. Step 6: breakdown_viewed fires above — the moment the
+        // breakdown renders, since it's no longer hidden behind the email wall.
     </script>
 </body>
 
