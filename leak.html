@@ -2012,8 +2012,15 @@
                         <div id="chart-bars"></div>
                     </div>
 
-                    <!-- KIT UPSELL -->
-                    <div class="kit-upsell" style="margin-top: 32px; padding: 32px 24px; text-align: center; border-top: 1px solid var(--navy-border, #1A2D4D);">
+                    <!-- RESULT CTA — high/critical leak (>=$50K/yr): discovery call + Recovery ROI -->
+                    <div class="kit-upsell result-cta--call" id="cta-call" style="margin-top: 32px; padding: 32px 24px; text-align: center; border-top: 1px solid var(--navy-border, #1A2D4D); display: none;">
+                        <p style="font-size: 1.15rem; line-height: 1.5; color: var(--white, #F5F5F0); max-width: 560px; margin: 0 auto 12px; font-weight: 600;">You're bleeding <span id="cta-call-monthly">$0</span>/month. That's not a template problem.</p>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--white-dim, #B8C2D1); max-width: 560px; margin: 0 auto 24px;">A 20-minute call gets you your top 3 fixes, built around these numbers. The Profit Recovery Engagement installs them in 21 days &mdash; $3,500 one-time against a leak of <span id="cta-call-annual">$0</span>/year. Do the math.</p>
+                        <a href="https://calendly.com/thegrumpychef/20min?utm_source=leak&amp;utm_medium=result&amp;utm_campaign=leak_postresult_call" class="hero__cta" style="display: inline-block;">Book a 20-min call &rarr;</a>
+                    </div>
+
+                    <!-- RESULT CTA — mid/low leak: 72-Hour Sprint (current behavior) -->
+                    <div class="kit-upsell result-cta--sprint" id="cta-sprint" style="margin-top: 32px; padding: 32px 24px; text-align: center; border-top: 1px solid var(--navy-border, #1A2D4D);">
                         <p style="font-size: 1.05rem; line-height: 1.6; color: var(--white, #F5F5F0); max-width: 560px; margin: 0 auto 12px;">Want a structured way to fix the leak instead of staring at the number?</p>
                         <p style="font-size: 0.95rem; line-height: 1.6; color: var(--white-dim, #B8C2D1); max-width: 560px; margin: 0 auto 24px;">The 72-Hour Profit Sprint walks you through it in 3 days.</p>
                         <a href="/kit.html?utm_source=leak&amp;utm_medium=result&amp;utm_campaign=leak_postresult_kit" class="hero__cta" style="display: inline-block;">Get the 72-Hour Sprint &rarr;</a>
@@ -2311,7 +2318,7 @@
                 ctx.textContent = 'Emergency situation. Your restaurant needs the full discovery process immediately. This level of leakage can\u2019t be outworked \u2014 it has to be found and stopped systematically.';
             } else if (total >= 50000) {
                 ctx.classList.add('tier-high');
-                ctx.textContent = 'Critical bleed. This is what the 72-Hour Protocol was built for. You\u2019re losing more than most operators realize is possible to recover. Start with your #1 priority below.';
+                ctx.textContent = 'Critical bleed. You\u2019re losing more than most operators realize is possible to recover \u2014 more than a template fixes. Start with your #1 priority below, then book the call.';
             } else if (total >= 20000) {
                 ctx.classList.add('tier-mid');
                 ctx.textContent = 'Real money. Fixable in 90 days using systematic protocols. Enough to fund a full-time hire, upgrade your kitchen, or clear months of debt. One leak at a time.';
@@ -2343,6 +2350,23 @@
                 r.innerHTML = '<div class="chart__label">' + c.name + '</div><div class="chart__track"><div class="chart__fill" style="width:' + (c.total > 0 ? Math.max(pct, 2) : 0) + '%"></div></div><div class="chart__value">' + (c.total > 0 ? fmt(c.total) : '\u2014') + '</div>';
                 cb.appendChild(r);
             });
+
+            // Score-based CTA routing: high/critical leak (>=$50K/yr, matching the
+            // tier-high/tier-crit bands above) -> discovery call framed on the Recovery
+            // ROI; mid/low -> 72-Hour Sprint. Only one shows at a time.
+            var ctaCall = document.getElementById('cta-call');
+            var ctaSprint = document.getElementById('cta-sprint');
+            if (ctaCall && ctaSprint) {
+                if (total >= 50000) {
+                    ctaCall.style.display = 'block';
+                    ctaSprint.style.display = 'none';
+                    document.getElementById('cta-call-monthly').textContent = fmt(Math.round(total / 12));
+                    document.getElementById('cta-call-annual').textContent = fmt(total);
+                } else {
+                    ctaCall.style.display = 'none';
+                    ctaSprint.style.display = 'block';
+                }
+            }
         }
 
         // ============================================
