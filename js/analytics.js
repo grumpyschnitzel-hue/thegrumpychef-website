@@ -28,6 +28,35 @@
   }
 
   // =============================================
+  // BOT / NON-HUMAN GATE
+  // Link-preview unfurlers (LinkedIn, Facebook, Slack), headless scrapers, and
+  // crawlers fetch the page and run gtag — inflating GA4 "users" by ~78% (measured
+  // 2026-07 on /leak: 229 raw vs 50 real renders). They never run the page body JS
+  // and never interact. Two-part defence: (a) hard-block known bot UAs + automation
+  // here, and (b) defer page_view until a real-human signal (below), so
+  // fetch-and-discard clients are never counted. Quiet human readers still count via
+  // a short visible dwell; anyone who interacts counts instantly.
+  // =============================================
+  var BOT_UA = /bot|crawl|spider|slurp|crawler|facebookexternalhit|linkedinbot|slackbot|slack-imgproxy|whatsapp|telegrambot|discordbot|embedly|quora link preview|bitlybot|skypeuripreview|pinterest|redditbot|applebot|bingpreview|vkshare|w3c_validator|baiduspider|yandex|duckduckbot|googlebot|petalbot|semrush|ahrefs|mj12bot|dotbot|headless|phantomjs|puppeteer|playwright|selenium|python-requests|python-urllib|axios|node-fetch|go-http-client|\bcurl\b|wget|okhttp|libwww|httpclient|scrapy/i;
+
+  function isLikelyBot() {
+    try {
+      var ua = navigator.userAgent || '';
+      if (!ua) return true;                          // no UA string = not a real browser
+      if (BOT_UA.test(ua)) return true;              // named crawler / unfurler / HTTP lib
+      if (navigator.webdriver === true) return true; // automation (Playwright/Selenium/etc.)
+      return false;
+    } catch (e) {
+      return false;                                  // never block on our own error
+    }
+  }
+
+  if (isLikelyBot()) {
+    window['ga-disable-' + GA4_ID] = true;
+    return; // skip GA4, Clarity, LinkedIn, and all event wiring for non-humans
+  }
+
+  // =============================================
   // GA4 INITIALIZATION
   // =============================================
   if (GA4_ID !== 'GA4_MEASUREMENT_ID') {
@@ -40,7 +69,63 @@
     function gtag() { window.dataLayer.push(arguments); }
     window.gtag = gtag;
     gtag('js', new Date());
-    gtag('config', GA4_ID, { send_page_view: true });
+    // send_page_view is deferred: fired manually by armPageView() once we have a
+    // real-human signal, so unfurlers/scrapers that load gtag but tear down are
+    // never counted. See BOT / NON-HUMAN GATE above.
+    gtag('config', GA4_ID, { send_page_view: false });
+  }
+
+  // =============================================
+  // DEFERRED, HUMAN-GATED PAGE_VIEW
+  // =============================================
+  var pageViewSent = false;
+  function sendPageView(reason) {
+    if (pageViewSent || typeof window.gtag !== 'function') return;
+    pageViewSent = true;
+    window.gtag('event', 'page_view', {
+      page_location: window.location.href,
+      page_path: window.location.pathname + window.location.search,
+      page_title: document.title,
+      human_signal: reason || 'unknown'
+    });
+  }
+
+  function armPageView() {
+    var interactions = ['pointerdown', 'mousemove', 'keydown', 'scroll', 'touchstart', 'click'];
+    function onInteract() { cleanup(); sendPageView('interaction'); }
+    function cleanup() {
+      interactions.forEach(function (evt) {
+        window.removeEventListener(evt, onInteract, true);
+      });
+    }
+    // Instant path: any genuine interaction (also protects a fast click-to-checkout).
+    interactions.forEach(function (evt) {
+      window.addEventListener(evt, onInteract, { capture: true, passive: true });
+    });
+
+    // Quiet-reader path: count once the page has been visibly on screen for a beat.
+    // requestAnimationFrame guarantees at least one real paint — unfurlers that
+    // render off-screen and tear down never reach it.
+    var DWELL_MS = 1200;
+    function armDwell() {
+      if (document.visibilityState !== 'visible') return;
+      var raf = window.requestAnimationFrame || function (cb) { return setTimeout(cb, 16); };
+      raf(function () {
+        setTimeout(function () {
+          if (document.visibilityState === 'visible') { cleanup(); sendPageView('dwell'); }
+        }, DWELL_MS);
+      });
+    }
+    if (document.visibilityState === 'visible') {
+      armDwell();
+    } else {
+      document.addEventListener('visibilitychange', function vc() {
+        if (document.visibilityState === 'visible') {
+          document.removeEventListener('visibilitychange', vc);
+          armDwell();
+        }
+      });
+    }
   }
 
   // =============================================
@@ -411,6 +496,53 @@
     });
   }
 
+  // 7. Calendly popup — turn calendly.com CTA links into on-site popups so the
+  //    booking's calendly.event_scheduled postMessage reaches setupCalendlyBooked()
+  //    above. Without this, link-out CTAs navigate away to calendly.com and the
+  //    booking is never attributed to our funnel. Lazy-loads the official widget;
+  //    if it isn't ready (or fails to load), clicks fall back to normal navigation,
+  //    so there is no regression. Inline-widget pages load the assets themselves and
+  //    are already captured — this only touches <a href> links.
+  function setupCalendlyPopup() {
+    var calendlyLinks = document.querySelectorAll('a[href*="calendly.com"]');
+    if (!calendlyLinks.length) return;
+
+    var ASSET_CSS = 'https://assets.calendly.com/assets/external/widget.css';
+    var ASSET_JS = 'https://assets.calendly.com/assets/external/widget.js';
+
+    function ensureAssets() {
+      if (!document.querySelector('link[href="' + ASSET_CSS + '"]')) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = ASSET_CSS;
+        document.head.appendChild(l);
+      }
+      if (!document.querySelector('script[src="' + ASSET_JS + '"]')) {
+        var s = document.createElement('script');
+        s.src = ASSET_JS;
+        s.async = true;
+        document.head.appendChild(s);
+      }
+    }
+
+    // Preload now so the first click opens the popup instantly.
+    ensureAssets();
+
+    document.addEventListener('click', function (e) {
+      if (!e.target || !e.target.closest) return;
+      var link = e.target.closest('a[href*="calendly.com"]');
+      if (!link) return;
+      // Let modified clicks (new tab/window, middle-click) behave normally.
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      // Only hijack when the widget is ready; otherwise fall back to navigation.
+      if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+        e.preventDefault();
+        window.Calendly.initPopupWidget({ url: link.getAttribute('href') });
+      }
+      // discovery_call_click still fires via its own delegated handler.
+    });
+  }
+
   // =============================================
   // INIT
   // =============================================
@@ -421,7 +553,12 @@
     setupDiscoveryCallClick();
     setupToolkitCheckoutStarted();
     setupCalendlyBooked();
+    setupCalendlyPopup();
   }
+
+  // Arm the human-gated page_view immediately (not gated on DOMContentLoaded — we
+  // want to catch an early interaction), then wire the rest once the DOM is ready.
+  armPageView();
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
